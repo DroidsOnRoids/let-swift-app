@@ -18,15 +18,10 @@ fileprivate enum LocalizationStrategy {
     case forcedLanguage(Language)
 }
 
-fileprivate enum MissingKeyStrategy {
-    case leaveKey
-    case fallbackTo(Language)
-}
-
 fileprivate let localizationStrategy: LocalizationStrategy = isDebugBuild ?
     .automatic : .forcedLanguage(.polish)
 
-fileprivate let missingKeyStrategy: MissingKeyStrategy = .fallbackTo(.english)
+fileprivate let fallbackLanguage: Language = .english
 
 fileprivate func localizeAutomatic(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
@@ -41,16 +36,10 @@ fileprivate func localizeForced(_ key: String, forLanguage language: Language) -
 
 func localized(_ key: String, forLanguage language: Language) -> String {
     let localizationResult = localizeForced(key, forLanguage: language)
-    
-    switch missingKeyStrategy {
-    case let .fallbackTo(fallbackLanguage):
-        if localizationResult == key, language != fallbackLanguage {
-            return localizeForced(key, forLanguage: fallbackLanguage)
-        } else {
-            return localizationResult
-        }
 
-    case .leaveKey:
+    if localizationResult == key, language != fallbackLanguage {
+        return localizeForced(key, forLanguage: fallbackLanguage)
+    } else {
         return localizationResult
     }
 }
@@ -59,15 +48,8 @@ func localized(_ key: String) -> String {
     switch localizationStrategy {
     case .automatic:
         let localizationResult = localizeAutomatic(key)
-        
-        switch missingKeyStrategy {
-        case let .fallbackTo(fallbackLanguage):
-            return localizationResult == key ?
-                localizeForced(key, forLanguage: fallbackLanguage) : localizationResult
-
-        case .leaveKey:
-            return localizationResult
-        }
+        return localizationResult == key ?
+            localizeForced(key, forLanguage: fallbackLanguage) : localizationResult
         
     case let .forcedLanguage(language):
         return localized(key, forLanguage: language)
