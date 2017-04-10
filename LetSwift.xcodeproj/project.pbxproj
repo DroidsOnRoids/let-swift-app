@@ -49,6 +49,76 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApplicationViewControllers;
+			sourceTree = "<group>";
+		};
+		7EECA5A31E9B572500B3F724 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		7EECA5A71E9B5E8600B3F724 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		7EECA5A81E9B5E9B00B3F724 /* GenericViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GenericViewControllers;
+			sourceTree = "<group>";
+		};
+		7EECA5A91E9B5EB300B3F724 /* GenericViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GenericViews;
+			sourceTree = "<group>";
+		};
+		7EECA5AA1E9B5EC500B3F724 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7EECA5AB1E9B5ED900B3F724 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		7EECA5AC1E9B5EEB00B3F724 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7EECA5AD1E9B5EF900B3F724 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7EECA5AE1E9B5F0800B3F724 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		C5A0D5FC67682B06B2AAF7D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,12 +148,22 @@
 		D39A734A1E9776D900F10620 /* LetSwift */ = {
 			isa = PBXGroup;
 			children = (
+				7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */,
+				7EECA5A31E9B572500B3F724 /* Coordinators */,
+				7EECA5A71E9B5E8600B3F724 /* Enums */,
+				7EECA5A81E9B5E9B00B3F724 /* GenericViewControllers */,
+				7EECA5A91E9B5EB300B3F724 /* GenericViews */,
+				7EECA5AA1E9B5EC500B3F724 /* Helpers */,
+				7EECA5AB1E9B5ED900B3F724 /* Network */,
+				7EECA5AC1E9B5EEB00B3F724 /* Models */,
+				7EECA5AD1E9B5EF900B3F724 /* Protocols */,
+				7EECA5AE1E9B5F0800B3F724 /* Resources */,
+				D39A73571E9776D900F10620 /* Info.plist */,
 				D39A734B1E9776D900F10620 /* AppDelegate.swift */,
 				D39A734D1E9776D900F10620 /* ViewController.swift */,
-				D39A734F1E9776D900F10620 /* Main.storyboard */,
 				D39A73521E9776D900F10620 /* Assets.xcassets */,
 				D39A73541E9776D900F10620 /* LaunchScreen.storyboard */,
-				D39A73571E9776D900F10620 /* Info.plist */,
+				D39A734F1E9776D900F10620 /* Main.storyboard */,
 			);
 			path = LetSwift;
 			sourceTree = "<group>";
@@ -381,6 +461,7 @@
 				D39A735C1E9776D900F10620 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
