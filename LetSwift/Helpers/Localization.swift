@@ -6,7 +6,7 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 enum Language: String {
     case english = "en"
@@ -34,9 +34,7 @@ fileprivate func localizeAutomatic(_ key: String) -> String {
 
 fileprivate func localizeForced(_ key: String, forLanguage language: Language) -> String {
     guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
-        let bundle = Bundle(path: path) else {
-            return key
-    }
+        let bundle = Bundle(path: path) else { return key }
     
     return bundle.localizedString(forKey: key, value: nil, table: nil)
 }
@@ -44,11 +42,15 @@ fileprivate func localizeForced(_ key: String, forLanguage language: Language) -
 func localized(_ key: String, forLanguage language: Language) -> String {
     let localizationResult = localizeForced(key, forLanguage: language)
     
-    if localizationResult == key,
-        case let .fallbackTo(fallbackLanguage) = missingKeyStrategy,
-        language != fallbackLanguage {
-        return localizeForced(key, forLanguage: fallbackLanguage)
-    } else {
+    switch missingKeyStrategy {
+    case let .fallbackTo(fallbackLanguage):
+        if localizationResult == key, language != fallbackLanguage {
+            return localizeForced(key, forLanguage: fallbackLanguage)
+        } else {
+            return localizationResult
+        }
+
+    case .leaveKey:
         return localizationResult
     }
 }
@@ -58,10 +60,12 @@ func localized(_ key: String) -> String {
     case .automatic:
         let localizationResult = localizeAutomatic(key)
         
-        if localizationResult == key,
-            case let .fallbackTo(fallbackLanguage) = missingKeyStrategy {
-            return localizeForced(key, forLanguage: fallbackLanguage)
-        } else {
+        switch missingKeyStrategy {
+        case let .fallbackTo(fallbackLanguage):
+            return localizationResult == key ?
+                localizeForced(key, forLanguage: fallbackLanguage) : localizationResult
+
+        case .leaveKey:
             return localizationResult
         }
         
