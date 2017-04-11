@@ -16,7 +16,6 @@
 		D39A73511E9776D900F10620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A734F1E9776D900F10620 /* Main.storyboard */; };
 		D39A73531E9776D900F10620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39A73521E9776D900F10620 /* Assets.xcassets */; };
 		D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A73541E9776D900F10620 /* LaunchScreen.storyboard */; };
-		D3B461381E9BBC6200183132 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B461371E9BBC6200183132 /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		D39A73521E9776D900F10620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D39A73551E9776D900F10620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3B461371E9BBC6200183132 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -82,7 +80,6 @@
 		7EECA5A81E9B5E9B00B3F724 /* GenericViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				D3B461371E9BBC6200183132 /* BaseViewController.swift */,
 			);
 			path = GenericViewControllers;
 			sourceTree = "<group>";
@@ -332,7 +329,6 @@
 			files = (
 				D39A734E1E9776D900F10620 /* ViewController.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
-				D3B461381E9BBC6200183132 /* BaseViewController.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
