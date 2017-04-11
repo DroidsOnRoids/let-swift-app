@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
+		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
+		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
+		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
+		D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C4A281E9CD6320052E793 /* Localizable.swift */; };
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
 		D39A734E1E9776D900F10620 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734D1E9776D900F10620 /* ViewController.swift */; };
 		D39A73511E9776D900F10620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A734F1E9776D900F10620 /* Main.storyboard */; };
@@ -18,6 +22,11 @@
 /* Begin PBXFileReference section */
 		5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.release.xcconfig"; sourceTree = "<group>"; };
 		618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
+		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		D33C4A281E9CD6320052E793 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		D39A73481E9776D900F10620 /* LetSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39A734B1E9776D900F10620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39A734D1E9776D900F10620 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +96,7 @@
 		7EECA5AA1E9B5EC500B3F724 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D32A76CB1E9B9B5C00388222 /* Localization.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -108,15 +118,9 @@
 		7EECA5AD1E9B5EF900B3F724 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D33C4A281E9CD6320052E793 /* Localizable.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		7EECA5AE1E9B5F0800B3F724 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		C5A0D5FC67682B06B2AAF7D2 /* Frameworks */ = {
@@ -125,6 +129,23 @@
 				FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D32A76C01E9B9A4600388222 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D32A76C51E9B9A4600388222 /* Scripts */,
+				D32A76C21E9B9A4600388222 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D32A76C51E9B9A4600388222 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				D32A76C61E9B9A4600388222 /* get_localizables.py */,
+			);
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		D39A733F1E9776D900F10620 = {
@@ -157,7 +178,7 @@
 				7EECA5AB1E9B5ED900B3F724 /* Network */,
 				7EECA5AC1E9B5EEB00B3F724 /* Models */,
 				7EECA5AD1E9B5EF900B3F724 /* Protocols */,
-				7EECA5AE1E9B5F0800B3F724 /* Resources */,
+				D32A76C01E9B9A4600388222 /* Resources */,
 				D39A73571E9776D900F10620 /* Info.plist */,
 				D39A734B1E9776D900F10620 /* AppDelegate.swift */,
 				D39A734D1E9776D900F10620 /* ViewController.swift */,
@@ -176,6 +197,7 @@
 			buildConfigurationList = D39A735A1E9776D900F10620 /* Build configuration list for PBXNativeTarget "LetSwift" */;
 			buildPhases = (
 				55C950299D3F1E49CA4A2669 /* [CP] Check Pods Manifest.lock */,
+				D32A76CA1E9B9A7500388222 /* ShellScript */,
 				D39A73441E9776D900F10620 /* Sources */,
 				D39A73451E9776D900F10620 /* Frameworks */,
 				D39A73461E9776D900F10620 /* Resources */,
@@ -215,6 +237,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = D39A733F1E9776D900F10620;
 			productRefGroup = D39A73491E9776D900F10620 /* Products */;
@@ -231,7 +254,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
 				D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */,
+				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
 				D39A73511E9776D900F10620 /* Main.storyboard in Resources */,
 			);
@@ -285,6 +310,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D32A76CA1E9B9A7500388222 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "python LetSwift/Resources/Scripts/get_localizables.py";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -294,12 +332,23 @@
 			files = (
 				D39A734E1E9776D900F10620 /* ViewController.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
+				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
+				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D32A76C21E9B9A4600388222 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D32A76C31E9B9A4600388222 /* en */,
+				D32A76C41E9B9A4600388222 /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D39A734F1E9776D900F10620 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
