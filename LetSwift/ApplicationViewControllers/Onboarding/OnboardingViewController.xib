@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="LetSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="continueButton" destination="f9A-tk-41g" id="2TZ-fH-zwD"/>
+                <outlet property="scrollView" destination="FFj-cd-Xx2" id="yfX-8t-AXH"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="let Swift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd8-lj-byD">
+                    <rect key="frame" x="0.0" y="44" width="375" height="20"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9A-tk-41g">
+                    <rect key="frame" x="0.0" y="607" width="375" height="28"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                    <state key="normal" title="CONTINUE"/>
+                    <connections>
+                        <action selector="continueButtonTapped:" destination="-1" eventType="touchUpInside" id="WdT-ph-Da7"/>
+                    </connections>
+                </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-cd-Xx2">
+                    <rect key="frame" x="0.0" y="88" width="375" height="487"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="xd8-lj-byD" secondAttribute="trailing" id="0SU-1c-uKc"/>
+                <constraint firstAttribute="trailing" secondItem="FFj-cd-Xx2" secondAttribute="trailing" id="HAZ-Ic-c6m"/>
+                <constraint firstAttribute="trailing" secondItem="f9A-tk-41g" secondAttribute="trailing" id="Lm5-Zc-nAg"/>
+                <constraint firstItem="xd8-lj-byD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="UGp-Ie-rTa"/>
+                <constraint firstAttribute="bottom" secondItem="f9A-tk-41g" secondAttribute="bottom" constant="32" id="Xo9-NG-6VJ"/>
+                <constraint firstItem="FFj-cd-Xx2" firstAttribute="top" secondItem="xd8-lj-byD" secondAttribute="bottom" constant="24" id="dju-1C-FYs"/>
+                <constraint firstItem="FFj-cd-Xx2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f2A-Ua-GXf"/>
+                <constraint firstItem="f9A-tk-41g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="flI-Eu-Uv8"/>
+                <constraint firstItem="xd8-lj-byD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gOI-Rf-geg"/>
+                <constraint firstItem="f9A-tk-41g" firstAttribute="top" secondItem="FFj-cd-Xx2" secondAttribute="bottom" constant="32" id="lIW-RH-SZP"/>
+            </constraints>
+            <point key="canvasLocation" x="34.5" y="54.5"/>
+        </view>
+    </objects>
+</document>

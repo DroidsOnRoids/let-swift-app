@@ -11,10 +11,11 @@
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
+		D3337CBC1E9E0D8900746A50 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3337CBA1E9E0D8900746A50 /* OnboardingViewController.swift */; };
+		D3337CBD1E9E0D8900746A50 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3337CBB1E9E0D8900746A50 /* OnboardingViewController.xib */; };
+		D3337CBF1E9E21F500746A50 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3337CBE1E9E21F500746A50 /* UIColorExtension.swift */; };
 		D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C4A281E9CD6320052E793 /* Localizable.swift */; };
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
-		D39A734E1E9776D900F10620 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734D1E9776D900F10620 /* ViewController.swift */; };
-		D39A73511E9776D900F10620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A734F1E9776D900F10620 /* Main.storyboard */; };
 		D39A73531E9776D900F10620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39A73521E9776D900F10620 /* Assets.xcassets */; };
 		D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A73541E9776D900F10620 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -26,11 +27,12 @@
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		D3337CBA1E9E0D8900746A50 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = Onboarding/OnboardingViewController.swift; sourceTree = "<group>"; };
+		D3337CBB1E9E0D8900746A50 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnboardingViewController.xib; path = Onboarding/OnboardingViewController.xib; sourceTree = "<group>"; };
+		D3337CBE1E9E21F500746A50 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		D33C4A281E9CD6320052E793 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		D39A73481E9776D900F10620 /* LetSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39A734B1E9776D900F10620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D39A734D1E9776D900F10620 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D39A73501E9776D900F10620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D39A73521E9776D900F10620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D39A73551E9776D900F10620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D3337CB91E9E0D1100746A50 /* Onboarding */,
 			);
 			path = ApplicationViewControllers;
 			sourceTree = "<group>";
@@ -97,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				D32A76CB1E9B9B5C00388222 /* Localization.swift */,
+				D3337CBE1E9E21F500746A50 /* UIColorExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -148,6 +152,15 @@
 			path = Scripts;
 			sourceTree = "<group>";
 		};
+		D3337CB91E9E0D1100746A50 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D3337CBA1E9E0D8900746A50 /* OnboardingViewController.swift */,
+				D3337CBB1E9E0D8900746A50 /* OnboardingViewController.xib */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
 		D39A733F1E9776D900F10620 = {
 			isa = PBXGroup;
 			children = (
@@ -181,10 +194,8 @@
 				D32A76C01E9B9A4600388222 /* Resources */,
 				D39A73571E9776D900F10620 /* Info.plist */,
 				D39A734B1E9776D900F10620 /* AppDelegate.swift */,
-				D39A734D1E9776D900F10620 /* ViewController.swift */,
 				D39A73521E9776D900F10620 /* Assets.xcassets */,
 				D39A73541E9776D900F10620 /* LaunchScreen.storyboard */,
-				D39A734F1E9776D900F10620 /* Main.storyboard */,
 			);
 			path = LetSwift;
 			sourceTree = "<group>";
@@ -258,7 +269,7 @@
 				D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
-				D39A73511E9776D900F10620 /* Main.storyboard in Resources */,
+				D3337CBD1E9E0D8900746A50 /* OnboardingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,8 +341,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D39A734E1E9776D900F10620 /* ViewController.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
+				D3337CBC1E9E0D8900746A50 /* OnboardingViewController.swift in Sources */,
+				D3337CBF1E9E21F500746A50 /* UIColorExtension.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 			);
@@ -347,14 +359,6 @@
 				D32A76C41E9B9A4600388222 /* pl */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		D39A734F1E9776D900F10620 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D39A73501E9776D900F10620 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		D39A73541E9776D900F10620 /* LaunchScreen.storyboard */ = {
