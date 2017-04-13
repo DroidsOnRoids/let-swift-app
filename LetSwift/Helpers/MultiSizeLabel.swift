@@ -13,36 +13,28 @@ class MultiSizeLabel: UILabel {
     @IBInspectable
     var inch3¨5: CGFloat = 0.0 {
         didSet {
-            if UIScreen.main.bounds.maxY == 480 {
-                font = font.withSize(inch3¨5)
-            }
+            font = font.withSize(ScreenDiagonalSize.inch3¨5(inch3¨5).value)
         }
     }
     
     @IBInspectable
     var inch4¨0: CGFloat = 0.0 {
         didSet {
-            if UIScreen.main.bounds.maxY == 568 {
-                font = font.withSize(inch4¨0)
-            }
+            font = font.withSize(ScreenDiagonalSize.inch3¨5(inch3¨5).value)
         }
     }
     
     @IBInspectable
     var inch4¨7: CGFloat = 0.0 {
         didSet {
-            if UIScreen.main.bounds.maxY == 667 {
-                font = font.withSize(inch4¨7)
-            }
+            font = font.withSize(ScreenDiagonalSize.inch3¨5(inch3¨5).value)
         }
     }
     
     @IBInspectable
     var inch5¨5: CGFloat = 0.0 {
         didSet {
-            if UIScreen.main.bounds.maxY == 736 {
-                font = font.withSize(inch5¨5)
-            }
+            font = font.withSize(ScreenDiagonalSize.inch3¨5(inch3¨5).value)
         }
     }
 }

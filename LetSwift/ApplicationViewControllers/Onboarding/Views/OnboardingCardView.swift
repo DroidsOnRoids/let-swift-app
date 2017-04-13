@@ -10,6 +10,8 @@ import UIKit
 
 class OnboardingCardView: DesignableView {
 
+    @IBOutlet weak var onboardingImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: MultiSizeLabel!
 
 }

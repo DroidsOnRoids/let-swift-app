@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingCardView" customModule="LetSwift" customModuleProvider="target">
             <connections>
+                <outlet property="descriptionLabel" destination="Tns-4T-KVA" id="5qn-t2-jhl"/>
+                <outlet property="onboardingImageView" destination="8MO-0e-SII" id="wDo-RW-EiH"/>
                 <outlet property="titleLabel" destination="Tns-4T-KVA" id="Adm-bC-ZIu"/>
             </connections>
         </placeholder>
