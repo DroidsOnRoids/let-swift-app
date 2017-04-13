@@ -10,8 +10,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingCardView" customModule="LetSwift" customModuleProvider="target">
             <connections>
-                <outlet property="descriptionLabel" destination="Tns-4T-KVA" id="5qn-t2-jhl"/>
-                <outlet property="onboardingImageView" destination="8MO-0e-SII" id="wDo-RW-EiH"/>
                 <outlet property="titleLabel" destination="Tns-4T-KVA" id="Adm-bC-ZIu"/>
             </connections>
         </placeholder>
@@ -20,166 +18,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completely free" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V43-ac-z18" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="339" width="375" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                    <color key="textColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-4T-KVA">
+                    <rect key="frame" x="166.5" y="323" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="15"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="19"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OnboardingMeetups" translatesAutoresizingMaskIntoConstraints="NO" id="8MO-0e-SII">
-                    <rect key="frame" x="40" y="0.0" width="294" height="269"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="294" id="7Yo-VG-Ohd" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                                    <real key="value" value="235"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                                    <real key="value" value="235"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                                    <real key="value" value="294"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                                    <real key="value" value="294"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </constraint>
-                        <constraint firstAttribute="height" constant="269" id="UJa-9d-uLf" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                                    <real key="value" value="215"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                                    <real key="value" value="215"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                                    <real key="value" value="269"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                                    <real key="value" value="269"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </constraint>
-                    </constraints>
-                </imageView>
-                <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-Gw-Xv2">
-                    <rect key="frame" x="168" y="286" width="39" height="37"/>
-                    <color key="pageIndicatorTintColor" red="0.81568627449999997" green="0.85490196080000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="currentPageIndicatorTintColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </pageControl>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No entry fee, contests, prizes and awesome afterparty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-4T-KVA" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="32" y="367.5" width="311" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.61960784310000006" green="0.63921568630000003" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="15"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="15"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="13"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
                 </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="8MO-0e-SII" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="98R-7v-ePN"/>
-                <constraint firstItem="V43-ac-z18" firstAttribute="top" secondItem="8MO-0e-SII" secondAttribute="bottom" constant="70" id="Q7O-j8-P7n" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="54"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="70"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="70"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="70"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </constraint>
-                <constraint firstItem="Tns-4T-KVA" firstAttribute="top" secondItem="V43-ac-z18" secondAttribute="bottom" constant="8" id="QB8-pN-bzO"/>
-                <constraint firstItem="V43-ac-z18" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aQX-nS-o6R"/>
-                <constraint firstItem="8MO-0e-SII" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="b4a-nM-MtT"/>
-                <constraint firstItem="Tns-4T-KVA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="o2I-8Q-xRn" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="32"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="52"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </constraint>
-                <constraint firstAttribute="trailing" secondItem="Tns-4T-KVA" secondAttribute="trailing" constant="32" id="tAh-Sj-Oql" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="52"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="32"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="4"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </constraint>
-                <constraint firstAttribute="trailing" secondItem="V43-ac-z18" secondAttribute="trailing" id="v5R-7f-14I"/>
-                <constraint firstItem="k1I-Gw-Xv2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yaE-ng-OoJ"/>
-                <constraint firstItem="k1I-Gw-Xv2" firstAttribute="top" secondItem="8MO-0e-SII" secondAttribute="bottom" constant="17" id="zub-e3-IIA" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="9"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </constraint>
+                <constraint firstItem="Tns-4T-KVA" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="9OE-fq-uCX"/>
+                <constraint firstItem="Tns-4T-KVA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rHc-sz-Fk7"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="OnboardingMeetups" width="293" height="267"/>
-    </resources>
 </document>
