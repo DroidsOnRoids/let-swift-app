@@ -13,28 +13,28 @@ class MultiSizeConstraint: NSLayoutConstraint {
     @IBInspectable
     var inch3¨5: CGFloat = 0.0 {
         didSet {
-            constant = ScreenDiagonalSize.inch3¨5(inch3¨5).value
+            constant ?= ScreenDiagonalSize.inch3¨5(inch3¨5).value
         }
     }
     
     @IBInspectable
     var inch4¨0: CGFloat = 0.0 {
         didSet {
-            constant = ScreenDiagonalSize.inch3¨5(inch3¨5).value
+            constant ?= ScreenDiagonalSize.inch4¨0(inch4¨0).value
         }
     }
     
     @IBInspectable
     var inch4¨7: CGFloat = 0.0 {
         didSet {
-            constant = ScreenDiagonalSize.inch3¨5(inch3¨5).value
+            constant ?= ScreenDiagonalSize.inch4¨7(inch4¨7).value
         }
     }
     
     @IBInspectable
     var inch5¨5: CGFloat = 0.0 {
         didSet {
-            constant = ScreenDiagonalSize.inch3¨5(inch3¨5).value
+            constant ?= ScreenDiagonalSize.inch5¨5(inch5¨5).value
         }
     }
     
