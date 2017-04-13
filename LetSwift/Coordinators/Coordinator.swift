@@ -11,7 +11,7 @@ import UIKit
 class Coordinator {
     
     var childCoordinators = [Coordinator]()
-    var navigationViewController: UINavigationController
+    let navigationViewController: UINavigationController
     
     init(navigationController: UINavigationController) {
         self.navigationViewController = navigationController

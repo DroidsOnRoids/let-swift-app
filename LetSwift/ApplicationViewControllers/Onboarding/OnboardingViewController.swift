@@ -41,11 +41,11 @@ final class OnboardingViewController: UIViewController {
     }
 
     private func setupScrollView() {
-        let colors = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
+        let colors: [UIColor] = [.red, .blue, .green, .yellow]
         let frameSize = scrollView.frame.size
 
         (0..<colors.count).forEach { index in
-            let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0),
+            let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
 
             let subView = UIView(frame: frame)
@@ -65,7 +65,7 @@ final class OnboardingViewController: UIViewController {
             let xPosition = CGFloat(page) * self.scrollView.frame.size.width
 
             if xPosition < self.scrollView.contentSize.width {
-                self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0), animated: true)
+                self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
             }
         })
     }
@@ -74,7 +74,7 @@ final class OnboardingViewController: UIViewController {
 extension OnboardingViewController: Localizable {
     
     func setupLocalization() {
-        continueButton.setTitle(localized("ONBOARDING_CONTINUE").uppercased(), for: .normal)
+        continueButton.setTitle(localized("ONBOARDING_CONTINUE").uppercased(), for: [])
     }
 }
 

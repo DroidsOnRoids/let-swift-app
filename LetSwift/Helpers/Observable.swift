@@ -18,7 +18,7 @@ struct Observable<Element> {
     
     var value: Element {
         didSet {
-            notify()
+            notifyObservers()
         }
     }
     
@@ -43,20 +43,14 @@ struct Observable<Element> {
     }
     
     func error(_ error: Swift.Error) {
-        errorObservers.forEach {
-            $0(error)
-        }
+        errorObservers.forEach { $0(error) }
     }
     
     func complete() {
-        completedObservers.forEach {
-            $0()
-        }
+        completedObservers.forEach { $0() }
     }
     
-    private func notify() {
-        nextObservers.forEach {
-            $0(value)
-        }
+    private func notifyObservers() {
+        nextObservers.forEach { $0(value) }
     }
 }

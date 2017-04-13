@@ -9,7 +9,6 @@
 import UIKit
 
 final class OnboardingViewControllerViewModel {
-
     weak var delegate: OnboardingViewControllerDelegate?
 
     var currentPage = Observable<Int>(0)

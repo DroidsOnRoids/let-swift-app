@@ -6,8 +6,6 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import Foundation
-
 final class AppCoordinator: Coordinator {
     
     func start() {
