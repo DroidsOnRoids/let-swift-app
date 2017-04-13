@@ -2,35 +2,49 @@
 //  OnboardingViewController.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 12.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 12.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
 
-class OnboardingViewController: UIViewController, UIScrollViewDelegate, Localizable {
+protocol OnboardingViewControllerDelegate: class {
+    func dismissOnboardingViewController()
+}
 
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var continueButton: UIButton!
+final class OnboardingViewController: UIViewController {
 
-    private var currentPage = 0
+    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet fileprivate weak var continueButton: UIButton!
+
+    fileprivate var viewModel: OnboardingViewControllerViewModel!
+    fileprivate var currentPage = 0
+    
+    convenience init(viewModel: OnboardingViewControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupScrollView()
+        scrollView.delegate = self
+
         setupLocalization()
     }
-
-    func setupLocalization() {
-        continueButton.setTitle(localized("ONBOARDING_CONTINUE").uppercased(), for: .normal)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        view.layoutIfNeeded()
+        setupScrollView()
     }
 
     func setupScrollView() {
         let colors = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
         let frameSize = scrollView.frame.size
 
-        for index in 0..<colors.count {
+        (0..<colors.count).forEach { index in
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0),
                                size: frameSize)
 
@@ -39,13 +53,8 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate, Localiza
             scrollView.addSubview(subView)
         }
 
-        scrollView.delegate = self
         scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(colors.count),
                                         height: frameSize.height)
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
     }
 
     func changePage(page: Int) {
@@ -59,5 +68,20 @@ class OnboardingViewController: UIViewController, UIScrollViewDelegate, Localiza
 
     @IBAction func continueButtonTapped(_ sender: UIButton) {
         changePage(page: currentPage + 1)
+    }
+}
+
+extension OnboardingViewController: Localizable {
+    
+    func setupLocalization() {
+        continueButton.setTitle(localized("ONBOARDING_CONTINUE").uppercased(), for: .normal)
+    }
+}
+
+extension OnboardingViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        //viewModel.currentPage.next(Int(scrollView.contentOffset.x / scrollView.frame.size.width))
     }
 }

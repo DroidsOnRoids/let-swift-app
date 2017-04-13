@@ -17,13 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let onboardingController = OnboardingViewController()
-        let mainNavigationController = UINavigationController(rootViewController: onboardingController)
-        mainNavigationController.setNavigationBarHidden(true, animated: false)
-
-        window = UIWindow(frame: UIScreen.main.bounds)
+        let navigationController = UINavigationController()
+        window?.rootViewController = navigationController
+        
+        let coordinator = AppCoordinator(navigationController: navigationController)
+        coordinator.start()
+        
+        window = UIWindow()
         window?.tintColor = .swiftOrange
-        window?.rootViewController = mainNavigationController
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
         return true

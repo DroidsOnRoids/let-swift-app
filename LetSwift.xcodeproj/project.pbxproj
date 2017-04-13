@@ -11,13 +11,18 @@
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
-		D3337CBC1E9E0D8900746A50 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3337CBA1E9E0D8900746A50 /* OnboardingViewController.swift */; };
-		D3337CBD1E9E0D8900746A50 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3337CBB1E9E0D8900746A50 /* OnboardingViewController.xib */; };
-		D3337CBF1E9E21F500746A50 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3337CBE1E9E21F500746A50 /* UIColorExtension.swift */; };
 		D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C4A281E9CD6320052E793 /* Localizable.swift */; };
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
 		D39A73531E9776D900F10620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39A73521E9776D900F10620 /* Assets.xcassets */; };
 		D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A73541E9776D900F10620 /* LaunchScreen.storyboard */; };
+		D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */; };
+		D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */; };
+		D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */; };
+		D3FF3F8E1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F8D1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift */; };
+		D3FF3F901E9F577B00501F44 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F8F1E9F577B00501F44 /* Coordinator.swift */; };
+		D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F911E9F57DE00501F44 /* AppCoordinator.swift */; };
+		D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F961E9F5E3400501F44 /* Observable.swift */; };
+		D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,15 +32,20 @@
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
-		D3337CBA1E9E0D8900746A50 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingViewController.swift; path = Onboarding/OnboardingViewController.swift; sourceTree = "<group>"; };
-		D3337CBB1E9E0D8900746A50 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OnboardingViewController.xib; path = Onboarding/OnboardingViewController.xib; sourceTree = "<group>"; };
-		D3337CBE1E9E21F500746A50 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		D33C4A281E9CD6320052E793 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		D39A73481E9776D900F10620 /* LetSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39A734B1E9776D900F10620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39A73521E9776D900F10620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D39A73551E9776D900F10620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeConstraint.swift; sourceTree = "<group>"; };
+		D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
+		D3FF3F8D1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3FF3F8F1E9F577B00501F44 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		D3FF3F911E9F57DE00501F44 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D3FF3F961E9F5E3400501F44 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,6 +81,8 @@
 		7EECA5A31E9B572500B3F724 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				D3FF3F8F1E9F577B00501F44 /* Coordinator.swift */,
+				D3FF3F911E9F57DE00501F44 /* AppCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -99,8 +111,10 @@
 		7EECA5AA1E9B5EC500B3F724 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D3FF3F931E9F5DD200501F44 /* Extensions */,
 				D32A76CB1E9B9B5C00388222 /* Localization.swift */,
-				D3337CBE1E9E21F500746A50 /* UIColorExtension.swift */,
+				D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */,
+				D3FF3F961E9F5E3400501F44 /* Observable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -155,10 +169,11 @@
 		D3337CB91E9E0D1100746A50 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				D3337CBA1E9E0D8900746A50 /* OnboardingViewController.swift */,
-				D3337CBB1E9E0D8900746A50 /* OnboardingViewController.xib */,
+				D3FF3F8C1E9F540F00501F44 /* ViewModels */,
+				D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */,
+				D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */,
 			);
-			name = Onboarding;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		D39A733F1E9776D900F10620 = {
@@ -198,6 +213,22 @@
 				D39A73541E9776D900F10620 /* LaunchScreen.storyboard */,
 			);
 			path = LetSwift;
+			sourceTree = "<group>";
+		};
+		D3FF3F8C1E9F540F00501F44 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3FF3F8D1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D3FF3F931E9F5DD200501F44 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,7 +300,7 @@
 				D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
-				D3337CBD1E9E0D8900746A50 /* OnboardingViewController.xib in Resources */,
+				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,11 +372,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3FF3F901E9F577B00501F44 /* Coordinator.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
-				D3337CBC1E9E0D8900746A50 /* OnboardingViewController.swift in Sources */,
-				D3337CBF1E9E21F500746A50 /* UIColorExtension.swift in Sources */,
+				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
+				D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
+				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
+				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
+				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
+				D3FF3F8E1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
