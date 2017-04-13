@@ -74,7 +74,7 @@ final class OnboardingViewController: UIViewController {
     
     private func setupScrollView(with cards: [OnboardingCardModel]) {
         let frameSize = scrollView.frame.size
-        
+
         cards.enumerated().forEach { index, card in
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)

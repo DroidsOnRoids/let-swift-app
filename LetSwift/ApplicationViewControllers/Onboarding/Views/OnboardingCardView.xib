@@ -12,7 +12,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="Tns-4T-KVA" id="5qn-t2-jhl"/>
                 <outlet property="onboardingImageView" destination="8MO-0e-SII" id="wDo-RW-EiH"/>
-                <outlet property="titleLabel" destination="Tns-4T-KVA" id="Adm-bC-ZIu"/>
+                <outlet property="titleLabel" destination="V43-ac-z18" id="q4N-cI-ASC"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

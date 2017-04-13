@@ -21,5 +21,4 @@ class OnboardingCardView: DesignableView {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
     }
-
 }
