@@ -48,7 +48,7 @@ final class OnboardingViewControllerViewModel {
     private func detectCountinueButtonTitleChange() {
         if continueButtonTitleObservable.value == continuesButtonTitles[0] && currentPageObservable.value == 2 {
             continueButtonTitleObservable.next(continuesButtonTitles[1])
-        } else if continueButtonTitleObservable.value == continuesButtonTitles[1] && currentPageObservable.value != 2 {
+        } else if continueButtonTitleObservable.value == continuesButtonTitles[1] && currentPageObservable.value < 2 {
             continueButtonTitleObservable.next(continuesButtonTitles[0])
         }
     }
