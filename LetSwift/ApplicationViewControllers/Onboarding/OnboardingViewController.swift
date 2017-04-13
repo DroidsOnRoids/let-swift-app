@@ -30,28 +30,20 @@ final class OnboardingViewController: UIViewController {
         scrollView.delegate = self
 
         setupViewModel()
-        setupLocalization()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        view.layoutIfNeeded()
-        setupScrollView()
     }
 
     private func setupScrollView() {
-        let colors: [UIColor] = [.red, .blue, .green]
+        let colors: [UIColor] = [.red, .blue, .green, .yellow]
         let frameSize = scrollView.frame.size
 
-        colors.enumerated().forEach { index, color in
+        (0..<colors.count).forEach { index in
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
 
-            let subview = OnboardingCardView(frame: frame)
-            subview.backgroundColor = colors[index]
+            let subView = OnboardingCardView(frame: frame)
+            subView.backgroundColor = colors[index]
 
-            scrollView.addSubview(subview)
+            scrollView.addSubview(subView)
         }
 
         scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(colors.count),
@@ -61,19 +53,39 @@ final class OnboardingViewController: UIViewController {
     private func setupViewModel() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
-        viewModel.currentPage.subscribe(onNext: { [unowned self] page in
-            let xPosition = CGFloat(page) * self.scrollView.frame.width
+        viewModel.currentPageObservable.subscribe(onNext: { [unowned self] page in
+            let xPosition = CGFloat(page) * self.scrollView.frame.size.width
 
             if xPosition < self.scrollView.contentSize.width {
                 self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
             }
         })
+        
+        viewModel.continueButtonTitleObservable.subscribe(onNext: { [unowned self] title in
+            self.continueButton.setTitle(title, for: [])
+        })
+        
+        viewModel.onboardingCardsObservable.subscribeWithPrevious(onNext: { [unowned self] cards in
+            DispatchQueue.main.async {
+                self.setupScrollView(with: cards)
+            }
+        })
     }
-}
-
-extension OnboardingViewController: Localizable {
-    func setupLocalization() {
-        continueButton.setTitle(localized("ONBOARDING_CONTINUE").uppercased(), for: [])
+    
+    private func setupScrollView(with cards: [OnboardingCardModel]) {
+        let frameSize = scrollView.frame.size
+        
+        cards.enumerated().forEach { index, card in
+            let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
+                               size: frameSize)
+            
+            let subView = OnboardingCardView(frame: frame)
+            subView.setData(with: card)
+            
+            scrollView.addSubview(subView)
+        }
+        scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(cards.count),
+                                        height: frameSize.height)
     }
 }
 
