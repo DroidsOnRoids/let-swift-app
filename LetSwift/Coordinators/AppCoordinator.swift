@@ -18,7 +18,6 @@ final class AppCoordinator: Coordinator {
 }
 
 extension AppCoordinator: OnboardingViewControllerDelegate {
-    
     func dismissOnboardingViewController() {
         print("dismissOnboardingViewController()")
     }

@@ -9,8 +9,7 @@
 import UIKit
 
 extension UIColor {
-
-    class var swiftOrange: UIColor {
+    static var swiftOrange: UIColor {
         return #colorLiteral(red: 1, green: 0.7529411765, blue: 0.2156862745, alpha: 1)
     }
 }

@@ -44,14 +44,14 @@ final class OnboardingViewController: UIViewController {
         let colors: [UIColor] = [.red, .blue, .green, .yellow]
         let frameSize = scrollView.frame.size
 
-        (0..<colors.count).forEach { index in
+        colors.enumerated().forEach { index, color in
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
 
-            let subView = UIView(frame: frame)
-            subView.backgroundColor = colors[index]
+            let subview = UIView(frame: frame)
+            subview.backgroundColor = colors[index]
 
-            scrollView.addSubview(subView)
+            scrollView.addSubview(subview)
         }
 
         scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(colors.count),
@@ -62,7 +62,7 @@ final class OnboardingViewController: UIViewController {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
         viewModel.currentPage.subscribe(onNext: { [unowned self] page in
-            let xPosition = CGFloat(page) * self.scrollView.frame.size.width
+            let xPosition = CGFloat(page) * self.scrollView.frame.width
 
             if xPosition < self.scrollView.contentSize.width {
                 self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
@@ -72,14 +72,12 @@ final class OnboardingViewController: UIViewController {
 }
 
 extension OnboardingViewController: Localizable {
-    
     func setupLocalization() {
         continueButton.setTitle(localized("ONBOARDING_CONTINUE").uppercased(), for: [])
     }
 }
 
 extension OnboardingViewController: UIScrollViewDelegate {
-    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         viewModel.swipeDidFinish(with: Int(scrollView.contentOffset.x / scrollView.frame.size.width))
     }

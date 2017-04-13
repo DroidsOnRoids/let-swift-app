@@ -11,7 +11,7 @@ import UIKit
 class MultiSizeConstraint: NSLayoutConstraint {
     
     @IBInspectable
-    var inch3¨5: CGFloat = 0 {
+    var inch3¨5: CGFloat = 0.0 {
         didSet {
             if UIScreen.main.bounds.maxY == 480 {
                 constant = inch3¨5
@@ -20,7 +20,7 @@ class MultiSizeConstraint: NSLayoutConstraint {
     }
     
     @IBInspectable
-    var inch4¨0: CGFloat = 0 {
+    var inch4¨0: CGFloat = 0.0 {
         didSet {
             if UIScreen.main.bounds.maxY == 568 {
                 constant = inch4¨0
@@ -29,7 +29,7 @@ class MultiSizeConstraint: NSLayoutConstraint {
     }
     
     @IBInspectable
-    var inch4¨7: CGFloat = 0 {
+    var inch4¨7: CGFloat = 0.0 {
         didSet {
             if UIScreen.main.bounds.maxY == 667 {
                 constant = inch4¨7
@@ -38,7 +38,7 @@ class MultiSizeConstraint: NSLayoutConstraint {
     }
     
     @IBInspectable
-    var inch5¨5: CGFloat = 0 {
+    var inch5¨5: CGFloat = 0.0 {
         didSet {
             if UIScreen.main.bounds.maxY == 736 {
                 constant = inch5¨5
