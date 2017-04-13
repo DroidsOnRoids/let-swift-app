@@ -30,9 +30,6 @@
                     <rect key="frame" x="0.0" y="607" width="375" height="28"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                     <state key="normal" title="CONTINUE"/>
-                    <connections>
-                        <action selector="continueButtonTapped:" destination="-1" eventType="touchUpInside" id="WdT-ph-Da7"/>
-                    </connections>
                 </button>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-cd-Xx2">
                     <rect key="frame" x="0.0" y="88" width="375" height="487"/>

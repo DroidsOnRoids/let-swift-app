@@ -11,10 +11,18 @@ import UIKit
 final class OnboardingViewControllerViewModel {
 
     weak var delegate: OnboardingViewControllerDelegate?
-    
+
     var currentPage = Observable<Int>(0)
-    
+
     init(delegate: OnboardingViewControllerDelegate?) {
         self.delegate = delegate
+    }
+
+    @objc func continueButtonTapped() {
+        currentPage.next(currentPage.value + 1)
+    }
+
+    func swipeDidFinish(with page: Int) {
+        currentPage.next(page)
     }
 }

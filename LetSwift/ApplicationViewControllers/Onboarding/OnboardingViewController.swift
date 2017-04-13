@@ -18,7 +18,6 @@ final class OnboardingViewController: UIViewController {
     @IBOutlet fileprivate weak var continueButton: UIButton!
 
     fileprivate var viewModel: OnboardingViewControllerViewModel!
-    fileprivate var currentPage = 0
     
     convenience init(viewModel: OnboardingViewControllerViewModel) {
         self.init()
@@ -30,6 +29,7 @@ final class OnboardingViewController: UIViewController {
 
         scrollView.delegate = self
 
+        setupViewModel()
         setupLocalization()
     }
     
@@ -40,7 +40,7 @@ final class OnboardingViewController: UIViewController {
         setupScrollView()
     }
 
-    func setupScrollView() {
+    private func setupScrollView() {
         let colors = [UIColor.red, UIColor.blue, UIColor.green, UIColor.yellow]
         let frameSize = scrollView.frame.size
 
@@ -50,6 +50,7 @@ final class OnboardingViewController: UIViewController {
 
             let subView = UIView(frame: frame)
             subView.backgroundColor = colors[index]
+
             scrollView.addSubview(subView)
         }
 
@@ -57,17 +58,16 @@ final class OnboardingViewController: UIViewController {
                                         height: frameSize.height)
     }
 
-    func changePage(page: Int) {
-        let xPosition = CGFloat(page) * scrollView.frame.size.width
+    private func setupViewModel() {
+        continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
-        if xPosition < scrollView.contentSize.width {
-            scrollView.setContentOffset(CGPoint(x: xPosition, y: 0), animated: true)
-            currentPage = page
-        }
-    }
+        viewModel.currentPage.subscribe(onNext: { [unowned self] page in
+            let xPosition = CGFloat(page) * self.scrollView.frame.size.width
 
-    @IBAction func continueButtonTapped(_ sender: UIButton) {
-        changePage(page: currentPage + 1)
+            if xPosition < self.scrollView.contentSize.width {
+                self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0), animated: true)
+            }
+        })
     }
 }
 
@@ -81,7 +81,6 @@ extension OnboardingViewController: Localizable {
 extension OnboardingViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
-        //viewModel.currentPage.next(Int(scrollView.contentOffset.x / scrollView.frame.size.width))
+        viewModel.swipeDidFinish(with: Int(scrollView.contentOffset.x / scrollView.frame.size.width))
     }
 }
