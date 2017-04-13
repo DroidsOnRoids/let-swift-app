@@ -22,13 +22,16 @@ final class OnboardingViewControllerViewModel {
         
         let cards = [(imageName: "OnboardingMeetups",
                       title: localized("ONBOARDING_MEETUPS_TITLE"),
-                      description: localized("ONBOARDING_MEETUPS_DESCRIPTION")),
+                      description: localized("ONBOARDING_MEETUPS_DESCRIPTION"),
+                      page: 0),
                      (imageName: "OnboardingSpeakers",
                       title: localized("ONBOARDING_SPEAKERS_TITLE"),
-                      description: localized("ONBOARDING_SPEAKERS_DESCRIPTION")),
+                      description: localized("ONBOARDING_SPEAKERS_DESCRIPTION"),
+                      page: 1),
                      (imageName: "OnboardingPrice",
                       title: localized("ONBOARDING_PRICE_TITLE"),
-                      description: localized("ONBOARDING_PRICE_DESCRIPTION"))]
+                      description: localized("ONBOARDING_PRICE_DESCRIPTION"),
+                      page: 2)]
         onboardingCardsObservable.next(cards)
     }
 

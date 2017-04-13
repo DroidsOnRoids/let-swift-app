@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="descriptionLabel" destination="Tns-4T-KVA" id="5qn-t2-jhl"/>
                 <outlet property="onboardingImageView" destination="8MO-0e-SII" id="wDo-RW-EiH"/>
+                <outlet property="onboardingPageControl" destination="k1I-Gw-Xv2" id="YA3-lX-fac"/>
                 <outlet property="titleLabel" destination="V43-ac-z18" id="q4N-cI-ASC"/>
             </connections>
         </placeholder>
