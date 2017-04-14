@@ -9,8 +9,11 @@
 import UIKit
 import HockeySDK
 
-// TODO: find a better method to check build type (flag set by Bitrise?)
+#if DEBUG
 let isDebugBuild = true
+#else
+let isDebugBuild = false
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,6 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupHockeyApp() {
         BITHockeyManager.shared().configure(withIdentifier: hockeyAppId)
         BITHockeyManager.shared().start()
-        BITHockeyManager.shared().authenticator.authenticateInstallation()
+
+        if !isDebugBuild {
+            BITHockeyManager.shared().authenticator.authenticateInstallation()
+        }
     }
 }
