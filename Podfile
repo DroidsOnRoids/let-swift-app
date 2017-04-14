@@ -6,5 +6,5 @@ target 'LetSwift' do
   use_frameworks!
 
   # Pods for LetSwift
-
+  pod 'HockeySDK', '~> 4.1'
 end
