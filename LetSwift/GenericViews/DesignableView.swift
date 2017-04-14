@@ -21,8 +21,7 @@ class DesignableView: UIView {
     }
 
     private func loadViewFromNib() {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
+        let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
 
         view.frame = bounds

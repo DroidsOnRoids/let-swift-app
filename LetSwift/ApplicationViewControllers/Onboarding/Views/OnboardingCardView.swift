@@ -13,5 +13,4 @@ final class OnboardingCardView: DesignableView {
     @IBOutlet private weak var onboardingImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: MultiSizeLabel!
-
 }
