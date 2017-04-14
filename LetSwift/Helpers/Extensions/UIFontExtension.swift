@@ -8,16 +8,12 @@
 
 import UIKit
 
-
 extension UIFont {
-
     func withSize(_ size: CGFloat?) -> UIFont? {
         if let size = size {
            return withSize(size)
         }
+        
         return nil
     }
-
 }
-
-

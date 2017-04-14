@@ -15,26 +15,23 @@ enum ScreenDiagonalSize {
     case inch5¨5(CGFloat)
     
     var value: CGFloat? {
-        if UIScreen.main.bounds.maxY == screenSize {
-            switch self {
-            case .inch4¨0(let value), .inch3¨5(let value), .inch4¨7(let value), .inch5¨5(let value):
-                return value
-            }
-        } else {
-            return nil
+        guard UIScreen.main.bounds.maxY == screenSize else { nil }
+        switch self {
+        case .inch4¨0(let value), .inch3¨5(let value), .inch4¨7(let value), .inch5¨5(let value):
+            return value
         }
     }
     
     var screenSize: CGFloat {
         switch self {
         case .inch3¨5:
-            return 480
+            return 480.0
         case .inch4¨0:
-            return 568
+            return 568.0
         case .inch4¨7:
-            return 667
+            return 667.0
         case .inch5¨5:
-            return 736
+            return 736.0
         }
     }
 }
