@@ -10,6 +10,7 @@ import UIKit
 
 // TODO: find a better method to check build type (flag set by Bitrise?)
 let isDebugBuild = true
+let test = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
