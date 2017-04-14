@@ -10,6 +10,8 @@ import Foundation
 
 final class OnboardingViewControllerViewModel {
 
+    weak var delegate: OnboardingViewControllerDelegate?
+
     var currentPageObservable = Observable<Int>(0)
     var continueButtonTitleObservable = Observable<String>(localized("ONBOARDING_CONTINUE").uppercased())
     var onboardingCardsObservable = Observable<[OnboardingCardModel]>([])
@@ -32,6 +34,7 @@ final class OnboardingViewControllerViewModel {
                       title: localized("ONBOARDING_PRICE_TITLE"),
                       description: localized("ONBOARDING_PRICE_DESCRIPTION"),
                       page: 2)]
+
         onboardingCardsObservable.next(cards)
     }
 

@@ -32,24 +32,6 @@ final class OnboardingViewController: UIViewController {
         setupViewModel()
     }
 
-    private func setupScrollView() {
-        let colors: [UIColor] = [.red, .blue, .green, .yellow]
-        let frameSize = scrollView.frame.size
-
-        (0..<colors.count).forEach { index in
-            let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
-                               size: frameSize)
-
-            let subView = OnboardingCardView(frame: frame)
-            subView.backgroundColor = colors[index]
-
-            scrollView.addSubview(subView)
-        }
-
-        scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(colors.count),
-                                        height: frameSize.height)
-    }
-
     private func setupViewModel() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
@@ -84,6 +66,7 @@ final class OnboardingViewController: UIViewController {
             
             scrollView.addSubview(subView)
         }
+
         scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(cards.count),
                                         height: frameSize.height)
     }
