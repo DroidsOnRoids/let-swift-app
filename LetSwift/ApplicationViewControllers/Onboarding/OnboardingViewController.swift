@@ -41,7 +41,7 @@ final class OnboardingViewController: UIViewController {
     }
 
     private func setupScrollView() {
-        let colors: [UIColor] = [.red, .blue, .green, .yellow]
+        let colors: [UIColor] = [.red, .blue, .green]
         let frameSize = scrollView.frame.size
 
         colors.enumerated().forEach { index, color in

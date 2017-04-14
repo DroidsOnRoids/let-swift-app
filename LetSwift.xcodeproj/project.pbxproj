@@ -267,8 +267,8 @@
 				TargetAttributes = {
 					D39A73471E9776D900F10620 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = URYNPG7RQE;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 27FAFL2WP5;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -506,12 +506,15 @@
 			baseConfigurationReference = 618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = URYNPG7RQE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = WILDCARD;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -521,12 +524,15 @@
 			baseConfigurationReference = 5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Droids On Roids Sp. z o.o.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Droids On Roids Sp. z o.o.";
 				DEVELOPMENT_TEAM = URYNPG7RQE;
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "LetSwiftApp InHouse";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
