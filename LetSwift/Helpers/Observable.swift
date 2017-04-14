@@ -2,7 +2,7 @@
 //  Observable.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 13.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 13.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
@@ -24,6 +24,11 @@ struct Observable<Element> {
     
     init(_ value: Element) {
         self.value = value
+    }
+    
+    mutating func subscribeWithPrevious(onNext: @escaping NextObserver) {
+        onNext(value)
+        nextObservers.append(onNext)
     }
     
     mutating func subscribe(onNext: @escaping NextObserver) {
