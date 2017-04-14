@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
                 <outlet property="continueButton" destination="f9A-tk-41g" id="2TZ-fH-zwD"/>
+                <outlet property="onboardingPageControl" destination="fF2-0z-4jP" id="Peu-NH-6W4"/>
                 <outlet property="scrollView" destination="FFj-cd-Xx2" id="yfX-8t-AXH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,12 +35,18 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-cd-Xx2">
                     <rect key="frame" x="0.0" y="88" width="375" height="519"/>
                 </scrollView>
+                <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fF2-0z-4jP">
+                    <rect key="frame" x="168" y="374" width="39" height="37"/>
+                    <color key="pageIndicatorTintColor" red="0.81568627449999997" green="0.85490196080000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="xd8-lj-byD" secondAttribute="trailing" id="0SU-1c-uKc"/>
                 <constraint firstAttribute="trailing" secondItem="FFj-cd-Xx2" secondAttribute="trailing" id="HAZ-Ic-c6m"/>
                 <constraint firstAttribute="trailing" secondItem="f9A-tk-41g" secondAttribute="trailing" id="Lm5-Zc-nAg"/>
+                <constraint firstItem="fF2-0z-4jP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NdS-e0-KRH"/>
                 <constraint firstItem="xd8-lj-byD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="UGp-Ie-rTa" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
@@ -77,6 +84,22 @@
                 <constraint firstItem="f9A-tk-41g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="flI-Eu-Uv8"/>
                 <constraint firstItem="xd8-lj-byD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gOI-Rf-geg"/>
                 <constraint firstItem="f9A-tk-41g" firstAttribute="top" secondItem="FFj-cd-Xx2" secondAttribute="bottom" id="lIW-RH-SZP"/>
+                <constraint firstItem="fF2-0z-4jP" firstAttribute="top" secondItem="FFj-cd-Xx2" secondAttribute="top" constant="286" id="whe-ua-dyE" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="224"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="232"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="286"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="286"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
