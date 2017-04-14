@@ -16,11 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let navigationController = UINavigationController()
+        let coordinator = AppCoordinator(navigationController: navigationController)
+        coordinator.start()
+        
+        window = UIWindow()
+        window?.tintColor = .swiftOrange
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+
         return true
     }
-
-
 }
-

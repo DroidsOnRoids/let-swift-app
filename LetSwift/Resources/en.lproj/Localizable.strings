@@ -1,3 +1,8 @@
-"MEETUPS_TITLE" = "Meet-ups every month";
-"MEETUPS_DESCRIPTION" = "let Swift is a monthly iOS developers’ meeting taking place in Wrocław";
-"TEST_STRING" = "foo";
+"ONBOARDING_CONTINUE" = "Continue";
+"ONBOARDING_FINISH" = "Awesome, got it!";
+"ONBOARDING_MEETUPS_TITLE" = "Meet-ups every month";
+"ONBOARDING_MEETUPS_DESCRIPTION" = "let Swift is a monthly iOS developers’ meeting taking place in Wrocław";
+"ONBOARDING_SPEAKERS_TITLE" = "Awesome speakers";
+"ONBOARDING_SPEAKERS_DESCRIPTION" = "Every month talks are presented by speakers from every corner of Poland";
+"ONBOARDING_PRICE_TITLE" = "Completely free";
+"ONBOARDING_PRICE_DESCRIPTION" = "No entry fee, contests, prizes and awesome afterparty";

@@ -37,7 +37,7 @@ fileprivate func localizeForced(_ key: String, forLanguage language: Language) -
 func localized(_ key: String, forLanguage language: Language) -> String {
     let localizationResult = localizeForced(key, forLanguage: language)
 
-    if localizationResult == key, language != fallbackLanguage {
+    if localizationResult == key && language != fallbackLanguage {
         return localizeForced(key, forLanguage: fallbackLanguage)
     } else {
         return localizationResult
