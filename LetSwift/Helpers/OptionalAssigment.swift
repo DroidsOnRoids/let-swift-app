@@ -14,8 +14,7 @@ precedencegroup OptionalAssignment {
 
 infix operator ?= : OptionalAssignment
 
-func ?= <T: Any> ( left: inout T, right: T?) {
-    if let right = right {
-        left = right
-    }
+func ?= <T: Any> (left: inout T, right: T?) {
+    guard let right = right else { return }
+    left = right
 }

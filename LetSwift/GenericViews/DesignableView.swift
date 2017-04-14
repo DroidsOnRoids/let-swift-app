@@ -9,6 +9,7 @@
 import UIKit
 
 class DesignableView: UIView {
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadViewFromNib()
