@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E2AA9421E9FC0B4008F3A3E /* OptionalAssigment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AA9411E9FC0B4008F3A3E /* OptionalAssigment.swift */; };
-		7E2AA9441E9FC29B008F3A3E /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2AA9431E9FC29B008F3A3E /* UIFontExtension.swift */; };
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
@@ -35,8 +33,6 @@
 /* Begin PBXFileReference section */
 		5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.release.xcconfig"; sourceTree = "<group>"; };
 		618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		7E2AA9411E9FC0B4008F3A3E /* OptionalAssigment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalAssigment.swift; sourceTree = "<group>"; };
-		7E2AA9431E9FC29B008F3A3E /* UIFontExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
@@ -132,7 +128,6 @@
 				D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */,
 				D3FF3F961E9F5E3400501F44 /* Observable.swift */,
 				D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */,
-				7E2AA9411E9FC0B4008F3A3E /* OptionalAssigment.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -255,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */,
-				7E2AA9431E9FC29B008F3A3E /* UIFontExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -402,9 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E2AA9421E9FC0B4008F3A3E /* OptionalAssigment.swift in Sources */,
 				D3FF3F901E9F577B00501F44 /* Coordinator.swift in Sources */,
-				7E2AA9441E9FC29B008F3A3E /* UIFontExtension.swift in Sources */,
 				D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
