@@ -61,10 +61,10 @@ final class OnboardingViewController: UIViewController {
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
             
-            let subView = OnboardingCardView(frame: frame)
-            subView.setData(with: card)
+            let subview = OnboardingCardView(frame: frame)
+            subview.setData(with: card)
             
-            scrollView.addSubview(subView)
+            scrollView.addSubview(subview)
         }
 
         scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(cards.count),

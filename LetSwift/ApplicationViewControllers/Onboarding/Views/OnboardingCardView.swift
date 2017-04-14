@@ -8,9 +8,14 @@
 
 import UIKit
 
-typealias OnboardingCardModel = (imageName: String, title: String, description: String, page: Int)
+struct OnboardingCardModel {
+    let imageName: String
+    let title: String
+    let description: String
+    let page: Int
+}
 
-class OnboardingCardView: DesignableView {
+final class OnboardingCardView: DesignableView {
 
     @IBOutlet private weak var onboardingImageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!

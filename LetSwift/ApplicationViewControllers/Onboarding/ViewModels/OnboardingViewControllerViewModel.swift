@@ -22,15 +22,15 @@ final class OnboardingViewControllerViewModel {
     init(delegate: OnboardingViewControllerDelegate?) {
         self.delegate = delegate
         
-        let cards = [(imageName: "OnboardingMeetups",
+        let cards = [OnboardingCardModel(imageName: "OnboardingMeetups",
                       title: localized("ONBOARDING_MEETUPS_TITLE"),
                       description: localized("ONBOARDING_MEETUPS_DESCRIPTION"),
                       page: 0),
-                     (imageName: "OnboardingSpeakers",
+                     OnboardingCardModel(imageName: "OnboardingSpeakers",
                       title: localized("ONBOARDING_SPEAKERS_TITLE"),
                       description: localized("ONBOARDING_SPEAKERS_DESCRIPTION"),
                       page: 1),
-                     (imageName: "OnboardingPrice",
+                     OnboardingCardModel(imageName: "OnboardingPrice",
                       title: localized("ONBOARDING_PRICE_TITLE"),
                       description: localized("ONBOARDING_PRICE_DESCRIPTION"),
                       page: 2)]
