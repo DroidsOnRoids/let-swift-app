@@ -1,20 +1,20 @@
 //
-//  MultiSizeConstraint.swift
+//  MultiSizeLabel.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki, Kinga Wilczek on 13.04.2017.
+//  Created by Marcin Chojnacki on 13.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
 
-class MultiSizeConstraint: NSLayoutConstraint {
+class MultiSizeLabel: UILabel {
     
     @IBInspectable
     var inch3¨5: CGFloat = 0.0 {
         didSet {
             if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch3¨5.rawValue {
-                constant = inch3¨5
+                font = font.withSize(inch3¨5)
             }
         }
     }
@@ -23,7 +23,7 @@ class MultiSizeConstraint: NSLayoutConstraint {
     var inch4¨0: CGFloat = 0.0 {
         didSet {
             if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch4¨0.rawValue {
-                constant = inch4¨0
+                font = font.withSize(inch4¨0)
             }
         }
     }
@@ -32,7 +32,7 @@ class MultiSizeConstraint: NSLayoutConstraint {
     var inch4¨7: CGFloat = 0.0 {
         didSet {
             if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch4¨7.rawValue {
-                constant = inch4¨7
+                font = font.withSize(inch4¨7)
             }
         }
     }
@@ -41,9 +41,8 @@ class MultiSizeConstraint: NSLayoutConstraint {
     var inch5¨5: CGFloat = 0.0 {
         didSet {
             if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch5¨5.rawValue {
-                constant = inch5¨5
+                font = font.withSize(inch5¨5)
             }
         }
     }
-    
 }

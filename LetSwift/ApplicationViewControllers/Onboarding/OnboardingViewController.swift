@@ -48,7 +48,7 @@ final class OnboardingViewController: UIViewController {
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
 
-            let subview = UIView(frame: frame)
+            let subview = OnboardingCardView(frame: frame)
             subview.backgroundColor = colors[index]
 
             scrollView.addSubview(subview)
