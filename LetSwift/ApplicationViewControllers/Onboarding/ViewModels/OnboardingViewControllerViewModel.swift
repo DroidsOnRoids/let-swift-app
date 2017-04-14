@@ -16,6 +16,7 @@ final class OnboardingViewControllerViewModel {
     var continueButtonTitleObservable = Observable<String>(localized("ONBOARDING_CONTINUE").uppercased())
     var onboardingCardsObservable = Observable<[OnboardingCardModel]>([])
     
+    private var maxCardIndex = 0
     private let continuesButtonTitles = [localized("ONBOARDING_CONTINUE").uppercased(),
                                          localized("ONBOARDING_FINISH").uppercased()]
 
@@ -24,17 +25,15 @@ final class OnboardingViewControllerViewModel {
         
         let cards = [OnboardingCardModel(imageName: "OnboardingMeetups",
                       title: localized("ONBOARDING_MEETUPS_TITLE"),
-                      description: localized("ONBOARDING_MEETUPS_DESCRIPTION"),
-                      page: 0),
+                      description: localized("ONBOARDING_MEETUPS_DESCRIPTION")),
                      OnboardingCardModel(imageName: "OnboardingSpeakers",
                       title: localized("ONBOARDING_SPEAKERS_TITLE"),
-                      description: localized("ONBOARDING_SPEAKERS_DESCRIPTION"),
-                      page: 1),
+                      description: localized("ONBOARDING_SPEAKERS_DESCRIPTION")),
                      OnboardingCardModel(imageName: "OnboardingPrice",
                       title: localized("ONBOARDING_PRICE_TITLE"),
-                      description: localized("ONBOARDING_PRICE_DESCRIPTION"),
-                      page: 2)]
+                      description: localized("ONBOARDING_PRICE_DESCRIPTION"))]
 
+        maxCardIndex = cards.count - 1
         onboardingCardsObservable.next(cards)
     }
 
@@ -49,9 +48,9 @@ final class OnboardingViewControllerViewModel {
     }
     
     private func detectCountinueButtonTitleChange() {
-        if continueButtonTitleObservable.value == continuesButtonTitles[0] && currentPageObservable.value == 2 {
+        if continueButtonTitleObservable.value == continuesButtonTitles[0] && currentPageObservable.value == maxCardIndex {
             continueButtonTitleObservable.next(continuesButtonTitles[1])
-        } else if continueButtonTitleObservable.value == continuesButtonTitles[1] && currentPageObservable.value < 2 {
+        } else if continueButtonTitleObservable.value == continuesButtonTitles[1] && currentPageObservable.value < maxCardIndex {
             continueButtonTitleObservable.next(continuesButtonTitles[0])
         }
     }

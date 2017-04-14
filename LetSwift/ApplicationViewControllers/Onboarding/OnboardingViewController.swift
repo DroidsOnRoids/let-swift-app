@@ -16,6 +16,7 @@ final class OnboardingViewController: UIViewController {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet fileprivate weak var continueButton: UIButton!
+    @IBOutlet private weak var onboardingPageControl: UIPageControl!
 
     fileprivate var viewModel: OnboardingViewControllerViewModel!
     
@@ -40,6 +41,7 @@ final class OnboardingViewController: UIViewController {
 
             if xPosition < self.scrollView.contentSize.width {
                 self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
+                self.onboardingPageControl.currentPage = page
             }
         })
         
@@ -50,6 +52,7 @@ final class OnboardingViewController: UIViewController {
         viewModel.onboardingCardsObservable.subscribeWithPrevious(onNext: { [unowned self] cards in
             DispatchQueue.main.async {
                 self.setupScrollView(with: cards)
+                self.onboardingPageControl.numberOfPages = cards.count
             }
         })
     }

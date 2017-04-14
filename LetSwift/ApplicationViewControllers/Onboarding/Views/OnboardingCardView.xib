@@ -12,7 +12,6 @@
             <connections>
                 <outlet property="descriptionLabel" destination="Tns-4T-KVA" id="5qn-t2-jhl"/>
                 <outlet property="onboardingImageView" destination="8MO-0e-SII" id="wDo-RW-EiH"/>
-                <outlet property="onboardingPageControl" destination="k1I-Gw-Xv2" id="YA3-lX-fac"/>
                 <outlet property="titleLabel" destination="V43-ac-z18" id="q4N-cI-ASC"/>
             </connections>
         </placeholder>
@@ -78,11 +77,6 @@
                         </constraint>
                     </constraints>
                 </imageView>
-                <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-Gw-Xv2">
-                    <rect key="frame" x="168" y="286" width="39" height="37"/>
-                    <color key="pageIndicatorTintColor" red="0.81568627449999997" green="0.85490196080000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="currentPageIndicatorTintColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </pageControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No entry fee, contests, prizes and awesome afterparty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-4T-KVA" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="32" y="367.5" width="311" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -159,23 +153,6 @@
                     </userDefinedRuntimeAttributes>
                 </constraint>
                 <constraint firstAttribute="trailing" secondItem="V43-ac-z18" secondAttribute="trailing" id="v5R-7f-14I"/>
-                <constraint firstItem="k1I-Gw-Xv2" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yaE-ng-OoJ"/>
-                <constraint firstItem="k1I-Gw-Xv2" firstAttribute="top" secondItem="8MO-0e-SII" secondAttribute="bottom" constant="17" id="zub-e3-IIA" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="9"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </constraint>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
