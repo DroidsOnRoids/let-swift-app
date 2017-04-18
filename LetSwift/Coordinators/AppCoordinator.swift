@@ -19,6 +19,8 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: OnboardingViewControllerDelegate {
     func dismissOnboardingViewController() {
-        print("dismissOnboardingViewController()")
+        let viewController = LoginViewController()
+        
+        navigationViewController.pushViewController(viewController, animated: true)
     }
 }
