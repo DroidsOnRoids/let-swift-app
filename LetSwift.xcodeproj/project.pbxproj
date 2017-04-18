@@ -13,6 +13,7 @@
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
 		D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C4A281E9CD6320052E793 /* Localizable.swift */; };
+		D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */; };
 		D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14B91E9F6AD0009EA346 /* OnboardingCardView.swift */; };
 		D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38B14BB1E9F6AEC009EA346 /* OnboardingCardView.xib */; };
 		D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14BD1E9F6C62009EA346 /* DesignableView.swift */; };
@@ -40,6 +41,7 @@
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		D33C4A281E9CD6320052E793 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringHelper.swift; sourceTree = "<group>"; };
 		D38B14B91E9F6AD0009EA346 /* OnboardingCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCardView.swift; sourceTree = "<group>"; };
 		D38B14BB1E9F6AEC009EA346 /* OnboardingCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCardView.xib; sourceTree = "<group>"; };
 		D38B14BD1E9F6C62009EA346 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */,
 				D3FF3F961E9F5E3400501F44 /* Observable.swift */,
 				D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */,
+				D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
+				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
