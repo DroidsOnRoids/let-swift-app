@@ -24,4 +24,9 @@ extension String {
         let colorAttribute = [ NSForegroundColorAttributeName: color ]
         return NSAttributedString(string: self, attributes: colorAttribute)
     }
+    
+    func attributed(withSping scpacing: CGFloat) -> NSAttributedString {
+        let spacingAttribute = [ NSKernAttributeName: scpacing ]
+        return NSAttributedString(string: self, attributes: spacingAttribute)
+    }
 }

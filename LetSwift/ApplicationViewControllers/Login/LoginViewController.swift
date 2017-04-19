@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet private weak var label: UILabel!
     @IBOutlet private weak var fbButton: UIButton!
+    @IBOutlet private weak var loginPurposeDescription: UILabel!
     
     private var viewModel: LoginViewControllerViewModel!
 
@@ -27,6 +28,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
+        loginPurposeDescription.attributedText = loginPurposeDescription.text?.attributed(withSping: 1.0)
     }
     
     private func setupViews() {
