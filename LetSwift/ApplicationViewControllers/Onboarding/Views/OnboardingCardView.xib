@@ -123,10 +123,10 @@
                 <constraint firstItem="Tns-4T-KVA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="o2I-8Q-xRn" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="4"/>
+                            <real key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="4"/>
+                            <real key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
                             <real key="value" value="32"/>
@@ -145,10 +145,10 @@
                             <real key="value" value="32"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="4"/>
+                            <real key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="4"/>
+                            <real key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </constraint>

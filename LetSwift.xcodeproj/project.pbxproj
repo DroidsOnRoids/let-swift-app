@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
-		D319AD7D1EA60F82001ECE0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD7B1EA60F82001ECE0B /* LoginViewController.swift */; };
-		D319AD7E1EA60F82001ECE0B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D319AD7C1EA60F82001ECE0B /* LoginViewController.xib */; };
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
-		D319AD881EA6256F001ECE0B /* RandomLabelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD871EA6256F001ECE0B /* RandomLabelAnimator.swift */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
 		D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C4A281E9CD6320052E793 /* Localizable.swift */; };
 		D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */; };
+		D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A01EA7330C00C05AA6 /* LoginViewController.swift */; };
+		D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35839A11EA7330C00C05AA6 /* LoginViewController.xib */; };
+		D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */; };
 		D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14B91E9F6AD0009EA346 /* OnboardingCardView.swift */; };
 		D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38B14BB1E9F6AEC009EA346 /* OnboardingCardView.xib */; };
 		D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14BD1E9F6C62009EA346 /* DesignableView.swift */; };
@@ -25,6 +25,7 @@
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
 		D39A73531E9776D900F10620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39A73521E9776D900F10620 /* Assets.xcassets */; };
 		D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A73541E9776D900F10620 /* LaunchScreen.storyboard */; };
+		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
 		D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */; };
 		D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */; };
 		D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */; };
@@ -38,16 +39,16 @@
 /* Begin PBXFileReference section */
 		5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.release.xcconfig"; sourceTree = "<group>"; };
 		618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		D319AD7B1EA60F82001ECE0B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Login/LoginViewController.swift; sourceTree = "<group>"; };
-		D319AD7C1EA60F82001ECE0B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = Login/LoginViewController.xib; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
-		D319AD871EA6256F001ECE0B /* RandomLabelAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RandomLabelAnimator.swift; path = Login/Animators/RandomLabelAnimator.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		D33C4A281E9CD6320052E793 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringHelper.swift; sourceTree = "<group>"; };
+		D35839A01EA7330C00C05AA6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D35839A11EA7330C00C05AA6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLabelAnimator.swift; sourceTree = "<group>"; };
 		D38B14B91E9F6AD0009EA346 /* OnboardingCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCardView.swift; sourceTree = "<group>"; };
 		D38B14BB1E9F6AEC009EA346 /* OnboardingCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCardView.xib; sourceTree = "<group>"; };
 		D38B14BD1E9F6C62009EA346 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 		D39A73521E9776D900F10620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D39A73551E9776D900F10620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeConstraint.swift; sourceTree = "<group>"; };
 		D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
@@ -178,26 +180,19 @@
 			isa = PBXGroup;
 			children = (
 				D319AD861EA62558001ECE0B /* Animators */,
-				D319AD7F1EA60FDE001ECE0B /* Views */,
-				D319AD7B1EA60F82001ECE0B /* LoginViewController.swift */,
-				D319AD7C1EA60F82001ECE0B /* LoginViewController.xib */,
+				D3A00FDB1EA731BD00E1E27A /* ViewModels */,
+				D35839A01EA7330C00C05AA6 /* LoginViewController.swift */,
+				D35839A11EA7330C00C05AA6 /* LoginViewController.xib */,
 			);
-			name = Login;
-			sourceTree = "<group>";
-		};
-		D319AD7F1EA60FDE001ECE0B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Views;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		D319AD861EA62558001ECE0B /* Animators */ = {
 			isa = PBXGroup;
 			children = (
-				D319AD871EA6256F001ECE0B /* RandomLabelAnimator.swift */,
+				D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */,
 			);
-			name = Animators;
+			path = Animators;
 			sourceTree = "<group>";
 		};
 		D32A76C01E9B9A4600388222 /* Resources */ = {
@@ -274,6 +269,14 @@
 				D39A73541E9776D900F10620 /* LaunchScreen.storyboard */,
 			);
 			path = LetSwift;
+			sourceTree = "<group>";
+		};
+		D3A00FDB1EA731BD00E1E27A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		D3FF3F8C1E9F540F00501F44 /* ViewModels */ = {
@@ -363,7 +366,7 @@
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
-				D319AD7E1EA60F82001ECE0B /* LoginViewController.xib in Resources */,
+				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,13 +443,14 @@
 				D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */,
 				D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
-				D319AD7D1EA60F82001ECE0B /* LoginViewController.swift in Sources */,
+				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
 				D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */,
-				D319AD881EA6256F001ECE0B /* RandomLabelAnimator.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
+				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
+				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,
