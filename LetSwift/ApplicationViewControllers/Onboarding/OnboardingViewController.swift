@@ -37,9 +37,11 @@ final class OnboardingViewController: UIViewController {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
         viewModel.currentPageObservable.subscribe(onNext: { [unowned self] page in
-            let xPosition = CGFloat(page) * self.scrollView.frame.size.width
+            let xOffset = self.scrollView.contentOffset.x
 
-            if xPosition < self.scrollView.contentSize.width {
+            if xOffset.truncatingRemainder(dividingBy: self.scrollView.frame.size.width) == 0 {
+                let xPosition = CGFloat(page) * self.scrollView.frame.size.width
+
                 self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
                 self.onboardingPageControl.currentPage = page
             }
