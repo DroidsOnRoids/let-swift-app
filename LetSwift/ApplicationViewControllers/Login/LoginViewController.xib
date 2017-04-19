@@ -21,17 +21,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umi-1E-Ewt">
-                    <rect key="frame" x="161.5" y="323.5" width="51.5" height="20"/>
-                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                    <rect key="frame" x="35" y="224" width="257" height="24.5"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpC-JC-mhY">
-                    <rect key="frame" x="120" y="184" width="162" height="46"/>
+                    <rect key="frame" x="35" y="355.5" width="162" height="46"/>
                     <color key="backgroundColor" red="0.23357817530632019" green="0.34701001644134521" blue="0.5960078239440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="46" id="7NY-Ce-6HB"/>
-                        <constraint firstAttribute="width" constant="162" id="Xae-eB-LYZ"/>
+                        <constraint firstAttribute="width" constant="162" id="CX9-Mn-b4v"/>
+                        <constraint firstAttribute="height" constant="46" id="fs4-63-8WJ"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                     <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -43,18 +43,85 @@
                         <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwiftLogo" translatesAutoresizingMaskIntoConstraints="NO" id="k10-ck-Rjs">
+                    <rect key="frame" x="35" y="65" width="27" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Zfv-Yo-gBw"/>
+                        <constraint firstAttribute="width" constant="27" id="ilZ-Vm-3M2"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="let Swift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyd-cF-Lyv">
+                    <rect key="frame" x="35" y="104" width="234" height="28"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="24"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developers Meet-up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXT-3r-5ma">
+                    <rect key="frame" x="35" y="138" width="234" height="20"/>
+                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
+                    <color key="textColor" red="0.59607843137254901" green="0.61960784313725492" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWL-VT-RZa">
+                    <rect key="frame" x="35" y="206" width="30" height="2"/>
+                    <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="8r8-hj-6c2"/>
+                        <constraint firstAttribute="width" constant="30" id="wx2-Qp-5Wv"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-kx-89C">
+                    <rect key="frame" x="35" y="265.5" width="238" height="41"/>
+                    <attributedString key="attributedText">
+                        <fragment>
+                            <string key="content">Login by Facebook to gain 
+full access.</string>
+                            <attributes>
+                                <color key="NSColor" red="0.59607843140000005" green="0.61960784310000006" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <font key="NSFont" size="17" name=".AppleSystemUIFont"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuo-Tv-7im">
+                    <rect key="frame" x="151" y="620" width="74" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="olI-3L-fX6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                    <state key="normal" title="SKIP LOGIN"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="VpC-JC-mhY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="120" id="7MN-eE-aA1"/>
-                <constraint firstItem="VpC-JC-mhY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="184" id="89v-iH-PTC"/>
-                <constraint firstItem="umi-1E-Ewt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Oj2-Va-oAK"/>
-                <constraint firstItem="umi-1E-Ewt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fQY-lL-jGK"/>
+                <constraint firstAttribute="trailing" secondItem="Tam-kx-89C" secondAttribute="trailing" constant="102" id="31s-ZS-vgf"/>
+                <constraint firstItem="Dyd-cF-Lyv" firstAttribute="top" secondItem="k10-ck-Rjs" secondAttribute="bottom" constant="14" id="6CN-a0-fdO"/>
+                <constraint firstAttribute="trailing" secondItem="Dyd-cF-Lyv" secondAttribute="trailing" constant="106" id="79n-K7-E7n"/>
+                <constraint firstItem="Tam-kx-89C" firstAttribute="top" secondItem="umi-1E-Ewt" secondAttribute="bottom" constant="17" id="Dvb-g4-Uxz"/>
+                <constraint firstItem="k10-ck-Rjs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="HXd-Yb-llG"/>
+                <constraint firstItem="yWL-VT-RZa" firstAttribute="leading" secondItem="eXT-3r-5ma" secondAttribute="leading" id="KDn-zj-cbn"/>
+                <constraint firstItem="eXT-3r-5ma" firstAttribute="trailing" secondItem="Dyd-cF-Lyv" secondAttribute="trailing" id="OFV-VP-4Oj"/>
+                <constraint firstItem="eXT-3r-5ma" firstAttribute="leading" secondItem="Dyd-cF-Lyv" secondAttribute="leading" id="QpQ-o5-3aR"/>
+                <constraint firstItem="k10-ck-Rjs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="Sze-jD-qvn"/>
+                <constraint firstItem="zuo-Tv-7im" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bNF-Uh-CNE"/>
+                <constraint firstItem="VpC-JC-mhY" firstAttribute="leading" secondItem="Tam-kx-89C" secondAttribute="leading" id="bR8-y5-ehO"/>
+                <constraint firstAttribute="trailing" secondItem="umi-1E-Ewt" secondAttribute="trailing" constant="83" id="bV2-oZ-NLn"/>
+                <constraint firstItem="eXT-3r-5ma" firstAttribute="top" secondItem="Dyd-cF-Lyv" secondAttribute="bottom" constant="6" id="deE-qP-eKq"/>
+                <constraint firstAttribute="bottom" secondItem="zuo-Tv-7im" secondAttribute="bottom" constant="32" id="fG6-kr-OEa"/>
+                <constraint firstItem="yWL-VT-RZa" firstAttribute="top" secondItem="eXT-3r-5ma" secondAttribute="bottom" constant="48" id="fcb-0T-nOG"/>
+                <constraint firstItem="Dyd-cF-Lyv" firstAttribute="leading" secondItem="k10-ck-Rjs" secondAttribute="leading" id="flm-JI-Iw4"/>
+                <constraint firstItem="umi-1E-Ewt" firstAttribute="top" secondItem="yWL-VT-RZa" secondAttribute="bottom" constant="16" id="jo5-25-xzA"/>
+                <constraint firstItem="VpC-JC-mhY" firstAttribute="top" secondItem="Tam-kx-89C" secondAttribute="bottom" constant="49" id="nqd-DT-rMh"/>
+                <constraint firstItem="Tam-kx-89C" firstAttribute="leading" secondItem="umi-1E-Ewt" secondAttribute="leading" id="q1n-Jz-r7v"/>
+                <constraint firstItem="umi-1E-Ewt" firstAttribute="leading" secondItem="yWL-VT-RZa" secondAttribute="leading" id="yLR-jb-pnD"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="78.5"/>
         </view>
     </objects>
     <resources>
         <image name="FacebookIcon" width="18" height="19"/>
+        <image name="SwiftLogo" width="27" height="25"/>
     </resources>
 </document>
