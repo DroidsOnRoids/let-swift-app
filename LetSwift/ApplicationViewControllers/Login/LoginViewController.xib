@@ -11,8 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
                 <outlet property="animatedGreetingLabel" destination="umi-1E-Ewt" id="PeQ-fG-TAa"/>
-                <outlet property="facebookButton" destination="VpC-JC-mhY" id="cc7-QB-7nN"/>
-                <outlet property="loginPurposeDescription" destination="Tam-kx-89C" id="02o-Z7-7yY"/>
+                <outlet property="facebookButton" destination="VpC-JC-mhY" id="95H-j9-pq3"/>
+                <outlet property="loginPurposeDescriptionLabel" destination="Tam-kx-89C" id="Iau-1A-I9w"/>
                 <outlet property="loginSubtitleLabel" destination="eXT-3r-5ma" id="Fzd-lD-SkM"/>
                 <outlet property="skipLoginButton" destination="zuo-Tv-7im" id="A1d-A6-XGl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

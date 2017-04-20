@@ -12,26 +12,18 @@ struct RandomLabelAnimator {
 
     let label: UILabel
     let finalResult: NSAttributedString
-
-    private func randomString(length: Int) -> String {
-        var result = ""
-
-        for _ in 0..<length {
-            // 32 - 126 are allowed ASCII codes
-            let randomAsciiCode = UInt8(arc4random_uniform(95) + 32)
-            let randomCharacter = Character(UnicodeScalar(randomAsciiCode))
-
-            result.append(randomCharacter)
+    
+    private var randomString: String {
+        return (0..<finalResult.length).reduce("") { result, _ in
+            return result + "\(Character(UnicodeScalar(UInt8(arc4random_uniform(95) + 32))))"
         }
-
-        return result
     }
 
     func animate(withSteps steps: Int = 15, interval: TimeInterval = 0.1) {
         DispatchQueue.global(qos: .userInteractive).async {
-            for _ in 0..<steps {
+            (0..<steps).forEach { _ in 
                 DispatchQueue.main.async {
-                    self.label.text = self.randomString(length: self.finalResult.length)
+                    self.label.text = self.randomString
                 }
 
                 Thread.sleep(forTimeInterval: interval)

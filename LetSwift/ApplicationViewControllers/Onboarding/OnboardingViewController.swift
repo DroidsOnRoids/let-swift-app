@@ -9,7 +9,7 @@
 import UIKit
 
 protocol OnboardingViewControllerDelegate: class {
-    func dismissOnboardingViewController()
+    func continueButtonDidTap()
 }
 
 final class OnboardingViewController: UIViewController {

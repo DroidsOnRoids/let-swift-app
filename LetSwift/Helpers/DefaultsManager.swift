@@ -27,9 +27,8 @@ final class DefaultsManager: NSObject {
     }
     
     func clearDefaults() {
-        if let bundle = Bundle.main.bundleIdentifier {
-            defaults.removePersistentDomain(forName: bundle)
-        }
+        guard let bundle = Bundle.main.bundleIdentifier else { return }
+        defaults.removePersistentDomain(forName: bundle)
     }
     
     func removeValue(forKey key: String) {

@@ -12,6 +12,7 @@ func +(left: NSAttributedString, right: NSAttributedString) -> NSAttributedStrin
     let result = NSMutableAttributedString()
     result.append(left)
     result.append(right)
+    
     return result
 }
 
@@ -22,11 +23,13 @@ extension String {
     
     func attributed(withColor color: UIColor) -> NSAttributedString {
         let colorAttribute = [ NSForegroundColorAttributeName: color ]
+        
         return NSAttributedString(string: self, attributes: colorAttribute)
     }
     
-    func attributed(withSping scpacing: CGFloat) -> NSAttributedString {
-        let spacingAttribute = [ NSKernAttributeName: scpacing ]
+    func attributed(withSpacing spacing: CGFloat) -> NSAttributedString {
+        let spacingAttribute = [ NSKernAttributeName: spacing ]
+        
         return NSAttributedString(string: self, attributes: spacingAttribute)
     }
 }

@@ -15,7 +15,7 @@ final class LoginViewController: UIViewController {
 
     @IBOutlet private weak var animatedGreetingLabel: UILabel!
     @IBOutlet fileprivate weak var facebookButton: UIButton!
-    @IBOutlet fileprivate weak var loginPurposeDescription: UILabel!
+    @IBOutlet fileprivate weak var loginPurposeDescriptionLabel: UILabel!
     @IBOutlet fileprivate weak var loginSubtitleLabel: MultiSizeLabel!
     @IBOutlet fileprivate weak var skipLoginButton: UIButton!
     
@@ -31,17 +31,26 @@ final class LoginViewController: UIViewController {
         
         setupLocalization()
         setupViews()
+        setup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        animateLabel()
+        if isBeingPresented || isMovingToParentViewController {
+            viewModel.viewWillAppearPerformObservable.next()
+        }
+    }
+    
+    private func setup() {
+        viewModel.animateWithRandomTextObservable.subscribe { [weak self] randomHello in
+            self?.animateLabel(randomHello: randomHello)
+        }
     }
     
     private func setupViews() {
         animatedGreetingLabel.adjustsFontSizeToFitWidth = true
-        loginPurposeDescription.attributedText = loginPurposeDescription.text?.attributed(withSping: 1.0)
+        loginPurposeDescriptionLabel.attributedText = loginPurposeDescriptionLabel.text?.attributed(withSpacing: 1.0)
         facebookButton.showShadow()
     }
 
@@ -52,8 +61,7 @@ final class LoginViewController: UIViewController {
             "”)".attributed(withColor: .coolGrey)
     }
 
-    private func animateLabel() {
-        let randomHello = viewModel.randomHelloWorld()
+    private func animateLabel(randomHello: String) {
         let attributedHello = createPrintAttributedText(randomHello)
 
         RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello).animate()
@@ -64,7 +72,7 @@ extension LoginViewController: Localizable {
     func setupLocalization() {
         skipLoginButton.setTitle(localized("LOGIN_SKIP_BUTTON_TITLE").uppercased(), for: [])
         facebookButton.setTitle(localized("LOGIN_BUTTON_TITLE").uppercased(), for: [])
-        loginPurposeDescription.text = localized("LOGIN_PURPOSE_DESCRIPTION")
+        loginPurposeDescriptionLabel.text = localized("LOGIN_PURPOSE_DESCRIPTION")
         loginSubtitleLabel.text = localized("LOGIN_SUBTITLE")
     }
 }
