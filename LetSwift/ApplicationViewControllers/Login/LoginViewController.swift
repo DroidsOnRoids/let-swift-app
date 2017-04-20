@@ -40,6 +40,7 @@ final class LoginViewController: UIViewController {
     }
     
     private func setupViews() {
+        animatedGreetingLabel.adjustsFontSizeToFitWidth = true
         loginPurposeDescription.attributedText = loginPurposeDescription.text?.attributed(withSping: 1.0)
         facebookButton.showShadow()
     }
