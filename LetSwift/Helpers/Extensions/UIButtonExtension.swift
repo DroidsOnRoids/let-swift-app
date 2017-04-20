@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIButton {
-    func showAppShadow() {
+    func showShadow() {
         layer.cornerRadius = 6.0
         
         layer.shadowColor = backgroundColor?.cgColor
