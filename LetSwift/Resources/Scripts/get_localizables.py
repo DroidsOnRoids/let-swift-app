@@ -44,7 +44,7 @@ if __name__ == "__main__":
             for lang, column in languages.iteritems():
                 if row[keysColumnIndex] and row[column]:
                     keyToSave = row[column].replace('\n', '\\n')
-                        localizables[lang].write('"%s" = "%s";\n' % (row[keysColumnIndex], keyToSave))
+                    localizables[lang].write('"%s" = "%s";\n' % (row[keysColumnIndex], keyToSave))
 
         for lang, column in languages.iteritems():
             localizables[lang].close()
