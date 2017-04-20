@@ -43,7 +43,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpC-JC-mhY">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpC-JC-mhY" customClass="AppShadowButton" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="35" y="355.5" width="162" height="46"/>
                     <color key="backgroundColor" red="0.23357817530632019" green="0.34701001644134521" blue="0.5960078239440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -56,9 +56,12 @@
                     <state key="normal" title="LOGIN" image="FacebookIcon">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted">
-                        <color key="titleColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
+                    <state key="highlighted" image="FacebookIcon"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwiftLogo" translatesAutoresizingMaskIntoConstraints="NO" id="k10-ck-Rjs">
                     <rect key="frame" x="35" y="65" width="27" height="25"/>

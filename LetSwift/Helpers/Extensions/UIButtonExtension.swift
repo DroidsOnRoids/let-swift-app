@@ -10,14 +10,18 @@ import UIKit
 
 extension UIButton {
     func showShadow() {
-        layer.cornerRadius = 6.0
-        
         layer.shadowColor = backgroundColor?.cgColor
         layer.shadowOpacity = 0.6
-        layer.shadowRadius = 10
+        layer.shadowRadius = 10.0
         layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
         
-        let shadowRect = bounds.insetBy(dx: 10, dy: 0)
+        let shadowRect = bounds.insetBy(dx: 10.0, dy: 0.0)
         layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
+    }
+    
+    func hideShadow() {
+        layer.shadowColor = nil
+        layer.shadowOpacity = 0.0
+        layer.shadowPath = nil
     }
 }
