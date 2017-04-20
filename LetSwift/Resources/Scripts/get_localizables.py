@@ -43,7 +43,8 @@ if __name__ == "__main__":
         for row in my_csv:
             for lang, column in languages.iteritems():
                 if row[keysColumnIndex] and row[column]:
-                    localizables[lang].write('"%s" = "%s";\n' % (row[keysColumnIndex], row[column]))
+                    keyToSave = row[column].replace('\n', '\\n')
+                    localizables[lang].write('"%s" = "%s";\n' % (row[keysColumnIndex], keyToSave))
 
         for lang, column in languages.iteritems():
             localizables[lang].close()

@@ -38,8 +38,13 @@ final class OnboardingViewControllerViewModel {
     }
 
     @objc func continueButtonTapped() {
-        currentPageObservable.next(currentPageObservable.value + 1)
-        detectCountinueButtonTitleChange()
+        guard let countinueButtonTitle = continuesButtonTitles.first else { return }
+        if continueButtonTitleObservable.value == countinueButtonTitle {
+            currentPageObservable.next(currentPageObservable.value + 1)
+            detectCountinueButtonTitleChange()
+        } else {
+            delegate?.continueButtonDidTap()
+        }
     }
 
     func swipeDidFinish(with page: Int) {
