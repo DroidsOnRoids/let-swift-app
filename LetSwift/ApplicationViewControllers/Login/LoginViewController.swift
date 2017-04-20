@@ -13,8 +13,8 @@ protocol LoginViewControllerDelegate: class {
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet private weak var label: UILabel!
-    @IBOutlet private weak var fbButton: UIButton!
+    @IBOutlet private weak var animatedGreetingLabel: UILabel!
+    @IBOutlet private weak var facebookButton: UIButton!
     @IBOutlet private weak var loginPurposeDescription: UILabel!
     
     private var viewModel: LoginViewControllerViewModel!
@@ -32,20 +32,12 @@ class LoginViewController: UIViewController {
     }
     
     private func setupViews() {
-        fbButton.layer.cornerRadius = 6.0
-        
-        fbButton.layer.shadowColor = fbButton.backgroundColor?.cgColor
-        fbButton.layer.shadowOpacity = 0.6
-        fbButton.layer.shadowRadius = 10
-        fbButton.layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
-        
-        let shadowRect = fbButton.bounds.insetBy(dx: 10, dy: 0)
-        fbButton.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
+        facebookButton.showAppShadow()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         animateLabel()
     }
 
@@ -60,6 +52,6 @@ class LoginViewController: UIViewController {
         let randomHello = viewModel.randomHelloWorld()
         let attributedHello = createPrintAttributedText(randomHello)
 
-        RandomLabelAnimator(label: label, finalResult: attributedHello).animate()
+        RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello).animate()
     }
 }

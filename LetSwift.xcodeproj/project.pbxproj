@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E7E412C1EA89FD7001DB179 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */; };
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.release.xcconfig"; sourceTree = "<group>"; };
 		618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			children = (
 				D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */,
 				D319AD841EA62487001ECE0B /* ArrayExtension.swift */,
+				7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
+				7E7E412C1EA89FD7001DB179 /* UIButtonExtension.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,

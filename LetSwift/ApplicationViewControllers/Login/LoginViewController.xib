@@ -10,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
-                <outlet property="fbButton" destination="VpC-JC-mhY" id="iyh-Rd-ftz"/>
-                <outlet property="label" destination="umi-1E-Ewt" id="9V5-EA-gRK"/>
+                <outlet property="animatedGreetingLabel" destination="umi-1E-Ewt" id="PeQ-fG-TAa"/>
+                <outlet property="facebookButton" destination="VpC-JC-mhY" id="cc7-QB-7nN"/>
                 <outlet property="loginPurposeDescription" destination="Tam-kx-89C" id="02o-Z7-7yY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,11 +21,25 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umi-1E-Ewt">
-                    <rect key="frame" x="35" y="224" width="257" height="24.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umi-1E-Ewt" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
+                    <rect key="frame" x="35" y="224" width="304" height="24.5"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="21"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="21"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpC-JC-mhY">
                     <rect key="frame" x="35" y="355.5" width="162" height="46"/>
@@ -57,11 +71,25 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developers Meet-up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXT-3r-5ma">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developers Meet-up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXT-3r-5ma" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="35" y="138" width="234" height="20"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                     <color key="textColor" red="0.59607843137254901" green="0.61960784313725492" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="19"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWL-VT-RZa">
                     <rect key="frame" x="35" y="206" width="30" height="2"/>
@@ -71,13 +99,27 @@
                         <constraint firstAttribute="width" constant="30" id="wx2-Qp-5Wv"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-kx-89C">
-                    <rect key="frame" x="35" y="265.5" width="238" height="41"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-kx-89C" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
+                    <rect key="frame" x="35" y="265.5" width="305" height="41"/>
                     <string key="text">Login by Facebook to gain 
 full access.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.59607843140000005" green="0.61960784310000006" blue="0.65098039220000004" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="17"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="19"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuo-Tv-7im">
                     <rect key="frame" x="151" y="620" width="74" height="15"/>
@@ -90,18 +132,78 @@ full access.</string>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Tam-kx-89C" secondAttribute="trailing" constant="102" id="31s-ZS-vgf"/>
+                <constraint firstAttribute="trailing" secondItem="Tam-kx-89C" secondAttribute="trailing" constant="35" id="31s-ZS-vgf" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstItem="Dyd-cF-Lyv" firstAttribute="top" secondItem="k10-ck-Rjs" secondAttribute="bottom" constant="14" id="6CN-a0-fdO"/>
-                <constraint firstAttribute="trailing" secondItem="Dyd-cF-Lyv" secondAttribute="trailing" constant="106" id="79n-K7-E7n"/>
+                <constraint firstAttribute="trailing" secondItem="Dyd-cF-Lyv" secondAttribute="trailing" constant="106" id="79n-K7-E7n" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstItem="Tam-kx-89C" firstAttribute="top" secondItem="umi-1E-Ewt" secondAttribute="bottom" constant="17" id="Dvb-g4-Uxz"/>
                 <constraint firstItem="k10-ck-Rjs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="65" id="HXd-Yb-llG"/>
                 <constraint firstItem="yWL-VT-RZa" firstAttribute="leading" secondItem="eXT-3r-5ma" secondAttribute="leading" id="KDn-zj-cbn"/>
                 <constraint firstItem="eXT-3r-5ma" firstAttribute="trailing" secondItem="Dyd-cF-Lyv" secondAttribute="trailing" id="OFV-VP-4Oj"/>
                 <constraint firstItem="eXT-3r-5ma" firstAttribute="leading" secondItem="Dyd-cF-Lyv" secondAttribute="leading" id="QpQ-o5-3aR"/>
-                <constraint firstItem="k10-ck-Rjs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="Sze-jD-qvn"/>
+                <constraint firstItem="k10-ck-Rjs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="35" id="Sze-jD-qvn" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstItem="zuo-Tv-7im" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bNF-Uh-CNE"/>
                 <constraint firstItem="VpC-JC-mhY" firstAttribute="leading" secondItem="Tam-kx-89C" secondAttribute="leading" id="bR8-y5-ehO"/>
-                <constraint firstAttribute="trailing" secondItem="umi-1E-Ewt" secondAttribute="trailing" constant="83" id="bV2-oZ-NLn"/>
+                <constraint firstAttribute="trailing" secondItem="umi-1E-Ewt" secondAttribute="trailing" constant="36" id="bV2-oZ-NLn" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
+                            <real key="value" value="35"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </constraint>
                 <constraint firstItem="eXT-3r-5ma" firstAttribute="top" secondItem="Dyd-cF-Lyv" secondAttribute="bottom" constant="6" id="deE-qP-eKq"/>
                 <constraint firstAttribute="bottom" secondItem="zuo-Tv-7im" secondAttribute="bottom" constant="32" id="fG6-kr-OEa"/>
                 <constraint firstItem="yWL-VT-RZa" firstAttribute="top" secondItem="eXT-3r-5ma" secondAttribute="bottom" constant="48" id="fcb-0T-nOG"/>
