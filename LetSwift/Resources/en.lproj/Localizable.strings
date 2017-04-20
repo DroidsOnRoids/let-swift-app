@@ -6,3 +6,8 @@
 "ONBOARDING_SPEAKERS_DESCRIPTION" = "Every month talks are presented by speakers from every corner of Poland";
 "ONBOARDING_PRICE_TITLE" = "Completely free";
 "ONBOARDING_PRICE_DESCRIPTION" = "No entry fee, contests, prizes and awesome afterparty";
+"LOGIN_SUBTITLE" = "iOS Developers Meet-up";
+"LOGIN_PURPOSE_DESCRIPTION" = "Login by Facebook to gain 
+full access.";
+"LOGIN_BUTTON_TITLE" = "Login";
+"LOGIN_SKIP_BUTTON_TITLE" = "Skip login";

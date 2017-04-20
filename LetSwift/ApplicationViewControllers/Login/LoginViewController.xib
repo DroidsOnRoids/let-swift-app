@@ -13,6 +13,8 @@
                 <outlet property="animatedGreetingLabel" destination="umi-1E-Ewt" id="PeQ-fG-TAa"/>
                 <outlet property="facebookButton" destination="VpC-JC-mhY" id="cc7-QB-7nN"/>
                 <outlet property="loginPurposeDescription" destination="Tam-kx-89C" id="02o-Z7-7yY"/>
+                <outlet property="loginSubtitleLabel" destination="eXT-3r-5ma" id="Fzd-lD-SkM"/>
+                <outlet property="skipLoginButton" destination="zuo-Tv-7im" id="A1d-A6-XGl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -135,16 +137,16 @@ full access.</string>
                 <constraint firstAttribute="trailing" secondItem="Tam-kx-89C" secondAttribute="trailing" constant="35" id="31s-ZS-vgf" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="15"/>
+                            <real key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="15"/>
+                            <real key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="35"/>
+                            <real key="value" value="102"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="35"/>
+                            <real key="value" value="102"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </constraint>

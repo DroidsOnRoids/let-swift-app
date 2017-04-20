@@ -11,11 +11,13 @@ import UIKit
 protocol LoginViewControllerDelegate: class {
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
 
     @IBOutlet private weak var animatedGreetingLabel: UILabel!
-    @IBOutlet private weak var facebookButton: UIButton!
-    @IBOutlet private weak var loginPurposeDescription: UILabel!
+    @IBOutlet fileprivate weak var facebookButton: UIButton!
+    @IBOutlet fileprivate weak var loginPurposeDescription: UILabel!
+    @IBOutlet fileprivate weak var loginSubtitleLabel: MultiSizeLabel!
+    @IBOutlet fileprivate weak var skipLoginButton: UIButton!
     
     private var viewModel: LoginViewControllerViewModel!
 
@@ -27,18 +29,19 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupLocalization()
         setupViews()
-        loginPurposeDescription.attributedText = loginPurposeDescription.text?.attributed(withSping: 1.0)
     }
     
-    private func setupViews() {
-        facebookButton.showShadow()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         animateLabel()
+    }
+    
+    private func setupViews() {
+        loginPurposeDescription.attributedText = loginPurposeDescription.text?.attributed(withSping: 1.0)
+        facebookButton.showShadow()
     }
 
     private func createPrintAttributedText(_ label: String) -> NSAttributedString {
@@ -53,5 +56,14 @@ class LoginViewController: UIViewController {
         let attributedHello = createPrintAttributedText(randomHello)
 
         RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello).animate()
+    }
+}
+
+extension LoginViewController: Localizable {
+    func setupLocalization() {
+        skipLoginButton.setTitle(localized("LOGIN_SKIP_BUTTON_TITLE").uppercased(), for: [])
+        facebookButton.setTitle(localized("LOGIN_BUTTON_TITLE").uppercased(), for: [])
+        loginPurposeDescription.text = localized("LOGIN_PURPOSE_DESCRIPTION")
+        loginSubtitleLabel.text = localized("LOGIN_SUBTITLE")
     }
 }
