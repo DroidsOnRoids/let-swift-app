@@ -20,6 +20,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet fileprivate weak var skipLoginButton: UIButton!
     
     private var viewModel: LoginViewControllerViewModel!
+    private var labelAnimator: RandomLabelAnimator?
 
     convenience init(viewModel: LoginViewControllerViewModel) {
         self.init()
@@ -64,7 +65,8 @@ final class LoginViewController: UIViewController {
     private func animateLabel(randomHello: String) {
         let attributedHello = createPrintAttributedText(randomHello)
 
-        RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello).animate()
+        labelAnimator = RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello)
+        labelAnimator?.animate()
     }
 }
 
