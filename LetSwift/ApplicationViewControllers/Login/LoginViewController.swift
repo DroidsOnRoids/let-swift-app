@@ -68,6 +68,10 @@ final class LoginViewController: UIViewController {
         labelAnimator = RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello)
         labelAnimator?.animate()
     }
+    
+    @IBAction func facebookLoginButtonTapped(_ sender: AppShadowButton) {
+        FacebookManager.shared.logIn(from: self, callback: viewModel.facebookLoginCallback)
+    }
 }
 
 extension LoginViewController: Localizable {

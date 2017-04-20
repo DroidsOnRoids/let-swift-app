@@ -32,4 +32,8 @@ final class LoginViewControllerViewModel {
             weakSelf.animateWithRandomTextObservable.next(weakSelf.helloWorldVariants.randomElement())
         })
     }
+    
+    func facebookLoginCallback(status: FacebookManager.FacebookLoginStatus) {
+        print(status)
+    }
 }
