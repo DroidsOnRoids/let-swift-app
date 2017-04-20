@@ -15,7 +15,7 @@ final class AppCoordinator: Coordinator {
     }
     
     fileprivate func presentFirstAppController() {
-        !DefaultsManager.shared.isOnboardingCompleted ? presentOnboardingViewController() : presentLoginViewController()
+        DefaultsManager.shared.isOnboardingCompleted ? presentLoginViewController() :presentOnboardingViewController()
     }
     
     fileprivate func presentOnboardingViewController() {

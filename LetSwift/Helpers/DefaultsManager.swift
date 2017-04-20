@@ -10,7 +10,7 @@ import Foundation
 
 final class DefaultsManager: NSObject {
     
-    static var shared = DefaultsManager()
+    static let shared = DefaultsManager()
     private let defaults = UserDefaults.standard
     
     var isOnboardingCompleted: Bool {
