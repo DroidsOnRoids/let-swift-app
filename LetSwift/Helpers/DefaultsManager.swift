@@ -8,19 +8,31 @@
 
 import Foundation
 
-struct DefaultsManager {
+final class DefaultsManager: NSObject {
     
-    private enum DefaultsKeys: String {
-        case onboardingCompleted = "onboardingCompleted"
-    }
-    
+    static var shared = DefaultsManager()
     private let defaults = UserDefaults.standard
     
-    func completeOnboarding() {
-        defaults.set(true, forKey: DefaultsKeys.onboardingCompleted.rawValue)
+    var isOnboardingCompleted: Bool {
+        get {
+            return defaults.bool(forKey: #keyPath(DefaultsManager.isOnboardingCompleted))
+        }
+        set {
+            defaults.set(newValue, forKey: #keyPath(DefaultsManager.isOnboardingCompleted))
+        }
     }
     
-    func isOnboardingCompleted() -> Bool {
-        return defaults.bool(forKey: DefaultsKeys.onboardingCompleted.rawValue)
+    private override init() {
+        super.init()
+    }
+    
+    func clearDefaults() {
+        if let bundle = Bundle.main.bundleIdentifier {
+            defaults.removePersistentDomain(forName: bundle)
+        }
+    }
+    
+    func removeValue(forKey key: String) {
+        defaults.removeObject(forKey: key)
     }
 }

@@ -8,8 +8,6 @@
 
 final class AppCoordinator: Coordinator {
     
-    fileprivate let defaultsManager = DefaultsManager()
-    
     func start() {
         navigationViewController.setNavigationBarHidden(true, animated: false)
         
@@ -17,7 +15,7 @@ final class AppCoordinator: Coordinator {
     }
     
     fileprivate func presentOnboardingViewController() {
-        if !defaultsManager.isOnboardingCompleted() {
+        if !DefaultsManager.shared.isOnboardingCompleted {
             let viewModel = OnboardingViewControllerViewModel(delegate: self)
             let viewController = OnboardingViewController(viewModel: viewModel)
             
@@ -37,7 +35,7 @@ final class AppCoordinator: Coordinator {
 
 extension AppCoordinator: OnboardingViewControllerDelegate {
     func dismissOnboardingViewController() {
-        defaultsManager.completeOnboarding()
+        DefaultsManager.shared.isOnboardingCompleted = true
 
         presentLoginViewController()
     }
