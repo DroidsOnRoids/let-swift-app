@@ -13,9 +13,9 @@ final class RandomLabelAnimator {
     let label: UILabel
     let finalResult: NSAttributedString
     
-    var currentStep = 0
-    var steps = 0
-    var interval = 0.0
+    private var currentStep = 0
+    private var steps = 0
+    private var interval = 0.0
     
     private var randomString: String {
         return (0..<finalResult.length).reduce("") { result, _ in
@@ -53,5 +53,3 @@ final class RandomLabelAnimator {
         }
     }
 }
-
-
