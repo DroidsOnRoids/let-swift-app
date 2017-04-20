@@ -8,6 +8,7 @@
 
 import UIKit
 import HockeySDK
+import FBSDKCoreKit
 
 #if DEBUG
 let isDebugBuild = true
@@ -35,8 +36,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = .swiftOrange
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        
+        FBSDKApplicationDelegate.sharedInstance()
+            .application(application, didFinishLaunchingWithOptions: launchOptions)
 
         return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance()
+            .application(app, open: url, options: options)
     }
 
     private func setupHockeyApp() {
