@@ -2,36 +2,56 @@
 //  RandomLabelAnimator.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 18.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 18.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
 
-struct RandomLabelAnimator {
-
+final class RandomLabelAnimator {
+    
     let label: UILabel
     let finalResult: NSAttributedString
     
+    var currentStep = 0
+    var steps = 0
+    var interval = 0.0
+    
     private var randomString: String {
         return (0..<finalResult.length).reduce("") { result, _ in
-            return result + "\(Character(UnicodeScalar(UInt8(arc4random_uniform(95) + 32))))"
+            result + "\(Character(UnicodeScalar(UInt8(arc4random_uniform(95) + 32))))"
         }
     }
-
+    
+    init(label: UILabel, finalResult: NSAttributedString) {
+        self.label = label
+        self.finalResult = finalResult
+    }
+    
     func animate(withSteps steps: Int = 15, interval: TimeInterval = 0.1) {
-        DispatchQueue.global(qos: .userInteractive).async {
-            (0..<steps).forEach { _ in 
-                DispatchQueue.main.async {
-                    self.label.text = self.randomString
-                }
-
-                Thread.sleep(forTimeInterval: interval)
-            }
-
-            DispatchQueue.main.async {
-                self.label.attributedText = self.finalResult
-            }
+        self.steps = steps
+        self.interval = interval
+        
+        animate()
+    }
+    
+    @objc fileprivate func animate() {
+        if currentStep < steps {
+            currentStep += 1
+            
+            exposeResultToMain(block: { [weak self] _ in self?.label.text = self?.randomString })
+            
+            Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(animate), userInfo: nil, repeats: false)
+        } else {
+            exposeResultToMain(block: { [weak self] _ in self?.label.attributedText = self?.finalResult })
+        }
+    }
+    
+    private func exposeResultToMain(block: @escaping ()->()) {
+        DispatchQueue.main.async {
+            block()
         }
     }
 }
+
+
