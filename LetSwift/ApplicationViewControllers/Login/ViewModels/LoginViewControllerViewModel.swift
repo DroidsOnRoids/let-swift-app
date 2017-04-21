@@ -6,11 +6,15 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
+import Foundation
+
 final class LoginViewControllerViewModel {
 
     var viewWillAppearPerformObservable = Observable<Void>()
     var animateWithRandomTextObservable = Observable<String>("")
-    weak var delegate: LoginViewControllerDelegate?
+    
+    weak var delegate: LoginViewControllerCoordinatorDelegate?
+    weak var viewDelegate: LoginViewControllerDelegate?
     
     private let helloWorldVariants = [
         "Hello world!",
@@ -20,7 +24,7 @@ final class LoginViewControllerViewModel {
         "¡Hola, Mundo!"
     ]
     
-    init(delegate: LoginViewControllerDelegate?) {
+    init(delegate: LoginViewControllerCoordinatorDelegate?) {
         self.delegate = delegate
         
         setup()
@@ -34,6 +38,18 @@ final class LoginViewControllerViewModel {
     }
     
     func facebookLoginCallback(status: FacebookLoginStatus) {
-        // TODO: implement in the next task
+        switch status {
+        case .success:
+            delegate?.facebookLoginCompleted()
+            
+        case let .error(error):
+            viewDelegate?.showFacebookErrorDialog(error: error?.localizedDescription)
+            
+        case .cancelled: break
+        }
+    }
+    
+    @objc func skipButtonTapped() {
+        delegate?.loginHasSkipped()
     }
 }

@@ -10,7 +10,7 @@ import Foundation
 
 final class OnboardingViewControllerViewModel {
 
-    weak var delegate: OnboardingViewControllerDelegate?
+    weak var delegate: OnboardingViewControllerCoordinatorDelegate?
 
     var currentPageObservable = Observable<Int>(0)
     var continueButtonTitleObservable = Observable<String>(localized("ONBOARDING_CONTINUE").uppercased())
@@ -20,7 +20,7 @@ final class OnboardingViewControllerViewModel {
     private let continuesButtonTitles = [localized("ONBOARDING_CONTINUE").uppercased(),
                                          localized("ONBOARDING_FINISH").uppercased()]
 
-    init(delegate: OnboardingViewControllerDelegate?) {
+    init(delegate: OnboardingViewControllerCoordinatorDelegate?) {
         self.delegate = delegate
         
         let cards = [OnboardingCardModel(imageName: "OnboardingMeetups",
@@ -43,7 +43,7 @@ final class OnboardingViewControllerViewModel {
             currentPageObservable.next(currentPageObservable.value + 1)
             detectCountinueButtonTitleChange()
         } else {
-            delegate?.continueButtonDidTap()
+            delegate?.onboardingHasCompleted()
         }
     }
 

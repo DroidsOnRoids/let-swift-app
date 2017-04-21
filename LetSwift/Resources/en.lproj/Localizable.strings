@@ -10,3 +10,4 @@
 "LOGIN_PURPOSE_DESCRIPTION" = "Login by Facebook to gain \nfull access.";
 "LOGIN_BUTTON_TITLE" = "Login";
 "LOGIN_SKIP_BUTTON_TITLE" = "Skip login";
+"LOGIN_FACEBOOK_ERROR" = "Something went wrong";
