@@ -10,7 +10,7 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
     
-    private var shouldShowLoginScreen: Bool {
+    fileprivate var shouldShowLoginScreen: Bool {
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
     }
     
@@ -59,7 +59,7 @@ extension AppCoordinator: OnboardingViewControllerCoordinatorDelegate {
     func onboardingHasCompleted() {
         DefaultsManager.shared.isOnboardingCompleted = true
 
-        presentLoginViewController()
+        shouldShowLoginScreen ? presentLoginViewController() : presentMainController()
     }
 }
 

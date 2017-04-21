@@ -15,6 +15,8 @@ fileprivate struct DebugMenu {
     private let actions = [
         ("Clear all data", clearDataAction),
         ("Reset onboarding", resetOnboardingAction),
+        ("Reset login skip", resetLoginSkipAction),
+        ("Facebook logout", facebookLogoutAction),
         ("Crash app", crashAppAction)
     ]
 
@@ -46,6 +48,15 @@ fileprivate struct DebugMenu {
     private func resetOnboardingAction() {
         DefaultsManager.shared.isOnboardingCompleted = false
         DefaultsManager.shared.forceSynchronize()
+    }
+    
+    private func resetLoginSkipAction() {
+        DefaultsManager.shared.isLoginSkipped = false
+        DefaultsManager.shared.forceSynchronize()
+    }
+    
+    private func facebookLogoutAction() {
+        FacebookManager.shared.logOut()
     }
     
     private func crashAppAction() {
