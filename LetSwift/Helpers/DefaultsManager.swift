@@ -31,7 +31,7 @@ final class DefaultsManager: NSObject {
         defaults.removePersistentDomain(forName: bundle)
     }
     
-    func removeValue(forKey key: String) {
-        defaults.removeObject(forKey: key)
+    func forceSynchronize() {
+        defaults.synchronize()
     }
 }
