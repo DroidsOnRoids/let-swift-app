@@ -32,7 +32,7 @@ final class LoginViewController: UIViewController {
         
         setupLocalization()
         setupViews()
-        setup()
+        setupViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +43,7 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func setup() {
+    private func setupViewModel() {
         viewModel.animateWithRandomTextObservable.subscribe { [weak self] randomHello in
             self?.animateLabel(randomHello: randomHello)
         }
@@ -67,6 +67,10 @@ final class LoginViewController: UIViewController {
 
         labelAnimator = RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello)
         labelAnimator?.animate()
+    }
+    
+    @IBAction private func facebookLoginButtonTapped(_ sender: AppShadowButton) {
+        FacebookManager.shared.logIn(from: self, callback: viewModel.facebookLoginCallback)
     }
 }
 
