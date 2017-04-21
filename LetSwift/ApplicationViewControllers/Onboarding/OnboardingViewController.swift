@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol OnboardingViewControllerDelegate: class {
-    func continueButtonDidTap()
+protocol OnboardingViewControllerCoordinatorDelegate: class {
+    func onboardingHasCompleted()
 }
 
 final class OnboardingViewController: UIViewController {

@@ -10,6 +10,10 @@ import UIKit
 
 final class AppCoordinator: Coordinator {
     
+    private var shouldShowLoginScreen: Bool {
+        return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
+    }
+    
     func start() {
         navigationViewController.setNavigationBarHidden(true, animated: false)
         
@@ -21,7 +25,13 @@ final class AppCoordinator: Coordinator {
     }
     
     fileprivate func presentFirstAppController() {
-        DefaultsManager.shared.isOnboardingCompleted ? presentLoginViewController() : presentOnboardingViewController()
+        if !DefaultsManager.shared.isOnboardingCompleted {
+            presentOnboardingViewController()
+        } else if shouldShowLoginScreen {
+            presentLoginViewController()
+        } else {
+            presentMainController()
+        }
     }
     
     fileprivate func presentOnboardingViewController() {
@@ -45,13 +55,22 @@ final class AppCoordinator: Coordinator {
     }
 }
 
-extension AppCoordinator: OnboardingViewControllerDelegate {
-    func continueButtonDidTap() {
+extension AppCoordinator: OnboardingViewControllerCoordinatorDelegate {
+    func onboardingHasCompleted() {
         DefaultsManager.shared.isOnboardingCompleted = true
 
         presentLoginViewController()
     }
 }
 
-extension AppCoordinator: LoginViewControllerDelegate {
+extension AppCoordinator: LoginViewControllerCoordinatorDelegate {
+    func facebookLoginCompleted() {
+        presentMainController()
+    }
+    
+    func loginHasSkipped() {
+        DefaultsManager.shared.isLoginSkipped = true
+        
+        presentMainController()
+    }
 }
