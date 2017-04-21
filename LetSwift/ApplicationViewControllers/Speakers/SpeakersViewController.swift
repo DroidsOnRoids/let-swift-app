@@ -10,7 +10,4 @@ import UIKit
 
 final class SpeakersViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }

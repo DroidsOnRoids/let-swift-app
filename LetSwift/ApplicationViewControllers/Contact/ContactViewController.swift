@@ -10,7 +10,4 @@ import UIKit
 
 final class ContactViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 }
