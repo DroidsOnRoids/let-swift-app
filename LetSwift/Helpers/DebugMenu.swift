@@ -45,6 +45,7 @@ fileprivate struct DebugMenu {
     
     private func resetOnboardingAction() {
         DefaultsManager.shared.isOnboardingCompleted = false
+        DefaultsManager.shared.forceSynchronize()
     }
     
     private func crashAppAction() {

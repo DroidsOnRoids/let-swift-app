@@ -19,7 +19,6 @@ final class DefaultsManager: NSObject {
         }
         set {
             defaults.set(newValue, forKey: #keyPath(DefaultsManager.isOnboardingCompleted))
-            defaults.synchronize()
         }
     }
     
@@ -30,5 +29,9 @@ final class DefaultsManager: NSObject {
     func clearDefaults() {
         guard let bundle = Bundle.main.bundleIdentifier else { return }
         defaults.removePersistentDomain(forName: bundle)
+    }
+    
+    func forceSynchronize() {
+        defaults.synchronize()
     }
 }
