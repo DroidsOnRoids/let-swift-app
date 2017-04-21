@@ -34,6 +34,6 @@ final class LoginViewControllerViewModel {
     }
     
     func facebookLoginCallback(status: FacebookLoginStatus) {
-        print(status)
+        // TODO: implement in the next task
     }
 }
