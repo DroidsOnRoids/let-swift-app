@@ -116,6 +116,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7E7E41301EAA6332001DB179 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7E7E41311EAA633E001DB179 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,6 +272,8 @@
 		D33F07211EA9E8E000A74B9F /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				7E7E41311EAA633E001DB179 /* Views */,
+				7E7E41301EAA6332001DB179 /* ViewModels */,
 				D33F07241EA9E93D00A74B9F /* EventsViewController.swift */,
 				D33F07251EA9E93D00A74B9F /* EventsViewController.xib */,
 			);
