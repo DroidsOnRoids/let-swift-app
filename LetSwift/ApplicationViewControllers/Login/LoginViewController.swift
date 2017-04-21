@@ -69,7 +69,7 @@ final class LoginViewController: UIViewController {
         labelAnimator?.animate()
     }
     
-    @IBAction func facebookLoginButtonTapped(_ sender: AppShadowButton) {
+    @IBAction private func facebookLoginButtonTapped(_ sender: AppShadowButton) {
         FacebookManager.shared.logIn(from: self, callback: viewModel.facebookLoginCallback)
     }
 }

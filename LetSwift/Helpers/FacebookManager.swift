@@ -14,13 +14,15 @@ enum FacebookLoginStatus {
     case cancelled
 }
 
-struct FacebookManager {
+final class FacebookManager {
     
-    static var shared = FacebookManager()
+    static let shared = FacebookManager()
     private let loginManager = FBSDKLoginManager()
     
     private let readPermissions = [String]()
     private let publishPermissions = [String]()
+    
+    private init() {}
     
     var isLoggedIn: Bool {
         return FBSDKAccessToken.current() != nil
@@ -37,12 +39,12 @@ struct FacebookManager {
             }
         }
         
-        if !publishPermissions.isEmpty {
-            loginManager.logIn(withPublishPermissions: publishPermissions,
+        if publishPermissions.isEmpty {
+            loginManager.logIn(withReadPermissions: readPermissions,
                                from: viewController,
                                handler: handler)
         } else {
-            loginManager.logIn(withReadPermissions: readPermissions,
+            loginManager.logIn(withPublishPermissions: publishPermissions,
                                from: viewController,
                                handler: handler)
         }
