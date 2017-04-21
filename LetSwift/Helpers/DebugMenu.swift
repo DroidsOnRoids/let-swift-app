@@ -38,18 +38,16 @@ fileprivate struct DebugMenu {
             viewController.present(alertController, animated: true)
         }
     }
-}
-
-extension DebugMenu {
-    fileprivate func clearDataAction() {
+    
+    private func clearDataAction() {
         DefaultsManager.shared.clearDefaults()
     }
     
-    fileprivate func resetOnboardingAction() {
+    private func resetOnboardingAction() {
         DefaultsManager.shared.isOnboardingCompleted = false
     }
     
-    fileprivate func crashAppAction() {
+    private func crashAppAction() {
         fatalError("Crashed manually from debug menu")
     }
 }
