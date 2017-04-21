@@ -33,7 +33,7 @@ final class LoginViewControllerViewModel {
         })
     }
     
-    func facebookLoginCallback(status: FacebookManager.FacebookLoginStatus) {
+    func facebookLoginCallback(status: FacebookLoginStatus) {
         print(status)
     }
 }

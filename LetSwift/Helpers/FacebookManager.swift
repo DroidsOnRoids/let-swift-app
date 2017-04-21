@@ -8,6 +8,12 @@
 
 import FBSDKLoginKit
 
+enum FacebookLoginStatus {
+    case success(FBSDKLoginManagerLoginResult)
+    case error(Error?)
+    case cancelled
+}
+
 struct FacebookManager {
     
     static var shared = FacebookManager()
@@ -16,27 +22,18 @@ struct FacebookManager {
     private let readPermissions = [String]()
     private let publishPermissions = [String]()
     
-    enum FacebookLoginStatus {
-        case success
-        case error
-        case cancelled
-    }
-    
     var isLoggedIn: Bool {
         return FBSDKAccessToken.current() != nil
     }
     
     func logIn(from viewController: UIViewController, callback: ((FacebookLoginStatus) -> Void)?) {
         let handler = { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
-            if error != nil {
-                callback?(.error)
+            if let error = error {
+                callback?(.error(error))
+            } else if let result = result {
+                result.isCancelled ? callback?(.cancelled) : callback?(.success(result))
             } else {
-                // according to the documentation, result is never nil
-                if result!.isCancelled {
-                    callback?(.cancelled)
-                } else {
-                    callback?(.success)
-                }
+                callback?(.error(nil))
             }
         }
         

@@ -32,7 +32,7 @@ final class LoginViewController: UIViewController {
         
         setupLocalization()
         setupViews()
-        setup()
+        setupViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +43,7 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func setup() {
+    private func setupViewModel() {
         viewModel.animateWithRandomTextObservable.subscribe { [weak self] randomHello in
             self?.animateLabel(randomHello: randomHello)
         }
