@@ -1,14 +1,29 @@
 PODS:
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
+  - FBSDKCoreKit (4.22.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.22.0):
+    - FBSDKCoreKit
   - HockeySDK (4.1.4):
     - HockeySDK/DefaultLib (= 4.1.4)
   - HockeySDK/DefaultLib (4.1.4)
 
 DEPENDENCIES:
+  - FBSDKCoreKit (~> 4.22)
+  - FBSDKLoginKit (~> 4.22)
   - HockeySDK (~> 4.1)
 
 SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
+  FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
   HockeySDK: 78a3f8bb9100277b531defc56c970369a3ca267a
 
-PODFILE CHECKSUM: 9bc489df61b61d33e2cf6461c77d38d4af69c921
+PODFILE CHECKSUM: 4e682858095f2c5e1034ac255ff7fb7de92ff92b
 
 COCOAPODS: 1.2.0

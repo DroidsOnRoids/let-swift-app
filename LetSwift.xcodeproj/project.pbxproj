@@ -14,7 +14,15 @@
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
+		D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CBB81EA8BA44000E9585 /* FacebookManager.swift */; };
 		D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C4A281E9CD6320052E793 /* Localizable.swift */; };
+		D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07241EA9E93D00A74B9F /* EventsViewController.swift */; };
+		D33F07271EA9E93D00A74B9F /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F07251EA9E93D00A74B9F /* EventsViewController.xib */; };
+		D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07281EA9E94D00A74B9F /* SpeakersViewController.swift */; };
+		D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F07291EA9E94D00A74B9F /* SpeakersViewController.xib */; };
+		D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07311EA9EA2700A74B9F /* ContactViewController.swift */; };
+		D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F07321EA9EA2700A74B9F /* ContactViewController.xib */; };
+		D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */; };
 		D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */; };
 		D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A01EA7330C00C05AA6 /* LoginViewController.swift */; };
 		D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35839A11EA7330C00C05AA6 /* LoginViewController.xib */; };
@@ -50,7 +58,15 @@
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		D338CBB81EA8BA44000E9585 /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookManager.swift; sourceTree = "<group>"; };
 		D33C4A281E9CD6320052E793 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
+		D33F07241EA9E93D00A74B9F /* EventsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
+		D33F07251EA9E93D00A74B9F /* EventsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
+		D33F07281EA9E94D00A74B9F /* SpeakersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersViewController.swift; sourceTree = "<group>"; };
+		D33F07291EA9E94D00A74B9F /* SpeakersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersViewController.xib; sourceTree = "<group>"; };
+		D33F07311EA9EA2700A74B9F /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		D33F07321EA9EA2700A74B9F /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
+		D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringHelper.swift; sourceTree = "<group>"; };
 		D35839A01EA7330C00C05AA6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D35839A11EA7330C00C05AA6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -105,6 +121,10 @@
 			children = (
 				D319AD7A1EA60F67001ECE0B /* Login */,
 				D3337CB91E9E0D1100746A50 /* Onboarding */,
+				D33F07211EA9E8E000A74B9F /* Events */,
+				D33F07221EA9E8F600A74B9F /* Speakers */,
+				D33F07231EA9E8FC00A74B9F /* Contact */,
+				D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */,
 			);
 			path = ApplicationViewControllers;
 			sourceTree = "<group>";
@@ -153,6 +173,7 @@
 				D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */,
 				D397ED881EA7BE14002141E8 /* DefaultsManager.swift */,
 				D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */,
+				D338CBB81EA8BA44000E9585 /* FacebookManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -232,6 +253,33 @@
 				D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D33F07211EA9E8E000A74B9F /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				D33F07241EA9E93D00A74B9F /* EventsViewController.swift */,
+				D33F07251EA9E93D00A74B9F /* EventsViewController.xib */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		D33F07221EA9E8F600A74B9F /* Speakers */ = {
+			isa = PBXGroup;
+			children = (
+				D33F07281EA9E94D00A74B9F /* SpeakersViewController.swift */,
+				D33F07291EA9E94D00A74B9F /* SpeakersViewController.xib */,
+			);
+			path = Speakers;
+			sourceTree = "<group>";
+		};
+		D33F07231EA9E8FC00A74B9F /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				D33F07311EA9EA2700A74B9F /* ContactViewController.swift */,
+				D33F07321EA9EA2700A74B9F /* ContactViewController.xib */,
+			);
+			path = Contact;
 			sourceTree = "<group>";
 		};
 		D38B14B81E9F6A6A009EA346 /* Views */ = {
@@ -374,10 +422,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
+				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
+				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
+				D33F07271EA9E93D00A74B9F /* EventsViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 			);
@@ -451,6 +502,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
 				D3FF3F901E9F577B00501F44 /* Coordinator.swift in Sources */,
 				D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */,
 				D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */,
@@ -461,8 +513,12 @@
 				D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
+				D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */,
+				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
+				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
+				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
 				7E7E412C1EA89FD7001DB179 /* UIButtonExtension.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
