@@ -31,7 +31,6 @@ final class TabBarViewController: UITabBarController {
     private func setupTabBar() {
         tabBar.clipsToBounds = true
         tabBar.itemPositioning = .centered
-        
     }
     
     private func setupTabs(controllers: [UIViewController]) {

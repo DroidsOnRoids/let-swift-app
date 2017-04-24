@@ -45,7 +45,7 @@ final class LoginViewControllerViewModel {
         case let .error(error):
             viewDelegate?.showFacebookErrorDialog(error: error?.localizedDescription)
             
-        case .cancelled: break
+        default: break
         }
     }
     

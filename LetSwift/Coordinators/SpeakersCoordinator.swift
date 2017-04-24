@@ -1,5 +1,5 @@
 //
-//  SpeakresCoordinator.swift
+//  SpeakersCoordinator.swift
 //  LetSwift
 //
 //  Created by Kinga Wilczek on 21.04.2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpeakresCoordinator: Coordinator, Startable {
+final class SpeakersCoordinator: Coordinator, Startable {
     
     func start() {
         let controller = SpeakersViewController()
