@@ -10,4 +10,37 @@ import UIKit
 
 final class EventsViewController: UIViewController {
     
+    @IBOutlet private weak var tableView: UITableView!
+    
+    private var viewModel: EventsViewControllerViewModel!
+
+    convenience init(viewModel: EventsViewControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setup()
+    }
+
+    private func setup() {
+        setupDelegates()
+    }
+
+    private func setupDelegates() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+}
+
+extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
 }

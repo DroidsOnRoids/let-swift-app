@@ -1,5 +1,5 @@
 //
-//  Photo.swift
+//  EventsViewControllerViewModel.swift
 //  LetSwift
 //
 //  Created by Kinga Wilczek on 24.04.2017.
@@ -8,8 +8,7 @@
 
 import Foundation
 
-final class Photo {
+final class EventsViewControllerViewModel {
 
-    var thumbnail: String?
-    var full: String?
+    var viewWillAppearPerformObservable = Observable<Void>()
 }

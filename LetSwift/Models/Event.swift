@@ -9,7 +9,7 @@
 import Foundation
 import CoreLocation
 
-class Event {
+final class Event {
 
     var id: Int?
 

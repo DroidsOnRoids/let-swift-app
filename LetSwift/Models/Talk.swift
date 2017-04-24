@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Talk {
+final class Talk {
 
     var title: String?
     var description: String?
