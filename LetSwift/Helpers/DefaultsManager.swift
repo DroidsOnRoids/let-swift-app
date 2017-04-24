@@ -22,6 +22,15 @@ final class DefaultsManager: NSObject {
         }
     }
     
+    var isLoginSkipped: Bool {
+        get {
+            return defaults.bool(forKey: #keyPath(DefaultsManager.isLoginSkipped))
+        }
+        set {
+            defaults.set(newValue, forKey: #keyPath(DefaultsManager.isLoginSkipped))
+        }
+    }
+    
     private override init() {
         super.init()
     }
@@ -31,7 +40,7 @@ final class DefaultsManager: NSObject {
         defaults.removePersistentDomain(forName: bundle)
     }
     
-    func forceSynchronize() {
+    func synchronize() {
         defaults.synchronize()
     }
 }

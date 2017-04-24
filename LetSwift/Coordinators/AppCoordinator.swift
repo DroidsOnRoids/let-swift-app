@@ -8,7 +8,11 @@
 
 import UIKit
 
-final class AppCoordinator: Coordinator {
+final class AppCoordinator: Coordinator, Startable {
+    
+    fileprivate var shouldShowLoginScreen: Bool {
+        return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
+    }
     
     func start() {
         navigationViewController.setNavigationBarHidden(true, animated: false)
@@ -21,7 +25,13 @@ final class AppCoordinator: Coordinator {
     }
     
     fileprivate func presentFirstAppController() {
-        DefaultsManager.shared.isOnboardingCompleted ? presentLoginViewController() : presentOnboardingViewController()
+        if !DefaultsManager.shared.isOnboardingCompleted {
+            presentOnboardingViewController()
+        } else if shouldShowLoginScreen {
+            presentLoginViewController()
+        } else {
+            presentMainController()
+        }
     }
     
     fileprivate func presentOnboardingViewController() {
@@ -39,19 +49,39 @@ final class AppCoordinator: Coordinator {
     }
     
     fileprivate func presentMainController() {
-        let viewController = TabBarViewController()
+        let coordinators = [
+            EventsCoordinator(navigationController: UINavigationController()),
+            SpeakersCoordinator(navigationController: UINavigationController()),
+            ContactCoordinator(navigationController: UINavigationController())
+        ]
+        
+        coordinators.forEach {
+            ($0 as! Startable).start()
+            self.childCoordinators.append($0)
+        }
+
+        let viewController = TabBarViewController(controllers: coordinators.map({ ($0).navigationViewController }))
         
         present(viewController: viewController)
     }
 }
 
-extension AppCoordinator: OnboardingViewControllerDelegate {
-    func continueButtonDidTap() {
+extension AppCoordinator: OnboardingViewControllerCoordinatorDelegate {
+    func onboardingHasCompleted() {
         DefaultsManager.shared.isOnboardingCompleted = true
 
-        presentLoginViewController()
+        shouldShowLoginScreen ? presentLoginViewController() : presentMainController()
     }
 }
 
-extension AppCoordinator: LoginViewControllerDelegate {
+extension AppCoordinator: LoginViewControllerCoordinatorDelegate {
+    func facebookLoginCompleted() {
+        presentMainController()
+    }
+    
+    func loginHasSkipped() {
+        DefaultsManager.shared.isLoginSkipped = true
+        
+        presentMainController()
+    }
 }

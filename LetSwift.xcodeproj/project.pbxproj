@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7E7E412C1EA89FD7001DB179 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */; };
 		7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */; };
+		7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */; };
+		7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */; };
+		7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */; };
+		7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D441EADC12C00CEC845 /* Startable.swift */; };
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
@@ -53,6 +57,10 @@
 		618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShadowButton.swift; sourceTree = "<group>"; };
+		7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
+		7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersCoordinator.swift; sourceTree = "<group>"; };
+		7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCoordinator.swift; sourceTree = "<group>"; };
+		7EA48D441EADC12C00CEC845 /* Startable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Startable.swift; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -116,6 +124,20 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7E7E41301EAA6332001DB179 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7E7E41311EAA633E001DB179 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +156,9 @@
 			children = (
 				D3FF3F8F1E9F577B00501F44 /* Coordinator.swift */,
 				D3FF3F911E9F57DE00501F44 /* AppCoordinator.swift */,
+				7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */,
+				7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */,
+				7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -196,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				D33C4A281E9CD6320052E793 /* Localizable.swift */,
+				7EA48D441EADC12C00CEC845 /* Startable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -258,6 +284,8 @@
 		D33F07211EA9E8E000A74B9F /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				7E7E41311EAA633E001DB179 /* Views */,
+				7E7E41301EAA6332001DB179 /* ViewModels */,
 				D33F07241EA9E93D00A74B9F /* EventsViewController.swift */,
 				D33F07251EA9E93D00A74B9F /* EventsViewController.xib */,
 			);
@@ -502,20 +530,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */,
 				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
 				D3FF3F901E9F577B00501F44 /* Coordinator.swift in Sources */,
 				D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */,
 				D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
+				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
 				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
 				D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */,
 				D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
+				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
 				D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */,
 				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
+				7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
