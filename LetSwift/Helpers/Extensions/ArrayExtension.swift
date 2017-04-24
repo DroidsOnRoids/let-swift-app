@@ -12,4 +12,9 @@ extension Array {
     func randomElement() -> Element {
         return self[Int(arc4random_uniform(UInt32(self.count)))]
     }
+    
+    subscript(safe safe: Index) -> Element? {
+        guard safe < count else { return nil }
+        return self[safe]
+    }
 }

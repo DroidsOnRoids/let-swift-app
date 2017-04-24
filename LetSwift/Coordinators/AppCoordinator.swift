@@ -49,7 +49,18 @@ final class AppCoordinator: Coordinator {
     }
     
     fileprivate func presentMainController() {
-        let viewController = TabBarViewController()
+        let coordinators = [
+            EventsCoordinator(navigationController: UINavigationController()),
+            SpeakresCoordinator(navigationController: UINavigationController()),
+            ContactCoordinator(navigationController: UINavigationController())
+        ]
+        
+        coordinators.forEach {
+            ($0 as! Startable).start()
+            self.childCoordinators.append($0)
+        }
+
+        let viewController = TabBarViewController(controllers: coordinators.map({ ($0).navigationViewController }))
         
         present(viewController: viewController)
     }
