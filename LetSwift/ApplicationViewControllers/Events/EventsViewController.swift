@@ -10,4 +10,21 @@ import UIKit
 
 final class EventsViewController: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupLocalization()
+        setupViews()
+    }
+    
+    private func setupViews() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem?.tintColor = .black
+    }
+}
+
+extension EventsViewController: Localizable {
+    func setupLocalization() {
+        title = localized("EVENTS_TITLE").uppercased()
+    }
 }
