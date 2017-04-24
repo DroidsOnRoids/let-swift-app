@@ -8,23 +8,17 @@
 
 import UIKit
 
-final class EventsViewController: UIViewController {
+final class EventsViewController: AppViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupLocalization()
-        setupViews()
+    override func viewControllerTitleKey() -> String? {
+        return "EVENTS_TITLE"
     }
     
-    private func setupViews() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem?.tintColor = .black
+    override func shouldShowUserIcon() -> Bool {
+        return true
     }
-}
-
-extension EventsViewController: Localizable {
-    func setupLocalization() {
-        title = localized("EVENTS_TITLE").uppercased()
+    
+    override func shouldHideShadow() -> Bool {
+        return true
     }
 }
