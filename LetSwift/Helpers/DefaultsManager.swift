@@ -40,7 +40,7 @@ final class DefaultsManager: NSObject {
         defaults.removePersistentDomain(forName: bundle)
     }
     
-    func forceSynchronize() {
+    func synchronize() {
         defaults.synchronize()
     }
 }

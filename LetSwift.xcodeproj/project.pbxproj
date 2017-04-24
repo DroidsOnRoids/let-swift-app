@@ -10,7 +10,7 @@
 		7E7E412C1EA89FD7001DB179 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */; };
 		7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */; };
 		7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */; };
-		7E7E41351EAA6780001DB179 /* SpeakresCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41341EAA6780001DB179 /* SpeakresCoordinator.swift */; };
+		7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */; };
 		7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */; };
 		7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D441EADC12C00CEC845 /* Startable.swift */; };
 		7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */; };
@@ -63,7 +63,7 @@
 		7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShadowButton.swift; sourceTree = "<group>"; };
 		7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
-		7E7E41341EAA6780001DB179 /* SpeakresCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakresCoordinator.swift; sourceTree = "<group>"; };
+		7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersCoordinator.swift; sourceTree = "<group>"; };
 		7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCoordinator.swift; sourceTree = "<group>"; };
 		7EA48D441EADC12C00CEC845 /* Startable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Startable.swift; sourceTree = "<group>"; };
 		7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectiveShadowView.swift; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 				D3FF3F8F1E9F577B00501F44 /* Coordinator.swift */,
 				D3FF3F911E9F57DE00501F44 /* AppCoordinator.swift */,
 				7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */,
-				7E7E41341EAA6780001DB179 /* SpeakresCoordinator.swift */,
+				7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */,
 				7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -563,8 +563,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E7E41351EAA6780001DB179 /* SpeakresCoordinator.swift in Sources */,
 				7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */,
+				7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */,
 				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
 				D3FF3F901E9F577B00501F44 /* Coordinator.swift in Sources */,
 				D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */,

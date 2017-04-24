@@ -14,7 +14,6 @@ extension Array {
     }
     
     subscript(safe safe: Index) -> Element? {
-        guard safe < count else { return nil }
-        return self[safe]
+        return indices.contains(safe) ? self[safe] : nil
     }
 }

@@ -47,12 +47,12 @@ fileprivate struct DebugMenu {
     
     private func resetOnboardingAction() {
         DefaultsManager.shared.isOnboardingCompleted = false
-        DefaultsManager.shared.forceSynchronize()
+        DefaultsManager.shared.synchronize()
     }
     
     private func resetLoginSkipAction() {
         DefaultsManager.shared.isLoginSkipped = false
-        DefaultsManager.shared.forceSynchronize()
+        DefaultsManager.shared.synchronize()
     }
     
     private func facebookLogoutAction() {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AppCoordinator: Coordinator {
+final class AppCoordinator: Coordinator, Startable {
     
     fileprivate var shouldShowLoginScreen: Bool {
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
@@ -51,7 +51,7 @@ final class AppCoordinator: Coordinator {
     fileprivate func presentMainController() {
         let coordinators = [
             EventsCoordinator(navigationController: UINavigationController()),
-            SpeakresCoordinator(navigationController: UINavigationController()),
+            SpeakersCoordinator(navigationController: UINavigationController()),
             ContactCoordinator(navigationController: UINavigationController())
         ]
         

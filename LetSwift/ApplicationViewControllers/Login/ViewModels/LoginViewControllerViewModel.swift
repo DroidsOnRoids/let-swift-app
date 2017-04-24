@@ -16,13 +16,15 @@ final class LoginViewControllerViewModel {
     weak var delegate: LoginViewControllerCoordinatorDelegate?
     weak var viewDelegate: LoginViewControllerDelegate?
     
-    private let helloWorldVariants = [
-        "Hello world!",
-        "Bonjour le monde!",
-        "Halo Welt!",
-        "Witaj świecie!",
-        "¡Hola, Mundo!"
-    ]
+    private enum Constants {
+        static let helloWorldVariants = [
+            "Hello world!",
+            "Bonjour le monde!",
+            "Halo Welt!",
+            "Witaj świecie!",
+            "¡Hola, Mundo!"
+        ]
+    }
     
     init(delegate: LoginViewControllerCoordinatorDelegate?) {
         self.delegate = delegate
@@ -33,7 +35,7 @@ final class LoginViewControllerViewModel {
     private func setup() {
         viewWillAppearPerformObservable.subscribe(onNext: { [weak self] in
             guard let weakSelf = self else { return }
-            weakSelf.animateWithRandomTextObservable.next(weakSelf.helloWorldVariants.randomElement())
+            weakSelf.animateWithRandomTextObservable.next(Constants.helloWorldVariants.randomElement())
         })
     }
     
@@ -41,11 +43,9 @@ final class LoginViewControllerViewModel {
         switch status {
         case .success:
             delegate?.facebookLoginCompleted()
-            
         case let .error(error):
             viewDelegate?.showFacebookErrorDialog(error: error?.localizedDescription)
-            
-        case .cancelled: break
+        default: break
         }
     }
     

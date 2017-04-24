@@ -54,9 +54,11 @@ final class LoginViewController: UIViewController {
         
         skipLoginButton.addTarget(viewModel, action: #selector(LoginViewControllerViewModel.skipButtonTapped), for: .touchUpInside)
         
-        viewModel.animateWithRandomTextObservable.subscribe { [weak self] randomHello in
-            self?.animateLabel(randomHello: randomHello)
-        }
+        viewModel
+            .animateWithRandomTextObservable
+            .subscribe { [weak self] randomHello in
+                self?.animateLabel(randomHello: randomHello)
+            }
     }
     
     private func setupViews() {
