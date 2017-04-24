@@ -43,10 +43,8 @@ final class LoginViewControllerViewModel {
         switch status {
         case .success:
             delegate?.facebookLoginCompleted()
-            
         case let .error(error):
             viewDelegate?.showFacebookErrorDialog(error: error?.localizedDescription)
-            
         default: break
         }
     }
