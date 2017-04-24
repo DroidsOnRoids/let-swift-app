@@ -13,6 +13,10 @@
 		7E7E41351EAA6780001DB179 /* SpeakresCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41341EAA6780001DB179 /* SpeakresCoordinator.swift */; };
 		7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */; };
 		7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D441EADC12C00CEC845 /* Startable.swift */; };
+		7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */; };
+		7EA48D4F1EADD4CE00CEC845 /* shadowMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D4E1EADD4CE00CEC845 /* shadowMask.png */; };
+		7EA48D531EADD53D00CEC845 /* StaticImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D511EADD53D00CEC845 /* StaticImageTableViewCell.swift */; };
+		7EA48D541EADD53D00CEC845 /* StaticImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D521EADD53D00CEC845 /* StaticImageTableViewCell.xib */; };
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
@@ -61,6 +65,10 @@
 		7E7E41341EAA6780001DB179 /* SpeakresCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakresCoordinator.swift; sourceTree = "<group>"; };
 		7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCoordinator.swift; sourceTree = "<group>"; };
 		7EA48D441EADC12C00CEC845 /* Startable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Startable.swift; sourceTree = "<group>"; };
+		7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectiveShadowView.swift; sourceTree = "<group>"; };
+		7EA48D4E1EADD4CE00CEC845 /* shadowMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadowMask.png; sourceTree = "<group>"; };
+		7EA48D511EADD53D00CEC845 /* StaticImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageTableViewCell.swift; sourceTree = "<group>"; };
+		7EA48D521EADD53D00CEC845 /* StaticImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticImageTableViewCell.xib; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -134,8 +142,27 @@
 		7E7E41311EAA633E001DB179 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EA48D461EADD35D00CEC845 /* StaticImageCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7EA48D461EADD35D00CEC845 /* StaticImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EA48D511EADD53D00CEC845 /* StaticImageTableViewCell.swift */,
+				7EA48D521EADD53D00CEC845 /* StaticImageTableViewCell.xib */,
+			);
+			path = StaticImageCell;
+			sourceTree = "<group>";
+		};
+		7EA48D4B1EADD47F00CEC845 /* ReflectiveShadowView */ = {
+			isa = PBXGroup;
+			children = (
+				7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */,
+				7EA48D4E1EADD4CE00CEC845 /* shadowMask.png */,
+			);
+			name = ReflectiveShadowView;
 			sourceTree = "<group>";
 		};
 		7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */ = {
@@ -181,6 +208,7 @@
 		7EECA5A91E9B5EB300B3F724 /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
+				7EA48D4B1EADD47F00CEC845 /* ReflectiveShadowView */,
 				D38B14BD1E9F6C62009EA346 /* DesignableView.swift */,
 				7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */,
 			);
@@ -452,6 +480,7 @@
 				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */,
+				7EA48D541EADD53D00CEC845 /* StaticImageTableViewCell.xib in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
@@ -459,6 +488,7 @@
 				D33F07271EA9E93D00A74B9F /* EventsViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
+				7EA48D4F1EADD4CE00CEC845 /* shadowMask.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +561,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7E7E41351EAA6780001DB179 /* SpeakresCoordinator.swift in Sources */,
+				7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */,
 				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
 				D3FF3F901E9F577B00501F44 /* Coordinator.swift in Sources */,
 				D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */,
@@ -560,6 +591,7 @@
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,
 				7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */,
+				7EA48D531EADD53D00CEC845 /* StaticImageTableViewCell.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 				D3FF3F8E1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift in Sources */,
 			);
