@@ -12,10 +12,17 @@ import CoreLocation
 class Event {
 
     var id: Int?
-    var title: String?
+
     var date: Date?
+
+    var title: String?
     var facebook: String?
     var placeName: String?
     var placeStreet: String?
+
+    var coverPhotos: [String] = []
+    var photos: [Photo] = []
+    var talks: [Talk] = []
+
     var placeCoordinates: CLLocationCoordinate2D?
 }
