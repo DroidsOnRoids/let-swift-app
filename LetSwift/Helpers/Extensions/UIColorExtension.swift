@@ -21,4 +21,8 @@ extension UIColor {
     static var coolGrey: UIColor {
         return #colorLiteral(red: 0.6196078431, green: 0.6392156863, blue: 0.6705882353, alpha: 1)
     }
+    
+    static var highlightedBlack: UIColor {
+        return #colorLiteral(red: 0.03137254902, green: 0.1450980392, blue: 0.2078431373, alpha: 1)
+    }
 }

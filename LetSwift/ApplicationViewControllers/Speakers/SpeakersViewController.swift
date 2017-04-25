@@ -8,6 +8,17 @@
 
 import UIKit
 
-final class SpeakersViewController: UIViewController {
+final class SpeakersViewController: AppViewController {
     
+    override func viewControllerTitleKey() -> String? {
+        return "SPEAKERS_TITLE"
+    }
+    
+    override func shouldShowUserIcon() -> Bool {
+        return true
+    }
+    
+    override func shouldHideShadow() -> Bool {
+        return true
+    }
 }
