@@ -38,9 +38,10 @@ final class OnboardingViewController: UIViewController {
 
         viewModel.currentPageObservable.subscribe(onNext: { [unowned self] page in
             let xOffset = self.scrollView.contentOffset.x
-
-            if xOffset.truncatingRemainder(dividingBy: self.scrollView.frame.size.width) == 0 {
-                let xPosition = CGFloat(page) * self.scrollView.frame.size.width
+            let singleWidth = self.scrollView.frame.size.width
+            
+            if xOffset >= 0 && xOffset <= self.scrollView.contentSize.width - singleWidth {
+                let xPosition = CGFloat(page) * singleWidth
 
                 self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
                 self.onboardingPageControl.currentPage = page
