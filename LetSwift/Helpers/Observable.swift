@@ -25,13 +25,11 @@ struct Observable<Element> {
     init(_ value: Element) {
         self.value = value
     }
-    
-    mutating func subscribeWithPrevious(onNext: @escaping NextObserver) {
-        onNext(value)
-        nextObservers.append(onNext)
-    }
-    
-    mutating func subscribe(onNext: @escaping NextObserver) {
+
+    mutating func subscribe(startsWithInitialValue: Bool = false, onNext: @escaping NextObserver) {
+        if startsWithInitialValue {
+            onNext(value)
+        }
         nextObservers.append(onNext)
     }
     

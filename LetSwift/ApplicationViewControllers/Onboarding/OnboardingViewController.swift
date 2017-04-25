@@ -46,17 +46,17 @@ final class OnboardingViewController: UIViewController {
                 self.onboardingPageControl.currentPage = page
             }
         })
-        
-        viewModel.continueButtonTitleObservable.subscribeWithPrevious(onNext: { [unowned self] title in
+
+        viewModel.continueButtonTitleObservable.subscribe(startsWithInitialValue: true) { [unowned self] title in
             self.continueButton.setTitle(title, for: [])
-        })
+        }
         
-        viewModel.onboardingCardsObservable.subscribeWithPrevious(onNext: { [unowned self] cards in
+        viewModel.onboardingCardsObservable.subscribe(startsWithInitialValue: true)  { [unowned self] cards in
             DispatchQueue.main.async {
                 self.setupScrollView(with: cards)
                 self.onboardingPageControl.numberOfPages = cards.count
             }
-        })
+        }
     }
     
     private func setupScrollView(with cards: [OnboardingCardModel]) {
