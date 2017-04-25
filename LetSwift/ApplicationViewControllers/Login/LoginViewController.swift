@@ -69,9 +69,9 @@ final class LoginViewController: UIViewController {
 
     private func createPrintAttributedText(_ label: String) -> NSAttributedString {
         return "print".attributed(withColor: .swiftOrange) +
-            "(”".attributed(withColor: .coolGrey) +
+            "(\"".attributed(withColor: .coolGrey) +
             label.attributed() +
-            "”)".attributed(withColor: .coolGrey)
+            "\")".attributed(withColor: .coolGrey)
     }
 
     private func animateLabel(randomHello: String) {
