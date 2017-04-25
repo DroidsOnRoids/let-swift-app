@@ -47,7 +47,7 @@ final class OnboardingViewController: UIViewController {
             }
         })
         
-        viewModel.continueButtonTitleObservable.subscribe(onNext: { [unowned self] title in
+        viewModel.continueButtonTitleObservable.subscribeWithPrevious(onNext: { [unowned self] title in
             self.continueButton.setTitle(title, for: [])
         })
         
