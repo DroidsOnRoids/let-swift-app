@@ -15,16 +15,16 @@ final class OnboardingViewControllerViewModel {
         static let onboardingFinishTitle = localized("ONBOARDING_FINISH").uppercased()
         
         static let onboardingMeetupsImageName = "OnboardingMeetups"
-        static let onboardingSpeakersImageName = "OnboardingMeetups"
-        static let onboardingPriceImageName = "OnboardingMeetups"
+        static let onboardingSpeakersImageName = "OnboardingSpeakers"
+        static let onboardingPriceImageName = "OnboardingPrice"
         
         static let onboardingMeetupsTitle = localized("ONBOARDING_MEETUPS_TITLE")
         static let onboardingSpeakersTitle = localized("ONBOARDING_SPEAKERS_TITLE")
         static let onboardingPriceTitle = localized("ONBOARDING_PRICE_TITLE")
         
         static let onboardingMeetupsDescription = localized("ONBOARDING_MEETUPS_DESCRIPTION")
-        static let onboardingSpeakersDescription = localized("ONBOARDING_MEETUPS_DESCRIPTION")
-        static let onboardingPriceDescription = localized("ONBOARDING_MEETUPS_DESCRIPTION")
+        static let onboardingSpeakersDescription = localized("ONBOARDING_SPEAKERS_DESCRIPTION")
+        static let onboardingPriceDescription = localized("ONBOARDING_PRICE_DESCRIPTION")
     }
 
     weak var delegate: OnboardingViewControllerCoordinatorDelegate?
