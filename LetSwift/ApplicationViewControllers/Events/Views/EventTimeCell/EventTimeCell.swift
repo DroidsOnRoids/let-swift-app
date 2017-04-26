@@ -10,7 +10,7 @@ import UIKit
 
 final class EventTimeCell: UITableViewCell {
     
-    @IBOutlet weak var separatorConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var separatorConstraint: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
