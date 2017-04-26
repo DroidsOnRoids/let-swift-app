@@ -38,9 +38,9 @@ final class OnboardingViewController: UIViewController {
 
         viewModel.currentPageObservable.subscribe(onNext: { [unowned self] page in
             let xOffset = self.scrollView.contentOffset.x
-            let singleWidth = self.scrollView.frame.size.width
+            let singleWidth = self.scrollView.frame.width
             
-            if xOffset >= 0 && xOffset <= self.scrollView.contentSize.width - singleWidth {
+            if xOffset >= 0.0 && xOffset <= self.scrollView.contentSize.width - singleWidth {
                 let xPosition = CGFloat(page) * singleWidth
 
                 self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
@@ -80,6 +80,6 @@ final class OnboardingViewController: UIViewController {
 
 extension OnboardingViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        viewModel.swipeDidFinish(with: Int(scrollView.contentOffset.x / scrollView.frame.size.width))
+        viewModel.swipeDidFinish(with: Int(scrollView.contentOffset.x / scrollView.frame.width))
     }
 }
