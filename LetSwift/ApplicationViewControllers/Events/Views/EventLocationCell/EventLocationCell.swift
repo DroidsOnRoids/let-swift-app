@@ -10,4 +10,28 @@ import UIKit
 
 final class EventLocationCell: UITableViewCell {
     
+    @IBOutlet private weak var locationLabel: UILabel!
+    
+    var placeName: String = "" {
+        didSet {
+            refreshLocationLabel()
+        }
+    }
+    
+    var placeLocation: String = "" {
+        didSet {
+            refreshLocationLabel()
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        refreshLocationLabel()
+    }
+    
+    private func refreshLocationLabel() {
+        //locationLabel.attributedText = placeName.uppercased().attributed(withFont: UIFont.systemFont(ofSize: 13.0, weight: UIFontWeightSemibold)) + " — ".attributed() + placeLocation.attributed()
+        locationLabel.attributedText = placeName.uppercased().attributed(withColor: .black) + " — ".attributed() + placeLocation.attributed()
+    }
 }

@@ -51,6 +51,9 @@ Przejście Garncarskie 2, Rynek Wrocław</string>
                     <constraint firstItem="8PO-pV-y38" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wKy-uZ-0zt" secondAttribute="trailing" constant="16" id="zSK-ac-qou"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="locationLabel" destination="wKy-uZ-0zt" id="20a-v3-Jlr"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="88"/>
         </tableViewCell>
     </objects>
