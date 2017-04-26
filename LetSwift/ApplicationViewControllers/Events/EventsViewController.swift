@@ -24,10 +24,17 @@ final class EventsViewController: AppViewController {
 
         setup()
 
-        let binbing = ReactiveTableViewObservable<String>().item(with: "sth", cellType: UITableViewCell.self)({ index, item, cell in
+        let bindableArray = ["Cos", "Cos", "nic", "Ale działa"].bindable
+        bindableArray.bind(to: tableView.item(with: "sth", cellType: UITableViewCell.self) ({ index, item, cell in
             print(index, item, cell)
-        })
-        ["Cos", "Cos", "nic", "Ale działa"].bindable.bind(to: binbing)
+        }))
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            bindableArray.append("Hehhe")
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
+            bindableArray.append("No")
+        }
     }
 
     override func viewControllerTitleKey() -> String? {
@@ -62,12 +69,7 @@ extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-//extension UITableView {
-//
-//    var reactive: ReactiveTablewViewObservable {
-//        return
-//    }
-//}
+//===============Reactive Table View================
 
 extension Array {
     var bindable: BindableArray<Element> {
@@ -78,54 +80,57 @@ extension Array {
 final class BindableArray<T> {
 
     private var values: [T]
-    private var events = [(Int, T) -> ()]()
+    private var events = [([T]) -> (Int, T) -> ()]()
 
     init(_ values: [T]) {
         self.values = values
     }
 
-    func bind(to event: @escaping (Int, T) -> ()) {
+    func bind(to event: @escaping ([T]) -> (Int, T) -> ()) {
         events.append(event)
-        notify()
+        notify(event: event)
     }
 
     func append(_ element: T) {
         values.append(element)
-        notify()
+        events.forEach({ $0(values)(values.count - 1, element) })
     }
 
-    private func notify() {
+    private func notify(event: ([T]) -> (Int, T) -> ()) {
         values.enumerated().forEach { index, element in
-            events.forEach({ $0(index, element) })
+            event(values)(index, element)
         }
     }
 }
 
-final class ReactiveTableViewObservable<T>: NSObject, UITableViewDelegate, UITableViewDataSource {
 
-    typealias CellFormer = (Int, UITableViewCell, T) -> UITableViewCell
+extension UITableView {
+    func item<Cell: UITableViewCell, T, S: Sequence>(with identifier: String, cellType: Cell.Type = Cell.self)
+        -> (@escaping (Int, T, Cell) -> ())
+        -> (_ source: S)
+        -> (Int, T)
+        -> () {
+            return { cellFormer in
+                return { source in
+                    return { index, item in
+                        print(source)
+                        //                    let cell = UITableView().dequeueReusableCell(withIdentifier: "Sth", for: IndexPath(row: index, section: 0)) as! Cell
+                        let cell = UITableViewCell() as! Cell
+                        cellFormer(index, item, cell)
+                    }
+                }
+            }
+    }
+}
+
+final class ReactiveTableViewObservable<S: Sequence>: NSObject, UITableViewDelegate, UITableViewDataSource {
+
+    typealias CellFormer = (Int, UITableViewCell, S.Iterator.Element) -> UITableViewCell
 
     private var cellFormer: CellFormer?
 
     init(cellFormer: @escaping CellFormer) {
         self.cellFormer = cellFormer
-    }
-
-    override init() {
-
-    }
-
-    func item<Cell: UITableViewCell>(with identifier: String, cellType: Cell.Type = Cell.self)
-        -> ( @escaping (Int, T, Cell) -> ())
-        -> (Int, T)
-        -> () {
-            return { cellFormer in
-                return { index, item in
-//                    let cell = UITableView().dequeueReusableCell(withIdentifier: "Sth", for: IndexPath(row: index, section: 0)) as! Cell
-                    let cell = UITableViewCell() as! Cell
-                    cellFormer(index, item, cell)
-                }
-            }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
