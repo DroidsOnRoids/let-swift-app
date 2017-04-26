@@ -22,6 +22,8 @@
 		7EA48D561EADDD5500CEC845 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D551EADDD5500CEC845 /* Event.swift */; };
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
+		D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */; };
+		D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
@@ -79,6 +81,8 @@
 		7EA48D521EADD53D00CEC845 /* StaticImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticImageTableViewCell.xib; sourceTree = "<group>"; };
 		7EA48D551EADDD5500CEC845 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryCell.swift; sourceTree = "<group>"; };
+		D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventSummaryCell.xib; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		7E7E41311EAA633E001DB179 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D31B08491EB1282E00C2D229 /* EventSummaryCell */,
 				7EA48D461EADD35D00CEC845 /* StaticImageCell */,
 				D390058D1EB0D9B200275219 /* AttendButtonsRowCell */,
 			);
@@ -297,6 +302,15 @@
 				D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */,
 			);
 			path = Animators;
+			sourceTree = "<group>";
+		};
+		D31B08491EB1282E00C2D229 /* EventSummaryCell */ = {
+			isa = PBXGroup;
+			children = (
+				D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */,
+				D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */,
+			);
+			path = EventSummaryCell;
 			sourceTree = "<group>";
 		};
 		D32A76C01E9B9A4600388222 /* Resources */ = {
@@ -508,6 +522,7 @@
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */,
 				7EA48D541EADD53D00CEC845 /* StaticImageTableViewCell.xib in Resources */,
+				D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
@@ -604,6 +619,7 @@
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
+				D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */,
 				D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */,
 				D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */,
 				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
