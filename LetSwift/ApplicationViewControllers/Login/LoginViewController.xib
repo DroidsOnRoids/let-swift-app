@@ -61,6 +61,7 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="6"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="shadowVisible" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="facebookLoginButtonTapped:" destination="-1" eventType="touchUpInside" id="RDW-x2-qzB"/>

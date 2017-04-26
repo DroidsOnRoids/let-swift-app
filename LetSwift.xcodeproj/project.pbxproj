@@ -10,7 +10,6 @@
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
 		7E31D0A61EAE3D970030147C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A51EAE3D970030147C /* Photo.swift */; };
 		7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */; };
-		7E7E412C1EA89FD7001DB179 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */; };
 		7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */; };
 		7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */; };
 		7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */; };
@@ -67,7 +66,6 @@
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
 		7E31D0A51EAE3D970030147C /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewControllerViewModel.swift; sourceTree = "<group>"; };
-		7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShadowButton.swift; sourceTree = "<group>"; };
 		7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
 		7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersCoordinator.swift; sourceTree = "<group>"; };
@@ -422,7 +420,6 @@
 			children = (
 				D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */,
 				D319AD841EA62487001ECE0B /* ArrayExtension.swift */,
-				7E7E412B1EA89FD7001DB179 /* UIButtonExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -601,7 +598,6 @@
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
-				7E7E412C1EA89FD7001DB179 /* UIButtonExtension.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
