@@ -69,6 +69,9 @@
                     <constraint firstAttribute="bottom" secondItem="6LC-ej-cEq" secondAttribute="bottom" constant="12" id="wjT-9g-JM4"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="separatorConstraint" destination="KNR-aV-mEc" id="WZR-JF-bJf"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="86"/>
         </tableViewCell>
     </objects>

@@ -10,4 +10,11 @@ import UIKit
 
 final class EventTimeCell: UITableViewCell {
     
+    @IBOutlet weak var separatorConstraint: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        separatorConstraint.constant = 1.0 / UIScreen.main.scale
+    }
 }
