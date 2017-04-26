@@ -43,6 +43,8 @@
 		D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14BD1E9F6C62009EA346 /* DesignableView.swift */; };
 		D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */; };
 		D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */; };
+		D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */; };
+		D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */; };
 		D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D395F38B1EADD710004B6226 /* AppViewController.swift */; };
 		D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D397ED881EA7BE14002141E8 /* DefaultsManager.swift */; };
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
@@ -99,6 +101,8 @@
 		D38B14BD1E9F6C62009EA346 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeLabel.swift; sourceTree = "<group>"; };
 		D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceScreenHeight.swift; sourceTree = "<group>"; };
+		D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendButtonsRowCell.swift; sourceTree = "<group>"; };
+		D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendButtonsRowCell.xib; sourceTree = "<group>"; };
 		D395F38B1EADD710004B6226 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		D397ED881EA7BE14002141E8 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		D39A73481E9776D900F10620 /* LetSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA48D461EADD35D00CEC845 /* StaticImageCell */,
+				D390058D1EB0D9B200275219 /* AttendButtonsRowCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +365,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D390058D1EB0D9B200275219 /* AttendButtonsRowCell */ = {
+			isa = PBXGroup;
+			children = (
+				D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */,
+				D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */,
+			);
+			path = AttendButtonsRowCell;
+			sourceTree = "<group>";
+		};
 		D39A733F1E9776D900F10620 = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +504,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
+				D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */,
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */,
 				7EA48D541EADD53D00CEC845 /* StaticImageTableViewCell.xib in Resources */,
@@ -599,6 +614,7 @@
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
+				D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
