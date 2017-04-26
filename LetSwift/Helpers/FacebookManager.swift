@@ -114,22 +114,13 @@ final class FacebookManager {
     }
     
     func isUserAttending(toEventId id: String, callback: @escaping (Bool) -> Void) {
-        guard let request = FBSDKGraphRequest(graphPath: "me/events", parameters: ["fields" : "id,rsvp_status"], httpMethod: "GET") else { callback(false); return }
+        guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: ["user" : FBSDKAccessToken.current().userID], httpMethod: "GET") else { return }
         
         sendGraphRequest(request) { result in
             guard let result = result, let resultDict = (result as? [String : Any]) else { return }
             guard let data = resultDict["data"], let dataArray = (data as? [Any]) else { return }
             
-            for eventDict in dataArray {
-                if let eventDict = (eventDict as? [String : String]) {
-                    if eventDict["id"] == id && eventDict["rsvp_status"] == FacebookEventAttendance.attending.rawValue {
-                        callback(true)
-                        return
-                    }
-                }
-            }
-            
-            callback(false)
+            callback(!dataArray.isEmpty)
         }
     }
 }
