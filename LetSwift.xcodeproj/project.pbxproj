@@ -24,6 +24,8 @@
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
 		D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */; };
 		D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */; };
+		D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B084F1EB12EA000C2D229 /* EventLocationCell.swift */; };
+		D31B08521EB12EA000C2D229 /* EventLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B08501EB12EA000C2D229 /* EventLocationCell.xib */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
@@ -83,6 +85,8 @@
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryCell.swift; sourceTree = "<group>"; };
 		D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventSummaryCell.xib; sourceTree = "<group>"; };
+		D31B084F1EB12EA000C2D229 /* EventLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLocationCell.swift; sourceTree = "<group>"; };
+		D31B08501EB12EA000C2D229 /* EventLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventLocationCell.xib; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 		7E7E41311EAA633E001DB179 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D31B084E1EB12E6800C2D229 /* EventLocationCell */,
 				D31B08491EB1282E00C2D229 /* EventSummaryCell */,
 				7EA48D461EADD35D00CEC845 /* StaticImageCell */,
 				D390058D1EB0D9B200275219 /* AttendButtonsRowCell */,
@@ -311,6 +316,15 @@
 				D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */,
 			);
 			path = EventSummaryCell;
+			sourceTree = "<group>";
+		};
+		D31B084E1EB12E6800C2D229 /* EventLocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				D31B084F1EB12EA000C2D229 /* EventLocationCell.swift */,
+				D31B08501EB12EA000C2D229 /* EventLocationCell.xib */,
+			);
+			path = EventLocationCell;
 			sourceTree = "<group>";
 		};
 		D32A76C01E9B9A4600388222 /* Resources */ = {
@@ -531,6 +545,7 @@
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 				7EA48D4F1EADD4CE00CEC845 /* shadowMask.png in Resources */,
+				D31B08521EB12EA000C2D229 /* EventLocationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +650,7 @@
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,
+				D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */,
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,
 				7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */,
