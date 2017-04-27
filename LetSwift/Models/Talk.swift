@@ -16,9 +16,7 @@ struct Talk {
     let name: String?
     let job: String?
     let bio: String?
-
     let id: Int?
-
     let tags = [String]()
     let photos = [String]()
 }

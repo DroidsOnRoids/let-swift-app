@@ -10,11 +10,11 @@ import UIKit
 
 final class ContactViewController: AppViewController {
     
-    override func viewControllerTitleKey() -> String? {
+    override var viewControllerTitleKey: String? {
         return "CONTACT_TITLE"
     }
     
-    override func shouldShowUserIcon() -> Bool {
+    override var shouldShowUserIcon: Bool {
         return true
     }
 }

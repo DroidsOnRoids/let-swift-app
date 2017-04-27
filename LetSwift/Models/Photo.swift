@@ -10,6 +10,6 @@ import Foundation
 
 struct Photo {
 
-    let thumbnail: String?
+    let thumbnail: URL?
     let full: String?
 }

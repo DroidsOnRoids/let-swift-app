@@ -35,15 +35,15 @@ final class EventsViewController: AppViewController {
         setup()
     }
 
-    override func viewControllerTitleKey() -> String? {
+    override var viewControllerTitleKey: String? {
         return "EVENTS_TITLE"
     }
 
-    override func shouldShowUserIcon() -> Bool {
+    override var shouldShowUserIcon: Bool {
         return true
     }
 
-    override func shouldHideShadow() -> Bool {
+    override var shouldHideShadow: Bool {
         return true
     }
 
@@ -66,7 +66,7 @@ extension EventsViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.viewCells[indexPath.row], for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.viewCells[indexPath.row], for: indexPath)
 
         if indexPath.row == 0 {
             cell.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, cell.bounds.width)

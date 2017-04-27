@@ -2,7 +2,7 @@
 //  ReflectiveShadowView.swift
 //  LetSwift
 //
-//  Created by Kinga Wilczek on 24.04.2017.
+//  Created by Kinga Wilczek, Marcin Chojnacki on 24.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
@@ -10,6 +10,10 @@ import UIKit
 import CoreGraphics
 
 class ReflectionShadowView: UIView {
+    
+    private enum Constants {
+        static let heightMultiplier: CGFloat = 0.06
+    }
     
     @IBInspectable var blurRadius: CGFloat = 10.0 {
         didSet {
@@ -37,20 +41,20 @@ class ReflectionShadowView: UIView {
     
     @IBInspectable var cornerRadius: CGFloat {
         get {
-            return layer.cornerRadius
+            return imageView.layer.cornerRadius
         }
         set {
-            imageView?.layer.cornerRadius = newValue
+            imageView.layer.cornerRadius = newValue
         }
     }
     
     @IBInspectable var image: UIImage? {
         set {
-            imageView?.image = newValue
+            imageView.image = newValue
             blurImage()
         }
         get {
-            return imageView?.image
+            return imageView.image
         }
     }
     
@@ -58,52 +62,49 @@ class ReflectionShadowView: UIView {
     var shadowImageView: UIImageView!
     
     var imageSize: CGSize {
-        if contentMode == .scaleAspectFit {
-            guard let image = imageView.image else { return frame.size }
-            let widthRatio = imageView.bounds.size.width / image.size.width
-            let heightRatio = imageView.bounds.size.height / image.size.height
-            let scale = min(widthRatio, heightRatio)
-            let imageWidth = scale * image.size.width
-            let imageHeight = scale * image.size.height
-            
-            return CGSize(width: imageWidth, height: imageHeight)
-        } else {
-            return frame.size
-        }
+        guard contentMode == .scaleAspectFit else { return frame.size }
+        guard let image = imageView.image else { return frame.size }
+    
+        let widthRatio = imageView.bounds.size.width / image.size.width
+        let heightRatio = imageView.bounds.size.height / image.size.height
+        let scale = min(widthRatio, heightRatio)
+        let imageWidth = scale * image.size.width
+        let imageHeight = scale * image.size.height
+        
+        return CGSize(width: imageWidth, height: imageHeight)
     }
     
     func blurImage() {
-        if let imageToblur = image,
+        guard let imageToblur = image,
             let resizedImage = imageToblur.resized(with: blurPercentageSize),
             let ciimage = CIImage(image: resizedImage),
-            let blurredImage = appendBlur(ciimage: ciimage) {
+            let blurredImage = appendBlur(ciimage: ciimage) else { return }
             
-            DispatchQueue.main.async {
-                self.shadowImageView?.image = blurredImage
-            }
+        DispatchQueue.main.async {
+            self.shadowImageView.image = blurredImage
         }
     }
     
     func appendBlur(ciimage : CIImage) -> UIImage? {
-        if let filter = CIFilter(name: "CIGaussianBlur") {
-            filter.setValue(ciimage, forKey: kCIInputImageKey)
-            filter.setValue(blurRadius, forKey: kCIInputRadiusKey)
-            
-            let context = CIContext(options: [:])
-            if let output = filter.outputImage,
-                let cgimg = context.createCGImage(output, from: ciimage.extent) {
-                
-                return UIImage(cgImage: cgimg)
-            }
-        }
+        guard let filter = CIFilter(name: "CIGaussianBlur") else { return nil }
         
-        return nil
+        filter.setValue(ciimage, forKey: kCIInputImageKey)
+        filter.setValue(blurRadius, forKey: kCIInputRadiusKey)
+        
+        let context = CIContext(options: [:])
+        if let output = filter.outputImage,
+            let cgimg = context.createCGImage(output, from: ciimage.extent) {
+            
+            return UIImage(cgImage: cgimg)
+        } else {
+            return nil
+        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        imageView?.frame = bounds
+        imageView.frame = bounds
         layoutShadow()
     }
     
@@ -114,7 +115,7 @@ class ReflectionShadowView: UIView {
     }
     
     init(image: UIImage) {
-        let frame: CGRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        let frame = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         super.init(frame: frame)
         
         setShadow()
@@ -128,13 +129,14 @@ class ReflectionShadowView: UIView {
     
     private func setShadow() {
         imageView = UIImageView()
-        imageView?.layer.masksToBounds = true
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = contentMode
         shadowImageView = UIImageView()
+        shadowImageView.contentMode = contentMode
         blurImage()
-        addSubview(shadowImageView!)
-        addSubview(imageView!)
-        imageView?.contentMode = contentMode
-        shadowImageView?.contentMode = contentMode
+        
+        addSubview(shadowImageView)
+        addSubview(imageView)
     }
     
     private func layoutShadow() {
@@ -146,7 +148,7 @@ class ReflectionShadowView: UIView {
         
         shadowImageView.frame = newBounds
         shadowImageView.center = imageView.center
-        shadowImageView.center.y = imageView.center.y + imageSize.height * 0.06
+        shadowImageView.center.y = imageView.center.y + imageSize.height * Constants.heightMultiplier
         
         let mask = CALayer()
         mask.contents = UIImage(named: "shadowMask")?.cgImage
@@ -154,16 +156,5 @@ class ReflectionShadowView: UIView {
         
         shadowImageView.layer.mask = mask
         shadowImageView.layer.masksToBounds = true
-    }
-}
-
-extension UIImage {
-    func resized(with percentage: CGFloat) -> UIImage? {
-        let canvasSize = CGSize(width: size.width * percentage, height: size.height * percentage)
-        UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
-        defer { UIGraphicsEndImageContext() }
-        draw(in: CGRect(origin: .zero, size: canvasSize))
-        
-        return UIGraphicsGetImageFromCurrentImageContext()
     }
 }

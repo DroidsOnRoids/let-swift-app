@@ -23,17 +23,14 @@ class AppViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        if let titleKey = viewControllerTitleKey() {
-            title = localized(titleKey).uppercased()
-        }
-        
-        navigationController?.navigationBar.setValue(shouldHideShadow(), forKey: "hidesShadow")
+        title = localized(viewControllerTitleKey ?? "").uppercased()
+        navigationController?.navigationBar.setValue(shouldHideShadow, forKey: "hidesShadow")
         
         if let navTitle = navigationItem.title {
             navigationItem.titleView = setupTitleLabel(withTitle: navTitle)
         }
         
-        if shouldShowUserIcon() {
+        if shouldShowUserIcon {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
             navigationItem.rightBarButtonItem?.tintColor = .black
         }
@@ -42,8 +39,8 @@ class AppViewController: UIViewController {
     private func setupTitleLabel(withTitle title: String) -> UILabel {
         let titleLabel = UILabel()
         titleLabel.attributedText = title
-            .attributed(withFont: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightSemibold))
-            .with(color: UIColor.highlightedBlack)
+            .attributed(withFont: .systemFont(ofSize: 15.0, weight: UIFontWeightSemibold))
+            .with(color: .highlightedBlack)
             .with(spacing: 1.0)
         
         titleLabel.sizeToFit()
@@ -51,15 +48,15 @@ class AppViewController: UIViewController {
         return titleLabel
     }
     
-    func viewControllerTitleKey() -> String? {
+    var viewControllerTitleKey: String? {
         return nil
     }
     
-    func shouldShowUserIcon() -> Bool {
+    var shouldShowUserIcon: Bool {
         return false
     }
     
-    func shouldHideShadow() -> Bool {
+    var shouldHideShadow: Bool {
         return false
     }
 }

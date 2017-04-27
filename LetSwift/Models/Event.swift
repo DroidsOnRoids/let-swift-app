@@ -12,17 +12,13 @@ import CoreLocation
 struct Event {
 
     let id: Int?
-
     let date: Date?
-
     let title: String?
     let facebook: String?
     let placeName: String?
     let placeStreet: String?
-
     let coverPhotos = [String]()
     let photos = [Photo]()
     let talks = [Talk]()
-
     let placeCoordinates: CLLocationCoordinate2D?
 }

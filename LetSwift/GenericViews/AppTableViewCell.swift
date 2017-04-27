@@ -26,6 +26,6 @@ class AppTableViewCell: UITableViewCell {
     private func updateSelectionColor() {
         let backgroundView = UIView()
         backgroundView.backgroundColor = selectionColor
-        self.selectedBackgroundView = backgroundView
+        selectedBackgroundView = backgroundView
     }
 }

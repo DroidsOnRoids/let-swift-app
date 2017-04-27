@@ -31,23 +31,19 @@ final class AppShadowButton: UIButton {
     
     override var isHighlighted: Bool {
         didSet {
-            let onNormal = {
+            if isHighlighted {
+                if self.shadowVisible {
+                    self.layer.shadowOpacity = 0.5
+                }
+                
+                self.transform = CGAffineTransform(translationX: 0.0, y: 2.0)
+            } else {
                 if self.shadowVisible {
                     self.layer.shadowOpacity = 1.0
                 }
                 
                 self.transform = .identity
             }
-            
-            let onHighlighted = {
-                if self.shadowVisible {
-                    self.layer.shadowOpacity = 0.5
-                }
-                
-                self.transform = CGAffineTransform(translationX: 0.0, y: 2.0)
-            }
-            
-            isHighlighted ? onHighlighted() : onNormal()
         }
     }
     
@@ -57,7 +53,7 @@ final class AppShadowButton: UIButton {
             if shadowVisible {
                 layer.shadowColor = backgroundColor?.cgColor
                 layer.shadowOpacity = 1.0
-                layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+                layer.shadowOffset = .zero
                 layer.shadowRadius = 10.0
                 
                 updateShadowPath()
@@ -68,7 +64,7 @@ final class AppShadowButton: UIButton {
     }
     
     private func updateShadowPath() {
-        let shadowRect = CGRect(x: Constants.shadowHorizontalInset, y: bounds.height - Constants.shadowHeight, width: bounds.width - Constants.shadowHorizontalInset * 2, height: Constants.shadowHeight)
+        let shadowRect = CGRect(x: Constants.shadowHorizontalInset, y: bounds.height - Constants.shadowHeight, width: bounds.width - Constants.shadowHorizontalInset * 2.0, height: Constants.shadowHeight)
         layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
     }
 }
