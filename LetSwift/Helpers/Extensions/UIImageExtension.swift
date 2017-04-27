@@ -2,7 +2,7 @@
 //  UIImageExtension.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 27.04.2017.
+//  Created by Kinga Wilczek, Marcin Chojnacki on 27.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
