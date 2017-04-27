@@ -35,7 +35,7 @@ final class FacebookManager {
     static let shared = FacebookManager()
     private let loginManager = FBSDKLoginManager()
     
-    private let readPermissions = [FacebookPermissions.userEvents]
+    private let readPermissions = [String]()
     private let publishPermissions = [FacebookPermissions.rsvpEvent]
     
     private init() {}
