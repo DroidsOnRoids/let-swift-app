@@ -35,7 +35,7 @@ final class AppShadowButton: UIButton {
             
             let onHighlighted = {
                 if self.shadowVisible {
-                    self.layer.shadowOpacity = 0.0
+                    self.layer.shadowOpacity = 0.5
                 }
                 
                 self.transform = CGAffineTransform(translationX: 0.0, y: 2.0)
