@@ -31,7 +31,8 @@ final class EventLocationCell: UITableViewCell {
     }
     
     private func refreshLocationLabel() {
-        //locationLabel.attributedText = placeName.uppercased().attributed(withFont: UIFont.systemFont(ofSize: 13.0, weight: UIFontWeightSemibold)) + " — ".attributed() + placeLocation.attributed()
-        locationLabel.attributedText = placeName.uppercased().attributed(withColor: .black) + " — ".attributed() + placeLocation.attributed()
+        locationLabel.attributedText = placeName.uppercased()
+            .attributed(withFont: UIFont.systemFont(ofSize: 13.0, weight: UIFontWeightSemibold))
+            .with(color: .black) + " — " + placeLocation.attributed()
     }
 }

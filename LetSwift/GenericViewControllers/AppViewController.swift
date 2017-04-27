@@ -28,7 +28,6 @@ class AppViewController: UIViewController {
         }
         
         navigationController?.navigationBar.setValue(shouldHideShadow(), forKey: "hidesShadow")
-        navigationController?.navigationBar.barTintColor = .white
         
         if let navTitle = navigationItem.title {
             navigationItem.titleView = setupTitleLabel(withTitle: navTitle)
@@ -42,11 +41,11 @@ class AppViewController: UIViewController {
     
     private func setupTitleLabel(withTitle title: String) -> UILabel {
         let titleLabel = UILabel()
-        titleLabel.attributedText = NSAttributedString(string: title, attributes: [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightSemibold),
-            NSForegroundColorAttributeName: UIColor.highlightedBlack,
-            NSKernAttributeName: 1.0
-        ])
+        titleLabel.attributedText = title
+            .attributed(withFont: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightSemibold))
+            .with(color: UIColor.highlightedBlack)
+            .with(spacing: 1.0)
+        
         titleLabel.sizeToFit()
         
         return titleLabel
