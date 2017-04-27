@@ -8,17 +8,17 @@
 
 import Foundation
 
-final class Talk {
+struct Talk {
 
-    var title: String?
-    var description: String?
-    var slides: String?
-    var name: String?
-    var job: String?
-    var bio: String?
+    let title: String?
+    let description: String?
+    let slides: String?
+    let name: String?
+    let job: String?
+    let bio: String?
 
-    var id: Int?
+    let id: Int?
 
-    var tags: [String] = []
-    var photos: [String] = []
+    let tags = [String]()
+    let photos = [String]()
 }
