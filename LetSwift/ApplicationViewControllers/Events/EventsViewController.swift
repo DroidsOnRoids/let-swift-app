@@ -12,6 +12,16 @@ final class EventsViewController: AppViewController {
 
     @IBOutlet private weak var tableView: UITableView!
     
+    fileprivate enum Constants {
+        static let viewCells = [
+            "StaticImageCell",
+            "AttendButtonsRowCell",
+            "EventSummaryCell",
+            "EventLocationCell",
+            "EventTimeCell"
+        ]
+    }
+    
     private var viewModel: EventsViewControllerViewModel!
 
     convenience init(viewModel: EventsViewControllerViewModel) {
@@ -23,11 +33,6 @@ final class EventsViewController: AppViewController {
         super.viewDidLoad()
 
         setup()
-
-        let binbing = ReactiveTableViewObservable<String>().item(with: "sth", cellType: UITableViewCell.self)({ index, item, cell in
-            print(index, item, cell)
-        })
-        ["Cos", "Cos", "nic", "Ale działa"].bindable.bind(to: binbing)
     }
 
     override func viewControllerTitleKey() -> String? {
@@ -43,96 +48,30 @@ final class EventsViewController: AppViewController {
     }
 
     private func setup() {
-        setupDelegates()
-    }
-
-    private func setupDelegates() {
-        tableView.delegate = self
         tableView.dataSource = self
-    }
-}
-
-extension EventsViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-}
-
-//extension UITableView {
-//
-//    var reactive: ReactiveTablewViewObservable {
-//        return
-//    }
-//}
-
-extension Array {
-    var bindable: BindableArray<Element> {
-        return BindableArray<Element>(self)
-    }
-}
-
-final class BindableArray<T> {
-
-    private var values: [T]
-    private var events = [(Int, T) -> ()]()
-
-    init(_ values: [T]) {
-        self.values = values
-    }
-
-    func bind(to event: @escaping (Int, T) -> ()) {
-        events.append(event)
-        notify()
-    }
-
-    func append(_ element: T) {
-        values.append(element)
-        notify()
-    }
-
-    private func notify() {
-        values.enumerated().forEach { index, element in
-            events.forEach({ $0(index, element) })
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60.0
+        tableView.tableFooterView = UIView()
+        
+        Constants.viewCells.forEach { cell in
+            tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
         }
     }
 }
 
-final class ReactiveTableViewObservable<T>: NSObject, UITableViewDelegate, UITableViewDataSource {
-
-    typealias CellFormer = (Int, UITableViewCell, T) -> UITableViewCell
-
-    private var cellFormer: CellFormer?
-
-    init(cellFormer: @escaping CellFormer) {
-        self.cellFormer = cellFormer
-    }
-
-    override init() {
-
-    }
-
-    func item<Cell: UITableViewCell>(with identifier: String, cellType: Cell.Type = Cell.self)
-        -> ( @escaping (Int, T, Cell) -> ())
-        -> (Int, T)
-        -> () {
-            return { cellFormer in
-                return { index, item in
-//                    let cell = UITableView().dequeueReusableCell(withIdentifier: "Sth", for: IndexPath(row: index, section: 0)) as! Cell
-                    let cell = UITableViewCell() as! Cell
-                    cellFormer(index, item, cell)
-                }
-            }
-    }
-
+extension EventsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return Constants.viewCells.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: Constants.viewCells[indexPath.row], for: indexPath)
+
+        if indexPath.row == 0 {
+            cell.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, cell.bounds.width)
+        }
+        
+        return cell
     }
 }

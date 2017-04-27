@@ -23,6 +23,12 @@ final class AppShadowButton: UIButton {
         }
     }
     
+    override var backgroundColor: UIColor? {
+        didSet {
+            layer.shadowColor = backgroundColor?.cgColor
+        }
+    }
+    
     override var isHighlighted: Bool {
         didSet {
             let onNormal = {
