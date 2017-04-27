@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventTimeCell: UITableViewCell {
+final class EventTimeCell: AppTableViewCell {
     
     @IBOutlet private weak var separatorConstraint: NSLayoutConstraint!
     

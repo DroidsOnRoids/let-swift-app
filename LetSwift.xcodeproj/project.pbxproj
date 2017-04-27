@@ -58,6 +58,7 @@
 		D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A73541E9776D900F10620 /* LaunchScreen.storyboard */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
+		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
 		D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */; };
 		D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */; };
 		D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */; };
@@ -124,6 +125,7 @@
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
+		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeConstraint.swift; sourceTree = "<group>"; };
 		D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				7EA48D4B1EADD47F00CEC845 /* ReflectiveShadowView */,
 				D38B14BD1E9F6C62009EA346 /* DesignableView.swift */,
 				7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */,
+				D3F091781EB1FE770029E15E /* AppTableViewCell.swift */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,
+				D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */,
 				D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */,
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,

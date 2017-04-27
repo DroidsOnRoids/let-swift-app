@@ -8,6 +8,6 @@
 
 import UIKit
 
-final class EventSummaryCell: UITableViewCell {
+final class EventSummaryCell: AppTableViewCell {
     
 }
