@@ -23,13 +23,13 @@ class ReflectionShadowView: UIView {
         }
     }
     
-    @IBInspectable var blurOffsetX: CGFloat = 0.3 {
+    @IBInspectable var blurOffsetX: CGFloat = 0.4 {
         didSet {
             blurImage()
         }
     }
     
-    @IBInspectable var blurOffsetY: CGFloat = 0.3 {
+    @IBInspectable var blurOffsetY: CGFloat = 0.2 {
         didSet {
             blurImage()
         }
@@ -59,14 +59,13 @@ class ReflectionShadowView: UIView {
     
     var imageSize: CGSize {
         if contentMode == .scaleAspectFit {
-            guard let image = imageView.image else {
-                return frame.size
-            }
+            guard let image = imageView.image else { return frame.size }
             let widthRatio = imageView.bounds.size.width / image.size.width
             let heightRatio = imageView.bounds.size.height / image.size.height
             let scale = min(widthRatio, heightRatio)
             let imageWidth = scale * image.size.width
             let imageHeight = scale * image.size.height
+            
             return CGSize(width: imageWidth, height: imageHeight)
         } else {
             return frame.size
@@ -86,15 +85,14 @@ class ReflectionShadowView: UIView {
     }
     
     func appendBlur(ciimage : CIImage) -> UIImage? {
-        
         if let filter = CIFilter(name: "CIGaussianBlur") {
-            
             filter.setValue(ciimage, forKey: kCIInputImageKey)
             filter.setValue(blurRadius, forKey: kCIInputRadiusKey)
             
             let context = CIContext(options: [:])
             if let output = filter.outputImage,
                 let cgimg = context.createCGImage(output, from: ciimage.extent) {
+                
                 return UIImage(cgImage: cgimg)
             }
         }
@@ -128,9 +126,7 @@ class ReflectionShadowView: UIView {
         setShadow()
     }
     
-    
     private func setShadow() {
-        
         imageView = UIImageView()
         imageView?.layer.masksToBounds = true
         shadowImageView = UIImageView()
@@ -143,6 +139,7 @@ class ReflectionShadowView: UIView {
     
     private func layoutShadow() {
         guard let shadowImageView = shadowImageView else { return }
+        
         var newBounds = CGRect.zero
         newBounds.size.width = imageSize.width + imageSize.width * blurOffsetX
         newBounds.size.height = imageSize.height + imageSize.height * blurOffsetY
@@ -166,6 +163,7 @@ extension UIImage {
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, scale)
         defer { UIGraphicsEndImageContext() }
         draw(in: CGRect(origin: .zero, size: canvasSize))
+        
         return UIGraphicsGetImageFromCurrentImageContext()
     }
 }
