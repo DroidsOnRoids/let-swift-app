@@ -35,7 +35,9 @@ final class AppShadowButton: UIButton {
                 self.layer.shadowOpacity = isHighlighted ? 0.5 : 1.0
             }
             
-            self.transform = isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
+            UIView.animate(withDuration: 0.05) {
+                self.transform = self.isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
+            }
         }
     }
     
