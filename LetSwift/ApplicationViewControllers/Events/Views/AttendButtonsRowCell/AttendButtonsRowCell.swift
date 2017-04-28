@@ -10,8 +10,8 @@ import UIKit
 
 final class AttendButtonsRowCell: UITableViewCell {
 
-    @IBOutlet private weak var attendButton: UIButton!
-    @IBOutlet private weak var remindButton: UIButton!
+    @IBOutlet private weak var attendButton: AppShadowButton!
+    @IBOutlet private weak var remindButton: AppShadowButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

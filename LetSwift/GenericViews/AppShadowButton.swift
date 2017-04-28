@@ -63,6 +63,30 @@ final class AppShadowButton: UIButton {
         }
     }
     
+    @IBInspectable
+    var shouldInterceptScrollViewTouches: Bool = false
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if shouldInterceptScrollViewTouches {
+            isHighlighted = true
+        }
+        super.touchesBegan(touches, with: event)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if shouldInterceptScrollViewTouches {
+            isHighlighted = false
+        }
+        super.touchesEnded(touches, with: event)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if shouldInterceptScrollViewTouches {
+            isHighlighted = false
+        }
+        super.touchesCancelled(touches, with: event)
+    }
+    
     private func updateShadowPath() {
         let shadowRect = CGRect(x: Constants.shadowHorizontalInset, y: bounds.height - Constants.shadowHeight, width: bounds.width - Constants.shadowHorizontalInset * 2.0, height: Constants.shadowHeight)
         layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
