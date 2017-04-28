@@ -31,19 +31,11 @@ final class AppShadowButton: UIButton {
     
     override var isHighlighted: Bool {
         didSet {
-            if isHighlighted {
-                if self.shadowVisible {
-                    self.layer.shadowOpacity = 0.5
-                }
-                
-                self.transform = CGAffineTransform(translationX: 0.0, y: 2.0)
-            } else {
-                if self.shadowVisible {
-                    self.layer.shadowOpacity = 1.0
-                }
-                
-                self.transform = .identity
+            if self.shadowVisible {
+                self.layer.shadowOpacity = isHighlighted ? 0.5 : 1.0
             }
+            
+            self.transform = isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
         }
     }
     
