@@ -13,6 +13,10 @@ final class PreviousEventCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setup()
+    }
+    
+    private func setup() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowOffset = CGSize(width: 0.0, height: 5.0)

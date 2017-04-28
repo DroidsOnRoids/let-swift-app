@@ -13,6 +13,12 @@ final class PreviousEventsListCell: UITableViewCell {
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
     
     override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setup()
+    }
+    
+    private func setup() {
         let cellIdentifier = "PreviousEventCell"
         eventsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
         eventsCollectionView.dataSource = self
