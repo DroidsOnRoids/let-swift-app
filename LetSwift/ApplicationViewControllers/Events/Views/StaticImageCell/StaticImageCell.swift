@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StaticImageCell: UITableViewCell {
+final class StaticImageCell: UITableViewCell {
     
     @IBOutlet private weak var reflectiveImageView: ReflectionShadowView!
 }

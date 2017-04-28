@@ -28,12 +28,6 @@ class AppViewController: UIViewController {
         setupNavigationBar()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        setupNavigationBar()
-    }
-    
     private func setupNavigationBar() {
         title = localized(viewControllerTitleKey ?? "").uppercased()
         navigationController?.navigationBar.setValue(shouldHideShadow, forKey: "hidesShadow")
