@@ -64,7 +64,6 @@ final class LoginViewController: UIViewController {
     private func setupViews() {
         animatedGreetingLabel.adjustsFontSizeToFitWidth = true
         loginPurposeDescriptionLabel.attributedText = loginPurposeDescriptionLabel.text?.attributed(withSpacing: 1.0)
-        facebookButton.showShadow()
     }
 
     private func createPrintAttributedText(_ label: String) -> NSAttributedString {

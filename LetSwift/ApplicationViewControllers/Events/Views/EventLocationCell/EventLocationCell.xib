@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EventLocationCell" customModule="LetSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MapMarker" translatesAutoresizingMaskIntoConstraints="NO" id="QN1-aC-kcK">
+                        <rect key="frame" x="16" y="16" width="11" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="KnS-OP-crt"/>
+                            <constraint firstAttribute="width" constant="11" id="V7N-zh-6BV"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IndicatorLight" translatesAutoresizingMaskIntoConstraints="NO" id="8PO-pV-y38">
+                        <rect key="frame" x="351" y="21.5" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="13" id="DIQ-5B-nbm"/>
+                            <constraint firstAttribute="width" constant="8" id="fsh-tc-JaU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKy-uZ-0zt">
+                        <rect key="frame" x="39" y="12" width="242" height="31.5"/>
+                        <string key="text">PROZA — Wrocławski Klub Literacki
+Przejście Garncarskie 2, Rynek Wrocław</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59607843140000005" green="0.61960784310000006" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wKy-uZ-0zt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="HRP-iv-q1c"/>
+                    <constraint firstItem="8PO-pV-y38" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MlA-WG-CDX"/>
+                    <constraint firstItem="wKy-uZ-0zt" firstAttribute="leading" secondItem="QN1-aC-kcK" secondAttribute="trailing" constant="12" id="N4H-OV-xaq"/>
+                    <constraint firstItem="QN1-aC-kcK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="UrM-mS-sAe"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wKy-uZ-0zt" secondAttribute="bottom" constant="12" id="khT-dq-yjM"/>
+                    <constraint firstItem="QN1-aC-kcK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="mSa-II-mTZ"/>
+                    <constraint firstAttribute="trailing" secondItem="8PO-pV-y38" secondAttribute="trailing" constant="16" id="otb-o4-6rg"/>
+                    <constraint firstItem="8PO-pV-y38" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wKy-uZ-0zt" secondAttribute="trailing" constant="16" id="zSK-ac-qou"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="locationLabel" destination="wKy-uZ-0zt" id="20a-v3-Jlr"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="88"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="IndicatorLight" width="8" height="13"/>
+        <image name="MapMarker" width="11" height="16"/>
+    </resources>
+</document>

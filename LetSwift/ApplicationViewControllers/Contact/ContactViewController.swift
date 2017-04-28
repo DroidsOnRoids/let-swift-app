@@ -8,6 +8,13 @@
 
 import UIKit
 
-final class ContactViewController: UIViewController {
-
+final class ContactViewController: AppViewController {
+    
+    override var viewControllerTitleKey: String? {
+        return "CONTACT_TITLE"
+    }
+    
+    override var shouldShowUserIcon: Bool {
+        return true
+    }
 }

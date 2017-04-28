@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EventTimeCell" customModule="LetSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="39.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.03.2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nef-8r-Xgs">
+                        <rect key="frame" x="39" y="11" width="140" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59607843140000005" green="0.61960784310000006" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pHT-UO-At2">
+                        <rect key="frame" x="204" y="12" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="JIX-xT-LSz"/>
+                            <constraint firstAttribute="width" constant="16" id="yms-Ii-WC3"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07:00 PM CET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hK2-sF-FQy">
+                        <rect key="frame" x="228" y="11" width="139" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.59607843140000005" green="0.61960784310000006" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypN-TS-ffQ">
+                        <rect key="frame" x="187" y="0.0" width="1" height="39.5"/>
+                        <color key="backgroundColor" red="0.81568627449999997" green="0.85490196080000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="KNR-aV-mEc"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CalendarIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6LC-ej-cEq">
+                        <rect key="frame" x="16" y="12" width="15" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="037-9X-Kbq"/>
+                            <constraint firstAttribute="width" constant="15" id="BWQ-Up-GOy"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ypN-TS-ffQ" secondAttribute="bottom" id="0Mw-h1-ORm"/>
+                    <constraint firstItem="hK2-sF-FQy" firstAttribute="leading" secondItem="pHT-UO-At2" secondAttribute="trailing" constant="8" id="2Lv-CC-D4q"/>
+                    <constraint firstItem="nef-8r-Xgs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2bw-pJ-VA4"/>
+                    <constraint firstItem="pHT-UO-At2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="947-gQ-Bkv"/>
+                    <constraint firstAttribute="trailing" secondItem="hK2-sF-FQy" secondAttribute="trailing" constant="8" id="E0c-h2-bKX"/>
+                    <constraint firstItem="hK2-sF-FQy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Jt8-0d-HKY"/>
+                    <constraint firstItem="ypN-TS-ffQ" firstAttribute="leading" secondItem="nef-8r-Xgs" secondAttribute="trailing" constant="8" id="Ukv-tU-mx5"/>
+                    <constraint firstAttribute="bottom" secondItem="pHT-UO-At2" secondAttribute="bottom" constant="12" id="eV8-Uz-wmS"/>
+                    <constraint firstItem="6LC-ej-cEq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ena-TY-Q7W"/>
+                    <constraint firstItem="nef-8r-Xgs" firstAttribute="leading" secondItem="6LC-ej-cEq" secondAttribute="trailing" constant="8" id="kx5-B4-Uu6"/>
+                    <constraint firstItem="6LC-ej-cEq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="mQp-x1-LzY"/>
+                    <constraint firstItem="ypN-TS-ffQ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="pgW-xS-6aX"/>
+                    <constraint firstItem="ypN-TS-ffQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="tnX-2I-oN8"/>
+                    <constraint firstItem="pHT-UO-At2" firstAttribute="leading" secondItem="ypN-TS-ffQ" secondAttribute="trailing" constant="16" id="uEM-fa-Yeo"/>
+                    <constraint firstAttribute="bottom" secondItem="6LC-ej-cEq" secondAttribute="bottom" constant="12" id="wjT-9g-JM4"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="separatorConstraint" destination="KNR-aV-mEc" id="WZR-JF-bJf"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="86"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="CalendarIcon" width="15" height="16"/>
+        <image name="ClockIcon" width="16" height="16"/>
+    </resources>
+</document>
