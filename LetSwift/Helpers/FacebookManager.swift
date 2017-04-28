@@ -71,16 +71,17 @@ final class FacebookManager {
     }
     
     private func askForMissingPermissions(error: Error?, callback: @escaping (Bool) -> Void) {
-        if let error = error, let errorCode = (error as NSError).userInfo[FBSDKGraphRequestErrorGraphErrorCode] as? Int, errorCode == FacebookErrorCodes.missingPermissions || errorCode == FacebookErrorCodes.missingExtendedPermissions {
-            self.logIn(from: nil) { status in
-                if case .success(_) = status {
-                    callback(true)
-                } else {
-                    callback(false)
-                }
-            }
-        } else {
+        guard let error = error, let errorCode = (error as NSError).userInfo[FBSDKGraphRequestErrorGraphErrorCode] as? Int, errorCode == FacebookErrorCodes.missingPermissions || errorCode == FacebookErrorCodes.missingExtendedPermissions else {
             callback(false)
+            return
+        }
+        
+        self.logIn(from: nil) { status in
+            if case .success(_) = status {
+                callback(true)
+            } else {
+                callback(false)
+            }
         }
     }
     
