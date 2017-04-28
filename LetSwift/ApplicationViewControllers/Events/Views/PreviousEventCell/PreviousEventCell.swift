@@ -10,6 +10,12 @@ import UIKit
 
 final class PreviousEventCell: UICollectionViewCell {
     
+    override var isHighlighted: Bool {
+        didSet {
+            transform = isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
