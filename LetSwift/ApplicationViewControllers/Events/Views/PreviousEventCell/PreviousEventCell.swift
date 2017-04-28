@@ -10,6 +10,8 @@ import UIKit
 
 final class PreviousEventCell: UICollectionViewCell {
     
+    static let cellIdentifier = String(describing: PreviousEventCell.self)
+    
     override var isHighlighted: Bool {
         didSet {
             transform = isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity

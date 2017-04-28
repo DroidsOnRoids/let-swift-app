@@ -19,8 +19,7 @@ final class PreviousEventsListCell: UITableViewCell {
     }
     
     private func setup() {
-        let cellIdentifier = "PreviousEventCell"
-        eventsCollectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+        eventsCollectionView.register(UINib(nibName: PreviousEventCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PreviousEventCell.cellIdentifier)
         eventsCollectionView.dataSource = self
     }
 }
@@ -31,6 +30,6 @@ extension PreviousEventsListCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: "PreviousEventCell", for: indexPath)
+        return collectionView.dequeueReusableCell(withReuseIdentifier: PreviousEventCell.cellIdentifier, for: indexPath)
     }
 }
