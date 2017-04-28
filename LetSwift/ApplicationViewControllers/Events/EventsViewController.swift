@@ -18,7 +18,8 @@ final class EventsViewController: AppViewController {
             "AttendButtonsRowCell",
             "EventSummaryCell",
             "EventLocationCell",
-            "EventTimeCell"
+            "EventTimeCell",
+            "PreviousEventsListCell"
         ]
     }
     
@@ -48,6 +49,7 @@ final class EventsViewController: AppViewController {
     }
 
     private func setup() {
+        tableView.delegate = self
         tableView.dataSource = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -57,6 +59,12 @@ final class EventsViewController: AppViewController {
         Constants.viewCells.forEach { cell in
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
         }
+    }
+}
+
+extension EventsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

@@ -9,16 +9,14 @@
 import UIKit
 
 func +(left: NSAttributedString, right: NSAttributedString) -> NSAttributedString {
-    let result = NSMutableAttributedString()
-    result.append(left)
+    let result = NSMutableAttributedString(attributedString: left)
     result.append(right)
     
     return result
 }
 
 func +(left: NSAttributedString, right: String) -> NSAttributedString {
-    let result = NSMutableAttributedString()
-    result.append(left)
+    let result = NSMutableAttributedString(attributedString: left)
     result.append(NSAttributedString(string: right))
     
     return result

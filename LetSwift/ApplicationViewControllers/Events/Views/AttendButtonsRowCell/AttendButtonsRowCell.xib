@@ -34,6 +34,7 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                 <integer key="value" value="1"/>
                             </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldInterceptScrollViewTouches" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ6-jg-0yx" customClass="AppShadowButton" customModule="LetSwift" customModuleProvider="target">
@@ -51,6 +52,7 @@
                                 <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="shadowVisible" value="YES"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="shouldInterceptScrollViewTouches" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
@@ -69,7 +71,7 @@
                 <outlet property="attendButton" destination="qQ6-jg-0yx" id="sZT-rI-no1"/>
                 <outlet property="remindButton" destination="v0l-Mk-5yg" id="wgg-JA-FMa"/>
             </connections>
-            <point key="canvasLocation" x="99" y="91.5"/>
+            <point key="canvasLocation" x="98.5" y="91"/>
         </tableViewCell>
     </objects>
 </document>
