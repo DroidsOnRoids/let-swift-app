@@ -124,7 +124,7 @@ final class FacebookManager {
     }
     
     func isUserAttending(toEventId id: String, callback: @escaping (Bool) -> Void) {
-        guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: ["user" : FBSDKAccessToken.current().userID], httpMethod: "GET") else { return }
+        guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: ["user" : FBSDKAccessToken.current().userID, "fields" : "rsvp_status"], httpMethod: "GET") else { return }
         
         sendGraphRequest(request) { result in
             guard let resultDict = (result as? [String : Any]) else { return }
