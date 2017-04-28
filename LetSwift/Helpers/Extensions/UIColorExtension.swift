@@ -25,4 +25,12 @@ extension UIColor {
     static var highlightedBlack: UIColor {
         return #colorLiteral(red: 0.03137254902, green: 0.1450980392, blue: 0.2078431373, alpha: 1)
     }
+    
+    static var paleGrey: UIColor {
+        return #colorLiteral(red: 0.8705882353, green: 0.8980392157, blue: 0.937254902, alpha: 1)
+    }
+    
+    static var bluishGrey: UIColor {
+        return #colorLiteral(red: 0.5176470588, green: 0.5607843137, blue: 0.6196078431, alpha: 1)
+    }
 }

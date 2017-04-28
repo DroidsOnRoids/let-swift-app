@@ -18,7 +18,8 @@ final class EventsViewController: AppViewController {
             "AttendButtonsRowCell",
             "EventSummaryCell",
             "EventLocationCell",
-            "EventTimeCell"
+            "EventTimeCell",
+            "PreviousEventsListCell"
         ]
     }
     
