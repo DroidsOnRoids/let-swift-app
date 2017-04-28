@@ -28,16 +28,20 @@ final class EventsViewController: AppViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: "StaticImageTableViewCell", bundle: nil), forCellReuseIdentifier: "StaticImageTableViewCell")
 
-        let bindableArray = ["Cos", "Cos", "nic", "Ale działa"].bindable
-        bindableArray.bind(to: tableView.item(with: "StaticImageTableViewCell", cellType: UITableViewCell.self) ({ index, item, cell in
-            print(index, item, cell)
-
+        let bindableArray = ["Cos", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa", "Cos", "nic", "Ale działa"].bindable
+        bindableArray.bind(to: tableView.item(with: "StaticImageTableViewCell", cellType: StaticImageTableViewCell.self) ({ index, item, cell in
+            if index % 2 == 0 {
+                cell.reflectiveImageView.image = #imageLiteral(resourceName: "EventsActive")
+            } else {
+                cell.reflectiveImageView.image = #imageLiteral(resourceName: "OnboardingMeetups")
+            }
+            cell.someName.text = item
         }))
 
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 10) {
             bindableArray.append("Hehhe")
         }
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 15) {
             bindableArray.append("No")
         }
     }
@@ -98,16 +102,20 @@ extension UITableView {
         -> (@escaping (Int, T, Cell) -> ())
         -> (_ source: S)
         -> (Int, T)
-        -> () {
+        -> () where T == S.Iterator.Element {
             return { cellFormer in
                 return { source in
                     return { index, item in
-                        let delegate = ReactiveTableViewDataSource<S> { tableView, index, element in
-                            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
-                            cellFormer(index, item, cell)
-                            return cell
+                        DispatchQueue.global(qos: .background).async {
+                            let delegate = ReactiveTableViewDataSource<S> { tableView, index, element in
+                                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
+                                cellFormer(index, element, cell)
+                                return cell
+                            }
+                            ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
+                                delegate.tableView(self, observedElements: source)
+                            }
                         }
-                        delegate.tableView(self, observedElements: source) //maybe here proxy is needed
                     }
                 }
             }
@@ -141,41 +149,57 @@ final class ReactiveTableViewDataSource<S: Sequence>: NSObject, UITableViewDataS
     //Needs to reimplement
     func tableView(_ tableView: UITableView, observedElements: S) {
         items = observedElements.map({ $0 })
-        print(items)
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            tableView.reloadData()
+        }
     }
 }
 
 final class ReactiveTableViewDataSourceProxy: NSObject, UITableViewDataSource {
 
-    fileprivate weak var dataSourceMethods: UITableViewDataSource?
+    private enum Constants {
+        static let delegateAssociatedTag = UnsafeRawPointer(UnsafeMutablePointer<UInt8>.allocate(capacity: 1))
+    }
 
-//    public static func proxyForObject(_ object: UITableView) -> Self {
-//
-//        let maybeProxy = Self.assignedProxyFor(object) as? Self
-//
-//        let proxy: Self
-//        if let existingProxy = maybeProxy {
-//            proxy = existingProxy
-//        }
-//        else {
-//            proxy = Self.createProxy(for: object) as! Self
-//            Self.assignProxy(proxy, toObject: object)
-//            assert(Self.assignedProxyFor(object) === proxy)
-//        }
-//
-//        let currentDelegate: AnyObject? = Self.currentDelegateFor(object)
-//
-//        if currentDelegate !== proxy {
-//            proxy.setForwardToDelegate(currentDelegate, retainDelegate: false)
-//            assert(proxy.forwardToDelegate() === currentDelegate)
-//            Self.setCurrentDelegate(proxy, toObject: object)
-//            assert(Self.currentDelegateFor(object) === proxy)
-//            assert(proxy.forwardToDelegate() === currentDelegate)
-//        }
-//        
-//        return proxy
-//    }
+    fileprivate var dataSourceMethods: UITableViewDataSource?
+
+    class func assignedProxyFor(_ object: AnyObject) -> ReactiveTableViewDataSourceProxy? {
+        let proxy = objc_getAssociatedObject(object, Constants.delegateAssociatedTag) as? ReactiveTableViewDataSourceProxy
+        return proxy
+    }
+
+    class func assignProxy(_ proxy: AnyObject, to object: AnyObject) {
+        objc_setAssociatedObject(object, Constants.delegateAssociatedTag, proxy, .OBJC_ASSOCIATION_RETAIN)
+    }
+
+    class func currentDelegateFor(_ object: UITableView) -> AnyObject? {
+        return object.dataSource
+    }
+
+    static func subscribeToProxy(tableView: UITableView, datasource: UITableViewDataSource, binding: @escaping (ReactiveTableViewDataSourceProxy) -> ()) {
+        let proxy = ReactiveTableViewDataSourceProxy.proxyForObject(tableView)
+        proxy.dataSourceMethods = datasource
+        binding(proxy)
+    }
+
+    static func proxyForObject(_ object: UITableView) -> ReactiveTableViewDataSourceProxy {
+        let maybeProxy = ReactiveTableViewDataSourceProxy.assignedProxyFor(object)
+
+        let proxy: ReactiveTableViewDataSourceProxy
+        if let existingProxy = maybeProxy {
+            proxy = existingProxy
+        } else {
+            proxy = ReactiveTableViewDataSourceProxy.createProxy(for: object) as! ReactiveTableViewDataSourceProxy
+            ReactiveTableViewDataSourceProxy.assignProxy(proxy, to: object)
+        }
+
+        let currentDelegate: AnyObject? = ReactiveTableViewDataSourceProxy.currentDelegateFor(object)
+
+        if currentDelegate !== proxy {
+            ReactiveTableViewDataSourceProxy.setCurrentDelegate(proxy, to: object)
+        }
+        return proxy
+    }
 
     class func createProxy(for tableView: UITableView) -> AnyObject {
         return tableView.createRxDataSourceProxy()

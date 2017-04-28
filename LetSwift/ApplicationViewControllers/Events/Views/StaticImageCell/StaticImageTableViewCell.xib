@@ -21,7 +21,7 @@
                         <rect key="frame" x="8" y="0.0" width="356" height="230.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="220" id="lDQ-8V-IEZ"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="759" constant="220" id="lDQ-8V-IEZ"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -29,6 +29,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4Z-7M-HAy">
+                        <rect key="frame" x="165" y="113" width="42" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="PeU-rG-Xh0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Isf-rR-F0u"/>
@@ -39,6 +46,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="reflectiveImageView" destination="PeU-rG-Xh0" id="4nt-WH-p7c"/>
+                <outlet property="someName" destination="b4Z-7M-HAy" id="7pU-Nd-ZRp"/>
             </connections>
             <point key="canvasLocation" x="59" y="102"/>
         </tableViewCell>

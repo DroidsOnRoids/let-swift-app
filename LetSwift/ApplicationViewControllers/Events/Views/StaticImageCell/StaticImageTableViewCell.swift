@@ -9,6 +9,7 @@
 import UIKit
 
 class StaticImageTableViewCell: UITableViewCell {
+    @IBOutlet weak var someName: UILabel!
     
-    @IBOutlet private weak var reflectiveImageView: ReflectionShadowView!
+    @IBOutlet weak var reflectiveImageView: ReflectionShadowView!
 }
