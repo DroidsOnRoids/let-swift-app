@@ -60,7 +60,7 @@ extension NSAttributedString {
     }
     
     func with(attributes: [String : Any]) -> NSAttributedString {
-        let fullRange = NSMakeRange(0, string.characters.count)
+        let fullRange = NSRange(location: 0, length: string.characters.count)
         let newString = NSMutableAttributedString(attributedString: self)
         newString.addAttributes(attributes, range: fullRange)
         

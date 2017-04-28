@@ -58,9 +58,6 @@ class ReflectionShadowView: UIView {
         }
     }
     
-    var imageView: UIImageView!
-    var shadowImageView: UIImageView!
-    
     var imageSize: CGSize {
         guard contentMode == .scaleAspectFit, let image = imageView.image else { return frame.size }
     
@@ -71,6 +68,28 @@ class ReflectionShadowView: UIView {
         let imageHeight = scale * image.size.height
         
         return CGSize(width: imageWidth, height: imageHeight)
+    }
+    
+    var imageView: UIImageView!
+    var shadowImageView: UIImageView!
+    
+    init(image: UIImage) {
+        let frame = CGRect(origin: .zero, size: image.size)
+        super.init(frame: frame)
+        
+        setShadow()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setShadow()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        setShadow()
     }
     
     func blurImage() {
@@ -107,25 +126,6 @@ class ReflectionShadowView: UIView {
         layoutShadow()
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setShadow()
-    }
-    
-    init(image: UIImage) {
-        let frame = CGRect(origin: .zero, size: image.size)
-        super.init(frame: frame)
-        
-        setShadow()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        setShadow()
-    }
-    
     private func setShadow() {
         imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -150,7 +150,7 @@ class ReflectionShadowView: UIView {
         shadowImageView.center.y = imageView.center.y + imageSize.height * Constants.heightMultiplier
         
         let mask = CALayer()
-        mask.contents = UIImage(named: "shadowMask")?.cgImage
+        mask.contents = UIImage(named: "ShadowMask")?.cgImage
         mask.frame =  shadowImageView.bounds
         
         shadowImageView.layer.mask = mask

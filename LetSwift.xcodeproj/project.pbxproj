@@ -16,7 +16,7 @@
 		7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */; };
 		7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D441EADC12C00CEC845 /* Startable.swift */; };
 		7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */; };
-		7EA48D4F1EADD4CE00CEC845 /* shadowMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D4E1EADD4CE00CEC845 /* shadowMask.png */; };
+		7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D4E1EADD4CE00CEC845 /* ShadowMask.png */; };
 		7EA48D531EADD53D00CEC845 /* StaticImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */; };
 		7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */; };
 		7EA48D561EADDD5500CEC845 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D551EADDD5500CEC845 /* Event.swift */; };
@@ -82,7 +82,7 @@
 		7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCoordinator.swift; sourceTree = "<group>"; };
 		7EA48D441EADC12C00CEC845 /* Startable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Startable.swift; sourceTree = "<group>"; };
 		7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectiveShadowView.swift; sourceTree = "<group>"; };
-		7EA48D4E1EADD4CE00CEC845 /* shadowMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shadowMask.png; sourceTree = "<group>"; };
+		7EA48D4E1EADD4CE00CEC845 /* ShadowMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShadowMask.png; sourceTree = "<group>"; };
 		7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageCell.swift; sourceTree = "<group>"; };
 		7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticImageCell.xib; sourceTree = "<group>"; };
 		7EA48D551EADDD5500CEC845 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */,
-				7EA48D4E1EADD4CE00CEC845 /* shadowMask.png */,
+				7EA48D4E1EADD4CE00CEC845 /* ShadowMask.png */,
 			);
 			name = ReflectiveShadowView;
 			sourceTree = "<group>";
@@ -565,7 +565,7 @@
 				D33F07271EA9E93D00A74B9F /* EventsViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
-				7EA48D4F1EADD4CE00CEC845 /* shadowMask.png in Resources */,
+				7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */,
 				D31B08521EB12EA000C2D229 /* EventLocationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
