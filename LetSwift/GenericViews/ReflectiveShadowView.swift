@@ -62,8 +62,7 @@ class ReflectionShadowView: UIView {
     var shadowImageView: UIImageView!
     
     var imageSize: CGSize {
-        guard contentMode == .scaleAspectFit else { return frame.size }
-        guard let image = imageView.image else { return frame.size }
+        guard contentMode == .scaleAspectFit, let image = imageView.image else { return frame.size }
     
         let widthRatio = imageView.bounds.size.width / image.size.width
         let heightRatio = imageView.bounds.size.height / image.size.height
@@ -75,27 +74,27 @@ class ReflectionShadowView: UIView {
     }
     
     func blurImage() {
-        guard let imageToblur = image,
-            let resizedImage = imageToblur.resized(with: blurPercentageSize),
-            let ciimage = CIImage(image: resizedImage),
-            let blurredImage = appendBlur(ciimage: ciimage) else { return }
+        guard let imageToBlur = image,
+            let resizedImage = imageToBlur.resized(with: blurPercentageSize),
+            let ciImage = CIImage(image: resizedImage),
+            let blurredImage = appendBlur(ciImage: ciImage) else { return }
             
         DispatchQueue.main.async {
             self.shadowImageView.image = blurredImage
         }
     }
     
-    func appendBlur(ciimage : CIImage) -> UIImage? {
+    func appendBlur(ciImage: CIImage) -> UIImage? {
         guard let filter = CIFilter(name: "CIGaussianBlur") else { return nil }
         
-        filter.setValue(ciimage, forKey: kCIInputImageKey)
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
         filter.setValue(blurRadius, forKey: kCIInputRadiusKey)
         
         let context = CIContext(options: [:])
         if let output = filter.outputImage,
-            let cgimg = context.createCGImage(output, from: ciimage.extent) {
+            let cgImage = context.createCGImage(output, from: ciImage.extent) {
             
-            return UIImage(cgImage: cgimg)
+            return UIImage(cgImage: cgImage)
         } else {
             return nil
         }
@@ -115,7 +114,7 @@ class ReflectionShadowView: UIView {
     }
     
     init(image: UIImage) {
-        let frame = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+        let frame = CGRect(origin: .zero, size: image.size)
         super.init(frame: frame)
         
         setShadow()

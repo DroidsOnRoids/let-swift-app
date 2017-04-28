@@ -10,6 +10,18 @@ import UIKit
 
 class AppViewController: UIViewController {
     
+    var viewControllerTitleKey: String? {
+        return nil
+    }
+    
+    var shouldShowUserIcon: Bool {
+        return false
+    }
+    
+    var shouldHideShadow: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,17 +58,5 @@ class AppViewController: UIViewController {
         titleLabel.sizeToFit()
         
         return titleLabel
-    }
-    
-    var viewControllerTitleKey: String? {
-        return nil
-    }
-    
-    var shouldShowUserIcon: Bool {
-        return false
-    }
-    
-    var shouldHideShadow: Bool {
-        return false
     }
 }

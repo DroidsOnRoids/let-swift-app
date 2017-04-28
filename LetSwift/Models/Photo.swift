@@ -11,5 +11,5 @@ import Foundation
 struct Photo {
 
     let thumbnail: URL?
-    let full: String?
+    let full: URL?
 }

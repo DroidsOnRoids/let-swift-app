@@ -23,6 +23,18 @@ final class EventsViewController: AppViewController {
     }
     
     private var viewModel: EventsViewControllerViewModel!
+    
+    override var viewControllerTitleKey: String? {
+        return "EVENTS_TITLE"
+    }
+    
+    override var shouldShowUserIcon: Bool {
+        return true
+    }
+    
+    override var shouldHideShadow: Bool {
+        return true
+    }
 
     convenience init(viewModel: EventsViewControllerViewModel) {
         self.init()
@@ -33,18 +45,6 @@ final class EventsViewController: AppViewController {
         super.viewDidLoad()
 
         setup()
-    }
-
-    override var viewControllerTitleKey: String? {
-        return "EVENTS_TITLE"
-    }
-
-    override var shouldShowUserIcon: Bool {
-        return true
-    }
-
-    override var shouldHideShadow: Bool {
-        return true
     }
 
     private func setup() {
@@ -69,7 +69,7 @@ extension EventsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.viewCells[indexPath.row], for: indexPath)
 
         if indexPath.row == 0 {
-            cell.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, cell.bounds.width)
+            cell.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: cell.bounds.width)
         }
         
         return cell
