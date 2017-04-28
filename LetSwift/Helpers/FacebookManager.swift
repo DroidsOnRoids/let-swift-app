@@ -22,12 +22,17 @@ enum FacebookEventAttendance: String {
 
 fileprivate enum FacebookPermissions {
     static let rsvpEvent = "rsvp_event"
-    static let userEvents = "user_events"
 }
 
-fileprivate enum FacebookErrorCodes {
-    static let missingPermissions = 200
-    static let missingExtendedPermissions = 299 // HACK: Undocumented status code
+fileprivate enum FacebookError: Int {
+    case missingPermissions = 200
+    case missingExtendedPermissions = 299 // HACK: Undocumented status code
+    
+    static func from(error: Error?) -> FacebookError? {
+        guard let errorCode = (error as NSError?)?.userInfo[FBSDKGraphRequestErrorGraphErrorCode] as? Int else { return nil }
+
+        return FacebookError(rawValue: errorCode)
+    }
 }
 
 final class FacebookManager {
@@ -70,8 +75,8 @@ final class FacebookManager {
         loginManager.logOut()
     }
     
-    private func askForMissingPermissions(error: Error?, callback: @escaping (Bool) -> Void) {
-        guard let error = error, let errorCode = (error as NSError).userInfo[FBSDKGraphRequestErrorGraphErrorCode] as? Int, errorCode == FacebookErrorCodes.missingPermissions || errorCode == FacebookErrorCodes.missingExtendedPermissions else {
+    private func askForMissingPermissions(error: FacebookError?, callback: @escaping (Bool) -> Void) {
+        guard let error = error, [FacebookError.missingPermissions, FacebookError.missingExtendedPermissions].contains(error) else {
             callback(false)
             return
         }
@@ -86,31 +91,35 @@ final class FacebookManager {
     }
     
     private func sendGraphRequest(_ request: FBSDKGraphRequest, callback: @escaping (Any?) -> Void) {
-        request.start(completionHandler: { (_, result: Any?, error: Error?) in
-            self.askForMissingPermissions(error: error) { recovered in
-                if recovered {
-                    request.start(completionHandler: { (_, result: Any?, error: Error?) in
-                        callback(result)
-                    })
-                } else {
+        request.start { [unowned self] (_, result: Any?, error: Error?) in
+            self.askForMissingPermissions(error: FacebookError.from(error: error)) { recovered in
+                guard recovered else {
                     callback(result)
+                    return
                 }
+                
+                request.start(completionHandler: { (_, result: Any?, error: Error?) in
+                    callback(result)
+                })
             }
-        })
+        }
     }
     
     func changeEvent(attendanceTo attendance: FacebookEventAttendance, forId id: String, callback: ((Bool) -> Void)?) {
         // HACK: Undocumented API call
-        guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(attendance)", parameters: [:], httpMethod: "POST") else { callback?(false); return }
+        guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(attendance)", parameters: [:], httpMethod: "POST") else {
+            callback?(false)
+            return
+        }
         
         sendGraphRequest(request) { result in
-            guard let result = result, let resultDict = (result as? [String : Any]) else { callback?(false); return }
-            
-            if let success = resultDict["success"], success as? Bool == true {
-                callback?(true)
-            } else {
+            guard let resultDict = (result as? [String : Any]) else {
                 callback?(false)
+                return
             }
+            
+            let success = resultDict["success"] as? Bool
+            callback?(success == true)
         }
     }
     
@@ -118,7 +127,7 @@ final class FacebookManager {
         guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: ["user" : FBSDKAccessToken.current().userID], httpMethod: "GET") else { return }
         
         sendGraphRequest(request) { result in
-            guard let result = result, let resultDict = (result as? [String : Any]) else { return }
+            guard let resultDict = (result as? [String : Any]) else { return }
             guard let data = resultDict["data"], let dataArray = (data as? [Any]) else { return }
             
             callback(!dataArray.isEmpty)
