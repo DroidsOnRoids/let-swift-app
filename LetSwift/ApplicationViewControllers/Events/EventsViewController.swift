@@ -53,7 +53,7 @@ final class EventsViewController: AppViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.setFooterColor(.paleGrey)
+        tableView.tableFooterView = UIView()
         
         Constants.viewCells.forEach { cell in
             tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
