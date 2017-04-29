@@ -73,25 +73,25 @@ extension Array {
 final class BindableArray<T> {
 
     private var values: [T]
-    private var events = [([T]) -> (Int, T) -> ()]()
+    private var events = [([T]) -> ()]()
 
     init(_ values: [T]) {
         self.values = values
     }
 
-    func bind(to event: @escaping ([T]) -> (Int, T) -> ()) {
+    func bind(to event: @escaping ([T]) -> ()) {
         events.append(event)
         notify(event: event)
     }
 
     func append(_ element: T) {
         values.append(element)
-        events.forEach({ $0(values)(values.count - 1, element) })
+        events.forEach({ $0(values) })
     }
 
-    private func notify(event: ([T]) -> (Int, T) -> ()) {
+    private func notify(event: ([T]) -> ()) {
         values.enumerated().forEach { index, element in
-            event(values)(index, element)
+            event(values)
         }
     }
 }
@@ -101,20 +101,17 @@ extension UITableView {
     func item<Cell: UITableViewCell, T, S: Sequence>(with identifier: String, cellType: Cell.Type = Cell.self)
         -> (@escaping (Int, T, Cell) -> ())
         -> (_ source: S)
-        -> (Int, T)
         -> () where T == S.Iterator.Element {
             return { cellFormer in
                 return { source in
-                    return { index, item in
-                        DispatchQueue.global(qos: .background).async {
-                            let delegate = ReactiveTableViewDataSource<S> { tableView, index, element in
-                                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
-                                cellFormer(index, element, cell)
-                                return cell
-                            }
-                            ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
-                                delegate.tableView(self, observedElements: source)
-                            }
+                    DispatchQueue.global(qos: .background).async {
+                        let delegate = ReactiveTableViewDataSource<S> { tableView, index, element in
+                            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
+                            cellFormer(index, element, cell)
+                            return cell
+                        }
+                        ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
+                            delegate.tableView(self, observedElements: source)
                         }
                     }
                 }
@@ -164,15 +161,14 @@ final class ReactiveTableViewDataSourceProxy: NSObject, UITableViewDataSource {
     fileprivate var dataSourceMethods: UITableViewDataSource?
 
     class func assignedProxyFor(_ object: AnyObject) -> ReactiveTableViewDataSourceProxy? {
-        let proxy = objc_getAssociatedObject(object, Constants.delegateAssociatedTag) as? ReactiveTableViewDataSourceProxy
-        return proxy
+        return objc_getAssociatedObject(object, Constants.delegateAssociatedTag) as? ReactiveTableViewDataSourceProxy
     }
 
-    class func assignProxy(_ proxy: AnyObject, to object: AnyObject) {
+    class func assignProxy(_ proxy: AnyObject, to object: UITableView) {
         objc_setAssociatedObject(object, Constants.delegateAssociatedTag, proxy, .OBJC_ASSOCIATION_RETAIN)
     }
 
-    class func currentDelegateFor(_ object: UITableView) -> AnyObject? {
+    class func currentDelegateFor(_ object: UITableView) -> UITableViewDataSource? {
         return object.dataSource
     }
 
