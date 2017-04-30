@@ -14,9 +14,7 @@ final class PreviousEventCell: UICollectionViewCell {
     
     override var isHighlighted: Bool {
         didSet {
-            UIView.animate(withDuration: 0.05) {
-                self.transform = self.isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
-            }
+            highlightView(isHighlighted)
         }
     }
     

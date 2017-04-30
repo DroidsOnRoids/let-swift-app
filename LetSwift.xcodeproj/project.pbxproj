@@ -60,6 +60,7 @@
 		D39A73531E9776D900F10620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39A73521E9776D900F10620 /* Assets.xcassets */; };
 		D39A73561E9776D900F10620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39A73541E9776D900F10620 /* LaunchScreen.storyboard */; };
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
+		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
@@ -133,6 +134,7 @@
 		D39A73551E9776D900F10620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
@@ -513,6 +515,7 @@
 				D319AD841EA62487001ECE0B /* ArrayExtension.swift */,
 				D31216371EB2774F003674C7 /* UIImageExtension.swift */,
 				D39D71131EB651D100F8743C /* UITableViewExtension.swift */,
+				D39D71171EB6551C00F8743C /* UIViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D31216381EB2774F003674C7 /* UIImageExtension.swift in Sources */,
+				D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */,
 				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
 				D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */,
