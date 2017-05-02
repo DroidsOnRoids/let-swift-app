@@ -10,6 +10,8 @@ import UIKit
 
 class AppViewController: UIViewController {
     
+    var coordinatorDelegate: AppCoordinatorDelegate?
+    
     var viewControllerTitleKey: String? {
         return nil
     }
@@ -39,6 +41,9 @@ class AppViewController: UIViewController {
         if shouldShowUserIcon {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
             navigationItem.rightBarButtonItem?.tintColor = .black
+            
+            navigationItem.rightBarButtonItem?.target = self
+            navigationItem.rightBarButtonItem?.action = #selector(userIconTapped)
         }
     }
     
@@ -52,5 +57,11 @@ class AppViewController: UIViewController {
         titleLabel.sizeToFit()
         
         return titleLabel
+    }
+    
+    @objc private func userIconTapped() {
+        if !FacebookManager.shared.isLoggedIn {
+            coordinatorDelegate?.presentLoginViewController(popup: true)
+        }
     }
 }

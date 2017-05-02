@@ -47,6 +47,12 @@ final class EventsViewController: AppViewController {
 
         setup()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.refreshAttendance()
+    }
 
     private func setup() {
         tableView.delegate = self

@@ -53,7 +53,9 @@ final class EventsViewControllerViewModel {
     
     init(lastEvent: Event) {
         self.lastEvent = Observable<Event>(lastEvent)
-        
+    }
+    
+    func refreshAttendance() {
         if FacebookManager.shared.isLoggedIn {
             checkAttendance()
         } else {

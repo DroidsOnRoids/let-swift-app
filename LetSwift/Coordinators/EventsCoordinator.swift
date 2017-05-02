@@ -9,10 +9,19 @@
 import UIKit
 
 final class EventsCoordinator: Coordinator, Startable {
-
+    
+    fileprivate let delegate: AppCoordinatorDelegate
+    
+    init(navigationController: UINavigationController, delegate: AppCoordinatorDelegate) {
+        self.delegate = delegate
+        
+        super.init(navigationController: navigationController)
+    }
+    
     func start() {
         let viewModel = EventsViewControllerViewModel(lastEvent: EventsViewControllerViewModel.mockedEvent)
         let viewController = EventsViewController(viewModel: viewModel)
+        viewController.coordinatorDelegate = delegate
         
         navigationViewController.viewControllers = [viewController]
     }
