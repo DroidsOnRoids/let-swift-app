@@ -8,13 +8,9 @@
 
 import UIKit
 
-protocol LoginViewControllerCoordinatorDelegate: class {
+protocol LoginViewControllerDelegate: class {
     func facebookLoginCompleted()
     func loginHasSkipped()
-}
-
-protocol LoginViewControllerDelegate: class {
-    func showFacebookErrorDialog(error: String?)
 }
 
 final class LoginViewController: UIViewController {
@@ -50,9 +46,14 @@ final class LoginViewController: UIViewController {
     }
     
     private func setupViewModel() {
-        viewModel.viewDelegate = self
-        
         skipLoginButton.addTarget(viewModel, action: #selector(LoginViewControllerViewModel.skipButtonTapped), for: .touchUpInside)
+        
+        viewModel.facebookAlertObservable.subscribe(onNext: { [unowned self] error in
+            let alertController = UIAlertController(title: localized("LOGIN_FACEBOOK_ERROR"), message: error, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            self.present(alertController, animated: true)
+        })
         
         viewModel
             .animateWithRandomTextObservable
@@ -91,14 +92,5 @@ extension LoginViewController: Localizable {
         facebookButton.setTitle(localized("LOGIN_BUTTON_TITLE").uppercased(), for: [])
         loginPurposeDescriptionLabel.text = localized("LOGIN_PURPOSE_DESCRIPTION")
         loginSubtitleLabel.text = localized("LOGIN_SUBTITLE")
-    }
-}
-
-extension LoginViewController: LoginViewControllerDelegate {
-    func showFacebookErrorDialog(error: String?) {
-        let alertController = UIAlertController(title: localized("LOGIN_FACEBOOK_ERROR"), message: error, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        present(alertController, animated: true)
     }
 }
