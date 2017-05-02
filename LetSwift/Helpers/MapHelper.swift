@@ -9,7 +9,7 @@
 import CoreLocation
 import MapKit
 
-class MapHelper {
+final class MapHelper {
     
     private enum Constants {
         static let regionDistance: CLLocationDistance = 1000.0

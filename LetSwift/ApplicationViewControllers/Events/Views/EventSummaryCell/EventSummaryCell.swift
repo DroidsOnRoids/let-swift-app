@@ -13,18 +13,19 @@ final class EventSummaryCell: AppTableViewCell {
     @IBOutlet private weak var eventTitleLabel: UILabel!
     @IBOutlet private weak var eventDescriptionLabel: UILabel!
     
-    var eventTitle: String {
+    var eventTitle: String? {
         get {
-            return eventTitleLabel.text ?? ""
+            return eventTitleLabel.text
         }
         set {
-            eventTitleLabel.text = newValue.uppercased()
+            guard let eventTitle = newValue else { return }
+            eventTitleLabel.text = eventTitle.uppercased()
         }
     }
     
-    var eventDescription: String {
+    var eventDescription: String? {
         get {
-            return eventDescriptionLabel.text ?? ""
+            return eventDescriptionLabel.text
         }
         set {
             eventDescriptionLabel.text = newValue

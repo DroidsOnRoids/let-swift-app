@@ -15,18 +15,18 @@ final class EventTimeCell: AppTableViewCell {
     
     @IBOutlet private weak var separatorConstraint: NSLayoutConstraint!
     
-    var date: String {
+    var date: String? {
         get {
-            return dateLabel.text ?? ""
+            return dateLabel.text
         }
         set {
             dateLabel.text = newValue
         }
     }
     
-    var time: String {
+    var time: String? {
         get {
-            return timeLabel.text ?? ""
+            return timeLabel.text
         }
         set {
             timeLabel.text = newValue

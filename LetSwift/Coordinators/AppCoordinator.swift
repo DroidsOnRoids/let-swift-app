@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AppCoordinatorDelegate: class {
-    func presentLoginViewController(popup: Bool)
+    func presentLoginViewController(asPopupWindow: Bool)
 }
 
 final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
@@ -45,11 +45,11 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
         present(viewController: viewController)
     }
     
-    func presentLoginViewController(popup: Bool = false) {
+    func presentLoginViewController(asPopupWindow: Bool = false) {
         let viewModel = LoginViewControllerViewModel(delegate: self)
         let viewController = LoginViewController(viewModel: viewModel)
         
-        if popup {
+        if asPopupWindow {
             navigationViewController.pushViewController(viewController, animated: true)
         } else {
             present(viewController: viewController)

@@ -142,9 +142,7 @@ extension EventsViewController: UITableViewDataSource {
             //summary cell
             guard let cell = cell as? EventSummaryCell else { return UITableViewCell() }
             viewModel.lastEvent.subscribe(startsWithInitialValue: true) { event in
-                if let title = event.title {
-                    cell.eventTitle = title
-                }
+                cell.eventTitle = event.title
             }
             break
             
@@ -166,13 +164,8 @@ extension EventsViewController: UITableViewDataSource {
             //date cell
             guard let cell = cell as? EventTimeCell else { return UITableViewCell() }
             viewModel.lastEvent.subscribe(startsWithInitialValue: true) { [unowned self] event in
-                if let eventDate = self.viewModel.formattedDate {
-                    cell.date = eventDate
-                }
-                
-                if let eventTime = self.viewModel.formattedTime {
-                    cell.time = eventTime
-                }
+                cell.date = self.viewModel.formattedDate
+                cell.time = self.viewModel.formattedTime
             }
             break
             

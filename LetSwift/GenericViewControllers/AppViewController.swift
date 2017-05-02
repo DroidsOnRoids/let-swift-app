@@ -60,8 +60,7 @@ class AppViewController: UIViewController {
     }
     
     @objc private func userIconTapped() {
-        if !FacebookManager.shared.isLoggedIn {
-            coordinatorDelegate?.presentLoginViewController(popup: true)
-        }
+        guard !FacebookManager.shared.isLoggedIn else { return }
+        coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
     }
 }

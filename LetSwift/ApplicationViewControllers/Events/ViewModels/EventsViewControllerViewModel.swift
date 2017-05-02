@@ -64,8 +64,7 @@ final class EventsViewControllerViewModel {
     }
     
     private func checkAttendance() {
-        guard FacebookManager.shared.isLoggedIn else { return }
-        guard let eventId = lastEvent.value.facebook else { return }
+        guard FacebookManager.shared.isLoggedIn, let eventId = lastEvent.value.facebook else { return }
         
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [unowned self] result in
             self.attendanceState.next(result ? .attending : .notAttending)

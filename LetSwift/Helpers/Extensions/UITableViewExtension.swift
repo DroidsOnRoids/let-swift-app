@@ -22,8 +22,8 @@ extension UITableView {
     }
     
     private func changeChildDelaysContentTouches() {
-        for case let child as UIScrollView in subviews {
-            child.delaysContentTouches = delaysContentTouches
+        for subview in subviews {
+            (subview as? UIScrollView)?.delaysContentTouches = delaysContentTouches
         }
     }
 }
