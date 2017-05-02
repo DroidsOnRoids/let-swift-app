@@ -22,7 +22,6 @@ final class EventsViewControllerViewModel {
     )
     
     enum AttendanceState {
-        case notLoggedIn
         case notAttending
         case attending
         case loading
@@ -36,6 +35,9 @@ final class EventsViewControllerViewModel {
     var lastEvent: Observable<Event>
     var attendanceState = Observable<AttendanceState>(AttendanceState.loading)
     var notificationState = Observable<NotificationState>(NotificationState.notActive)
+    var loginScreenObservable = Observable<Void>()
+    
+    private var waitingForLogin = false
     
     var formattedDate: String? {
         guard let eventDate = lastEvent.value.date else { return nil }
@@ -59,15 +61,22 @@ final class EventsViewControllerViewModel {
         if FacebookManager.shared.isLoggedIn {
             checkAttendance()
         } else {
-            attendanceState.next(.notLoggedIn)
+            attendanceState.next(.notAttending)
+            waitingForLogin = false
         }
     }
     
     private func checkAttendance() {
-        guard FacebookManager.shared.isLoggedIn, let eventId = lastEvent.value.facebook else { return }
+        guard let eventId = lastEvent.value.facebook else { return }
+        guard FacebookManager.shared.isLoggedIn else { return }
         
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [unowned self] result in
             self.attendanceState.next(result ? .attending : .notAttending)
+            
+            if self.waitingForLogin {
+                self.waitingForLogin = false
+                self.attendButtonTapped()
+            }
         }
     }
     
@@ -80,9 +89,12 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func attendButtonTapped() {
-        guard FacebookManager.shared.isLoggedIn else { return }
-        guard ![.notLoggedIn, .loading].contains(attendanceState.value) else { return }
-        guard let eventId = lastEvent.value.facebook else { return }
+        guard let eventId = lastEvent.value.facebook, attendanceState.value != .loading  else { return }
+        guard FacebookManager.shared.isLoggedIn else {
+            waitingForLogin = true
+            loginScreenObservable.next()
+            return
+        }
         
         let oldAttendance = attendanceState.value
         let newAttendance: AttendanceState = oldAttendance == .attending ? .notAttending : .attending
