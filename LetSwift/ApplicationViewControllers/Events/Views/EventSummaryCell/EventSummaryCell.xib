@@ -51,6 +51,10 @@
                     <constraint firstItem="d8k-RT-Dfb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="wdh-df-K26"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="eventDescriptionLabel" destination="xzH-pb-xvZ" id="pxU-YO-l06"/>
+                <outlet property="eventTitleLabel" destination="PFJ-ZN-w1b" id="1nX-8J-V6M"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="99"/>
         </tableViewCell>
     </objects>

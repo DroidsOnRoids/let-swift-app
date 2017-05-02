@@ -11,7 +11,9 @@ import UIKit
 final class EventsCoordinator: Coordinator, Startable {
 
     func start() {
-        let controller = EventsViewController()
-        navigationViewController.viewControllers = [controller]
+        let viewModel = EventsViewControllerViewModel(lastEvent: EventsViewControllerViewModel.mockedEvent)
+        let viewController = EventsViewController(viewModel: viewModel)
+        
+        navigationViewController.viewControllers = [viewController]
     }
 }

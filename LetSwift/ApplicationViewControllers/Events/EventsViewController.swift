@@ -23,7 +23,7 @@ final class EventsViewController: AppViewController {
         ]
     }
     
-    private var viewModel: EventsViewControllerViewModel!
+    fileprivate var viewModel: EventsViewControllerViewModel!
     
     override var viewControllerTitleKey: String? {
         return "EVENTS_TITLE"
@@ -64,6 +64,18 @@ final class EventsViewController: AppViewController {
 
 extension EventsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: REWRITE IT TO REACTIVE TABLE VIEW
+        switch indexPath.row {
+        case 2:
+            //summary cell
+            viewModel.summaryCellTapped()
+            
+        case 3:
+            //location cell
+            viewModel.locationCellTapped()
+        default: break
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -75,9 +87,90 @@ extension EventsViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.viewCells[indexPath.row], for: indexPath)
-
-        if indexPath.row == 0 {
+        
+        // TODO: REWRITE IT TO REACTIVE TABLE VIEW
+        switch indexPath.row {
+        case 0:
             cell.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: cell.bounds.width)
+            
+        case 1:
+            //buttons
+            guard let cell = cell as? AttendButtonsRowCell else { return UITableViewCell() }
+            
+            cell.attendButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped), for: .touchUpInside)
+            cell.remindButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped), for: .touchUpInside)
+            
+            viewModel.attendanceState.subscribe(startsWithInitialValue: true) { state in
+                switch state {
+                case .notLoggedIn:
+                    // TODO: localized
+                    cell.attendButtonActive = false
+                    cell.attendButton.setTitle("UNAVAILABLE", for: [])
+                    
+                case .notAttending:
+                    cell.attendButtonActive = true
+                    cell.attendButton.setTitle(localized("EVENTS_ATTEND").uppercased(), for: [])
+                    
+                case .attending:
+                    cell.attendButtonActive = true
+                    cell.attendButton.setTitle(localized("EVENTS_ATTENDING").uppercased(), for: [])
+                    
+                case .loading:
+                    cell.attendButtonActive = false
+                    cell.attendButton.setTitle(localized("EVENTS_LOADING").uppercased(), for: [])
+                }
+            }
+            
+            viewModel.notificationState.subscribe(startsWithInitialValue: true) { state in
+                switch state {
+                case .notActive:
+                    cell.remindButton.setTitle(localized("EVENTS_REMIND_ME").uppercased(), for: [])
+                    
+                case .active:
+                    cell.remindButton.setTitle(localized("EVENTS_STOP_REMINDING").uppercased(), for: [])
+                }
+            }
+            break
+            
+        case 2:
+            //summary cell
+            guard let cell = cell as? EventSummaryCell else { return UITableViewCell() }
+            viewModel.lastEvent.subscribe(startsWithInitialValue: true) { event in
+                if let title = event.title {
+                    cell.eventTitle = title
+                }
+            }
+            break
+            
+        case 3:
+            //location cell
+            guard let cell = cell as? EventLocationCell else { return UITableViewCell() }
+            viewModel.lastEvent.subscribe(startsWithInitialValue: true) { event in
+                if let placeName = event.placeName {
+                    cell.placeName = placeName
+                }
+                
+                if let placeStreet = event.placeStreet {
+                    cell.placeLocation = placeStreet
+                }
+            }
+            break
+            
+        case 4:
+            //date cell
+            guard let cell = cell as? EventTimeCell else { return UITableViewCell() }
+            viewModel.lastEvent.subscribe(startsWithInitialValue: true) { [unowned self] event in
+                if let eventDate = self.viewModel.formattedDate {
+                    cell.date = eventDate
+                }
+                
+                if let eventTime = self.viewModel.formattedTime {
+                    cell.time = eventTime
+                }
+            }
+            break
+            
+        default: break
         }
         
         return cell
