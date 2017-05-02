@@ -10,8 +10,15 @@ import UIKit
 
 final class AttendButtonsRowCell: UITableViewCell {
 
-    @IBOutlet private weak var attendButton: AppShadowButton!
-    @IBOutlet private weak var remindButton: AppShadowButton!
+    @IBOutlet weak var attendButton: AppShadowButton!
+    @IBOutlet weak var remindButton: AppShadowButton!
+    
+    var attendButtonActive = true {
+        didSet {
+            attendButton.backgroundColor = attendButtonActive ? .swiftOrange : .paleGrey
+            attendButton.isEnabled = attendButtonActive
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

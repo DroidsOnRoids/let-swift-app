@@ -35,9 +35,7 @@ final class AppShadowButton: UIButton {
                 self.layer.shadowOpacity = isHighlighted ? 0.5 : 1.0
             }
             
-            UIView.animate(withDuration: 0.05) {
-                self.transform = self.isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
-            }
+            highlightView(isHighlighted)
         }
     }
     
@@ -55,30 +53,6 @@ final class AppShadowButton: UIButton {
                 layer.shadowOpacity = 0.0
             }
         }
-    }
-    
-    @IBInspectable
-    var shouldInterceptScrollViewTouches: Bool = false
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if shouldInterceptScrollViewTouches {
-            isHighlighted = true
-        }
-        super.touchesBegan(touches, with: event)
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if shouldInterceptScrollViewTouches {
-            isHighlighted = false
-        }
-        super.touchesEnded(touches, with: event)
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if shouldInterceptScrollViewTouches {
-            isHighlighted = false
-        }
-        super.touchesCancelled(touches, with: event)
     }
     
     private func updateShadowPath() {

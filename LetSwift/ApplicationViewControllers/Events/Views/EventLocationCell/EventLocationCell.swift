@@ -12,13 +12,13 @@ final class EventLocationCell: AppTableViewCell {
     
     @IBOutlet private weak var locationLabel: UILabel!
     
-    var placeName = "Proza" {
+    var placeName = "" {
         didSet {
             refreshLocationLabel()
         }
     }
     
-    var placeLocation = "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław" {
+    var placeLocation = "" {
         didSet {
             refreshLocationLabel()
         }

@@ -70,7 +70,9 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="dateLabel" destination="nef-8r-Xgs" id="vRp-Op-U8X"/>
                 <outlet property="separatorConstraint" destination="KNR-aV-mEc" id="WZR-JF-bJf"/>
+                <outlet property="timeLabel" destination="hK2-sF-FQy" id="1YM-Ti-4eT"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="86"/>
         </tableViewCell>

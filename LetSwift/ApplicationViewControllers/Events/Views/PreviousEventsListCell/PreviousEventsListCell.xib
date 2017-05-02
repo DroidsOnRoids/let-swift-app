@@ -23,7 +23,7 @@
                         <color key="textColor" red="0.51764705882352935" green="0.5607843137254902" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tuq-sL-QHB">
+                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tuq-sL-QHB">
                         <rect key="frame" x="0.0" y="35.5" width="375" height="143"/>
                         <color key="backgroundColor" red="0.87058823529999996" green="0.8980392157" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

@@ -12,5 +12,10 @@
 "LOGIN_SKIP_BUTTON_TITLE" = "Skip login";
 "LOGIN_FACEBOOK_ERROR" = "Something went wrong";
 "EVENTS_TITLE" = "Events";
+"EVENTS_ATTEND" = "Attend";
+"EVENTS_LOADING" = "Loading...";
+"EVENTS_ATTENDING" = "Attending";
+"EVENTS_REMIND_ME" = "Remind me";
+"EVENTS_STOP_REMINDING" = "Stop reminding";
 "SPEAKERS_TITLE" = "Speakers";
 "CONTACT_TITLE" = "Contact";
