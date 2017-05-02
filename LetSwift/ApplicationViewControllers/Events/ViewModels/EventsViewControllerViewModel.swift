@@ -37,8 +37,6 @@ final class EventsViewControllerViewModel {
     var notificationState = Observable<NotificationState>(NotificationState.notActive)
     var loginScreenObservable = Observable<Void>()
     
-    private var waitingForLogin = false
-    
     var formattedDate: String? {
         guard let eventDate = lastEvent.value.date else { return nil }
         let formatter = DateFormatter()
@@ -62,7 +60,6 @@ final class EventsViewControllerViewModel {
             checkAttendance()
         } else {
             attendanceState.next(.notAttending)
-            waitingForLogin = false
         }
     }
     
@@ -72,11 +69,6 @@ final class EventsViewControllerViewModel {
         
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [unowned self] result in
             self.attendanceState.next(result ? .attending : .notAttending)
-            
-            if self.waitingForLogin {
-                self.waitingForLogin = false
-                self.attendButtonTapped()
-            }
         }
     }
     
@@ -91,7 +83,6 @@ final class EventsViewControllerViewModel {
     @objc func attendButtonTapped() {
         guard let eventId = lastEvent.value.facebook, attendanceState.value != .loading  else { return }
         guard FacebookManager.shared.isLoggedIn else {
-            waitingForLogin = true
             loginScreenObservable.next()
             return
         }
