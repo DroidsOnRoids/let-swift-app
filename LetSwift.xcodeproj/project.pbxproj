@@ -54,6 +54,8 @@
 		D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */; };
 		D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */; };
 		D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */; };
+		D391CF001EB9229D0080EEAD /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D391CEFE1EB9229D0080EEAD /* EventDetailsViewController.swift */; };
+		D391CF011EB9229D0080EEAD /* EventDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D391CEFF1EB9229D0080EEAD /* EventDetailsViewController.xib */; };
 		D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D395F38B1EADD710004B6226 /* AppViewController.swift */; };
 		D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D397ED881EA7BE14002141E8 /* DefaultsManager.swift */; };
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
@@ -127,6 +129,8 @@
 		D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceScreenHeight.swift; sourceTree = "<group>"; };
 		D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendButtonsRowCell.swift; sourceTree = "<group>"; };
 		D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendButtonsRowCell.xib; sourceTree = "<group>"; };
+		D391CEFE1EB9229D0080EEAD /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		D391CEFF1EB9229D0080EEAD /* EventDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailsViewController.xib; sourceTree = "<group>"; };
 		D395F38B1EADD710004B6226 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		D397ED881EA7BE14002141E8 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		D39A73481E9776D900F10620 /* LetSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -398,6 +402,8 @@
 				7E7E41301EAA6332001DB179 /* ViewModels */,
 				D33F07241EA9E93D00A74B9F /* EventsViewController.swift */,
 				D33F07251EA9E93D00A74B9F /* EventsViewController.xib */,
+				D391CEFE1EB9229D0080EEAD /* EventDetailsViewController.swift */,
+				D391CEFF1EB9229D0080EEAD /* EventDetailsViewController.xib */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -605,6 +611,7 @@
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 				7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */,
+				D391CF011EB9229D0080EEAD /* EventDetailsViewController.xib in Resources */,
 				D31B08521EB12EA000C2D229 /* EventLocationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,6 +720,7 @@
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
 				D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
+				D391CF001EB9229D0080EEAD /* EventDetailsViewController.swift in Sources */,
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,

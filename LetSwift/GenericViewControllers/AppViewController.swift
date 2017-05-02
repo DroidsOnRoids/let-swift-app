@@ -34,6 +34,8 @@ class AppViewController: UIViewController {
         title = localized(viewControllerTitleKey ?? "").uppercased()
         navigationController?.navigationBar.setValue(shouldHideShadow, forKey: "hidesShadow")
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         if let navTitle = navigationItem.title {
             navigationItem.titleView = setupTitleLabel(withTitle: navTitle)
         }
