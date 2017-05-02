@@ -66,6 +66,7 @@
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
 		D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCell.swift */; };
 		D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F091881EB205FE0029E15E /* PreviousEventCell.xib */; };
+		D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F172101EB8A66200F9A91C /* MapHelper.swift */; };
 		D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */; };
 		D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */; };
 		D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */; };
@@ -140,6 +141,7 @@
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		D3F091871EB205FE0029E15E /* PreviousEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCell.swift; sourceTree = "<group>"; };
 		D3F091881EB205FE0029E15E /* PreviousEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventCell.xib; sourceTree = "<group>"; };
+		D3F172101EB8A66200F9A91C /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
 		D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeConstraint.swift; sourceTree = "<group>"; };
 		D3FF3F881E9F51F100501F44 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				D397ED881EA7BE14002141E8 /* DefaultsManager.swift */,
 				D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */,
 				D338CBB81EA8BA44000E9585 /* FacebookManager.swift */,
+				D3F172101EB8A66200F9A91C /* MapHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */,
 				7EA48D561EADDD5500CEC845 /* Event.swift in Sources */,
+				D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
