@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E02FE631EBB166D005DADCB /* BindabableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE621EBB166D005DADCB /* BindabableArray.swift */; };
-		7E02FE671EBB16F6005DADCB /* ReactiveTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE661EBB16F6005DADCB /* ReactiveTableViewDataSource.swift */; };
-		7E02FE691EBB17A4005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE681EBB17A4005DADCB /* ReactiveTableViewDataSourceProxy.swift */; };
+		7E02FE6E1EBB23EA005DADCB /* BindabableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6B1EBB23EA005DADCB /* BindabableArray.swift */; };
+		7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */; };
+		7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */; };
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
 		7E31D0A61EAE3D970030147C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A51EAE3D970030147C /* Photo.swift */; };
 		7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */; };
@@ -83,9 +83,9 @@
 /* Begin PBXFileReference section */
 		5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.release.xcconfig"; sourceTree = "<group>"; };
 		618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		7E02FE621EBB166D005DADCB /* BindabableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BindabableArray.swift; path = ../BindabableArray.swift; sourceTree = "<group>"; };
-		7E02FE661EBB16F6005DADCB /* ReactiveTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveTableViewDataSource.swift; path = LetSwift/Helpers/ReactiveTableViewDataSource.swift; sourceTree = SOURCE_ROOT; };
-		7E02FE681EBB17A4005DADCB /* ReactiveTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReactiveTableViewDataSourceProxy.swift; path = LetSwift/Helpers/ReactiveTableViewDataSourceProxy.swift; sourceTree = SOURCE_ROOT; };
+		7E02FE6B1EBB23EA005DADCB /* BindabableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindabableArray.swift; sourceTree = "<group>"; };
+		7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSource.swift; sourceTree = "<group>"; };
+		7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
 		7E31D0A51EAE3D970030147C /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -183,9 +183,9 @@
 		7E02FE6A1EBB17C4005DADCB /* Reactive */ = {
 			isa = PBXGroup;
 			children = (
-				7E02FE621EBB166D005DADCB /* BindabableArray.swift */,
-				7E02FE661EBB16F6005DADCB /* ReactiveTableViewDataSource.swift */,
-				7E02FE681EBB17A4005DADCB /* ReactiveTableViewDataSourceProxy.swift */,
+				7E02FE6B1EBB23EA005DADCB /* BindabableArray.swift */,
+				7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */,
+				7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */,
 			);
 			path = Reactive;
 			sourceTree = "<group>";
@@ -703,7 +703,6 @@
 				7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */,
 				D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
-				7E02FE671EBB16F6005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
 				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
 				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
@@ -715,10 +714,10 @@
 				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
 				D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */,
+				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
 				D34B850C1EB3214900DBC72D /* PreviousEventsListCell.swift in Sources */,
 				D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */,
 				D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */,
-				7E02FE691EBB17A4005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */,
 				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */,
@@ -728,7 +727,6 @@
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
-				7E02FE631EBB166D005DADCB /* BindabableArray.swift in Sources */,
 				D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
 				D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */,
@@ -737,6 +735,7 @@
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,
 				D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */,
+				7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */,
 				D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */,
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,
@@ -746,6 +745,7 @@
 				D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 				D3FF3F8E1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift in Sources */,
+				7E02FE6E1EBB23EA005DADCB /* BindabableArray.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
