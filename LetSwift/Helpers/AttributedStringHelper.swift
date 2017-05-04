@@ -9,9 +9,15 @@
 import UIKit
 
 func +(left: NSAttributedString, right: NSAttributedString) -> NSAttributedString {
-    let result = NSMutableAttributedString()
-    result.append(left)
+    let result = NSMutableAttributedString(attributedString: left)
     result.append(right)
+    
+    return result
+}
+
+func +(left: NSAttributedString, right: String) -> NSAttributedString {
+    let result = NSMutableAttributedString(attributedString: left)
+    result.append(NSAttributedString(string: right))
     
     return result
 }
@@ -22,14 +28,40 @@ extension String {
     }
     
     func attributed(withColor color: UIColor) -> NSAttributedString {
-        let colorAttribute = [ NSForegroundColorAttributeName: color ]
-        
-        return NSAttributedString(string: self, attributes: colorAttribute)
+        return attributed(withAttributes: [NSForegroundColorAttributeName: color])
     }
     
     func attributed(withSpacing spacing: CGFloat) -> NSAttributedString {
-        let spacingAttribute = [ NSKernAttributeName: spacing ]
+        return attributed(withAttributes: [NSKernAttributeName: spacing])
+    }
+    
+    func attributed(withFont font: UIFont) -> NSAttributedString {
+        return attributed(withAttributes: [NSFontAttributeName: font])
+    }
+    
+    func attributed(withAttributes attributes: [String : Any]) -> NSAttributedString {
+        return NSAttributedString(string: self, attributes: attributes)
+    }
+}
+
+extension NSAttributedString {
+    func with(color: UIColor) -> NSAttributedString {
+        return with(attributes: [NSForegroundColorAttributeName: color])
+    }
+    
+    func with(spacing: CGFloat) -> NSAttributedString {
+        return with(attributes: [NSKernAttributeName: spacing])
+    }
+    
+    func with(font: UIFont) -> NSAttributedString {
+        return with(attributes: [NSFontAttributeName: font])
+    }
+    
+    func with(attributes: [String : Any]) -> NSAttributedString {
+        let fullRange = NSRange(location: 0, length: string.characters.count)
+        let newString = NSMutableAttributedString(attributedString: self)
+        newString.addAttributes(attributes, range: fullRange)
         
-        return NSAttributedString(string: self, attributes: spacingAttribute)
+        return newString
     }
 }

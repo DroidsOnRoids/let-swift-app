@@ -10,15 +10,15 @@ import UIKit
 
 final class SpeakersViewController: AppViewController {
     
-    override func viewControllerTitleKey() -> String? {
+    override var viewControllerTitleKey: String? {
         return "SPEAKERS_TITLE"
     }
     
-    override func shouldShowUserIcon() -> Bool {
+    override var shouldShowUserIcon: Bool {
         return true
     }
     
-    override func shouldHideShadow() -> Bool {
+    override var shouldHideShadow: Bool {
         return true
     }
 }

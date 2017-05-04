@@ -10,57 +10,57 @@ import UIKit
 
 class AppViewController: UIViewController {
     
+    var coordinatorDelegate: AppCoordinatorDelegate?
+    
+    var viewControllerTitleKey: String? {
+        return nil
+    }
+    
+    var shouldShowUserIcon: Bool {
+        return false
+    }
+    
+    var shouldHideShadow: Bool {
+        return false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupNavigationBar()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        setupNavigationBar()
-    }
-    
     private func setupNavigationBar() {
-        if let titleKey = viewControllerTitleKey() {
-            title = localized(titleKey).uppercased()
-        }
-        
-        navigationController?.navigationBar.setValue(shouldHideShadow(), forKey: "hidesShadow")
-        navigationController?.navigationBar.barTintColor = .white
+        title = localized(viewControllerTitleKey ?? "").uppercased()
+        navigationController?.navigationBar.setValue(shouldHideShadow, forKey: "hidesShadow")
         
         if let navTitle = navigationItem.title {
             navigationItem.titleView = setupTitleLabel(withTitle: navTitle)
         }
         
-        if shouldShowUserIcon() {
+        if shouldShowUserIcon {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
             navigationItem.rightBarButtonItem?.tintColor = .black
+            
+            navigationItem.rightBarButtonItem?.target = self
+            navigationItem.rightBarButtonItem?.action = #selector(userIconTapped)
         }
     }
     
     private func setupTitleLabel(withTitle title: String) -> UILabel {
         let titleLabel = UILabel()
-        titleLabel.attributedText = NSAttributedString(string: title, attributes: [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 15.0, weight: UIFontWeightSemibold),
-            NSForegroundColorAttributeName: UIColor.highlightedBlack,
-            NSKernAttributeName: 1.0
-        ])
+        titleLabel.attributedText = title
+            .attributed(withFont: .systemFont(ofSize: 15.0, weight: UIFontWeightSemibold))
+            .with(color: .highlightedBlack)
+            .with(spacing: 1.0)
+        
         titleLabel.sizeToFit()
         
         return titleLabel
     }
     
-    func viewControllerTitleKey() -> String? {
-        return nil
-    }
-    
-    func shouldShowUserIcon() -> Bool {
-        return false
-    }
-    
-    func shouldHideShadow() -> Bool {
-        return false
+    @objc private func userIconTapped() {
+        guard !FacebookManager.shared.isLoggedIn else { return }
+        coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
     }
 }

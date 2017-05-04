@@ -1,5 +1,5 @@
 //
-//  StaticImageTableViewCell.swift
+//  StaticImageCell.swift
 //  LetSwift
 //
 //  Created by Kinga Wilczek on 24.04.2017.
@@ -8,8 +8,7 @@
 
 import UIKit
 
-class StaticImageTableViewCell: UITableViewCell {
-    @IBOutlet weak var someName: UILabel!
+final class StaticImageCell: UITableViewCell {
     
     @IBOutlet weak var reflectiveImageView: ReflectionShadowView!
 }

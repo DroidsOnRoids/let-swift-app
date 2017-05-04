@@ -8,7 +8,11 @@
 
 import UIKit
 
-final class AppCoordinator: Coordinator, Startable {
+protocol AppCoordinatorDelegate: class {
+    func presentLoginViewController(asPopupWindow: Bool)
+}
+
+final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
     fileprivate var shouldShowLoginScreen: Bool {
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
@@ -41,16 +45,20 @@ final class AppCoordinator: Coordinator, Startable {
         present(viewController: viewController)
     }
     
-    fileprivate func presentLoginViewController() {
+    func presentLoginViewController(asPopupWindow: Bool = false) {
         let viewModel = LoginViewControllerViewModel(delegate: self)
         let viewController = LoginViewController(viewModel: viewModel)
         
-        present(viewController: viewController)
+        if asPopupWindow {
+            navigationViewController.pushViewController(viewController, animated: true)
+        } else {
+            present(viewController: viewController)
+        }
     }
     
     fileprivate func presentMainController() {
         let coordinators = [
-            EventsCoordinator(navigationController: UINavigationController()),
+            EventsCoordinator(navigationController: UINavigationController(), delegate: self),
             SpeakersCoordinator(navigationController: UINavigationController()),
             ContactCoordinator(navigationController: UINavigationController())
         ]
@@ -76,12 +84,20 @@ extension AppCoordinator: OnboardingViewControllerCoordinatorDelegate {
 
 extension AppCoordinator: LoginViewControllerCoordinatorDelegate {
     func facebookLoginCompleted() {
-        presentMainController()
+        if navigationViewController.viewControllers.count > 1 {
+            navigationViewController.popViewController(animated: true)
+        } else {
+            presentMainController()
+        }
     }
     
     func loginHasSkipped() {
         DefaultsManager.shared.isLoginSkipped = true
         
-        presentMainController()
+        if navigationViewController.viewControllers.count > 1 {
+            navigationViewController.popViewController(animated: true)
+        } else {
+            presentMainController()
+        }
     }
 }

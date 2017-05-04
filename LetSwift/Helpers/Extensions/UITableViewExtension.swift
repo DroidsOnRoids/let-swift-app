@@ -2,7 +2,7 @@
 //  UITableViewExtension.swift
 //  LetSwift
 //
-//  Created by Kinga Wilczek on 04.05.2017.
+//  Created by Kinga Wilczek, Marcin Chojnacki on 04.05.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
@@ -31,5 +31,23 @@ extension UITableView {
 
     func createRxDataSourceProxy() -> ReactiveTableViewDataSourceProxy {
         return ReactiveTableViewDataSourceProxy()
+    }
+
+    override open var delaysContentTouches: Bool {
+        didSet {
+            changeChildDelaysContentTouches()
+        }
+    }
+    
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+        
+        changeChildDelaysContentTouches()
+    }
+    
+    private func changeChildDelaysContentTouches() {
+        subviews.forEach {
+            ($0 as? UIScrollView)?.delaysContentTouches = delaysContentTouches
+        }
     }
 }

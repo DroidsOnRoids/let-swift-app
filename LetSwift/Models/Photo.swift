@@ -8,8 +8,8 @@
 
 import Foundation
 
-final class Photo {
+struct Photo {
 
-    var thumbnail: String?
-    var full: String?
+    let thumbnail: URL?
+    let full: URL?
 }

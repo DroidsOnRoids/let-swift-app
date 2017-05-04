@@ -9,20 +9,16 @@
 import Foundation
 import CoreLocation
 
-final class Event {
+struct Event {
 
-    var id: Int?
-
-    var date: Date?
-
-    var title: String?
-    var facebook: String?
-    var placeName: String?
-    var placeStreet: String?
-
-    var coverPhotos: [String] = []
-    var photos: [Photo] = []
-    var talks: [Talk] = []
-
-    var placeCoordinates: CLLocationCoordinate2D?
+    let id: Int?
+    let date: Date?
+    let title: String?
+    let facebook: String?
+    let placeName: String?
+    let placeStreet: String?
+    let coverPhotos = [String]()
+    let photos = [Photo]()
+    let talks = [Talk]()
+    let placeCoordinates: CLLocationCoordinate2D?
 }
