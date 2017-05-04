@@ -54,7 +54,7 @@ final class ReactiveTableViewDataSourceProxy: NSObject, UITableViewDataSource {
     }
 
     class func createProxy(for tableView: UITableView) -> AnyObject {
-        return tableView.createRxDataSourceProxy()
+        return tableView.createDataSourceProxy()
     }
 
     class func setCurrentDelegate(_ delegate: UITableViewDataSource?, to tableView: UITableView) {

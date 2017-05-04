@@ -22,6 +22,18 @@ final class EventsViewController: AppViewController {
         case eventTime = "EventTimeCell"
         case previousEvents = "PreviousEventsListCell"
 
+        init?(int: Int) {
+            switch int {
+            case 0: self = .image
+            case 1: self = .attend
+            case 2: self = .eventSummary
+            case 3: self = .eventLocation
+            case 4: self = .eventTime
+            case 5: self = .previousEvents
+            default: return nil
+            }
+        }
+
         static let all: [EventsViewControllerCells] = [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
     }
 
@@ -70,8 +82,6 @@ final class EventsViewController: AppViewController {
 
     private func setup() {
         setupViewModel()
-        
-        tableView.delegate = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
@@ -152,36 +162,39 @@ final class EventsViewController: AppViewController {
             switch element {
             case .image:
                 self.setup(imageCell: cell as! StaticImageCell)
+
             case .attend:
                 self.setup(attendCell: cell as! AttendButtonsRowCell)
+
             case .eventSummary:
                 self.setup(summaryCell: cell as! EventSummaryCell)
+
             case .eventLocation:
                 self.setup(locationCell: cell as! EventLocationCell)
+
             case .eventTime:
                 self.setup(timeCell: cell as! EventTimeCell)
+
             default: break
             }
 
             return cell
         }))
-    }
-}
 
-extension EventsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: REWRITE IT TO REACTIVE TABLE VIEW
-        switch indexPath.row {
-        case 2:
-            //summary cell
-            viewModel.summaryCellTapped()
+        tableView.itemDidSelectObservable.subscribe { [weak self] indexPath in
+            guard let cellType = EventsViewControllerCells(int: indexPath.row) else { return }
             
-        case 3:
-            //location cell
-            viewModel.locationCellTapped()
-        default: break
+            switch cellType {
+            case .eventSummary:
+                self?.viewModel.summaryCellDidTapObservable.next()
+
+            case .eventLocation:
+                self?.viewModel.locationCellDidTapObservable.next()
+
+            default: break
+            }
+
+            self?.tableView.deselectRow(at: indexPath, animated: true)
         }
-        
-        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

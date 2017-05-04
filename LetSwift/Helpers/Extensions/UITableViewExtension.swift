@@ -45,8 +45,20 @@ extension UITableView {
             }
     }
 
-    func createRxDataSourceProxy() -> ReactiveTableViewDataSourceProxy {
+    func createDataSourceProxy() -> ReactiveTableViewDataSourceProxy {
         return ReactiveTableViewDataSourceProxy()
+    }
+
+    func createDelegateProxy() -> ReactiveTableViewDelegateProxy {
+        return ReactiveTableViewDelegateProxy()
+    }
+
+    var delegateProxy: ReactiveTableViewDelegateProxy {
+        return ReactiveTableViewDelegateProxy.proxyForObject(self) 
+    }
+
+    var itemDidSelectObservable: ObservableEvent<IndexPath> {
+        return ObservableEvent(event: delegateProxy.itemDidSelectObservable)
     }
 
     override open var delaysContentTouches: Bool {

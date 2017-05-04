@@ -6,7 +6,7 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-struct Observable<Element> {
+final class Observable<Element> {
     
     typealias NextObserver = (Element) -> ()
     typealias ErrorObserver = (Swift.Error) -> ()
@@ -26,22 +26,22 @@ struct Observable<Element> {
         self.value = value
     }
 
-    mutating func subscribe(startsWithInitialValue: Bool = false, onNext: @escaping NextObserver) {
+    func subscribe(startsWithInitialValue: Bool = false, onNext: @escaping NextObserver) {
         if startsWithInitialValue {
             onNext(value)
         }
         nextObservers.append(onNext)
     }
     
-    mutating func subscribe(onError: @escaping ErrorObserver) {
+    func subscribe(onError: @escaping ErrorObserver) {
         errorObservers.append(onError)
     }
     
-    mutating func subscribe(onCompleted: @escaping CompletedObserver) {
+    func subscribe(onCompleted: @escaping CompletedObserver) {
         completedObservers.append(onCompleted)
     }
     
-    mutating func next(_ value: Element) {
+    func next(_ value: Element) {
         self.value = value
     }
     

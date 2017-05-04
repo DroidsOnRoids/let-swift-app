@@ -37,6 +37,8 @@ final class EventsViewControllerViewModel {
     var notificationState = Observable<NotificationState>(NotificationState.notActive)
     var facebookAlertObservable = Observable<String?>(nil)
     var loginScreenObservable = Observable<Void>()
+    var summaryCellDidTapObservable = Observable<Void>()
+    var locationCellDidTapObservable = Observable<Void>()
     
     weak var delegate: EventsViewControllerDelegate?
     
@@ -57,6 +59,8 @@ final class EventsViewControllerViewModel {
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
         self.lastEvent = Observable<Event>(lastEvent)
         self.delegate = delegate
+
+        setup()
     }
     
     func refreshAttendance() {
@@ -65,6 +69,18 @@ final class EventsViewControllerViewModel {
         } else {
             attendanceState.next(.notAttending)
         }
+    }
+
+    private func setup() {
+        summaryCellDidTapObservable.subscribe(onNext: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.summaryCellTapped()
+        })
+
+        locationCellDidTapObservable.subscribe(onNext: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.locationCellTapped()
+        })
     }
     
     private func checkAttendance() {
@@ -109,11 +125,11 @@ final class EventsViewControllerViewModel {
         notificationState.next(notificationState.value == .active ? .notActive : .active)
     }
     
-    func summaryCellTapped() {
+    private func summaryCellTapped() {
         delegate?.presentEventDetailsScreen(model: lastEvent.value)
     }
     
-    func locationCellTapped() {
+    private func locationCellTapped() {
         guard let coordinates = lastEvent.value.placeCoordinates else { return }
         MapHelper.openMaps(withCoordinates: coordinates, name: lastEvent.value.placeName ?? lastEvent.value.title)
     }
