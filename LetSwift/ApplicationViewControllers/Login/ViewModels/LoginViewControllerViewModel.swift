@@ -11,10 +11,10 @@ import Foundation
 final class LoginViewControllerViewModel {
 
     var viewWillAppearPerformObservable = Observable<Void>()
+    var facebookAlertObservable = Observable<String?>(nil)
     var animateWithRandomTextObservable = Observable<String>("")
     
-    weak var delegate: LoginViewControllerCoordinatorDelegate?
-    weak var viewDelegate: LoginViewControllerDelegate?
+    weak var delegate: LoginViewControllerDelegate?
     
     private enum Constants {
         static let helloWorldVariants = [
@@ -26,7 +26,7 @@ final class LoginViewControllerViewModel {
         ]
     }
     
-    init(delegate: LoginViewControllerCoordinatorDelegate?) {
+    init(delegate: LoginViewControllerDelegate?) {
         self.delegate = delegate
         
         setup()
@@ -44,7 +44,7 @@ final class LoginViewControllerViewModel {
         case .success:
             delegate?.facebookLoginCompleted()
         case let .error(error):
-            viewDelegate?.showFacebookErrorDialog(error: error?.localizedDescription)
+            facebookAlertObservable.next(error?.localizedDescription)
         default: break
         }
     }

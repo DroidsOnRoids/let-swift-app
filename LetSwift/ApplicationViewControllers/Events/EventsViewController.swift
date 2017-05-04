@@ -8,33 +8,24 @@
 
 import UIKit
 
-enum EventsViewControllerCells: String {
-    case image = "StaticImageCell"
-    case attend = "AttendButtonsRowCell"
-    case eventSummary = "EventSummaryCell"
-    case eventLocation = "EventLocationCell"
-    case eventTime = "EventTimeCell"
-    case previousEvents = "PreviousEventsListCell"
-
-    static var all: [EventsViewControllerCells] {
-        return [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
-    }
+protocol EventsViewControllerDelegate: class {
+    func presentEventDetailsScreen(model: Event)
 }
 
 final class EventsViewController: AppViewController {
 
-    @IBOutlet private weak var tableView: UITableView!
-    
-    fileprivate enum Constants {
-        static let viewCells = [
-            "StaticImageCell",
-            "AttendButtonsRowCell",
-            "EventSummaryCell",
-            "EventLocationCell",
-            "EventTimeCell",
-            "PreviousEventsListCell"
-        ]
+    private enum EventsViewControllerCells: String {
+        case image = "StaticImageCell"
+        case attend = "AttendButtonsRowCell"
+        case eventSummary = "EventSummaryCell"
+        case eventLocation = "EventLocationCell"
+        case eventTime = "EventTimeCell"
+        case previousEvents = "PreviousEventsListCell"
+
+        static let all: [EventsViewControllerCells] = [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
     }
+
+    @IBOutlet private weak var tableView: UITableView!
     
     fileprivate var viewModel: EventsViewControllerViewModel!
     
@@ -66,16 +57,28 @@ final class EventsViewController: AppViewController {
         
         viewModel.refreshAttendance()
     }
+    
+    private func setupViewModel() {
+        viewModel.loginScreenObservable.subscribe(onNext: { [unowned self] in
+            self.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+        })
+        
+        viewModel.facebookAlertObservable.subscribe(onNext: { [unowned self] error in
+            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: self)
+        })
+    }
 
     private func setup() {
+        setupViewModel()
+        
         tableView.delegate = self
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.tableFooterView = UIView()
         
-        Constants.viewCells.forEach { cell in
-            tableView.register(UINib(nibName: cell, bundle: nil), forCellReuseIdentifier: cell)
+        EventsViewControllerCells.all.forEach { cell in
+            tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)
         }
 
         reactiveSetup()

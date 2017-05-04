@@ -15,6 +15,7 @@ enum FacebookLoginStatus {
 }
 
 enum FacebookEventAttendance: String {
+    case unknown
     case attending
     case declined
     case maybe
@@ -123,14 +124,29 @@ final class FacebookManager {
         }
     }
     
-    func isUserAttending(toEventId id: String, callback: @escaping (Bool) -> Void) {
-        guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: ["user" : FBSDKAccessToken.current().userID, "fields" : "rsvp_status"], httpMethod: "GET") else { return }
+    private func attendanceRequest(forEventId id: String) -> FBSDKGraphRequest? {
+        guard isLoggedIn else { return nil }
+        let parameters: [AnyHashable : Any] = [
+            "user" : FBSDKAccessToken.current().userID,
+            "fields" : "rsvp_status"
+        ]
+        
+        return FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: parameters, httpMethod: "GET")
+    }
+    
+    func isUserAttending(toEventId id: String, callback: @escaping (FacebookEventAttendance) -> Void) {
+        guard let request = attendanceRequest(forEventId: id) else {
+            callback(.unknown)
+            return
+        }
         
         sendGraphRequest(request) { result in
-            guard let resultDict = (result as? [String : Any]) else { return }
-            guard let data = resultDict["data"], let dataArray = (data as? [Any]) else { return }
+            guard let resultDict = (result as? [String : Any]), let data = resultDict["data"], let dataArray = (data as? [Any]) else {
+                callback(.unknown)
+                return
+            }
             
-            callback(!dataArray.isEmpty)
+            callback(dataArray.isEmpty ? .declined : .attending)
         }
     }
 }
