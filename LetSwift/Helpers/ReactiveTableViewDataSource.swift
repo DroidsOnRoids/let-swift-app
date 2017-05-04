@@ -13,7 +13,7 @@ final class ReactiveTableViewDataSource<S: Sequence>: NSObject, UITableViewDataS
     typealias CellFormer = (UITableView, Int, S.Iterator.Element) -> UITableViewCell
 
     private var cellFormer: CellFormer
-
+    
     private var items: [S.Iterator.Element] = []
 
     init(cellFormer: @escaping CellFormer) {
@@ -30,6 +30,7 @@ final class ReactiveTableViewDataSource<S: Sequence>: NSObject, UITableViewDataS
 
     func tableView(_ tableView: UITableView, observedElements: S) {
         items = observedElements.map({ $0 })
+
         DispatchQueue.main.async {
             tableView.reloadData()
         }

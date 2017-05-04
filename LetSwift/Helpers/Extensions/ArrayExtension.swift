@@ -2,7 +2,7 @@
 //  ArrayExtension.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 18.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 18.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
