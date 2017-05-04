@@ -38,6 +38,8 @@ final class EventsViewControllerViewModel {
     var facebookAlertObservable = Observable<String?>(nil)
     var loginScreenObservable = Observable<Void>()
     
+    var notificationManager: NotificationManager!
+    
     weak var delegate: EventsViewControllerDelegate?
     
     var formattedDate: String? {
@@ -57,6 +59,17 @@ final class EventsViewControllerViewModel {
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
         self.lastEvent = Observable<Event>(lastEvent)
         self.delegate = delegate
+        
+        setup()
+    }
+    
+    private func setup() {
+        self.lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
+            // -24 * 60 * 60
+            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(30))
+        })
+        
+        notificationState.next(notificationManager.isNotificationActive ? .active : .notActive)
     }
     
     func refreshAttendance() {
@@ -106,7 +119,17 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func remindButtonTapped() {
-        notificationState.next(notificationState.value == .active ? .notActive : .active)
+        guard let formattedTime = formattedTime, let eventTitle = lastEvent.value.title else { return }
+        
+        if notificationManager.isNotificationActive {
+            notificationManager.cancelNotification()
+        } else {
+            let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(eventTitle)"
+            
+            _ = notificationManager.scheduleNotification(withMessage: message)
+        }
+        
+        notificationState.next(notificationManager.isNotificationActive ? .active : .notActive)
     }
     
     func summaryCellTapped() {
