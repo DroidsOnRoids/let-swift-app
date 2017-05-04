@@ -37,6 +37,8 @@ final class EventsViewControllerViewModel {
     var attendanceState = Observable<AttendanceState>(AttendanceState.loading)
     var notificationState = Observable<NotificationState>(NotificationState.notActive)
     
+    weak var delegate: EventsViewControllerDelegate?
+    
     var formattedDate: String? {
         guard let eventDate = lastEvent.value.date else { return nil }
         let formatter = DateFormatter()
@@ -51,8 +53,9 @@ final class EventsViewControllerViewModel {
         return formatter.string(from: eventDate) + " CEST"
     }
     
-    init(lastEvent: Event) {
+    init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
         self.lastEvent = Observable<Event>(lastEvent)
+        self.delegate = delegate
     }
     
     func refreshAttendance() {
@@ -98,7 +101,7 @@ final class EventsViewControllerViewModel {
     }
     
     func summaryCellTapped() {
-        // TODO: implement
+        delegate?.presentEventDetailsScreen(model: lastEvent.value)
     }
     
     func locationCellTapped() {

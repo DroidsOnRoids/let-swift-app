@@ -82,7 +82,7 @@ extension AppCoordinator: OnboardingViewControllerCoordinatorDelegate {
     }
 }
 
-extension AppCoordinator: LoginViewControllerCoordinatorDelegate {
+extension AppCoordinator: LoginViewControllerDelegate {
     func facebookLoginCompleted() {
         if navigationViewController.viewControllers.count > 1 {
             navigationViewController.popViewController(animated: true)

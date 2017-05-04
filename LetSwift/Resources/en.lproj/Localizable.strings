@@ -12,6 +12,7 @@
 "LOGIN_SKIP_BUTTON_TITLE" = "Skip login";
 "LOGIN_FACEBOOK_ERROR" = "Something went wrong";
 "EVENTS_TITLE" = "Events";
+"EVENTS_DETAILS_TITLE" = "Event details";
 "EVENTS_ATTEND" = "Attend";
 "EVENTS_LOADING" = "Loading...";
 "EVENTS_ATTENDING" = "Attending";

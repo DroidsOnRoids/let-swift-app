@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol EventsViewControllerDelegate: class {
+    func presentEventDetailsScreen(model: Event)
+}
+
 final class EventsViewController: AppViewController {
 
     @IBOutlet private weak var tableView: UITableView!
