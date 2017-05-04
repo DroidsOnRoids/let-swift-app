@@ -82,7 +82,7 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func attendButtonTapped() {
-        guard let eventId = lastEvent.value.facebook, attendanceState.value != .loading  else { return }
+        guard let eventId = lastEvent.value.facebook, attendanceState.value != .loading else { return }
         guard FacebookManager.shared.isLoggedIn else {
             loginScreenObservable.next()
             return
