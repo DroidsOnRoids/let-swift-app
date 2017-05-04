@@ -10,5 +10,5 @@ import UIKit
 
 final class StaticImageCell: UITableViewCell {
     
-    @IBOutlet weak var reflectiveImageView: ReflectionShadowView!
+    @IBOutlet private weak var reflectiveImageView: ReflectionShadowView!
 }
