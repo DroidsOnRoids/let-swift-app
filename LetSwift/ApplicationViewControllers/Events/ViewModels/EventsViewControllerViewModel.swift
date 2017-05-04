@@ -95,7 +95,7 @@ final class EventsViewControllerViewModel {
         let newAttendance: AttendanceState = oldAttendance == .attending ? .notAttending : .attending
         
         attendanceState.next(.loading)
-        FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { result in
+        FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { [unowned self] result in
             if result {
                 self.attendanceState.next(newAttendance)
             } else {

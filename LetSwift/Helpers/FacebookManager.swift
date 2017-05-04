@@ -124,8 +124,18 @@ final class FacebookManager {
         }
     }
     
+    private func attendanceRequest(forEventId id: String) -> FBSDKGraphRequest? {
+        guard isLoggedIn else { return nil }
+        let parameters: [AnyHashable : Any] = [
+            "user" : FBSDKAccessToken.current().userID,
+            "fields" : "rsvp_status"
+        ]
+        
+        return FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: parameters, httpMethod: "GET")
+    }
+    
     func isUserAttending(toEventId id: String, callback: @escaping (FacebookEventAttendance) -> Void) {
-        guard isLoggedIn, let request = FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: ["user" : FBSDKAccessToken.current().userID, "fields" : "rsvp_status"], httpMethod: "GET") else {
+        guard let request = attendanceRequest(forEventId: id) else {
             callback(.unknown)
             return
         }
