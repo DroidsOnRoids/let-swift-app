@@ -58,6 +58,10 @@ final class EventsViewController: AppViewController {
         viewModel.loginScreenObservable.subscribe(onNext: { [unowned self] in
             self.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
         })
+        
+        viewModel.facebookAlertObservable.subscribe(onNext: { [unowned self] error in
+            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: self)
+        })
     }
 
     private func setup() {

@@ -96,9 +96,6 @@ extension LoginViewController: Localizable {
 
 extension LoginViewController: LoginViewControllerDelegate {
     func showFacebookErrorDialog(error: String?) {
-        let alertController = UIAlertController(title: localized("LOGIN_FACEBOOK_ERROR"), message: error, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        
-        present(alertController, animated: true)
+        AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: self)
     }
 }

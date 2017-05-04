@@ -35,6 +35,7 @@ final class EventsViewControllerViewModel {
     var lastEvent: Observable<Event>
     var attendanceState = Observable<AttendanceState>(AttendanceState.loading)
     var notificationState = Observable<NotificationState>(NotificationState.notActive)
+    var facebookAlertObservable = Observable<String?>(nil)
     var loginScreenObservable = Observable<Void>()
     
     var formattedDate: String? {
@@ -64,11 +65,11 @@ final class EventsViewControllerViewModel {
     }
     
     private func checkAttendance() {
-        guard let eventId = lastEvent.value.facebook else { return }
-        guard FacebookManager.shared.isLoggedIn else { return }
+        guard let eventId = lastEvent.value.facebook, FacebookManager.shared.isLoggedIn else { return }
         
+        attendanceState.next(.loading)
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [unowned self] result in
-            self.attendanceState.next(result ? .attending : .notAttending)
+            self.attendanceState.next(result == .attending ? .attending : .notAttending)
         }
     }
     
@@ -89,10 +90,15 @@ final class EventsViewControllerViewModel {
         
         let oldAttendance = attendanceState.value
         let newAttendance: AttendanceState = oldAttendance == .attending ? .notAttending : .attending
-        attendanceState.next(.loading)
         
+        attendanceState.next(.loading)
         FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { result in
-            self.attendanceState.next(result ? newAttendance : oldAttendance)
+            if result {
+                self.attendanceState.next(newAttendance)
+            } else {
+                self.attendanceState.next(oldAttendance)
+                self.facebookAlertObservable.next(nil)
+            }
         }
     }
     
