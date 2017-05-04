@@ -19,10 +19,18 @@ final class EventsCoordinator: Coordinator, Startable {
     }
     
     func start() {
-        let viewModel = EventsViewControllerViewModel(lastEvent: EventsViewControllerViewModel.mockedEvent)
+        let viewModel = EventsViewControllerViewModel(lastEvent: EventsViewControllerViewModel.mockedEvent, delegate: self)
         let viewController = EventsViewController(viewModel: viewModel)
         viewController.coordinatorDelegate = delegate
         
         navigationViewController.viewControllers = [viewController]
+    }
+}
+
+extension EventsCoordinator: EventsViewControllerDelegate {
+    func presentEventDetailsScreen(model: Event) {
+        let viewController = EventDetailsViewController()
+        
+        navigationViewController.pushViewController(viewController, animated: true)
     }
 }
