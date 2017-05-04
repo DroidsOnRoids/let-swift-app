@@ -29,6 +29,22 @@ extension UITableView {
             }
     }
 
+    func items<S: Sequence>()
+        -> (@escaping (UITableView, Int, S.Iterator.Element) -> UITableViewCell)
+        -> (_ source: S)
+        -> () {
+            return { cellFormer in
+                return { source in
+                    DispatchQueue.global(qos: .background).async {
+                        let delegate = ReactiveTableViewDataSource<S>(cellFormer: cellFormer)
+                        ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
+                            delegate.tableView(self, observedElements: source)
+                        }
+                    }
+                }
+            }
+    }
+
     func createRxDataSourceProxy() -> ReactiveTableViewDataSourceProxy {
         return ReactiveTableViewDataSourceProxy()
     }
