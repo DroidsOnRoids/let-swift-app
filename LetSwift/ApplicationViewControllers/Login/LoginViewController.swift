@@ -55,9 +55,7 @@ final class LoginViewController: UIViewController {
             self.present(alertController, animated: true)
         })
         
-        viewModel
-            .animateWithRandomTextObservable
-            .subscribe { [weak self] randomHello in
+        viewModel.animateWithRandomTextObservable.subscribe { [weak self] randomHello in
                 self?.animateLabel(randomHello: randomHello)
             }
     }
