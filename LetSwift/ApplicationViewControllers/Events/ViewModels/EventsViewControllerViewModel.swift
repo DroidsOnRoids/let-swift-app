@@ -22,7 +22,6 @@ final class EventsViewControllerViewModel {
     )
     
     enum AttendanceState {
-        case notLoggedIn
         case notAttending
         case attending
         case loading
@@ -36,6 +35,8 @@ final class EventsViewControllerViewModel {
     var lastEvent: Observable<Event>
     var attendanceState = Observable<AttendanceState>(AttendanceState.loading)
     var notificationState = Observable<NotificationState>(NotificationState.notActive)
+    var facebookAlertObservable = Observable<String?>(nil)
+    var loginScreenObservable = Observable<Void>()
     
     weak var delegate: EventsViewControllerDelegate?
     
@@ -62,15 +63,16 @@ final class EventsViewControllerViewModel {
         if FacebookManager.shared.isLoggedIn {
             checkAttendance()
         } else {
-            attendanceState.next(.notLoggedIn)
+            attendanceState.next(.notAttending)
         }
     }
     
     private func checkAttendance() {
-        guard FacebookManager.shared.isLoggedIn, let eventId = lastEvent.value.facebook else { return }
+        guard let eventId = lastEvent.value.facebook, FacebookManager.shared.isLoggedIn else { return }
         
+        attendanceState.next(.loading)
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [unowned self] result in
-            self.attendanceState.next(result ? .attending : .notAttending)
+            self.attendanceState.next(result == .attending ? .attending : .notAttending)
         }
     }
     
@@ -83,16 +85,23 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func attendButtonTapped() {
-        guard FacebookManager.shared.isLoggedIn else { return }
-        guard ![.notLoggedIn, .loading].contains(attendanceState.value) else { return }
-        guard let eventId = lastEvent.value.facebook else { return }
+        guard let eventId = lastEvent.value.facebook, attendanceState.value != .loading else { return }
+        guard FacebookManager.shared.isLoggedIn else {
+            loginScreenObservable.next()
+            return
+        }
         
         let oldAttendance = attendanceState.value
         let newAttendance: AttendanceState = oldAttendance == .attending ? .notAttending : .attending
-        attendanceState.next(.loading)
         
-        FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { result in
-            self.attendanceState.next(result ? newAttendance : oldAttendance)
+        attendanceState.next(.loading)
+        FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { [unowned self] result in
+            if result {
+                self.attendanceState.next(newAttendance)
+            } else {
+                self.attendanceState.next(oldAttendance)
+                self.facebookAlertObservable.next(nil)
+            }
         }
     }
     

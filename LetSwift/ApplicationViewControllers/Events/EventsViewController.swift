@@ -57,8 +57,20 @@ final class EventsViewController: AppViewController {
         
         viewModel.refreshAttendance()
     }
+    
+    private func setupViewModel() {
+        viewModel.loginScreenObservable.subscribe(onNext: { [unowned self] in
+            self.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+        })
+        
+        viewModel.facebookAlertObservable.subscribe(onNext: { [unowned self] error in
+            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: self)
+        })
+    }
 
     private func setup() {
+        setupViewModel()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -112,11 +124,6 @@ extension EventsViewController: UITableViewDataSource {
             
             viewModel.attendanceState.subscribe(startsWithInitialValue: true) { state in
                 switch state {
-                case .notLoggedIn:
-                    // TODO: localized
-                    cell.attendButtonActive = false
-                    cell.attendButton.setTitle("UNAVAILABLE", for: [])
-                    
                 case .notAttending:
                     cell.attendButtonActive = true
                     cell.attendButton.setTitle(localized("EVENTS_ATTEND").uppercased(), for: [])

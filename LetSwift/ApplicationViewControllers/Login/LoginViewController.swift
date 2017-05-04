@@ -49,10 +49,7 @@ final class LoginViewController: UIViewController {
         skipLoginButton.addTarget(viewModel, action: #selector(LoginViewControllerViewModel.skipButtonTapped), for: .touchUpInside)
         
         viewModel.facebookAlertObservable.subscribe(onNext: { [unowned self] error in
-            let alertController = UIAlertController(title: localized("LOGIN_FACEBOOK_ERROR"), message: error, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: .default))
-            
-            self.present(alertController, animated: true)
+            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: self)
         })
         
         viewModel.animateWithRandomTextObservable.subscribe { [weak self] randomHello in
