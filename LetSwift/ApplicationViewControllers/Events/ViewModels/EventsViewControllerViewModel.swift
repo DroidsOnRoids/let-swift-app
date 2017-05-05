@@ -40,6 +40,8 @@ final class EventsViewControllerViewModel {
     var summaryCellDidTapObservable = Observable<Void>()
     var locationCellDidTapObservable = Observable<Void>()
     
+    var notificationManager: NotificationManager!
+    
     weak var delegate: EventsViewControllerDelegate?
     
     var formattedDate: String? {
@@ -59,7 +61,7 @@ final class EventsViewControllerViewModel {
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
         self.lastEvent = Observable<Event>(lastEvent)
         self.delegate = delegate
-
+        
         setup()
     }
     
@@ -72,11 +74,17 @@ final class EventsViewControllerViewModel {
     }
 
     private func setup() {
+        lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
+            // -24 * 60 * 60
+            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(10))
+            self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
+        })
+        
         summaryCellDidTapObservable.subscribe(onNext: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.summaryCellTapped()
         })
-
+        
         locationCellDidTapObservable.subscribe(onNext: { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.locationCellTapped()
@@ -122,7 +130,17 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func remindButtonTapped() {
-        notificationState.next(notificationState.value == .active ? .notActive : .active)
+        guard let formattedTime = formattedTime, let eventTitle = lastEvent.value.title else { return }
+        
+        if notificationManager.isNotificationActive {
+            notificationManager.cancelNotification()
+        } else {
+            let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(eventTitle)"
+            
+            _ = notificationManager.succeededScheduleNotification(withMessage: message)
+        }
+        
+        notificationState.next(notificationManager.isNotificationActive ? .active : .notActive)
     }
     
     private func summaryCellTapped() {
