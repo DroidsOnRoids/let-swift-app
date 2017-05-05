@@ -11,6 +11,7 @@ import UIKit
 protocol EventsViewControllerDelegate: class {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
     func presentEventDetailsScreen(fromModel: Event)
+    func collectionViewCellDidTap()
 }
 
 class EventsViewController: AppViewController {
@@ -145,6 +146,14 @@ class EventsViewController: AppViewController {
         }
     }
 
+    private func setup(previousEventsCell cell: PreviousEventsListCell) {
+        viewModel.previousEventsCellDidSetObservable.next()
+        
+        viewModel.previousEventsViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
+            cell.viewModel = viewModel
+        }
+    }
+
     private func reactiveSetup() {
         allCells.bindable.bind(to: tableView.items() ({ (tableView: UITableView, index, element) in
             let indexPath = IndexPath(row: index, section: 0)
@@ -166,7 +175,8 @@ class EventsViewController: AppViewController {
             case .eventTime:
                 self.setup(timeCell: cell as! EventTimeCell)
 
-            default: break
+            case .previousEvents:
+                self.setup(previousEventsCell: cell as! PreviousEventsListCell)
             }
 
             return cell

@@ -11,6 +11,12 @@ import UIKit
 final class PreviousEventsListCell: UITableViewCell {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
+
+    var viewModel: PreviousEventsListCellViewModel! {
+        didSet {
+            reactiveSetup()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,9 +26,16 @@ final class PreviousEventsListCell: UITableViewCell {
     
     private func setup() {
         eventsCollectionView.register(UINib(nibName: PreviousEventCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PreviousEventCell.cellIdentifier)
-        [1, 2, 3, 4, 5].bindable.bind(to: eventsCollectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) ({ configuration in
-            print(configuration)
-        }))
+    }
+
+    private func reactiveSetup() {
+        if viewModel != nil {
+            viewModel.previousEvents.subscribe(startsWithInitialValue: true) { [weak self] events in
+                guard let collectionView = self?.eventsCollectionView else { return }
+                events.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) ({ configuration in
+                }))
+            }
+        }
     }
 }
 

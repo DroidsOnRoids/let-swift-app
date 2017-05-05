@@ -32,6 +32,10 @@ final class Observable<Element> {
         }
         nextObservers.append(onNext)
     }
+
+    func withLatest<T, Y>(from observable: Observable<T>, combine: (Element, T) -> (Y)) -> Observable<Y> {
+        return Observable<Y>(combine(value, observable.value))
+    }
     
     func subscribe(onError: @escaping ErrorObserver) {
         errorObservers.append(onError)
