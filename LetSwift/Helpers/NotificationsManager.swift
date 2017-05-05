@@ -18,15 +18,15 @@ struct NotificationManager {
     
     private var notifications: [UILocalNotification] {
         guard let date = date else { return [] }
-        return UIApplication.shared.scheduledLocalNotifications?.filter({ $0.fireDate == date }) ?? []
+        return UIApplication.shared.scheduledLocalNotifications?.filter { $0.fireDate == date } ?? []
     }
     
     var isNotificationActive: Bool {
         return !notifications.isEmpty
     }
     
-    func scheduleNotification(withMessage message: String) -> Bool {
-        guard let date = date else { return false }
+    func tryToScheduleNotification(withMessage message: String) -> Bool {
+        guard let date = date, !isNotificationActive else { return false }
         
         ensurePermissions()
 
@@ -36,7 +36,7 @@ struct NotificationManager {
         
         UIApplication.shared.scheduleLocalNotification(notification)
         
-        return true
+        return isNotificationActive
     }
     
     func cancelNotification() {

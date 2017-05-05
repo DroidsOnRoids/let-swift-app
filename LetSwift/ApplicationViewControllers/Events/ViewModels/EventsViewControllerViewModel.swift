@@ -66,10 +66,9 @@ final class EventsViewControllerViewModel {
     private func setup() {
         self.lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
             // -24 * 60 * 60
-            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(30))
+            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(10))
+            self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
         })
-        
-        notificationState.next(notificationManager.isNotificationActive ? .active : .notActive)
     }
     
     func refreshAttendance() {
@@ -126,7 +125,7 @@ final class EventsViewControllerViewModel {
         } else {
             let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(eventTitle)"
             
-            _ = notificationManager.scheduleNotification(withMessage: message)
+            _ = notificationManager.tryToScheduleNotification(withMessage: message)
         }
         
         notificationState.next(notificationManager.isNotificationActive ? .active : .notActive)
