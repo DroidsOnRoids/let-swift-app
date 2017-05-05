@@ -170,6 +170,8 @@ class EventsViewController: AppViewController {
 
             case .previousEvents:
                 self.setup(previousEventsCell: cell as! PreviousEventsListCell)
+                
+            default: break
             }
 
             return cell
