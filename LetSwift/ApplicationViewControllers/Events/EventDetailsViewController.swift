@@ -6,15 +6,21 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import UIKit
-
-final class EventDetailsViewController: AppViewController {
-
+final class EventDetailsViewController: EventsViewController {
+    
+    override var allCells: [EventCells] {
+        return [.attend, .eventSummary, .eventLocation, .eventTime]
+    }
+    
+    override var nibName: String? {
+        return "EventsViewController"
+    }
+    
     override var viewControllerTitleKey: String? {
         return "EVENTS_DETAILS_TITLE"
     }
     
-    override var shouldHideShadow: Bool {
-        return true
+    override var shouldShowUserIcon: Bool {
+        return false
     }
 }
