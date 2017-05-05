@@ -144,7 +144,7 @@ final class EventsViewControllerViewModel {
     }
     
     private func summaryCellTapped() {
-        delegate?.presentEventDetailsScreen(model: lastEvent.value)
+        delegate?.presentEventDetailsScreen(fromModel: lastEvent.value)
     }
     
     private func locationCellTapped() {
