@@ -11,4 +11,14 @@ import UIKit
 final class StaticImageCell: UITableViewCell {
     
     @IBOutlet private weak var reflectiveImageView: ReflectionShadowView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setup()
+    }
+    
+    private func setup() {
+        separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
+    }
 }
