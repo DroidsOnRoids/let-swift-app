@@ -37,6 +37,8 @@ final class EventsViewControllerViewModel {
     var notificationState = Observable<NotificationState>(NotificationState.notActive)
     var facebookAlertObservable = Observable<String?>(nil)
     var loginScreenObservable = Observable<Void>()
+    var summaryCellDidTapObservable = Observable<Void>()
+    var locationCellDidTapObservable = Observable<Void>()
     
     var notificationManager: NotificationManager!
     
@@ -63,20 +65,30 @@ final class EventsViewControllerViewModel {
         setup()
     }
     
-    private func setup() {
-        self.lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
-            // -24 * 60 * 60
-            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(10))
-            self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
-        })
-    }
-    
     func refreshAttendance() {
         if FacebookManager.shared.isLoggedIn {
             checkAttendance()
         } else {
             attendanceState.next(.notAttending)
         }
+    }
+
+    private func setup() {
+        lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
+            // -24 * 60 * 60
+            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(10))
+            self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
+        })
+        
+        summaryCellDidTapObservable.subscribe(onNext: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.summaryCellTapped()
+        })
+        
+        locationCellDidTapObservable.subscribe(onNext: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.locationCellTapped()
+        })
     }
     
     private func checkAttendance() {
@@ -131,11 +143,11 @@ final class EventsViewControllerViewModel {
         notificationState.next(notificationManager.isNotificationActive ? .active : .notActive)
     }
     
-    func summaryCellTapped() {
+    private func summaryCellTapped() {
         delegate?.presentEventDetailsScreen(model: lastEvent.value)
     }
     
-    func locationCellTapped() {
+    private func locationCellTapped() {
         guard let coordinates = lastEvent.value.placeCoordinates else { return }
         MapHelper.openMaps(withCoordinates: coordinates, name: lastEvent.value.placeName ?? lastEvent.value.title)
     }
