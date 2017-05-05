@@ -9,37 +9,28 @@
 import UIKit
 
 protocol EventsViewControllerDelegate: class {
-    func presentEventDetailsScreen(model: Event)
+    func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
+    func presentEventDetailsScreen(fromModel: Event)
 }
 
-final class EventsViewController: AppViewController {
+class EventsViewController: AppViewController {
 
-    private enum EventsViewControllerCells: String {
+    enum EventCells: String {
         case image = "StaticImageCell"
         case attend = "AttendButtonsRowCell"
         case eventSummary = "EventSummaryCell"
         case eventLocation = "EventLocationCell"
         case eventTime = "EventTimeCell"
         case previousEvents = "PreviousEventsListCell"
-
-        init?(int: Int) {
-            switch int {
-            case 0: self = .image
-            case 1: self = .attend
-            case 2: self = .eventSummary
-            case 3: self = .eventLocation
-            case 4: self = .eventTime
-            case 5: self = .previousEvents
-            default: return nil
-            }
-        }
-
-        static let all: [EventsViewControllerCells] = [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
+    }
+    
+    var allCells: [EventCells] {
+        return [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
     }
 
     @IBOutlet private weak var tableView: UITableView!
     
-    fileprivate var viewModel: EventsViewControllerViewModel!
+    var viewModel: EventsViewControllerViewModel!
     
     override var viewControllerTitleKey: String? {
         return "EVENTS_TITLE"
@@ -87,7 +78,7 @@ final class EventsViewController: AppViewController {
         tableView.estimatedRowHeight = 60.0
         tableView.tableFooterView = UIView()
         
-        EventsViewControllerCells.all.forEach { cell in
+        allCells.forEach { cell in
             tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)
         }
 
@@ -155,7 +146,7 @@ final class EventsViewController: AppViewController {
     }
 
     private func reactiveSetup() {
-        EventsViewControllerCells.all.bindable.bind(to: tableView.items() ({ (tableView: UITableView, index, element) in
+        allCells.bindable.bind(to: tableView.items() ({ (tableView: UITableView, index, element) in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
 
@@ -182,10 +173,10 @@ final class EventsViewController: AppViewController {
         }))
 
         tableView.itemDidSelectObservable.subscribe { [weak self] indexPath in
-            guard let cellType = EventsViewControllerCells(int: indexPath.row) else { return }
+            guard let cellType = self?.allCells[indexPath.row] else { return }
             
             switch cellType {
-            case .eventSummary:
+            case .image, .eventSummary, .previousEvents:
                 self?.viewModel.summaryCellDidTapObservable.next()
 
             case .eventLocation:

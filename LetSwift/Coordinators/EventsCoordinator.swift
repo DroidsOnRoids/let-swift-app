@@ -28,8 +28,15 @@ final class EventsCoordinator: Coordinator, Startable {
 }
 
 extension EventsCoordinator: EventsViewControllerDelegate {
-    func presentEventDetailsScreen(model: Event) {
-        let viewController = EventDetailsViewController()
+    func presentEventDetailsScreen(fromViewModel viewModel: EventsViewControllerViewModel) {
+        let viewController = EventDetailsViewController(viewModel: viewModel)
+        
+        navigationViewController.pushViewController(viewController, animated: true)
+    }
+    
+    func presentEventDetailsScreen(fromModel model: Event) {
+        let viewModel = EventsViewControllerViewModel(lastEvent: model, delegate: self)
+        let viewController = EventDetailsViewController(viewModel: viewModel)
         
         navigationViewController.pushViewController(viewController, animated: true)
     }
