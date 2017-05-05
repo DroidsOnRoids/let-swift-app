@@ -137,7 +137,7 @@ final class EventsViewControllerViewModel {
         } else {
             let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(eventTitle)"
             
-            _ = notificationManager.tryToScheduleNotification(withMessage: message)
+            _ = notificationManager.succeededScheduleNotification(withMessage: message)
         }
         
         notificationState.next(notificationManager.isNotificationActive ? .active : .notActive)

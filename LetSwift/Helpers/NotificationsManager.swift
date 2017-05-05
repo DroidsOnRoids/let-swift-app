@@ -25,7 +25,7 @@ struct NotificationManager {
         return !notifications.isEmpty
     }
     
-    func tryToScheduleNotification(withMessage message: String) -> Bool {
+    func succeededScheduleNotification(withMessage message: String) -> Bool {
         guard let date = date, !isNotificationActive else { return false }
         
         ensurePermissions()
