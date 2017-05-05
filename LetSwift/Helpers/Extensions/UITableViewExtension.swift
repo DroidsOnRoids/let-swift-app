@@ -61,6 +61,16 @@ extension UITableView {
         return ObservableEvent(event: delegateProxy.itemDidSelectObservable)
     }
 
+    func setFooterColor(color: UIColor) {
+        let footerView = UIView()
+        let colorView = UIView(frame: CGRect(x: 0, y: 0, width: max(bounds.width, bounds.height), height: 1000))
+        colorView.backgroundColor = color
+        footerView.addSubview(colorView)
+        
+        tableFooterView = footerView
+        sendSubview(toBack: footerView)
+    }
+    
     override open var delaysContentTouches: Bool {
         didSet {
             changeChildDelaysContentTouches()

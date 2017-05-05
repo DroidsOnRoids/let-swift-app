@@ -76,17 +76,13 @@ class EventsViewController: AppViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.tableFooterView = UIView()
+        tableView.setFooterColor(color: UIColor.paleGrey)
         
         allCells.forEach { cell in
             tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)
         }
 
         reactiveSetup()
-    }
-
-    private func setup(imageCell cell: StaticImageCell) {
-        cell.separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: cell.bounds.width)
     }
 
     private func setup(attendCell cell: AttendButtonsRowCell) {
@@ -151,9 +147,6 @@ class EventsViewController: AppViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
 
             switch element {
-            case .image:
-                self.setup(imageCell: cell as! StaticImageCell)
-
             case .attend:
                 self.setup(attendCell: cell as! AttendButtonsRowCell)
 
