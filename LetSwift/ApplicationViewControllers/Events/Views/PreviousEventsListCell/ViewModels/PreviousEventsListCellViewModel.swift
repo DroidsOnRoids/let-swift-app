@@ -28,5 +28,4 @@ final class PreviousEventsListCellViewModel {
             self?.delegate?.collectionViewCellDidTap(with: previousEvent)
         })
     }
-
 }
