@@ -38,7 +38,7 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel(lastEvent: model, delegate: self))
     }
 
-    func collectionViewCellDidTap() {
-        //TODO:
+    func collectionViewCellDidTap(with model: Event) {
+        presentEventDetailsScreen(fromModel: model)
     }
 }

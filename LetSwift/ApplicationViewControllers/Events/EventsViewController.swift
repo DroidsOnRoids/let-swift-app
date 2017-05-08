@@ -11,7 +11,7 @@ import UIKit
 protocol EventsViewControllerDelegate: class {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
     func presentEventDetailsScreen(fromModel: Event)
-    func collectionViewCellDidTap()
+    func collectionViewCellDidTap(with model: Event)
 }
 
 class EventsViewController: AppViewController {

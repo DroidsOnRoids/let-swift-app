@@ -11,6 +11,7 @@ import Foundation
 final class PreviousEventsListCellViewModel {
 
     var previousEvents = Observable<[Event]>([])
+    var cellDidTapWithIndex = Observable<Int>(-1)
 
     weak var delegate: EventsViewControllerDelegate?
 
@@ -22,6 +23,10 @@ final class PreviousEventsListCellViewModel {
     }
 
     private func setup() {
+        cellDidTapWithIndex.subscribe(onNext: { [weak self] index in
+            guard let previousEvent = self?.previousEvents.value[safe: index] else { return }
+            self?.delegate?.collectionViewCellDidTap(with: previousEvent)
+        })
     }
 
 }

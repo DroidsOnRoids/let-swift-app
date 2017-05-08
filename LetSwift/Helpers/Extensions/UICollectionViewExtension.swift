@@ -48,4 +48,16 @@ extension UICollectionView {
     func createDataSourceProxy() -> ReactiveCollectionViewDataSourceProxy {
         return ReactiveCollectionViewDataSourceProxy()
     }
+
+    func createDelegateProxy() -> ReactiveCollectionViewDelegateProxy {
+        return ReactiveCollectionViewDelegateProxy()
+    }
+
+    var delegateProxy: ReactiveCollectionViewDelegateProxy {
+        return ReactiveCollectionViewDelegateProxy.proxyForObject(self)
+    }
+
+    var itemDidSelectObservable: ObservableEvent<IndexPath> {
+        return ObservableEvent(event: delegateProxy.itemDidSelectObservable)
+    }
 }
