@@ -10,7 +10,7 @@ import UIKit
 
 extension UICollectionView {
     func item<Cell: UICollectionViewCell, T, S: Sequence>(with identifier: String, cellType: Cell.Type = Cell.self)
-        -> (@escaping (Int, T, Cell) -> ())
+        -> (((Int, T, Cell) -> ())?)
         -> (_ source: S)
         -> () where T == S.Iterator.Element {
             return { cellFormer in
@@ -18,7 +18,7 @@ extension UICollectionView {
                     DispatchQueue.global(qos: .background).async {
                         let delegate = ReactiveCollectionViewDataSource<S> { collectionView, index, element in
                             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
-                            cellFormer(index, element, cell)
+                            cellFormer?(index, element, cell)
                             return cell
                         }
                         ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { proxy in

@@ -35,8 +35,7 @@ final class PreviousEventsListCell: UITableViewCell {
     private func reactiveSetup() {
         viewModel.previousEvents.subscribe(startsWithInitialValue: true) { [weak self] events in
             guard let collectionView = self?.eventsCollectionView else { return }
-            events.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) ({ configuration in
-            }))
+            events.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) (nil))
         }
 
         eventsCollectionView.itemDidSelectObservable.subscribe { [weak self] indexPath in
