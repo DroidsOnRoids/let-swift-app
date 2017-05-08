@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 final class EventsViewControllerViewModel {
-    
+
     static let mockedEvent = Event(
         id: 1,
         date: Date(),
@@ -62,7 +62,8 @@ final class EventsViewControllerViewModel {
         guard let eventDate = lastEvent.value.date else { return nil }
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        return formatter.string(from: eventDate) + " CEST"
+        formatter.timeZone = TimeZone.current
+        return formatter.string(from: eventDate)
     }
     
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
