@@ -2,7 +2,7 @@
 //  PreviousEventsListCell.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 28.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 28.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
@@ -11,6 +11,14 @@ import UIKit
 final class PreviousEventsListCell: UITableViewCell {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
+
+    var viewModel: PreviousEventsListCellViewModel! {
+        didSet {
+            if viewModel != nil && viewModel !== oldValue {
+                reactiveSetup()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,16 +30,16 @@ final class PreviousEventsListCell: UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
         
         eventsCollectionView.register(UINib(nibName: PreviousEventCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PreviousEventCell.cellIdentifier)
-        eventsCollectionView.dataSource = self
     }
-}
 
-extension PreviousEventsListCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: PreviousEventCell.cellIdentifier, for: indexPath)
+    private func reactiveSetup() {
+        viewModel.previousEvents.subscribe(startsWithInitialValue: true) { [weak self] events in
+            guard let collectionView = self?.eventsCollectionView else { return }
+            events.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) (nil))
+        }
+
+        eventsCollectionView.itemDidSelectObservable.subscribe { [weak self] indexPath in
+            self?.viewModel.cellDidTapWithIndex.next(indexPath.item)
+        }
     }
 }

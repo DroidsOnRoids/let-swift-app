@@ -29,7 +29,7 @@ final class ReactiveTableViewDataSource<S: Sequence>: NSObject, UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, observedElements: S) {
-        items = observedElements.map({ $0 })
+        items = observedElements.map{ $0 }
 
         DispatchQueue.main.async {
             tableView.reloadData()

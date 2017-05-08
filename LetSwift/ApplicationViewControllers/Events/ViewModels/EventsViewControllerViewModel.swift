@@ -39,6 +39,13 @@ final class EventsViewControllerViewModel {
     var loginScreenObservable = Observable<Void>()
     var summaryCellDidTapObservable = Observable<Void>()
     var locationCellDidTapObservable = Observable<Void>()
+    var previousEventsCellDidSetObservable = Observable<Void>()
+    var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
+    var previousEvents = Observable<[Event]>([EventsViewControllerViewModel.mockedEvent,
+                                              EventsViewControllerViewModel.mockedEvent,
+                                              EventsViewControllerViewModel.mockedEvent,
+                                              EventsViewControllerViewModel.mockedEvent,
+                                              EventsViewControllerViewModel.mockedEvent])
     
     var notificationManager: NotificationManager!
     
@@ -89,6 +96,14 @@ final class EventsViewControllerViewModel {
             guard let weakSelf = self else { return }
             weakSelf.locationCellTapped()
         })
+
+        previousEventsCellDidSetObservable
+            .withLatest(from: previousEvents, combine: { $0.1 })
+            .subscribe(startsWithInitialValue: true, onNext: { [weak self] events in
+                guard let weakSelf = self else { return }
+                let subviewModel = PreviousEventsListCellViewModel(previousEvenets: events, delegate: weakSelf.delegate)
+                weakSelf.previousEventsViewModelObservable.next(subviewModel)
+            })
     }
     
     private func checkAttendance() {
