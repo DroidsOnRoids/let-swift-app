@@ -15,4 +15,8 @@ extension UIView {
             self.alpha = isHighlighted ? 0.75 : 1.0
         }
     }
+
+    func constraint(withIdentifier: String) -> NSLayoutConstraint? {
+        return self.constraints.filter { $0.identifier == withIdentifier }.first
+    }
 }
