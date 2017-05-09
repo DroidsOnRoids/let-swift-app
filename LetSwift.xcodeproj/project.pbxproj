@@ -11,6 +11,8 @@
 		7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */; };
 		7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */; };
 		7E02FE721EBB69E8005DADCB /* ObserevableEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE711EBB69E8005DADCB /* ObserevableEvent.swift */; };
+		7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift */; };
+		7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */; };
 		7E1C3EDE1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */; };
 		7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */; };
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
@@ -100,6 +102,8 @@
 		7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSource.swift; sourceTree = "<group>"; };
 		7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		7E02FE711EBB69E8005DADCB /* ObserevableEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserevableEvent.swift; sourceTree = "<group>"; };
+		7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselEventPhotosCell.swift; sourceTree = "<group>"; };
+		7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselEventPhotosCell.xib; sourceTree = "<group>"; };
 		7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
@@ -220,6 +224,15 @@
 			path = Reactive;
 			sourceTree = "<group>";
 		};
+		7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosCell */ = {
+			isa = PBXGroup;
+			children = (
+				7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift */,
+				7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */,
+			);
+			path = CarouselEventPhotosCell;
+			sourceTree = "<group>";
+		};
 		7E7E41301EAA6332001DB179 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +244,7 @@
 		7E7E41311EAA633E001DB179 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosCell */,
 				D34B85091EB3210E00DBC72D /* PreviousEventsListCell */,
 				D3F0917A1EB200790029E15E /* PreviousEventCell */,
 				D31B08531EB130C600C2D229 /* EventTimeCell */,
@@ -666,6 +680,7 @@
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
 				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
+				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* EventsViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
@@ -745,6 +760,7 @@
 			files = (
 				7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */,
 				7E31D0A61EAE3D970030147C /* Photo.swift in Sources */,
+				7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift in Sources */,
 				7E02FE721EBB69E8005DADCB /* ObserevableEvent.swift in Sources */,
 				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
 				7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */,
