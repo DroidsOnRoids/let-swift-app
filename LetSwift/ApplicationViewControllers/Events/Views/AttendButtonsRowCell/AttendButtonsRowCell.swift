@@ -12,10 +12,12 @@ final class AttendButtonsRowCell: UITableViewCell {
 
     @IBOutlet weak var attendButton: AppShadowButton!
     @IBOutlet weak var remindButton: AppShadowButton!
-
+    @IBOutlet private weak var currentEventConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var pastEventConstraint: NSLayoutConstraint!
+    
     private enum Constants {
-        static let validEventConstraintIdentifier = "ValidEventConstraint"
-        static let outOfDateEventConstraintIdentifier = "OutOfDateEventConstraint"
+        static let lowPriorityConstraints: Float = 250.0
+        static let highPriorityContraints: Float = 999.0
     }
     
     var attendButtonActive = true {
@@ -27,15 +29,12 @@ final class AttendButtonsRowCell: UITableViewCell {
 
     var isRemindButtonVisible = true {
         didSet {
-            let valid = contentView.constraint(withIdentifier: Constants.validEventConstraintIdentifier)
-            let invalid = contentView.constraint(withIdentifier: Constants.outOfDateEventConstraintIdentifier)
-
             if isRemindButtonVisible {
-                valid?.priority = 999
-                invalid?.priority = 250
+                currentEventConstraint.priority = Constants.highPriorityContraints
+                pastEventConstraint.priority = Constants.lowPriorityConstraints
             } else {
-                valid?.priority = 250
-                invalid?.priority = 999
+                currentEventConstraint.priority = Constants.lowPriorityConstraints
+                pastEventConstraint.priority = Constants.highPriorityContraints
             }
             
             UIView.animate(withDuration: 0.2) {
