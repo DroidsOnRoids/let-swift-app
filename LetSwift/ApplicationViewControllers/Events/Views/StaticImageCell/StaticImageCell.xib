@@ -22,7 +22,7 @@
                         <rect key="frame" x="8" y="0.0" width="359" height="220"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="PeU-rG-Xh0" secondAttribute="height" multiplier="359:220" id="NEy-5w-Pet"/>
+                            <constraint firstAttribute="width" secondItem="PeU-rG-Xh0" secondAttribute="height" multiplier="359:220" priority="999" id="NEy-5w-Pet"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
