@@ -45,7 +45,7 @@ final class PopoverViewController: UIViewController {
     
     var popoverTitle = "" {
         didSet {
-            let attributedTitle = popoverTitle.attributed(withFont: .systemFont(ofSize: 15.0, weight: UIFontWeightMedium))
+            let attributedTitle = popoverTitle.attributed(withFont: .systemFont(ofSize: 15.0, weight: UIFontWeightMedium)).with(spacing: 0.5)
             button.setAttributedTitle(attributedTitle.with(color: .black), for: [])
             button.setAttributedTitle(attributedTitle.with(color: .darkGray), for: .highlighted)
         }
