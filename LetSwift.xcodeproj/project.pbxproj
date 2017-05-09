@@ -261,7 +261,7 @@
 				7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */,
 				7EA48D4E1EADD4CE00CEC845 /* ShadowMask.png */,
 			);
-			name = ReflectiveShadowView;
+			path = ReflectiveShadowView;
 			sourceTree = "<group>";
 		};
 		7EE1410B1EBCA4C3008378AB /* PreviousEventsListCellViewModel */ = {
