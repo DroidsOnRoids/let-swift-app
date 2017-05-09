@@ -23,6 +23,7 @@ class EventsViewController: AppViewController {
         case eventLocation = "EventLocationCell"
         case eventTime = "EventTimeCell"
         case previousEvents = "PreviousEventsListCell"
+        case carouselEventPhotos = "CarouselEventPhotosCell"
     }
     
     var allCells: [EventCells] {
@@ -154,6 +155,15 @@ class EventsViewController: AppViewController {
         }
     }
 
+    private func setup(carouselCell cell: CarouselEventPhotosCell) {
+        viewModel.carouselCellDidSetObservable.next()
+
+        viewModel.carouselEventPhotosViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
+            cell.viewModel = viewModel
+        }
+
+    }
+
     private func reactiveSetup() {
         allCells.bindable.bind(to: tableView.items() ({ (tableView: UITableView, index, element) in
             let indexPath = IndexPath(row: index, section: 0)
@@ -174,6 +184,9 @@ class EventsViewController: AppViewController {
 
             case .previousEvents:
                 self.setup(previousEventsCell: cell as! PreviousEventsListCell)
+
+            case .carouselEventPhotos:
+                self.setup(carouselCell: cell as! CarouselEventPhotosCell)
                 
             default: break
             }

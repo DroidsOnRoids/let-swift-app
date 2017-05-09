@@ -9,7 +9,7 @@
 final class EventDetailsViewController: EventsViewController {
     
     override var allCells: [EventCells] {
-        return [.attend, .eventSummary, .eventLocation, .eventTime]
+        return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime]
     }
     
     override var nibName: String? {
