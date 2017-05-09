@@ -11,7 +11,7 @@ import UIKit
 final class PopoverView: UIView {
     
     private enum Constants {
-        static let straightRight = CGFloat(0.0)
+        static let straightRight: CGFloat = 0.0
         static let straightLeft = CGFloat(Float.pi)
         static let straightUp = CGFloat(Float.pi * 3.0 / 2.0)
         static let straightDown = CGFloat(Float.pi / 2.0)

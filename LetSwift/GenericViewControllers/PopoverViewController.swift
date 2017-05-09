@@ -25,7 +25,6 @@ final class PopoverViewController: UIViewController {
         get {
             return maskView.arrowPosition
         }
-        
         set {
             maskView.arrowPosition = newValue
             container.layer.anchorPoint = CGPoint(x: newValue, y: 0.0)
@@ -37,7 +36,6 @@ final class PopoverViewController: UIViewController {
         get {
             return container.center
         }
-        
         set {
             container.center = newValue
         }
@@ -104,9 +102,9 @@ final class PopoverViewController: UIViewController {
     private func closePopover() {
         UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseIn, animations: {
             self.container.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }, completion: { completed in
+        }) { completed in
             self.dismiss(animated: false)
-        })
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
