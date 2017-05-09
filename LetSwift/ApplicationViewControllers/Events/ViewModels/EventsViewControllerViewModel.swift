@@ -104,6 +104,10 @@ final class EventsViewControllerViewModel {
                 let subviewModel = PreviousEventsListCellViewModel(previousEvenets: events, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
             })
+        
+        FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [unowned self] in
+            self.attendanceState.next(.notAttending)
+        })
     }
     
     private func checkAttendance() {

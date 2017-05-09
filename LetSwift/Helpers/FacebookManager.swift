@@ -44,6 +44,8 @@ final class FacebookManager {
     private let readPermissions = [String]()
     private let publishPermissions = [FacebookPermissions.rsvpEvent]
     
+    let facebookLogoutObservable = Observable<Void>()
+    
     private init() {}
     
     var isLoggedIn: Bool {
@@ -74,6 +76,8 @@ final class FacebookManager {
     
     func logOut() {
         loginManager.logOut()
+        
+        facebookLogoutObservable.next()
     }
     
     private func askForMissingPermissions(error: FacebookError?, callback: @escaping (Bool) -> Void) {

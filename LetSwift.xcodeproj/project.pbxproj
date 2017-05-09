@@ -61,11 +61,13 @@
 		D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A01EA7330C00C05AA6 /* LoginViewController.swift */; };
 		D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35839A11EA7330C00C05AA6 /* LoginViewController.xib */; };
 		D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */; };
+		D36396221EC0654400158BEF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36396211EC0654400158BEF /* PopoverView.swift */; };
 		D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14B91E9F6AD0009EA346 /* OnboardingCardView.swift */; };
 		D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D38B14BB1E9F6AEC009EA346 /* OnboardingCardView.xib */; };
 		D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14BD1E9F6C62009EA346 /* DesignableView.swift */; };
 		D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */; };
 		D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */; };
+		D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C054C1EC1C35500EDBEB5 /* PopoverViewController.swift */; };
 		D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */; };
 		D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */; };
 		D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D395F38B1EADD710004B6226 /* AppViewController.swift */; };
@@ -149,11 +151,13 @@
 		D35839A01EA7330C00C05AA6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D35839A11EA7330C00C05AA6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLabelAnimator.swift; sourceTree = "<group>"; };
+		D36396211EC0654400158BEF /* PopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
 		D38B14B91E9F6AD0009EA346 /* OnboardingCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCardView.swift; sourceTree = "<group>"; };
 		D38B14BB1E9F6AEC009EA346 /* OnboardingCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingCardView.xib; sourceTree = "<group>"; };
 		D38B14BD1E9F6C62009EA346 /* DesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableView.swift; sourceTree = "<group>"; };
 		D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeLabel.swift; sourceTree = "<group>"; };
 		D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceScreenHeight.swift; sourceTree = "<group>"; };
+		D38C054C1EC1C35500EDBEB5 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendButtonsRowCell.swift; sourceTree = "<group>"; };
 		D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendButtonsRowCell.xib; sourceTree = "<group>"; };
 		D395F38B1EADD710004B6226 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				D395F38B1EADD710004B6226 /* AppViewController.swift */,
+				D38C054C1EC1C35500EDBEB5 /* PopoverViewController.swift */,
 			);
 			path = GenericViewControllers;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				D38B14BD1E9F6C62009EA346 /* DesignableView.swift */,
 				7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */,
 				D3F091781EB1FE770029E15E /* AppTableViewCell.swift */,
+				D36396211EC0654400158BEF /* PopoverView.swift */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -771,6 +777,7 @@
 				D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */,
 				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
 				7E9E04331EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift in Sources */,
+				D36396221EC0654400158BEF /* PopoverView.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */,
 				7EA48D561EADDD5500CEC845 /* Event.swift in Sources */,
@@ -778,6 +785,7 @@
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
+				D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */,
 				7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
 				D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */,

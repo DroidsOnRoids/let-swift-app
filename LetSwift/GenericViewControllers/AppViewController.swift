@@ -45,7 +45,7 @@ class AppViewController: UIViewController {
             navigationItem.rightBarButtonItem?.tintColor = .black
             
             navigationItem.rightBarButtonItem?.target = self
-            navigationItem.rightBarButtonItem?.action = #selector(userIconTapped)
+            navigationItem.rightBarButtonItem?.action = #selector(userIconTapped(_:))
         }
     }
     
@@ -61,8 +61,24 @@ class AppViewController: UIViewController {
         return titleLabel
     }
     
-    @objc private func userIconTapped() {
-        guard !FacebookManager.shared.isLoggedIn else { return }
-        coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+    @objc private func logOutTapped() {
+        FacebookManager.shared.logOut()
+    }
+    
+    @objc private func userIconTapped(_ sender: UIBarButtonItem) {
+        if FacebookManager.shared.isLoggedIn {
+            let senderButton = sender.value(forKey: "view") as! UIView
+            let popover = PopoverViewController()
+            
+            popover.popoverAnchor = CGPoint(x: senderButton.center.x + 7.0, y: senderButton.center.y + 36.0)
+            popover.popoverTitle = localized("GENERAL_LOGOUT")
+            popover.arrowPosition = 0.9
+            popover.target = self
+            popover.action = #selector(logOutTapped)
+            
+            popover.presentPopover(on: self)
+        } else {
+            coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+        }
     }
 }
