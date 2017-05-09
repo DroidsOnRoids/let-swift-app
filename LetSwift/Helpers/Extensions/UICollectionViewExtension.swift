@@ -15,15 +15,13 @@ extension UICollectionView {
         -> () where T == S.Iterator.Element {
             return { cellFormer in
                 return { source in
-                    DispatchQueue.global(qos: .background).async {
-                        let delegate = ReactiveCollectionViewDataSource<S> { collectionView, index, element in
-                            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
-                            cellFormer?(index, element, cell)
-                            return cell
-                        }
-                        ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { proxy in
-                            delegate.collectionView(self, observedElements: source)
-                        }
+                    let delegate = ReactiveCollectionViewDataSource<S> { collectionView, index, element in
+                        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
+                        cellFormer?(index, element, cell)
+                        return cell
+                    }
+                    ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { proxy in
+                        delegate.collectionView(self, observedElements: source)
                     }
                 }
             }
@@ -35,11 +33,9 @@ extension UICollectionView {
         -> () {
             return { cellFormer in
                 return { source in
-                    DispatchQueue.global(qos: .background).async {
-                        let delegate = ReactiveCollectionViewDataSource<S>(cellFormer: cellFormer)
-                        ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { proxy in
-                            delegate.collectionView(self, observedElements: source)
-                        }
+                    let delegate = ReactiveCollectionViewDataSource<S>(cellFormer: cellFormer)
+                    ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { proxy in
+                        delegate.collectionView(self, observedElements: source)
                     }
                 }
             }

@@ -12,6 +12,7 @@
 		7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */; };
 		7E02FE721EBB69E8005DADCB /* ObserevableEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE711EBB69E8005DADCB /* ObserevableEvent.swift */; };
 		7E1C3EDE1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */; };
+		7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */; };
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
 		7E31D0A61EAE3D970030147C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A51EAE3D970030147C /* Photo.swift */; };
 		7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */; };
@@ -102,6 +103,7 @@
 		7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		7E02FE711EBB69E8005DADCB /* ObserevableEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserevableEvent.swift; sourceTree = "<group>"; };
 		7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
+		7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
 		7E31D0A51EAE3D970030147C /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 				D39D71131EB651D100F8743C /* UITableViewExtension.swift */,
 				D39D71171EB6551C00F8743C /* UIViewExtension.swift */,
 				7EE141121EBCCC21008378AB /* UICollectionViewExtension.swift */,
+				7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -749,6 +752,7 @@
 				7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */,
 				7E31D0A61EAE3D970030147C /* Photo.swift in Sources */,
 				7E02FE721EBB69E8005DADCB /* ObserevableEvent.swift in Sources */,
+				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
 				7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */,
 				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
 				7EE1410F1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift in Sources */,

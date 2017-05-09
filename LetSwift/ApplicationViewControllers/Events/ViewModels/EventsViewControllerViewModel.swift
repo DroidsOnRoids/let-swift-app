@@ -10,7 +10,7 @@ import Foundation
 import CoreLocation
 
 final class EventsViewControllerViewModel {
-    
+
     static let mockedEvent = Event(
         id: 1,
         date: Date(),
@@ -20,7 +20,7 @@ final class EventsViewControllerViewModel {
         placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
         placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
     )
-    
+
     enum AttendanceState {
         case notAttending
         case attending
@@ -30,6 +30,11 @@ final class EventsViewControllerViewModel {
     enum NotificationState {
         case notActive
         case active
+    }
+
+    private enum Constants {
+        // -24 * 60 * 60
+        static let minimumTimeForReminder: TimeInterval = 10.0
     }
     
     var lastEvent: Observable<Event>
@@ -46,7 +51,9 @@ final class EventsViewControllerViewModel {
                                               EventsViewControllerViewModel.mockedEvent,
                                               EventsViewControllerViewModel.mockedEvent,
                                               EventsViewControllerViewModel.mockedEvent])
-    
+    var viewWillAppearDidPerformObservable = Observable<Void>()
+    var remindButtonVisibilityObservable = Observable<Bool>(true)
+
     var notificationManager: NotificationManager!
     
     weak var delegate: EventsViewControllerDelegate?
@@ -62,7 +69,13 @@ final class EventsViewControllerViewModel {
         guard let eventDate = lastEvent.value.date else { return nil }
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        return formatter.string(from: eventDate) + " CEST"
+        formatter.timeZone = TimeZone.current
+        return formatter.string(from: eventDate)
+    }
+
+    var isReminderAllowed: Bool {
+        guard let date = lastEvent.value.date else { return false }
+        return date.addingTimeInterval(Constants.minimumTimeForReminder).compare(Date()) == .orderedDescending
     }
     
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
@@ -71,19 +84,10 @@ final class EventsViewControllerViewModel {
         
         setup()
     }
-    
-    func refreshAttendance() {
-        if FacebookManager.shared.isLoggedIn {
-            checkAttendance()
-        } else {
-            attendanceState.next(.notAttending)
-        }
-    }
 
     private func setup() {
         lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
-            // -24 * 60 * 60
-            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(10))
+            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(Constants.minimumTimeForReminder))
             self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
         })
         
@@ -104,10 +108,35 @@ final class EventsViewControllerViewModel {
                 let subviewModel = PreviousEventsListCellViewModel(previousEvenets: events, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
             })
+
+        viewWillAppearDidPerformObservable.subscribe(onNext: { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.refreshAttendance()
+            weakSelf.remindButtonVisibilityObservable.next(weakSelf.isReminderAllowed)
+        })
+
+        NotificationCenter
+            .default
+            .notification(Notification.Name.UIApplicationWillEnterForeground)
+            .subscribe(onNext: { [weak self] _ in
+                guard let weakSelf = self else { return }
+                weakSelf.remindButtonVisibilityObservable.next(weakSelf.isReminderAllowed)
+            })
+
+        guard let time = lastEvent
+                            .value
+                            .date?
+                            .addingTimeInterval(Constants.minimumTimeForReminder)
+                            .timeIntervalSince(Date()) else { return }
+        Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
         
         FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [unowned self] in
             self.attendanceState.next(.notAttending)
         })
+    }
+
+    @objc func eventFinished() {
+        remindButtonVisibilityObservable.next(false)
     }
     
     private func checkAttendance() {
@@ -169,5 +198,13 @@ final class EventsViewControllerViewModel {
     private func locationCellTapped() {
         guard let coordinates = lastEvent.value.placeCoordinates else { return }
         MapHelper.openMaps(withCoordinates: coordinates, name: lastEvent.value.placeName ?? lastEvent.value.title)
+    }
+
+    private func refreshAttendance() {
+        if FacebookManager.shared.isLoggedIn {
+            checkAttendance()
+        } else {
+            attendanceState.next(.notAttending)
+        }
     }
 }

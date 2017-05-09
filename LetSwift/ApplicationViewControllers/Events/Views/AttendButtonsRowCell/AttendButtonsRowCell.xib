@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0l-Mk-5yg" customClass="AppShadowButton" customModule="LetSwift" customModuleProvider="target">
-                        <rect key="frame" x="195.5" y="16.5" width="163.5" height="38"/>
+                        <rect key="frame" x="195.5" y="16.5" width="163.5" height="37"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="38" id="XDv-8u-tas"/>
+                            <constraint firstAttribute="height" priority="999" constant="38" id="XDv-8u-tas"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                         <state key="normal" title="REMIND ME">
@@ -37,10 +37,10 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ6-jg-0yx" customClass="AppShadowButton" customModule="LetSwift" customModuleProvider="target">
-                        <rect key="frame" x="16" y="16.5" width="163.5" height="38"/>
+                        <rect key="frame" x="16" y="16.5" width="163.5" height="37"/>
                         <color key="backgroundColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="38" id="8OQ-O1-ayz"/>
+                            <constraint firstAttribute="height" priority="999" constant="38" id="8OQ-O1-ayz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                         <state key="normal" title="ATTEND">
@@ -56,17 +56,20 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="qQ6-jg-0yx" secondAttribute="bottom" constant="16" id="Bb6-dM-MIl"/>
-                    <constraint firstItem="v0l-Mk-5yg" firstAttribute="leading" secondItem="qQ6-jg-0yx" secondAttribute="trailing" constant="16" id="HSc-2T-Xbm"/>
+                    <constraint firstItem="v0l-Mk-5yg" firstAttribute="leading" secondItem="qQ6-jg-0yx" secondAttribute="trailing" priority="999" constant="16" id="HSc-2T-Xbm"/>
                     <constraint firstItem="v0l-Mk-5yg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Hkz-kc-euM"/>
                     <constraint firstAttribute="trailing" secondItem="v0l-Mk-5yg" secondAttribute="trailing" constant="16" id="TMT-IV-tEM"/>
                     <constraint firstAttribute="bottom" secondItem="v0l-Mk-5yg" secondAttribute="bottom" constant="16" id="Uf1-2h-Uhf"/>
                     <constraint firstItem="qQ6-jg-0yx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Uns-3N-d7m"/>
-                    <constraint firstItem="v0l-Mk-5yg" firstAttribute="width" secondItem="qQ6-jg-0yx" secondAttribute="width" id="Zfa-Jc-jzu"/>
+                    <constraint firstItem="v0l-Mk-5yg" firstAttribute="width" secondItem="qQ6-jg-0yx" secondAttribute="width" priority="999" id="Zfa-Jc-jzu"/>
                     <constraint firstItem="qQ6-jg-0yx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="bQg-8m-jrh"/>
+                    <constraint firstAttribute="trailing" secondItem="qQ6-jg-0yx" secondAttribute="trailing" priority="250" constant="16" id="lFZ-Og-qb7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="attendButton" destination="qQ6-jg-0yx" id="sZT-rI-no1"/>
+                <outlet property="currentEventConstraint" destination="HSc-2T-Xbm" id="FZ3-Fr-7vJ"/>
+                <outlet property="pastEventConstraint" destination="lFZ-Og-qb7" id="QY1-eg-laJ"/>
                 <outlet property="remindButton" destination="v0l-Mk-5yg" id="wgg-JA-FMa"/>
             </connections>
             <point key="canvasLocation" x="98.5" y="91"/>
