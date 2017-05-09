@@ -67,7 +67,7 @@ class AppViewController: UIViewController {
     
     @objc private func userIconTapped(_ sender: UIBarButtonItem) {
         if FacebookManager.shared.isLoggedIn {
-            let senderButton = sender.value(forKey: "view") as! UIView
+            guard let senderButton = sender.value(forKey: "view") as? UIView else { return }
             let popover = PopoverViewController()
             
             popover.popoverAnchor = CGPoint(x: senderButton.center.x + 7.0, y: senderButton.center.y + 36.0)

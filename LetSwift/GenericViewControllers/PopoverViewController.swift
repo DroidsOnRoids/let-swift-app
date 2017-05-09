@@ -66,6 +66,7 @@ final class PopoverViewController: UIViewController {
     private func setup() {
         modalPresentationStyle = .overFullScreen
         container.frame = CGRect(x: 0.0, y: 0.0, width: popoverSize.width, height: popoverSize.height)
+        container.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
         
         maskView.frame = container.bounds
         maskView.backgroundColor = .black
@@ -78,12 +79,6 @@ final class PopoverViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        container.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
             self.container.transform = .identity
