@@ -58,8 +58,8 @@ class EventsViewController: AppViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        viewModel.refreshAttendance()
+
+        viewModel.viewWillAppearDidPerformObservable.next()
     }
     
     private func setupViewModel() {
@@ -114,6 +114,10 @@ class EventsViewController: AppViewController {
             case .active:
                 cell.remindButton.setTitle(localized("EVENTS_STOP_REMINDING").uppercased(), for: [])
             }
+        }
+
+        viewModel.remindButtonVisibilityObservable.subscribe(startsWithInitialValue: true) { isVisible in
+            cell.isRemindButtonVisible = isVisible
         }
     }
 
