@@ -15,15 +15,13 @@ extension UITableView {
         -> () where T == S.Iterator.Element {
             return { cellFormer in
                 return { source in
-                    DispatchQueue.global(qos: .background).async {
-                        let delegate = ReactiveTableViewDataSource<S> { tableView, index, element in
-                            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
-                            cellFormer(index, element, cell)
-                            return cell
-                        }
-                        ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
-                            delegate.tableView(self, observedElements: source)
-                        }
+                    let delegate = ReactiveTableViewDataSource<S> { tableView, index, element in
+                        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: IndexPath(row: index, section: 0)) as! Cell
+                        cellFormer(index, element, cell)
+                        return cell
+                    }
+                    ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
+                        delegate.tableView(self, observedElements: source)
                     }
                 }
             }
@@ -35,11 +33,9 @@ extension UITableView {
         -> () {
             return { cellFormer in
                 return { source in
-                    DispatchQueue.global(qos: .background).async {
-                        let delegate = ReactiveTableViewDataSource<S>(cellFormer: cellFormer)
-                        ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
-                            delegate.tableView(self, observedElements: source)
-                        }
+                    let delegate = ReactiveTableViewDataSource<S>(cellFormer: cellFormer)
+                    ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
+                        delegate.tableView(self, observedElements: source)
                     }
                 }
             }
