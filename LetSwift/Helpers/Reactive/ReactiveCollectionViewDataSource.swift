@@ -31,8 +31,6 @@ final class ReactiveCollectionViewDataSource<S: Sequence>: NSObject, UICollectio
     func collectionView(_ collectionView: UICollectionView, observedElements: S) {
         items = observedElements.map{ $0 }
 
-        DispatchQueue.main.async {
-            collectionView.reloadData()
-        }
+        collectionView.reloadData()
     }
 }
