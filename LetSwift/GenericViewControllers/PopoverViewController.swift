@@ -67,34 +67,34 @@ final class PopoverViewController: UIViewController {
     
     private func setup() {
         modalPresentationStyle = .overFullScreen
-        container.frame = CGRect(x: 0, y: 0, width: popoverSize.width, height: popoverSize.height)
+        container.frame = CGRect(x: 0.0, y: 0.0, width: popoverSize.width, height: popoverSize.height)
         
         maskView.frame = container.bounds
         maskView.backgroundColor = .black
-        arrowPosition = 0.5
+        arrowPosition = maskView.arrowPosition
         
         button.frame = maskView.childRect
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         container.addSubview(button)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        container.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        openPopover()
+        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
+            self.container.transform = .identity
+        })
     }
     
     @objc private func buttonTapped() {
         closePopover()
         _ = target?.perform(action)
-    }
-    
-    private func openPopover() {
-        container.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
-        
-        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
-            self.container.transform = .identity
-        })
     }
     
     func presentPopover(on viewController: UIViewController) {
