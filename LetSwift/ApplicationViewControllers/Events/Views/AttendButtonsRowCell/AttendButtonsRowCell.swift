@@ -16,8 +16,8 @@ final class AttendButtonsRowCell: UITableViewCell {
     @IBOutlet private weak var pastEventConstraint: NSLayoutConstraint!
     
     private enum Constants {
-        static let lowPriorityConstraints: Float = 250.0
-        static let highPriorityContraints: Float = 999.0
+        static let lowPriorityConstraint: Float = 250.0
+        static let highPriorityContraint: Float = 999.0
     }
     
     var attendButtonActive = true {
@@ -30,11 +30,11 @@ final class AttendButtonsRowCell: UITableViewCell {
     var isRemindButtonVisible = true {
         didSet {
             if isRemindButtonVisible {
-                currentEventConstraint.priority = Constants.highPriorityContraints
-                pastEventConstraint.priority = Constants.lowPriorityConstraints
+                currentEventConstraint.priority = Constants.highPriorityContraint
+                pastEventConstraint.priority = Constants.lowPriorityConstraint
             } else {
-                currentEventConstraint.priority = Constants.lowPriorityConstraints
-                pastEventConstraint.priority = Constants.highPriorityContraints
+                currentEventConstraint.priority = Constants.lowPriorityConstraint
+                pastEventConstraint.priority = Constants.highPriorityContraint
             }
             
             UIView.animate(withDuration: 0.2) {
