@@ -13,9 +13,13 @@ class CarouselEventPhotosCell: UITableViewCell {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
 
+    fileprivate var lastContentOffset: CGFloat = 0
+
     var viewModel: CarouselEventPhotosCellViewModel! {
         didSet {
-            reactiveSetup()
+            if viewModel != nil {
+                reactiveSetup()
+            }
         }
     }
 
@@ -38,7 +42,7 @@ class CarouselEventPhotosCell: UITableViewCell {
             let xOffset = weakSelf.scrollView.contentOffset.x
             let singleWidth = weakSelf.scrollView.frame.width
 
-            if xOffset >= 0.0 && xOffset <= weakSelf.scrollView.contentSize.width - singleWidth {
+            if xOffset >= 0.0 {
                 let xPosition = CGFloat(page) * singleWidth
 
                 weakSelf.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
@@ -55,7 +59,7 @@ class CarouselEventPhotosCell: UITableViewCell {
                                size: frameSize)
 
             let subview = UIImageView(frame: frame)
-            //TODO: set here uiimage
+            subview.image = #imageLiteral(resourceName: "PhotoMock")
 
             scrollView.addSubview(subview)
         }
@@ -67,6 +71,7 @@ class CarouselEventPhotosCell: UITableViewCell {
 
 extension CarouselEventPhotosCell: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        viewModel.scrollViewSwipeDidFinishObservable.next(Int(scrollView.contentOffset.x / scrollView.frame.width))
+        let sign = lastContentOffset < scrollView.contentOffset.x ? 1 : -1
+        viewModel.scrollViewSwipeDidFinishObservable.next(sign)
     }
 }

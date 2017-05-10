@@ -18,7 +18,7 @@ final class EventsViewControllerViewModel {
         facebook: "1425682510795718",
         placeName: "Proza",
         placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
-        coverPhotos: [], //TODO: fill with data
+        coverPhotos: ["PhotoMock", "PhotoMock", "PhotoMock"],
         placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
     )
 
@@ -114,7 +114,7 @@ final class EventsViewControllerViewModel {
 
         carouselCellDidSetObservable
             .withLatest(from: lastEvent, combine: { $0.1.coverPhotos })
-            .subscribe(onNext: { [weak self] photos in
+            .subscribe(startsWithInitialValue: true, onNext: { [weak self] photos in
                 let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
             })

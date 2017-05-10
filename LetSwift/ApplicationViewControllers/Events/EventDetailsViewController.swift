@@ -36,7 +36,7 @@ final class EventDetailsViewController: CommonEventViewController {
         case .eventSummary:
             (cell as! EventSummaryCell).isClickable = false
             
-        case .previousEvents:
+        case .carouselEventPhotos:
             self.setup(carouselCell: cell as! CarouselEventPhotosCell)
 
         default: break
