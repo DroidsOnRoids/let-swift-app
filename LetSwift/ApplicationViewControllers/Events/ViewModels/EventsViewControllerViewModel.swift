@@ -68,7 +68,7 @@ final class EventsViewControllerViewModel {
     var formattedTime: String? {
         guard let eventDate = lastEvent.value.date else { return nil }
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.timeStyle = .short
         formatter.timeZone = TimeZone.current
         return formatter.string(from: eventDate)
     }
