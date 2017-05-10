@@ -6,14 +6,10 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-final class EventDetailsViewController: EventsViewController {
+final class EventDetailsViewController: CommonEventViewController {
     
-    override var allCells: [EventCells] {
+    override var allCells: [EventCell] {
         return [.attend, .eventSummary, .eventLocation, .eventTime]
-    }
-    
-    override var nibName: String? {
-        return "EventsViewController"
     }
     
     override var viewControllerTitleKey: String? {
@@ -22,5 +18,12 @@ final class EventDetailsViewController: EventsViewController {
     
     override var shouldShowUserIcon: Bool {
         return false
+    }
+    
+    // TODO: remove it
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.viewWillAppearDidPerformObservable.next()
     }
 }
