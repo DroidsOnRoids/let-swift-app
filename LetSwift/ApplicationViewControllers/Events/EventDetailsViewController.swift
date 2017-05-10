@@ -6,14 +6,12 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-final class EventDetailsViewController: EventsViewController {
+import UIKit
+
+final class EventDetailsViewController: CommonEventViewController {
     
-    override var allCells: [EventCells] {
+    override var allCells: [EventCell] {
         return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime]
-    }
-    
-    override var nibName: String? {
-        return "EventsViewController"
     }
     
     override var viewControllerTitleKey: String? {
@@ -22,5 +20,32 @@ final class EventDetailsViewController: EventsViewController {
     
     override var shouldShowUserIcon: Bool {
         return false
+    }
+    
+    // TODO: remove it
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        viewModel.viewWillAppearDidPerformObservable.next()
+    }
+
+    override func dispatchCellSetup(element: EventCell, cell: UITableViewCell) {
+        super.dispatchCellSetup(element: element, cell: cell)
+
+        switch element {
+        case .previousEvents:
+            self.setup(carouselCell: cell as! CarouselEventPhotosCell)
+
+        default: break
+        }
+    }
+
+    private func setup(carouselCell cell: CarouselEventPhotosCell) {
+        viewModel.carouselCellDidSetObservable.next()
+
+        viewModel.carouselEventPhotosViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
+            cell.viewModel = viewModel
+        }
+        
     }
 }
