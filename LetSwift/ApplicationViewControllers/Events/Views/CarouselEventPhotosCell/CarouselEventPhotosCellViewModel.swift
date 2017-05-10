@@ -12,13 +12,17 @@ final class CarouselEventPhotosCellViewModel {
 
     var photosObservable = Observable<[String]>([])
     var currentPageObservable = Observable<Int>(0)
+    var scrollViewSwipeDidFinishObservable = Observable<Int>(0)
 
     init(photos: [String]) {
-        self.photosObservable.next(photos)
+        photosObservable.next(photos)
 
         setup()
     }
 
     private func setup() {
+        scrollViewSwipeDidFinishObservable.subscribe(onNext: { [weak self] page in
+            self?.currentPageObservable.next(page)
+        })
     }
 }

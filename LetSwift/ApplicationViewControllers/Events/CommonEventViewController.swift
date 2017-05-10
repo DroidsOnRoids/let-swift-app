@@ -28,6 +28,10 @@ class CommonEventViewController: AppViewController {
         return String(describing: CommonEventViewController.self)
     }
     
+    override var shouldHideShadow: Bool {
+        return true
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: EventsViewControllerViewModel!

@@ -29,10 +29,6 @@ class EventsViewController: CommonEventViewController {
         return true
     }
     
-    override var shouldHideShadow: Bool {
-        return true
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 

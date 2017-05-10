@@ -39,6 +39,10 @@
                     <constraint firstItem="fbV-id-W4t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eDD-b8-xhk"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="pageControl" destination="IHz-pP-5hL" id="6J5-B3-HGp"/>
+                <outlet property="scrollView" destination="fbV-id-W4t" id="kF9-CK-o6J"/>
+            </connections>
             <point key="canvasLocation" x="33" y="211"/>
         </tableViewCell>
     </objects>
