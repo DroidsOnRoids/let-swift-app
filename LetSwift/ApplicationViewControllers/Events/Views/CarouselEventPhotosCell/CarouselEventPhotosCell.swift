@@ -12,8 +12,11 @@ class CarouselEventPhotosCell: UITableViewCell {
 
     var viewModel: CarouselEventPhotosCellViewModel! {
         didSet {
-            print("done")
+            reactiveSetup()
         }
     }
 
+    private func reactiveSetup() {
+        print("done")
+    }
 }

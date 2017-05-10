@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="318" height="251.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbV-id-W4t">
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fbV-id-W4t">
                         <rect key="frame" x="0.0" y="0.0" width="318" height="251.5"/>
                         <color key="backgroundColor" red="0.32241679620000002" green="0.6452396373" blue="0.52432687190000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>

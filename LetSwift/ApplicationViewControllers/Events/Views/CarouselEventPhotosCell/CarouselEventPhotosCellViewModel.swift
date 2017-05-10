@@ -10,7 +10,12 @@ import Foundation
 
 final class CarouselEventPhotosCellViewModel {
 
+    var photosObservable = Observable<[String]>([])
+    var currentPageObservable = Observable<Int>(0)
+
     init(photos: [String]) {
+        self.photosObservable.next(photos)
+
         setup()
     }
 
