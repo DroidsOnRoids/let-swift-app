@@ -58,7 +58,7 @@ class EventsViewController: CommonEventViewController {
         super.dispatchCellSelect(element: element)
         
         switch element {
-        case .image, .previousEvents:
+        case .image, .eventSummary:
             viewModel.summaryCellDidTapObservable.next()
             
         default: break

@@ -33,6 +33,9 @@ final class EventDetailsViewController: CommonEventViewController {
         super.dispatchCellSetup(element: element, cell: cell)
 
         switch element {
+        case .eventSummary:
+            (cell as! EventSummaryCell).isClickable = false
+            
         case .previousEvents:
             self.setup(carouselCell: cell as! CarouselEventPhotosCell)
 
@@ -46,6 +49,5 @@ final class EventDetailsViewController: CommonEventViewController {
         viewModel.carouselEventPhotosViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }
-        
     }
 }

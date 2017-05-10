@@ -151,9 +151,6 @@ class CommonEventViewController: AppViewController {
     
     func dispatchCellSelect(element: EventCell) {
         switch element {
-        case .eventSummary:
-            viewModel.summaryCellDidTapObservable.next()
-            
         case .eventLocation:
             viewModel.locationCellDidTapObservable.next()
             
