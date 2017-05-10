@@ -71,7 +71,7 @@ final class EventsViewControllerViewModel {
     var formattedTime: String? {
         guard let eventDate = lastEvent.value.date else { return nil }
         let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
+        formatter.timeStyle = .short
         formatter.timeZone = TimeZone.current
         return formatter.string(from: eventDate)
     }
@@ -139,6 +139,10 @@ final class EventsViewControllerViewModel {
                             .addingTimeInterval(Constants.minimumTimeForReminder)
                             .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
+        
+        FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [unowned self] in
+            self.attendanceState.next(.notAttending)
+        })
     }
 
     @objc func eventFinished() {
