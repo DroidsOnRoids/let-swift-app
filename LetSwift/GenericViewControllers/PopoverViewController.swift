@@ -95,7 +95,21 @@ final class PopoverViewController: UIViewController {
         _ = target?.perform(action)
     }
     
+    func setupPopover(anchor: CGPoint, title: String, arrowPosition: Double?, action: Selector?) -> PopoverViewController {
+        popoverAnchor = anchor
+        popoverTitle = title
+        
+        if let arrowPosition = arrowPosition {
+            self.arrowPosition = arrowPosition
+        }
+        
+        self.action = action
+        
+        return self
+    }
+    
     func presentPopover(on viewController: UIViewController) {
+        target = viewController
         viewController.present(self, animated: false)
     }
     

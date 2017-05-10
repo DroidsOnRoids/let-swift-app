@@ -69,14 +69,9 @@ class AppViewController: UIViewController {
         if FacebookManager.shared.isLoggedIn {
             guard let senderButton = sender.value(forKey: "view") as? UIView else { return }
             let popover = PopoverViewController()
+            let anchor = CGPoint(x: senderButton.center.x + 7.0, y: senderButton.center.y + 36.0)
             
-            popover.popoverAnchor = CGPoint(x: senderButton.center.x + 7.0, y: senderButton.center.y + 36.0)
-            popover.popoverTitle = localized("GENERAL_LOGOUT")
-            popover.arrowPosition = 0.9
-            popover.target = self
-            popover.action = #selector(logOutTapped)
-            
-            popover.presentPopover(on: self)
+            popover.setupPopover(anchor: anchor, title: localized("GENERAL_LOGOUT"), arrowPosition: 0.9, action: #selector(logOutTapped)).presentPopover(on: self)
         } else {
             coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
         }
