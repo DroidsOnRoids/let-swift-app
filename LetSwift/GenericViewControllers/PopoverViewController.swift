@@ -28,7 +28,12 @@ final class PopoverViewController: UIViewController {
         set {
             maskView.arrowPosition = newValue
             container.layer.anchorPoint = CGPoint(x: newValue, y: 0.0)
-            container.mask = maskView
+            
+            if #available(iOS 10.0, *) {
+                container.mask = maskView
+            } else {
+                container.layer.mask = maskView.layer.mask
+            }
         }
     }
     
