@@ -129,6 +129,10 @@ final class EventsViewControllerViewModel {
                             .addingTimeInterval(Constants.minimumTimeForReminder)
                             .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
+        
+        FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [unowned self] in
+            self.attendanceState.next(.notAttending)
+        })
     }
 
     @objc func eventFinished() {
