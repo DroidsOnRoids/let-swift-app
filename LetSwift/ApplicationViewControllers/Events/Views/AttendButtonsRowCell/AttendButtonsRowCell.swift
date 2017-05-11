@@ -10,8 +10,8 @@ import UIKit
 
 final class AttendButtonsRowCell: UITableViewCell {
 
-    @IBOutlet weak var attendButton: AppShadowButton!
-    @IBOutlet weak var remindButton: AppShadowButton!
+    @IBOutlet private weak var attendButton: AppShadowButton!
+    @IBOutlet private weak var remindButton: AppShadowButton!
     @IBOutlet private weak var currentEventConstraint: NSLayoutConstraint!
     @IBOutlet private weak var pastEventConstraint: NSLayoutConstraint!
     
@@ -20,16 +20,16 @@ final class AttendButtonsRowCell: UITableViewCell {
         static let highPriorityContraint: Float = 999.0
     }
     
-    var attendButtonActive = true {
+    var isLeftButtonActive = true {
         didSet {
-            attendButton.backgroundColor = attendButtonActive ? .swiftOrange : .paleGrey
-            attendButton.isEnabled = attendButtonActive
+            attendButton.backgroundColor = isLeftButtonActive ? .swiftOrange : .paleGrey
+            attendButton.isEnabled = isLeftButtonActive
         }
     }
-
-    var isRemindButtonVisible = true {
+    
+    var isRightButtonVisible = true {
         didSet {
-            if isRemindButtonVisible {
+            if isRightButtonVisible {
                 currentEventConstraint.priority = Constants.highPriorityContraint
                 pastEventConstraint.priority = Constants.lowPriorityConstraint
             } else {
@@ -38,9 +38,27 @@ final class AttendButtonsRowCell: UITableViewCell {
             }
             
             UIView.animate(withDuration: 0.2) {
-                self.remindButton.isHidden = !self.isRemindButtonVisible
-                self.attendButton.superview?.layoutIfNeeded()
+                self.remindButton.isHidden = !self.isRightButtonVisible
+                self.layoutIfNeeded()
             }
+        }
+    }
+    
+    var leftButtonTitle: String {
+        get {
+            return attendButton.currentTitle ?? ""
+        }
+        set {
+            attendButton.setTitle(newValue.uppercased(), for: [])
+        }
+    }
+    
+    var rightButtonTitle: String {
+        get {
+            return remindButton.currentTitle ?? ""
+        }
+        set {
+            remindButton.setTitle(newValue.uppercased(), for: [])
         }
     }
     
@@ -48,5 +66,13 @@ final class AttendButtonsRowCell: UITableViewCell {
         super.awakeFromNib()
         
         remindButton.layer.borderColor = UIColor.swiftOrange.cgColor
+    }
+    
+    func addLeftTapTarget(target: Any?, action: Selector) {
+        attendButton.addTarget(target, action: action, for: .touchUpInside)
+    }
+    
+    func addRightTapTarget(target: Any?, action: Selector) {
+        remindButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }

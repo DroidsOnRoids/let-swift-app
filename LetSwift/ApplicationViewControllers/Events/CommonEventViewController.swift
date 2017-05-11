@@ -73,37 +73,37 @@ class CommonEventViewController: AppViewController {
     }
     
     func setup(attendCell cell: AttendButtonsRowCell) {
-        cell.attendButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped), for: .touchUpInside)
-        cell.remindButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped), for: .touchUpInside)
+        cell.addLeftTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped))
+        cell.addRightTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped))
         
         viewModel.attendanceStateObservable.subscribe(startsWithInitialValue: true) { state in
             switch state {
             case .notAttending:
-                cell.attendButtonActive = true
-                cell.attendButton.setTitle(localized("EVENTS_ATTEND").uppercased(), for: [])
+                cell.isLeftButtonActive = true
+                cell.leftButtonTitle = localized("EVENTS_ATTEND")
                 
             case .attending:
-                cell.attendButtonActive = true
-                cell.attendButton.setTitle(localized("EVENTS_ATTENDING").uppercased(), for: [])
+                cell.isLeftButtonActive = true
+                cell.leftButtonTitle = localized("EVENTS_ATTENDING")
                 
             case .loading:
-                cell.attendButtonActive = false
-                cell.attendButton.setTitle(localized("EVENTS_LOADING").uppercased(), for: [])
+                cell.isLeftButtonActive = false
+                cell.leftButtonTitle = localized("EVENTS_LOADING")
             }
         }
         
         viewModel.notificationStateObservable.subscribe(startsWithInitialValue: true) { state in
             switch state {
             case .notVisible:
-                cell.isRemindButtonVisible = false
+                cell.isRightButtonVisible = false
                 
             case .notActive:
-                cell.remindButton.setTitle(localized("EVENTS_REMIND_ME").uppercased(), for: [])
-                cell.isRemindButtonVisible = true
+                cell.rightButtonTitle = localized("EVENTS_REMIND_ME")
+                cell.isRightButtonVisible = true
                 
             case .active:
-                cell.remindButton.setTitle(localized("EVENTS_STOP_REMINDING").uppercased(), for: [])
-                cell.isRemindButtonVisible = true
+                cell.rightButtonTitle = localized("EVENTS_STOP_REMINDING")
+                cell.isRightButtonVisible = true
             }
         }
     }
