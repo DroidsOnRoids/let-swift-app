@@ -14,7 +14,6 @@ protocol EventsViewControllerDelegate: class {
     func collectionViewCellDidTap(with model: Event)
 }
 
-
 class EventsViewController: CommonEventViewController {
     
     override var allCells: [EventCell] {

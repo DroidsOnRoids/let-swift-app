@@ -76,7 +76,7 @@ class CommonEventViewController: AppViewController {
         cell.attendButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped), for: .touchUpInside)
         cell.remindButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped), for: .touchUpInside)
         
-        viewModel.attendanceState.subscribe(startsWithInitialValue: true) { state in
+        viewModel.attendanceStateObservable.subscribe(startsWithInitialValue: true) { state in
             switch state {
             case .notAttending:
                 cell.attendButtonActive = true
@@ -92,7 +92,7 @@ class CommonEventViewController: AppViewController {
             }
         }
         
-        viewModel.notificationState.subscribe(startsWithInitialValue: true) { state in
+        viewModel.notificationStateObservable.subscribe(startsWithInitialValue: true) { state in
             switch state {
             case .notVisible:
                 cell.isRemindButtonVisible = false
@@ -109,13 +109,13 @@ class CommonEventViewController: AppViewController {
     }
     
     func setup(summaryCell cell: EventSummaryCell) {
-        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
             cell.eventTitle = event.title
         }
     }
     
     func setup(locationCell cell: EventLocationCell) {
-        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
             if let placeName = event.placeName {
                 cell.placeName = placeName
             }
@@ -127,7 +127,7 @@ class CommonEventViewController: AppViewController {
     }
     
     func setup(timeCell cell: EventTimeCell) {
-        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { [weak self] event in
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self else { return }
             cell.date = weakSelf.viewModel.formattedDate
             cell.time = weakSelf.viewModel.formattedTime
