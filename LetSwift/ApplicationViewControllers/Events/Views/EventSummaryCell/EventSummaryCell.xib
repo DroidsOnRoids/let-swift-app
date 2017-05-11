@@ -54,6 +54,7 @@
             <connections>
                 <outlet property="eventDescriptionLabel" destination="xzH-pb-xvZ" id="pxU-YO-l06"/>
                 <outlet property="eventTitleLabel" destination="PFJ-ZN-w1b" id="1nX-8J-V6M"/>
+                <outlet property="indicatorView" destination="lZi-46-kpj" id="fju-cB-PeX"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="99"/>
         </tableViewCell>

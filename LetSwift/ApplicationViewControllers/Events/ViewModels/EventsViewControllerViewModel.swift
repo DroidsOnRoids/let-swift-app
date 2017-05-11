@@ -18,6 +18,7 @@ final class EventsViewControllerViewModel {
         facebook: "1425682510795718",
         placeName: "Proza",
         placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
+        coverPhotos: ["PhotoMock", "PhotoMock", "PhotoMock"],
         placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
     )
 
@@ -53,6 +54,8 @@ final class EventsViewControllerViewModel {
                                               EventsViewControllerViewModel.mockedEvent])
     var viewWillAppearDidPerformObservable = Observable<Void>()
     var remindButtonVisibilityObservable = Observable<Bool>(true)
+    var carouselCellDidSetObservable = Observable<Void>()
+    var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
 
     var notificationManager: NotificationManager!
     
@@ -102,11 +105,18 @@ final class EventsViewControllerViewModel {
         })
 
         previousEventsCellDidSetObservable
-            .withLatest(from: previousEvents, combine: { $0.1 })
+            .withLatest(from: previousEvents, combine: { event in event.1 })
             .subscribe(startsWithInitialValue: true, onNext: { [weak self] events in
                 guard let weakSelf = self else { return }
                 let subviewModel = PreviousEventsListCellViewModel(previousEvenets: events, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
+            })
+
+        carouselCellDidSetObservable
+            .withLatest(from: lastEvent, combine: { event in event.1.coverPhotos })
+            .subscribe(startsWithInitialValue: true, onNext: { [weak self] photos in
+                let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
+                self?.carouselEventPhotosViewModelObservable.next(subviewModel)
             })
 
         viewWillAppearDidPerformObservable.subscribe(onNext: { [weak self] in

@@ -12,6 +12,7 @@ final class EventSummaryCell: AppTableViewCell {
     
     @IBOutlet private weak var eventTitleLabel: UILabel!
     @IBOutlet private weak var eventDescriptionLabel: UILabel!
+    @IBOutlet private weak var indicatorView: UIImageView!
     
     var eventTitle: String? {
         get {
@@ -29,6 +30,16 @@ final class EventSummaryCell: AppTableViewCell {
         }
         set {
             eventDescriptionLabel.text = newValue
+        }
+    }
+    
+    var isClickable: Bool {
+        get {
+            return selectionStyle != .none
+        }
+        set {
+            selectionStyle = newValue ? .default : .none
+            indicatorView.isHidden = !newValue
         }
     }
 }
