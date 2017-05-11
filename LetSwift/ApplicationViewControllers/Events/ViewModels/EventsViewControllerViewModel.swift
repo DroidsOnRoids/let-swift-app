@@ -48,11 +48,7 @@ final class EventsViewControllerViewModel {
     var locationCellDidTapObservable = Observable<Void>()
     var previousEventsCellDidSetObservable = Observable<Void>()
     var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
-    var previousEventsObservable = Observable<[Event]>([EventsViewControllerViewModel.mockedEvent,
-                                              EventsViewControllerViewModel.mockedEvent,
-                                              EventsViewControllerViewModel.mockedEvent,
-                                              EventsViewControllerViewModel.mockedEvent,
-                                              EventsViewControllerViewModel.mockedEvent])
+    var previousEventsObservable = Observable<[Event]>([Event](repeating: mockedEvent, count: 5))
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
 
@@ -92,7 +88,6 @@ final class EventsViewControllerViewModel {
             guard let weakSelf = self else { return }
             
             weakSelf.checkAttendance()
-            
             weakSelf.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(Constants.minimumTimeForReminder))
             
             if weakSelf.isReminderAllowed {

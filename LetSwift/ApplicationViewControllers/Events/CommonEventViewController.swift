@@ -174,7 +174,7 @@ class CommonEventViewController: AppViewController {
             guard let cellType = self?.allCells[indexPath.row] else { return }
             
             self?.dispatchCellSelect(element: cellType)
-
+            
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
     }
