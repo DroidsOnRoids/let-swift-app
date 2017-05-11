@@ -95,7 +95,6 @@ class CommonEventViewController: AppViewController {
             switch state {
             case .notActive:
                 cell.remindButton.setTitle(localized("EVENTS_REMIND_ME").uppercased(), for: [])
-                
             case .active:
                 cell.remindButton.setTitle(localized("EVENTS_STOP_REMINDING").uppercased(), for: [])
             }
@@ -153,17 +152,16 @@ class CommonEventViewController: AppViewController {
         switch element {
         case .eventLocation:
             viewModel.locationCellDidTapObservable.next()
-            
         default: break
         }
     }
     
     private func reactiveSetup() {
-        allCells.bindable.bind(to: tableView.items() ({ (tableView: UITableView, index, element) in
+        allCells.bindable.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
             
-            self.dispatchCellSetup(element: element, cell: cell)
+            self?.dispatchCellSetup(element: element, cell: cell)
             
             return cell
         }))
