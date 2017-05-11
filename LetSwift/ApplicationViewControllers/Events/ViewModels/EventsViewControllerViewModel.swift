@@ -105,7 +105,7 @@ final class EventsViewControllerViewModel {
         })
 
         previousEventsCellDidSetObservable
-            .withLatest(from: previousEvents, combine: { $0.1 })
+            .withLatest(from: previousEvents, combine: { event in event.1 })
             .subscribe(startsWithInitialValue: true, onNext: { [weak self] events in
                 guard let weakSelf = self else { return }
                 let subviewModel = PreviousEventsListCellViewModel(previousEvenets: events, delegate: weakSelf.delegate)
@@ -113,7 +113,7 @@ final class EventsViewControllerViewModel {
             })
 
         carouselCellDidSetObservable
-            .withLatest(from: lastEvent, combine: { $0.1.coverPhotos })
+            .withLatest(from: lastEvent, combine: { event in event.1.coverPhotos })
             .subscribe(startsWithInitialValue: true, onNext: { [weak self] photos in
                 let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
