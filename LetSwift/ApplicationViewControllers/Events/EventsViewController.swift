@@ -16,7 +16,7 @@ protocol EventsViewControllerDelegate: class {
 
 class EventsViewController: CommonEventViewController {
     
-    override var allCells: [EventCell] {
+    override var allCells: [EventCellIdentifier] {
         return [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
     }
     
@@ -36,7 +36,7 @@ class EventsViewController: CommonEventViewController {
         }
     }
 
-    override func dispatchCellSetup(element: EventCell, cell: UITableViewCell) {
+    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
         super.dispatchCellSetup(element: element, cell: cell)
         
         switch element {
@@ -47,7 +47,7 @@ class EventsViewController: CommonEventViewController {
         }
     }
     
-    override func dispatchCellSelect(element: EventCell) {
+    override func dispatchCellSelect(element: EventCellIdentifier) {
         super.dispatchCellSelect(element: element)
         
         switch element {

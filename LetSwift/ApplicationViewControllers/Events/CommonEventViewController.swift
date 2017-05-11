@@ -10,7 +10,7 @@ import UIKit
 
 class CommonEventViewController: AppViewController {
     
-    enum EventCell: String {
+    enum EventCellIdentifier: String {
         case image = "StaticImageCell"
         case attend = "AttendButtonsRowCell"
         case eventSummary = "EventSummaryCell"
@@ -20,7 +20,7 @@ class CommonEventViewController: AppViewController {
         case carouselEventPhotos = "CarouselEventPhotosCell"
     }
     
-    var allCells: [EventCell] {
+    var allCells: [EventCellIdentifier] {
         return []
     }
     
@@ -32,7 +32,7 @@ class CommonEventViewController: AppViewController {
         return true
     }
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     var viewModel: EventsViewControllerViewModel!
     
@@ -134,7 +134,7 @@ class CommonEventViewController: AppViewController {
         }
     }
     
-    func dispatchCellSetup(element: EventCell, cell: UITableViewCell) {
+    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
         switch element {
         case .attend:
             self.setup(attendCell: cell as! AttendButtonsRowCell)
@@ -152,21 +152,20 @@ class CommonEventViewController: AppViewController {
         }
     }
     
-    func dispatchCellSelect(element: EventCell) {
+    func dispatchCellSelect(element: EventCellIdentifier) {
         switch element {
         case .eventLocation:
             viewModel.locationCellDidTapObservable.next()
-            
         default: break
         }
     }
     
     private func reactiveSetup() {
-        allCells.bindable.bind(to: tableView.items() ({ (tableView: UITableView, index, element) in
+        allCells.bindable.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
             
-            self.dispatchCellSetup(element: element, cell: cell)
+            self?.dispatchCellSetup(element: element, cell: cell)
             
             return cell
         }))

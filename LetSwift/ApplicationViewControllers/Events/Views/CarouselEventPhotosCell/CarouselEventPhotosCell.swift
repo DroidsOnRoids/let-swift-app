@@ -8,12 +8,12 @@
 
 import UIKit
 
-class CarouselEventPhotosCell: UITableViewCell {
+final class CarouselEventPhotosCell: UITableViewCell {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
 
-    fileprivate var lastContentOffset: CGFloat = 0
+    fileprivate var lastContentOffset: CGFloat = 0.0
 
     var viewModel: CarouselEventPhotosCellViewModel! {
         didSet {

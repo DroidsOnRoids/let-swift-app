@@ -10,7 +10,7 @@ import UIKit
 
 final class EventDetailsViewController: CommonEventViewController {
     
-    override var allCells: [EventCell] {
+    override var allCells: [EventCellIdentifier] {
         return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime]
     }
     
@@ -22,7 +22,7 @@ final class EventDetailsViewController: CommonEventViewController {
         return false
     }
     
-    override func dispatchCellSetup(element: EventCell, cell: UITableViewCell) {
+    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
         super.dispatchCellSetup(element: element, cell: cell)
 
         switch element {

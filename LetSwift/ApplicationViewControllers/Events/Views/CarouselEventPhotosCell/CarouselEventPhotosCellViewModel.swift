@@ -6,8 +6,6 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import Foundation
-
 final class CarouselEventPhotosCellViewModel {
 
     var photosObservable = Observable<[String]>([])
@@ -23,7 +21,8 @@ final class CarouselEventPhotosCellViewModel {
     private func setup() {
         scrollViewSwipeDidFinishObservable.subscribe(onNext: { [weak self] sign in
             guard let weakSelf = self else { return }
-            weakSelf.currentPageObservable.next((weakSelf.currentPageObservable.value + sign) % weakSelf.photosObservable.value.count)
+            let newPage = (weakSelf.currentPageObservable.value + sign) % weakSelf.photosObservable.value.count
+            weakSelf.currentPageObservable.next(newPage)
         })
     }
 }
