@@ -48,12 +48,13 @@ class CommonEventViewController: AppViewController {
     }
     
     private func setupViewModel() {
-        viewModel.loginScreenObservable.subscribe(onNext: { [unowned self] in
-            self.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+        viewModel.loginScreenObservable.subscribe(onNext: { [weak self] in
+            self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
         })
         
-        viewModel.facebookAlertObservable.subscribe(onNext: { [unowned self] error in
-            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: self)
+        viewModel.facebookAlertObservable.subscribe(onNext: { [weak self] error in
+            guard let weakSelf = self else { return }
+            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
         })
     }
     
@@ -126,9 +127,10 @@ class CommonEventViewController: AppViewController {
     }
     
     func setup(timeCell cell: EventTimeCell) {
-        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { [unowned self] event in
-            cell.date = self.viewModel.formattedDate
-            cell.time = self.viewModel.formattedTime
+        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self else { return }
+            cell.date = weakSelf.viewModel.formattedDate
+            cell.time = weakSelf.viewModel.formattedTime
         }
     }
     
@@ -173,7 +175,7 @@ class CommonEventViewController: AppViewController {
             guard let cellType = self?.allCells[indexPath.row] else { return }
             
             self?.dispatchCellSelect(element: cellType)
-            
+
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
     }

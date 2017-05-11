@@ -88,26 +88,26 @@ final class EventsViewControllerViewModel {
     }
 
     private func setup() {
-        lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
-            self.checkAttendance()
+        lastEvent.subscribe(startsWithInitialValue: true, onNext: { [weak self] event in
+            guard let weakSelf = self else { return }
             
-            self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(Constants.minimumTimeForReminder))
+            weakSelf.checkAttendance()
             
-            if self.isReminderAllowed {
-                self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
+            weakSelf.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(Constants.minimumTimeForReminder))
+            
+            if weakSelf.isReminderAllowed {
+                weakSelf.notificationState.next(weakSelf.notificationManager.isNotificationActive ? .active : .notActive)
             } else {
-                self.notificationState.next(.notVisible)
+                weakSelf.notificationState.next(.notVisible)
             }
         })
         
         summaryCellDidTapObservable.subscribe(onNext: { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.summaryCellTapped()
+            self?.summaryCellTapped()
         })
         
         locationCellDidTapObservable.subscribe(onNext: { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.locationCellTapped()
+            self?.locationCellTapped()
         })
 
         previousEventsCellDidSetObservable
@@ -142,8 +142,8 @@ final class EventsViewControllerViewModel {
                             .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
         
-        FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [unowned self] in
-            self.attendanceState.next(.notAttending)
+        FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [weak self] in
+            self?.attendanceState.next(.notAttending)
         })
     }
 
@@ -155,8 +155,8 @@ final class EventsViewControllerViewModel {
         guard let eventId = lastEvent.value.facebook else { return }
         
         attendanceState.next(.loading)
-        FacebookManager.shared.isUserAttending(toEventId: eventId) { [unowned self] result in
-            self.attendanceState.next(result == .attending ? .attending : .notAttending)
+        FacebookManager.shared.isUserAttending(toEventId: eventId) { [weak self] result in
+            self?.attendanceState.next(result == .attending ? .attending : .notAttending)
         }
     }
     
@@ -179,12 +179,12 @@ final class EventsViewControllerViewModel {
         let newAttendance: AttendanceState = oldAttendance == .attending ? .notAttending : .attending
         
         attendanceState.next(.loading)
-        FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { [unowned self] result in
+        FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { [weak self] result in
             if result {
-                self.attendanceState.next(newAttendance)
+                self?.attendanceState.next(newAttendance)
             } else {
-                self.attendanceState.next(oldAttendance)
-                self.facebookAlertObservable.next(nil)
+                self?.attendanceState.next(oldAttendance)
+                self?.facebookAlertObservable.next(nil)
             }
         }
     }

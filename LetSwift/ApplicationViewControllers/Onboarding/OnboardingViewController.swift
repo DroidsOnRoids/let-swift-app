@@ -36,26 +36,28 @@ final class OnboardingViewController: UIViewController {
     private func setupViewModel() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
-        viewModel.currentPageObservable.subscribe(onNext: { [unowned self] page in
-            let xOffset = self.scrollView.contentOffset.x
-            let singleWidth = self.scrollView.frame.width
+        viewModel.currentPageObservable.subscribe(onNext: { [weak self] page in
+            guard let weakSelf = self else { return }
             
-            if xOffset >= 0.0 && xOffset <= self.scrollView.contentSize.width - singleWidth {
+            let xOffset = weakSelf.scrollView.contentOffset.x
+            let singleWidth = weakSelf.scrollView.frame.width
+            
+            if xOffset >= 0.0 && xOffset <= weakSelf.scrollView.contentSize.width - singleWidth {
                 let xPosition = CGFloat(page) * singleWidth
 
-                self.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
-                self.onboardingPageControl.currentPage = page
+                weakSelf.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
+                weakSelf.onboardingPageControl.currentPage = page
             }
         })
 
-        viewModel.continueButtonTitleObservable.subscribe(startsWithInitialValue: true) { [unowned self] title in
-            self.continueButton.setTitle(title, for: [])
+        viewModel.continueButtonTitleObservable.subscribe(startsWithInitialValue: true) { [weak self] title in
+            self?.continueButton.setTitle(title, for: [])
         }
         
-        viewModel.onboardingCardsObservable.subscribe(startsWithInitialValue: true)  { [unowned self] cards in
+        viewModel.onboardingCardsObservable.subscribe(startsWithInitialValue: true)  { [weak self] cards in
             DispatchQueue.main.async {
-                self.setupScrollView(with: cards)
-                self.onboardingPageControl.numberOfPages = cards.count
+                self?.setupScrollView(with: cards)
+                self?.onboardingPageControl.numberOfPages = cards.count
             }
         }
     }
