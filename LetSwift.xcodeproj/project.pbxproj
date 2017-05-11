@@ -85,6 +85,8 @@
 		D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */; };
 		D3D83DC21EBB10CE003572EF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D83DC11EBB10CE003572EF /* AlertHelper.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
+		D3EC8BF51EC46DCA00C81B8A /* SpeakerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EC8BF31EC46DCA00C81B8A /* SpeakerCardView.swift */; };
+		D3EC8BF61EC46DCA00C81B8A /* SpeakerCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EC8BF41EC46DCA00C81B8A /* SpeakerCardView.xib */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
 		D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCell.swift */; };
 		D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F091881EB205FE0029E15E /* PreviousEventCell.xib */; };
@@ -182,6 +184,8 @@
 		D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		D3D83DC11EBB10CE003572EF /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
+		D3EC8BF31EC46DCA00C81B8A /* SpeakerCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardView.swift; sourceTree = "<group>"; };
+		D3EC8BF41EC46DCA00C81B8A /* SpeakerCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardView.xib; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		D3F091871EB205FE0029E15E /* PreviousEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCell.swift; sourceTree = "<group>"; };
 		D3F091881EB205FE0029E15E /* PreviousEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventCell.xib; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				D31B08491EB1282E00C2D229 /* EventSummaryCell */,
 				7EA48D461EADD35D00CEC845 /* StaticImageCell */,
 				D390058D1EB0D9B200275219 /* AttendButtonsRowCell */,
+				D3EC8BF21EC46DCA00C81B8A /* SpeakerCardView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -589,6 +594,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		D3EC8BF21EC46DCA00C81B8A /* SpeakerCardView */ = {
+			isa = PBXGroup;
+			children = (
+				D3EC8BF31EC46DCA00C81B8A /* SpeakerCardView.swift */,
+				D3EC8BF41EC46DCA00C81B8A /* SpeakerCardView.xib */,
+			);
+			path = SpeakerCardView;
+			sourceTree = "<group>";
+		};
 		D3F0917A1EB200790029E15E /* PreviousEventCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,6 +708,7 @@
 				D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */,
 				7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */,
 				D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */,
+				D3EC8BF61EC46DCA00C81B8A /* SpeakerCardView.xib in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D3381F471EBC8F4800453EB9 /* SplashImage.png in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
@@ -811,6 +826,7 @@
 				7EE141111EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift in Sources */,
 				D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */,
 				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
+				D3EC8BF51EC46DCA00C81B8A /* SpeakerCardView.swift in Sources */,
 				7E9E04331EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift in Sources */,
 				D36396221EC0654400158BEF /* PopoverView.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
