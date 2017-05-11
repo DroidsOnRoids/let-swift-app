@@ -10,7 +10,7 @@ import UIKit
 
 class CommonEventViewController: AppViewController {
     
-    enum EventCell: String {
+    enum EventCellIdentifier: String {
         case image = "StaticImageCell"
         case attend = "AttendButtonsRowCell"
         case eventSummary = "EventSummaryCell"
@@ -20,7 +20,7 @@ class CommonEventViewController: AppViewController {
         case carouselEventPhotos = "CarouselEventPhotosCell"
     }
     
-    var allCells: [EventCell] {
+    var allCells: [EventCellIdentifier] {
         return []
     }
     
@@ -130,7 +130,7 @@ class CommonEventViewController: AppViewController {
         }
     }
     
-    func dispatchCellSetup(element: EventCell, cell: UITableViewCell) {
+    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
         switch element {
         case .attend:
             self.setup(attendCell: cell as! AttendButtonsRowCell)
@@ -148,7 +148,7 @@ class CommonEventViewController: AppViewController {
         }
     }
     
-    func dispatchCellSelect(element: EventCell) {
+    func dispatchCellSelect(element: EventCellIdentifier) {
         switch element {
         case .eventLocation:
             viewModel.locationCellDidTapObservable.next()
