@@ -93,16 +93,17 @@ class CommonEventViewController: AppViewController {
         
         viewModel.notificationState.subscribe(startsWithInitialValue: true) { state in
             switch state {
+            case .notVisible:
+                cell.isRemindButtonVisible = false
+                
             case .notActive:
                 cell.remindButton.setTitle(localized("EVENTS_REMIND_ME").uppercased(), for: [])
+                cell.isRemindButtonVisible = true
                 
             case .active:
                 cell.remindButton.setTitle(localized("EVENTS_STOP_REMINDING").uppercased(), for: [])
+                cell.isRemindButtonVisible = true
             }
-        }
-        
-        viewModel.remindButtonVisibilityObservable.subscribe(startsWithInitialValue: true) { isVisible in
-            cell.isRemindButtonVisible = isVisible
         }
     }
     

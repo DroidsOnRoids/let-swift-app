@@ -29,6 +29,7 @@ final class EventsViewControllerViewModel {
     }
     
     enum NotificationState {
+        case notVisible
         case notActive
         case active
     }
@@ -52,8 +53,6 @@ final class EventsViewControllerViewModel {
                                               EventsViewControllerViewModel.mockedEvent,
                                               EventsViewControllerViewModel.mockedEvent,
                                               EventsViewControllerViewModel.mockedEvent])
-    var viewWillAppearDidPerformObservable = Observable<Void>()
-    var remindButtonVisibilityObservable = Observable<Bool>(true)
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
 
@@ -90,8 +89,15 @@ final class EventsViewControllerViewModel {
 
     private func setup() {
         lastEvent.subscribe(startsWithInitialValue: true, onNext: { [unowned self] event in
+            self.checkAttendance()
+            
             self.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(Constants.minimumTimeForReminder))
-            self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
+            
+            if self.isReminderAllowed {
+                self.notificationState.next(self.notificationManager.isNotificationActive ? .active : .notActive)
+            } else {
+                self.notificationState.next(.notVisible)
+            }
         })
         
         summaryCellDidTapObservable.subscribe(onNext: { [weak self] in
@@ -119,18 +125,14 @@ final class EventsViewControllerViewModel {
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
             })
 
-        viewWillAppearDidPerformObservable.subscribe(onNext: { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.refreshAttendance()
-            weakSelf.remindButtonVisibilityObservable.next(weakSelf.isReminderAllowed)
-        })
-
         NotificationCenter
             .default
             .notification(Notification.Name.UIApplicationWillEnterForeground)
             .subscribe(onNext: { [weak self] _ in
                 guard let weakSelf = self else { return }
-                weakSelf.remindButtonVisibilityObservable.next(weakSelf.isReminderAllowed)
+                if weakSelf.isReminderAllowed {
+                    weakSelf.notificationState.next(.notVisible)
+                }
             })
 
         guard let time = lastEvent
@@ -146,11 +148,11 @@ final class EventsViewControllerViewModel {
     }
 
     @objc func eventFinished() {
-        remindButtonVisibilityObservable.next(false)
+        notificationState.next(.notVisible)
     }
     
     private func checkAttendance() {
-        guard let eventId = lastEvent.value.facebook, FacebookManager.shared.isLoggedIn else { return }
+        guard let eventId = lastEvent.value.facebook else { return }
         
         attendanceState.next(.loading)
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [unowned self] result in
@@ -202,19 +204,11 @@ final class EventsViewControllerViewModel {
     }
     
     private func summaryCellTapped() {
-        delegate?.presentEventDetailsScreen(fromModel: lastEvent.value)
+        delegate?.presentEventDetailsScreen(fromViewModel: self)
     }
     
     private func locationCellTapped() {
         guard let coordinates = lastEvent.value.placeCoordinates else { return }
         MapHelper.openMaps(withCoordinates: coordinates, name: lastEvent.value.placeName ?? lastEvent.value.title)
-    }
-
-    private func refreshAttendance() {
-        if FacebookManager.shared.isLoggedIn {
-            checkAttendance()
-        } else {
-            attendanceState.next(.notAttending)
-        }
     }
 }

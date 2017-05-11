@@ -29,12 +29,6 @@ class EventsViewController: CommonEventViewController {
         return true
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        viewModel.viewWillAppearDidPerformObservable.next()
-    }
-
     private func setup(previousEventsCell cell: PreviousEventsListCell) {
         viewModel.previousEventsCellDidSetObservable.next()
         
