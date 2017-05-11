@@ -96,8 +96,8 @@ final class FacebookManager {
     }
     
     private func sendGraphRequest(_ request: FBSDKGraphRequest, callback: @escaping (Any?) -> Void) {
-        request.start { [unowned self] (_, result: Any?, error: Error?) in
-            self.askForMissingPermissions(error: FacebookError.from(error: error)) { recovered in
+        request.start { [weak self] (_, result: Any?, error: Error?) in
+            self?.askForMissingPermissions(error: FacebookError.from(error: error)) { recovered in
                 guard recovered else {
                     callback(result)
                     return

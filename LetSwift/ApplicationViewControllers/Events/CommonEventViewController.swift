@@ -48,12 +48,13 @@ class CommonEventViewController: AppViewController {
     }
     
     private func setupViewModel() {
-        viewModel.loginScreenObservable.subscribe(onNext: { [unowned self] in
-            self.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+        viewModel.loginScreenObservable.subscribe(onNext: { [weak self] in
+            self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
         })
         
-        viewModel.facebookAlertObservable.subscribe(onNext: { [unowned self] error in
-            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: self)
+        viewModel.facebookAlertObservable.subscribe(onNext: { [weak self] error in
+            guard let weakSelf = self else { return }
+            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
         })
     }
     
@@ -75,7 +76,7 @@ class CommonEventViewController: AppViewController {
         cell.attendButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped), for: .touchUpInside)
         cell.remindButton.addTarget(viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped), for: .touchUpInside)
         
-        viewModel.attendanceState.subscribe(startsWithInitialValue: true) { state in
+        viewModel.attendanceStateObservable.subscribe(startsWithInitialValue: true) { state in
             switch state {
             case .notAttending:
                 cell.attendButtonActive = true
@@ -91,28 +92,30 @@ class CommonEventViewController: AppViewController {
             }
         }
         
-        viewModel.notificationState.subscribe(startsWithInitialValue: true) { state in
+        viewModel.notificationStateObservable.subscribe(startsWithInitialValue: true) { state in
             switch state {
+            case .notVisible:
+                cell.isRemindButtonVisible = false
+                
             case .notActive:
                 cell.remindButton.setTitle(localized("EVENTS_REMIND_ME").uppercased(), for: [])
+                cell.isRemindButtonVisible = true
+                
             case .active:
                 cell.remindButton.setTitle(localized("EVENTS_STOP_REMINDING").uppercased(), for: [])
+                cell.isRemindButtonVisible = true
             }
-        }
-        
-        viewModel.remindButtonVisibilityObservable.subscribe(startsWithInitialValue: true) { isVisible in
-            cell.isRemindButtonVisible = isVisible
         }
     }
     
     func setup(summaryCell cell: EventSummaryCell) {
-        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
             cell.eventTitle = event.title
         }
     }
     
     func setup(locationCell cell: EventLocationCell) {
-        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
             if let placeName = event.placeName {
                 cell.placeName = placeName
             }
@@ -124,9 +127,10 @@ class CommonEventViewController: AppViewController {
     }
     
     func setup(timeCell cell: EventTimeCell) {
-        viewModel.lastEvent.subscribe(startsWithInitialValue: true) { [unowned self] event in
-            cell.date = self.viewModel.formattedDate
-            cell.time = self.viewModel.formattedTime
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self else { return }
+            cell.date = weakSelf.viewModel.formattedDate
+            cell.time = weakSelf.viewModel.formattedTime
         }
     }
     

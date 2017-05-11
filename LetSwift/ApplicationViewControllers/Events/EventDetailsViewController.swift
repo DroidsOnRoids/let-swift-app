@@ -22,12 +22,6 @@ final class EventDetailsViewController: CommonEventViewController {
         return false
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        viewModel.viewWillAppearDidPerformObservable.next()
-    }
-
     override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
         super.dispatchCellSetup(element: element, cell: cell)
 

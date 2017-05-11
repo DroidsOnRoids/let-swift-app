@@ -34,8 +34,7 @@ final class LoginViewControllerViewModel {
     
     private func setup() {
         viewWillAppearPerformObservable.subscribe(onNext: { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.animateWithRandomTextObservable.next(Constants.helloWorldVariants.randomElement())
+            self?.animateWithRandomTextObservable.next(Constants.helloWorldVariants.randomElement())
         })
     }
     
