@@ -17,6 +17,9 @@ final class SpeakerCardView: DesignableView, Localizable {
     @IBOutlet private weak var lectureSummaryLabel: UILabel!
     @IBOutlet private weak var readMoreButton: UIButton!
     
+    @IBOutlet private weak var upperSeparatorConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var lowerSeparatorConstraint: NSLayoutConstraint!
+    
     var speakerImage: UIImage? {
         get {
             return speakerImageView.image
@@ -66,6 +69,9 @@ final class SpeakerCardView: DesignableView, Localizable {
         super.loadViewFromNib()
         
         setupLocalization()
+        
+        upperSeparatorConstraint.constant = 1.0 / UIScreen.main.scale
+        lowerSeparatorConstraint.constant = upperSeparatorConstraint.constant
         
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
