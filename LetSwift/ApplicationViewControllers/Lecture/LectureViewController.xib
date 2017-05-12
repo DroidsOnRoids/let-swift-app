@@ -28,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-br-SMs">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="311.5"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmm-3T-0RZ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
@@ -149,6 +149,7 @@ Przedstawię Renderable - pierwszy komponent konceptu architektury, którą nazy
                                 <constraint firstItem="zao-YF-DNa" firstAttribute="leading" secondItem="yNu-Gw-hNh" secondAttribute="trailing" constant="16" id="ADD-tX-IvG"/>
                                 <constraint firstItem="yNu-Gw-hNh" firstAttribute="centerY" secondItem="Rs8-pE-up6" secondAttribute="centerY" id="L5M-Fz-hSf"/>
                                 <constraint firstAttribute="trailing" secondItem="Pmm-3T-0RZ" secondAttribute="trailing" id="MEZ-Jb-cCT"/>
+                                <constraint firstAttribute="bottom" secondItem="aA2-5p-f2e" secondAttribute="bottom" constant="16" id="NK8-Fg-Zv8"/>
                                 <constraint firstItem="yNu-Gw-hNh" firstAttribute="leading" secondItem="Rs8-pE-up6" secondAttribute="trailing" constant="8" id="QeZ-iC-ep7"/>
                                 <constraint firstItem="aA2-5p-f2e" firstAttribute="leading" secondItem="9WM-br-SMs" secondAttribute="leading" constant="16" id="RgL-bd-p8n"/>
                                 <constraint firstItem="Pmm-3T-0RZ" firstAttribute="leading" secondItem="9WM-br-SMs" secondAttribute="leading" id="Sni-UT-vD0"/>
@@ -176,7 +177,6 @@ Przedstawię Renderable - pierwszy komponent konceptu architektury, którą nazy
                 <constraint firstItem="9WM-br-SMs" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="HPY-D8-mxX"/>
                 <constraint firstItem="160-BU-vtj" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Lej-Zg-tHa"/>
                 <constraint firstItem="160-BU-vtj" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Nhq-v2-GZm"/>
-                <constraint firstItem="9WM-br-SMs" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="nfs-kh-3kD"/>
                 <constraint firstAttribute="bottom" secondItem="160-BU-vtj" secondAttribute="bottom" id="zWD-sX-Dku"/>
             </constraints>
             <point key="canvasLocation" x="65.5" y="61.5"/>

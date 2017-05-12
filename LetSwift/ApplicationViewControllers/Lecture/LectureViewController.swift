@@ -34,9 +34,5 @@ final class LectureViewController: AppViewController {
     
     private func setup() {
         separatorConstraint.constant = 1.0 / UIScreen.main.scale
-        
-        var tt = lectureSummaryLabel.text ?? ""
-        tt = tt + tt + tt + tt + tt + tt + tt
-        lectureSummaryLabel.text = tt
     }
 }
