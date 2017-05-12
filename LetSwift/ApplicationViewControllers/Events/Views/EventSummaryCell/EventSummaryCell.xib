@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -42,6 +42,7 @@
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="lZi-46-kpj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8fh-cf-Izk"/>
                     <constraint firstItem="lZi-46-kpj" firstAttribute="leading" secondItem="d8k-RT-Dfb" secondAttribute="trailing" constant="16" id="ImG-JV-Vtw"/>
@@ -51,6 +52,7 @@
                     <constraint firstItem="d8k-RT-Dfb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="wdh-df-K26"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="eventDescriptionLabel" destination="xzH-pb-xvZ" id="pxU-YO-l06"/>
                 <outlet property="eventTitleLabel" destination="PFJ-ZN-w1b" id="1nX-8J-V6M"/>

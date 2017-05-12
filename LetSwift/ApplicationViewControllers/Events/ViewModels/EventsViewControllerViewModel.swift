@@ -55,6 +55,8 @@ final class EventsViewControllerViewModel {
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
     var speakerCellDidTapObservable = Observable<Void>()
 
+    var eventDidFinishObservable = Observable<Bool>(false)
+
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
     
@@ -141,8 +143,15 @@ final class EventsViewControllerViewModel {
                             .date?
                             .addingTimeInterval(Constants.minimumTimeForReminder)
                             .timeIntervalSince(Date()) else { return }
-        Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
-        
+        Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventReminderTimeFinished), userInfo: nil, repeats: false)
+
+        guard let eventLeftTime = lastEventObservable
+                                    .value
+                                    .date?
+                                    .addingTimeInterval(Constants.minimumTimeForReminder * 2)
+                                    .timeIntervalSince(Date()) else { return }
+        Timer.scheduledTimer(timeInterval: eventLeftTime, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
+
         FacebookManager.shared.facebookLoginObservable.subscribe(onNext: { [weak self] in
             self?.checkAttendance()
         })
@@ -152,8 +161,12 @@ final class EventsViewControllerViewModel {
         })
     }
 
-    @objc func eventFinished() {
+    @objc private func eventReminderTimeFinished() {
         notificationStateObservable.next(.notVisible)
+    }
+
+    @objc private func eventFinished() {
+        eventDidFinishObservable.next(true)
     }
     
     private func checkAttendance() {

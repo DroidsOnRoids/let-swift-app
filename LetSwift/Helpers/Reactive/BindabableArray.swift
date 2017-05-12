@@ -10,7 +10,7 @@ import Foundation
 
 final class BindableArray<T> {
 
-    private var values: [T]
+    var values: [T]
     private var events = [([T], Bool) -> ()]()
 
     init(_ values: [T]) {

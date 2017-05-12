@@ -173,9 +173,16 @@ class CommonEventViewController: AppViewController {
             
             return cell
         }))
-        
+
+        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] finished in
+            if finished {
+                self?.bindableCells.remove(at: 1, updated: false)
+                self?.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            }
+        }
+
         tableView.itemDidSelectObservable.subscribe { [weak self] indexPath in
-            guard let cellType = self?.allCells[indexPath.row] else { return }
+            guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
             
             self?.dispatchCellSelect(element: cellType)
             
