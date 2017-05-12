@@ -29,13 +29,13 @@ extension UITableView {
 
     func items<S: Sequence>()
         -> (@escaping (UITableView, Int, S.Iterator.Element) -> UITableViewCell)
-        -> (_ source: S)
+        -> (_ source: S, _ updated: Bool)
         -> () {
             return { cellFormer in
-                return { source in
+                return { source, shouldUpdate in
                     let delegate = ReactiveTableViewDataSource<S>(cellFormer: cellFormer)
                     ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
-                        delegate.tableView(self, observedElements: source)
+                        delegate.tableView(self, observedElements: source, updated: shouldUpdate)
                     }
                 }
             }

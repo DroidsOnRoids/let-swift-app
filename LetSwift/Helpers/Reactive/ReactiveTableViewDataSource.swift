@@ -28,9 +28,11 @@ final class ReactiveTableViewDataSource<S: Sequence>: NSObject, UITableViewDataS
         return cellFormer(tableView, indexPath.item, items[indexPath.row])
     }
 
-    func tableView(_ tableView: UITableView, observedElements: S) {
+    func tableView(_ tableView: UITableView, observedElements: S, updated: Bool = true) {
         items = observedElements.map{ $0 }
 
-        tableView.reloadData()
+        if updated {
+            tableView.reloadData()
+        }
     }
 }

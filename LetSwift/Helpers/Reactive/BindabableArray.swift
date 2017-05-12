@@ -11,30 +11,38 @@ import Foundation
 final class BindableArray<T> {
 
     private var values: [T]
-    private var events = [([T]) -> ()]()
+    private var events = [([T], Bool) -> ()]()
 
     init(_ values: [T]) {
         self.values = values
     }
 
-    func bind(to event: @escaping ([T]) -> ()) {
+    func bind(to event: @escaping ([T]) -> () ) {
+        let convertedFunc: ([T], Bool) -> () = { (passedValues, updates) in
+            event(passedValues)
+        }
+        events.append(convertedFunc)
+        notify(event: convertedFunc)
+    }
+
+    func bind(to event: @escaping ([T], Bool) -> ()) {
         events.append(event)
         notify(event: event)
     }
 
-    func append(_ element: T) {
+    func append(_ element: T, updated: Bool = true) {
         values.append(element)
-        events.forEach({ $0(values) })
+        events.forEach({ $0(values, updated) })
     }
 
-    func remove(at index: Int) {
+    func remove(at index: Int, updated: Bool = true) {
         values.remove(at: index)
-        events.forEach({ $0(values) })
+        events.forEach({ $0(values, updated) })
     }
 
-    private func notify(event: ([T]) -> ()) {
+    private func notify(event: ([T], Bool) -> ()) {
         values.enumerated().forEach { index, element in
-            event(values)
+            event(values, true)
         }
     }
 }
