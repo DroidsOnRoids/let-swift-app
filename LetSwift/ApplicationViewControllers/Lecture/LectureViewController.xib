@@ -28,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-br-SMs">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="311.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmm-3T-0RZ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
@@ -116,7 +116,7 @@
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aA2-5p-f2e">
-                                    <rect key="frame" x="16" y="137" width="343" height="158.5"/>
+                                    <rect key="frame" x="16" y="137" width="327" height="174"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super simple: Renderable!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1h-bH-eTC">
                                             <rect key="frame" x="0.0" y="0.0" width="188.5" height="18"/>
@@ -125,7 +125,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nyp-C6-Ufk">
-                                            <rect key="frame" x="0.0" y="34" width="343" height="124.5"/>
+                                            <rect key="frame" x="0.0" y="34" width="327" height="140"/>
                                             <string key="text">Testerzy mnie nienawidzą. Posłuchaj o tym jak być mniej beznadziejnym, stosując ten jeden dziwny trick… 
 
 Architektura kodu ma za zadanie ulżyć umysłowi, aby mógł się skupić na złożonych problemach. 
@@ -145,7 +145,7 @@ Przedstawię Renderable - pierwszy komponent konceptu architektury, którą nazy
                                 <constraint firstItem="8bH-0C-rCq" firstAttribute="centerY" secondItem="zao-YF-DNa" secondAttribute="centerY" id="2kn-B2-bOy"/>
                                 <constraint firstItem="8bH-0C-rCq" firstAttribute="leading" secondItem="zao-YF-DNa" secondAttribute="trailing" constant="8" id="3Nj-QQ-5aw"/>
                                 <constraint firstItem="yNu-Gw-hNh" firstAttribute="leading" secondItem="Rs8-pE-up6" secondAttribute="trailing" constant="8" id="4Ls-be-9gZ"/>
-                                <constraint firstAttribute="trailing" secondItem="aA2-5p-f2e" secondAttribute="trailing" constant="16" id="7d8-b2-JYz"/>
+                                <constraint firstAttribute="trailing" secondItem="aA2-5p-f2e" secondAttribute="trailing" constant="32" id="7d8-b2-JYz"/>
                                 <constraint firstItem="zao-YF-DNa" firstAttribute="leading" secondItem="yNu-Gw-hNh" secondAttribute="trailing" constant="16" id="ADD-tX-IvG"/>
                                 <constraint firstItem="yNu-Gw-hNh" firstAttribute="centerY" secondItem="Rs8-pE-up6" secondAttribute="centerY" id="L5M-Fz-hSf"/>
                                 <constraint firstAttribute="trailing" secondItem="Pmm-3T-0RZ" secondAttribute="trailing" id="MEZ-Jb-cCT"/>
