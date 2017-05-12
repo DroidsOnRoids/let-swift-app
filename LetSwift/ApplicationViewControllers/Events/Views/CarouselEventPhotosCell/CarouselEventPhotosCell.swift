@@ -71,7 +71,6 @@ final class CarouselEventPhotosCell: UITableViewCell {
 
 extension CarouselEventPhotosCell: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let sign = lastContentOffset < scrollView.contentOffset.x ? 1 : -1
-        viewModel.scrollViewSwipeDidFinishObservable.next(sign)
+        viewModel.scrollViewSwipeDidFinishObservable.next(Int(scrollView.contentOffset.x / scrollView.frame.width))
     }
 }
