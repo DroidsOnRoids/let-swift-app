@@ -18,6 +18,8 @@ class CommonEventViewController: AppViewController {
         case eventTime = "EventTimeCell"
         case previousEvents = "PreviousEventsListCell"
         case carouselEventPhotos = "CarouselEventPhotosCell"
+        case speakerCardHeaderCell = "SpeakerCardHeaderCell"
+        case speakerCardCell = "SpeakerCardCell"
     }
     
     var allCells: [EventCellIdentifier] {

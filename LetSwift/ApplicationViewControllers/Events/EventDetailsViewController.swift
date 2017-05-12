@@ -11,7 +11,8 @@ import UIKit
 final class EventDetailsViewController: CommonEventViewController {
     
     override var allCells: [EventCellIdentifier] {
-        return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime]
+        return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime,
+                .speakerCardHeaderCell, .speakerCardCell, .speakerCardCell, .speakerCardCell]
     }
     
     override var viewControllerTitleKey: String? {

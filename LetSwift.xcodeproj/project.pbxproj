@@ -82,11 +82,13 @@
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
+		D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */; };
+		D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */; };
+		D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */; };
+		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */; };
 		D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */; };
 		D3D83DC21EBB10CE003572EF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D83DC11EBB10CE003572EF /* AlertHelper.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
-		D3EC8BF51EC46DCA00C81B8A /* SpeakerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EC8BF31EC46DCA00C81B8A /* SpeakerCardView.swift */; };
-		D3EC8BF61EC46DCA00C81B8A /* SpeakerCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EC8BF41EC46DCA00C81B8A /* SpeakerCardView.xib */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
 		D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCell.swift */; };
 		D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F091881EB205FE0029E15E /* PreviousEventCell.xib */; };
@@ -181,11 +183,13 @@
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
+		D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardCell.xib; sourceTree = "<group>"; };
+		D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardHeaderCell.swift; sourceTree = "<group>"; };
+		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderCell.xib; sourceTree = "<group>"; };
 		D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		D3D83DC11EBB10CE003572EF /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
-		D3EC8BF31EC46DCA00C81B8A /* SpeakerCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardView.swift; sourceTree = "<group>"; };
-		D3EC8BF41EC46DCA00C81B8A /* SpeakerCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardView.xib; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		D3F091871EB205FE0029E15E /* PreviousEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCell.swift; sourceTree = "<group>"; };
 		D3F091881EB205FE0029E15E /* PreviousEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventCell.xib; sourceTree = "<group>"; };
@@ -273,7 +277,7 @@
 				D31B08491EB1282E00C2D229 /* EventSummaryCell */,
 				7EA48D461EADD35D00CEC845 /* StaticImageCell */,
 				D390058D1EB0D9B200275219 /* AttendButtonsRowCell */,
-				D3EC8BF21EC46DCA00C81B8A /* SpeakerCardView */,
+				D3C0ACF11EC4E84700CFF98D /* SpeakerCardCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -594,13 +598,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		D3EC8BF21EC46DCA00C81B8A /* SpeakerCardView */ = {
+		D3C0ACF11EC4E84700CFF98D /* SpeakerCardCell */ = {
 			isa = PBXGroup;
 			children = (
-				D3EC8BF31EC46DCA00C81B8A /* SpeakerCardView.swift */,
-				D3EC8BF41EC46DCA00C81B8A /* SpeakerCardView.xib */,
+				D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */,
+				D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */,
+				D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */,
+				D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */,
 			);
-			path = SpeakerCardView;
+			path = SpeakerCardCell;
 			sourceTree = "<group>";
 		};
 		D3F0917A1EB200790029E15E /* PreviousEventCell */ = {
@@ -705,10 +711,10 @@
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */,
 				D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */,
+				D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */,
 				D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */,
 				7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */,
 				D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */,
-				D3EC8BF61EC46DCA00C81B8A /* SpeakerCardView.xib in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D3381F471EBC8F4800453EB9 /* SplashImage.png in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
@@ -716,6 +722,7 @@
 				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* CommonEventViewController.xib in Resources */,
+				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 				7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */,
@@ -807,6 +814,7 @@
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
 				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
 				D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */,
+				D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */,
 				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
@@ -814,6 +822,7 @@
 				D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */,
 				7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift in Sources */,
 				D390FDC11EC2EAE5005F257F /* CommonEventViewController.swift in Sources */,
+				D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D31216381EB2774F003674C7 /* UIImageExtension.swift in Sources */,
 				D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */,
@@ -826,7 +835,6 @@
 				7EE141111EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift in Sources */,
 				D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */,
 				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
-				D3EC8BF51EC46DCA00C81B8A /* SpeakerCardView.swift in Sources */,
 				7E9E04331EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift in Sources */,
 				D36396221EC0654400158BEF /* PopoverView.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
