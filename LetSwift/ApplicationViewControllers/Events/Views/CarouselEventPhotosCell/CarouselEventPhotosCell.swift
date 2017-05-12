@@ -59,6 +59,8 @@ final class CarouselEventPhotosCell: UITableViewCell {
                                size: frameSize)
 
             let subview = UIImageView(frame: frame)
+            subview.contentMode = .scaleAspectFill
+            subview.clipsToBounds = true
             subview.image = #imageLiteral(resourceName: "PhotoMock")
 
             scrollView.addSubview(subview)
