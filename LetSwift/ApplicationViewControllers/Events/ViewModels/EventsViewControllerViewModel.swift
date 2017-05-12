@@ -137,6 +137,10 @@ final class EventsViewControllerViewModel {
                             .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
         
+        FacebookManager.shared.facebookLoginObservable.subscribe(onNext: { [weak self] in
+            self?.checkAttendance()
+        })
+        
         FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [weak self] in
             self?.attendanceStateObservable.next(.notAttending)
         })

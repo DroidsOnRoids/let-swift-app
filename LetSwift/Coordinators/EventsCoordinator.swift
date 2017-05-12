@@ -35,7 +35,11 @@ extension EventsCoordinator: EventsViewControllerDelegate {
     }
     
     func presentEventDetailsScreen(fromModel model: Event) {
-        presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel(lastEvent: model, delegate: self))
+        let viewModel = EventsViewControllerViewModel(lastEvent: model, delegate: self)
+        let viewController = EventDetailsViewController(viewModel: viewModel)
+        viewController.coordinatorDelegate = delegate
+        
+        navigationViewController.pushViewController(viewController, animated: true)
     }
 
     func collectionViewCellDidTap(with model: Event) {
