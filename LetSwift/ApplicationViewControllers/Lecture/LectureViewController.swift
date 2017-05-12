@@ -8,5 +8,13 @@
 
 import UIKit
 
-final class LectureViewController: UIViewController {
+final class LectureViewController: AppViewController {
+    
+    override var viewControllerTitleKey: String? {
+        return "LECTURE_TITLE"
+    }
+    
+    override var shouldHideShadow: Bool {
+        return true
+    }
 }

@@ -36,6 +36,17 @@ final class EventDetailsViewController: CommonEventViewController {
         default: break
         }
     }
+    
+    override func dispatchCellSelect(element: EventCellIdentifier) {
+        super.dispatchCellSelect(element: element)
+        
+        switch element {
+        case .speakerCardCell:
+            viewModel.speakerCellDidTapObservable.next()
+            
+        default: break
+        }
+    }
 
     private func setup(carouselCell cell: CarouselEventPhotosCell) {
         viewModel.carouselCellDidSetObservable.next()

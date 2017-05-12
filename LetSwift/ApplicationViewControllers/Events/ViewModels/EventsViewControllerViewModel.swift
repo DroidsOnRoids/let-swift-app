@@ -46,14 +46,16 @@ final class EventsViewControllerViewModel {
     var loginScreenObservable = Observable<Void>()
     var summaryCellDidTapObservable = Observable<Void>()
     var locationCellDidTapObservable = Observable<Void>()
+    
     var previousEventsCellDidSetObservable = Observable<Void>()
     var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
     var previousEventsObservable = Observable<[Event]>([Event](repeating: mockedEvent, count: 5))
+    
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
+    var speakerCellDidTapObservable = Observable<Void>()
 
     var notificationManager: NotificationManager!
-    
     weak var delegate: EventsViewControllerDelegate?
     
     var formattedDate: String? {
@@ -119,6 +121,10 @@ final class EventsViewControllerViewModel {
                 let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
             })
+        
+        speakerCellDidTapObservable.subscribe(onNext: { [weak self] in
+            self?.speakerCellTapped()
+        })
 
         NotificationCenter
             .default
@@ -209,5 +215,9 @@ final class EventsViewControllerViewModel {
     private func locationCellTapped() {
         guard let coordinates = lastEventObservable.value.placeCoordinates else { return }
         MapHelper.openMaps(withCoordinates: coordinates, name: lastEventObservable.value.placeName ?? lastEventObservable.value.title)
+    }
+    
+    private func speakerCellTapped() {
+        delegate?.presentLectureScreen()
     }
 }

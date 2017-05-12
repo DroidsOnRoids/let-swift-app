@@ -23,14 +23,17 @@ final class SpeakerCardCell: UITableViewCell {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
         card.highlightView(true)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
         card.highlightView(false)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
         card.highlightView(false)
     }
 }
