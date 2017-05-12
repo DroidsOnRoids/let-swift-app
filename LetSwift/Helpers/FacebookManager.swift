@@ -44,6 +44,7 @@ final class FacebookManager {
     private let readPermissions = [String]()
     private let publishPermissions = [FacebookPermissions.rsvpEvent]
     
+    let facebookLoginObservable = Observable<Void>()
     let facebookLogoutObservable = Observable<Void>()
     
     private init() {}
@@ -53,11 +54,16 @@ final class FacebookManager {
     }
     
     func logIn(from viewController: UIViewController?, callback: ((FacebookLoginStatus) -> Void)?) {
-        let handler = { (result: FBSDKLoginManagerLoginResult?, error: Error?) in
+        let handler = { [weak self] (result: FBSDKLoginManagerLoginResult?, error: Error?) in
             if let error = error {
                 callback?(.error(error))
             } else if let result = result {
-                result.isCancelled ? callback?(.cancelled) : callback?(.success(result))
+                if result.isCancelled {
+                    callback?(.cancelled)
+                } else {
+                    self?.facebookLoginObservable.next()
+                    callback?(.success(result))
+                }
             } else {
                 callback?(.error(nil))
             }
