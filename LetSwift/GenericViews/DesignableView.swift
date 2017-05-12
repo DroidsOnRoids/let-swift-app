@@ -20,7 +20,7 @@ class DesignableView: UIView {
         loadViewFromNib()
     }
 
-    private func loadViewFromNib() {
+    func loadViewFromNib() {
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: nil)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
 

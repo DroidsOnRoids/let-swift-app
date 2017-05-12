@@ -8,8 +8,10 @@
 
 import UIKit
 
-final class SpeakerCardHeaderCell: UITableViewCell {
+final class SpeakerCardHeaderCell: UITableViewCell, Localizable {
 
+    @IBOutlet private weak var speakersLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -18,5 +20,11 @@ final class SpeakerCardHeaderCell: UITableViewCell {
     
     private func setup() {
         separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
+        
+        setupLocalization()
+    }
+    
+    func setupLocalization() {
+        speakersLabel.text = localized("SPEAKERS_TITLE").uppercased()
     }
 }

@@ -32,6 +32,9 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.87058823529411766" green="0.89803921568627454" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="speakersLabel" destination="ItC-D5-1KF" id="wlZ-tM-pQo"/>
+            </connections>
             <point key="canvasLocation" x="33.5" y="79"/>
         </tableViewCell>
     </objects>

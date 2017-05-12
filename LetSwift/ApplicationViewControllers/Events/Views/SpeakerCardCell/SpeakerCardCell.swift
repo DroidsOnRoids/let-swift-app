@@ -10,8 +10,8 @@ import UIKit
 
 final class SpeakerCardCell: UITableViewCell {
     
-    @IBOutlet private weak var internalView: UIView!
-
+    @IBOutlet weak var card: SpeakerCardView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -20,22 +20,17 @@ final class SpeakerCardCell: UITableViewCell {
     
     private func setup() {
         separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
-        
-        internalView.layer.shadowColor = UIColor.black.cgColor
-        internalView.layer.shadowOpacity = 0.1
-        internalView.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-        internalView.layer.shadowRadius = 10.0
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        internalView.highlightView(true)
+        card.highlightView(true)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        internalView.highlightView(false)
+        card.highlightView(false)
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        internalView.highlightView(false)
+        card.highlightView(false)
     }
 }

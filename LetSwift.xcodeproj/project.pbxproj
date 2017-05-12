@@ -61,6 +61,10 @@
 		D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */; };
 		D34B850C1EB3214900DBC72D /* PreviousEventsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */; };
 		D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */; };
+		D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */; };
+		D34CCF591EC5AAF900EFD3E4 /* LectureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34CCF571EC5AAF900EFD3E4 /* LectureViewController.xib */; };
+		D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CCF5D1EC5AC9A00EFD3E4 /* SpeakerCardView.swift */; };
+		D34CCF601EC5AC9A00EFD3E4 /* SpeakerCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34CCF5E1EC5AC9A00EFD3E4 /* SpeakerCardView.xib */; };
 		D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */; };
 		D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A01EA7330C00C05AA6 /* LoginViewController.swift */; };
 		D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35839A11EA7330C00C05AA6 /* LoginViewController.xib */; };
@@ -160,6 +164,10 @@
 		D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListCell.swift; sourceTree = "<group>"; };
 		D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventsListCell.xib; sourceTree = "<group>"; };
+		D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
+		D34CCF571EC5AAF900EFD3E4 /* LectureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureViewController.xib; sourceTree = "<group>"; };
+		D34CCF5D1EC5AC9A00EFD3E4 /* SpeakerCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardView.swift; sourceTree = "<group>"; };
+		D34CCF5E1EC5AC9A00EFD3E4 /* SpeakerCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardView.xib; sourceTree = "<group>"; };
 		D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributedStringHelper.swift; sourceTree = "<group>"; };
 		D35839A01EA7330C00C05AA6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D35839A11EA7330C00C05AA6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -317,6 +325,7 @@
 				D33F07221EA9E8F600A74B9F /* Speakers */,
 				D33F07231EA9E8FC00A74B9F /* Contact */,
 				D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */,
+				D34CCF5A1EC5AAFC00EFD3E4 /* Lecture */,
 			);
 			path = ApplicationViewControllers;
 			sourceTree = "<group>";
@@ -533,6 +542,33 @@
 			path = PreviousEventsListCell;
 			sourceTree = "<group>";
 		};
+		D34CCF5A1EC5AAFC00EFD3E4 /* Lecture */ = {
+			isa = PBXGroup;
+			children = (
+				D34CCF5B1EC5AB3300EFD3E4 /* Views */,
+				D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */,
+				D34CCF571EC5AAF900EFD3E4 /* LectureViewController.xib */,
+			);
+			path = Lecture;
+			sourceTree = "<group>";
+		};
+		D34CCF5B1EC5AB3300EFD3E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D34CCF5C1EC5AB4600EFD3E4 /* SpeakerCardView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D34CCF5C1EC5AB4600EFD3E4 /* SpeakerCardView */ = {
+			isa = PBXGroup;
+			children = (
+				D34CCF5D1EC5AC9A00EFD3E4 /* SpeakerCardView.swift */,
+				D34CCF5E1EC5AC9A00EFD3E4 /* SpeakerCardView.xib */,
+			);
+			path = SpeakerCardView;
+			sourceTree = "<group>";
+		};
 		D38B14B81E9F6A6A009EA346 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -723,8 +759,10 @@
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* CommonEventViewController.xib in Resources */,
 				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */,
+				D34CCF591EC5AAF900EFD3E4 /* LectureViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
+				D34CCF601EC5AC9A00EFD3E4 /* SpeakerCardView.xib in Resources */,
 				7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */,
 				D3381F3F1EBC8DAC00453EB9 /* LaunchScreen.xib in Resources */,
 				D31B08521EB12EA000C2D229 /* EventLocationCell.xib in Resources */,
@@ -843,11 +881,13 @@
 				D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
+				D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
 				D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */,
 				7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
 				D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */,
+				D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */,
 				D3FF3F971E9F5E3400501F44 /* Observable.swift in Sources */,
 				D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
