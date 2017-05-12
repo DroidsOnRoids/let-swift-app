@@ -12,10 +12,12 @@
             <connections>
                 <outlet property="lectureSummaryLabel" destination="Aab-yD-613" id="4wN-mu-q2p"/>
                 <outlet property="lectureTitleLabel" destination="X9T-fT-9Fj" id="wLp-d9-XUe"/>
+                <outlet property="lowerSeparatorConstraint" destination="dkq-8g-7Us" id="Pe3-7v-NgL"/>
                 <outlet property="readMoreButton" destination="HLm-iO-5yS" id="0WA-FT-4c9"/>
                 <outlet property="speakerImageView" destination="oBI-n7-rkr" id="6OS-gd-cPL"/>
                 <outlet property="speakerNameLabel" destination="Awx-CI-K3S" id="jxd-aG-Kle"/>
                 <outlet property="speakerTitleLabel" destination="bJf-f4-dWE" id="Gvk-2c-a7W"/>
+                <outlet property="upperSeparatorConstraint" destination="OS4-js-5lQ" id="h43-2a-JOD"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
