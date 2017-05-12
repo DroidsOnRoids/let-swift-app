@@ -11,7 +11,8 @@ import UIKit
 final class EventDetailsViewController: CommonEventViewController {
     
     override var allCells: [EventCellIdentifier] {
-        return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime]
+        return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime,
+                .speakerCardHeaderCell, .speakerCardCell, .speakerCardCell, .speakerCardCell]
     }
     
     override var viewControllerTitleKey: String? {
@@ -32,6 +33,17 @@ final class EventDetailsViewController: CommonEventViewController {
         case .carouselEventPhotos:
             self.setup(carouselCell: cell as! CarouselEventPhotosCell)
 
+        default: break
+        }
+    }
+    
+    override func dispatchCellSelect(element: EventCellIdentifier) {
+        super.dispatchCellSelect(element: element)
+        
+        switch element {
+        case .speakerCardCell:
+            viewModel.speakerCellDidTapObservable.next()
+            
         default: break
         }
     }

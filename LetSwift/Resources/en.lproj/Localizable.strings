@@ -5,11 +5,11 @@
 "ONBOARDING_CONTINUE" = "Continue";
 "ONBOARDING_FINISH" = "Awesome, got it!";
 "ONBOARDING_MEETUPS_TITLE" = "Meet-ups every month";
-"ONBOARDING_MEETUPS_DESCRIPTION" = "let Swift is a monthly iOS developers’ meeting taking place in Wrocław";
+"ONBOARDING_MEETUPS_DESCRIPTION" = "let Swift is a monthly iOS developers’ meeting taking place in Wrocław";
 "ONBOARDING_SPEAKERS_TITLE" = "Awesome speakers";
-"ONBOARDING_SPEAKERS_DESCRIPTION" = "Every month talks are presented by speakers from every corner of Poland";
+"ONBOARDING_SPEAKERS_DESCRIPTION" = "Every month talks are presented by speakers from every corner of Poland";
 "ONBOARDING_PRICE_TITLE" = "Completely free";
-"ONBOARDING_PRICE_DESCRIPTION" = "No entry fee, contests, prizes and awesome afterparty";
+"ONBOARDING_PRICE_DESCRIPTION" = "No entry fee, contests, prizes and awesome afterparty";
 "LOGIN_SUBTITLE" = "iOS Developers Meet-up";
 "LOGIN_PURPOSE_DESCRIPTION" = "Login by Facebook to gain \nfull access.";
 "LOGIN_BUTTON_TITLE" = "Login";
@@ -21,5 +21,8 @@
 "EVENTS_ATTENDING" = "Attending";
 "EVENTS_REMIND_ME" = "Remind me";
 "EVENTS_STOP_REMINDING" = "Stop reminding";
+"EVENTS_PREVIOUS" = "Previous let Swift meet-ups";
 "SPEAKERS_TITLE" = "Speakers";
 "CONTACT_TITLE" = "Contact";
+"LECTURE_TITLE" = "Lecture details";
+"LECTURE_READ_MORE" = "Read more";

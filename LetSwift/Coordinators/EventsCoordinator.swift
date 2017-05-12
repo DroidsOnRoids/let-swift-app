@@ -41,8 +41,10 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         
         navigationViewController.pushViewController(viewController, animated: true)
     }
-
-    func collectionViewCellDidTap(with model: Event) {
-        presentEventDetailsScreen(fromModel: model)
+    
+    func presentLectureScreen() {
+        let viewController = LectureViewController()
+        
+        navigationViewController.pushViewController(viewController, animated: true)
     }
 }
