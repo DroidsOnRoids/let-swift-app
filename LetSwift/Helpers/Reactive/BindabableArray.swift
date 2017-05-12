@@ -27,6 +27,11 @@ final class BindableArray<T> {
         events.forEach({ $0(values) })
     }
 
+    func remove(at index: Int) {
+        values.remove(at: index)
+        events.forEach({ $0(values) })
+    }
+
     private func notify(event: ([T]) -> ()) {
         values.enumerated().forEach { index, element in
             event(values)

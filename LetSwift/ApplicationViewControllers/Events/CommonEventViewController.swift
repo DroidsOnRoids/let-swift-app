@@ -25,6 +25,8 @@ class CommonEventViewController: AppViewController {
     var allCells: [EventCellIdentifier] {
         return []
     }
+
+    lazy var bindableCells: BindableArray<EventCellIdentifier> = { return self.allCells.bindable }()
     
     override var nibName: String? {
         return String(describing: CommonEventViewController.self)
@@ -163,7 +165,7 @@ class CommonEventViewController: AppViewController {
     }
     
     private func reactiveSetup() {
-        allCells.bindable.bind(to: tableView.items() ({ [weak self] tableView, index, element in
+        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
             
