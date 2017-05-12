@@ -34,6 +34,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
             DispatchQueue.main.async {
                 self?.setupScrollView(with: photos)
                 self?.pageControl.numberOfPages = photos.count
+                self?.pageControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         }
 
