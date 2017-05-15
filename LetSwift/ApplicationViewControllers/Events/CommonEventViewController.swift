@@ -185,11 +185,9 @@ class CommonEventViewController: AppViewController {
             if let photos = event?.photos, photos.count > 0 {
                 let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
                 cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS").uppercased()
-            } else {
-                if weakSelf.bindableCells.values.contains(.attend) { 
-                    weakSelf.bindableCells.remove(at: 1, updated: false)
-                    weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
-                }
+            } else if weakSelf.bindableCells.values.contains(.attend) {
+                weakSelf.bindableCells.remove(at: 1, updated: false)
+                weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
         }
 
