@@ -198,7 +198,10 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func attendButtonTapped() {
-        guard !isEventOutdated else { return }
+        guard !isEventOutdated else {
+            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value.photos)
+            return
+        }
         guard let eventId = lastEventObservable.value.facebook, attendanceStateObservable.value != .loading else { return }
         guard FacebookManager.shared.isLoggedIn else {
             loginScreenObservable.next()

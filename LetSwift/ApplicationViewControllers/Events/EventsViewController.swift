@@ -12,6 +12,7 @@ protocol EventsViewControllerDelegate: class {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
     func presentEventDetailsScreen(fromModel: Event)
     func presentLectureScreen()
+    func presentPhotoGalleryScreen(with photos: [Photo])
 }
 
 class EventsViewController: CommonEventViewController {

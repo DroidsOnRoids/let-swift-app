@@ -8,6 +8,9 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController {
+protocol PhotoGalleryViewControllerDelegate: class {
+}
+
+class PhotoGalleryViewController: UIViewController {
 
 }
