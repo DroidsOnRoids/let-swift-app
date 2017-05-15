@@ -11,6 +11,11 @@ import CoreLocation
 
 final class EventsViewControllerViewModel {
 
+    static let mockedPhoto = Photo(
+        thumbnail: URL(string: ""),
+        full: URL(string: "")
+    )
+
     static let mockedEvent = Event(
         id: 1,
         date: Date(),
@@ -19,6 +24,7 @@ final class EventsViewControllerViewModel {
         placeName: "Proza",
         placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
         coverPhotos: { Int(Date().timeIntervalSince1970) % 2 == 0 ? ["PhotoMock", "PhotoMock", "PhotoMock"] : ["PhotoMock"] }(),
+        photos: { Int(Date().timeIntervalSince1970) % 2 != 0 ? [mockedPhoto] : [] }(),
         placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
     )
 
@@ -55,7 +61,7 @@ final class EventsViewControllerViewModel {
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
     var speakerCellDidTapObservable = Observable<Void>()
 
-    var eventDidFinishObservable = Observable<Bool>(false)
+    var eventDidFinishObservable = Observable<Event?>(nil)
 
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
@@ -166,7 +172,7 @@ final class EventsViewControllerViewModel {
     }
 
     @objc private func eventFinished() {
-        eventDidFinishObservable.next(true)
+        eventDidFinishObservable.next(lastEventObservable.value)
     }
     
     private func checkAttendance() {

@@ -174,8 +174,12 @@ class CommonEventViewController: AppViewController {
             return cell
         }))
 
-        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] finished in
-            if finished {
+        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+            guard event != nil else { return }
+            if let photos = event?.photos, photos.count > 0 {
+                let cell = self?.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
+                cell?.leftButtonTitle = "SEE PHOTOS" //TODO: localize
+            } else {
                 self?.bindableCells.remove(at: 1, updated: false)
                 self?.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
