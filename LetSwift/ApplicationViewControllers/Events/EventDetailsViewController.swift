@@ -50,8 +50,9 @@ final class EventDetailsViewController: CommonEventViewController {
     
     private func setup(speakerCardCell cell: SpeakerCardCell) {
         cell.addTapListeners(speaker: { [weak self] in
-        }, readMore: { [weak self] in
             self?.viewModel.speakerCellDidTapObservable.next()
+        }, readMore: { [weak self] in
+            self?.viewModel.lectureCellDidTapObservable.next()
         })
     }
 }

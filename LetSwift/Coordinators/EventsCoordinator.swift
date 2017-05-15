@@ -42,6 +42,12 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         navigationViewController.pushViewController(viewController, animated: true)
     }
     
+    func presentSpeakerDetailsScreen() {
+        let viewController = SpeakerDetailsViewController()
+        
+        navigationViewController.pushViewController(viewController, animated: true)
+    }
+    
     func presentLectureScreen() {
         let viewController = LectureViewController()
         
