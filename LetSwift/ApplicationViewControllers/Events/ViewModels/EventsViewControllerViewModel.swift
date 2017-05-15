@@ -18,7 +18,7 @@ final class EventsViewControllerViewModel {
         facebook: "1425682510795718",
         placeName: "Proza",
         placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
-        coverPhotos: ["PhotoMock", "PhotoMock", "PhotoMock"],
+        coverPhotos: { Int(Date().timeIntervalSince1970) % 2 == 0 ? ["PhotoMock", "PhotoMock", "PhotoMock"] : ["PhotoMock"] }(),
         placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
     )
 
