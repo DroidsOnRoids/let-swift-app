@@ -26,7 +26,7 @@ class CommonEventViewController: AppViewController {
         return []
     }
 
-    lazy var bindableCells: BindableArray<EventCellIdentifier> = { return self.allCells.bindable }()
+    lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
     
     override var nibName: String? {
         return String(describing: CommonEventViewController.self)
@@ -175,9 +175,11 @@ class CommonEventViewController: AppViewController {
         }))
 
         viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] finished in
+            guard let selfWeak = self else { return }
             if finished {
-                self?.bindableCells.remove(at: 1, updated: false)
-                self?.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+                guard selfWeak.bindableCells.values.count > 2 else { return }
+                selfWeak.bindableCells.remove(at: 1, updated: false)
+                selfWeak.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
         }
 

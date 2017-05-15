@@ -18,7 +18,7 @@ final class BindableArray<T> {
     }
 
     func bind(to event: @escaping ([T]) -> () ) {
-        let convertedFunc: ([T], Bool) -> () = { (passedValues, updates) in
+        let convertedFunc: ([T], Bool) -> () = { passedValues, updates in
             event(passedValues)
         }
         events.append(convertedFunc)
@@ -32,12 +32,12 @@ final class BindableArray<T> {
 
     func append(_ element: T, updated: Bool = true) {
         values.append(element)
-        events.forEach({ $0(values, updated) })
+        events.forEach { $0(values, updated) }
     }
 
     func remove(at index: Int, updated: Bool = true) {
         values.remove(at: index)
-        events.forEach({ $0(values, updated) })
+        events.forEach { $0(values, updated) }
     }
 
     private func notify(event: ([T], Bool) -> ()) {
