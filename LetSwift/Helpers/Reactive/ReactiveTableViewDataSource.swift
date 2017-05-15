@@ -29,7 +29,7 @@ final class ReactiveTableViewDataSource<S: Sequence>: NSObject, UITableViewDataS
     }
 
     func tableView(_ tableView: UITableView, observedElements: S, updated: Bool = true) {
-        items = observedElements.map{ $0 }
+        items = observedElements.map { $0 }
 
         if updated {
             tableView.reloadData()

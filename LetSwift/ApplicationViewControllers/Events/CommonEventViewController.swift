@@ -26,7 +26,7 @@ class CommonEventViewController: AppViewController {
         return []
     }
 
-    lazy var bindableCells: BindableArray<EventCellIdentifier> = { return self.allCells.bindable }()
+    lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
     
     override var nibName: String? {
         return String(describing: CommonEventViewController.self)
@@ -186,6 +186,7 @@ class CommonEventViewController: AppViewController {
                 let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
                 cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS").uppercased()
             } else if weakSelf.bindableCells.values.contains(.attend) {
+                guard weakSelf.bindableCells.values.count > 2 else { return }
                 weakSelf.bindableCells.remove(at: 1, updated: false)
                 weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
