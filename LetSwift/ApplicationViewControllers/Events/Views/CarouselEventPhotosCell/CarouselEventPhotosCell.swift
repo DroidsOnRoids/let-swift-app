@@ -34,6 +34,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
             DispatchQueue.main.async {
                 self?.setupScrollView(with: photos)
                 self?.pageControl.numberOfPages = photos.count
+                self?.pageControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         }
 
@@ -59,6 +60,8 @@ final class CarouselEventPhotosCell: UITableViewCell {
                                size: frameSize)
 
             let subview = UIImageView(frame: frame)
+            subview.contentMode = .scaleAspectFill
+            subview.clipsToBounds = true
             subview.image = #imageLiteral(resourceName: "PhotoMock")
 
             scrollView.addSubview(subview)

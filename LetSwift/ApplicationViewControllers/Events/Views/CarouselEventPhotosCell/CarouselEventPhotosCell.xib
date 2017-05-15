@@ -24,7 +24,10 @@
                         </constraints>
                     </scrollView>
                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="IHz-pP-5hL">
-                        <rect key="frame" x="139.5" y="203" width="39" height="37"/>
+                        <rect key="frame" x="139.5" y="221.5" width="39" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="VsN-Qc-aaq"/>
+                        </constraints>
                         <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="currentPageIndicatorTintColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </pageControl>
@@ -33,7 +36,7 @@
                     <constraint firstItem="fbV-id-W4t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="D7b-D3-pbZ"/>
                     <constraint firstAttribute="trailing" secondItem="fbV-id-W4t" secondAttribute="trailing" id="H1v-Mq-EJW"/>
                     <constraint firstAttribute="bottom" secondItem="fbV-id-W4t" secondAttribute="bottom" id="MR2-dI-qx2"/>
-                    <constraint firstAttribute="bottom" secondItem="IHz-pP-5hL" secondAttribute="bottom" constant="12" id="Nhi-jO-kKu"/>
+                    <constraint firstAttribute="bottom" secondItem="IHz-pP-5hL" secondAttribute="bottom" id="Nhi-jO-kKu"/>
                     <constraint firstItem="IHz-pP-5hL" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Qni-YZ-V2X"/>
                     <constraint firstItem="fbV-id-W4t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eDD-b8-xhk"/>
                 </constraints>
