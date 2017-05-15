@@ -184,7 +184,7 @@ class CommonEventViewController: AppViewController {
             guard let weakSelf = self, event != nil else { return }
             if let photos = event?.photos, photos.count > 0 {
                 let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
-                cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS").uppercased()
+                cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
             } else if weakSelf.bindableCells.values.contains(.attend) {
                 guard weakSelf.bindableCells.values.count > 2 else { return }
                 weakSelf.bindableCells.remove(at: 1, updated: false)

@@ -85,6 +85,11 @@ final class EventsViewControllerViewModel {
         guard let date = lastEventObservable.value.date else { return false }
         return date.addingTimeInterval(Constants.minimumTimeForReminder).compare(Date()) == .orderedDescending
     }
+
+    var isEventOutdated: Bool {
+        guard let date = lastEventObservable.value.date else { return false }
+        return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).compare(Date()) == .orderedAscending
+    }
     
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
         self.lastEventObservable = Observable<Event>(lastEvent)
@@ -193,6 +198,7 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func attendButtonTapped() {
+        guard !isEventOutdated else { print("fullfill with coordinator push transition"); return }
         guard let eventId = lastEventObservable.value.facebook, attendanceStateObservable.value != .loading else { return }
         guard FacebookManager.shared.isLoggedIn else {
             loginScreenObservable.next()
