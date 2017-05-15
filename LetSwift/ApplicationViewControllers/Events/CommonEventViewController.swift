@@ -175,11 +175,11 @@ class CommonEventViewController: AppViewController {
         }))
 
         viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] finished in
-            guard let selfWeak = self else { return }
+            guard let weakSelf = self else { return }
             if finished {
-                guard selfWeak.bindableCells.values.count > 2 else { return }
-                selfWeak.bindableCells.remove(at: 1, updated: false)
-                selfWeak.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+                guard weakSelf.bindableCells.values.count > 2 else { return }
+                weakSelf.bindableCells.remove(at: 1, updated: false)
+                weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
         }
 
