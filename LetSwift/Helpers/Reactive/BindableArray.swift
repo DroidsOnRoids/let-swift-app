@@ -18,7 +18,7 @@ final class BindableArray<T> {
     }
 
     func bind(to event: @escaping ([T]) -> () ) {
-        let convertedFunc: ([T], Bool) -> () = { passedValues, updates in
+        let convertedFunc: ([T], Bool) -> () = { passedValues, _ in
             event(passedValues)
         }
         events.append(convertedFunc)
