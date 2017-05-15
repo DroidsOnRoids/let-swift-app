@@ -198,7 +198,7 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func attendButtonTapped() {
-        guard !isEventOutdated else { print("fullfill with coordinator push transition"); return }
+        guard !isEventOutdated else { return }
         guard let eventId = lastEventObservable.value.facebook, attendanceStateObservable.value != .loading else { return }
         guard FacebookManager.shared.isLoggedIn else {
             loginScreenObservable.next()
