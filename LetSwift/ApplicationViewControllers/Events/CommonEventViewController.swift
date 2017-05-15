@@ -25,6 +25,8 @@ class CommonEventViewController: AppViewController {
     var allCells: [EventCellIdentifier] {
         return []
     }
+
+    lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
     
     override var nibName: String? {
         return String(describing: CommonEventViewController.self)
@@ -163,7 +165,7 @@ class CommonEventViewController: AppViewController {
     }
     
     private func reactiveSetup() {
-        allCells.bindable.bind(to: tableView.items() ({ [weak self] tableView, index, element in
+        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
             
@@ -171,9 +173,18 @@ class CommonEventViewController: AppViewController {
             
             return cell
         }))
-        
+
+        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] finished in
+            guard let weakSelf = self else { return }
+            if finished {
+                guard weakSelf.bindableCells.values.count > 2 else { return }
+                weakSelf.bindableCells.remove(at: 1, updated: false)
+                weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            }
+        }
+
         tableView.itemDidSelectObservable.subscribe { [weak self] indexPath in
-            guard let cellType = self?.allCells[indexPath.row] else { return }
+            guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
             
             self?.dispatchCellSelect(element: cellType)
             

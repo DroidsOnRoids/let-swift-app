@@ -18,7 +18,7 @@ final class EventsViewControllerViewModel {
         facebook: "1425682510795718",
         placeName: "Proza",
         placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
-        coverPhotos: ["PhotoMock", "PhotoMock", "PhotoMock"],
+        coverPhotos: { Int(Date().timeIntervalSince1970) % 2 == 0 ? ["PhotoMock", "PhotoMock", "PhotoMock"] : ["PhotoMock"] }(),
         placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
     )
 
@@ -54,6 +54,8 @@ final class EventsViewControllerViewModel {
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
     var speakerCellDidTapObservable = Observable<Void>()
+
+    var eventDidFinishObservable = Observable<Bool>(false)
 
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
@@ -141,8 +143,15 @@ final class EventsViewControllerViewModel {
                             .date?
                             .addingTimeInterval(Constants.minimumTimeForReminder)
                             .timeIntervalSince(Date()) else { return }
-        Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
-        
+        Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventReminderTimeFinished), userInfo: nil, repeats: false)
+
+        guard let eventLeftTime = lastEventObservable
+                                    .value
+                                    .date?
+                                    .addingTimeInterval(Constants.minimumTimeForReminder * 2)
+                                    .timeIntervalSince(Date()) else { return }
+        Timer.scheduledTimer(timeInterval: eventLeftTime, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
+
         FacebookManager.shared.facebookLoginObservable.subscribe(onNext: { [weak self] in
             self?.checkAttendance()
         })
@@ -152,8 +161,12 @@ final class EventsViewControllerViewModel {
         })
     }
 
-    @objc func eventFinished() {
+    @objc private func eventReminderTimeFinished() {
         notificationStateObservable.next(.notVisible)
+    }
+
+    @objc private func eventFinished() {
+        eventDidFinishObservable.next(true)
     }
     
     private func checkAttendance() {
