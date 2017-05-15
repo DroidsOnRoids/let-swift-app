@@ -32,27 +32,26 @@ final class EventDetailsViewController: CommonEventViewController {
             
         case .carouselEventPhotos:
             self.setup(carouselCell: cell as! CarouselEventPhotosCell)
+        
+        case .speakerCardCell:
+            self.setup(speakerCardCell: cell as! SpeakerCardCell)
 
         default: break
         }
     }
     
-    override func dispatchCellSelect(element: EventCellIdentifier) {
-        super.dispatchCellSelect(element: element)
-        
-        switch element {
-        case .speakerCardCell:
-            viewModel.speakerCellDidTapObservable.next()
-            
-        default: break
-        }
-    }
-
     private func setup(carouselCell cell: CarouselEventPhotosCell) {
         viewModel.carouselCellDidSetObservable.next()
 
         viewModel.carouselEventPhotosViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }
+    }
+    
+    private func setup(speakerCardCell cell: SpeakerCardCell) {
+        cell.addTapListeners(speaker: { [weak self] in
+        }, readMore: { [weak self] in
+            self?.viewModel.speakerCellDidTapObservable.next()
+        })
     }
 }
