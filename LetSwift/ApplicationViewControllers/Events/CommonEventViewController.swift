@@ -165,6 +165,12 @@ class CommonEventViewController: AppViewController {
     }
     
     private func reactiveSetup() {
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+            if let date =  event.date , event.photos.count == 0, date.addingTimeInterval(20.0).compare(Date()) == .orderedAscending {
+                self?.bindableCells.remove(at: 1)
+            }
+        }
+
         bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
@@ -175,13 +181,15 @@ class CommonEventViewController: AppViewController {
         }))
 
         viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
-            guard event != nil else { return }
+            guard let weakSelf = self, event != nil else { return }
             if let photos = event?.photos, photos.count > 0 {
-                let cell = self?.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
-                cell?.leftButtonTitle = "SEE PHOTOS" //TODO: localize
+                let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
+                cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS").uppercased()
             } else {
-                self?.bindableCells.remove(at: 1, updated: false)
-                self?.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+                if weakSelf.bindableCells.values.contains(.attend) { 
+                    weakSelf.bindableCells.remove(at: 1, updated: false)
+                    weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+                }
             }
         }
 
