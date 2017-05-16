@@ -11,6 +11,7 @@ import UIKit
 final class PreviousEventsListCell: UITableViewCell {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
+    @IBOutlet private weak var previousTitleLabel: UILabel!
 
     var viewModel: PreviousEventsListCellViewModel! {
         didSet {
@@ -30,6 +31,8 @@ final class PreviousEventsListCell: UITableViewCell {
         separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
         
         eventsCollectionView.register(UINib(nibName: PreviousEventCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PreviousEventCell.cellIdentifier)
+
+        previousTitleLabel.text = localized("EVENTS_PREVIOUS")
     }
 
     private func reactiveSetup() {
