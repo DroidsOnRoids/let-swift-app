@@ -10,8 +10,7 @@ import UIKit
 
 final class TappableView: UIView {
     
-    @IBInspectable
-    var selectionColor: UIColor = .lightBlueGrey
+    @IBInspectable var selectionColor: UIColor = .lightBlueGrey
     
     private var originalBackground: UIColor!
     private var isTouchDown = false
@@ -24,6 +23,17 @@ final class TappableView: UIView {
         self.action = action
     }
     
+    private func releaseTouch() -> Bool {
+        if isTouchDown {
+            isTouchDown = false
+            backgroundColor = originalBackground
+            
+            return true
+        } else {
+            return false
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         isTouchDown = true
         originalBackground = backgroundColor
@@ -31,18 +41,12 @@ final class TappableView: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isTouchDown {
-            isTouchDown = false
-            backgroundColor = originalBackground
-            
+        if releaseTouch() {
             _ = target?.perform(action)
         }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isTouchDown {
-            isTouchDown = false
-            backgroundColor = originalBackground
-        }
+        _ = releaseTouch()
     }
 }
