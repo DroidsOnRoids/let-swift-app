@@ -17,6 +17,6 @@ struct Talk {
     let job: String?
     let bio: String?
     let id: Int?
-    let tags = [String]()
-    let photos = [String]()
+    let tags: [String]
+    let photos: [String]
 }
