@@ -6,8 +6,6 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import Foundation
-
 struct Speaker {
 
     let id: Int?
