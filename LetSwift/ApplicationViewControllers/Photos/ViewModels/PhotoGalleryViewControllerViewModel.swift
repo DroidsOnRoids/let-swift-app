@@ -6,11 +6,9 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import Foundation
+final class PhotoGalleryViewControllerViewModel {
 
-class PhotoGalleryViewControllerViewModel {
-
-    var photosObservable: Observable<[Photo]>
+    let photosObservable: Observable<[Photo]>
 
     var delegate: PhotoGalleryViewControllerDelegate?
 
