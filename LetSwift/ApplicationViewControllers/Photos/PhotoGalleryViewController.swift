@@ -12,5 +12,4 @@ protocol PhotoGalleryViewControllerDelegate: class {
 }
 
 class PhotoGalleryViewController: UIViewController {
-
 }
