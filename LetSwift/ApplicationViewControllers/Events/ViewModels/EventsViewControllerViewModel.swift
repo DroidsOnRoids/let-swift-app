@@ -11,6 +11,11 @@ import CoreLocation
 
 final class EventsViewControllerViewModel {
 
+    static let mockedPhoto = Photo(
+        thumbnail: URL(string: ""),
+        full: URL(string: "")
+    )
+
     static let mockedEvent = Event(
         id: 1,
         date: Date(),
@@ -19,6 +24,7 @@ final class EventsViewControllerViewModel {
         placeName: "Proza",
         placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
         coverPhotos: { Int(Date().timeIntervalSince1970) % 2 == 0 ? ["PhotoMock", "PhotoMock", "PhotoMock"] : ["PhotoMock"] }(),
+        photos: { Int(Date().timeIntervalSince1970) % 2 != 0 ? [mockedPhoto] : [] }(),
         placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
     )
 
@@ -56,7 +62,7 @@ final class EventsViewControllerViewModel {
     var lectureCellDidTapObservable = Observable<Void>()
     var speakerCellDidTapObservable = Observable<Void>()
 
-    var eventDidFinishObservable = Observable<Bool>(false)
+    var eventDidFinishObservable = Observable<Event?>(nil)
 
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
@@ -78,7 +84,12 @@ final class EventsViewControllerViewModel {
 
     var isReminderAllowed: Bool {
         guard let date = lastEventObservable.value.date else { return false }
-        return date.addingTimeInterval(Constants.minimumTimeForReminder).compare(Date()) == .orderedDescending
+        return date.addingTimeInterval(Constants.minimumTimeForReminder).isOutdated
+    }
+
+    var isEventOutdated: Bool {
+        guard let date = lastEventObservable.value.date else { return false }
+        return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).isOutdated
     }
     
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
@@ -171,7 +182,7 @@ final class EventsViewControllerViewModel {
     }
 
     @objc private func eventFinished() {
-        eventDidFinishObservable.next(true)
+        eventDidFinishObservable.next(lastEventObservable.value)
     }
     
     private func checkAttendance() {
@@ -192,6 +203,7 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func attendButtonTapped() {
+        guard !isEventOutdated else { return }
         guard let eventId = lastEventObservable.value.facebook, attendanceStateObservable.value != .loading else { return }
         guard FacebookManager.shared.isLoggedIn else {
             loginScreenObservable.next()

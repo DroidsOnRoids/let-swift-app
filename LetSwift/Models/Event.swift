@@ -18,7 +18,7 @@ struct Event {
     let placeName: String?
     let placeStreet: String?
     let coverPhotos: [String]
-    let photos = [Photo]()
+    let photos: [Photo]
     let talks = [Talk]()
     let placeCoordinates: CLLocationCoordinate2D?
 }

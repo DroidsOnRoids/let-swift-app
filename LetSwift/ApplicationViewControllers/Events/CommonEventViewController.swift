@@ -165,6 +165,13 @@ class CommonEventViewController: AppViewController {
     }
     
     private func reactiveSetup() {
+        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self else { return }
+            if let eventDate =  event.date, event.photos.isEmpty, eventDate.addingTimeInterval(20.0).isOutdated, weakSelf.bindableCellsContains(index: 1) {
+                weakSelf.bindableCells.remove(at: 1)
+            }
+        }
+
         bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
@@ -174,10 +181,12 @@ class CommonEventViewController: AppViewController {
             return cell
         }))
 
-        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] finished in
-            guard let weakSelf = self else { return }
-            if finished {
-                guard weakSelf.bindableCells.values.count > 2 else { return }
+        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self, let _ = event else { return }
+            if let eventPhotos = event?.photos, !eventPhotos.isEmpty {
+                let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
+                cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
+            } else if weakSelf.bindableCells.values.contains(.attend), weakSelf.bindableCellsContains(index: 1) {
                 weakSelf.bindableCells.remove(at: 1, updated: false)
                 weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
@@ -190,5 +199,9 @@ class CommonEventViewController: AppViewController {
             
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+
+    private func bindableCellsContains(index: Int) -> Bool {
+        return bindableCells.values.count > index
     }
 }

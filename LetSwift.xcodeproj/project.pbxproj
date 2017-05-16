@@ -15,6 +15,7 @@
 		7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */; };
 		7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift */; };
 		7E0842C91ECAD5D1003F7C96 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842C81ECAD5D1003F7C96 /* Speaker.swift */; };
+		7E0842CB1ECAE47B003F7C96 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */; };
 		7E1C3EDE1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */; };
 		7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */; };
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
@@ -122,6 +123,7 @@
 		7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselEventPhotosCell.xib; sourceTree = "<group>"; };
 		7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselEventPhotosCellViewModel.swift; sourceTree = "<group>"; };
 		7E0842C81ECAD5D1003F7C96 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
+		7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
@@ -685,6 +687,7 @@
 				D39D71171EB6551C00F8743C /* UIViewExtension.swift */,
 				7EE141121EBCCC21008378AB /* UICollectionViewExtension.swift */,
 				7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */,
+				7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				D3D83DC21EBB10CE003572EF /* AlertHelper.swift in Sources */,
 				D3006AFD1EBC623B00716C23 /* EventDetailsViewController.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,
+				7E0842CB1ECAE47B003F7C96 /* DateExtension.swift in Sources */,
 				D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */,
 				7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */,
 				D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */,
