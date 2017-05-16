@@ -59,6 +59,7 @@ final class EventsViewControllerViewModel {
     
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
+    var lectureCellDidTapObservable = Observable<Void>()
     var speakerCellDidTapObservable = Observable<Void>()
 
     var eventDidFinishObservable = Observable<Event?>(nil)
@@ -137,6 +138,10 @@ final class EventsViewControllerViewModel {
         
         speakerCellDidTapObservable.subscribe(onNext: { [weak self] in
             self?.speakerCellTapped()
+        })
+        
+        lectureCellDidTapObservable.subscribe(onNext: { [weak self] in
+            self?.lectureCellTapped()
         })
 
         NotificationCenter
@@ -243,6 +248,10 @@ final class EventsViewControllerViewModel {
     }
     
     private func speakerCellTapped() {
+        delegate?.presentSpeakerDetailsScreen()
+    }
+    
+    private func lectureCellTapped() {
         delegate?.presentLectureScreen()
     }
 }
