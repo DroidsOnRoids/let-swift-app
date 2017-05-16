@@ -11,5 +11,5 @@ import UIKit
 protocol PhotoGalleryViewControllerDelegate: class {
 }
 
-class PhotoGalleryViewController: UIViewController {
+final class PhotoGalleryViewController: UIViewController {
 }
