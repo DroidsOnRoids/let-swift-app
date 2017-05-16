@@ -167,7 +167,7 @@ class CommonEventViewController: AppViewController {
     private func reactiveSetup() {
         viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self else { return }
-            if let eventDate =  event.date, event.photos.isEmpty, eventDate.addingTimeInterval(20.0).compare(Date()) == .orderedAscending, weakSelf.bindableCellsContains(index: 1) {
+            if let eventDate =  event.date, event.photos.isEmpty, eventDate.addingTimeInterval(20.0).isOutdated, weakSelf.bindableCellsContains(index: 1) {
                 weakSelf.bindableCells.remove(at: 1)
             }
         }

@@ -83,12 +83,12 @@ final class EventsViewControllerViewModel {
 
     var isReminderAllowed: Bool {
         guard let date = lastEventObservable.value.date else { return false }
-        return date.addingTimeInterval(Constants.minimumTimeForReminder).compare(Date()) == .orderedDescending
+        return date.addingTimeInterval(Constants.minimumTimeForReminder).isOutdated
     }
 
     var isEventOutdated: Bool {
         guard let date = lastEventObservable.value.date else { return false }
-        return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).compare(Date()) == .orderedAscending
+        return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).isOutdated
     }
     
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
