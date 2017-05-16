@@ -12,6 +12,9 @@ final class SpeakerCardCell: UITableViewCell {
     
     @IBOutlet weak var card: SpeakerCardView!
     
+    private var speakerTapListener: (() -> Void)?
+    private var readMoreTapListener: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -20,20 +23,21 @@ final class SpeakerCardCell: UITableViewCell {
     
     private func setup() {
         separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
+        
+        card.addSpeakerTapTarget(target: self, action: #selector(speakerDidTap))
+        card.addReadMoreTapTarget(target: self, action: #selector(readMoreDidTap))
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        card.highlightView(true)
+    func addTapListeners(speaker: @escaping () -> Void, readMore: @escaping () -> Void) {
+        speakerTapListener = speaker
+        readMoreTapListener = readMore
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
-        card.highlightView(false)
+    @objc private func speakerDidTap() {
+        speakerTapListener?()
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-        card.highlightView(false)
+    @objc private func readMoreDidTap() {
+        readMoreTapListener?()
     }
 }
