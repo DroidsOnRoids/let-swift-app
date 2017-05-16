@@ -11,6 +11,7 @@ import UIKit
 protocol EventsViewControllerDelegate: class {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
     func presentEventDetailsScreen(fromModel: Event)
+    func presentSpeakerDetailsScreen()
     func presentLectureScreen()
     func presentPhotoGalleryScreen(with photos: [Photo])
 }

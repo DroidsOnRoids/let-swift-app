@@ -59,6 +59,7 @@ final class EventsViewControllerViewModel {
     
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
+    var lectureCellDidTapObservable = Observable<Void>()
     var speakerCellDidTapObservable = Observable<Void>()
 
     var eventDidFinishObservable = Observable<Event?>(nil)
@@ -83,12 +84,12 @@ final class EventsViewControllerViewModel {
 
     var isReminderAllowed: Bool {
         guard let date = lastEventObservable.value.date else { return false }
-        return date.addingTimeInterval(Constants.minimumTimeForReminder).compare(Date()) == .orderedDescending
+        return date.addingTimeInterval(Constants.minimumTimeForReminder).isOutdated
     }
 
     var isEventOutdated: Bool {
         guard let date = lastEventObservable.value.date else { return false }
-        return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).compare(Date()) == .orderedAscending
+        return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).isOutdated
     }
     
     init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
@@ -137,6 +138,10 @@ final class EventsViewControllerViewModel {
         
         speakerCellDidTapObservable.subscribe(onNext: { [weak self] in
             self?.speakerCellTapped()
+        })
+        
+        lectureCellDidTapObservable.subscribe(onNext: { [weak self] in
+            self?.lectureCellTapped()
         })
 
         NotificationCenter
@@ -246,6 +251,10 @@ final class EventsViewControllerViewModel {
     }
     
     private func speakerCellTapped() {
+        delegate?.presentSpeakerDetailsScreen()
+    }
+    
+    private func lectureCellTapped() {
         delegate?.presentLectureScreen()
     }
 }

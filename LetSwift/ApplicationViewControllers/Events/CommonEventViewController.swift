@@ -166,8 +166,9 @@ class CommonEventViewController: AppViewController {
     
     private func reactiveSetup() {
         viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
-            if let date =  event.date , event.photos.count == 0, date.addingTimeInterval(20.0).compare(Date()) == .orderedAscending {
-                self?.bindableCells.remove(at: 1)
+            guard let weakSelf = self else { return }
+            if let eventDate =  event.date, event.photos.isEmpty, eventDate.addingTimeInterval(20.0).isOutdated, weakSelf.bindableCellsContains(index: 1) {
+                weakSelf.bindableCells.remove(at: 1)
             }
         }
 
@@ -181,12 +182,11 @@ class CommonEventViewController: AppViewController {
         }))
 
         viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self, event != nil else { return }
-            if let photos = event?.photos, photos.count > 0 {
+            guard let weakSelf = self, let _ = event else { return }
+            if let eventPhotos = event?.photos, !eventPhotos.isEmpty {
                 let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
                 cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
-            } else if weakSelf.bindableCells.values.contains(.attend) {
-                guard weakSelf.bindableCells.values.count > 2 else { return }
+            } else if weakSelf.bindableCells.values.contains(.attend), weakSelf.bindableCellsContains(index: 1) {
                 weakSelf.bindableCells.remove(at: 1, updated: false)
                 weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
@@ -199,5 +199,9 @@ class CommonEventViewController: AppViewController {
             
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
+    }
+
+    private func bindableCellsContains(index: Int) -> Bool {
+        return bindableCells.values.count > index
     }
 }

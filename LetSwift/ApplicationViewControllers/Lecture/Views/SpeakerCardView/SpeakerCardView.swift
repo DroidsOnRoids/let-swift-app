@@ -10,6 +10,7 @@ import UIKit
 
 final class SpeakerCardView: DesignableView, Localizable {
     
+    @IBOutlet private weak var speakerCellView: TappableView!
     @IBOutlet private weak var speakerImageView: UIImageView!
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerTitleLabel: UILabel!
@@ -81,5 +82,13 @@ final class SpeakerCardView: DesignableView, Localizable {
     
     func setupLocalization() {
         readMoreButton.setTitle(localized("LECTURE_READ_MORE").uppercased(), for: [])
+    }
+
+    func addSpeakerTapTarget(target: Any?, action: Selector) {
+        speakerCellView.addTarget(target, action: action)
+    }
+    
+    func addReadMoreTapTarget(target: Any?, action: Selector) {
+        readMoreButton.addTarget(target, action: action, for: .touchUpInside)
     }
 }
