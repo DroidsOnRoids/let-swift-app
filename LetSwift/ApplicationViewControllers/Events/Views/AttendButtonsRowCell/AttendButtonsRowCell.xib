@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -54,6 +54,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="qQ6-jg-0yx" secondAttribute="bottom" constant="16" id="Bb6-dM-MIl"/>
                     <constraint firstItem="v0l-Mk-5yg" firstAttribute="leading" secondItem="qQ6-jg-0yx" secondAttribute="trailing" priority="999" constant="16" id="HSc-2T-Xbm"/>
@@ -66,6 +67,7 @@
                     <constraint firstAttribute="trailing" secondItem="qQ6-jg-0yx" secondAttribute="trailing" priority="250" constant="16" id="lFZ-Og-qb7"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="attendButton" destination="qQ6-jg-0yx" id="sZT-rI-no1"/>
                 <outlet property="currentEventConstraint" destination="HSc-2T-Xbm" id="FZ3-Fr-7vJ"/>
