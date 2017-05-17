@@ -32,6 +32,7 @@ final class EventsViewControllerViewModel {
         case notAttending
         case attending
         case loading
+        case notAllowed
     }
     
     enum NotificationState {
@@ -173,7 +174,12 @@ final class EventsViewControllerViewModel {
         })
         
         FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [weak self] in
-            self?.attendanceStateObservable.next(.notAttending)
+            guard let weakSelf = self, !weakSelf.isEventOutdated else {
+                self?.attendanceStateObservable.next(.notAllowed)
+                return
+            }
+
+            weakSelf.attendanceStateObservable.next(.notAttending)
         })
     }
 
@@ -182,11 +188,16 @@ final class EventsViewControllerViewModel {
     }
 
     @objc private func eventFinished() {
+        attendanceStateObservable.next(.notAllowed)
         eventDidFinishObservable.next(lastEventObservable.value)
     }
     
     private func checkAttendance() {
         guard let eventId = lastEventObservable.value.facebook else { return }
+        guard !isEventOutdated else {
+            attendanceStateObservable.next(.notAllowed)
+            return
+        }
         
         attendanceStateObservable.next(.loading)
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [weak self] result in

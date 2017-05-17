@@ -93,6 +93,10 @@ class CommonEventViewController: AppViewController {
             case .loading:
                 cell.isLeftButtonActive = false
                 cell.leftButtonTitle = localized("EVENTS_LOADING")
+
+            case .notAllowed:
+                cell.isLeftButtonActive = true
+                cell.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
             }
         }
         
@@ -182,11 +186,8 @@ class CommonEventViewController: AppViewController {
         }))
 
         viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self, let _ = event else { return }
-            if let eventPhotos = event?.photos, !eventPhotos.isEmpty {
-                let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
-                cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
-            } else if weakSelf.bindableCells.values.contains(.attend), weakSelf.bindableCellsContains(index: 1) {
+            guard let weakSelf = self, let event = event else { return }
+            if weakSelf.bindableCells.values.contains(.attend), weakSelf.bindableCellsContains(index: 1), event.photos.isEmpty {
                 weakSelf.bindableCells.remove(at: 1, updated: false)
                 weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
