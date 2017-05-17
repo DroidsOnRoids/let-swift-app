@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PreviousEventsListCell: UITableViewCell {
+final class PreviousEventsListCell: UITableViewCell, Localizable {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
     @IBOutlet private weak var previousTitleLabel: UILabel!
@@ -32,7 +32,11 @@ final class PreviousEventsListCell: UITableViewCell {
         
         eventsCollectionView.register(UINib(nibName: PreviousEventCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PreviousEventCell.cellIdentifier)
 
-        previousTitleLabel.text = localized("EVENTS_PREVIOUS")
+        setupLocalization()
+    }
+    
+    func setupLocalization() {
+        previousTitleLabel.text = localized("EVENTS_PREVIOUS").uppercased()
     }
 
     private func reactiveSetup() {
