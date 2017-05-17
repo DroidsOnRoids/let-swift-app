@@ -23,7 +23,7 @@ final class TappableView: UIView {
         self.action = action
     }
     
-    private func releaseTouchIfNeeded() -> Bool {
+    @discardableResult private func releaseTouchIfNeeded() -> Bool {
         if isTouchDown {
             isTouchDown = false
             backgroundColor = originalBackground
@@ -47,6 +47,6 @@ final class TappableView: UIView {
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        _ = releaseTouchIfNeeded()
+        releaseTouchIfNeeded()
     }
 }
