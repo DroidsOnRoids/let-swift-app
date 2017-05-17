@@ -175,6 +175,7 @@ class CommonEventViewController: AppViewController {
         bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
+            cell.layoutMargins = UIEdgeInsets.zero
             
             self?.dispatchCellSetup(element: element, cell: cell)
             
