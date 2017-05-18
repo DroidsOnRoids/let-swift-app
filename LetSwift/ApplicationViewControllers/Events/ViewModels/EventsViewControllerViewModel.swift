@@ -192,10 +192,10 @@ final class EventsViewControllerViewModel {
     
     private func checkAttendance() {
         guard let eventId = lastEventObservable.value.facebook else { return }
-        guard !isEventOutdated else {
-            attendanceStateObservable.next(.notAllowed)
-            return
-        }
+
+        attendanceStateObservable.next(isEventOutdated ? .loading : .notAllowed)
+
+        guard !isEventOutdated else { return }
         
         attendanceStateObservable.next(.loading)
         FacebookManager.shared.isUserAttending(toEventId: eventId) { [weak self] result in
