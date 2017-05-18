@@ -176,7 +176,8 @@ final class EventsViewControllerViewModel {
         FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [weak self] in
             guard let weakSelf = self else { return }
 
-            weakSelf.isEventOutdated ? weakSelf.attendanceStateObservable.next(.notAllowed) : weakSelf.attendanceStateObservable.next(.notAttending)
+            let state: AttendanceState = weakSelf.isEventOutdated ? .notAllowed : .notAttending
+            weakSelf.attendanceStateObservable.next(state)
 
         })
     }
