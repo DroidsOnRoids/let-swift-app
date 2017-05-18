@@ -20,6 +20,8 @@ final class OnboardingViewController: UIViewController {
 
     fileprivate var viewModel: OnboardingViewControllerViewModel!
     
+    private let disposeBag = DisposeBag()
+    
     convenience init(viewModel: OnboardingViewControllerViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -49,10 +51,12 @@ final class OnboardingViewController: UIViewController {
                 weakSelf.onboardingPageControl.currentPage = page
             }
         }
+        .add(to: disposeBag)
 
         viewModel.continueButtonTitleObservable.subscribeNext(startsWithInitialValue: true) { [weak self] title in
             self?.continueButton.setTitle(title, for: [])
         }
+        .add(to: disposeBag)
         
         viewModel.onboardingCardsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] cards in
             DispatchQueue.main.async {
@@ -60,6 +64,7 @@ final class OnboardingViewController: UIViewController {
                 self?.onboardingPageControl.numberOfPages = cards.count
             }
         }
+        .add(to: disposeBag)
     }
     
     private func setupScrollView(with cards: [OnboardingCardModel]) {

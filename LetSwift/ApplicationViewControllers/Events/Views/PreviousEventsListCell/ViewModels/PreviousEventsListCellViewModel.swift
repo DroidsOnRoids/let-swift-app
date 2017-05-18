@@ -9,6 +9,8 @@
 import Foundation
 
 final class PreviousEventsListCellViewModel {
+    
+    private let disposeBag = DisposeBag()
 
     var previousEventsObservable = Observable<[Event]>([])
     var cellDidTapWithIndexObservable = Observable<Int>(-1)
@@ -27,5 +29,6 @@ final class PreviousEventsListCellViewModel {
             guard let previousEvent = self?.previousEventsObservable.value[safe: index] else { return }
             self?.delegate?.presentEventDetailsScreen(fromModel: previousEvent)
         }
+        .add(to: disposeBag)
     }
 }

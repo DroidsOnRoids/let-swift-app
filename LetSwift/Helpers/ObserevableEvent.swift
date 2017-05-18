@@ -12,12 +12,12 @@ struct ObservableEvent<T> {
     typealias Event = Observable<T>
 
     private let event: Observable<T>
-
+    
     init(event: Event) {
         self.event = event
     }
 
-    func subscribe(_ observer: @escaping (T) -> ()) {
-        event.subscribeNext(observer)
+    func subscribeNext(_ observer: @escaping (T) -> ()) -> DisposingObject {
+        return event.subscribeNext(observer)
     }
 }

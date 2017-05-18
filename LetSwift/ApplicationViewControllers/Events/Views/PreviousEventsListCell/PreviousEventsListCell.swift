@@ -12,6 +12,8 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
     @IBOutlet private weak var previousTitleLabel: UILabel!
+    
+    private let disposeBag = DisposeBag()
 
     var viewModel: PreviousEventsListCellViewModel! {
         didSet {
@@ -44,9 +46,11 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             guard let collectionView = self?.eventsCollectionView else { return }
             events.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) (nil))
         }
+        .add(to: disposeBag)
 
-        eventsCollectionView.itemDidSelectObservable.subscribe { [weak self] indexPath in
+        eventsCollectionView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
             self?.viewModel.cellDidTapWithIndexObservable.next(indexPath.item)
         }
+        .add(to: disposeBag)
     }
 }

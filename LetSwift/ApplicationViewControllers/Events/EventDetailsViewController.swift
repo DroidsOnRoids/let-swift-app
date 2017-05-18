@@ -23,6 +23,8 @@ final class EventDetailsViewController: CommonEventViewController {
         return false
     }
     
+    private let disposeBag = DisposeBag()
+    
     override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
         super.dispatchCellSetup(element: element, cell: cell)
 
@@ -46,6 +48,7 @@ final class EventDetailsViewController: CommonEventViewController {
         viewModel.carouselEventPhotosViewModelObservable.subscribeNext(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }
+        .add(to: disposeBag)
     }
     
     private func setup(speakerCardCell cell: SpeakerCardCell) {

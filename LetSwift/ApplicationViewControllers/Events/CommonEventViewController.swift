@@ -40,6 +40,8 @@ class CommonEventViewController: AppViewController {
     
     var viewModel: EventsViewControllerViewModel!
     
+    private let disposeBag = DisposeBag()
+    
     convenience init(viewModel: EventsViewControllerViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -55,11 +57,13 @@ class CommonEventViewController: AppViewController {
         viewModel.loginScreenObservable.subscribeNext { [weak self] in
             self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
         }
+        .add(to: disposeBag)
         
         viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
             guard let weakSelf = self else { return }
             AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
         }
+        .add(to: disposeBag)
     }
     
     private func setup() {
@@ -95,6 +99,7 @@ class CommonEventViewController: AppViewController {
                 cell.leftButtonTitle = localized("EVENTS_LOADING")
             }
         }
+        .add(to: disposeBag)
         
         viewModel.notificationStateObservable.subscribeNext(startsWithInitialValue: true) { state in
             switch state {
@@ -110,12 +115,14 @@ class CommonEventViewController: AppViewController {
                 cell.isRightButtonVisible = true
             }
         }
+        .add(to: disposeBag)
     }
     
     func setup(summaryCell cell: EventSummaryCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.eventTitle = event.title
         }
+        .add(to: disposeBag)
     }
     
     func setup(locationCell cell: EventLocationCell) {
@@ -128,6 +135,7 @@ class CommonEventViewController: AppViewController {
                 cell.placeLocation = placeStreet
             }
         }
+        .add(to: disposeBag)
     }
     
     func setup(timeCell cell: EventTimeCell) {
@@ -136,6 +144,7 @@ class CommonEventViewController: AppViewController {
             cell.date = weakSelf.viewModel.formattedDate
             cell.time = weakSelf.viewModel.formattedTime
         }
+        .add(to: disposeBag)
     }
     
     func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
@@ -171,6 +180,7 @@ class CommonEventViewController: AppViewController {
                 weakSelf.bindableCells.remove(at: 1)
             }
         }
+        .add(to: disposeBag)
 
         bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
@@ -192,14 +202,16 @@ class CommonEventViewController: AppViewController {
                 weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
             }
         }
+        .add(to: disposeBag)
 
-        tableView.itemDidSelectObservable.subscribe { [weak self] indexPath in
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
             guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
             
             self?.dispatchCellSelect(element: cellType)
             
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
+        .add(to: disposeBag)
     }
 
     private func bindableCellsContains(index: Int) -> Bool {

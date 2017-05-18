@@ -14,6 +14,8 @@ final class CarouselEventPhotosCell: UITableViewCell {
     @IBOutlet private weak var pageControl: UIPageControl!
 
     fileprivate var lastContentOffset: CGFloat = 0.0
+    
+    private let disposeBag = DisposeBag()
 
     var viewModel: CarouselEventPhotosCellViewModel! {
         didSet {
@@ -37,6 +39,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
                 self?.pageControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         }
+        .add(to: disposeBag)
 
         viewModel.currentPageObservable.subscribeNext { [weak self] page in
             guard let weakSelf = self else { return }
@@ -50,6 +53,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
                 weakSelf.pageControl.currentPage = page
             }
         }
+        .add(to: disposeBag)
     }
 
     private func setupScrollView(with images: [String]) {
