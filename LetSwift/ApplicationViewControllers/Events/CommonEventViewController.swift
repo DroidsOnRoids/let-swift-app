@@ -21,7 +21,7 @@ class CommonEventViewController: AppViewController {
         case speakerCardHeaderCell = "SpeakerCardHeaderCell"
         case speakerCardCell = "SpeakerCardCell"
     }
-    
+
     var allCells: [EventCellIdentifier] {
         return []
     }
@@ -97,6 +97,10 @@ class CommonEventViewController: AppViewController {
             case .loading:
                 cell.isLeftButtonActive = false
                 cell.leftButtonTitle = localized("EVENTS_LOADING")
+
+            case .notAllowed:
+                cell.isLeftButtonActive = true
+                cell.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
             }
         }
         .add(to: disposeBag)
@@ -175,10 +179,13 @@ class CommonEventViewController: AppViewController {
     
     private func reactiveSetup() {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self else { return }
-            if let eventDate =  event.date, event.photos.isEmpty, eventDate.addingTimeInterval(20.0).isOutdated, weakSelf.bindableCellsContains(index: 1) {
-                weakSelf.bindableCells.remove(at: 1)
-            }
+            guard let weakSelf = self,
+                  let eventDate =  event.date,
+                  event.photos.isEmpty,
+                  eventDate.addingTimeInterval(20.0).isOutdated,
+                  let index = weakSelf.bindableCells.values.index(of: .attend) else { return }
+
+            weakSelf.bindableCells.remove(at: index)
         }
         .add(to: disposeBag)
 
@@ -193,13 +200,10 @@ class CommonEventViewController: AppViewController {
         }))
 
         viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self, let _ = event else { return }
-            if let eventPhotos = event?.photos, !eventPhotos.isEmpty {
-                let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell
-                cell?.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
-            } else if weakSelf.bindableCells.values.contains(.attend), weakSelf.bindableCellsContains(index: 1) {
-                weakSelf.bindableCells.remove(at: 1, updated: false)
-                weakSelf.tableView.deleteRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+            guard let weakSelf = self, let event = event else { return }
+            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend) , event.photos.isEmpty {
+                weakSelf.bindableCells.remove(at: index, updated: false)
+                weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
             }
         }
         .add(to: disposeBag)
@@ -212,9 +216,5 @@ class CommonEventViewController: AppViewController {
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
         .add(to: disposeBag)
-    }
-
-    private func bindableCellsContains(index: Int) -> Bool {
-        return bindableCells.values.count > index
     }
 }
