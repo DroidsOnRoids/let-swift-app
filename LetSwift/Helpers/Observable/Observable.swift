@@ -28,7 +28,7 @@ final class Observable<Element> {
         self.value = value
     }
     
-    func subscribeNext(startsWithInitialValue: Bool = false, onNext: @escaping NextObserver) -> DisposingObject {
+    func subscribeNext(startsWithInitialValue: Bool = false, _ onNext: @escaping NextObserver) -> DisposingObject {
         if startsWithInitialValue {
             onNext(value)
         }
@@ -41,7 +41,7 @@ final class Observable<Element> {
         }
     }
     
-    func subscribe(onError: @escaping ErrorObserver) -> DisposingObject {
+    func subscribeError(_ onError: @escaping ErrorObserver) -> DisposingObject {
         let id = idAccumulator()
         errorObservers[id] = onError
         
@@ -50,7 +50,7 @@ final class Observable<Element> {
         }
     }
     
-    func subscribe(onCompleted: @escaping CompletedObserver) -> DisposingObject {
+    func subscribeCompleted(_ onCompleted: @escaping CompletedObserver) -> DisposingObject {
         let id = idAccumulator()
         completedObservers[id] = onCompleted
         

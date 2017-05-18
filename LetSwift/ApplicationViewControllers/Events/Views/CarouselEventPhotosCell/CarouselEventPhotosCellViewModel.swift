@@ -19,8 +19,8 @@ final class CarouselEventPhotosCellViewModel {
     }
 
     private func setup() {
-        scrollViewSwipeDidFinishObservable.subscribe(onNext: { [weak self] page in
+        scrollViewSwipeDidFinishObservable.subscribeNext { [weak self] page in
             self?.currentPageObservable.next(page)
-        })
+        }
     }
 }

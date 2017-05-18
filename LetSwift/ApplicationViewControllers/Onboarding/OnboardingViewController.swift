@@ -36,7 +36,7 @@ final class OnboardingViewController: UIViewController {
     private func setupViewModel() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
-        viewModel.currentPageObservable.subscribe(onNext: { [weak self] page in
+        viewModel.currentPageObservable.subscribeNext { [weak self] page in
             guard let weakSelf = self else { return }
             
             let xOffset = weakSelf.scrollView.contentOffset.x
@@ -48,13 +48,13 @@ final class OnboardingViewController: UIViewController {
                 weakSelf.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
                 weakSelf.onboardingPageControl.currentPage = page
             }
-        })
+        }
 
-        viewModel.continueButtonTitleObservable.subscribe(startsWithInitialValue: true) { [weak self] title in
+        viewModel.continueButtonTitleObservable.subscribeNext(startsWithInitialValue: true) { [weak self] title in
             self?.continueButton.setTitle(title, for: [])
         }
         
-        viewModel.onboardingCardsObservable.subscribe(startsWithInitialValue: true)  { [weak self] cards in
+        viewModel.onboardingCardsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] cards in
             DispatchQueue.main.async {
                 self?.setupScrollView(with: cards)
                 self?.onboardingPageControl.numberOfPages = cards.count

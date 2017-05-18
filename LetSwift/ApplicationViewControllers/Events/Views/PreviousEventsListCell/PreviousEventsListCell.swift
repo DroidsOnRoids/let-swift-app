@@ -40,7 +40,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
     }
 
     private func reactiveSetup() {
-        viewModel.previousEventsObservable.subscribe(startsWithInitialValue: true) { [weak self] events in
+        viewModel.previousEventsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] events in
             guard let collectionView = self?.eventsCollectionView else { return }
             events.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) (nil))
         }

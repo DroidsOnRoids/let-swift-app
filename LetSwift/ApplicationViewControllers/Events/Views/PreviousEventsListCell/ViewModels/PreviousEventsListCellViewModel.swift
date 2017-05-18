@@ -23,9 +23,9 @@ final class PreviousEventsListCellViewModel {
     }
 
     private func setup() {
-        cellDidTapWithIndexObservable.subscribe(onNext: { [weak self] index in
+        cellDidTapWithIndexObservable.subscribeNext { [weak self] index in
             guard let previousEvent = self?.previousEventsObservable.value[safe: index] else { return }
             self?.delegate?.presentEventDetailsScreen(fromModel: previousEvent)
-        })
+        }
     }
 }

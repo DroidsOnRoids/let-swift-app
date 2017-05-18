@@ -52,14 +52,14 @@ class CommonEventViewController: AppViewController {
     }
     
     private func setupViewModel() {
-        viewModel.loginScreenObservable.subscribe(onNext: { [weak self] in
+        viewModel.loginScreenObservable.subscribeNext { [weak self] in
             self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
-        })
+        }
         
-        viewModel.facebookAlertObservable.subscribe(onNext: { [weak self] error in
+        viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
             guard let weakSelf = self else { return }
             AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
-        })
+        }
     }
     
     private func setup() {
@@ -80,7 +80,7 @@ class CommonEventViewController: AppViewController {
         cell.addLeftTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped))
         cell.addRightTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped))
         
-        viewModel.attendanceStateObservable.subscribe(startsWithInitialValue: true) { state in
+        viewModel.attendanceStateObservable.subscribeNext(startsWithInitialValue: true) { state in
             switch state {
             case .notAttending:
                 cell.isLeftButtonActive = true
@@ -96,7 +96,7 @@ class CommonEventViewController: AppViewController {
             }
         }
         
-        viewModel.notificationStateObservable.subscribe(startsWithInitialValue: true) { state in
+        viewModel.notificationStateObservable.subscribeNext(startsWithInitialValue: true) { state in
             switch state {
             case .notVisible:
                 cell.isRightButtonVisible = false
@@ -113,13 +113,13 @@ class CommonEventViewController: AppViewController {
     }
     
     func setup(summaryCell cell: EventSummaryCell) {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.eventTitle = event.title
         }
     }
     
     func setup(locationCell cell: EventLocationCell) {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             if let placeName = event.placeName {
                 cell.placeName = placeName
             }
@@ -131,7 +131,7 @@ class CommonEventViewController: AppViewController {
     }
     
     func setup(timeCell cell: EventTimeCell) {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self else { return }
             cell.date = weakSelf.viewModel.formattedDate
             cell.time = weakSelf.viewModel.formattedTime
@@ -165,7 +165,7 @@ class CommonEventViewController: AppViewController {
     }
     
     private func reactiveSetup() {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self else { return }
             if let eventDate =  event.date, event.photos.isEmpty, eventDate.addingTimeInterval(20.0).isOutdated, weakSelf.bindableCellsContains(index: 1) {
                 weakSelf.bindableCells.remove(at: 1)
@@ -182,7 +182,7 @@ class CommonEventViewController: AppViewController {
             return cell
         }))
 
-        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+        viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self, let _ = event else { return }
             if let eventPhotos = event?.photos, !eventPhotos.isEmpty {
                 let cell = weakSelf.tableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? AttendButtonsRowCell

@@ -33,9 +33,9 @@ final class LoginViewControllerViewModel {
     }
     
     private func setup() {
-        viewWillAppearPerformObservable.subscribe(onNext: { [weak self] in
+        viewWillAppearPerformObservable.subscribeNext { [weak self] in
             self?.animateWithRandomTextObservable.next(Constants.helloWorldVariants.randomElement())
-        })
+        }
     }
     
     func facebookLoginCallback(status: FacebookLoginStatus) {

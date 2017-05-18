@@ -33,7 +33,7 @@ class EventsViewController: CommonEventViewController {
     private func setup(previousEventsCell cell: PreviousEventsListCell) {
         viewModel.previousEventsCellDidSetObservable.next()
         
-        viewModel.previousEventsViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
+        viewModel.previousEventsViewModelObservable.subscribeNext(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }
     }

@@ -18,6 +18,6 @@ struct ObservableEvent<T> {
     }
 
     func subscribe(_ observer: @escaping (T) -> ()) {
-        event.subscribe(onNext: observer)
+        event.subscribeNext(observer)
     }
 }
