@@ -178,7 +178,6 @@ final class EventsViewControllerViewModel {
 
             let state: AttendanceState = weakSelf.isEventOutdated ? .notAllowed : .notAttending
             weakSelf.attendanceStateObservable.next(state)
-
         })
     }
 
