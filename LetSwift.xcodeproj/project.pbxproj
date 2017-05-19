@@ -53,6 +53,10 @@
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
+		D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521171ECED909000666D4 /* LocationMapperExtension.swift */; };
+		D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521191ECED98E000666D4 /* DateMapperExtension.swift */; };
+		D335211D1ECEE762000666D4 /* event_details.json in Resources */ = {isa = PBXBuildFile; fileRef = D335211C1ECEE762000666D4 /* event_details.json */; };
+		D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D335211E1ECEE78A000666D4 /* MockLoader.swift */; };
 		D3381F3F1EBC8DAC00453EB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */; };
 		D3381F471EBC8F4800453EB9 /* SplashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D3381F461EBC8F4800453EB9 /* SplashImage.png */; };
 		D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CBB81EA8BA44000E9585 /* FacebookManager.swift */; };
@@ -164,6 +168,10 @@
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		D33521171ECED909000666D4 /* LocationMapperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMapperExtension.swift; sourceTree = "<group>"; };
+		D33521191ECED98E000666D4 /* DateMapperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateMapperExtension.swift; sourceTree = "<group>"; };
+		D335211C1ECEE762000666D4 /* event_details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event_details.json; sourceTree = "<group>"; };
+		D335211E1ECEE78A000666D4 /* MockLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLoader.swift; sourceTree = "<group>"; };
 		D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		D3381F461EBC8F4800453EB9 /* SplashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashImage.png; sourceTree = "<group>"; };
 		D338CBB81EA8BA44000E9585 /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookManager.swift; sourceTree = "<group>"; };
@@ -412,6 +420,7 @@
 			children = (
 				7E02FE6A1EBB17C4005DADCB /* Reactive */,
 				D3FF3F931E9F5DD200501F44 /* Extensions */,
+				D33521161ECED8DA000666D4 /* MapperExtensions */,
 				D32A76CB1E9B9B5C00388222 /* Localization.swift */,
 				D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */,
 				D3FF3F961E9F5E3400501F44 /* Observable.swift */,
@@ -438,6 +447,7 @@
 		7EECA5AC1E9B5EEB00B3F724 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D335211B1ECEE720000666D4 /* Mocks */,
 				7EA48D551EADDD5500CEC845 /* Event.swift */,
 				7E31D0A31EAE3D7C0030147C /* Talk.swift */,
 				7E31D0A51EAE3D970030147C /* Photo.swift */,
@@ -536,6 +546,24 @@
 				D3FF3F891E9F51F100501F44 /* OnboardingViewController.xib */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		D33521161ECED8DA000666D4 /* MapperExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				D33521171ECED909000666D4 /* LocationMapperExtension.swift */,
+				D33521191ECED98E000666D4 /* DateMapperExtension.swift */,
+			);
+			path = MapperExtensions;
+			sourceTree = "<group>";
+		};
+		D335211B1ECEE720000666D4 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D335211E1ECEE78A000666D4 /* MockLoader.swift */,
+				D335211C1ECEE762000666D4 /* event_details.json */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		D33F07211EA9E8E000A74B9F /* Events */ = {
@@ -800,6 +828,7 @@
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* CommonEventViewController.xib in Resources */,
 				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */,
+				D335211D1ECEE762000666D4 /* event_details.json in Resources */,
 				D34CCF591EC5AAF900EFD3E4 /* LectureViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				D3840D9A1ECA0C2900975818 /* SpeakerDetailsViewController.xib in Resources */,
@@ -925,11 +954,14 @@
 				7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */,
 				7EA48D561EADDD5500CEC845 /* Event.swift in Sources */,
 				D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */,
+				D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */,
+				D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
 				D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */,
+				D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */,
 				7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
 				D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */,

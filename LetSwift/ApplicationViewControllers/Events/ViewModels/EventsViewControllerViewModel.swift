@@ -11,22 +11,8 @@ import CoreLocation
 
 final class EventsViewControllerViewModel {
 
-    static let mockedPhoto = Photo(
-        thumbnail: URL(string: ""),
-        full: URL(string: "")
-    )
-
-    static let mockedEvent = Event(
-        id: 1,
-        date: Date(),
-        title: "Let Swift #10",
-        facebook: "1425682510795718",
-        placeName: "Proza",
-        placeStreet: "Wrocławski Klub Literacki\nPrzejście Garncarskie 2, Rynek Wrocław",
-        coverPhotos: { Int(Date().timeIntervalSince1970) % 2 == 0 ? ["PhotoMock", "PhotoMock", "PhotoMock"] : ["PhotoMock"] }(),
-        photos: { Int(Date().timeIntervalSince1970) % 2 != 0 ? [mockedPhoto] : [] }(),
-        placeCoordinates: CLLocationCoordinate2D(latitude: 51.11, longitude: 17.03)
-    )
+    // TODO: Make models optional
+    static let mockedEvent = Event.fromDetails(MockLoader.eventDetailsMock!)!
 
     enum AttendanceState {
         case notAttending
@@ -131,9 +117,9 @@ final class EventsViewControllerViewModel {
             })
 
         carouselCellDidSetObservable
-            .withLatest(from: lastEventObservable, combine: { event in event.1.coverPhotos })
+            .withLatest(from: lastEventObservable, combine: { event in event.1.coverImages })
             .subscribe(startsWithInitialValue: true, onNext: { [weak self] photos in
-                let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
+                let subviewModel = CarouselEventPhotosCellViewModel(photos: photos ?? [])
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
             })
         
@@ -213,7 +199,7 @@ final class EventsViewControllerViewModel {
     
     @objc func attendButtonTapped() {
         guard !isEventOutdated else {
-            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value.photos)
+            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value.photos ?? [])
             return
         }
         guard let eventId = lastEventObservable.value.facebook, attendanceStateObservable.value != .loading else { return }
@@ -237,12 +223,12 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func remindButtonTapped() {
-        guard let formattedTime = formattedTime, let eventTitle = lastEventObservable.value.title else { return }
+        guard let formattedTime = formattedTime else { return }
         
         if notificationManager.isNotificationActive {
             notificationManager.cancelNotification()
         } else {
-            let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(eventTitle)"
+            let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(lastEventObservable.value.title)"
             
             _ = notificationManager.succeededScheduleNotification(withMessage: message)
         }

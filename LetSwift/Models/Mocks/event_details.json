@@ -1,0 +1,63 @@
+{
+  "event": {
+    "id": 9,
+    "title": "Let Swift #9",
+    "date": "2017-03-23T18:00:00+00:00",
+    "facebook": "393160081059405",
+    "place_name": "Proza",
+    "place_street": "Wrocławski Klub Literacki, Przejście Garncarskie 2, Rynek Wrocław",
+    "cover_images": ["https://test.pl/test.jpeg", "https://test.pl/test.jpeg", "https://test.pl/test.jpeg"],
+    "photos": [],
+    "place_coordinates": {
+      "latitude": 51.1100493,
+      "longitude": 17.0304079
+    },
+    "talks": [
+      {
+        "id": 14,
+        "title": "Od Swifta do Huraganu - Powrót Apple do świata procesorów",
+        "description": "Krótka historia o tym jak Apple będąc kompletnym nowicjuszem na rynku w kilka lat urosło do rangi najlepszego twórcy procesorów ARM oraz dlaczego Intel w tym segmencie jest nieobecny.",
+        "tags": [
+          "swift",
+          "cpu",
+          "history"
+        ],
+        "speaker": {
+          "id": 13,
+          "name": "Michał Mynarski",
+          "job": "iOS Developer",
+          "bio": "Pracował w korporacji, pracował w banku, wyleczył się z takich pomysłów do końca życia. Uwielbia dobry UX, szczególnie taki, którego nie da się zaprogramować. Specjalista od relacji z hiszpańskim kodem i siesta developmentem."
+        }
+      },
+      {
+        "id": 16,
+        "title": "Hardcore CoreData - optymalizacja aplikacji opartej na CoreData",
+        "description": "Dowiesz się:\n- jak uniknąć częstych problemów,\n- co i jak testować,\n- jakie rozwiązania stosować, aby uzyskać maksymalną wydajność.\n\nA wszystko to na podstawie aplikacji Metagrid for iOS - uniwersalnego i elastycznego zdalnego kontrolera do aplikacji desktopowych.",
+        "tags": [
+          "coredata"
+        ],
+        "speaker": {
+          "id": 12,
+          "name": "Przemysław Mieszkowski",
+          "job": "iOS Developer",
+          "bio": "Developer programu Metagrid for iOS (www.metasystem.io) oraz twórca cenionych przez kompozytorów niestandardowych narzędzi muzyczny (www.artsunmuted.com).\nZ zamiłowania szarpidrut, poszukiwacz parzystych harmonicznych i wielbiciel zapachu syntezatorów analogowych. Biegacz, wegeterianin i cyklista."
+        }
+      },
+      {
+        "id": 44,
+        "title": "Super Simple: Renderable!",
+        "description": "Testerzy mnie nienawidzą. Posłuchaj o tym jak być mniej beznadziejnym, stosując ten jeden dziwny trick… Architektura kodu ma za zadanie ulżyć umysłowi, aby mógł się skupić na złożonych problemach. Przedstawię Renderable - pierwszy komponent konceptu architektury, którą nazywam Super Simple.",
+        "tags": [
+          "super simple",
+          "architecture"
+        ],
+        "speaker": {
+          "id": 25,
+          "name": "Oktawian Chojnacki",
+          "job": "iOS Developer",
+          "bio": "Kocha Swifta tak bardzo, że śni o nim niemal każdej nocy. Za pasem ma 4 lata doświadczenia na platformie iOS. Web developer w poprzednim życiu. Ojciec wspaniałego syna. Uzależniony od kawy. Jeśli nie tworzy kodu to najprawdopodobniej czyta książkę. Wielbiciel Alana Turinga, Ivana E. Sutherlanda, Douglasa Engelbarta, Alana Kaya oraz - tak, zgadliście - Steve'a Jobsa."
+        }
+      }
+    ]
+  }
+}
