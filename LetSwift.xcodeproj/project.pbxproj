@@ -21,6 +21,9 @@
 		7E0842CB1ECAE47B003F7C96 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */; };
 		7E0842CD1ECF02A0003F7C96 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842CC1ECF02A0003F7C96 /* NetworkRouter.swift */; };
 		7E0842CF1ECF0F79003F7C96 /* NetworkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842CE1ECF0F79003F7C96 /* NetworkPage.swift */; };
+		7E0842D11ECF225D003F7C96 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842D01ECF225D003F7C96 /* NetworkResponse.swift */; };
+		7E0842D31ECF2286003F7C96 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842D21ECF2286003F7C96 /* NetworkProvider.swift */; };
+		7E0842D51ECF2E5E003F7C96 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842D41ECF2E5E003F7C96 /* NetworkError.swift */; };
 		7E1C3EDE1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */; };
 		7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */; };
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
@@ -149,6 +152,9 @@
 		7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		7E0842CC1ECF02A0003F7C96 /* NetworkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		7E0842CE1ECF0F79003F7C96 /* NetworkPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPage.swift; sourceTree = "<group>"; };
+		7E0842D01ECF225D003F7C96 /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		7E0842D21ECF2286003F7C96 /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		7E0842D41ECF2E5E003F7C96 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
@@ -466,6 +472,9 @@
 			isa = PBXGroup;
 			children = (
 				7E0842CC1ECF02A0003F7C96 /* NetworkRouter.swift */,
+				7E0842D01ECF225D003F7C96 /* NetworkResponse.swift */,
+				7E0842D21ECF2286003F7C96 /* NetworkProvider.swift */,
+				7E0842D41ECF2E5E003F7C96 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1013,8 +1022,10 @@
 				7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift in Sources */,
 				D390FDC11EC2EAE5005F257F /* CommonEventViewController.swift in Sources */,
 				D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */,
+				7E0842D31ECF2286003F7C96 /* NetworkProvider.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D31216381EB2774F003674C7 /* UIImageExtension.swift in Sources */,
+				7E0842D51ECF2E5E003F7C96 /* NetworkError.swift in Sources */,
 				D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */,
 				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
@@ -1032,6 +1043,7 @@
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */,
 				7EA48D561EADDD5500CEC845 /* Event.swift in Sources */,
+				7E0842D11ECF225D003F7C96 /* NetworkResponse.swift in Sources */,
 				D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */,
 				D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
