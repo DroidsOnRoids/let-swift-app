@@ -17,8 +17,8 @@ struct Event: Mappable {
     let facebook: String?
     let placeName: String?
     let placeStreet: String?
-    let coverImages: [URL]?
-    let photos: [Photo]?
+    let coverImages: [URL]
+    let photos: [Photo]
     let placeCoordinates: CLLocationCoordinate2D?
     let talks: [Talk]?
     
@@ -29,8 +29,8 @@ struct Event: Mappable {
         facebook = map.optionalFrom("facebook")
         placeName = map.optionalFrom("place_name")
         placeStreet = map.optionalFrom("place_street")
-        coverImages = map.optionalFrom("cover_images")
-        photos = map.optionalFrom("photos")
+        coverImages = map.optionalFrom("cover_images") ?? []
+        photos = map.optionalFrom("photos") ?? []
         placeCoordinates = map.optionalFrom("place_coordinates")
         talks = map.optionalFrom("talks")
     }

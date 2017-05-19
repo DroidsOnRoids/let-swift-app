@@ -119,7 +119,7 @@ final class EventsViewControllerViewModel {
         carouselCellDidSetObservable
             .withLatest(from: lastEventObservable, combine: { event in event.1.coverImages })
             .subscribe(startsWithInitialValue: true, onNext: { [weak self] photos in
-                let subviewModel = CarouselEventPhotosCellViewModel(photos: photos ?? [])
+                let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
             })
         
@@ -199,7 +199,7 @@ final class EventsViewControllerViewModel {
     
     @objc func attendButtonTapped() {
         guard !isEventOutdated else {
-            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value.photos ?? [])
+            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value.photos)
             return
         }
         guard let eventId = lastEventObservable.value.facebook, attendanceStateObservable.value != .loading else { return }
