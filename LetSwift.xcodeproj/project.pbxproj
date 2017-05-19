@@ -19,6 +19,8 @@
 		7E0842C71ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842C61ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift */; };
 		7E0842C91ECAD5D1003F7C96 /* Speaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842C81ECAD5D1003F7C96 /* Speaker.swift */; };
 		7E0842CB1ECAE47B003F7C96 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */; };
+		7E0842CD1ECF02A0003F7C96 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842CC1ECF02A0003F7C96 /* NetworkRouter.swift */; };
+		7E0842CF1ECF0F79003F7C96 /* NetworkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842CE1ECF0F79003F7C96 /* NetworkPage.swift */; };
 		7E1C3EDE1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */; };
 		7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */; };
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
@@ -145,6 +147,8 @@
 		7E0842C61ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7E0842C81ECAD5D1003F7C96 /* Speaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Speaker.swift; sourceTree = "<group>"; };
 		7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		7E0842CC1ECF02A0003F7C96 /* NetworkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		7E0842CE1ECF0F79003F7C96 /* NetworkPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPage.swift; sourceTree = "<group>"; };
 		7E1C3EDD1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDelegateProxy.swift; sourceTree = "<group>"; };
 		7E1C3EE11EC0BF150004A5A7 /* NotificationCenterExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtension.swift; sourceTree = "<group>"; };
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
@@ -461,6 +465,7 @@
 		7EECA5AB1E9B5ED900B3F724 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				7E0842CC1ECF02A0003F7C96 /* NetworkRouter.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				7E31D0A31EAE3D7C0030147C /* Talk.swift */,
 				7E31D0A51EAE3D970030147C /* Photo.swift */,
 				7E0842C81ECAD5D1003F7C96 /* Speaker.swift */,
+				7E0842CE1ECF0F79003F7C96 /* NetworkPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -999,6 +1005,7 @@
 				D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */,
 				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				7E0842C71ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift in Sources */,
+				7E0842CF1ECF0F79003F7C96 /* NetworkPage.swift in Sources */,
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
 				D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */,
@@ -1032,6 +1039,7 @@
 				D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */,
 				D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
+				7E0842CD1ECF02A0003F7C96 /* NetworkRouter.swift in Sources */,
 				D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */,
 				D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */,
 				7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */,
@@ -1259,6 +1267,7 @@
 				D33521141ECED328000666D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D39A73431E9776D900F10620 /* Build configuration list for PBXProject "LetSwift" */ = {
 			isa = XCConfigurationList;

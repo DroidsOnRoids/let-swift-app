@@ -35,7 +35,7 @@ struct Event: Mappable {
         talks = map.optionalFrom("talks")
     }
     
-    public static func fromDetails(_ JSON: NSDictionary) -> Event? {
+    static func fromDetails(_ JSON: NSDictionary) -> Event? {
         guard let event = JSON["event"] as? NSDictionary else { return nil }
         return from(event)
     }
