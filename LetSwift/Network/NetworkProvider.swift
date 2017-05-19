@@ -9,7 +9,6 @@
 import Alamofire
 import Mapper
 
-//TODO: return request to make this cancelable
 struct NetworkProvider {
 
     static let shared = NetworkProvider()
@@ -24,28 +23,31 @@ struct NetworkProvider {
 
     private init() {}
 
-    func eventsList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Event>>) -> ()) {
-        Alamofire
-            .request(NetworkRouter.eventsList([Constants.perPage: perPage, Constants.page: page]))
-            .responseJSON { response in
-                self.parsePage(response: response, with: Constants.events, completionHandler: completionHandler)
-            }
+    @discardableResult func eventsList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Event>>) -> ()) -> DataRequest {
+        let request = Alamofire.request(NetworkRouter.eventsList([Constants.perPage: perPage, Constants.page: page]))
+        request.responseJSON { response in
+            self.parsePage(response: response, with: Constants.events, completionHandler: completionHandler)
+        }
+
+        return request
     }
 
-    func speakersList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Speaker>>) -> ()) {
-        Alamofire
-            .request(NetworkRouter.speakersList([Constants.perPage: perPage, Constants.page: page]))
-            .responseJSON { response in
-                self.parsePage(response: response, with: Constants.speakers, completionHandler: completionHandler)
+    @discardableResult func speakersList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
+        let request = Alamofire.request(NetworkRouter.speakersList([Constants.perPage: perPage, Constants.page: page]))
+        request.responseJSON { response in
+            self.parsePage(response: response, with: Constants.speakers, completionHandler: completionHandler)
         }
+
+        return request
     }
 
-    func eventDetails(with id: Int, completionHandler: @escaping (NetworkReponse<Event>) -> ()) {
-        Alamofire
-            .request(NetworkRouter.eventDetails(id))
-            .responseJSON { response in
-                self.parseObject(response: response, with: Constants.event, completionHandler: completionHandler)
+    @discardableResult func eventDetails(with id: Int, completionHandler: @escaping (NetworkReponse<Event>) -> ()) -> DataRequest {
+        let request = Alamofire.request(NetworkRouter.eventDetails(id))
+        request.responseJSON { response in
+            self.parseObject(response: response, with: Constants.event, completionHandler: completionHandler)
         }
+
+        return request
     }
 
     private func parsePage<Element>(response: DataResponse<Any>, with key: String, completionHandler: @escaping (NetworkReponse<NetworkPage<Element>>) -> ()) {
