@@ -53,6 +53,7 @@
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
+		D335210F1ECED328000666D4 /* LetSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D335210E1ECED328000666D4 /* LetSwiftTests.swift */; };
 		D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521171ECED909000666D4 /* LocationMapperExtension.swift */; };
 		D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521191ECED98E000666D4 /* DateMapperExtension.swift */; };
 		D335211D1ECEE762000666D4 /* event_details.json in Resources */ = {isa = PBXBuildFile; fileRef = D335211C1ECEE762000666D4 /* event_details.json */; };
@@ -119,6 +120,16 @@
 		D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D33521111ECED328000666D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D39A73401E9776D900F10620 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D39A73471E9776D900F10620;
+			remoteInfo = LetSwift;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.release.xcconfig"; sourceTree = "<group>"; };
 		618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -168,6 +179,9 @@
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		D335210C1ECED328000666D4 /* LetSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D335210E1ECED328000666D4 /* LetSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetSwiftTests.swift; sourceTree = "<group>"; };
+		D33521101ECED328000666D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D33521171ECED909000666D4 /* LocationMapperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMapperExtension.swift; sourceTree = "<group>"; };
 		D33521191ECED98E000666D4 /* DateMapperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateMapperExtension.swift; sourceTree = "<group>"; };
 		D335211C1ECEE762000666D4 /* event_details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event_details.json; sourceTree = "<group>"; };
@@ -238,6 +252,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D33521091ECED328000666D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D39A73451E9776D900F10620 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,6 +569,15 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		D335210D1ECED328000666D4 /* LetSwiftTests */ = {
+			isa = PBXGroup;
+			children = (
+				D335210E1ECED328000666D4 /* LetSwiftTests.swift */,
+				D33521101ECED328000666D4 /* Info.plist */,
+			);
+			path = LetSwiftTests;
+			sourceTree = "<group>";
+		};
 		D33521161ECED8DA000666D4 /* MapperExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				D39A734A1E9776D900F10620 /* LetSwift */,
+				D335210D1ECED328000666D4 /* LetSwiftTests */,
 				D39A73491E9776D900F10620 /* Products */,
 				1A86DDB4F4F54CB551A9D401 /* Pods */,
 				C5A0D5FC67682B06B2AAF7D2 /* Frameworks */,
@@ -668,6 +699,7 @@
 			isa = PBXGroup;
 			children = (
 				D39A73481E9776D900F10620 /* LetSwift.app */,
+				D335210C1ECED328000666D4 /* LetSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -748,6 +780,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D335210B1ECED328000666D4 /* LetSwiftTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D33521151ECED328000666D4 /* Build configuration list for PBXNativeTarget "LetSwiftTests" */;
+			buildPhases = (
+				D33521081ECED328000666D4 /* Sources */,
+				D33521091ECED328000666D4 /* Frameworks */,
+				D335210A1ECED328000666D4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D33521121ECED328000666D4 /* PBXTargetDependency */,
+			);
+			name = LetSwiftTests;
+			productName = LetSwiftTests;
+			productReference = D335210C1ECED328000666D4 /* LetSwiftTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D39A73471E9776D900F10620 /* LetSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D39A735A1E9776D900F10620 /* Build configuration list for PBXNativeTarget "LetSwift" */;
@@ -779,6 +829,12 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Droids On Roids";
 				TargetAttributes = {
+					D335210B1ECED328000666D4 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 27FAFL2WP5;
+						ProvisioningStyle = Manual;
+						TestTargetID = D39A73471E9776D900F10620;
+					};
 					D39A73471E9776D900F10620 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 27FAFL2WP5;
@@ -801,11 +857,19 @@
 			projectRoot = "";
 			targets = (
 				D39A73471E9776D900F10620 /* LetSwift */,
+				D335210B1ECED328000666D4 /* LetSwiftTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D335210A1ECED328000666D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D39A73461E9776D900F10620 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -904,6 +968,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D33521081ECED328000666D4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D335210F1ECED328000666D4 /* LetSwiftTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D39A73441E9776D900F10620 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -995,6 +1067,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D33521121ECED328000666D4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D39A73471E9776D900F10620 /* LetSwift */;
+			targetProxy = D33521111ECED328000666D4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		D32A76C21E9B9A4600388222 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
@@ -1008,6 +1088,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D33521131ECED328000666D4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 27FAFL2WP5;
+				INFOPLIST_FILE = LetSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
+			};
+			name = Debug;
+		};
+		D33521141ECED328000666D4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 27FAFL2WP5;
+				INFOPLIST_FILE = LetSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
+			};
+			name = Release;
+		};
 		D39A73581E9776D900F10620 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1140,6 +1252,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D33521151ECED328000666D4 /* Build configuration list for PBXNativeTarget "LetSwiftTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D33521131ECED328000666D4 /* Debug */,
+				D33521141ECED328000666D4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		D39A73431E9776D900F10620 /* Build configuration list for PBXProject "LetSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
