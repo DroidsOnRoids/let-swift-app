@@ -7,6 +7,7 @@
 //
 
 import Alamofire
+import Mapper
 
 //TODO: return request to make this cancelable
 struct NetworkProvider {
@@ -17,6 +18,7 @@ struct NetworkProvider {
         static let perPage = "per_page"
         static let page = "page"
         static let events = "events"
+        static let event = "event"
         static let speakers = "speakers"
     }
 
@@ -38,10 +40,33 @@ struct NetworkProvider {
         }
     }
 
+    func eventDetails(with id: Int, completionHandler: @escaping (NetworkReponse<Event>) -> ()) {
+        Alamofire
+            .request(NetworkRouter.eventDetails(id))
+            .responseJSON { response in
+                self.parseObject(response: response, with: Constants.event, completionHandler: completionHandler)
+        }
+    }
+
     private func parsePage<Element>(response: DataResponse<Any>, with key: String, completionHandler: @escaping (NetworkReponse<NetworkPage<Element>>) -> ()) {
         switch response.result {
         case .success(let result):
             guard let json = result as? NSDictionary, let object = NetworkPage<Element>.from(json, with: key) else {
+                return completionHandler(.error(NetworkError.invalidObjectParse))
+            }
+
+            completionHandler(.success(object))
+        case .failure(let error):
+            completionHandler(.error(error))
+        }
+    }
+
+    private func parseObject<Element: Mappable>(response: DataResponse<Any>, with name: String, completionHandler: @escaping (NetworkReponse<Element>) -> ()) {
+        switch response.result {
+        case .success(let result):
+            guard let json = result as? NSDictionary,
+                let objectJson = json[name] as? NSDictionary,
+                let object = Element.from(objectJson) else {
                 return completionHandler(.error(NetworkError.invalidObjectParse))
             }
 
