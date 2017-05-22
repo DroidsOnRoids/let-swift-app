@@ -26,7 +26,7 @@ struct NetworkProvider {
     @discardableResult func eventsList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Event>>) -> ()) -> DataRequest {
         let request = Alamofire.request(NetworkRouter.eventsList([Constants.perPage: perPage, Constants.page: page]))
         request.responseJSON { response in
-            self.parsePage(response: response, with: Constants.events, completionHandler: completionHandler)
+            response.result.responsePage(for: Constants.events, completionHandler: completionHandler)
         }
 
         return request
@@ -35,7 +35,7 @@ struct NetworkProvider {
     @discardableResult func speakersList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
         let request = Alamofire.request(NetworkRouter.speakersList([Constants.perPage: perPage, Constants.page: page]))
         request.responseJSON { response in
-            self.parsePage(response: response, with: Constants.speakers, completionHandler: completionHandler)
+            response.result.responsePage(for: Constants.speakers, completionHandler: completionHandler)
         }
 
         return request
@@ -44,38 +44,9 @@ struct NetworkProvider {
     @discardableResult func eventDetails(with id: Int, completionHandler: @escaping (NetworkReponse<Event>) -> ()) -> DataRequest {
         let request = Alamofire.request(NetworkRouter.eventDetails(id))
         request.responseJSON { response in
-            self.parseObject(response: response, with: Constants.event, completionHandler: completionHandler)
+            response.result.responseObject(for: Constants.event, completionHandler: completionHandler)
         }
 
         return request
     }
-
-    private func parsePage<Element>(response: DataResponse<Any>, with key: String, completionHandler: @escaping (NetworkReponse<NetworkPage<Element>>) -> ()) {
-        switch response.result {
-        case .success(let result):
-            guard let json = result as? NSDictionary, let object = NetworkPage<Element>.from(json, with: key) else {
-                return completionHandler(.error(NetworkError.invalidObjectParse))
-            }
-
-            completionHandler(.success(object))
-        case .failure(let error):
-            completionHandler(.error(error))
-        }
-    }
-
-    private func parseObject<Element: Mappable>(response: DataResponse<Any>, with name: String, completionHandler: @escaping (NetworkReponse<Element>) -> ()) {
-        switch response.result {
-        case .success(let result):
-            guard let json = result as? NSDictionary,
-                let objectJson = json[name] as? NSDictionary,
-                let object = Element.from(objectJson) else {
-                return completionHandler(.error(NetworkError.invalidObjectParse))
-            }
-
-            completionHandler(.success(object))
-        case .failure(let error):
-            completionHandler(.error(error))
-        }
-    }
-
 }
