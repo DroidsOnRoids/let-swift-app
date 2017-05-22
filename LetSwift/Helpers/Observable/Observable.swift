@@ -24,6 +24,10 @@ final class Observable<Element> {
         }
     }
     
+    var subscribersCount: Int {
+        return nextObservers.count + errorObservers.count + completedObservers.count
+    }
+    
     init(_ value: Element) {
         self.value = value
     }

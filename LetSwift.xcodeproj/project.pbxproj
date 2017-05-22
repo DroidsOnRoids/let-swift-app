@@ -52,7 +52,6 @@
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
-		D335210F1ECED328000666D4 /* LetSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D335210E1ECED328000666D4 /* LetSwiftTests.swift */; };
 		D3381F3F1EBC8DAC00453EB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */; };
 		D3381F471EBC8F4800453EB9 /* SplashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D3381F461EBC8F4800453EB9 /* SplashImage.png */; };
 		D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CBB81EA8BA44000E9585 /* FacebookManager.swift */; };
@@ -91,6 +90,7 @@
 		D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D397ED881EA7BE14002141E8 /* DefaultsManager.swift */; };
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
 		D39A73531E9776D900F10620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39A73521E9776D900F10620 /* Assets.xcassets */; };
+		D39CC8261ED2BED3007B0A1C /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CC8251ED2BED3007B0A1C /* ObservableTests.swift */; };
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
@@ -179,7 +179,6 @@
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		D335210C1ECED328000666D4 /* LetSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D335210E1ECED328000666D4 /* LetSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetSwiftTests.swift; sourceTree = "<group>"; };
 		D33521101ECED328000666D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		D3381F461EBC8F4800453EB9 /* SplashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashImage.png; sourceTree = "<group>"; };
@@ -221,6 +220,7 @@
 		D39A734B1E9776D900F10620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39A73521E9776D900F10620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D39CC8251ED2BED3007B0A1C /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -571,7 +571,7 @@
 		D335210D1ECED328000666D4 /* LetSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
-				D335210E1ECED328000666D4 /* LetSwiftTests.swift */,
+				D39CC8251ED2BED3007B0A1C /* ObservableTests.swift */,
 				D33521101ECED328000666D4 /* Info.plist */,
 			);
 			path = LetSwiftTests;
@@ -963,7 +963,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D335210F1ECED328000666D4 /* LetSwiftTests.swift in Sources */,
+				D39CC8261ED2BED3007B0A1C /* ObservableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1251,6 +1251,7 @@
 				D33521141ECED328000666D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D39A73431E9776D900F10620 /* Build configuration list for PBXProject "LetSwift" */ = {
 			isa = XCConfigurationList;
