@@ -49,7 +49,8 @@ extension EventsCoordinator: EventsViewControllerDelegate {
     }
     
     func presentLectureScreen() {
-        let viewController = LectureViewController()
+        let viewModel = LectureViewControllerViewModel(delegate: self)
+        let viewController = LectureViewController(viewModel: viewModel)
         
         navigationViewController.pushViewController(viewController, animated: true)
     }
