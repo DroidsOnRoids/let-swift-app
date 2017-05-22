@@ -34,7 +34,8 @@ struct Event: Mappable {
         placeCoordinates = map.optionalFrom("place_coordinates")
         talks = map.optionalFrom("talks")
     }
-    
+
+    //MARK: this will be removed after NetworkingLayer - now this is needed for mocking event in EventsViewControllerViewModel.swift in line 15
     static func fromDetails(_ JSON: NSDictionary) -> Event? {
         guard let event = JSON["event"] as? NSDictionary else { return nil }
         return from(event)
