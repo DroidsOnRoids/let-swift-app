@@ -19,6 +19,6 @@ final class DisposingObject: Disposable {
     }
     
     func add(to disposeBag: DisposeBag) {
-        disposeBag.addDisposableObject(disposableObject: self)
+        disposeBag.addDisposable(disposable: self)
     }
 }
