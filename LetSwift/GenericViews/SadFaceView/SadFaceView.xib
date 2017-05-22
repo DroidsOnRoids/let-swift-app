@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SadFaceView" customModule="LetSwift" customModuleProvider="target">
+            <connections>
+                <outlet property="pullToRefreshLabel" destination="lkJ-2v-Qw7" id="6xc-Xh-6e5"/>
+                <outlet property="somethingWentWrongLabel" destination="hy0-Sw-BMn" id="ayl-Ij-p19"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="PM9-Gk-TI3">
+                    <rect key="frame" x="177.5" y="86" width="19" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="19" id="7Iv-EE-0Z2"/>
+                        <constraint firstAttribute="height" constant="12" id="yd5-ec-KgD"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PULL TO REFRESH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkJ-2v-Qw7">
+                    <rect key="frame" x="0.0" y="106" width="375" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                    <color key="textColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="w86-l7-HLh">
+                    <rect key="frame" x="124.5" y="254" width="126" height="126"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="126" id="T9v-HO-ZUD"/>
+                        <constraint firstAttribute="height" constant="126" id="rLs-FT-jvG"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Something went wrong" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hy0-Sw-BMn">
+                    <rect key="frame" x="0.0" y="404" width="375" height="21"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <color key="textColor" red="0.59607843137254901" green="0.61960784313725492" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="lkJ-2v-Qw7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="BQt-4h-S8a"/>
+                <constraint firstItem="lkJ-2v-Qw7" firstAttribute="top" secondItem="PM9-Gk-TI3" secondAttribute="bottom" constant="8" id="I32-tb-dxH"/>
+                <constraint firstItem="hy0-Sw-BMn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="IAV-7l-bbH"/>
+                <constraint firstItem="w86-l7-HLh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ItP-tE-zbR"/>
+                <constraint firstItem="hy0-Sw-BMn" firstAttribute="top" secondItem="w86-l7-HLh" secondAttribute="bottom" constant="24" id="N28-YP-4bZ"/>
+                <constraint firstItem="PM9-Gk-TI3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="86" id="RY9-18-uPB"/>
+                <constraint firstAttribute="trailing" secondItem="hy0-Sw-BMn" secondAttribute="trailing" id="Zr4-fV-zCj"/>
+                <constraint firstAttribute="trailing" secondItem="lkJ-2v-Qw7" secondAttribute="trailing" id="g5g-rw-9yD"/>
+                <constraint firstItem="PM9-Gk-TI3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="rwb-gc-Mm4"/>
+                <constraint firstItem="w86-l7-HLh" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="0.95" id="ueS-OF-aDx"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ArrowUp" width="19" height="12"/>
+        <image name="PhotoMock" width="1920" height="1277"/>
+    </resources>
+</document>

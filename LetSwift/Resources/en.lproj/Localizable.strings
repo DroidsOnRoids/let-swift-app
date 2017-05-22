@@ -1,7 +1,8 @@
-"GENERAL_FACEBOOK_ERROR" = "Something went wrong";
+"GENERAL_SOMETHING_WENT_WRONG" = "Something went wrong";
 "GENERAL_NOTIFICATION_WHERE" = "We will see tomorrow at";
 "GENERAL_NOTIFICATION_ON" = "on";
 "GENERAL_LOGOUT" = "Logout";
+"GENERAL_PULL_TO_REFRESH" = "Pull to refresh";
 "ONBOARDING_CONTINUE" = "Continue";
 "ONBOARDING_FINISH" = "Awesome, got it!";
 "ONBOARDING_MEETUPS_TITLE" = "Meet-ups every month";

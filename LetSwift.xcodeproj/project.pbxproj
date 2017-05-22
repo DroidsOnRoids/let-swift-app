@@ -92,6 +92,8 @@
 		D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D397ED881EA7BE14002141E8 /* DefaultsManager.swift */; };
 		D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A734B1E9776D900F10620 /* AppDelegate.swift */; };
 		D39A73531E9776D900F10620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D39A73521E9776D900F10620 /* Assets.xcassets */; };
+		D39CC8221ED2B3F0007B0A1C /* SadFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39CC8211ED2B3F0007B0A1C /* SadFaceView.swift */; };
+		D39CC8241ED2B3FB007B0A1C /* SadFaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D39CC8231ED2B3FB007B0A1C /* SadFaceView.xib */; };
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
@@ -218,6 +220,8 @@
 		D39A734B1E9776D900F10620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D39A73521E9776D900F10620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D39A73571E9776D900F10620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D39CC8211ED2B3F0007B0A1C /* SadFaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SadFaceView.swift; sourceTree = "<group>"; };
+		D39CC8231ED2B3FB007B0A1C /* SadFaceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SadFaceView.xib; sourceTree = "<group>"; };
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 		7EECA5A91E9B5EB300B3F724 /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
+				D39CC8201ED2B3B7007B0A1C /* SadFaceView */,
 				7EA48D4B1EADD47F00CEC845 /* ReflectiveShadowView */,
 				D38B14BD1E9F6C62009EA346 /* DesignableView.swift */,
 				7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */,
@@ -697,6 +702,15 @@
 			path = LetSwift;
 			sourceTree = "<group>";
 		};
+		D39CC8201ED2B3B7007B0A1C /* SadFaceView */ = {
+			isa = PBXGroup;
+			children = (
+				D39CC8211ED2B3F0007B0A1C /* SadFaceView.swift */,
+				D39CC8231ED2B3FB007B0A1C /* SadFaceView.xib */,
+			);
+			path = SadFaceView;
+			sourceTree = "<group>";
+		};
 		D3A00FDB1EA731BD00E1E27A /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,6 +866,7 @@
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
 				D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */,
 				D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */,
+				D39CC8241ED2B3FB007B0A1C /* SadFaceView.xib in Resources */,
 				D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */,
 				D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */,
 				7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */,
@@ -1013,6 +1028,7 @@
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,
 				D3D83DC21EBB10CE003572EF /* AlertHelper.swift in Sources */,
+				D39CC8221ED2B3F0007B0A1C /* SadFaceView.swift in Sources */,
 				D3006AFD1EBC623B00716C23 /* EventDetailsViewController.swift in Sources */,
 				D38B14BE1E9F6C62009EA346 /* DesignableView.swift in Sources */,
 				7E0842CB1ECAE47B003F7C96 /* DateExtension.swift in Sources */,
@@ -1227,6 +1243,7 @@
 				D33521141ECED328000666D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D39A73431E9776D900F10620 /* Build configuration list for PBXProject "LetSwift" */ = {
 			isa = XCConfigurationList;
