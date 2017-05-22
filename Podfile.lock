@@ -13,6 +13,7 @@ PODS:
   - HockeySDK (4.1.4):
     - HockeySDK/DefaultLib (= 4.1.4)
   - HockeySDK/DefaultLib (4.1.4)
+  - ImageEffects (1.0.0)
   - ModelMapper (6.0.0)
 
 DEPENDENCIES:
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - FBSDKCoreKit (~> 4.22)
   - FBSDKLoginKit (~> 4.22)
   - HockeySDK (~> 4.1)
+  - ImageEffects (~> 1.0)
   - ModelMapper (~> 6.0)
 
 SPEC CHECKSUMS:
@@ -28,8 +30,9 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
   FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
   HockeySDK: 78a3f8bb9100277b531defc56c970369a3ca267a
+  ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
 
-PODFILE CHECKSUM: 730f22b797d1e15fb59b97c40606c90c6f876c4a
+PODFILE CHECKSUM: b1404a66193a7ace50ea3c879327a014f80b6f00
 
 COCOAPODS: 1.2.0
