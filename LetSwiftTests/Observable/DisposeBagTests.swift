@@ -13,14 +13,15 @@ final class DisposeBagTests: XCTestCase {
     
     final class SimpleDisposable: Disposable {
         
-        static var livingObjects = 0
+        static var allocatedObjects = 0
+        static var disposedObjects = 0
         
         init() {
-            SimpleDisposable.livingObjects += 1
+            SimpleDisposable.allocatedObjects += 1
         }
         
         func dispose() {
-            SimpleDisposable.livingObjects -= 1
+            SimpleDisposable.disposedObjects += 1
         }
     }
     
@@ -36,9 +37,9 @@ final class DisposeBagTests: XCTestCase {
         disposeBag?.addDisposable(disposable: disposable2)
         disposeBag?.addDisposable(disposable: disposable3)
         disposeBag = nil
-        let livingObjects = SimpleDisposable.livingObjects
+        let allDisposed = SimpleDisposable.allocatedObjects == SimpleDisposable.disposedObjects
         
         // THEN
-        XCTAssertTrue(livingObjects == 0, "DisposeBag failed to dispose objects")
+        XCTAssertTrue(allDisposed, "Not every object was disposed")
     }
 }

@@ -14,6 +14,10 @@ final class DisposingObject: Disposable {
         self.disposeClosure = disposeClosure
     }
     
+    deinit {
+        dispose()
+    }
+    
     func dispose() {
         disposeClosure()
     }
