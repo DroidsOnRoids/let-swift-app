@@ -20,8 +20,12 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
     func start() {
         navigationViewController.setNavigationBarHidden(true, animated: false)
+        present(viewController: SplashViewController(jobToDo: { [weak self] in
+            sleep(5000)
+            self?.presentFirstAppController()
+        }), animated: false)
         
-        presentFirstAppController()
+        //presentFirstAppController()
     }
     
     private func present(viewController: UIViewController, animated: Bool = true) {
