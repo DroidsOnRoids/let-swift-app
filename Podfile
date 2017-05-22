@@ -9,4 +9,5 @@ target 'LetSwift' do
   pod 'HockeySDK', '~> 4.1'
   pod 'FBSDKCoreKit', '~> 4.22'
   pod 'FBSDKLoginKit', '~> 4.22'
+  pod 'ImageEffects', '~> 1.0'
 end

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreGraphics
+import ImageEffects
 
 class ReflectionShadowView: UIView {
     
@@ -16,12 +16,6 @@ class ReflectionShadowView: UIView {
     }
     
     @IBInspectable var blurRadius: CGFloat = 10.0 {
-        didSet {
-            blurImage()
-        }
-    }
-    
-    @IBInspectable var blurPercentageSize: CGFloat = 0.3 {
         didSet {
             blurImage()
         }
@@ -92,31 +86,9 @@ class ReflectionShadowView: UIView {
         setShadow()
     }
     
-    func blurImage() {
-        guard let imageToBlur = image,
-            let resizedImage = imageToBlur.resized(with: blurPercentageSize),
-            let ciImage = CIImage(image: resizedImage),
-            let blurredImage = appendBlur(ciImage: ciImage) else { return }
-            
-        DispatchQueue.main.async {
-            self.shadowImageView.image = blurredImage
-        }
-    }
-    
-    func appendBlur(ciImage: CIImage) -> UIImage? {
-        guard let filter = CIFilter(name: "CIGaussianBlur") else { return nil }
-        
-        filter.setValue(ciImage, forKey: kCIInputImageKey)
-        filter.setValue(blurRadius, forKey: kCIInputRadiusKey)
-        
-        let context = CIContext(options: [:])
-        if let output = filter.outputImage,
-            let cgImage = context.createCGImage(output, from: ciImage.extent) {
-            
-            return UIImage(cgImage: cgImage)
-        } else {
-            return nil
-        }
+    private func blurImage() {
+        guard let imageToBlur = image else { return }
+        shadowImageView.image = imageToBlur.blurredImage(withRadius: blurRadius * 10.0)
     }
     
     override func layoutSubviews() {
