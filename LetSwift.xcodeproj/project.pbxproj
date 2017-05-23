@@ -106,6 +106,7 @@
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
+		D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */; };
 		D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */; };
 		D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */; };
 		D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */; };
@@ -243,6 +244,7 @@
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardCell.xib; sourceTree = "<group>"; };
 		D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardHeaderCell.swift; sourceTree = "<group>"; };
@@ -662,6 +664,7 @@
 		D34CCF5A1EC5AAFC00EFD3E4 /* Lecture */ = {
 			isa = PBXGroup;
 			children = (
+				D3A6E5041ED33F5F00A7414B /* ViewModels */,
 				D34CCF5B1EC5AB3300EFD3E4 /* Views */,
 				D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */,
 				D34CCF571EC5AAF900EFD3E4 /* LectureViewController.xib */,
@@ -749,6 +752,14 @@
 			isa = PBXGroup;
 			children = (
 				D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D3A6E5041ED33F5F00A7414B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1034,6 +1045,7 @@
 				7E0842D51ECF2E5E003F7C96 /* NetworkError.swift in Sources */,
 				D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */,
 				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
+				D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
 				D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */,
 				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
