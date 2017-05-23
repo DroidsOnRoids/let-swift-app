@@ -52,7 +52,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
         })
     }
 
-    private func setupScrollView(with images: [String]) {
+    private func setupScrollView(with images: [URL]) {
         let frameSize = scrollView.frame.size
 
         images.enumerated().forEach { index, card in
