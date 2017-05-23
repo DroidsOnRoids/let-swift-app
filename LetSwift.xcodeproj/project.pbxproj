@@ -95,6 +95,7 @@
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
+		D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */; };
 		D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */; };
 		D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */; };
 		D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */; };
@@ -221,6 +222,7 @@
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshAnimator.swift; sourceTree = "<group>"; };
 		D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardCell.xib; sourceTree = "<group>"; };
 		D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardHeaderCell.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				D3F172101EB8A66200F9A91C /* MapHelper.swift */,
 				D3D83DC11EBB10CE003572EF /* AlertHelper.swift */,
 				7E02FE711EBB69E8005DADCB /* ObserevableEvent.swift */,
+				D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -999,6 +1002,7 @@
 				D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
+				D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */,
 				D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
 				D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */,
@@ -1227,6 +1231,7 @@
 				D33521141ECED328000666D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D39A73431E9776D900F10620 /* Build configuration list for PBXProject "LetSwift" */ = {
 			isa = XCConfigurationList;

@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - ESPullToRefresh (2.6)
   - FBSDKCoreKit (4.22.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.22.0):
@@ -15,6 +16,7 @@ PODS:
   - ImageEffects (1.0.0)
 
 DEPENDENCIES:
+  - ESPullToRefresh (~> 2.6)
   - FBSDKCoreKit (~> 4.22)
   - FBSDKLoginKit (~> 4.22)
   - HockeySDK (~> 4.1)
@@ -22,11 +24,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  ESPullToRefresh: 85f4990acf87f78c6a1466bbbee7a75d7de24db9
   FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
   FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
   HockeySDK: 78a3f8bb9100277b531defc56c970369a3ca267a
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
 
-PODFILE CHECKSUM: 7e49338dc2ddb8f61a27b8974880a781bd237e1c
+PODFILE CHECKSUM: 3e6a73a80c27c6366c6c5a53ab7e74136bd683f2
 
 COCOAPODS: 1.2.0
