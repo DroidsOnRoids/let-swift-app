@@ -60,28 +60,25 @@ extension UITableView {
     }
 
     // MARK: Header and footer
-    private func setHeaderOrFooterColor(_ color: UIColor, header: Bool) {
+    private func createHeaderFooterView(_ color: UIColor, negativeOffset: Bool) -> UIView {
         let offset: CGFloat = 1000.0
         let offsetView = UIView()
-        let colorView = UIView(frame: CGRect(x: 0.0, y: header ? -offset : 0.0, width: max(bounds.width, bounds.height), height: offset))
+        let colorView = UIView(frame: CGRect(x: 0.0, y: negativeOffset ? -offset : 0.0, width: max(bounds.width, bounds.height), height: offset))
         colorView.backgroundColor = color
         offsetView.addSubview(colorView)
         
-        if header {
-            tableHeaderView = offsetView
-        } else {
-            tableFooterView = offsetView
-        }
-        
-        sendSubview(toBack: offsetView)
+        return offsetView
     }
     
     func setHeaderColor(_ color: UIColor) {
-        setHeaderOrFooterColor(color, header: true)
+        tableHeaderView = createHeaderFooterView(color, negativeOffset: true)
     }
     
     func setFooterColor(_ color: UIColor) {
-        setHeaderOrFooterColor(color, header: false)
+        let footerView = createHeaderFooterView(color, negativeOffset: false)
+        tableFooterView = footerView
+        
+        sendSubview(toBack: footerView)
     }
     
     // MARK: Pull to refresh
