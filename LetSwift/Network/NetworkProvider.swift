@@ -16,7 +16,7 @@ struct NetworkProvider {
     let alamofireManager: SessionManager
 
     private enum Constants {
-        static let timeout: TimeInterval = 10
+        static let timeout: TimeInterval = 10.0
         static let perPage = "per_page"
         static let page = "page"
         static let events = "events"

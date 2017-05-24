@@ -14,7 +14,7 @@ protocol AppCoordinatorDelegate: class {
 
 final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
-    fileprivate var initialEventsList: [Event]? = nil
+    fileprivate var initialEventsList: [Event]?
     
     fileprivate var shouldShowLoginScreen: Bool {
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
@@ -85,7 +85,7 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
 
 extension AppCoordinator: SplashViewControllerDelegate {
     func initialLoadingHasFinished(events: [Event]?) {
-        self.initialEventsList = events
+        initialEventsList = events
         presentFirstAppController()
     }
 }

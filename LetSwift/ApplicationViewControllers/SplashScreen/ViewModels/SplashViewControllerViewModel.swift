@@ -9,16 +9,15 @@
 import Foundation
 
 final class SplashViewControllerViewModel {
+
+    var viewDidAppearPerformObservable = Observable<Void>()
+    weak var delegate: SplashViewControllerDelegate?
+    
+    private let disposeBag = DisposeBag()
     
     private enum Constants {
         static let eventsPerPage = 20
     }
-    
-    private let disposeBag = DisposeBag()
-    
-    var viewDidAppearPerformObservable = Observable<Void>()
-    
-    weak var delegate: SplashViewControllerDelegate?
     
     init(delegate: SplashViewControllerDelegate?) {
         self.delegate = delegate
@@ -38,7 +37,7 @@ final class SplashViewControllerViewModel {
             switch response {
             case let .success(event):
                 self?.downloadEvent(eventsList: event.elements)
-            case .error(_):
+            case .error:
                 self?.delegate?.initialLoadingHasFinished(events: nil)
             }
         }
@@ -56,7 +55,7 @@ final class SplashViewControllerViewModel {
                 var mutableEventsList = eventsList
                 mutableEventsList[0] = event
                 self?.delegate?.initialLoadingHasFinished(events: mutableEventsList)
-            case .error(_):
+            case .error:
                 self?.delegate?.initialLoadingHasFinished(events: nil)
             }
         }
