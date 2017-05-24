@@ -2,6 +2,7 @@
 "GENERAL_NOTIFICATION_WHERE" = "Widzimy się jutro w";
 "GENERAL_NOTIFICATION_ON" = "o";
 "GENERAL_LOGOUT" = "Wyloguj";
+"GENERAL_PULL_TO_REFRESH" = "Pociągnij, aby odświeżyć";
 "ONBOARDING_CONTINUE" = "Kontynuuj";
 "ONBOARDING_FINISH" = "Wszystko jasne!";
 "ONBOARDING_MEETUPS_TITLE" = "Comiesięczne spotkania";

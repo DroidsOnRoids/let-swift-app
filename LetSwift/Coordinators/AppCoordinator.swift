@@ -20,16 +20,19 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
     func start() {
         navigationViewController.setNavigationBarHidden(true, animated: false)
-        present(viewController: SplashViewController(jobToDo: { [weak self] in
-            sleep(5000)
-            self?.presentFirstAppController()
-        }), animated: false)
         
-        //presentFirstAppController()
+        presentSplashScreen()
     }
     
     private func present(viewController: UIViewController, animated: Bool = true) {
         navigationViewController.setViewControllers([viewController], animated: animated)
+    }
+    
+    fileprivate func presentSplashScreen() {
+        let viewModel = SplashViewControllerViewModel(delegate: self)
+        let viewController = SplashViewController(viewModel: viewModel)
+        
+        present(viewController: viewController, animated: false)
     }
     
     fileprivate func presentFirstAppController() {
@@ -75,6 +78,13 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
         let viewController = TabBarViewController(controllers: coordinators.map({ ($0).navigationViewController }))
         
         present(viewController: viewController)
+    }
+}
+
+extension AppCoordinator: SplashViewControllerDelegate {
+    func initialLoadingHasFinished(events: [Event]?) {
+        print(events)
+        presentFirstAppController()
     }
 }
 

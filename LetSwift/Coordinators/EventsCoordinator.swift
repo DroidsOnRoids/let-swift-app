@@ -35,10 +35,9 @@ extension EventsCoordinator: EventsViewControllerDelegate {
     }
     
     func presentEventDetailsScreen(fromModel model: Event) {
-        //let viewModel = EventsViewControllerViewModel(lastEvent: model, delegate: self)
-        //let viewController = EventDetailsViewController(viewModel: viewModel)
-        //viewController.coordinatorDelegate = delegate
-        let viewController = SplashViewController()
+        let viewModel = EventsViewControllerViewModel(lastEvent: model, delegate: self)
+        let viewController = EventDetailsViewController(viewModel: viewModel)
+        viewController.coordinatorDelegate = delegate
         
         navigationViewController.pushViewController(viewController, animated: true)
     }

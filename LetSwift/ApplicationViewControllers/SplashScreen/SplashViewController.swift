@@ -8,23 +8,26 @@
 
 import UIKit
 
+protocol SplashViewControllerDelegate: class {
+    func initialLoadingHasFinished(events: [Event]?)
+}
+
 final class SplashViewController: UIViewController {
-    
-    var jobToDo: (() -> ())?
     
     override var nibName: String? {
         return "LaunchScreen"
     }
     
-    convenience init(jobToDo: @escaping () -> ()) {
+    private var viewModel: SplashViewControllerViewModel!
+    
+    convenience init(viewModel: SplashViewControllerViewModel) {
         self.init()
-        
-        self.jobToDo = jobToDo
+        self.viewModel = viewModel
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        jobToDo?()
+        viewModel.viewDidAppearPerformObservable.next()
     }
 }
