@@ -40,6 +40,8 @@ class CommonEventViewController: AppViewController {
     
     var viewModel: EventsViewControllerViewModel!
     
+    private let disposeBag = DisposeBag()
+    
     convenience init(viewModel: EventsViewControllerViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -52,14 +54,16 @@ class CommonEventViewController: AppViewController {
     }
     
     private func setupViewModel() {
-        viewModel.loginScreenObservable.subscribe(onNext: { [weak self] in
+        viewModel.loginScreenObservable.subscribeNext { [weak self] in
             self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
-        })
+        }
+        .add(to: disposeBag)
         
-        viewModel.facebookAlertObservable.subscribe(onNext: { [weak self] error in
+        viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
             guard let weakSelf = self else { return }
             AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
-        })
+        }
+        .add(to: disposeBag)
     }
     
     private func setup() {
@@ -87,7 +91,7 @@ class CommonEventViewController: AppViewController {
         cell.addLeftTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped))
         cell.addRightTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped))
         
-        viewModel.attendanceStateObservable.subscribe(startsWithInitialValue: true) { state in
+        viewModel.attendanceStateObservable.subscribeNext(startsWithInitialValue: true) { state in
             switch state {
             case .notAttending:
                 cell.isLeftButtonActive = true
@@ -106,8 +110,9 @@ class CommonEventViewController: AppViewController {
                 cell.leftButtonTitle = localized("EVENTS_SEE_PHOTOS")
             }
         }
+        .add(to: disposeBag)
         
-        viewModel.notificationStateObservable.subscribe(startsWithInitialValue: true) { state in
+        viewModel.notificationStateObservable.subscribeNext(startsWithInitialValue: true) { state in
             switch state {
             case .notVisible:
                 cell.isRightButtonVisible = false
@@ -121,16 +126,18 @@ class CommonEventViewController: AppViewController {
                 cell.isRightButtonVisible = true
             }
         }
+        .add(to: disposeBag)
     }
     
     func setup(summaryCell cell: EventSummaryCell) {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.eventTitle = event.title
         }
+        .add(to: disposeBag)
     }
     
     func setup(locationCell cell: EventLocationCell) {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             if let placeName = event.placeName {
                 cell.placeName = placeName
             }
@@ -139,14 +146,16 @@ class CommonEventViewController: AppViewController {
                 cell.placeLocation = placeStreet
             }
         }
+        .add(to: disposeBag)
     }
     
     func setup(timeCell cell: EventTimeCell) {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self else { return }
             cell.date = weakSelf.viewModel.formattedDate
             cell.time = weakSelf.viewModel.formattedTime
         }
+        .add(to: disposeBag)
     }
     
     func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
@@ -176,7 +185,7 @@ class CommonEventViewController: AppViewController {
     }
     
     private func reactiveSetup() {
-        viewModel.lastEventObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self,
                   let eventDate =  event.date,
                   event.photos.isEmpty,
@@ -185,6 +194,7 @@ class CommonEventViewController: AppViewController {
 
             weakSelf.bindableCells.remove(at: index)
         }
+        .add(to: disposeBag)
 
         bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
@@ -196,20 +206,22 @@ class CommonEventViewController: AppViewController {
             return cell
         }))
 
-        viewModel.eventDidFinishObservable.subscribe(startsWithInitialValue: true) { [weak self] event in
+        viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self, let event = event else { return }
             if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend), event.photos.isEmpty {
                 weakSelf.bindableCells.remove(at: index, updated: false)
                 weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
             }
         }
+        .add(to: disposeBag)
 
-        tableView.itemDidSelectObservable.subscribe { [weak self] indexPath in
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
             guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
             
             self?.dispatchCellSelect(element: cellType)
             
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
+        .add(to: disposeBag)
     }
 }

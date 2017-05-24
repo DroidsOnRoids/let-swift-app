@@ -13,6 +13,8 @@ final class CarouselEventPhotosCellViewModel {
     var photosObservable = Observable<[URL]>([])
     var currentPageObservable = Observable<Int>(0)
     var scrollViewSwipeDidFinishObservable = Observable<Int>(0)
+    
+    private let disposeBag = DisposeBag()
 
     init(photos: [URL]) {
         photosObservable.next(photos)
@@ -21,8 +23,9 @@ final class CarouselEventPhotosCellViewModel {
     }
 
     private func setup() {
-        scrollViewSwipeDidFinishObservable.subscribe(onNext: { [weak self] page in
+        scrollViewSwipeDidFinishObservable.subscribeNext { [weak self] page in
             self?.currentPageObservable.next(page)
-        })
+        }
+        .add(to: disposeBag)
     }
 }

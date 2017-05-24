@@ -32,6 +32,8 @@ final class EventsViewControllerViewModel {
         static let minimumTimeForReminder: TimeInterval = 10.0
     }
     
+    private let disposeBag = DisposeBag()
+    
     var lastEventObservable: Observable<Event>
     var attendanceStateObservable = Observable<AttendanceState>(AttendanceState.loading)
     var notificationStateObservable = Observable<NotificationState>(NotificationState.notActive)
@@ -87,7 +89,7 @@ final class EventsViewControllerViewModel {
     }
 
     private func setup() {
-        lastEventObservable.subscribe(startsWithInitialValue: true, onNext: { [weak self] event in
+        lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self else { return }
             
             weakSelf.checkAttendance()
@@ -98,48 +100,56 @@ final class EventsViewControllerViewModel {
             } else {
                 weakSelf.notificationStateObservable.next(.notVisible)
             }
-        })
+        }
+        .add(to: disposeBag)
         
-        summaryCellDidTapObservable.subscribe(onNext: { [weak self] in
+        summaryCellDidTapObservable.subscribeNext { [weak self] in
             self?.summaryCellTapped()
-        })
+        }
+        .add(to: disposeBag)
         
-        locationCellDidTapObservable.subscribe(onNext: { [weak self] in
+        locationCellDidTapObservable.subscribeNext { [weak self] in
             self?.locationCellTapped()
-        })
+        }
+        .add(to: disposeBag)
 
         previousEventsCellDidSetObservable
             .withLatest(from: previousEventsObservable, combine: { event in event.1 })
-            .subscribe(startsWithInitialValue: true, onNext: { [weak self] events in
+            .subscribeNext(startsWithInitialValue: true) { [weak self] events in
                 guard let weakSelf = self else { return }
                 let subviewModel = PreviousEventsListCellViewModel(previousEvenets: events, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
-            })
+            }
+            .add(to: disposeBag)
 
         carouselCellDidSetObservable
             .withLatest(from: lastEventObservable, combine: { event in event.1.coverImages })
-            .subscribe(startsWithInitialValue: true, onNext: { [weak self] photos in
+            .subscribeNext(startsWithInitialValue: true) { [weak self] photos in
                 let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
-            })
+            }
+            .add(to: disposeBag)
         
-        speakerCellDidTapObservable.subscribe(onNext: { [weak self] in
+        speakerCellDidTapObservable.subscribeNext { [weak self] in
             self?.speakerCellTapped()
-        })
+        }
+        .add(to: disposeBag)
         
-        lectureCellDidTapObservable.subscribe(onNext: { [weak self] in
+        lectureCellDidTapObservable.subscribeNext { [weak self] in
             self?.lectureCellTapped()
-        })
+        }
+        .add(to: disposeBag)
 
         NotificationCenter
             .default
             .notification(Notification.Name.UIApplicationWillEnterForeground)
-            .subscribe(onNext: { [weak self] _ in
+            .subscribeNext { [weak self] _ in
                 guard let weakSelf = self else { return }
                 if weakSelf.isReminderAllowed {
                     weakSelf.notificationStateObservable.next(.notVisible)
                 }
-            })
+            }
+            .add(to: disposeBag)
 
         guard let time = lastEventObservable
                             .value
@@ -155,16 +165,18 @@ final class EventsViewControllerViewModel {
                                     .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: eventLeftTime, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
 
-        FacebookManager.shared.facebookLoginObservable.subscribe(onNext: { [weak self] in
+        FacebookManager.shared.facebookLoginObservable.subscribeNext { [weak self] in
             self?.checkAttendance()
-        })
-        
-        FacebookManager.shared.facebookLogoutObservable.subscribe(onNext: { [weak self] in
+        }
+        .add(to: disposeBag)
+
+        FacebookManager.shared.facebookLogoutObservable.subscribeNext { [weak self] in
             guard let weakSelf = self else { return }
 
             let state: AttendanceState = weakSelf.isEventOutdated ? .notAllowed : .notAttending
             weakSelf.attendanceStateObservable.next(state)
-        })
+        }
+        .add(to: disposeBag)
     }
 
     @objc private func eventReminderTimeFinished() {
