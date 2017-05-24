@@ -36,7 +36,7 @@ class CommonEventViewController: AppViewController {
         return true
     }
     
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     var viewModel: EventsViewControllerViewModel!
     
@@ -151,7 +151,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
+    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
         switch element {
         case .attend:
             self.setup(attendCell: cell as! AttendButtonsRowCell)
@@ -194,7 +194,7 @@ class CommonEventViewController: AppViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
             cell.layoutMargins = UIEdgeInsets.zero
             
-            self?.dispatchCellSetup(element: element, cell: cell)
+            self?.dispatchCellSetup(element: element, cell: cell, index: index)
             
             return cell
         }))
