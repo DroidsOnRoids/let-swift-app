@@ -201,7 +201,7 @@ class CommonEventViewController: AppViewController {
 
         viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self, let event = event else { return }
-            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend) , event.photos.isEmpty {
+            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend), event.photos.isEmpty {
                 weakSelf.bindableCells.remove(at: index, updated: false)
                 weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
             }

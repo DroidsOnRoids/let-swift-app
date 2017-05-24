@@ -6,15 +6,17 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
+import Foundation
+
 final class CarouselEventPhotosCellViewModel {
 
-    var photosObservable = Observable<[String]>([])
+    var photosObservable = Observable<[URL]>([])
     var currentPageObservable = Observable<Int>(0)
     var scrollViewSwipeDidFinishObservable = Observable<Int>(0)
     
     private let disposeBag = DisposeBag()
 
-    init(photos: [String]) {
+    init(photos: [URL]) {
         photosObservable.next(photos)
 
         setup()
