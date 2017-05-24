@@ -14,6 +14,8 @@ final class CarouselEventPhotosCell: UITableViewCell {
     @IBOutlet private weak var pageControl: UIPageControl!
 
     fileprivate var lastContentOffset: CGFloat = 0.0
+    
+    private let disposeBag = DisposeBag()
 
     var viewModel: CarouselEventPhotosCellViewModel! {
         didSet {
@@ -30,15 +32,16 @@ final class CarouselEventPhotosCell: UITableViewCell {
     }
 
     private func reactiveSetup() {
-        viewModel.photosObservable.subscribe(startsWithInitialValue: true)  { [weak self] photos in
+        viewModel.photosObservable.subscribeNext(startsWithInitialValue: true) { [weak self] photos in
             DispatchQueue.main.async {
                 self?.setupScrollView(with: photos)
                 self?.pageControl.numberOfPages = photos.count
                 self?.pageControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             }
         }
+        .add(to: disposeBag)
 
-        viewModel.currentPageObservable.subscribe(onNext: { [weak self] page in
+        viewModel.currentPageObservable.subscribeNext { [weak self] page in
             guard let weakSelf = self else { return }
             let xOffset = weakSelf.scrollView.contentOffset.x
             let singleWidth = weakSelf.scrollView.frame.width
@@ -49,10 +52,11 @@ final class CarouselEventPhotosCell: UITableViewCell {
                 weakSelf.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
                 weakSelf.pageControl.currentPage = page
             }
-        })
+        }
+        .add(to: disposeBag)
     }
 
-    private func setupScrollView(with images: [String]) {
+    private func setupScrollView(with images: [URL]) {
         let frameSize = scrollView.frame.size
 
         images.enumerated().forEach { index, card in

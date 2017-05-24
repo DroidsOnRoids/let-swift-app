@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import ESPullToRefresh
 
 extension UITableView {
+    // MARK: Reactive extensions
     func item<Cell: UITableViewCell, T, S: Sequence>(with identifier: String, cellType: Cell.Type = Cell.self)
         -> (@escaping (Int, T, Cell) -> ())
         -> (_ source: S)
@@ -57,16 +59,38 @@ extension UITableView {
         return ObservableEvent(event: delegateProxy.itemDidSelectObservable)
     }
 
-    func setFooterColor(color: UIColor) {
-        let footerView = UIView()
-        let colorView = UIView(frame: CGRect(x: 0, y: 0, width: max(bounds.width, bounds.height), height: 1000))
+    // MARK: Header and footer
+    private func createHeaderFooterView(_ color: UIColor, negativeOffset: Bool) -> UIView {
+        let offset: CGFloat = 1000.0
+        let offsetView = UIView()
+        let colorView = UIView(frame: CGRect(x: 0.0, y: negativeOffset ? -offset : 0.0, width: max(bounds.width, bounds.height), height: offset))
         colorView.backgroundColor = color
-        footerView.addSubview(colorView)
+        offsetView.addSubview(colorView)
         
+        return offsetView
+    }
+    
+    func setHeaderColor(_ color: UIColor) {
+        tableHeaderView = createHeaderFooterView(color, negativeOffset: true)
+    }
+    
+    func setFooterColor(_ color: UIColor) {
+        let footerView = createHeaderFooterView(color, negativeOffset: false)
         tableFooterView = footerView
+        
         sendSubview(toBack: footerView)
     }
     
+    // MARK: Pull to refresh
+    func addPullToRefresh(callback: @escaping () -> ()) {
+        es_addPullToRefresh(animator: PullToRefreshAnimator(), handler: callback)
+    }
+    
+    func finishPullToRefresh() {
+        es_stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
+    }
+    
+    // MARK: Delays content touches fix
     override open var delaysContentTouches: Bool {
         didSet {
             changeChildDelaysContentTouches()

@@ -2,21 +2,25 @@
 //  Talk.swift
 //  LetSwift
 //
-//  Created by Kinga Wilczek on 24.04.2017.
+//  Created by Kinga Wilczek, Marcin Chojnacki on 24.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import Foundation
+import Mapper
 
-struct Talk {
+struct Talk: Mappable {
 
-    let title: String?
+    let id: Int
+    let title: String
     let description: String?
-    let slides: String?
-    let name: String?
-    let job: String?
-    let bio: String?
-    let id: Int?
-    let tags: [String]
-    let photos: [String]
+    let tags: [String]?
+    let speaker: Speaker?
+    
+    init(map: Mapper) throws {
+        try id = map.from("id")
+        try title = map.from("title")
+        description = map.optionalFrom("description")
+        tags = map.optionalFrom("tags")
+        speaker = map.optionalFrom("speaker")
+    }
 }

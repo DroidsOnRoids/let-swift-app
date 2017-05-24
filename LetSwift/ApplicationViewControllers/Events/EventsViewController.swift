@@ -8,10 +8,9 @@
 
 import UIKit
 
-protocol EventsViewControllerDelegate: class {
+protocol EventsViewControllerDelegate: LectureViewControllerDelegate {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
     func presentEventDetailsScreen(fromModel: Event)
-    func presentSpeakerDetailsScreen()
     func presentLectureScreen()
     func presentPhotoGalleryScreen(with photos: [Photo])
 }
@@ -30,12 +29,15 @@ class EventsViewController: CommonEventViewController {
         return true
     }
     
+    private let disposeBag = DisposeBag()
+    
     private func setup(previousEventsCell cell: PreviousEventsListCell) {
         viewModel.previousEventsCellDidSetObservable.next()
         
-        viewModel.previousEventsViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
+        viewModel.previousEventsViewModelObservable.subscribeNext(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }
+        .add(to: disposeBag)
     }
 
     override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {

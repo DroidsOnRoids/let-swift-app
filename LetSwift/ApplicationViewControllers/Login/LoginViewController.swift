@@ -21,6 +21,8 @@ final class LoginViewController: UIViewController {
     @IBOutlet fileprivate weak var loginSubtitleLabel: MultiSizeLabel!
     @IBOutlet fileprivate weak var skipLoginButton: UIButton!
     
+    private let disposeBag = DisposeBag()
+    
     private var viewModel: LoginViewControllerViewModel!
     private var labelAnimator: RandomLabelAnimator?
 
@@ -48,14 +50,16 @@ final class LoginViewController: UIViewController {
     private func setupViewModel() {
         skipLoginButton.addTarget(viewModel, action: #selector(LoginViewControllerViewModel.skipButtonTapped), for: .touchUpInside)
         
-        viewModel.facebookAlertObservable.subscribe(onNext: { [weak self] error in
+        viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
             guard let weakSelf = self else { return }
             AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
-        })
+        }
+        .add(to: disposeBag)
         
-        viewModel.animateWithRandomTextObservable.subscribe { [weak self] randomHello in
+        viewModel.animateWithRandomTextObservable.subscribeNext { [weak self] randomHello in
             self?.animateLabel(randomHello: randomHello)
         }
+        .add(to: disposeBag)
     }
     
     private func setupViews() {
