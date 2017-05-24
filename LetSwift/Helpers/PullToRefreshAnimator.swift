@@ -9,7 +9,7 @@
 import UIKit
 import ESPullToRefresh
 
-final class PullToRefreshAnimator: UIView, ESRefreshProtocol, ESRefreshAnimatorProtocol {
+final class PullToRefreshAnimator: UIView, ESRefreshAnimatorProtocol {
     
     var view: UIView { return self }
     var insets: UIEdgeInsets = .zero
@@ -41,7 +41,9 @@ final class PullToRefreshAnimator: UIView, ESRefreshProtocol, ESRefreshAnimatorP
         
         indicatorView.center = center
     }
-    
+}
+
+extension PullToRefreshAnimator: ESRefreshProtocol {
     func refreshAnimationBegin(view: ESRefreshComponent) {
     }
     
