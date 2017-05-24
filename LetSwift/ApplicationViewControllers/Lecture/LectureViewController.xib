@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,6 +13,7 @@
                 <outlet property="lectureSummaryLabel" destination="nyp-C6-Ufk" id="y10-dX-Xfd"/>
                 <outlet property="lectureTitleLabel" destination="I1h-bH-eTC" id="xPc-FP-Y41"/>
                 <outlet property="separatorConstraint" destination="60a-fp-KKf" id="pvK-Ez-6xQ"/>
+                <outlet property="speakerCellView" destination="Pmm-3T-0RZ" id="545-Tz-uUI"/>
                 <outlet property="speakerImageView" destination="pqb-XG-DcD" id="Sl0-XS-ZDq"/>
                 <outlet property="speakerNameLabel" destination="DE8-bC-cQX" id="mIz-wO-qaV"/>
                 <outlet property="speakerTitleLabel" destination="Ok3-Ez-FFy" id="Zre-dn-6zM"/>
@@ -24,13 +25,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="160-BU-vtj">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="160-BU-vtj">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-br-SMs">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="327"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmm-3T-0RZ">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmm-3T-0RZ" customClass="TappableView" customModule="LetSwift" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="pqb-XG-DcD">
