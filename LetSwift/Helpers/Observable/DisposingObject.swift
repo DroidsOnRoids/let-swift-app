@@ -9,6 +9,7 @@
 final class DisposingObject: Disposable {
     
     private var disposeClosure: () -> ()
+    private var alreadyDisposed = false
     
     init(disposeClosure: @escaping () -> ()) {
         self.disposeClosure = disposeClosure
@@ -19,7 +20,10 @@ final class DisposingObject: Disposable {
     }
     
     func dispose() {
-        disposeClosure()
+        if !alreadyDisposed {
+            disposeClosure()
+            alreadyDisposed = true
+        }
     }
     
     func add(to disposeBag: DisposeBag) {

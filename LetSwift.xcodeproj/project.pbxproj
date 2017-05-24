@@ -120,6 +120,7 @@
 		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */; };
 		D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */; };
 		D3D83DC21EBB10CE003572EF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D83DC11EBB10CE003572EF /* AlertHelper.swift */; };
+		D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
 		D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCell.swift */; };
@@ -264,6 +265,7 @@
 		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderCell.xib; sourceTree = "<group>"; };
 		D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		D3D83DC11EBB10CE003572EF /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposingObjectTests.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		D3F091871EB205FE0029E15E /* PreviousEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCell.swift; sourceTree = "<group>"; };
@@ -637,6 +639,7 @@
 				D33EFB8C1ED2F88A001DA18C /* ObservableTests.swift */,
 				D33EFB8E1ED2F8AB001DA18C /* DisposeBagTests.swift */,
 				D33EFB901ED2F8B7001DA18C /* ObservableIntegrationTests.swift */,
+				D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */,
 			);
 			path = Observable;
 			sourceTree = "<group>";
@@ -1041,6 +1044,7 @@
 				D33EFB911ED2F8B7001DA18C /* ObservableIntegrationTests.swift in Sources */,
 				D33EFB8F1ED2F8AB001DA18C /* DisposeBagTests.swift in Sources */,
 				D33EFB8D1ED2F88A001DA18C /* ObservableTests.swift in Sources */,
+				D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
