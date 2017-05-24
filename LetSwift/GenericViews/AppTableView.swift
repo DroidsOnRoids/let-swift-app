@@ -17,6 +17,7 @@ final class AppTableView: UITableView {
             guard let appBackgroundView = appBackgroundView else {
                 separatorStyle = .singleLine
                 backgroundView = nil
+                tableFooterView?.isHidden = false
                 return
             }
             
@@ -26,6 +27,7 @@ final class AppTableView: UITableView {
             
             separatorStyle = .none
             backgroundView = backgroundContainer
+            tableFooterView?.isHidden = true
         }
     }
     
