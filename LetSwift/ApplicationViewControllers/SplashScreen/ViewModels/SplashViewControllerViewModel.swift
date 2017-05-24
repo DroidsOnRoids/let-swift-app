@@ -14,6 +14,8 @@ final class SplashViewControllerViewModel {
         static let eventsPerPage = 20
     }
     
+    private let disposeBag = DisposeBag()
+    
     var viewDidAppearPerformObservable = Observable<Void>()
     
     weak var delegate: SplashViewControllerDelegate?
@@ -25,9 +27,10 @@ final class SplashViewControllerViewModel {
     }
     
     private func setup() {
-        viewDidAppearPerformObservable.subscribe(onNext: { [weak self] in
+        viewDidAppearPerformObservable.subscribeNext { [weak self] in
             self?.downloadEventsList()
-        })
+        }
+        .add(to: disposeBag)
     }
     
     private func downloadEventsList() {
