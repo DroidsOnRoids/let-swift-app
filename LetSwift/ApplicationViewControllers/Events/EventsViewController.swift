@@ -29,12 +29,15 @@ class EventsViewController: CommonEventViewController {
         return true
     }
     
+    private let disposeBag = DisposeBag()
+    
     private func setup(previousEventsCell cell: PreviousEventsListCell) {
         viewModel.previousEventsCellDidSetObservable.next()
         
-        viewModel.previousEventsViewModelObservable.subscribe(startsWithInitialValue: true) { viewModel in
+        viewModel.previousEventsViewModelObservable.subscribeNext(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }
+        .add(to: disposeBag)
     }
 
     override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {

@@ -16,6 +16,8 @@ final class LoginViewControllerViewModel {
     
     weak var delegate: LoginViewControllerDelegate?
     
+    private let disposeBag = DisposeBag()
+    
     private enum Constants {
         static let helloWorldVariants = [
             "Hello world!",
@@ -33,9 +35,10 @@ final class LoginViewControllerViewModel {
     }
     
     private func setup() {
-        viewWillAppearPerformObservable.subscribe(onNext: { [weak self] in
+        viewWillAppearPerformObservable.subscribeNext { [weak self] in
             self?.animateWithRandomTextObservable.next(Constants.helloWorldVariants.randomElement())
-        })
+        }
+        .add(to: disposeBag)
     }
     
     func facebookLoginCallback(status: FacebookLoginStatus) {
