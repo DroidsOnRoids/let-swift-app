@@ -10,7 +10,7 @@ import UIKit
 
 final class PreviousEventCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: NetworkImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
@@ -19,6 +19,15 @@ final class PreviousEventCell: UICollectionViewCell {
     override var isHighlighted: Bool {
         didSet {
             highlightView(isHighlighted)
+        }
+    }
+    
+    var imageURL: URL? {
+        get {
+            return imageView.imageURL
+        }
+        set {
+            imageView.imageURL = newValue
         }
     }
     

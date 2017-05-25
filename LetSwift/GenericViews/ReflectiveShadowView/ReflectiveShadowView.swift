@@ -52,6 +52,15 @@ class ReflectionShadowView: UIView {
         }
     }
     
+    @IBInspectable var imageURL: URL? {
+        set {
+            imageView.imageURL = newValue
+        }
+        get {
+            return imageView.imageURL
+        }
+    }
+    
     var imageSize: CGSize {
         guard contentMode == .scaleAspectFit, let image = imageView.image else { return frame.size }
     
@@ -64,7 +73,9 @@ class ReflectionShadowView: UIView {
         return CGSize(width: imageWidth, height: imageHeight)
     }
     
-    var imageView: UIImageView!
+    private let disposeBag = DisposeBag()
+    
+    var imageView: NetworkImageView!
     var shadowImageView: UIImageView!
     
     init(image: UIImage) {
@@ -99,9 +110,14 @@ class ReflectionShadowView: UIView {
     }
     
     private func setShadow() {
-        imageView = UIImageView()
+        imageView = NetworkImageView()
         imageView.layer.masksToBounds = true
         imageView.contentMode = contentMode
+        imageView.imageDownloadedObservable.subscribeNext { [weak self] in
+            self?.blurImage()
+        }
+        .add(to: disposeBag)
+        
         shadowImageView = UIImageView()
         shadowImageView.contentMode = contentMode
         blurImage()

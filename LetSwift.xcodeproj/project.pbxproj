@@ -77,6 +77,7 @@
 		D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07311EA9EA2700A74B9F /* ContactViewController.swift */; };
 		D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F07321EA9EA2700A74B9F /* ContactViewController.xib */; };
 		D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */; };
+		D3476AC11ED6D3A800AC7D87 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3476AC01ED6D3A800AC7D87 /* NetworkImageView.swift */; };
 		D34B850C1EB3214900DBC72D /* PreviousEventsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */; };
 		D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */; };
 		D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */; };
@@ -110,7 +111,6 @@
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
-		D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */; };
 		D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */; };
 		D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288B1ECD9E0C00F29702 /* Observable.swift */; };
 		D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288D1ECD9E3600F29702 /* Disposable.swift */; };
@@ -118,6 +118,7 @@
 		D3AE28921ECD9F8000F29702 /* DisposingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE28911ECD9F8000F29702 /* DisposingObject.swift */; };
 		D3AE28941ECDA3EC00F29702 /* Accumulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE28931ECDA3EC00F29702 /* Accumulator.swift */; };
 		D3AE28961ECDAEFF00F29702 /* ObserevableEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE28951ECDAEFF00F29702 /* ObserevableEvent.swift */; };
+		D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */; };
 		D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */; };
 		D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */; };
 		D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */; };
@@ -125,9 +126,9 @@
 		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */; };
 		D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */; };
 		D3D83DC21EBB10CE003572EF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D83DC11EBB10CE003572EF /* AlertHelper.swift */; };
+		D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */; };
 		D3E0ADA31ED563BC00270F0E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */; };
 		D3E0ADA61ED563FB00270F0E /* SplashViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */; };
-		D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
 		D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCell.swift */; };
@@ -227,6 +228,7 @@
 		D33F07311EA9EA2700A74B9F /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		D33F07321EA9EA2700A74B9F /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
 		D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		D3476AC01ED6D3A800AC7D87 /* NetworkImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
 		D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListCell.swift; sourceTree = "<group>"; };
 		D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventsListCell.xib; sourceTree = "<group>"; };
 		D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
@@ -262,7 +264,6 @@
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
-		D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshAnimator.swift; sourceTree = "<group>"; };
 		D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3AE288B1ECD9E0C00F29702 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D3AE288D1ECD9E3600F29702 /* Disposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
@@ -270,6 +271,7 @@
 		D3AE28911ECD9F8000F29702 /* DisposingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposingObject.swift; sourceTree = "<group>"; };
 		D3AE28931ECDA3EC00F29702 /* Accumulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accumulator.swift; sourceTree = "<group>"; };
 		D3AE28951ECDAEFF00F29702 /* ObserevableEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserevableEvent.swift; sourceTree = "<group>"; };
+		D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshAnimator.swift; sourceTree = "<group>"; };
 		D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableView.swift; sourceTree = "<group>"; };
 		D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardCell.xib; sourceTree = "<group>"; };
@@ -277,9 +279,9 @@
 		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderCell.xib; sourceTree = "<group>"; };
 		D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		D3D83DC11EBB10CE003572EF /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposingObjectTests.swift; sourceTree = "<group>"; };
 		D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewControllerViewModel.swift; sourceTree = "<group>"; };
-		D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposingObjectTests.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		D3F091871EB205FE0029E15E /* PreviousEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCell.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				D3840D951ECA05EC00975818 /* TappableView.swift */,
 				D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */,
 				D37F8A051ECEF10000DD44FE /* SpinnerView.swift */,
+				D3476AC01ED6D3A800AC7D87 /* NetworkImageView.swift */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
 				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
 				D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */,
+				D3476AC11ED6D3A800AC7D87 /* NetworkImageView.swift in Sources */,
 				D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */,
 				D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */,
 				D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */,
