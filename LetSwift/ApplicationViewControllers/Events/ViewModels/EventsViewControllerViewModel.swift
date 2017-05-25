@@ -44,7 +44,7 @@ final class EventsViewControllerViewModel {
     
     var previousEventsCellDidSetObservable = Observable<Void>()
     var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
-    var previousEventsObservable = Observable<[Event]>([Event](repeating: mockedEvent, count: 5))
+    var previousEventsObservable = Observable<[Event]?>(nil)
     
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
@@ -55,13 +55,6 @@ final class EventsViewControllerViewModel {
 
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
-    
-    var formattedDate: String? {
-        guard let eventDate = lastEventObservable.value?.date else { return nil }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        return formatter.string(from: eventDate)
-    }
     
     var formattedTime: String? {
         guard let eventDate = lastEventObservable.value?.date else { return nil }
@@ -81,11 +74,25 @@ final class EventsViewControllerViewModel {
         return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).isOutdated
     }
     
-    init(lastEvent: Event?, delegate: EventsViewControllerDelegate?) {
-        self.lastEventObservable = Observable<Event?>(lastEvent)
+    init(events: [Event]?, delegate: EventsViewControllerDelegate?) {
+        self.lastEventObservable = Observable<Event?>(events?.first)
+        self.previousEventsObservable = Observable<[Event]?>(events?.tail)
         self.delegate = delegate
         
         setup()
+    }
+    
+    convenience init(eventId: Int, delegate: EventsViewControllerDelegate?) {
+        self.init(events: nil, delegate: delegate)
+        
+        NetworkProvider.shared.eventDetails(with: eventId) { [weak self] response in
+            switch response {
+            case let .success(event):
+                self?.lastEventObservable.next(event)
+            case .error:
+                print("error :(")
+            }
+        }
     }
 
     private func setup() {
@@ -117,7 +124,7 @@ final class EventsViewControllerViewModel {
             .withLatest(from: previousEventsObservable, combine: { event in event.1 })
             .subscribeNext(startsWithInitialValue: true) { [weak self] events in
                 guard let weakSelf = self else { return }
-                let subviewModel = PreviousEventsListCellViewModel(previousEvenets: events, delegate: weakSelf.delegate)
+                let subviewModel = PreviousEventsListCellViewModel(previousEvents: events ?? [], delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
             }
             .add(to: disposeBag)

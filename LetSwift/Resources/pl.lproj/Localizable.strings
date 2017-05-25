@@ -16,7 +16,7 @@
 "LOGIN_BUTTON_TITLE" = "Logowanie";
 "LOGIN_SKIP_BUTTON_TITLE" = "Pomiń logowanie";
 "EVENTS_TITLE" = "Spotkania";
-"EVENTS_DETAILS_TITLE" = "Szczegóły spotkania";
+"EVENTS_DETAILS_TITLE" = "Szczegóły";
 "EVENTS_ATTEND" = "Weź udział";
 "EVENTS_LOADING" = "Ładowanie…";
 "EVENTS_ATTENDING" = "Zrezygnuj";

@@ -17,7 +17,7 @@ final class PreviousEventsListCellViewModel {
 
     weak var delegate: EventsViewControllerDelegate?
 
-    init(previousEvenets events: [Event], delegate: EventsViewControllerDelegate?) {
+    init(previousEvents events: [Event], delegate: EventsViewControllerDelegate?) {
         self.delegate = delegate
         previousEventsObservable.next(events)
 
@@ -27,7 +27,7 @@ final class PreviousEventsListCellViewModel {
     private func setup() {
         cellDidTapWithIndexObservable.subscribeNext { [weak self] index in
             guard let previousEvent = self?.previousEventsObservable.value[safe: index] else { return }
-            self?.delegate?.presentEventDetailsScreen(fromModel: previousEvent)
+            self?.delegate?.presentEventDetailsScreen(fromEventId: previousEvent.id)
         }
         .add(to: disposeBag)
     }

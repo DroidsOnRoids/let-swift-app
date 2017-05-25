@@ -10,7 +10,7 @@ import UIKit
 
 protocol EventsViewControllerDelegate: LectureViewControllerDelegate {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
-    func presentEventDetailsScreen(fromModel: Event)
+    func presentEventDetailsScreen(fromEventId: Int)
     func presentLectureScreen()
     func presentPhotoGalleryScreen(with photos: [Photo])
 }

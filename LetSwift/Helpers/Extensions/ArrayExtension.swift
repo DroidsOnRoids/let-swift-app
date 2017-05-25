@@ -17,6 +17,10 @@ extension Array {
         return BindableArray<Element>(self)
     }
     
+    var tail: Array {
+        return Array(self.dropFirst())
+    }
+    
     subscript(safe safe: Index) -> Element? {
         return indices.contains(safe) ? self[safe] : nil
     }

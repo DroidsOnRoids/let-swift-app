@@ -151,9 +151,8 @@ class CommonEventViewController: AppViewController {
     
     func setup(timeCell cell: EventTimeCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self else { return }
-            cell.date = weakSelf.viewModel.formattedDate
-            cell.time = weakSelf.viewModel.formattedTime
+            cell.date = event?.date?.stringDateValue
+            cell.time = self?.viewModel.formattedTime
         }
         .add(to: disposeBag)
     }

@@ -10,11 +10,33 @@ import UIKit
 
 final class PreviousEventCell: UICollectionViewCell {
     
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    
     static let cellIdentifier = String(describing: PreviousEventCell.self)
     
     override var isHighlighted: Bool {
         didSet {
             highlightView(isHighlighted)
+        }
+    }
+    
+    var title: String? {
+        get {
+            return titleLabel.text
+        }
+        set {
+            titleLabel.text = newValue
+        }
+    }
+    
+    var date: String? {
+        get {
+            return dateLabel.text
+        }
+        set {
+            dateLabel.text = newValue
         }
     }
     
