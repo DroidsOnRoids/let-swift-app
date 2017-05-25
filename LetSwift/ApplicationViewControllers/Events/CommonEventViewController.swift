@@ -20,6 +20,7 @@ class CommonEventViewController: AppViewController {
         case carouselEventPhotos = "CarouselEventPhotosCell"
         case speakerCardHeaderCell = "SpeakerCardHeaderCell"
         case speakerCardCell = "SpeakerCardCell"
+        case speakersToBeAnnouncedCell = "SpeakersToBeAnnouncedCell"
     }
 
     var allCells: [EventCellIdentifier] {

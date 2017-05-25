@@ -50,6 +50,7 @@ final class EventDetailsViewController: CommonEventViewController {
 
     private func setup() {
         tableView.register(UINib(nibName: EventCellIdentifier.speakerCardCell.rawValue, bundle: nil), forCellReuseIdentifier: EventCellIdentifier.speakerCardCell.rawValue)
+        tableView.register(UINib(nibName: EventCellIdentifier.speakersToBeAnnouncedCell.rawValue, bundle: nil), forCellReuseIdentifier: EventCellIdentifier.speakersToBeAnnouncedCell.rawValue)
 
         reactiveSetup()
     }
@@ -57,7 +58,7 @@ final class EventDetailsViewController: CommonEventViewController {
     private func reactiveSetup() {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             let speakersTalks = [EventCellIdentifier](repeating: .speakerCardCell, count: event.talks.count)
-            self?.bindableCells.append(speakersTalks.isEmpty ? [.speakerCardCell] : speakersTalks)
+            self?.bindableCells.append(speakersTalks.isEmpty ? [.speakersToBeAnnouncedCell] : speakersTalks)
         }
         .add(to: disposeBag)
     }
@@ -75,7 +76,7 @@ final class EventDetailsViewController: CommonEventViewController {
         viewModel.lastEventObservable
                 .filer { !$0.talks.isEmpty }
                 .subscribeNext(startsWithInitialValue: true) { [weak self] event in
-                    print(event)
+                    print(event) //TODO: this will be filled in the LSI-108
                 }
                 .add(to: disposeBag)
 
