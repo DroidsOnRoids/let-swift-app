@@ -34,7 +34,7 @@ final class EventsViewControllerViewModel {
     
     private let disposeBag = DisposeBag()
     
-    var lastEventObservable: Observable<Event>
+    var lastEventObservable: Observable<Event?>
     var attendanceStateObservable = Observable<AttendanceState>(AttendanceState.loading)
     var notificationStateObservable = Observable<NotificationState>(NotificationState.notActive)
     var facebookAlertObservable = Observable<String?>(nil)
@@ -57,14 +57,14 @@ final class EventsViewControllerViewModel {
     weak var delegate: EventsViewControllerDelegate?
     
     var formattedDate: String? {
-        guard let eventDate = lastEventObservable.value.date else { return nil }
+        guard let eventDate = lastEventObservable.value?.date else { return nil }
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
         return formatter.string(from: eventDate)
     }
     
     var formattedTime: String? {
-        guard let eventDate = lastEventObservable.value.date else { return nil }
+        guard let eventDate = lastEventObservable.value?.date else { return nil }
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.timeZone = TimeZone.current
@@ -72,17 +72,17 @@ final class EventsViewControllerViewModel {
     }
 
     var isReminderAllowed: Bool {
-        guard let date = lastEventObservable.value.date else { return false }
+        guard let date = lastEventObservable.value?.date else { return false }
         return !date.addingTimeInterval(Constants.minimumTimeForReminder).isOutdated
     }
 
     var isEventOutdated: Bool {
-        guard let date = lastEventObservable.value.date else { return false }
+        guard let date = lastEventObservable.value?.date else { return false }
         return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).isOutdated
     }
     
-    init(lastEvent: Event, delegate: EventsViewControllerDelegate?) {
-        self.lastEventObservable = Observable<Event>(lastEvent)
+    init(lastEvent: Event?, delegate: EventsViewControllerDelegate?) {
+        self.lastEventObservable = Observable<Event?>(lastEvent)
         self.delegate = delegate
         
         setup()
@@ -93,7 +93,7 @@ final class EventsViewControllerViewModel {
             guard let weakSelf = self else { return }
             
             weakSelf.checkAttendance()
-            weakSelf.notificationManager = NotificationManager(date: event.date?.addingTimeInterval(Constants.minimumTimeForReminder))
+            weakSelf.notificationManager = NotificationManager(date: event?.date?.addingTimeInterval(Constants.minimumTimeForReminder))
             
             if weakSelf.isReminderAllowed {
                 weakSelf.notificationStateObservable.next(weakSelf.notificationManager.isNotificationActive ? .active : .notActive)
@@ -123,7 +123,7 @@ final class EventsViewControllerViewModel {
             .add(to: disposeBag)
 
         carouselCellDidSetObservable
-            .withLatest(from: lastEventObservable, combine: { event in event.1.coverImages })
+            .withLatest(from: lastEventObservable, combine: { event in event.1?.coverImages ?? [] })
             .subscribeNext(startsWithInitialValue: true) { [weak self] photos in
                 let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
                 self?.carouselEventPhotosViewModelObservable.next(subviewModel)
@@ -152,14 +152,14 @@ final class EventsViewControllerViewModel {
             .add(to: disposeBag)
 
         guard let time = lastEventObservable
-                            .value
+                            .value?
                             .date?
                             .addingTimeInterval(Constants.minimumTimeForReminder)
                             .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventReminderTimeFinished), userInfo: nil, repeats: false)
 
         guard let eventLeftTime = lastEventObservable
-                                    .value
+                                    .value?
                                     .date?
                                     .addingTimeInterval(Constants.minimumTimeForReminder * 2)
                                     .timeIntervalSince(Date()) else { return }
@@ -189,7 +189,7 @@ final class EventsViewControllerViewModel {
     }
     
     private func checkAttendance() {
-        guard let eventId = lastEventObservable.value.facebook else { return }
+        guard let eventId = lastEventObservable.value?.facebook else { return }
 
         attendanceStateObservable.next(isEventOutdated ? .loading : .notAllowed)
 
@@ -211,10 +211,10 @@ final class EventsViewControllerViewModel {
     
     @objc func attendButtonTapped() {
         guard !isEventOutdated else {
-            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value.photos)
+            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value?.photos ?? [])
             return
         }
-        guard let eventId = lastEventObservable.value.facebook, attendanceStateObservable.value != .loading else { return }
+        guard let eventId = lastEventObservable.value?.facebook, attendanceStateObservable.value != .loading else { return }
         guard FacebookManager.shared.isLoggedIn else {
             loginScreenObservable.next()
             return
@@ -240,7 +240,7 @@ final class EventsViewControllerViewModel {
         if notificationManager.isNotificationActive {
             notificationManager.cancelNotification()
         } else {
-            let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(lastEventObservable.value.title)"
+            let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(lastEventObservable.value?.title ?? "")"
             
             _ = notificationManager.succeededScheduleNotification(withMessage: message)
         }
@@ -253,8 +253,8 @@ final class EventsViewControllerViewModel {
     }
     
     private func locationCellTapped() {
-        guard let coordinates = lastEventObservable.value.placeCoordinates else { return }
-        MapHelper.openMaps(withCoordinates: coordinates, name: lastEventObservable.value.placeName ?? lastEventObservable.value.title)
+        guard let coordinates = lastEventObservable.value?.placeCoordinates else { return }
+        MapHelper.openMaps(withCoordinates: coordinates, name: lastEventObservable.value?.placeName ?? lastEventObservable.value?.title)
     }
     
     private func speakerCellTapped() {

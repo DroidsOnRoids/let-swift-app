@@ -131,18 +131,18 @@ class CommonEventViewController: AppViewController {
     
     func setup(summaryCell cell: EventSummaryCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
-            cell.eventTitle = event.title
+            cell.eventTitle = event?.title
         }
         .add(to: disposeBag)
     }
     
     func setup(locationCell cell: EventLocationCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
-            if let placeName = event.placeName {
+            if let placeName = event?.placeName {
                 cell.placeName = placeName
             }
             
-            if let placeStreet = event.placeStreet {
+            if let placeStreet = event?.placeStreet {
                 cell.placeLocation = placeStreet
             }
         }
@@ -187,8 +187,8 @@ class CommonEventViewController: AppViewController {
     private func reactiveSetup() {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self,
-                  let eventDate =  event.date,
-                  event.photos.isEmpty,
+                  let eventDate =  event?.date,
+                  event?.photos.isEmpty ?? true,
                   eventDate.addingTimeInterval(20.0).isOutdated,
                   let index = weakSelf.bindableCells.values.index(of: .attend) else { return }
 
