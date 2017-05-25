@@ -71,7 +71,14 @@ class CommonEventViewController: AppViewController {
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.setFooterColor(color: UIColor.paleGrey)
+        tableView.setFooterColor(.paleGrey)
+        
+        tableView.setHeaderColor(.lightBlueGrey)
+        tableView.addPullToRefresh { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self?.tableView.finishPullToRefresh()
+            }
+        }
         
         allCells.forEach { cell in
             tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)

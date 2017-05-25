@@ -11,15 +11,19 @@ import UIKit
 final class EventsCoordinator: Coordinator, Startable {
     
     fileprivate let delegate: AppCoordinatorDelegate
+    fileprivate let initialEventsList: [Event]?
     
-    init(navigationController: UINavigationController, delegate: AppCoordinatorDelegate) {
+    init(navigationController: UINavigationController, initialEventsList: [Event]?, delegate: AppCoordinatorDelegate) {
         self.delegate = delegate
+        self.initialEventsList = initialEventsList
         
         super.init(navigationController: navigationController)
     }
     
     func start() {
-        let viewModel = EventsViewControllerViewModel(lastEvent: EventsViewControllerViewModel.mockedEvent, delegate: self)
+        // TODO: When event is not available we should pass it anyway instead of mocking
+        let lastEvent = initialEventsList?.first ?? EventsViewControllerViewModel.mockedEvent
+        let viewModel = EventsViewControllerViewModel(lastEvent: lastEvent, delegate: self)
         let viewController = EventsViewController(viewModel: viewModel)
         viewController.coordinatorDelegate = delegate
         

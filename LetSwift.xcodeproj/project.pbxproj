@@ -88,6 +88,7 @@
 		D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35839A11EA7330C00C05AA6 /* LoginViewController.xib */; };
 		D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */; };
 		D36396221EC0654400158BEF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36396211EC0654400158BEF /* PopoverView.swift */; };
+		D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F8A051ECEF10000DD44FE /* SpinnerView.swift */; };
 		D3840D961ECA05EC00975818 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3840D951ECA05EC00975818 /* TappableView.swift */; };
 		D3840D991ECA0C2900975818 /* SpeakerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3840D971ECA0C2900975818 /* SpeakerDetailsViewController.swift */; };
 		D3840D9A1ECA0C2900975818 /* SpeakerDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3840D981ECA0C2900975818 /* SpeakerDetailsViewController.xib */; };
@@ -107,6 +108,7 @@
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
+		D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */; };
 		D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */; };
 		D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288B1ECD9E0C00F29702 /* Observable.swift */; };
 		D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288D1ECD9E3600F29702 /* Disposable.swift */; };
@@ -120,6 +122,8 @@
 		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */; };
 		D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */; };
 		D3D83DC21EBB10CE003572EF /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D83DC11EBB10CE003572EF /* AlertHelper.swift */; };
+		D3E0ADA31ED563BC00270F0E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */; };
+		D3E0ADA61ED563FB00270F0E /* SplashViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */; };
 		D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
@@ -231,6 +235,7 @@
 		D35839A11EA7330C00C05AA6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLabelAnimator.swift; sourceTree = "<group>"; };
 		D36396211EC0654400158BEF /* PopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
+		D37F8A051ECEF10000DD44FE /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		D3840D951ECA05EC00975818 /* TappableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
 		D3840D971ECA0C2900975818 /* SpeakerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailsViewController.swift; sourceTree = "<group>"; };
 		D3840D981ECA0C2900975818 /* SpeakerDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerDetailsViewController.xib; sourceTree = "<group>"; };
@@ -252,6 +257,7 @@
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshAnimator.swift; sourceTree = "<group>"; };
 		D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3AE288B1ECD9E0C00F29702 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D3AE288D1ECD9E3600F29702 /* Disposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
@@ -265,6 +271,8 @@
 		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderCell.xib; sourceTree = "<group>"; };
 		D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		D3D83DC11EBB10CE003572EF /* AlertHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposingObjectTests.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
@@ -412,6 +420,7 @@
 		7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D3E0ADA11ED5635D00270F0E /* SplashScreen */,
 				D319AD7A1EA60F67001ECE0B /* Login */,
 				D3337CB91E9E0D1100746A50 /* Onboarding */,
 				D33F07211EA9E8E000A74B9F /* Events */,
@@ -462,6 +471,7 @@
 				D3F091781EB1FE770029E15E /* AppTableViewCell.swift */,
 				D36396211EC0654400158BEF /* PopoverView.swift */,
 				D3840D951ECA05EC00975818 /* TappableView.swift */,
+				D37F8A051ECEF10000DD44FE /* SpinnerView.swift */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -484,6 +494,7 @@
 				D3F172101EB8A66200F9A91C /* MapHelper.swift */,
 				D3D83DC11EBB10CE003572EF /* AlertHelper.swift */,
 				D3AE28931ECDA3EC00F29702 /* Accumulator.swift */,
+				D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -812,6 +823,23 @@
 			path = SpeakerCardCell;
 			sourceTree = "<group>";
 		};
+		D3E0ADA11ED5635D00270F0E /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0ADA41ED563D600270F0E /* ViewModels */,
+				D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		D3E0ADA41ED563D600270F0E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		D3F0917A1EB200790029E15E /* PreviousEventCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,6 +1085,7 @@
 				7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift in Sources */,
 				D3840D991ECA0C2900975818 /* SpeakerDetailsViewController.swift in Sources */,
 				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
+				D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */,
 				7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */,
 				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
 				7EE1410F1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift in Sources */,
@@ -1109,8 +1138,11 @@
 				D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
+				D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */,
 				D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */,
 				D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */,
+				D3E0ADA61ED563FB00270F0E /* SplashViewControllerViewModel.swift in Sources */,
+				D3E0ADA31ED563BC00270F0E /* SplashViewController.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
 				7E0842CD1ECF02A0003F7C96 /* NetworkRouter.swift in Sources */,
 				D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */,
