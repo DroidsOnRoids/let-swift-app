@@ -14,6 +14,8 @@ protocol AppCoordinatorDelegate: class {
 
 final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
+    fileprivate var initialEventsList: [Event]?
+    
     fileprivate var shouldShowLoginScreen: Bool {
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
     }
@@ -21,11 +23,18 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     func start() {
         navigationViewController.setNavigationBarHidden(true, animated: false)
         
-        presentFirstAppController()
+        presentSplashScreen()
     }
     
     private func present(viewController: UIViewController, animated: Bool = true) {
         navigationViewController.setViewControllers([viewController], animated: animated)
+    }
+    
+    fileprivate func presentSplashScreen() {
+        let viewModel = SplashViewControllerViewModel(delegate: self)
+        let viewController = SplashViewController(viewModel: viewModel)
+        
+        present(viewController: viewController, animated: false)
     }
     
     fileprivate func presentFirstAppController() {
@@ -58,7 +67,7 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
     fileprivate func presentMainController() {
         let coordinators = [
-            EventsCoordinator(navigationController: UINavigationController(), delegate: self),
+            EventsCoordinator(navigationController: UINavigationController(), initialEventsList: initialEventsList, delegate: self),
             SpeakersCoordinator(navigationController: UINavigationController()),
             ContactCoordinator(navigationController: UINavigationController())
         ]
@@ -71,6 +80,13 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
         let viewController = TabBarViewController(controllers: coordinators.map({ ($0).navigationViewController }))
         
         present(viewController: viewController)
+    }
+}
+
+extension AppCoordinator: SplashViewControllerDelegate {
+    func initialLoadingHasFinished(events: [Event]?) {
+        initialEventsList = events
+        presentFirstAppController()
     }
 }
 
