@@ -27,7 +27,7 @@ final class NetworkImageView: UIImageView {
             pendingRequest.cancel()
         }
         
-        pendingRequest = Alamofire.request(url)
+        pendingRequest = NetworkProvider.shared.alamofireManager.request(url)
         pendingRequest?.responseData { [weak self] response in
             self?.pendingRequest = nil
             guard let data = response.result.value, let newImage = UIImage(data: data) else { return }
