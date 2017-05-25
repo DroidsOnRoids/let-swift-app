@@ -12,8 +12,11 @@ import Mapper
 struct NetworkProvider {
 
     static let shared = NetworkProvider()
+    
+    let alamofireManager: SessionManager
 
     private enum Constants {
+        static let timeout: TimeInterval = 10.0
         static let perPage = "per_page"
         static let page = "page"
         static let events = "events"
@@ -21,10 +24,16 @@ struct NetworkProvider {
         static let speakers = "speakers"
     }
 
-    private init() {}
+    private init() {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForResource = Constants.timeout
+        configuration.timeoutIntervalForRequest = Constants.timeout
+        
+        alamofireManager = SessionManager(configuration: configuration)
+    }
 
     @discardableResult func eventsList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Event>>) -> ()) -> DataRequest {
-        let request = Alamofire.request(NetworkRouter.eventsList([Constants.perPage: perPage, Constants.page: page]))
+        let request = alamofireManager.request(NetworkRouter.eventsList([Constants.perPage: perPage, Constants.page: page]))
         request.responseJSON { response in
             response.result.responsePage(for: Constants.events, completionHandler: completionHandler)
         }
@@ -33,7 +42,7 @@ struct NetworkProvider {
     }
 
     @discardableResult func speakersList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkReponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
-        let request = Alamofire.request(NetworkRouter.speakersList([Constants.perPage: perPage, Constants.page: page]))
+        let request = alamofireManager.request(NetworkRouter.speakersList([Constants.perPage: perPage, Constants.page: page]))
         request.responseJSON { response in
             response.result.responsePage(for: Constants.speakers, completionHandler: completionHandler)
         }
@@ -42,7 +51,7 @@ struct NetworkProvider {
     }
 
     @discardableResult func eventDetails(with id: Int, completionHandler: @escaping (NetworkReponse<Event>) -> ()) -> DataRequest {
-        let request = Alamofire.request(NetworkRouter.eventDetails(id))
+        let request = alamofireManager.request(NetworkRouter.eventDetails(id))
         request.responseJSON { response in
             response.result.responseObject(for: Constants.event, completionHandler: completionHandler)
         }
