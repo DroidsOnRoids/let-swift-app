@@ -13,31 +13,15 @@ final class AppTableView: UITableView {
     var backgroundScrollsWithContent = false
     
     var appBackgroundView: UIView? = nil {
+        willSet {
+            appBackgroundView?.removeFromSuperview()
+        }
         didSet {
-            guard let appBackgroundView = appBackgroundView else {
-                separatorStyle = .singleLine
-                backgroundView = nil
-                tableFooterView?.isHidden = false
-                return
-            }
+            guard let appBackgroundView = appBackgroundView else { return }
             
-            let backgroundContainer = UIView()
             appBackgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            backgroundContainer.addSubview(appBackgroundView)
-            
-            separatorStyle = .none
-            backgroundView = backgroundContainer
-            tableFooterView?.isHidden = true
+            appBackgroundView.frame = bounds
+            addSubview(appBackgroundView)
         }
-    }
-    
-    override var contentOffset: CGPoint {
-        didSet {
-            contentOffsetHasChanged()
-        }
-    }
-    
-    private func contentOffsetHasChanged() {
-        appBackgroundView?.transform = backgroundScrollsWithContent ? CGAffineTransform(translationX: 0.0, y: -contentOffset.y) : .identity
     }
 }

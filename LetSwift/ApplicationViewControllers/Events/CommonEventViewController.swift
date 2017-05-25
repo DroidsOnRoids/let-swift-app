@@ -75,10 +75,18 @@ class CommonEventViewController: AppViewController {
         
         tableView.setHeaderColor(.lightBlueGrey)
         tableView.addPullToRefresh { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self?.tableView.finishPullToRefresh()
-            }
+            self?.viewModel.eventsListRefreshObservable.next()
         }
+        
+        viewModel.eventsListRefreshObservable.subscribeCompleted { [weak self] in
+            self?.tableView.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
+        
+        viewModel.eventDetailsRefreshObservable.subscribeCompleted { [weak self] in
+            self?.tableView.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
         
         allCells.forEach { cell in
             tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)
@@ -184,6 +192,21 @@ class CommonEventViewController: AppViewController {
     }
     
     private func reactiveSetup() {
+        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
+            print(state)
+            switch state {
+            case .content:
+                self?.tableView.appBackgroundView = nil
+            case .error:
+                self?.tableView.appBackgroundView = SadFaceView()
+                self?.tableView.backgroundScrollsWithContent = true
+            case .loading:
+                self?.tableView.appBackgroundView = SpinnerView()
+                self?.tableView.backgroundScrollsWithContent = false
+            }
+        }
+        .add(to: disposeBag)
+        
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self,
                   let eventDate =  event?.date,

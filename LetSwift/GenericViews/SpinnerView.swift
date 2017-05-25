@@ -47,6 +47,8 @@ final class SpinnerView: UIView {
     }
     
     private func setup() {
+        backgroundColor = .white
+        
         spinnerImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(spinnerImageView)
         

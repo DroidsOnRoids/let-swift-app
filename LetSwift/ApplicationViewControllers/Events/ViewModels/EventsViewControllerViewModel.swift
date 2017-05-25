@@ -13,6 +13,12 @@ final class EventsViewControllerViewModel {
 
     // TODO: Make models optional
     static let mockedEvent = Event.fromDetails(MockLoader.eventDetailsMock!)!
+    
+    enum TableViewState {
+        case loading
+        case error
+        case content
+    }
 
     enum AttendanceState {
         case notAttending
@@ -35,17 +41,20 @@ final class EventsViewControllerViewModel {
     private let disposeBag = DisposeBag()
     
     var lastEventObservable: Observable<Event?>
-    var attendanceStateObservable = Observable<AttendanceState>(AttendanceState.loading)
-    var notificationStateObservable = Observable<NotificationState>(NotificationState.notActive)
+    var tableViewStateObservable: Observable<TableViewState>
+    var attendanceStateObservable = Observable<AttendanceState>(.loading)
+    var notificationStateObservable = Observable<NotificationState>(.notActive)
     var facebookAlertObservable = Observable<String?>(nil)
     var loginScreenObservable = Observable<Void>()
     var summaryCellDidTapObservable = Observable<Void>()
     var locationCellDidTapObservable = Observable<Void>()
     
+    var eventsListRefreshObservable = Observable<Void>()
     var previousEventsCellDidSetObservable = Observable<Void>()
     var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
     var previousEventsObservable = Observable<[Event]?>(nil)
     
+    var eventDetailsRefreshObservable = Observable<Void>()
     var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
     var lectureCellDidTapObservable = Observable<Void>()
@@ -76,6 +85,7 @@ final class EventsViewControllerViewModel {
     
     init(events: [Event]?, delegate: EventsViewControllerDelegate?) {
         self.lastEventObservable = Observable<Event?>(events?.first)
+        self.tableViewStateObservable = Observable<TableViewState>(events?.isEmpty ?? true ? .error : .content)
         self.previousEventsObservable = Observable<[Event]?>(events?.tail)
         self.delegate = delegate
         
@@ -85,19 +95,58 @@ final class EventsViewControllerViewModel {
     convenience init(eventId: Int, delegate: EventsViewControllerDelegate?) {
         self.init(events: nil, delegate: delegate)
         
+        tableViewStateObservable.next(.loading)
+        
         NetworkProvider.shared.eventDetails(with: eventId) { [weak self] response in
             switch response {
             case let .success(event):
                 self?.lastEventObservable.next(event)
             case .error:
-                print("error :(")
+                self?.tableViewStateObservable.next(.error)
             }
         }
     }
 
     private func setup() {
+        eventsListRefreshObservable.subscribeNext { [weak self] in
+            // TODO: perPage
+            NetworkProvider.shared.eventsList(with: 1, perPage: 20) { [weak self] response in
+                guard case .success(let events) = response, let firstEventId = events.elements.first?.id else {
+                    self?.eventsListRefreshObservable.complete()
+                    return
+                }
+                
+                NetworkProvider.shared.eventDetails(with: firstEventId) { response in
+                    if case .success(let event) = response {
+                        self?.lastEventObservable.next(event)
+                    }
+                    
+                    self?.eventsListRefreshObservable.complete()
+                }
+                
+                self?.previousEventsObservable.next(events.elements.tail)
+            }
+
+        }
+        .add(to: disposeBag)
+        
+        eventDetailsRefreshObservable.subscribeNext { [weak self] in
+            guard let currentId = self?.lastEventObservable.value?.id else { return }
+            
+            NetworkProvider.shared.eventDetails(with: currentId) { response in
+                if case .success(let event) = response {
+                    self?.lastEventObservable.next(event)
+                }
+                
+                self?.eventDetailsRefreshObservable.complete()
+            }
+        }
+        .add(to: disposeBag)
+        
         lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let weakSelf = self else { return }
+            
+            weakSelf.tableViewStateObservable.next(event == nil ? .error : .content)
             
             weakSelf.checkAttendance()
             weakSelf.notificationManager = NotificationManager(date: event?.date?.addingTimeInterval(Constants.minimumTimeForReminder))
