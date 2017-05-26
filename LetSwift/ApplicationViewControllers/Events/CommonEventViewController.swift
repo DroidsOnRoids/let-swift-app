@@ -61,7 +61,7 @@ class CommonEventViewController: AppViewController {
         
         viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
             guard let weakSelf = self else { return }
-            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
+            AlertHelper.showAlert(withTitle: localized("GENERAL_SOMETHING_WENT_WRONG"), message: error, on: weakSelf)
         }
         .add(to: disposeBag)
     }
