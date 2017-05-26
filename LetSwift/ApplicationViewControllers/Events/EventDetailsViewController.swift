@@ -74,7 +74,7 @@ final class EventDetailsViewController: CommonEventViewController {
     
     private func setup(speakerCardCell cell: SpeakerCardCell, index: Int) {
         viewModel.lastEventObservable
-                .filer { !$0.talks.isEmpty }
+                .filter { !$0.talks.isEmpty }
                 .subscribeNext(startsWithInitialValue: true) { [weak self] event in
                     print(event) //TODO: this will be filled in the LSI-108
                 }

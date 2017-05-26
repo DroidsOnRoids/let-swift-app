@@ -76,7 +76,7 @@ final class Observable<Element> {
         return Observable<Y>(combine(value, observable.value))
     }
 
-    func filer(_ predicate: @escaping (Element) -> Bool) -> Observable<Element> {
+    func filter(_ predicate: @escaping (Element) -> Bool) -> Observable<Element> {
         return Observable<Element>(value, predicate: predicate)
     }
     
