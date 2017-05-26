@@ -84,9 +84,9 @@ final class EventsViewControllerViewModel {
     }
     
     init(events: [Event]?, delegate: EventsViewControllerDelegate?) {
-        self.lastEventObservable = Observable<Event?>(events?.first)
-        self.tableViewStateObservable = Observable<TableViewState>(events?.isEmpty ?? true ? .error : .content)
-        self.previousEventsObservable = Observable<[Event]?>(events?.tail)
+        lastEventObservable = Observable<Event?>(events?.first)
+        tableViewStateObservable = Observable<TableViewState>(events?.isEmpty ?? true ? .error : .content)
+        previousEventsObservable = Observable<[Event]?>(events?.tail)
         self.delegate = delegate
         
         setup()
@@ -126,7 +126,6 @@ final class EventsViewControllerViewModel {
                 
                 self?.previousEventsObservable.next(events.elements.tail)
             }
-
         }
         .add(to: disposeBag)
         

@@ -193,7 +193,6 @@ class CommonEventViewController: AppViewController {
     
     private func reactiveSetup() {
         viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
-            print(state)
             switch state {
             case .content:
                 self?.tableView.appBackgroundView = nil
