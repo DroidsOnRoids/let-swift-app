@@ -10,18 +10,36 @@ import UIKit
 
 final class AppTableView: UITableView {
     
-    var backgroundScrollsWithContent = false
+    var hideOverlayAnimated = true
     
-    var appBackgroundView: UIView? = nil {
+    var overlayView: UIView? = nil {
         willSet {
-            appBackgroundView?.removeFromSuperview()
+            hideOverlayView()
         }
         didSet {
-            guard let appBackgroundView = appBackgroundView else { return }
-            
-            appBackgroundView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            appBackgroundView.frame = bounds
-            addSubview(appBackgroundView)
+            showOverlayView()
         }
+    }
+    
+    private func showOverlayView() {
+        guard let overlayView = overlayView, let superview = superview else { return }
+        
+        overlayView.translatesAutoresizingMaskIntoConstraints = false
+        superview.addSubview(overlayView)
+        
+        overlayView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        overlayView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        overlayView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        overlayView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    }
+    
+    private func hideOverlayView() {
+        guard overlayView != nil, hideOverlayAnimated else { return }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+            self.overlayView?.alpha = 0.0
+        }, completion: { completed in
+            self.overlayView?.removeFromSuperview()
+        })
     }
 }

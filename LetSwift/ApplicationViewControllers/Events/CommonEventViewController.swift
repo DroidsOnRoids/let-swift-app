@@ -191,17 +191,30 @@ class CommonEventViewController: AppViewController {
         }
     }
     
+    private func createSadFaceView() -> SadFaceView {
+        let sadFaceView = SadFaceView()
+        let inset = navigationController?.navigationBar.frame.maxY ?? 0.0
+        
+        sadFaceView.scrollView?.contentInset = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
+        sadFaceView.scrollView?.addPullToRefresh {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                sadFaceView.scrollView?.finishPullToRefresh()
+                self?.viewModel.tableViewStateObservable.next(.content)
+            }
+        }
+        
+        return sadFaceView
+    }
+    
     private func reactiveSetup() {
         viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
             switch state {
             case .content:
-                self?.tableView.appBackgroundView = nil
+                self?.tableView.overlayView = nil
             case .error:
-                self?.tableView.appBackgroundView = SadFaceView()
-                self?.tableView.backgroundScrollsWithContent = true
+                self?.tableView.overlayView = self?.createSadFaceView()
             case .loading:
-                self?.tableView.appBackgroundView = SpinnerView()
-                self?.tableView.backgroundScrollsWithContent = false
+                self?.tableView.overlayView = SpinnerView()
             }
         }
         .add(to: disposeBag)
