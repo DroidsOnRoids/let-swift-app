@@ -52,23 +52,8 @@ class CommonEventViewController: AppViewController {
         
         setup()
     }
-    
-    private func setupViewModel() {
-        viewModel.loginScreenObservable.subscribeNext { [weak self] in
-            self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
-        }
-        .add(to: disposeBag)
-        
-        viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
-            guard let weakSelf = self else { return }
-            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
-        }
-        .add(to: disposeBag)
-    }
-    
+
     private func setup() {
-        setupViewModel()
-        
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.setFooterColor(.paleGrey)
@@ -93,6 +78,84 @@ class CommonEventViewController: AppViewController {
         }
         
         reactiveSetup()
+    }
+    
+    private func reactiveSetup() {
+        viewModel.loginScreenObservable.subscribeNext { [weak self] in
+            self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+        }
+        .add(to: disposeBag)
+        
+        viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
+            guard let weakSelf = self else { return }
+            AlertHelper.showAlert(withTitle: localized("GENERAL_FACEBOOK_ERROR"), message: error, on: weakSelf)
+        }
+        .add(to: disposeBag)
+        
+        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
+            switch state {
+            case .content:
+                self?.tableView.overlayView = nil
+            case .error:
+                self?.tableView.overlayView = self?.setupSadFaceView()
+            case .loading:
+                self?.tableView.overlayView = SpinnerView()
+            }
+        }
+        .add(to: disposeBag)
+        
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self,
+                let eventDate =  event?.date,
+                event?.photos.isEmpty ?? true,
+                eventDate.addingTimeInterval(20.0).isOutdated,
+                let index = weakSelf.bindableCells.values.index(of: .attend) else { return }
+            
+            weakSelf.bindableCells.remove(at: index)
+        }
+        .add(to: disposeBag)
+        
+        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
+            cell.layoutMargins = UIEdgeInsets.zero
+            
+            self?.dispatchCellSetup(element: element, cell: cell)
+            
+            return cell
+        }))
+        
+        viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self, let event = event else { return }
+            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend), event.photos.isEmpty {
+                weakSelf.bindableCells.remove(at: index, updated: false)
+                weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+            }
+        }
+        .add(to: disposeBag)
+        
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
+            guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
+            
+            self?.dispatchCellSelect(element: cellType)
+            self?.tableView.deselectRow(at: indexPath, animated: true)
+        }
+        .add(to: disposeBag)
+    }
+    
+    private func setupSadFaceView() -> SadFaceView {
+        let sadFaceView = SadFaceView()
+        let inset = navigationController?.navigationBar.frame.maxY ?? 0.0
+        
+        sadFaceView.scrollView?.contentInset = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
+        sadFaceView.scrollView?.addPullToRefresh {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+                sadFaceView.scrollView?.finishPullToRefresh()
+                self?.viewModel.tableViewStateObservable.next(.content)
+            }
+        }
+        
+        return sadFaceView
     }
     
     func setup(attendCell cell: AttendButtonsRowCell) {
@@ -146,13 +209,8 @@ class CommonEventViewController: AppViewController {
     
     func setup(locationCell cell: EventLocationCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
-            if let placeName = event?.placeName {
-                cell.placeName = placeName
-            }
-            
-            if let placeStreet = event?.placeStreet {
-                cell.placeLocation = placeStreet
-            }
+            cell.placeName = event?.placeName ?? ""
+            cell.placeLocation = event?.placeStreet ?? ""
         }
         .add(to: disposeBag)
     }
@@ -189,73 +247,5 @@ class CommonEventViewController: AppViewController {
             viewModel.locationCellDidTapObservable.next()
         default: break
         }
-    }
-    
-    private func createSadFaceView() -> SadFaceView {
-        let sadFaceView = SadFaceView()
-        let inset = navigationController?.navigationBar.frame.maxY ?? 0.0
-        
-        sadFaceView.scrollView?.contentInset = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
-        sadFaceView.scrollView?.addPullToRefresh {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-                sadFaceView.scrollView?.finishPullToRefresh()
-                self?.viewModel.tableViewStateObservable.next(.content)
-            }
-        }
-        
-        return sadFaceView
-    }
-    
-    private func reactiveSetup() {
-        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
-            switch state {
-            case .content:
-                self?.tableView.overlayView = nil
-            case .error:
-                self?.tableView.overlayView = self?.createSadFaceView()
-            case .loading:
-                self?.tableView.overlayView = SpinnerView()
-            }
-        }
-        .add(to: disposeBag)
-        
-        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self,
-                  let eventDate =  event?.date,
-                  event?.photos.isEmpty ?? true,
-                  eventDate.addingTimeInterval(20.0).isOutdated,
-                  let index = weakSelf.bindableCells.values.index(of: .attend) else { return }
-
-            weakSelf.bindableCells.remove(at: index)
-        }
-        .add(to: disposeBag)
-
-        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
-            let indexPath = IndexPath(row: index, section: 0)
-            let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
-            cell.layoutMargins = UIEdgeInsets.zero
-            
-            self?.dispatchCellSetup(element: element, cell: cell)
-            
-            return cell
-        }))
-
-        viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self, let event = event else { return }
-            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend), event.photos.isEmpty {
-                weakSelf.bindableCells.remove(at: index, updated: false)
-                weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-            }
-        }
-        .add(to: disposeBag)
-
-        tableView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
-            guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
-            
-            self?.dispatchCellSelect(element: cellType)
-            
-            self?.tableView.deselectRow(at: indexPath, animated: true)
-        }
-        .add(to: disposeBag)
     }
 }

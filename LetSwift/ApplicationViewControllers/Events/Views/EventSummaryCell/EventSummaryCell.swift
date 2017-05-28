@@ -19,8 +19,7 @@ final class EventSummaryCell: AppTableViewCell {
             return eventTitleLabel.text
         }
         set {
-            guard let eventTitle = newValue else { return }
-            eventTitleLabel.text = eventTitle.uppercased()
+            eventTitleLabel.text = newValue?.uppercased()
         }
     }
     

@@ -11,15 +11,6 @@ import CoreLocation
 
 final class EventsViewControllerViewModel {
 
-    // TODO: Make models optional
-    static let mockedEvent = Event.fromDetails(MockLoader.eventDetailsMock!)!
-    
-    enum TableViewState {
-        case loading
-        case error
-        case content
-    }
-
     enum AttendanceState {
         case notAttending
         case attending
@@ -36,12 +27,13 @@ final class EventsViewControllerViewModel {
     private enum Constants {
         // -24 * 60 * 60
         static let minimumTimeForReminder: TimeInterval = 10.0
+        static let eventsPerPage = 20
     }
     
     private let disposeBag = DisposeBag()
     
     var lastEventObservable: Observable<Event?>
-    var tableViewStateObservable: Observable<TableViewState>
+    var tableViewStateObservable: Observable<AppContentState>
     var attendanceStateObservable = Observable<AttendanceState>(.loading)
     var notificationStateObservable = Observable<NotificationState>(.notActive)
     var facebookAlertObservable = Observable<String?>(nil)
@@ -85,7 +77,7 @@ final class EventsViewControllerViewModel {
     
     init(events: [Event]?, delegate: EventsViewControllerDelegate?) {
         lastEventObservable = Observable<Event?>(events?.first)
-        tableViewStateObservable = Observable<TableViewState>(events?.isEmpty ?? true ? .error : .content)
+        tableViewStateObservable = Observable<AppContentState>(events?.isEmpty ?? true ? .error : .content)
         previousEventsObservable = Observable<[Event]?>(events?.tail)
         self.delegate = delegate
         
@@ -109,8 +101,7 @@ final class EventsViewControllerViewModel {
 
     private func setup() {
         eventsListRefreshObservable.subscribeNext { [weak self] in
-            // TODO: perPage
-            NetworkProvider.shared.eventsList(with: 1, perPage: 20) { [weak self] response in
+            NetworkProvider.shared.eventsList(with: 1, perPage: Constants.eventsPerPage) { [weak self] response in
                 guard case .success(let events) = response, let firstEventId = events.elements.first?.id else {
                     self?.eventsListRefreshObservable.complete()
                     return
