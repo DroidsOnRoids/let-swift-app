@@ -25,6 +25,10 @@ class CommonEventViewController: AppViewController {
     var allCells: [EventCellIdentifier] {
         return []
     }
+    
+    var refreshObservable: Observable<Void>? {
+        return nil
+    }
 
     lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
     
@@ -37,6 +41,7 @@ class CommonEventViewController: AppViewController {
     }
     
     @IBOutlet private weak var tableView: AppTableView!
+    private let sadFaceView = SadFaceView()
     
     var viewModel: EventsViewControllerViewModel!
     
@@ -57,27 +62,33 @@ class CommonEventViewController: AppViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.setFooterColor(.paleGrey)
-        
         tableView.setHeaderColor(.lightBlueGrey)
-        tableView.addPullToRefresh { [weak self] in
-            self?.viewModel.eventsListRefreshObservable.next()
-        }
         
-        viewModel.eventsListRefreshObservable.subscribeCompleted { [weak self] in
-            self?.tableView.finishPullToRefresh()
-        }
-        .add(to: disposeBag)
-        
-        viewModel.eventDetailsRefreshObservable.subscribeCompleted { [weak self] in
-            self?.tableView.finishPullToRefresh()
-        }
-        .add(to: disposeBag)
+        let inset = navigationController?.navigationBar.frame.maxY ?? 0.0
+        sadFaceView.scrollView?.contentInset = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
         
         allCells.forEach { cell in
             tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)
         }
         
+        setupPullToRefresh()
         reactiveSetup()
+    }
+    
+    private func setupPullToRefresh() {
+        tableView.addPullToRefresh { [weak self] in
+            self?.refreshObservable?.next()
+        }
+        
+        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
+            self?.refreshObservable?.next()
+        }
+        
+        refreshObservable?.subscribeCompleted { [weak self] in
+            self?.tableView.finishPullToRefresh()
+            self?.sadFaceView.scrollView?.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
     }
     
     private func reactiveSetup() {
@@ -97,7 +108,7 @@ class CommonEventViewController: AppViewController {
             case .content:
                 self?.tableView.overlayView = nil
             case .error:
-                self?.tableView.overlayView = self?.setupSadFaceView()
+                self?.tableView.overlayView = self?.sadFaceView
             case .loading:
                 self?.tableView.overlayView = SpinnerView()
             }
@@ -141,21 +152,6 @@ class CommonEventViewController: AppViewController {
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
         .add(to: disposeBag)
-    }
-    
-    private func setupSadFaceView() -> SadFaceView {
-        let sadFaceView = SadFaceView()
-        let inset = navigationController?.navigationBar.frame.maxY ?? 0.0
-        
-        sadFaceView.scrollView?.contentInset = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
-        sadFaceView.scrollView?.addPullToRefresh {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-                sadFaceView.scrollView?.finishPullToRefresh()
-                self?.viewModel.tableViewStateObservable.next(.content)
-            }
-        }
-        
-        return sadFaceView
     }
     
     func setup(attendCell cell: AttendButtonsRowCell) {

@@ -21,6 +21,10 @@ class EventsViewController: CommonEventViewController {
         return [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
     }
     
+    override var refreshObservable: Observable<Void>? {
+        return viewModel.eventsListRefreshObservable
+    }
+    
     override var viewControllerTitleKey: String? {
         return "EVENTS_TITLE"
     }

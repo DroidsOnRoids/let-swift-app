@@ -15,6 +15,10 @@ final class EventDetailsViewController: CommonEventViewController {
                 .speakerCardHeaderCell, .speakerCardCell, .speakerCardCell, .speakerCardCell]
     }
     
+    override var refreshObservable: Observable<Void>? {
+        return viewModel.eventDetailsRefreshObservable
+    }
+    
     override var viewControllerTitleKey: String? {
         return "EVENTS_DETAILS_TITLE"
     }
