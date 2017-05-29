@@ -20,10 +20,15 @@ class CommonEventViewController: AppViewController {
         case carouselEventPhotos = "CarouselEventPhotosCell"
         case speakerCardHeaderCell = "SpeakerCardHeaderCell"
         case speakerCardCell = "SpeakerCardCell"
+        case speakersToBeAnnouncedCell = "SpeakersToBeAnnouncedCell"
     }
 
     var allCells: [EventCellIdentifier] {
         return []
+    }
+    
+    var refreshObservable: Observable<Void>? {
+        return nil
     }
 
     lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
@@ -35,8 +40,9 @@ class CommonEventViewController: AppViewController {
     override var shouldHideShadow: Bool {
         return true
     }
-    
-    @IBOutlet private weak var tableView: UITableView!
+
+    @IBOutlet weak var tableView: AppTableView!
+    private let sadFaceView = SadFaceView()
     
     var viewModel: EventsViewControllerViewModel!
     
@@ -52,8 +58,41 @@ class CommonEventViewController: AppViewController {
         
         setup()
     }
+
+    private func setup() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60.0
+        tableView.setFooterColor(.paleGrey)
+        tableView.setHeaderColor(.lightBlueGrey)
+        
+        let inset = navigationController?.navigationBar.frame.maxY ?? 0.0
+        sadFaceView.scrollView?.contentInset = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
+        
+        allCells.forEach { cell in
+            tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)
+        }
+        
+        setupPullToRefresh()
+        reactiveSetup()
+    }
     
-    private func setupViewModel() {
+    private func setupPullToRefresh() {
+        tableView.addPullToRefresh { [weak self] in
+            self?.refreshObservable?.next()
+        }
+        
+        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
+            self?.refreshObservable?.next()
+        }
+        
+        refreshObservable?.subscribeCompleted { [weak self] in
+            self?.tableView.finishPullToRefresh()
+            self?.sadFaceView.scrollView?.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
+    }
+    
+    private func reactiveSetup() {
         viewModel.loginScreenObservable.subscribeNext { [weak self] in
             self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
         }
@@ -64,27 +103,56 @@ class CommonEventViewController: AppViewController {
             AlertHelper.showAlert(withTitle: localized("GENERAL_SOMETHING_WENT_WRONG"), message: error, on: weakSelf)
         }
         .add(to: disposeBag)
-    }
-    
-    private func setup() {
-        setupViewModel()
         
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 60.0
-        tableView.setFooterColor(.paleGrey)
-        
-        tableView.setHeaderColor(.lightBlueGrey)
-        tableView.addPullToRefresh { [weak self] in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self?.tableView.finishPullToRefresh()
+        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
+            switch state {
+            case .content:
+                self?.tableView.overlayView = nil
+            case .error:
+                self?.tableView.overlayView = self?.sadFaceView
+            case .loading:
+                self?.tableView.overlayView = SpinnerView()
             }
         }
+        .add(to: disposeBag)
         
-        allCells.forEach { cell in
-            tableView.register(UINib(nibName: cell.rawValue, bundle: nil), forCellReuseIdentifier: cell.rawValue)
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self,
+                let eventDate =  event?.date,
+                event?.photos.isEmpty ?? true,
+                eventDate.addingTimeInterval(20.0).isOutdated,
+                let index = weakSelf.bindableCells.values.index(of: .attend) else { return }
+            
+            weakSelf.bindableCells.remove(at: index)
         }
+        .add(to: disposeBag)
         
-        reactiveSetup()
+        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
+            cell.layoutMargins = UIEdgeInsets.zero
+            
+            self?.dispatchCellSetup(element: element, cell: cell, index: index)
+            
+            return cell
+        }))
+        
+        viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
+            guard let weakSelf = self, let event = event else { return }
+            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend), event.photos.isEmpty {
+                weakSelf.bindableCells.remove(at: index, updated: false)
+                weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+            }
+        }
+        .add(to: disposeBag)
+        
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
+            guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
+            
+            self?.dispatchCellSelect(element: cellType)
+            self?.tableView.deselectRow(at: indexPath, animated: true)
+        }
+        .add(to: disposeBag)
     }
     
     func setup(attendCell cell: AttendButtonsRowCell) {
@@ -131,34 +199,28 @@ class CommonEventViewController: AppViewController {
     
     func setup(summaryCell cell: EventSummaryCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
-            cell.eventTitle = event.title
+            cell.eventTitle = event?.title
         }
         .add(to: disposeBag)
     }
     
     func setup(locationCell cell: EventLocationCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
-            if let placeName = event.placeName {
-                cell.placeName = placeName
-            }
-            
-            if let placeStreet = event.placeStreet {
-                cell.placeLocation = placeStreet
-            }
+            cell.placeName = event?.placeName ?? ""
+            cell.placeLocation = event?.placeStreet ?? ""
         }
         .add(to: disposeBag)
     }
     
     func setup(timeCell cell: EventTimeCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self else { return }
-            cell.date = weakSelf.viewModel.formattedDate
-            cell.time = weakSelf.viewModel.formattedTime
+            cell.date = event?.date?.stringDateValue
+            cell.time = self?.viewModel.formattedTime
         }
         .add(to: disposeBag)
     }
     
-    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
+    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
         switch element {
         case .attend:
             self.setup(attendCell: cell as! AttendButtonsRowCell)
@@ -182,46 +244,5 @@ class CommonEventViewController: AppViewController {
             viewModel.locationCellDidTapObservable.next()
         default: break
         }
-    }
-    
-    private func reactiveSetup() {
-        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self,
-                  let eventDate =  event.date,
-                  event.photos.isEmpty,
-                  eventDate.addingTimeInterval(20.0).isOutdated,
-                  let index = weakSelf.bindableCells.values.index(of: .attend) else { return }
-
-            weakSelf.bindableCells.remove(at: index)
-        }
-        .add(to: disposeBag)
-
-        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
-            let indexPath = IndexPath(row: index, section: 0)
-            let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
-            cell.layoutMargins = UIEdgeInsets.zero
-            
-            self?.dispatchCellSetup(element: element, cell: cell)
-            
-            return cell
-        }))
-
-        viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self, let event = event else { return }
-            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend), event.photos.isEmpty {
-                weakSelf.bindableCells.remove(at: index, updated: false)
-                weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
-            }
-        }
-        .add(to: disposeBag)
-
-        tableView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
-            guard let cellType = self?.bindableCells.values[indexPath.row] else { return }
-            
-            self?.dispatchCellSelect(element: cellType)
-            
-            self?.tableView.deselectRow(at: indexPath, animated: true)
-        }
-        .add(to: disposeBag)
     }
 }

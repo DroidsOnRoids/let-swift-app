@@ -6,7 +6,7 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-enum NetworkReponse<Element> {
+enum NetworkResponse<Element> {
     case error(Error)
     case success(Element)
 }

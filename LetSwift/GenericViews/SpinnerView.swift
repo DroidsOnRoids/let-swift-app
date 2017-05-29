@@ -22,6 +22,7 @@ final class SpinnerView: UIView {
         animation.toValue = .pi * 2.0
         animation.repeatCount = .infinity
         animation.duration = Constants.animationDuration
+        animation.isRemovedOnCompletion = false
         
         return animation
     }()
@@ -36,17 +37,17 @@ final class SpinnerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         setup()
     }
     
     private func setup() {
+        backgroundColor = .white
+        
         spinnerImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(spinnerImageView)
         
@@ -58,5 +59,6 @@ final class SpinnerView: UIView {
     
     private func startAnimation() {
         spinnerImageView.layer.add(animation, forKey: Constants.animationKey)
+        
     }
 }

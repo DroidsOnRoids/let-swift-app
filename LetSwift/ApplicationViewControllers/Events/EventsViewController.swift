@@ -10,7 +10,7 @@ import UIKit
 
 protocol EventsViewControllerDelegate: LectureViewControllerDelegate {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
-    func presentEventDetailsScreen(fromModel: Event)
+    func presentEventDetailsScreen(fromEventId: Int)
     func presentLectureScreen()
     func presentPhotoGalleryScreen(with photos: [Photo])
 }
@@ -19,6 +19,10 @@ class EventsViewController: CommonEventViewController {
     
     override var allCells: [EventCellIdentifier] {
         return [.image, .attend, .eventSummary, .eventLocation, .eventTime, .previousEvents]
+    }
+    
+    override var refreshObservable: Observable<Void>? {
+        return viewModel.eventsListRefreshObservable
     }
     
     override var viewControllerTitleKey: String? {
@@ -40,8 +44,8 @@ class EventsViewController: CommonEventViewController {
         .add(to: disposeBag)
     }
 
-    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
-        super.dispatchCellSetup(element: element, cell: cell)
+    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
+        super.dispatchCellSetup(element: element, cell: cell, index: index)
         
         switch element {
         case .previousEvents:

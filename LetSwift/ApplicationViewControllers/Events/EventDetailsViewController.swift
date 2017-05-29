@@ -12,7 +12,11 @@ final class EventDetailsViewController: CommonEventViewController {
     
     override var allCells: [EventCellIdentifier] {
         return [.carouselEventPhotos, .attend, .eventSummary, .eventLocation, .eventTime,
-                .speakerCardHeaderCell, .speakerCardCell, .speakerCardCell, .speakerCardCell]
+                .speakerCardHeaderCell]
+    }
+    
+    override var refreshObservable: Observable<Void>? {
+        return viewModel.eventDetailsRefreshObservable
     }
     
     override var viewControllerTitleKey: String? {
@@ -24,9 +28,15 @@ final class EventDetailsViewController: CommonEventViewController {
     }
     
     private let disposeBag = DisposeBag()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setup()
+    }
     
-    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
-        super.dispatchCellSetup(element: element, cell: cell)
+    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
+        super.dispatchCellSetup(element: element, cell: cell, index: index)
 
         switch element {
         case .eventSummary:
@@ -36,10 +46,26 @@ final class EventDetailsViewController: CommonEventViewController {
             self.setup(carouselCell: cell as! CarouselEventPhotosCell)
         
         case .speakerCardCell:
-            self.setup(speakerCardCell: cell as! SpeakerCardCell)
+            self.setup(speakerCardCell: cell as! SpeakerCardCell, index: index)
 
         default: break
         }
+    }
+
+    private func setup() {
+        tableView.register(UINib(nibName: EventCellIdentifier.speakerCardCell.rawValue, bundle: nil), forCellReuseIdentifier: EventCellIdentifier.speakerCardCell.rawValue)
+        tableView.register(UINib(nibName: EventCellIdentifier.speakersToBeAnnouncedCell.rawValue, bundle: nil), forCellReuseIdentifier: EventCellIdentifier.speakersToBeAnnouncedCell.rawValue)
+
+        reactiveSetup()
+    }
+
+    private func reactiveSetup() {
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
+            guard let event = event else { return }
+            let speakersTalks = [EventCellIdentifier](repeating: .speakerCardCell, count: event.talks.count)
+            self?.bindableCells.append(speakersTalks.isEmpty ? [.speakersToBeAnnouncedCell] : speakersTalks)
+        }
+        .add(to: disposeBag)
     }
     
     private func setup(carouselCell cell: CarouselEventPhotosCell) {
@@ -51,7 +77,14 @@ final class EventDetailsViewController: CommonEventViewController {
         .add(to: disposeBag)
     }
     
-    private func setup(speakerCardCell cell: SpeakerCardCell) {
+    private func setup(speakerCardCell cell: SpeakerCardCell, index: Int) {
+        viewModel.lastEventObservable
+                .filter { !($0?.talks.isEmpty ?? true) }
+                .subscribeNext(startsWithInitialValue: true) { [weak self] event in
+                    print(event) //TODO: this will be filled in the LSI-108
+                }
+                .add(to: disposeBag)
+
         cell.addTapListeners(speaker: { [weak self] in
             self?.viewModel.speakerCellDidTapObservable.next()
         }, readMore: { [weak self] in

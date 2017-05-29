@@ -10,7 +10,6 @@ import UIKit
 import ESPullToRefresh
 
 extension UITableView {
-    // MARK: Reactive extensions
     func item<Cell: UITableViewCell, T, S: Sequence>(with identifier: String, cellType: Cell.Type = Cell.self)
         -> (@escaping (Int, T, Cell) -> ())
         -> (_ source: S)
@@ -81,16 +80,6 @@ extension UITableView {
         sendSubview(toBack: footerView)
     }
     
-    // MARK: Pull to refresh
-    func addPullToRefresh(callback: @escaping () -> ()) {
-        es_addPullToRefresh(animator: PullToRefreshAnimator(), handler: callback)
-    }
-    
-    func finishPullToRefresh() {
-        es_stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
-    }
-    
-    // MARK: Delays content touches fix
     override open var delaysContentTouches: Bool {
         didSet {
             changeChildDelaysContentTouches()

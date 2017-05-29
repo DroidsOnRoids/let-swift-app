@@ -10,7 +10,7 @@ import Mapper
 import Alamofire
 
 extension Result {
-    func responseArray<Element: Mappable>(for keyPath: String? = nil, completionHandler: (NetworkReponse<[Element]>) -> ()) {
+    func responseArray<Element: Mappable>(for keyPath: String? = nil, completionHandler: (NetworkResponse<[Element]>) -> ()) {
         switch self {
         case .success:
             var parsedObject: [Element]?
@@ -31,7 +31,7 @@ extension Result {
         }
     }
 
-    func responseObject<Element: Mappable>(for keyPath: String? = nil, completionHandler: (NetworkReponse<Element>) -> ()) {
+    func responseObject<Element: Mappable>(for keyPath: String? = nil, completionHandler: (NetworkResponse<Element>) -> ()) {
         switch self {
         case .success:
             var parsedObject: Element?
@@ -52,7 +52,7 @@ extension Result {
         }
     }
 
-    func responsePage<Element: Mappable>(for keyPath: String, completionHandler: (NetworkReponse<NetworkPage<Element>>) -> ()) {
+    func responsePage<Element: Mappable>(for keyPath: String, completionHandler: (NetworkResponse<NetworkPage<Element>>) -> ()) {
         switch self {
         case .success:
             guard let parsedArray: [Element] = parseArray(for: keyPath), let page: Page = parseObject() else {

@@ -21,9 +21,7 @@ final class EventsCoordinator: Coordinator, Startable {
     }
     
     func start() {
-        // TODO: When event is not available we should pass it anyway instead of mocking
-        let lastEvent = initialEventsList?.first ?? EventsViewControllerViewModel.mockedEvent
-        let viewModel = EventsViewControllerViewModel(lastEvent: lastEvent, delegate: self)
+        let viewModel = EventsViewControllerViewModel(events: initialEventsList, delegate: self)
         let viewController = EventsViewController(viewModel: viewModel)
         viewController.coordinatorDelegate = delegate
         
@@ -38,8 +36,8 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         navigationViewController.pushViewController(viewController, animated: true)
     }
     
-    func presentEventDetailsScreen(fromModel model: Event) {
-        let viewModel = EventsViewControllerViewModel(lastEvent: model, delegate: self)
+    func presentEventDetailsScreen(fromEventId eventId: Int) {
+        let viewModel = EventsViewControllerViewModel(eventId: eventId, delegate: self)
         let viewController = EventDetailsViewController(viewModel: viewModel)
         viewController.coordinatorDelegate = delegate
         

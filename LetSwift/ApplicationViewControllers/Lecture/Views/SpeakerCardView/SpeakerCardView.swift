@@ -11,7 +11,7 @@ import UIKit
 final class SpeakerCardView: DesignableView, Localizable {
     
     @IBOutlet private weak var speakerCellView: TappableView!
-    @IBOutlet private weak var speakerImageView: UIImageView!
+    @IBOutlet private weak var speakerImageView: NetworkImageView!
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerTitleLabel: UILabel!
     @IBOutlet private weak var lectureTitleLabel: UILabel!
@@ -21,12 +21,12 @@ final class SpeakerCardView: DesignableView, Localizable {
     @IBOutlet private weak var upperSeparatorConstraint: NSLayoutConstraint!
     @IBOutlet private weak var lowerSeparatorConstraint: NSLayoutConstraint!
     
-    var speakerImage: UIImage? {
+    var speakerImageURL: URL? {
         get {
-            return speakerImageView.image
+            return speakerImageView.imageURL
         }
         set {
-            speakerImageView.image = newValue
+            speakerImageView.imageURL = newValue
         }
     }
     
