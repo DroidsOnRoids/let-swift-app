@@ -20,7 +20,7 @@ struct Event: Mappable {
     let coverImages: [URL]
     let photos: [Photo]
     let placeCoordinates: CLLocationCoordinate2D?
-    let talks: [Talk]?
+    let talks: [Talk]
     
     init(map: Mapper) throws {
         try id = map.from("id")
@@ -32,7 +32,7 @@ struct Event: Mappable {
         coverImages = map.optionalFrom("cover_images") ?? []
         photos = map.optionalFrom("photos") ?? []
         placeCoordinates = map.optionalFrom("place_coordinates")
-        talks = map.optionalFrom("talks")
+        talks = map.optionalFrom("talks") ?? []
     }
 
     //MARK: this will be removed after NetworkingLayer - now this is needed for mocking event in EventsViewControllerViewModel.swift in line 15

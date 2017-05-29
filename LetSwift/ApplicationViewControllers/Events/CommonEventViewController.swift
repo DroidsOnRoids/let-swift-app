@@ -20,6 +20,7 @@ class CommonEventViewController: AppViewController {
         case carouselEventPhotos = "CarouselEventPhotosCell"
         case speakerCardHeaderCell = "SpeakerCardHeaderCell"
         case speakerCardCell = "SpeakerCardCell"
+        case speakersToBeAnnouncedCell = "SpeakersToBeAnnouncedCell"
     }
 
     var allCells: [EventCellIdentifier] {
@@ -39,8 +40,8 @@ class CommonEventViewController: AppViewController {
     override var shouldHideShadow: Bool {
         return true
     }
-    
-    @IBOutlet private weak var tableView: AppTableView!
+
+    @IBOutlet weak var tableView: AppTableView!
     private let sadFaceView = SadFaceView()
     
     var viewModel: EventsViewControllerViewModel!
@@ -131,7 +132,7 @@ class CommonEventViewController: AppViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
             cell.layoutMargins = UIEdgeInsets.zero
             
-            self?.dispatchCellSetup(element: element, cell: cell)
+            self?.dispatchCellSetup(element: element, cell: cell, index: index)
             
             return cell
         }))
@@ -219,7 +220,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
+    func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
         switch element {
         case .attend:
             self.setup(attendCell: cell as! AttendButtonsRowCell)

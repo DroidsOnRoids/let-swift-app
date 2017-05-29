@@ -44,8 +44,8 @@ class EventsViewController: CommonEventViewController {
         .add(to: disposeBag)
     }
 
-    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell) {
-        super.dispatchCellSetup(element: element, cell: cell)
+    override func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
+        super.dispatchCellSetup(element: element, cell: cell, index: index)
         
         switch element {
         case .previousEvents:
