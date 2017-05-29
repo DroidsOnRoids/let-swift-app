@@ -84,7 +84,18 @@ final class EventDetailsViewController: CommonEventViewController {
         viewModel.lastEventObservable
                 .filter { !($0?.talks.isEmpty ?? true) }
                 .subscribeNext(startsWithInitialValue: true) { [weak self] event in
-                    print(event) //TODO: this will be filled in the LSI-108
+                    guard let weakSelf = self, let event = event else { return }
+
+                    let speakerIndex = weakSelf.bindableCells.values.count - index
+
+                    guard event.talks.count >= speakerIndex else { return }
+
+                    let talk = event.talks[event.talks.count - speakerIndex]
+                    cell.card.lectureSummary = talk.description ?? ""
+                    cell.card.lectureTitle = talk.title
+                    cell.card.speakerName = talk.speaker?.name ?? ""
+                    cell.card.speakerTitle = talk.speaker?.job ?? ""
+                    cell.card.speakerImageURL = talk.speaker?.avatar?.thumbnail
                 }
                 .add(to: disposeBag)
 

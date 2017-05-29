@@ -71,7 +71,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="402-dn-UWl" customClass="TappableView" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="360" height="62"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="oBI-n7-rkr" customClass="NetworkImageView" customModule="LetSwift" customModuleProvider="target">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mask" translatesAutoresizingMaskIntoConstraints="NO" id="oBI-n7-rkr" customClass="NetworkImageView" customModule="LetSwift" customModuleProvider="target">
                             <rect key="frame" x="16" y="11" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="AWd-aT-iQ3"/>
@@ -152,7 +152,7 @@
     </objects>
     <resources>
         <image name="IndicatorLight" width="8" height="13"/>
-        <image name="PhotoMock" width="1920" height="1277"/>
         <image name="ReadMore" width="16" height="4"/>
+        <image name="mask" width="40" height="40"/>
     </resources>
 </document>
