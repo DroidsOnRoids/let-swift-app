@@ -63,6 +63,9 @@ final class EventDetailsViewController: CommonEventViewController {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
             guard let event = event else { return }
             let speakersTalks = [EventCellIdentifier](repeating: .speakerCardCell, count: event.talks.count)
+            self?.bindableCells.remove(updated: false) {
+                $0 == .speakersToBeAnnouncedCell || $0 == .speakerCardCell
+            }
             self?.bindableCells.append(speakersTalks.isEmpty ? [.speakersToBeAnnouncedCell] : speakersTalks)
         }
         .add(to: disposeBag)
