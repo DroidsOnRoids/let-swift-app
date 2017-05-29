@@ -31,6 +31,6 @@ final class SpeakersToBeAnnouncedCell: UITableViewCell {
 
 extension SpeakersToBeAnnouncedCell: Localizable {
     func setupLocalization() {
-        descriptionLabel.text = localized("EVENT_TO_BE_ANNOUNCED").uppercased()
+        descriptionLabel.text = localized("EVENTS_TO_BE_ANNOUNCED").uppercased()
     }
 }
