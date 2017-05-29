@@ -36,10 +36,12 @@ final class AppTableView: UITableView {
     private func hideOverlayView() {
         guard overlayView != nil, hideOverlayAnimated else { return }
         
+        let oldOverlayView = overlayView
+        
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
-            self.overlayView?.alpha = 0.0
+            oldOverlayView?.alpha = 0.0
         }, completion: { completed in
-            self.overlayView?.removeFromSuperview()
+            oldOverlayView?.removeFromSuperview()
         })
     }
 }
