@@ -31,6 +31,7 @@ final class EventsViewControllerViewModel {
     }
     
     private let disposeBag = DisposeBag()
+    private var eventDetailsId: Int?
     
     var lastEventObservable: Observable<Event?>
     var tableViewStateObservable: Observable<AppContentState>
@@ -86,6 +87,7 @@ final class EventsViewControllerViewModel {
     
     convenience init(eventId: Int, delegate: EventsViewControllerDelegate?) {
         self.init(events: nil, delegate: delegate)
+        eventDetailsId = eventId
         
         tableViewStateObservable.next(.loading)
         
@@ -121,9 +123,12 @@ final class EventsViewControllerViewModel {
         .add(to: disposeBag)
         
         eventDetailsRefreshObservable.subscribeNext { [weak self] in
-            guard let currentId = self?.lastEventObservable.value?.id else { return }
+            guard let eventDetailsId = self?.eventDetailsId else {
+                self?.eventDetailsRefreshObservable.complete()
+                return
+            }
             
-            NetworkProvider.shared.eventDetails(with: currentId) { response in
+            NetworkProvider.shared.eventDetails(with: eventDetailsId) { response in
                 if case .success(let event) = response {
                     self?.lastEventObservable.next(event)
                 }
