@@ -46,7 +46,7 @@ final class BindableArray<T> {
     }
 
     func remove(updated: Bool = true, where condition: (T) -> Bool) {
-        values = values.filter{ !condition($0) }
+        values = values.filter { !condition($0) }
         events.forEach { $0(values, updated) }
     }
 

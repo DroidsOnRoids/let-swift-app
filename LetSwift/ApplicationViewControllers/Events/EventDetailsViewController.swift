@@ -64,7 +64,7 @@ final class EventDetailsViewController: CommonEventViewController {
             guard let event = event else { return }
             let speakersTalks = [EventCellIdentifier](repeating: .speakerCardCell, count: event.talks.count)
             self?.bindableCells.remove(updated: false) {
-                $0 == .speakersToBeAnnouncedCell || $0 == .speakerCardCell
+                [.speakerCardCell, .speakersToBeAnnouncedCell].contains($0)
             }
             self?.bindableCells.append(speakersTalks.isEmpty ? [.speakersToBeAnnouncedCell] : speakersTalks)
         }
