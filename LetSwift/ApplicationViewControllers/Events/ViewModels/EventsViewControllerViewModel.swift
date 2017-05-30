@@ -25,7 +25,7 @@ final class EventsViewControllerViewModel {
     }
 
     private enum Constants {
-        static let minimumTimeForReminder: TimeInterval = 24 * 60 * 60
+        static let minimumTimeForReminder: TimeInterval = 24.0 * 60.0 * 60.0
         static let eventsPerPage = 20
     }
     
