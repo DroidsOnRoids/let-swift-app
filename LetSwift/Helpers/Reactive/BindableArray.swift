@@ -45,6 +45,11 @@ final class BindableArray<T> {
         events.forEach { $0(values, updated) }
     }
 
+    func remove(updated: Bool = true, where condition: (T) -> Bool) {
+        values = values.filter { !condition($0) }
+        events.forEach { $0(values, updated) }
+    }
+
     private func notify(event: ([T], Bool) -> ()) {
         values.enumerated().forEach { index, element in
             event(values, true)

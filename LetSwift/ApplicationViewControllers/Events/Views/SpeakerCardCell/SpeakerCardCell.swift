@@ -27,7 +27,15 @@ final class SpeakerCardCell: UITableViewCell {
         card.addSpeakerTapTarget(target: self, action: #selector(speakerDidTap))
         card.addReadMoreTapTarget(target: self, action: #selector(readMoreDidTap))
     }
-    
+
+    func loadData(with model: Talk) {
+        card.lectureSummary = model.description ?? ""
+        card.lectureTitle = model.title
+        card.speakerName = model.speaker?.name ?? ""
+        card.speakerTitle = model.speaker?.job ?? ""
+        card.speakerImageURL = model.speaker?.avatar?.thumbnail
+    }
+
     func addTapListeners(speaker: @escaping () -> Void, readMore: @escaping () -> Void) {
         speakerTapListener = speaker
         readMoreTapListener = readMore
