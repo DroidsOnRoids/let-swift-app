@@ -34,7 +34,13 @@ final class SpinnerView: UIView {
             }
         }
     }
-    
+
+    var image = #imageLiteral(resourceName: "Spinner") {
+        didSet {
+            spinnerImageView.image = image
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -44,7 +50,7 @@ final class SpinnerView: UIView {
         super.init(coder: aDecoder)
         setup()
     }
-    
+
     private func setup() {
         backgroundColor = .white
         
@@ -59,6 +65,5 @@ final class SpinnerView: UIView {
     
     private func startAnimation() {
         spinnerImageView.layer.add(animation, forKey: Constants.animationKey)
-        
     }
 }
