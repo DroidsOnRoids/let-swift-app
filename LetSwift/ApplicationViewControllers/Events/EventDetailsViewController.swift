@@ -91,11 +91,7 @@ final class EventDetailsViewController: CommonEventViewController {
                     guard event.talks.count >= speakerIndex else { return }
 
                     let talk = event.talks[event.talks.count - speakerIndex]
-                    cell.card.lectureSummary = talk.description ?? ""
-                    cell.card.lectureTitle = talk.title
-                    cell.card.speakerName = talk.speaker?.name ?? ""
-                    cell.card.speakerTitle = talk.speaker?.job ?? ""
-                    cell.card.speakerImageURL = talk.speaker?.avatar?.thumbnail
+                    cell.set(with: talk)
                 }
                 .add(to: disposeBag)
 
