@@ -25,8 +25,7 @@ final class EventsViewControllerViewModel {
     }
 
     private enum Constants {
-        // -24 * 60 * 60
-        static let minimumTimeForReminder: TimeInterval = 10.0
+        static let minimumTimeForReminder: TimeInterval = 24 * 60 * 60
         static let eventsPerPage = 20
     }
     
@@ -73,7 +72,7 @@ final class EventsViewControllerViewModel {
 
     var isEventOutdated: Bool {
         guard let date = lastEventObservable.value?.date else { return false }
-        return date.addingTimeInterval(Constants.minimumTimeForReminder * 2).isOutdated
+        return date.isOutdated
     }
     
     init(events: [Event]?, delegate: EventsViewControllerDelegate?) {
@@ -144,7 +143,7 @@ final class EventsViewControllerViewModel {
             weakSelf.tableViewStateObservable.next(event == nil ? .error : .content)
             
             weakSelf.checkAttendance()
-            weakSelf.notificationManager = NotificationManager(date: event?.date?.addingTimeInterval(Constants.minimumTimeForReminder))
+            weakSelf.notificationManager = NotificationManager(date: event?.date?.addingTimeInterval(-Constants.minimumTimeForReminder))
             
             if weakSelf.isReminderAllowed {
                 weakSelf.notificationStateObservable.next(weakSelf.notificationManager.isNotificationActive ? .active : .notActive)
@@ -196,7 +195,7 @@ final class EventsViewControllerViewModel {
             .notification(Notification.Name.UIApplicationWillEnterForeground)
             .subscribeNext { [weak self] _ in
                 guard let weakSelf = self else { return }
-                if weakSelf.isReminderAllowed {
+                if !weakSelf.isReminderAllowed {
                     weakSelf.notificationStateObservable.next(.notVisible)
                 }
             }
@@ -205,14 +204,13 @@ final class EventsViewControllerViewModel {
         guard let time = lastEventObservable
                             .value?
                             .date?
-                            .addingTimeInterval(Constants.minimumTimeForReminder)
+                            .addingTimeInterval(-Constants.minimumTimeForReminder)
                             .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventReminderTimeFinished), userInfo: nil, repeats: false)
 
         guard let eventLeftTime = lastEventObservable
                                     .value?
                                     .date?
-                                    .addingTimeInterval(Constants.minimumTimeForReminder * 2)
                                     .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: eventLeftTime, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
 
