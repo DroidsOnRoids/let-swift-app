@@ -28,7 +28,7 @@ final class SpeakerCardCell: UITableViewCell {
         card.addReadMoreTapTarget(target: self, action: #selector(readMoreDidTap))
     }
 
-    func set(with model: Talk) {
+    func loadData(with model: Talk) {
         card.lectureSummary = model.description ?? ""
         card.lectureTitle = model.title
         card.speakerName = model.speaker?.name ?? ""
