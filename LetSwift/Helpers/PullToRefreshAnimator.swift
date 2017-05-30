@@ -17,11 +17,11 @@ final class PullToRefreshAnimator: UIView, ESRefreshAnimatorProtocol {
     var executeIncremental: CGFloat = 55.0
     var state: ESRefreshViewState = .pullToRefresh
     
-    let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .white)
-    
+    let spinnerView = SpinnerView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         setup()
     }
     
@@ -30,16 +30,17 @@ final class PullToRefreshAnimator: UIView, ESRefreshAnimatorProtocol {
     }
     
     private func setup() {
-        indicatorView.isHidden = false
-        indicatorView.startAnimating()
-        
-        addSubview(indicatorView)
+        spinnerView.frame.size = CGSize(width: 19, height: 19)
+        spinnerView.image = #imageLiteral(resourceName: "WhiteSpinner")
+        spinnerView.backgroundColor = .clear
+
+        addSubview(spinnerView)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        indicatorView.center = center
+        spinnerView.center = center
     }
 }
 
