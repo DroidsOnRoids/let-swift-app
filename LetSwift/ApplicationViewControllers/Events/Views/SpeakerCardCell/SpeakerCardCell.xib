@@ -19,9 +19,6 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDE-i4-LJl" customClass="SpeakerCardView" customModule="LetSwift" customModuleProvider="target">
                         <rect key="frame" x="8" y="0.0" width="359" height="260.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" priority="999" constant="260" id="JMp-Hd-Lpy"/>
-                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
