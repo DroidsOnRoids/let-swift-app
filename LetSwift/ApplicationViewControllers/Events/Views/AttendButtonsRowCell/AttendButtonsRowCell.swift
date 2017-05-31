@@ -29,6 +29,8 @@ final class AttendButtonsRowCell: UITableViewCell {
     
     var isRightButtonVisible = true {
         didSet {
+            guard isRightButtonVisible != oldValue else { return }
+            
             if isRightButtonVisible {
                 currentEventConstraint.priority = Constants.highPriorityContraint
                 pastEventConstraint.priority = Constants.lowPriorityConstraint
