@@ -67,7 +67,10 @@ final class EventDetailsViewController: CommonEventViewController {
                 [.speakerCardCell, .speakersToBeAnnouncedCell].contains($0)
             }
             self?.bindableCells.append(speakersTalks.isEmpty ? [.speakersToBeAnnouncedCell] : speakersTalks)
-            self?.tableView.layoutIfNeeded()
+            
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
         }
         .add(to: disposeBag)
     }
