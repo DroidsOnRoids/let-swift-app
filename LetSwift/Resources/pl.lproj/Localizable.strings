@@ -1,6 +1,6 @@
 "GENERAL_SOMETHING_WENT_WRONG" = "Coś poszło nie tak";
-"GENERAL_NOTIFICATION_WHERE" = "Widzimy się jutro w";
-"GENERAL_NOTIFICATION_ON" = "o";
+"GENERAL_NOTIFICATION_WHERE" = "Widzimy się jutro o";
+"GENERAL_NOTIFICATION_ON" = "podczas";
 "GENERAL_LOGOUT" = "Wyloguj";
 "GENERAL_PULL_TO_REFRESH" = "Pociągnij, aby odświeżyć";
 "ONBOARDING_CONTINUE" = "Kontynuuj";
