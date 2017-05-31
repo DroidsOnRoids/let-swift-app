@@ -14,10 +14,6 @@ protocol SplashViewControllerDelegate: class {
 
 final class SplashViewController: UIViewController {
     
-    override var nibName: String? {
-        return "LaunchScreen"
-    }
-    
     private var viewModel: SplashViewControllerViewModel!
     
     convenience init(viewModel: SplashViewControllerViewModel) {

@@ -66,7 +66,6 @@
 		D335211D1ECEE762000666D4 /* event_details.json in Resources */ = {isa = PBXBuildFile; fileRef = D335211C1ECEE762000666D4 /* event_details.json */; };
 		D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D335211E1ECEE78A000666D4 /* MockLoader.swift */; };
 		D3381F3F1EBC8DAC00453EB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */; };
-		D3381F471EBC8F4800453EB9 /* SplashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D3381F461EBC8F4800453EB9 /* SplashImage.png */; };
 		D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CBB81EA8BA44000E9585 /* FacebookManager.swift */; };
 		D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33C4A281E9CD6320052E793 /* Localizable.swift */; };
 		D33EFB8D1ED2F88A001DA18C /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33EFB8C1ED2F88A001DA18C /* ObservableTests.swift */; };
@@ -79,6 +78,8 @@
 		D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07311EA9EA2700A74B9F /* ContactViewController.swift */; };
 		D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D33F07321EA9EA2700A74B9F /* ContactViewController.xib */; };
 		D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */; };
+		D341A18F1EDE91D10066E965 /* SplashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D341A18E1EDE91D10066E965 /* SplashImage.png */; };
+		D341A1911EDE936F0066E965 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D341A1901EDE936F0066E965 /* SplashViewController.xib */; };
 		D3476AC11ED6D3A800AC7D87 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3476AC01ED6D3A800AC7D87 /* NetworkImageView.swift */; };
 		D34B850C1EB3214900DBC72D /* PreviousEventsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */; };
 		D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */; };
@@ -221,7 +222,6 @@
 		D335211C1ECEE762000666D4 /* event_details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event_details.json; sourceTree = "<group>"; };
 		D335211E1ECEE78A000666D4 /* MockLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLoader.swift; sourceTree = "<group>"; };
 		D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		D3381F461EBC8F4800453EB9 /* SplashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashImage.png; sourceTree = "<group>"; };
 		D338CBB81EA8BA44000E9585 /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookManager.swift; sourceTree = "<group>"; };
 		D33C4A281E9CD6320052E793 /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		D33EFB8C1ED2F88A001DA18C /* ObservableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
@@ -234,6 +234,8 @@
 		D33F07311EA9EA2700A74B9F /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		D33F07321EA9EA2700A74B9F /* ContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactViewController.xib; sourceTree = "<group>"; };
 		D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		D341A18E1EDE91D10066E965 /* SplashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashImage.png; sourceTree = "<group>"; };
+		D341A1901EDE936F0066E965 /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		D3476AC01ED6D3A800AC7D87 /* NetworkImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
 		D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListCell.swift; sourceTree = "<group>"; };
 		D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventsListCell.xib; sourceTree = "<group>"; };
@@ -613,7 +615,7 @@
 			children = (
 				D32A76C51E9B9A4600388222 /* Scripts */,
 				D32A76C21E9B9A4600388222 /* Localizable.strings */,
-				D3381F461EBC8F4800453EB9 /* SplashImage.png */,
+				D341A18E1EDE91D10066E965 /* SplashImage.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -859,6 +861,7 @@
 			children = (
 				D3E0ADA41ED563D600270F0E /* ViewModels */,
 				D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */,
+				D341A1901EDE936F0066E965 /* SplashViewController.xib */,
 			);
 			path = SplashScreen;
 			sourceTree = "<group>";
@@ -1003,6 +1006,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D341A18F1EDE91D10066E965 /* SplashImage.png in Resources */,
 				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
 				D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */,
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
@@ -1015,7 +1019,7 @@
 				7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */,
 				D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
-				D3381F471EBC8F4800453EB9 /* SplashImage.png in Resources */,
+				D341A1911EDE936F0066E965 /* SplashViewController.xib in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
 				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
