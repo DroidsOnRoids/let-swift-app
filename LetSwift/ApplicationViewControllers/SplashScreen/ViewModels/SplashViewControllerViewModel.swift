@@ -15,10 +15,6 @@ final class SplashViewControllerViewModel {
     
     private let disposeBag = DisposeBag()
     
-    private enum Constants {
-        static let eventsPerPage = 20
-    }
-    
     init(delegate: SplashViewControllerDelegate?) {
         self.delegate = delegate
         
@@ -33,7 +29,7 @@ final class SplashViewControllerViewModel {
     }
     
     private func downloadEventsList() {
-        NetworkProvider.shared.eventsList(with: 1, perPage: Constants.eventsPerPage) { [weak self] response in
+        NetworkProvider.shared.eventsList(with: 1) { [weak self] response in
             switch response {
             case let .success(event):
                 self?.downloadEvent(eventsList: event.elements)

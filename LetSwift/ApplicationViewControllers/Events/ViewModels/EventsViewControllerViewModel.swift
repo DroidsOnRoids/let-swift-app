@@ -26,7 +26,6 @@ final class EventsViewControllerViewModel {
 
     private enum Constants {
         static let minimumTimeForReminder: TimeInterval = 24.0 * 60.0 * 60.0
-        static let eventsPerPage = 20
     }
     
     private let disposeBag = DisposeBag()
@@ -102,7 +101,7 @@ final class EventsViewControllerViewModel {
 
     private func setup() {
         eventsListRefreshObservable.subscribeNext { [weak self] in
-            NetworkProvider.shared.eventsList(with: 1, perPage: Constants.eventsPerPage) { [weak self] response in
+            NetworkProvider.shared.eventsList(with: 1) { [weak self] response in
                 guard case .success(let events) = response, let firstEventId = events.elements.first?.id else {
                     self?.eventsListRefreshObservable.complete()
                     return
