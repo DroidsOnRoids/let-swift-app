@@ -88,6 +88,8 @@ class CommonEventViewController: AppViewController {
         refreshObservable?.subscribeCompleted { [weak self] in
             self?.tableView.finishPullToRefresh()
             self?.sadFaceView.scrollView?.finishPullToRefresh()
+
+            self?.tableView.reloadData()
         }
         .add(to: disposeBag)
     }
