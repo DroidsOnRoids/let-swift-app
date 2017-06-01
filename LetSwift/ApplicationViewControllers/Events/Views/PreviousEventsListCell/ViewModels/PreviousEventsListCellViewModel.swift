@@ -43,11 +43,13 @@ final class PreviousEventsListCellViewModel {
     }
 
     private func getNextEventsPage() {
-        NetworkProvider.shared.eventsList(with: currentPage) { [weak self] response in
+        NetworkProvider.shared.eventsList(with: currentPage + 1) { [weak self] response in
             let currentEvents = (self?.previousEventsObservable.value)?.flatMap { $0 } ?? []
 
             guard case .success(let events) = response else {
-                self?.previousEventsObservable.next(currentEvents)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) { [weak self] in
+                    self?.previousEventsObservable.next(currentEvents)
+                }
                 return
             }
 

@@ -43,15 +43,6 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
     }
 
     private func reactiveSetup() {
-//        viewModel.previousEventsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] events in
-//            guard let collectionView = self?.eventsCollectionView else { return }
-//            events?.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) ({ index, element, cell in
-//                cell.title = element.title
-//                cell.date = element.date?.stringDateValue
-//            }))
-//        }
-//        .add(to: disposeBag)
-
         viewModel.previousEventsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] events in
             guard let collectionView = self?.eventsCollectionView else { return }
             events?.bindable.bind(to: collectionView.items() ({ collectionView, index, element in
@@ -64,6 +55,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
                     return cell
                 } else {
+                    
                     return collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCollectionViewCell.cellIdentifier, for: indexPath) as! LoadingCollectionViewCell
                 }
             }))
