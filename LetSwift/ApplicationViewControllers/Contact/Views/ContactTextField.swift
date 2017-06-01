@@ -8,7 +8,14 @@
 
 import UIKit
 
-final class AppTextField: UITextField {
+final class ContactTextField: UITextField {
+    
+    weak var associatedErrorView: UIView?
+    var fieldState = ContactFieldState.normal {
+        didSet {
+            setupFieldState()
+        }
+    }
     
     @IBInspectable var inset: CGFloat = 0.0
     
@@ -44,7 +51,13 @@ final class AppTextField: UITextField {
 
     private func setup() {
         delegate = self
+        setupFieldState()
         setupPlaceholder()
+    }
+    
+    private func setupFieldState() {
+        layer.borderColor = fieldState.borderColor.cgColor
+        associatedErrorView?.isHidden = fieldState != .error
     }
     
     private func setupPlaceholder() {
@@ -57,7 +70,7 @@ final class AppTextField: UITextField {
     }
 }
 
-extension AppTextField: UITextFieldDelegate {
+extension ContactTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
         if let nextResponder = textField.superview?.viewWithTag(nextTag) {
@@ -67,5 +80,13 @@ extension AppTextField: UITextFieldDelegate {
         }
         
         return false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        fieldState = .editing
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        fieldState = .normal
     }
 }

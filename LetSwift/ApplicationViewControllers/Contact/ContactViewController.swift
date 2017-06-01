@@ -11,10 +11,15 @@ import UIKit
 final class ContactViewController: AppViewController {
     
     @IBOutlet fileprivate weak var topicButton: UIButton!
-    @IBOutlet fileprivate weak var nameTextField: AppTextField!
-    @IBOutlet fileprivate weak var emailTextField: AppTextField!
-    @IBOutlet fileprivate weak var messageTextView: UITextView!
+    @IBOutlet fileprivate weak var nameTextField: ContactTextField!
+    @IBOutlet fileprivate weak var emailTextField: ContactTextField!
+    @IBOutlet fileprivate weak var messageTextView: ContactTextView!
     @IBOutlet fileprivate weak var sendButton: AppShadowButton!
+    
+    @IBOutlet fileprivate weak var topicErrorLabel: UILabel!
+    @IBOutlet fileprivate weak var nameErrorLabel: UILabel!
+    @IBOutlet fileprivate weak var emailErrorLabel: UILabel!
+    @IBOutlet fileprivate weak var messageErrorLabel: UILabel!
     
     override var viewControllerTitleKey: String? {
         return "CONTACT_TITLE"
@@ -45,14 +50,10 @@ final class ContactViewController: AppViewController {
     }
     
     private func setupViews() {
-        let borderColor = UIColor.lightBlueGrey.cgColor
-        
-        topicButton.layer.borderColor = borderColor
-        nameTextField.layer.borderColor = borderColor
-        emailTextField.layer.borderColor = borderColor
-        
-        messageTextView.delegate = self
-        messageTextView.layer.borderColor = borderColor
+        topicButton.layer.borderColor = UIColor.lightBlueGrey.cgColor
+        nameTextField.associatedErrorView = nameErrorLabel
+        emailTextField.associatedErrorView = emailErrorLabel
+        messageTextView.associatedErrorView = messageErrorLabel
         messageTextView.textContainerInset = UIEdgeInsets(top: 16.0, left: 12.0, bottom: 16.0, right: 12.0)
     }
     
@@ -70,20 +71,10 @@ extension ContactViewController: Localizable {
         emailTextField.placeholder = localized("CONTACT_EMAIL")
         messagePlaceholder = localized("CONTACT_MESSAGE")
         sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
-    }
-}
-
-// TODO: Replace this with something better
-extension ContactViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == messagePlaceholder {
-            textView.text = ""
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text == "" {
-            textView.text = messagePlaceholder
-        }
+        
+        topicErrorLabel.text = localized("CONTACT_TOPIC_ERROR")
+        nameErrorLabel.text = localized("CONTACT_NAME_ERROR")
+        emailErrorLabel.text = localized("CONTACT_EMAIL_ERROR")
+        messageErrorLabel.text = localized("CONTACT_MESSAGE_ERROR")
     }
 }
