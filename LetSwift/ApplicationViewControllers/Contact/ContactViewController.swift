@@ -31,8 +31,6 @@ final class ContactViewController: AppViewController {
     
     private var viewModel: ContactViewControllerViewModel!
     
-    fileprivate var messagePlaceholder: String!
-
     convenience init(viewModel: ContactViewControllerViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -54,7 +52,6 @@ final class ContactViewController: AppViewController {
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
-        messageTextView.textContainerInset = UIEdgeInsets(top: 16.0, left: 12.0, bottom: 16.0, right: 12.0)
     }
     
     private func setupTouchToDismiss() {
@@ -69,7 +66,7 @@ extension ContactViewController: Localizable {
         topicButton.setTitle(localized("CONTACT_TOPIC"), for: [])
         nameTextField.placeholder = localized("CONTACT_NAME")
         emailTextField.placeholder = localized("CONTACT_EMAIL")
-        messagePlaceholder = localized("CONTACT_MESSAGE")
+        messageTextView.placeholder = localized("CONTACT_MESSAGE")
         sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
         
         topicErrorLabel.text = localized("CONTACT_TOPIC_ERROR")
