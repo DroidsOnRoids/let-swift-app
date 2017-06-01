@@ -39,7 +39,6 @@
 		7EA48D531EADD53D00CEC845 /* StaticImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */; };
 		7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */; };
 		7EA48D561EADDD5500CEC845 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D551EADDD5500CEC845 /* Event.swift */; };
-		7ED1ABFA1EDED00400276F93 /* UITableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF91EDED00400276F93 /* UITableViewCellExtension.swift */; };
 		7EE1410D1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1410C1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift */; };
 		7EE1410F1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1410E1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift */; };
 		7EE141111EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE141101EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift */; };
@@ -194,7 +193,6 @@
 		7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageCell.swift; sourceTree = "<group>"; };
 		7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticImageCell.xib; sourceTree = "<group>"; };
 		7EA48D551EADDD5500CEC845 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		7ED1ABF91EDED00400276F93 /* UITableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtension.swift; sourceTree = "<group>"; };
 		7EE1410C1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListCellViewModel.swift; sourceTree = "<group>"; };
 		7EE1410E1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		7EE141101EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -907,7 +905,6 @@
 				7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */,
 				7EF34FEA1ED3305200517683 /* ResponseExtension.swift */,
 				D3F3D97C1ED9E55600106197 /* UIScrollViewExtension.swift */,
-				7ED1ABF91EDED00400276F93 /* UITableViewCellExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1223,7 +1220,6 @@
 				D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 				D3AE28921ECD9F8000F29702 /* DisposingObject.swift in Sources */,
-				7ED1ABFA1EDED00400276F93 /* UITableViewCellExtension.swift in Sources */,
 				D3FF3F8E1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift in Sources */,
 				7E02FE6E1EBB23EA005DADCB /* BindableArray.swift in Sources */,
 			);
