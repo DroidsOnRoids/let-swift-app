@@ -10,7 +10,7 @@ import UIKit
 
 final class ContactCoordinator: Coordinator, Startable {
 
-    fileprivate let delegate: AppCoordinatorDelegate
+    fileprivate weak var delegate: AppCoordinatorDelegate?
 
     init(navigationController: UINavigationController, delegate: AppCoordinatorDelegate) {
         self.delegate = delegate
@@ -19,8 +19,7 @@ final class ContactCoordinator: Coordinator, Startable {
     }
     
     func start() {
-        let viewModel = ContactViewControllerViewModel()
-        let controller = ContactViewController(viewModel: viewModel)
+        let controller = ContactViewController(viewModel: ContactViewControllerViewModel())
         controller.coordinatorDelegate = delegate
 
         navigationViewController.viewControllers = [controller]

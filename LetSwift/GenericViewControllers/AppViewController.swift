@@ -10,7 +10,7 @@ import UIKit
 
 class AppViewController: UIViewController {
     
-    var coordinatorDelegate: AppCoordinatorDelegate?
+    weak var coordinatorDelegate: AppCoordinatorDelegate?
     
     var viewControllerTitleKey: String? {
         return nil
