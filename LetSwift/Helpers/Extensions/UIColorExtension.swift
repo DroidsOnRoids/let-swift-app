@@ -33,8 +33,4 @@ extension UIColor {
     static var bluishGrey: UIColor {
         return #colorLiteral(red: 0.5176470588, green: 0.5607843137, blue: 0.6196078431, alpha: 1)
     }
-    
-    static var tomato: UIColor {
-        return #colorLiteral(red: 0.9411764706, green: 0.2941176471, blue: 0.2823529412, alpha: 1)
-    }
 }
