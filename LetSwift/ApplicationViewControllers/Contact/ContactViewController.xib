@@ -13,6 +13,7 @@
                 <outlet property="emailTextField" destination="fLg-fE-INz" id="TRa-Ke-tGk"/>
                 <outlet property="messageTextView" destination="jR9-Zv-sXB" id="ZdE-Dg-cFe"/>
                 <outlet property="nameTextField" destination="Xdw-xs-8rG" id="QoI-bU-Qbs"/>
+                <outlet property="sendButton" destination="KRF-5G-dIH" id="Uue-TQ-dlG"/>
                 <outlet property="topicButton" destination="gaQ-hQ-e6f" id="ifH-I8-Dzk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,14 +23,14 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xdw-xs-8rG" customClass="AppTextField" customModule="LetSwift" customModuleProvider="target">
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xdw-xs-8rG" customClass="AppTextField" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="16" y="162" width="163.5" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Mrv-Mk-CGt"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inset">
                             <real key="value" value="16"/>
@@ -45,14 +46,14 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-fE-INz" customClass="AppTextField" customModule="LetSwift" customModuleProvider="target">
+                <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-fE-INz" customClass="AppTextField" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="195.5" y="162" width="163.5" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="P0f-rM-498"/>
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inset">
                             <real key="value" value="16"/>
@@ -102,7 +103,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-Zv-sXB">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-Zv-sXB">
                     <rect key="frame" x="16" y="244" width="343" height="170"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -120,10 +121,18 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IndicatorLight" translatesAutoresizingMaskIntoConstraints="NO" id="okF-zF-D5w">
+                    <rect key="frame" x="335" y="99" width="8" height="13"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="8" id="28S-aw-7dw"/>
+                        <constraint firstAttribute="height" constant="13" id="CrX-Q1-cUf"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="gaQ-hQ-e6f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="0xI-xb-vhI"/>
+                <constraint firstItem="okF-zF-D5w" firstAttribute="trailing" secondItem="gaQ-hQ-e6f" secondAttribute="trailing" constant="-16" id="1e1-9F-TgN"/>
                 <constraint firstItem="jR9-Zv-sXB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="340-xK-o6z"/>
                 <constraint firstItem="Xdw-xs-8rG" firstAttribute="top" secondItem="gaQ-hQ-e6f" secondAttribute="bottom" constant="32" id="5I8-8I-hXV"/>
                 <constraint firstItem="fLg-fE-INz" firstAttribute="top" secondItem="Xdw-xs-8rG" secondAttribute="top" id="5Jv-4c-Jkm"/>
@@ -133,6 +142,7 @@
                 <constraint firstItem="jR9-Zv-sXB" firstAttribute="top" secondItem="Xdw-xs-8rG" secondAttribute="bottom" constant="32" id="VvZ-cg-aYQ"/>
                 <constraint firstAttribute="trailing" secondItem="fLg-fE-INz" secondAttribute="trailing" constant="16" id="WUv-ZC-2Tp"/>
                 <constraint firstItem="Xdw-xs-8rG" firstAttribute="width" secondItem="fLg-fE-INz" secondAttribute="width" id="bnz-09-Sah"/>
+                <constraint firstItem="okF-zF-D5w" firstAttribute="centerY" secondItem="gaQ-hQ-e6f" secondAttribute="centerY" id="fc8-mB-LwL"/>
                 <constraint firstItem="Xdw-xs-8rG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="g2v-WN-5O3"/>
                 <constraint firstItem="KRF-5G-dIH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="qfP-ve-B6m"/>
                 <constraint firstAttribute="trailing" secondItem="KRF-5G-dIH" secondAttribute="trailing" constant="16" id="rur-p3-v9Q"/>
@@ -142,4 +152,7 @@
             <point key="canvasLocation" x="33.5" y="79.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="IndicatorLight" width="8" height="13"/>
+    </resources>
 </document>
