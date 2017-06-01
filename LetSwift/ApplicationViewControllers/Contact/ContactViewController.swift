@@ -10,6 +10,8 @@ import UIKit
 
 final class ContactViewController: AppViewController {
     
+    @IBOutlet private weak var containerView: UIView!
+    
     @IBOutlet fileprivate weak var topicButton: UIButton!
     @IBOutlet fileprivate weak var nameTextField: ContactTextField!
     @IBOutlet fileprivate weak var emailTextField: ContactTextField!
