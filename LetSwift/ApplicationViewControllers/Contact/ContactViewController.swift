@@ -16,6 +16,11 @@ final class ContactViewController: AppViewController {
     @IBOutlet fileprivate weak var messageTextView: UITextView!
     @IBOutlet fileprivate weak var sendButton: AppShadowButton!
     
+    @IBOutlet fileprivate weak var chooseTheTopicError: UILabel!
+    @IBOutlet fileprivate weak var enterYourNameError: UILabel!
+    @IBOutlet fileprivate weak var enterYourEmailError: UILabel!
+    @IBOutlet fileprivate weak var enterTheMessageError: UILabel!
+    
     override var viewControllerTitleKey: String? {
         return "CONTACT_TITLE"
     }
@@ -27,6 +32,12 @@ final class ContactViewController: AppViewController {
     private var viewModel: ContactViewControllerViewModel!
     
     fileprivate var messagePlaceholder: String!
+    fileprivate lazy var errorParagraphStyle: NSParagraphStyle = {
+        let style = NSMutableParagraphStyle()
+        style.firstLineHeadIndent = 8.0
+        
+        return style
+    }()
 
     convenience init(viewModel: ContactViewControllerViewModel) {
         self.init()
@@ -48,7 +59,11 @@ final class ContactViewController: AppViewController {
         let borderColor = UIColor.lightBlueGrey.cgColor
         
         topicButton.layer.borderColor = borderColor
+        
+        nameTextField.delegate = self
         nameTextField.layer.borderColor = borderColor
+        
+        emailTextField.delegate = self
         emailTextField.layer.borderColor = borderColor
         
         messageTextView.delegate = self
@@ -64,12 +79,36 @@ final class ContactViewController: AppViewController {
 }
 
 extension ContactViewController: Localizable {
+    private func setErrorLabelTranslation(_ label: UILabel, key: String) {
+        label.attributedText = localized(key).attributed(
+            withAttributes: [NSParagraphStyleAttributeName: errorParagraphStyle])
+    }
+    
     func setupLocalization() {
         topicButton.setTitle(localized("CONTACT_TOPIC"), for: [])
         nameTextField.placeholder = localized("CONTACT_NAME")
         emailTextField.placeholder = localized("CONTACT_EMAIL")
         messagePlaceholder = localized("CONTACT_MESSAGE")
         sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
+        
+        setErrorLabelTranslation(chooseTheTopicError, key: "CONTACT_TOPIC_ERROR")
+        setErrorLabelTranslation(enterYourNameError, key: "CONTACT_NAME_ERROR")
+        setErrorLabelTranslation(enterYourEmailError, key: "CONTACT_EMAIL_ERROR")
+        setErrorLabelTranslation(enterTheMessageError, key: "CONTACT_MESSAGE_ERROR")
+    }
+}
+
+extension ContactViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        
+        if let nextResponder = view.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return false
     }
 }
 
