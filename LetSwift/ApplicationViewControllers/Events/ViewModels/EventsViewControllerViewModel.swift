@@ -43,7 +43,7 @@ final class EventsViewControllerViewModel {
     var eventsListRefreshObservable = Observable<Void>()
     var previousEventsCellDidSetObservable = Observable<Void>()
     var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
-    var previousEventsObservable = Observable<[Event]?>(nil)
+    var previousEventsObservable = Observable<[Event?]?>(nil)
     
     var eventDetailsRefreshObservable = Observable<Void>()
     var carouselCellDidSetObservable = Observable<Void>()
@@ -77,7 +77,7 @@ final class EventsViewControllerViewModel {
     init(events: [Event]?, delegate: EventsViewControllerDelegate?) {
         lastEventObservable = Observable<Event?>(events?.first)
         tableViewStateObservable = Observable<AppContentState>(events?.isEmpty ?? true ? .error : .content)
-        previousEventsObservable = Observable<[Event]?>(events?.tail)
+        previousEventsObservable = Observable<[Event?]?>(events?.tail)
         self.delegate = delegate
         
         setup()

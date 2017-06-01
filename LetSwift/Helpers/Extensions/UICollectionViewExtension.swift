@@ -56,4 +56,8 @@ extension UICollectionView {
     var itemDidSelectObservable: ObservableEvent<IndexPath> {
         return ObservableEvent(event: delegateProxy.itemDidSelectObservable)
     }
+
+    var scrollViewDidScrollObservable: ObservableEvent<UIScrollView?> {
+        return ObservableEvent(event: delegateProxy.scrollViewDidScrollObservable)
+    }
 }

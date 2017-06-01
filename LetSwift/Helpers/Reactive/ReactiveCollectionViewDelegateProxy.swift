@@ -10,7 +10,8 @@ import UIKit
 
 final class ReactiveCollectionViewDelegateProxy: NSObject, UICollectionViewDelegate {
 
-    var itemDidSelectObservable = Observable<IndexPath>(IndexPath(row: 0, section: 0))
+    lazy var itemDidSelectObservable = Observable<IndexPath>(IndexPath(row: 0, section: 0))
+    lazy var scrollViewDidScrollObservable = Observable<UIScrollView?>(nil)
 
     private enum Constants {
         static let delegateAssociatedTag = UnsafeRawPointer(UnsafeMutablePointer<UInt8>.allocate(capacity: 1))
@@ -57,5 +58,9 @@ final class ReactiveCollectionViewDelegateProxy: NSObject, UICollectionViewDeleg
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         itemDidSelectObservable.next(indexPath)
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        scrollViewDidScrollObservable.next(scrollView)
     }
 }
