@@ -23,6 +23,13 @@ final class ContactViewController: AppViewController {
         return true
     }
     
+    var viewModel: ContactViewControllerViewModel!
+
+    convenience init(viewModel: ContactViewControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()

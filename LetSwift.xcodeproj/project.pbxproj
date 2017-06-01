@@ -39,6 +39,7 @@
 		7EA48D531EADD53D00CEC845 /* StaticImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */; };
 		7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */; };
 		7EA48D561EADDD5500CEC845 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D551EADDD5500CEC845 /* Event.swift */; };
+		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
 		7EE1410D1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1410C1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift */; };
 		7EE1410F1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1410E1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift */; };
 		7EE141111EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE141101EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift */; };
@@ -194,6 +195,7 @@
 		7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageCell.swift; sourceTree = "<group>"; };
 		7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticImageCell.xib; sourceTree = "<group>"; };
 		7EA48D551EADDD5500CEC845 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7EE1410C1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListCellViewModel.swift; sourceTree = "<group>"; };
 		7EE1410E1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		7EE141101EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -427,6 +429,14 @@
 				7EA48D4E1EADD4CE00CEC845 /* ShadowMask.png */,
 			);
 			path = ReflectiveShadowView;
+			sourceTree = "<group>";
+		};
+		7ED1ABF61EDEC4C100276F93 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		7EE1410B1EBCA4C3008378AB /* ViewModels */ = {
@@ -707,6 +717,7 @@
 		D33F07231EA9E8FC00A74B9F /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				7ED1ABF61EDEC4C100276F93 /* ViewModels */,
 				D33F07311EA9EA2700A74B9F /* ContactViewController.swift */,
 				D33F07321EA9EA2700A74B9F /* ContactViewController.xib */,
 			);
@@ -1171,6 +1182,7 @@
 				7EE141111EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift in Sources */,
 				D3B505A31EDB3E5E00BBC6E5 /* AppContentState.swift in Sources */,
 				D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */,
+				7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */,
 				7E0842C31EC9FD9E003F7C96 /* PhotoGalleryViewController.swift in Sources */,
 				D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */,
 				7E9E04331EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift in Sources */,
