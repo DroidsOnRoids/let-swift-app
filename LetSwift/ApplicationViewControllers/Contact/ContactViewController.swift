@@ -17,4 +17,11 @@ final class ContactViewController: AppViewController {
     override var shouldShowUserIcon: Bool {
         return true
     }
+    
+    var viewModel: ContactViewControllerViewModel!
+
+    convenience init(viewModel: ContactViewControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 }
