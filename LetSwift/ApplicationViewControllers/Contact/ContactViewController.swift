@@ -57,7 +57,7 @@ final class ContactViewController: AppViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let sendButtonFrame = self.sendButton.superview?.convert(self.sendButton.frame, to: self.view) ?? sendButton.frame
+        let sendButtonFrame = sendButton.superview?.convert(sendButton.frame, to: view) ?? sendButton.frame
         upperKeyboardLimit = sendButtonFrame.maxY + Constants.keyboardMargin
     }
     
@@ -98,7 +98,6 @@ final class ContactViewController: AppViewController {
     
     private func setupKeyboardNotifications() {
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillShow)
-        //setupKeyboardNotification(name: Notification.Name.UIKeyboardWillChangeFrame)
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillHide)
     }
     
@@ -109,7 +108,8 @@ final class ContactViewController: AppViewController {
             if name == Notification.Name.UIKeyboardWillHide {
                 self.containerView.transform = .identity
             } else {
-                self.containerView.transform = CGAffineTransform(translationX: 0.0, y: self.shouldMoveContainer && keyboardOffset < 0.0 ? keyboardOffset : 0.0)
+                let translationY = self.shouldMoveContainer && keyboardOffset < 0.0 ? keyboardOffset : 0.0
+                self.containerView.transform = CGAffineTransform(translationX: 0.0, y: translationY)
             }
         })
     }

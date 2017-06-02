@@ -56,7 +56,7 @@ final class ContactTextView: UITextView {
     }
     
     private func setupPlaceholderLabel() {
-        placeholderLabel.attributedText = ("Message").attributed(withAttributes: typingAttributes)
+        placeholderLabel.attributedText = placeholder?.attributed(withAttributes: typingAttributes)
         attributedText = nil
         
         placeholderLabel.sizeToFit()
