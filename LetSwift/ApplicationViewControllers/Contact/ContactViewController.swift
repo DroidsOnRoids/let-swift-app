@@ -10,6 +10,10 @@ import UIKit
 
 final class ContactViewController: AppViewController {
     
+    private enum Constants {
+        static let keyboardMargin: CGFloat = 16.0
+    }
+    
     @IBOutlet private weak var containerView: UIView!
     
     @IBOutlet fileprivate weak var topicButton: UIButton!
@@ -31,7 +35,14 @@ final class ContactViewController: AppViewController {
         return true
     }
     
+    private var shouldMoveContainer: Bool {
+        return messageTextView.isFirstResponder
+    }
+    
     private var viewModel: ContactViewControllerViewModel!
+    private var upperKeyboardLimit: CGFloat!
+    
+    private let disposeBag = DisposeBag()
     
     convenience init(viewModel: ContactViewControllerViewModel) {
         self.init()
@@ -46,6 +57,7 @@ final class ContactViewController: AppViewController {
     private func setup() {
         setupViews()
         setupTouchToDismiss()
+        setupKeyboardNotifications()
         setupLocalization()
     }
     
@@ -54,12 +66,50 @@ final class ContactViewController: AppViewController {
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
+        
+        emailTextField.fieldState = .error
+        
+        let sendButtonFrame = self.sendButton.superview?.convert(self.sendButton.frame, to: self.view) ?? sendButton.frame
+        upperKeyboardLimit = sendButtonFrame.maxY + Constants.keyboardMargin
     }
     
     private func setupTouchToDismiss() {
         let recognizer = UITapGestureRecognizer(target: self.view, action: #selector(view.endEditing(_:)))
         recognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(recognizer)
+    }
+    
+    private func setupKeyboardNotification(name: Notification.Name) {
+        NotificationCenter
+            .default
+            .notification(name)
+            .subscribeNext { [weak self] notification in
+                guard let keyboardFrame = (notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+                    let animationCurveInt = (notification?.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.uintValue,
+                    let animationDuration = (notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey]as? NSNumber)?.doubleValue
+                    else { return }
+                
+                self?.keyboardEvent(name: name, frame: keyboardFrame, animationOptions: UIViewAnimationOptions(rawValue: animationCurveInt << 16), animationDuration: animationDuration)
+            }
+            .add(to: disposeBag)
+    }
+    
+    private func setupKeyboardNotifications() {
+        setupKeyboardNotification(name: Notification.Name.UIKeyboardWillShow)
+        //setupKeyboardNotification(name: Notification.Name.UIKeyboardWillChangeFrame)
+        setupKeyboardNotification(name: Notification.Name.UIKeyboardWillHide)
+    }
+    
+    private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {
+        let keyboardOffset = frame.minY - upperKeyboardLimit
+        
+        UIView.animate(withDuration: animationDuration, delay: 0.0, options: animationOptions, animations: {
+            if name == Notification.Name.UIKeyboardWillHide {
+                self.containerView.transform = .identity
+            } else {
+                self.containerView.transform = CGAffineTransform(translationX: 0.0, y: self.shouldMoveContainer && keyboardOffset < 0.0 ? keyboardOffset : 0.0)
+            }
+        })
     }
 }
 
