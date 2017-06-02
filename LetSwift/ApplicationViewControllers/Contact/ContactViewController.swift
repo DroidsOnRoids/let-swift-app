@@ -70,7 +70,6 @@ final class ContactViewController: AppViewController {
     }
     
     private func setupViews() {
-        topicButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.pickerTapped), for: .touchUpInside)
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
@@ -103,6 +102,8 @@ final class ContactViewController: AppViewController {
     }
     
     private func setupViewModel() {
+        topicButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.pickerTapped), for: .touchUpInside)
+        
         viewModel.pickerTitleObservable.subscribeNext { [weak self] title in
             self?.topicButton.setTitle(title, for: [])
         }

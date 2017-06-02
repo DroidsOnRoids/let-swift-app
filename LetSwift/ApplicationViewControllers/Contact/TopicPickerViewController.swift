@@ -50,12 +50,7 @@ class TopicPickerViewController: UIViewController {
         super.viewWillAppear(animated)
         
         outOfScreenTransform = CGAffineTransform(translationX: 0.0, y: containerView.bounds.height)
-        containerView.transform = outOfScreenTransform
-        
-        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.view.backgroundColor = UIColor.black.withAlphaComponent(Constants.backgroundAlpha)
-            self.containerView.transform = .identity
-        })
+        openPicker()
     }
     
     private func setup() {
@@ -102,6 +97,15 @@ class TopicPickerViewController: UIViewController {
             self?.closePicker()
         }
         .add(to: disposeBag)
+    }
+    
+    private func openPicker() {
+        containerView.transform = outOfScreenTransform
+        
+        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.view.backgroundColor = UIColor.black.withAlphaComponent(Constants.backgroundAlpha)
+            self.containerView.transform = .identity
+        })
     }
     
     @objc private func closePicker() {
