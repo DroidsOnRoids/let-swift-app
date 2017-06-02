@@ -66,14 +66,11 @@ final class ContactViewController: AppViewController {
         setupTouchToDismiss()
         setupKeyboardNotifications()
         setupLocalization()
-    }
-    
-    @objc private func ddd() {
-        TopicPickerViewController.present(on: self, items: ["a", "b", "c", "d"])
+        setupViewModel()
     }
     
     private func setupViews() {
-        topicButton.addTarget(self, action: #selector(ddd), for: .touchUpInside)
+        topicButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.pickerTapped), for: .touchUpInside)
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
@@ -103,6 +100,21 @@ final class ContactViewController: AppViewController {
     private func setupKeyboardNotifications() {
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillShow)
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillHide)
+    }
+    
+    private func setupViewModel() {
+        viewModel.pickerTitleObservable.subscribeNext { [weak self] title in
+            self?.topicButton.setTitle(title, for: [])
+        }
+        .add(to: disposeBag)
+        
+        viewModel.pickerTopicsObservable.subscribeNext { [weak self] topics in
+            guard let weakSelf = self, let topics = topics else { return }
+            TopicPickerViewController.present(on: weakSelf, items: topics, callback: { result in
+                weakSelf.viewModel.pickerResultObservable.next(result)
+            })
+        }
+        .add(to: disposeBag)
     }
     
     private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {

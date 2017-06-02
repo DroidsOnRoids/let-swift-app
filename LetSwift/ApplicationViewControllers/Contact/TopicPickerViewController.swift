@@ -8,11 +8,6 @@
 
 import UIKit
 
-@objc protocol TopicPickerDelegare: class {
-    func pickerItemSelected(index: Int)
-    @objc optional func pickerCanceled()
-}
-
 class TopicPickerViewController: UIViewController {
     
     private enum Constants {
@@ -28,21 +23,20 @@ class TopicPickerViewController: UIViewController {
     @IBOutlet fileprivate weak var doneButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     
-    private weak var delegate: TopicPickerDelegare?
-    
     private var items: [String]?
+    private var callback: ((Int) -> ())?
     private var outOfScreenTransform: CGAffineTransform!
     
     private let disposeBag = DisposeBag()
     
-    static func present(on viewController: UIViewController, items: [String], delegate: TopicPickerDelegare? = nil) {
-        viewController.present(TopicPickerViewController(items: items, delegate: delegate), animated: false)
+    static func present(on viewController: UIViewController, items: [String], callback: ((Int) -> ())? = nil) {
+        viewController.present(TopicPickerViewController(items: items, callback: callback), animated: false)
     }
     
-    private convenience init(items: [String], delegate: TopicPickerDelegare?) {
+    private convenience init(items: [String], callback: ((Int) -> ())?) {
         self.init(nibName: nil, bundle: nil)
         self.items = items
-        self.delegate = delegate
+        self.callback = callback
         
         modalPresentationStyle = .overFullScreen
     }
@@ -104,15 +98,13 @@ class TopicPickerViewController: UIViewController {
         tableView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
             self?.tableView.deselectRow(at: indexPath, animated: true)
             
-            self?.delegate?.pickerItemSelected(index: indexPath.row)
+            self?.callback?(indexPath.row)
             self?.closePicker()
         }
         .add(to: disposeBag)
     }
     
     @objc private func closePicker() {
-        delegate?.pickerCanceled?()
-        
         UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseInOut, animations: {
             self.view.backgroundColor = .clear
             self.containerView.transform = self.outOfScreenTransform
