@@ -31,9 +31,8 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
     
     private func setup() {
         separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
-        
-        eventsCollectionView.register(UINib(nibName: PreviousEventCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: PreviousEventCell.cellIdentifier)
-        eventsCollectionView.register(UINib(nibName: LoadingCollectionViewCell.cellIdentifier, bundle: nil), forCellWithReuseIdentifier: LoadingCollectionViewCell.cellIdentifier)
+
+        eventsCollectionView.registerCells([PreviousEventCell.self, LoadingCollectionViewCell.self])
 
         setupLocalization()
     }
@@ -72,11 +71,12 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         eventsCollectionView.scrollViewDidScrollObservable.subscribeNext { [weak self] scrollView in
             guard let scrollView = scrollView else { return }
             let offset = scrollView.contentOffset
-            let bounds = scrollView.bounds
+            let boundsWidth = scrollView.bounds.width
             let insets = scrollView.contentInset
-            let y = offset.x + bounds.size.width - insets.right
+            let y = offset.x + boundsWidth - insets.right
+            let additonalSpace: CGFloat = 70.0
 
-            if (y > scrollView.contentSize.width + 70.0) {
+            if (y > scrollView.contentSize.width + additonalSpace) {
                 self?.viewModel.previousEventsRefreshObservable.next()
             }
         }

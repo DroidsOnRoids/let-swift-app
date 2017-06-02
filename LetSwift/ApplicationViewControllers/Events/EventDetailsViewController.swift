@@ -53,8 +53,7 @@ final class EventDetailsViewController: CommonEventViewController {
     }
 
     private func setup() {
-        tableView.register(UINib(nibName: EventCellIdentifier.speakerCardCell.rawValue, bundle: nil), forCellReuseIdentifier: EventCellIdentifier.speakerCardCell.rawValue)
-        tableView.register(UINib(nibName: EventCellIdentifier.speakersToBeAnnouncedCell.rawValue, bundle: nil), forCellReuseIdentifier: EventCellIdentifier.speakersToBeAnnouncedCell.rawValue)
+        tableView.registerCells([EventCellIdentifier.speakerCardCell.rawValue, EventCellIdentifier.speakersToBeAnnouncedCell.rawValue])
 
         reactiveSetup()
     }

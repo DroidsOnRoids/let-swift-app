@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoadingCollectionViewCell: UICollectionViewCell {
+final class LoadingCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private weak var spinnerView: SpinnerView!
 

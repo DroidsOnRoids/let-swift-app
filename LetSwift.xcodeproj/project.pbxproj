@@ -39,9 +39,10 @@
 		7EA48D531EADD53D00CEC845 /* StaticImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */; };
 		7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */; };
 		7EA48D561EADDD5500CEC845 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D551EADDD5500CEC845 /* Event.swift */; };
+		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
 		7ED1AC471EE04E7A00276F93 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */; };
 		7ED1AC481EE04E7A00276F93 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */; };
-		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
+		7ED7106E1EE1AA11003950A6 /* NibRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7106D1EE1AA11003950A6 /* NibRepresentable.swift */; };
 		7EE1410D1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1410C1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift */; };
 		7EE1410F1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1410E1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift */; };
 		7EE141111EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE141101EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift */; };
@@ -199,9 +200,10 @@
 		7EA48D511EADD53D00CEC845 /* StaticImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticImageCell.swift; sourceTree = "<group>"; };
 		7EA48D521EADD53D00CEC845 /* StaticImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StaticImageCell.xib; sourceTree = "<group>"; };
 		7EA48D551EADDD5500CEC845 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
-		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
+		7ED7106D1EE1AA11003950A6 /* NibRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibRepresentable.swift; sourceTree = "<group>"; };
 		7EE1410C1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListCellViewModel.swift; sourceTree = "<group>"; };
 		7EE1410E1EBCCB89008378AB /* ReactiveCollectionViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDataSourceProxy.swift; sourceTree = "<group>"; };
 		7EE141101EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCollectionViewDataSource.swift; sourceTree = "<group>"; };
@@ -440,6 +442,14 @@
 			path = ReflectiveShadowView;
 			sourceTree = "<group>";
 		};
+		7ED1ABF61EDEC4C100276F93 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		7ED1AC441EE04E1C00276F93 /* LoadingCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,14 +457,6 @@
 				7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */,
 			);
 			path = LoadingCollectionViewCell;
-            sourceTree = "<group>";
-        };
-		7ED1ABF61EDEC4C100276F93 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		7EE1410B1EBCA4C3008378AB /* ViewModels */ = {
@@ -583,6 +585,7 @@
 				D33C4A281E9CD6320052E793 /* Localizable.swift */,
 				7EA48D441EADC12C00CEC845 /* Startable.swift */,
 				D3AE288D1ECD9E3600F29702 /* Disposable.swift */,
+				7ED7106D1EE1AA11003950A6 /* NibRepresentable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1189,6 +1192,7 @@
 				7E0842CF1ECF0F79003F7C96 /* Page.swift in Sources */,
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
+				7ED7106E1EE1AA11003950A6 /* NibRepresentable.swift in Sources */,
 				D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */,
 				D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */,
 				D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */,

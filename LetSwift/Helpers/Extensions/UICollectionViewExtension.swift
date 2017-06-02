@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UICollectionView {
+extension UICollectionView: NibPresentable {
     func item<Cell: UICollectionViewCell, T, S: Sequence>(with identifier: String, cellType: Cell.Type = Cell.self)
         -> (((Int, T, Cell) -> ())?)
         -> (_ source: S)
@@ -59,5 +59,13 @@ extension UICollectionView {
 
     var scrollViewDidScrollObservable: ObservableEvent<UIScrollView?> {
         return ObservableEvent(event: delegateProxy.scrollViewDidScrollObservable)
+    }
+
+    func registerNib(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+        register(nib, forCellWithReuseIdentifier: identifier)
+    }
+
+    func registerClass(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
+        register(cellClass, forCellWithReuseIdentifier: identifier)
     }
 }
