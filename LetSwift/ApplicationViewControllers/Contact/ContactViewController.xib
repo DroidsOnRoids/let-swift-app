@@ -1,20 +1,212 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="containerView" destination="i5M-Pr-FkT" id="4Zf-4z-xhf"/>
+                <outlet property="emailErrorLabel" destination="8pP-F3-4F6" id="gf0-gj-d15"/>
+                <outlet property="emailTextField" destination="fLg-fE-INz" id="TRa-Ke-tGk"/>
+                <outlet property="messageErrorLabel" destination="Fb9-iv-dW6" id="0Uk-gI-Egh"/>
+                <outlet property="messageTextView" destination="jR9-Zv-sXB" id="ZdE-Dg-cFe"/>
+                <outlet property="nameErrorLabel" destination="gqV-Oy-DFQ" id="JV4-dS-VYe"/>
+                <outlet property="nameTextField" destination="Xdw-xs-8rG" id="QoI-bU-Qbs"/>
+                <outlet property="sendButton" destination="KRF-5G-dIH" id="Uue-TQ-dlG"/>
+                <outlet property="topicButton" destination="gaQ-hQ-e6f" id="ifH-I8-Dzk"/>
+                <outlet property="topicErrorLabel" destination="Z2Z-Na-dSu" id="LEh-1A-6Q4"/>
+                <outlet property="view" destination="vxT-y8-mot" id="hP6-Ba-1bl"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view contentMode="scaleToFill" id="vxT-y8-mot">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT">
+                    <rect key="frame" x="16" y="80" width="343" height="587"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xdw-xs-8rG" customClass="ContactTextField" customModule="LetSwift" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="82" width="163.5" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Mrv-Mk-CGt"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                    <color key="value" red="0.031372549019607843" green="0.14509803921568626" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-fE-INz" customClass="ContactTextField" customModule="LetSwift" customModuleProvider="target">
+                            <rect key="frame" x="179.5" y="82" width="163.5" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="P0f-rM-498"/>
+                            </constraints>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="inset">
+                                    <real key="value" value="16"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                    <color key="value" red="0.031372549020000001" green="0.1450980392" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRF-5G-dIH" customClass="AppShadowButton" customModule="LetSwift" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="366" width="343" height="56"/>
+                            <color key="backgroundColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="56" id="ENh-Jc-vha"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                            <state key="normal" title="SEND"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="shadowVisible" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaQ-hQ-e6f">
+                            <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="MJ3-3P-MNU"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="I want to...">
+                                <color key="titleColor" red="0.031372549019607843" green="0.14509803921568626" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" tag="3" contentMode="scaleToFill" text="Message" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-Zv-sXB" customClass="ContactTextView" customModule="LetSwift" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="164" width="343" height="170"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="999" constant="170" id="P9z-Jf-KYO"/>
+                            </constraints>
+                            <color key="textColor" red="0.031372549019607843" green="0.14509803921568626" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IndicatorLight" translatesAutoresizingMaskIntoConstraints="NO" id="okF-zF-D5w">
+                            <rect key="frame" x="319" y="19" width="8" height="13"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="8" id="28S-aw-7dw"/>
+                                <constraint firstAttribute="height" constant="13" id="CrX-Q1-cUf"/>
+                            </constraints>
+                        </imageView>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the topic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z2Z-Na-dSu">
+                            <rect key="frame" x="8" y="56" width="335" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.94117647058823528" green="0.29411764705882354" blue="0.28235294117647058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqV-Oy-DFQ">
+                            <rect key="frame" x="8" y="138" width="155.5" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.94117647059999998" green="0.29411764709999999" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pP-F3-4F6">
+                            <rect key="frame" x="187.5" y="138" width="155.5" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.94117647059999998" green="0.29411764709999999" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb9-iv-dW6">
+                            <rect key="frame" x="8" y="340" width="335" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.94117647059999998" green="0.29411764709999999" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="gaQ-hQ-e6f" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="0xI-xb-vhI"/>
+                        <constraint firstItem="okF-zF-D5w" firstAttribute="trailing" secondItem="gaQ-hQ-e6f" secondAttribute="trailing" constant="-16" id="1e1-9F-TgN"/>
+                        <constraint firstItem="jR9-Zv-sXB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="340-xK-o6z"/>
+                        <constraint firstItem="8pP-F3-4F6" firstAttribute="trailing" secondItem="fLg-fE-INz" secondAttribute="trailing" id="4iH-rR-2rR"/>
+                        <constraint firstItem="Xdw-xs-8rG" firstAttribute="top" secondItem="gaQ-hQ-e6f" secondAttribute="bottom" constant="32" id="5I8-8I-hXV"/>
+                        <constraint firstItem="fLg-fE-INz" firstAttribute="top" secondItem="Xdw-xs-8rG" secondAttribute="top" id="5Jv-4c-Jkm"/>
+                        <constraint firstAttribute="trailing" secondItem="gaQ-hQ-e6f" secondAttribute="trailing" id="8rd-8W-Q0f"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KRF-5G-dIH" secondAttribute="bottom" constant="66" id="9qf-hp-27z"/>
+                        <constraint firstItem="gaQ-hQ-e6f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ATO-C0-JCy"/>
+                        <constraint firstAttribute="trailing" secondItem="jR9-Zv-sXB" secondAttribute="trailing" id="Gbe-q8-mDt"/>
+                        <constraint firstItem="Fb9-iv-dW6" firstAttribute="leading" secondItem="jR9-Zv-sXB" secondAttribute="leading" constant="8" id="ToG-ly-h17"/>
+                        <constraint firstItem="jR9-Zv-sXB" firstAttribute="top" secondItem="Xdw-xs-8rG" secondAttribute="bottom" constant="32" id="VvZ-cg-aYQ"/>
+                        <constraint firstAttribute="trailing" secondItem="fLg-fE-INz" secondAttribute="trailing" id="WUv-ZC-2Tp"/>
+                        <constraint firstItem="Fb9-iv-dW6" firstAttribute="trailing" secondItem="jR9-Zv-sXB" secondAttribute="trailing" id="Xfq-GM-Xi3"/>
+                        <constraint firstItem="Xdw-xs-8rG" firstAttribute="width" secondItem="fLg-fE-INz" secondAttribute="width" id="bnz-09-Sah"/>
+                        <constraint firstItem="gqV-Oy-DFQ" firstAttribute="trailing" secondItem="Xdw-xs-8rG" secondAttribute="trailing" id="dfc-AG-8Ur"/>
+                        <constraint firstItem="8pP-F3-4F6" firstAttribute="leading" secondItem="fLg-fE-INz" secondAttribute="leading" constant="8" id="eOP-eh-gje"/>
+                        <constraint firstItem="Z2Z-Na-dSu" firstAttribute="top" secondItem="gaQ-hQ-e6f" secondAttribute="bottom" constant="6" id="eWT-up-mgu"/>
+                        <constraint firstItem="8pP-F3-4F6" firstAttribute="top" secondItem="fLg-fE-INz" secondAttribute="bottom" constant="6" id="erg-dI-H2m"/>
+                        <constraint firstItem="okF-zF-D5w" firstAttribute="centerY" secondItem="gaQ-hQ-e6f" secondAttribute="centerY" id="fc8-mB-LwL"/>
+                        <constraint firstItem="Xdw-xs-8rG" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="g2v-WN-5O3"/>
+                        <constraint firstItem="gqV-Oy-DFQ" firstAttribute="top" secondItem="Xdw-xs-8rG" secondAttribute="bottom" constant="6" id="nHO-xh-B2N"/>
+                        <constraint firstItem="Fb9-iv-dW6" firstAttribute="top" secondItem="jR9-Zv-sXB" secondAttribute="bottom" constant="6" id="nxN-fS-TYr"/>
+                        <constraint firstItem="gqV-Oy-DFQ" firstAttribute="leading" secondItem="Xdw-xs-8rG" secondAttribute="leading" constant="8" id="pr9-yD-RSF"/>
+                        <constraint firstItem="KRF-5G-dIH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qfP-ve-B6m"/>
+                        <constraint firstAttribute="trailing" secondItem="KRF-5G-dIH" secondAttribute="trailing" id="rur-p3-v9Q"/>
+                        <constraint firstItem="fLg-fE-INz" firstAttribute="leading" secondItem="Xdw-xs-8rG" secondAttribute="trailing" constant="16" id="uqg-3q-zHL"/>
+                        <constraint firstItem="Z2Z-Na-dSu" firstAttribute="trailing" secondItem="gaQ-hQ-e6f" secondAttribute="trailing" id="vFl-fK-emr"/>
+                        <constraint firstItem="KRF-5G-dIH" firstAttribute="top" secondItem="jR9-Zv-sXB" secondAttribute="bottom" constant="32" id="xRw-Nr-sRs"/>
+                        <constraint firstItem="Z2Z-Na-dSu" firstAttribute="leading" secondItem="gaQ-hQ-e6f" secondAttribute="leading" constant="8" id="xYI-H8-o56"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="FKV-eN-HHr"/>
+                <constraint firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" constant="16" id="e66-7d-qVN"/>
+                <constraint firstItem="i5M-Pr-FkT" firstAttribute="top" secondItem="vxT-y8-mot" secondAttribute="top" constant="80" id="grx-l0-Axs"/>
+                <constraint firstItem="i5M-Pr-FkT" firstAttribute="leading" secondItem="vxT-y8-mot" secondAttribute="leading" constant="16" id="pvb-5D-SXR"/>
+            </constraints>
+            <point key="canvasLocation" x="425" y="61"/>
         </view>
     </objects>
+    <resources>
+        <image name="IndicatorLight" width="8" height="13"/>
+    </resources>
 </document>

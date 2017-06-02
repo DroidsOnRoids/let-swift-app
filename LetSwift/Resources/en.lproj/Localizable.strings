@@ -28,5 +28,14 @@
 "SPEAKERS_TITLE" = "Speakers";
 "SPEAKERS_DETAILS_TITLE" = "Speaker details";
 "CONTACT_TITLE" = "Contact";
+"CONTACT_TOPIC" = "I want to...";
+"CONTACT_NAME" = "Your name";
+"CONTACT_EMAIL" = "Your email";
+"CONTACT_MESSAGE" = "Message";
+"CONTACT_SEND" = "Send";
+"CONTACT_TOPIC_ERROR" = "Choose the topic";
+"CONTACT_NAME_ERROR" = "Enter your name";
+"CONTACT_EMAIL_ERROR" = "Enter your email";
+"CONTACT_MESSAGE_ERROR" = "Enter the message";
 "LECTURE_TITLE" = "Lecture details";
 "LECTURE_READ_MORE" = "Read more";

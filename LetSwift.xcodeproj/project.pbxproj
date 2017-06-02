@@ -81,6 +81,9 @@
 		D33F07381EA9EAA600A74B9F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */; };
 		D341A18F1EDE91D10066E965 /* SplashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D341A18E1EDE91D10066E965 /* SplashImage.png */; };
 		D341A1911EDE936F0066E965 /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D341A1901EDE936F0066E965 /* SplashViewController.xib */; };
+		D3429D101EE0364D00F18D30 /* ContactTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D0F1EE0364D00F18D30 /* ContactTextField.swift */; };
+		D3429D121EE0375100F18D30 /* ContactFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D111EE0375100F18D30 /* ContactFieldState.swift */; };
+		D3429D141EE03B6900F18D30 /* ContactTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D131EE03B6900F18D30 /* ContactTextView.swift */; };
 		D3476AC11ED6D3A800AC7D87 /* NetworkImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3476AC01ED6D3A800AC7D87 /* NetworkImageView.swift */; };
 		D34B850C1EB3214900DBC72D /* PreviousEventsListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */; };
 		D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */; };
@@ -238,6 +241,9 @@
 		D33F07371EA9EAA600A74B9F /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D341A18E1EDE91D10066E965 /* SplashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashImage.png; sourceTree = "<group>"; };
 		D341A1901EDE936F0066E965 /* SplashViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
+		D3429D0F1EE0364D00F18D30 /* ContactTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTextField.swift; sourceTree = "<group>"; };
+		D3429D111EE0375100F18D30 /* ContactFieldState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFieldState.swift; sourceTree = "<group>"; };
+		D3429D131EE03B6900F18D30 /* ContactTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTextView.swift; sourceTree = "<group>"; };
 		D3476AC01ED6D3A800AC7D87 /* NetworkImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkImageView.swift; sourceTree = "<group>"; };
 		D34B850A1EB3214900DBC72D /* PreviousEventsListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListCell.swift; sourceTree = "<group>"; };
 		D34B850B1EB3214900DBC72D /* PreviousEventsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventsListCell.xib; sourceTree = "<group>"; };
@@ -478,6 +484,7 @@
 			children = (
 				D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */,
 				D3B505A21EDB3E5E00BBC6E5 /* AppContentState.swift */,
+				D3429D111EE0375100F18D30 /* ContactFieldState.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -714,11 +721,21 @@
 		D33F07231EA9E8FC00A74B9F /* Contact */ = {
 			isa = PBXGroup;
 			children = (
+				D3429D0E1EE035D600F18D30 /* Views */,
 				7ED1ABF61EDEC4C100276F93 /* ViewModels */,
 				D33F07311EA9EA2700A74B9F /* ContactViewController.swift */,
 				D33F07321EA9EA2700A74B9F /* ContactViewController.xib */,
 			);
 			path = Contact;
+			sourceTree = "<group>";
+		};
+		D3429D0E1EE035D600F18D30 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D3429D0F1EE0364D00F18D30 /* ContactTextField.swift */,
+				D3429D131EE03B6900F18D30 /* ContactTextView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		D34B85091EB3210E00DBC72D /* PreviousEventsListCell */ = {
@@ -1145,6 +1162,7 @@
 				7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */,
 				D38B14BA1E9F6AD0009EA346 /* OnboardingCardView.swift in Sources */,
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
+				D3429D101EE0364D00F18D30 /* ContactTextField.swift in Sources */,
 				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
 				D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */,
 				D3476AC11ED6D3A800AC7D87 /* NetworkImageView.swift in Sources */,
@@ -1191,6 +1209,7 @@
 				7E0842D11ECF225D003F7C96 /* NetworkResponse.swift in Sources */,
 				D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */,
 				D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */,
+				D3429D121EE0375100F18D30 /* ContactFieldState.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
 				D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */,
@@ -1223,6 +1242,7 @@
 				7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */,
 				D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */,
 				7E1C3EDE1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift in Sources */,
+				D3429D141EE03B6900F18D30 /* ContactTextView.swift in Sources */,
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,
 				7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */,
