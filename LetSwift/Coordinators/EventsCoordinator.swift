@@ -10,7 +10,7 @@ import UIKit
 
 final class EventsCoordinator: Coordinator, Startable {
     
-    fileprivate let delegate: AppCoordinatorDelegate
+    fileprivate weak var delegate: AppCoordinatorDelegate?
     fileprivate let initialEventsList: [Event]?
     
     init(navigationController: UINavigationController, initialEventsList: [Event]?, delegate: AppCoordinatorDelegate) {
