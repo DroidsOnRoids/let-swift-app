@@ -20,9 +20,12 @@ class LoadingCollectionViewCell: UICollectionViewCell {
         setup()
     }
 
+    func animateSpinner() {
+        spinnerView.animationActive = true
+    }
+
     private func setup() {
         spinnerView.backgroundColor = .clear
         spinnerView.image = #imageLiteral(resourceName: "WhiteSpinner")
     }
-
 }

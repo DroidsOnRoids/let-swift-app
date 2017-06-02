@@ -13,14 +13,16 @@ final class PreviousEventsListCellViewModel {
     private let disposeBag = DisposeBag()
     private var currentPage = 1
 
-    var previousEventsObservable = Observable<[Event?]?>(nil)
-    var cellDidTapWithIndexObservable = Observable<Int>(-1)
-    var previousEventsRefreshObservable = Observable<Void>()
+    let previousEventsObservable: Observable<[Event?]?>
+    let cellDidTapWithIndexObservable = Observable<Int>(-1)
+    let previousEventsRefreshObservable = Observable<Void>()
+    let refreshObservable: Observable<Void>
 
     weak var delegate: EventsViewControllerDelegate?
 
-    init(previousEvents events: Observable<[Event?]?>, delegate: EventsViewControllerDelegate?) {
-        self.previousEventsObservable = events
+    init(previousEvents events: Observable<[Event?]?>, refreshObservable refresh: Observable<Void>, delegate: EventsViewControllerDelegate?) {
+        previousEventsObservable = events
+        refreshObservable = refresh
         self.delegate = delegate
 
         setup()
@@ -38,6 +40,11 @@ final class PreviousEventsListCellViewModel {
 
             weakSelf.previousEventsObservable.next(events + [nil])
             weakSelf.getNextEventsPage()
+        }
+        .add(to: disposeBag)
+
+        refreshObservable.subscribeCompleted { [weak self] in
+            self?.currentPage = 1
         }
         .add(to: disposeBag)
     }
