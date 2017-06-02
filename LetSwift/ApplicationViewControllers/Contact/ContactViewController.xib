@@ -115,7 +115,7 @@
                             <rect key="frame" x="0.0" y="164" width="343" height="170"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="170" id="P9z-Jf-KYO"/>
+                                <constraint firstAttribute="height" priority="999" constant="170" id="P9z-Jf-KYO"/>
                             </constraints>
                             <color key="textColor" red="0.031372549019607843" green="0.14509803921568626" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -170,6 +170,7 @@
                         <constraint firstItem="Xdw-xs-8rG" firstAttribute="top" secondItem="gaQ-hQ-e6f" secondAttribute="bottom" constant="32" id="5I8-8I-hXV"/>
                         <constraint firstItem="fLg-fE-INz" firstAttribute="top" secondItem="Xdw-xs-8rG" secondAttribute="top" id="5Jv-4c-Jkm"/>
                         <constraint firstAttribute="trailing" secondItem="gaQ-hQ-e6f" secondAttribute="trailing" id="8rd-8W-Q0f"/>
+                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KRF-5G-dIH" secondAttribute="bottom" constant="66" id="9qf-hp-27z"/>
                         <constraint firstItem="gaQ-hQ-e6f" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ATO-C0-JCy"/>
                         <constraint firstAttribute="trailing" secondItem="jR9-Zv-sXB" secondAttribute="trailing" id="Gbe-q8-mDt"/>
                         <constraint firstItem="Fb9-iv-dW6" firstAttribute="leading" secondItem="jR9-Zv-sXB" secondAttribute="leading" constant="8" id="ToG-ly-h17"/>

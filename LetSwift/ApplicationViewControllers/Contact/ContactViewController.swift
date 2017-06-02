@@ -54,6 +54,13 @@ final class ContactViewController: AppViewController {
         setup()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let sendButtonFrame = self.sendButton.superview?.convert(self.sendButton.frame, to: self.view) ?? sendButton.frame
+        upperKeyboardLimit = sendButtonFrame.maxY + Constants.keyboardMargin
+    }
+    
     private func setup() {
         setupViews()
         setupTouchToDismiss()
@@ -66,11 +73,6 @@ final class ContactViewController: AppViewController {
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
-        
-        emailTextField.fieldState = .error
-        
-        let sendButtonFrame = self.sendButton.superview?.convert(self.sendButton.frame, to: self.view) ?? sendButton.frame
-        upperKeyboardLimit = sendButtonFrame.maxY + Constants.keyboardMargin
     }
     
     private func setupTouchToDismiss() {
