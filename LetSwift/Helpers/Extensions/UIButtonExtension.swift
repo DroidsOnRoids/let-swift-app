@@ -10,7 +10,7 @@ import UIKit
 
 extension UIButton {
     private enum Constants {
-        static let minimumHitArea = CGSize(width: 100, height: 100)
+        static let minimumHitArea = CGSize(width: 50, height: 50)
     }
     
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

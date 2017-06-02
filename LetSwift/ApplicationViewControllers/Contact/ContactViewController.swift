@@ -16,7 +16,7 @@ final class ContactViewController: AppViewController {
     
     @IBOutlet private weak var containerView: UIView!
     
-    @IBOutlet fileprivate weak var topicButton: UIButton!
+    @IBOutlet fileprivate weak var topicButton: TopicButton!
     @IBOutlet fileprivate weak var nameTextField: ContactTextField!
     @IBOutlet fileprivate weak var emailTextField: ContactTextField!
     @IBOutlet fileprivate weak var messageTextView: ContactTextView!
@@ -68,8 +68,12 @@ final class ContactViewController: AppViewController {
         setupLocalization()
     }
     
+    @objc private func ddd() {
+        TopicPickerViewController.present(on: self, items: ["a", "b", "c", "d"])
+    }
+    
     private func setupViews() {
-        topicButton.layer.borderColor = UIColor.lightBlueGrey.cgColor
+        topicButton.addTarget(self, action: #selector(ddd), for: .touchUpInside)
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
