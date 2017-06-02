@@ -80,5 +80,10 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             }
         }
         .add(to: disposeBag)
+
+        viewModel.shouldScrollToFirstObservable.subscribeNext { [weak self] in
+            self?.eventsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .right, animated: false)
+        }
+        .add(to: disposeBag)
     }
 }

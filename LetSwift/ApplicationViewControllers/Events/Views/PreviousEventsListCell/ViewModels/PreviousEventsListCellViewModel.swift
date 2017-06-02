@@ -18,6 +18,7 @@ final class PreviousEventsListCellViewModel {
     let cellDidTapWithIndexObservable = Observable<Int>(-1)
     let previousEventsRefreshObservable = Observable<Void>()
     let refreshObservable: Observable<Void>
+    let shouldScrollToFirstObservable = Observable<Void>()
 
     weak var delegate: EventsViewControllerDelegate?
 
@@ -48,6 +49,7 @@ final class PreviousEventsListCellViewModel {
 
         refreshObservable.subscribeCompleted { [weak self] in
             self?.currentPage = 1
+            self?.shouldScrollToFirstObservable.next()
         }
         .add(to: disposeBag)
     }
