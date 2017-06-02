@@ -138,6 +138,9 @@
 		D3E0ADA31ED563BC00270F0E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */; };
 		D3E0ADA61ED563FB00270F0E /* SplashViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
+		D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EDA6F11EE15D8900C035ED /* TopicPickerViewController.swift */; };
+		D3EDA6F41EE15D8900C035ED /* TopicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EDA6F21EE15D8900C035ED /* TopicPickerViewController.xib */; };
+		D3EDA6F61EE16AED00C035ED /* TopicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EDA6F51EE16AED00C035ED /* TopicButton.swift */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
 		D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCell.swift */; };
 		D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F091881EB205FE0029E15E /* PreviousEventCell.xib */; };
@@ -300,6 +303,9 @@
 		D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
+		D3EDA6F11EE15D8900C035ED /* TopicPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicPickerViewController.swift; sourceTree = "<group>"; };
+		D3EDA6F21EE15D8900C035ED /* TopicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicPickerViewController.xib; sourceTree = "<group>"; };
+		D3EDA6F51EE16AED00C035ED /* TopicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicButton.swift; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
 		D3F091871EB205FE0029E15E /* PreviousEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCell.swift; sourceTree = "<group>"; };
 		D3F091881EB205FE0029E15E /* PreviousEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventCell.xib; sourceTree = "<group>"; };
@@ -725,6 +731,8 @@
 				7ED1ABF61EDEC4C100276F93 /* ViewModels */,
 				D33F07311EA9EA2700A74B9F /* ContactViewController.swift */,
 				D33F07321EA9EA2700A74B9F /* ContactViewController.xib */,
+				D3EDA6F11EE15D8900C035ED /* TopicPickerViewController.swift */,
+				D3EDA6F21EE15D8900C035ED /* TopicPickerViewController.xib */,
 			);
 			path = Contact;
 			sourceTree = "<group>";
@@ -734,6 +742,7 @@
 			children = (
 				D3429D0F1EE0364D00F18D30 /* ContactTextField.swift */,
 				D3429D131EE03B6900F18D30 /* ContactTextView.swift */,
+				D3EDA6F51EE16AED00C035ED /* TopicButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1037,6 +1046,7 @@
 				D341A18F1EDE91D10066E965 /* SplashImage.png in Resources */,
 				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
 				D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */,
+				D3EDA6F41EE15D8900C035ED /* TopicPickerViewController.xib in Resources */,
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
 				D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */,
@@ -1191,6 +1201,7 @@
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
 				D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */,
 				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
+				D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */,
 				7E0842C91ECAD5D1003F7C96 /* Speaker.swift in Sources */,
 				D34B850C1EB3214900DBC72D /* PreviousEventsListCell.swift in Sources */,
 				D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */,
@@ -1242,6 +1253,7 @@
 				7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */,
 				D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */,
 				7E1C3EDE1EC038510004A5A7 /* ReactiveCollectionViewDelegateProxy.swift in Sources */,
+				D3EDA6F61EE16AED00C035ED /* TopicButton.swift in Sources */,
 				D3429D141EE03B6900F18D30 /* ContactTextView.swift in Sources */,
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,

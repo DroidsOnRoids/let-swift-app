@@ -37,5 +37,10 @@
 "CONTACT_NAME_ERROR" = "Enter your name";
 "CONTACT_EMAIL_ERROR" = "Enter your email";
 "CONTACT_MESSAGE_ERROR" = "Enter the message";
+"CONTACT_PICKER_TITLE" = "I want to...";
+"CONTACT_CANCEL" = "Cancel";
+"CONTACT_TOPIC_SPEAK" = "Speak on the next event";
+"CONTACT_TOPIC_CLAIM" = "Claim a reward";
+"CONTACT_TOPIC_PARTNER" = "Become a partner";
 "LECTURE_TITLE" = "Lecture details";
 "LECTURE_READ_MORE" = "Read more";

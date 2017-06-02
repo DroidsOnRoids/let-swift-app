@@ -16,7 +16,7 @@ final class ContactViewController: AppViewController {
     
     @IBOutlet private weak var containerView: UIView!
     
-    @IBOutlet fileprivate weak var topicButton: UIButton!
+    @IBOutlet fileprivate weak var topicButton: TopicButton!
     @IBOutlet fileprivate weak var nameTextField: ContactTextField!
     @IBOutlet fileprivate weak var emailTextField: ContactTextField!
     @IBOutlet fileprivate weak var messageTextView: ContactTextView!
@@ -66,10 +66,10 @@ final class ContactViewController: AppViewController {
         setupTouchToDismiss()
         setupKeyboardNotifications()
         setupLocalization()
+        setupViewModel()
     }
     
     private func setupViews() {
-        topicButton.layer.borderColor = UIColor.lightBlueGrey.cgColor
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
@@ -99,6 +99,23 @@ final class ContactViewController: AppViewController {
     private func setupKeyboardNotifications() {
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillShow)
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillHide)
+    }
+    
+    private func setupViewModel() {
+        topicButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.pickerTapped), for: .touchUpInside)
+        
+        viewModel.pickerTitleObservable.subscribeNext { [weak self] title in
+            self?.topicButton.setTitle(title, for: [])
+        }
+        .add(to: disposeBag)
+        
+        viewModel.pickerTopicsObservable.subscribeNext { [weak self] topics in
+            guard let weakSelf = self, let topics = topics else { return }
+            TopicPickerViewController.present(on: weakSelf, items: topics, callback: { result in
+                weakSelf.viewModel.pickerResultObservable.next(result)
+            })
+        }
+        .add(to: disposeBag)
     }
     
     private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {
