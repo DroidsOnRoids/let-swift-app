@@ -57,6 +57,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
                 } else {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCollectionViewCell.cellIdentifier, for: indexPath) as! LoadingCollectionViewCell
                     cell.animateSpinner()
+                    
                     return cell
                 }
             }))
