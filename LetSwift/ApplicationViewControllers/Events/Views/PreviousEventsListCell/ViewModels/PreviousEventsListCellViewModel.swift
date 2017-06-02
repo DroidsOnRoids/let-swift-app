@@ -12,6 +12,7 @@ final class PreviousEventsListCellViewModel {
     
     private let disposeBag = DisposeBag()
     private var currentPage = 1
+    private var totalPage = -1
 
     let previousEventsObservable: Observable<[Event?]?>
     let cellDidTapWithIndexObservable = Observable<Int>(-1)
@@ -38,6 +39,8 @@ final class PreviousEventsListCellViewModel {
         previousEventsRefreshObservable.subscribeNext { [weak self] in
             guard let weakSelf = self, let events = weakSelf.previousEventsObservable.value, !events.contains(where: { $0 == nil }) else { return }
 
+            guard weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else { return }
+
             weakSelf.previousEventsObservable.next(events + [nil])
             weakSelf.getNextEventsPage()
         }
@@ -54,12 +57,11 @@ final class PreviousEventsListCellViewModel {
             let currentEvents = (self?.previousEventsObservable.value)?.flatMap { $0 } ?? []
 
             guard case .success(let events) = response else {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) { [weak self] in
-                    self?.previousEventsObservable.next(currentEvents)
-                }
+                self?.previousEventsObservable.next(currentEvents)
                 return
             }
 
+            self?.totalPage = events.page.pageCount
             self?.currentPage += 1
             self?.previousEventsObservable.next(currentEvents + events.elements)
         }

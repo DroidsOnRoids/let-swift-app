@@ -69,13 +69,13 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         .add(to: disposeBag)
 
         eventsCollectionView.scrollViewDidScrollObservable.subscribeNext { [weak self] scrollView in
-            guard let scrollView = scrollView else { return } //TODO: improves this method 
+            guard let scrollView = scrollView else { return }
             let offset = scrollView.contentOffset
             let bounds = scrollView.bounds
             let insets = scrollView.contentInset
             let y = offset.x + bounds.size.width - insets.right
 
-            if (y > scrollView.contentSize.width + 70) {
+            if (y > scrollView.contentSize.width + 70.0) {
                 self?.viewModel.previousEventsRefreshObservable.next()
             }
         }
