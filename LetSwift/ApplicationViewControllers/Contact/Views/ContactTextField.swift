@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ContactTextField: UITextField {
+final class ContactTextField: UITextField, ContactFieldProtocol {
     
     let textObservable = Observable<String>("")
     

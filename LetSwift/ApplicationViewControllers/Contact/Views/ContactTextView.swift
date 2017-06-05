@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ContactTextView: UITextView {
+final class ContactTextView: UITextView, ContactFieldProtocol {
     
     private enum Constants {
         static let verticalInset: CGFloat = 16.0

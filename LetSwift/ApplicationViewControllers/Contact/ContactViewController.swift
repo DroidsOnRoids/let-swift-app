@@ -118,28 +118,16 @@ final class ContactViewController: AppViewController {
         }
         .add(to: disposeBag)
         
-        viewModel.pickerResultObservable.subscribeError { [weak self] _ in
-            self?.topicButton.fieldState = .error
-        }
-        .add(to: disposeBag)
+        listenForErrors(observable: viewModel.pickerResultObservable, field: topicButton)
         
-        nameTextField.textObservable.bindNext(to: viewModel.nameTextObservable).add(to: disposeBag)
-        viewModel.nameTextObservable.subscribeError { [weak self] _ in
-            self?.nameTextField.fieldState = .error
+        ([
+            (viewModel.nameTextObservable, nameTextField),
+            (viewModel.emailTextObservable, emailTextField),
+            (viewModel.messageTextObservable, messageTextView)
+        ] as [(Observable<String>, ContactFieldProtocol)]).forEach { observable, field in
+            field.textObservable.bindNext(to: observable).add(to: disposeBag)
+            listenForErrors(observable: observable, field: field)
         }
-        .add(to: disposeBag)
-        
-        emailTextField.textObservable.bindNext(to: viewModel.emailTextObservable).add(to: disposeBag)
-        viewModel.emailTextObservable.subscribeError { [weak self] _ in
-            self?.emailTextField.fieldState = .error
-        }
-        .add(to: disposeBag)
-        
-        messageTextView.textObservable.bindNext(to: viewModel.messageTextObservable).add(to: disposeBag)
-        viewModel.messageTextObservable.subscribeError { [weak self] _ in
-            self?.messageTextView.fieldState = .error
-        }
-        .add(to: disposeBag)
         
         sendButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.sendTapped), for: .touchUpInside)
     }
@@ -155,6 +143,13 @@ final class ContactViewController: AppViewController {
                 self.containerView.transform = CGAffineTransform(translationX: 0.0, y: translationY)
             }
         })
+    }
+    
+    private func listenForErrors<T>(observable: Observable<T>, field: ContactFieldBaseProtocol) {
+        observable.subscribeError { _ in
+            field.fieldState = .error
+        }
+        .add(to: disposeBag)
     }
 }
 

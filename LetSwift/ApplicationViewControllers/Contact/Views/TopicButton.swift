@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class TopicButton: UIButton {
+final class TopicButton: UIButton, ContactFieldBaseProtocol {
     
     weak var associatedErrorView: UIView?
     

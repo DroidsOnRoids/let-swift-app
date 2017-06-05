@@ -137,6 +137,7 @@
 		D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */; };
 		D3E0ADA31ED563BC00270F0E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */; };
 		D3E0ADA61ED563FB00270F0E /* SplashViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */; };
+		D3E4AA751EE5577E00400015 /* ContactFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA741EE5577E00400015 /* ContactFieldProtocol.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
 		D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EDA6F11EE15D8900C035ED /* TopicPickerViewController.swift */; };
 		D3EDA6F41EE15D8900C035ED /* TopicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EDA6F21EE15D8900C035ED /* TopicPickerViewController.xib */; };
@@ -302,6 +303,7 @@
 		D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposingObjectTests.swift; sourceTree = "<group>"; };
 		D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3E4AA741EE5577E00400015 /* ContactFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFieldProtocol.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		D3EDA6F11EE15D8900C035ED /* TopicPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicPickerViewController.swift; sourceTree = "<group>"; };
 		D3EDA6F21EE15D8900C035ED /* TopicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicPickerViewController.xib; sourceTree = "<group>"; };
@@ -575,6 +577,7 @@
 				D33C4A281E9CD6320052E793 /* Localizable.swift */,
 				7EA48D441EADC12C00CEC845 /* Startable.swift */,
 				D3AE288D1ECD9E3600F29702 /* Disposable.swift */,
+				D3E4AA741EE5577E00400015 /* ContactFieldProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 				D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */,
 				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				7E0842C71ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift in Sources */,
+				D3E4AA751EE5577E00400015 /* ContactFieldProtocol.swift in Sources */,
 				7E0842CF1ECF0F79003F7C96 /* Page.swift in Sources */,
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
