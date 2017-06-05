@@ -34,13 +34,13 @@ final class ContactViewControllerViewModel {
             (!messageTextObservable.value.isEmpty, { self.messageTextObservable.error() })
         ]
         
-        validationRules.forEach { (isValid, errorClosure) in
+        validationRules.forEach { isValid, errorClosure in
             if !isValid {
                 errorClosure()
             }
         }
         
-        return !validationRules.contains(where: { (isValid, _) in !isValid })
+        return !validationRules.contains(where: { isValid, _ in !isValid })
     }
     
     init() {
