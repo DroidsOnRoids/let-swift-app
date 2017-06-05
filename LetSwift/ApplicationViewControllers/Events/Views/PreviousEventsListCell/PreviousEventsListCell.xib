@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="186.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREVIOUS LET SWIFT MEET-UPS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB1-Pb-P7I">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREVIOUS LET SWIFT MEET-UPS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sB1-Pb-P7I">
                         <rect key="frame" x="16" y="12" width="343" height="11.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                         <color key="textColor" red="0.51764705882352935" green="0.5607843137254902" blue="0.61960784313725492" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
