@@ -12,7 +12,9 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
     @IBOutlet private weak var previousTitleLabel: UILabel!
-    
+
+    private var isMoreEventsRequested = false
+    private var isScrollViewDragging = false
     private let disposeBag = DisposeBag()
 
     var viewModel: PreviousEventsListCellViewModel! {
@@ -69,7 +71,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         .add(to: disposeBag)
 
         eventsCollectionView.scrollViewDidScrollObservable.subscribeNext { [weak self] scrollView in
-            guard let scrollView = scrollView else { return }
+            guard let scrollView = scrollView, let weakSelf = self else { return }
             let offset = scrollView.contentOffset
             let boundsWidth = scrollView.bounds.width
             let insets = scrollView.contentInset
@@ -77,8 +79,32 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             let additonalSpace: CGFloat = 70.0
 
             if (y > scrollView.contentSize.width + additonalSpace) {
-                self?.viewModel.previousEventsRefreshObservable.next()
+                weakSelf.viewModel.previousEventsRefreshObservable.next()
+                if weakSelf.isScrollViewDragging {
+                    weakSelf.isMoreEventsRequested = true
+                } else {
+                    weakSelf.viewModel.morePreviousEventsRequestObervable.next()
+                }
             }
+        }
+        .add(to: disposeBag)
+
+        eventsCollectionView.scrollViewWillEndDraggingObservable.subscribeNext { [weak self] in
+            guard let weakSelf = self else { return }
+
+            weakSelf.isScrollViewDragging = false
+            if weakSelf.isMoreEventsRequested && !weakSelf.eventsCollectionView.visibleCells.filter({ $0 is LoadingCollectionViewCell }).isEmpty {
+                weakSelf.viewModel.morePreviousEventsRequestObervable.next()
+                weakSelf.isMoreEventsRequested = false
+            } else {
+                weakSelf.viewModel.morePreviousEventsRequestCanceledObservable.next()
+                weakSelf.isMoreEventsRequested = false
+            }
+        }
+        .add(to: disposeBag)
+
+        eventsCollectionView.scrollViewWillBeginDraggingObservable.subscribeNext { [weak self] in
+            self?.isScrollViewDragging = true
         }
         .add(to: disposeBag)
 

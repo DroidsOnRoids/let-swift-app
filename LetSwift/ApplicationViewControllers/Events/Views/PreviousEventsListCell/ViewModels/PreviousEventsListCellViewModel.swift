@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class PreviousEventsListCellViewModel {
     
@@ -17,10 +18,14 @@ final class PreviousEventsListCellViewModel {
     let previousEventsObservable: Observable<[Event?]?>
     let cellDidTapWithIndexObservable = Observable<Int>(-1)
     let previousEventsRefreshObservable = Observable<Void>()
+    let morePreviousEventsRequestObervable = Observable<Void>()
+    let morePreviousEventsRequestCanceledObservable = Observable<Void>()
     let refreshObservable: Observable<Void>
     let shouldScrollToFirstObservable = Observable<Void>()
 
     weak var delegate: EventsViewControllerDelegate?
+
+    private var morePreviousEventsRequest: Request?
 
     init(previousEvents events: Observable<[Event?]?>, refreshObservable refresh: Observable<Void>, delegate: EventsViewControllerDelegate?) {
         previousEventsObservable = events
@@ -43,7 +48,19 @@ final class PreviousEventsListCellViewModel {
             guard weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else { return }
 
             weakSelf.previousEventsObservable.next(events + [nil])
-            weakSelf.getNextEventsPage()
+        }
+        .add(to: disposeBag)
+
+        morePreviousEventsRequestObervable.subscribeNext { [weak self] in
+            if self?.morePreviousEventsRequest == nil {
+                self?.getNextEventsPage()
+            }
+        }
+        .add(to: disposeBag)
+
+        morePreviousEventsRequestCanceledObservable.subscribeNext { [weak self] in
+            let currentEvents = (self?.previousEventsObservable.value)?.flatMap { $0 } ?? []
+            self?.previousEventsObservable.next(currentEvents)
         }
         .add(to: disposeBag)
 
@@ -55,11 +72,14 @@ final class PreviousEventsListCellViewModel {
     }
 
     private func getNextEventsPage() {
-        NetworkProvider.shared.eventsList(with: currentPage + 1) { [weak self] response in
+        morePreviousEventsRequest = NetworkProvider.shared.eventsList(with: currentPage + 1) { [weak self] response in
             let currentEvents = (self?.previousEventsObservable.value)?.flatMap { $0 } ?? []
-
+            self?.morePreviousEventsRequest = nil
+            
             guard case .success(let events) = response else {
-                self?.previousEventsObservable.next(currentEvents)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) { [weak self] _ in
+                    self?.previousEventsObservable.next(currentEvents)
+                }
                 return
             }
 
