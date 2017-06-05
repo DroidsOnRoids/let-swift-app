@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="PeU-rG-Xh0" customClass="ReflectionShadowView" customModule="LetSwift" customModuleProvider="target">
-                        <rect key="frame" x="8" y="0.0" width="359" height="220"/>
+                        <rect key="frame" x="8" y="8" width="359" height="212"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="PeU-rG-Xh0" secondAttribute="height" multiplier="359:220" priority="999" id="NEy-5w-Pet"/>
@@ -35,7 +35,7 @@
                 <constraints>
                     <constraint firstItem="PeU-rG-Xh0" firstAttribute="left" secondItem="H2p-sc-9uM" secondAttribute="left" constant="8" id="Kwo-Pj-Ldb"/>
                     <constraint firstAttribute="trailing" secondItem="PeU-rG-Xh0" secondAttribute="trailing" constant="8" id="QsK-qf-qqh"/>
-                    <constraint firstItem="PeU-rG-Xh0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="VnM-Bz-DtS"/>
+                    <constraint firstItem="PeU-rG-Xh0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="VnM-Bz-DtS"/>
                     <constraint firstAttribute="bottom" secondItem="PeU-rG-Xh0" secondAttribute="bottom" id="mp2-Nf-a0n"/>
                 </constraints>
             </tableViewCellContentView>
