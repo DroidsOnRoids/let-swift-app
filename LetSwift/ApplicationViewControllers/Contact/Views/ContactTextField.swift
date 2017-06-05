@@ -10,7 +10,10 @@ import UIKit
 
 final class ContactTextField: UITextField {
     
+    let textObservable = Observable<String>("")
+    
     weak var associatedErrorView: UIView?
+    
     var fieldState = ContactFieldState.normal {
         didSet {
             setupFieldState()
@@ -48,9 +51,10 @@ final class ContactTextField: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return textRect(forBounds: bounds)
     }
-
+    
     private func setup() {
         delegate = self
+        addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         setupFieldState()
         setupPlaceholder()
     }
@@ -67,6 +71,10 @@ final class ContactTextField: UITextField {
         } else {
             attributedPlaceholder = placeholder.attributed()
         }
+    }
+    
+    @objc private func textFieldDidChange() {
+        textObservable.next(text ?? "")
     }
 }
 

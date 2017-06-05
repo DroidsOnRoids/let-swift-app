@@ -16,6 +16,8 @@ final class ContactTextView: UITextView {
         static let insetLabelOffset: CGFloat = 5.0
     }
     
+    let textObservable = Observable<String>("")
+    
     weak var associatedErrorView: UIView?
     
     var fieldState = ContactFieldState.normal {
@@ -81,6 +83,7 @@ extension ContactTextView: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-         placeholderLabel.isHidden = !textView.text.isEmpty
+        placeholderLabel.isHidden = !textView.text.isEmpty
+        textObservable.next(textView.text)
     }
 }

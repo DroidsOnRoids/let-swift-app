@@ -70,6 +70,7 @@ final class ContactViewController: AppViewController {
     }
     
     private func setupViews() {
+        topicButton.associatedErrorView = topicErrorLabel
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
@@ -116,6 +117,31 @@ final class ContactViewController: AppViewController {
             })
         }
         .add(to: disposeBag)
+        
+        viewModel.pickerResultObservable.subscribeError { [weak self] _ in
+            self?.topicButton.fieldState = .error
+        }
+        .add(to: disposeBag)
+        
+        nameTextField.textObservable.bindNext(to: viewModel.nameTextObservable).add(to: disposeBag)
+        viewModel.nameTextObservable.subscribeError { [weak self] _ in
+            self?.nameTextField.fieldState = .error
+        }
+        .add(to: disposeBag)
+        
+        emailTextField.textObservable.bindNext(to: viewModel.emailTextObservable).add(to: disposeBag)
+        viewModel.emailTextObservable.subscribeError { [weak self] _ in
+            self?.emailTextField.fieldState = .error
+        }
+        .add(to: disposeBag)
+        
+        messageTextView.textObservable.bindNext(to: viewModel.messageTextObservable).add(to: disposeBag)
+        viewModel.messageTextObservable.subscribeError { [weak self] _ in
+            self?.messageTextView.fieldState = .error
+        }
+        .add(to: disposeBag)
+        
+        sendButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.sendTapped), for: .touchUpInside)
     }
     
     private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {
@@ -134,7 +160,7 @@ final class ContactViewController: AppViewController {
 
 extension ContactViewController: Localizable {
     func setupLocalization() {
-        topicButton.setTitle(localized("CONTACT_TOPIC"), for: [])
+        topicButton.setTitle(localized("CONTACT_TOPIC") + "...", for: [])
         nameTextField.placeholder = localized("CONTACT_NAME")
         emailTextField.placeholder = localized("CONTACT_EMAIL")
         messageTextView.placeholder = localized("CONTACT_MESSAGE")
