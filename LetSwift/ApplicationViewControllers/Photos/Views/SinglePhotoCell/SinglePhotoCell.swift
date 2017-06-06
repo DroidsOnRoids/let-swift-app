@@ -10,6 +10,8 @@ import UIKit
 
 class SinglePhotoCell: UICollectionViewCell {
     
+    @IBOutlet private weak var imageView: NetworkImageView!
+    
     static let cellIdentifier = String(describing: SinglePhotoCell.self)
     
     override var isHighlighted: Bool {
@@ -18,9 +20,12 @@ class SinglePhotoCell: UICollectionViewCell {
         }
     }
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var imageURL: URL? {
+        get {
+            return imageView.imageURL
+        }
+        set {
+            imageView.imageURL = newValue
+        }
     }
-
 }

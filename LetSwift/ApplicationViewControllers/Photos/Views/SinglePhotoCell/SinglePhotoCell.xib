@@ -17,8 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-o8-ElV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yNV-o8-ElV" customClass="NetworkImageView" customModule="LetSwift" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </imageView>
                 </subviews>
             </view>
@@ -34,10 +35,10 @@
                     <integer key="value" value="4"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="imageView" destination="yNV-o8-ElV" id="oi9-u8-wuO"/>
+            </connections>
             <point key="canvasLocation" x="74" y="114"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="PhotoMock" width="1920" height="1277"/>
-    </resources>
 </document>

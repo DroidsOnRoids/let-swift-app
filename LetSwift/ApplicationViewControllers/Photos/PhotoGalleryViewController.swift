@@ -15,6 +15,11 @@ final class PhotoGalleryViewController: AppViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
+    // TODO: private
+    fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
+    
+    private let disposeBag = DisposeBag()
+    
     override var viewControllerTitleKey: String? {
         return "PHOTOS_TITLE"
     }
@@ -23,33 +28,43 @@ final class PhotoGalleryViewController: AppViewController {
         return true
     }
     
+    convenience init(viewModel: PhotoGalleryViewControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setup()
+    }
+    
+    private func setup() {
         collectionView.registerCells([SinglePhotoCell.self])
         collectionView.delegate = self
         
-        [0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
-            .bindable.bind(to: collectionView.items() ({ collectionView, index, element in
-            let indexPath = IndexPath(row: index, section: 0)
+        setupViewModel()
+    }
+    
+    private func setupViewModel() {
+        viewModel.photosObservable.subscribeNext(startsWithInitialValue: true) { [weak self] photos in
+            guard let weakSelf = self else { return }
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SinglePhotoCell.cellIdentifier, for: indexPath) as! SinglePhotoCell
-            
-            return cell
-            
-            /*if let event = element {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PreviousEventCell.cellIdentifier, for: indexPath) as! PreviousEventCell
-                cell.title = event.title
-                cell.date = event.date?.stringDateValue
+            photos.bindable.bind(to: weakSelf.collectionView.items() ({ collectionView, index, element in
+                let indexPath = IndexPath(row: index, section: 0)
+                
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SinglePhotoCell.cellIdentifier, for: indexPath) as! SinglePhotoCell
+                cell.imageURL = element.thumb
                 
                 return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingCollectionViewCell.cellIdentifier, for: indexPath) as! LoadingCollectionViewCell
-                cell.animateSpinner()
-                
-                return cell
-            }*/
-        }))
+            }))
+        }
+        .add(to: disposeBag)
+        
+        // TODO: It should be done this way...
+//        collectionView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
+//            self?.viewModel.photoSelectedObservable.next(indexPath.item)
+//        }
+//        .add(to: disposeBag)
     }
 }
 
@@ -60,6 +75,11 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
         let cellSize = (collectionView.bounds.width - cellPadding) / CGFloat(columnNumber)
         
         return CGSize(width: cellSize, height: cellSize)
+    }
+    
+    // TODO: ...not this way
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.photoSelectedObservable.next(indexPath.item)
     }
     
     private var columnNumber: Int {
