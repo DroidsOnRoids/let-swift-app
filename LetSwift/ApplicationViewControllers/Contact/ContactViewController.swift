@@ -118,15 +118,17 @@ final class ContactViewController: AppViewController {
         }
         .add(to: disposeBag)
         
-        listenForErrors(observable: viewModel.pickerResultObservable, field: topicButton)
+        listenForErrors(observable: viewModel.pickerResultObservable, view: topicButton)
         
-        ([
+        let contactFieldTuples: [(Observable<String>, ContactFieldProtocol)] = [
             (viewModel.nameTextObservable, nameTextField),
             (viewModel.emailTextObservable, emailTextField),
             (viewModel.messageTextObservable, messageTextView)
-        ] as [(Observable<String>, ContactFieldProtocol)]).forEach { observable, field in
+        ]
+        
+        contactFieldTuples.forEach { observable, field in
             field.textObservable.bindNext(to: observable).add(to: disposeBag)
-            listenForErrors(observable: observable, field: field)
+            listenForErrors(observable: observable, view: field)
         }
         
         sendButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.sendTapped), for: .touchUpInside)
@@ -145,9 +147,9 @@ final class ContactViewController: AppViewController {
         })
     }
     
-    private func listenForErrors<T>(observable: Observable<T>, field: ContactFieldBaseProtocol) {
+    private func listenForErrors<T>(observable: Observable<T>, view: ContactFieldBaseProtocol) {
         observable.subscribeError { _ in
-            field.fieldState = .error
+            view.fieldState = .error
         }
         .add(to: disposeBag)
     }
