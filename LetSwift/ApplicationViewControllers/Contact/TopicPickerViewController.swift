@@ -120,7 +120,7 @@ class TopicPickerViewController: UIViewController {
 
 extension TopicPickerViewController: Localizable {
     func setupLocalization() {
-        titleLabel.text = localized("CONTACT_PICKER_TITLE")
+        titleLabel.text = localized("CONTACT_TOPIC") + "..."
         doneButton.setTitle(localized("CONTACT_CANCEL"), for: [])
     }
 }

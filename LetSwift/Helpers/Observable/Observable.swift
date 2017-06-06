@@ -9,7 +9,7 @@
 final class Observable<Element> {
 
     typealias NextObserver = (Element) -> ()
-    typealias ErrorObserver = (Swift.Error) -> ()
+    typealias ErrorObserver = (Error?) -> ()
     typealias CompletedObserver = () -> ()
     typealias Predicate = (Element) -> Bool
     
@@ -72,6 +72,12 @@ final class Observable<Element> {
         }
     }
     
+    func bindNext(to target: Observable<Element>) -> DisposingObject {
+        return subscribeNext { event in
+            target.next(event)
+        }
+    }
+    
     func withLatest<T, Y>(from observable: Observable<T>, combine: (Element, T) -> Y) -> Observable<Y> {
         return Observable<Y>(combine(value, observable.value))
     }
@@ -84,7 +90,7 @@ final class Observable<Element> {
         self.value = value
     }
     
-    func error(_ error: Swift.Error) {
+    func error(_ error: Error? = nil) {
         errorObservers.forEach { $0.value(error) }
     }
     

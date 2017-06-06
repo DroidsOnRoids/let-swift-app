@@ -8,16 +8,19 @@
 
 import UIKit
 
-final class TopicButton: UIButton {
+final class TopicButton: UIButton, ContactFieldBaseProtocol {
     
-    private enum Constants {
-        static let borderColor: UIColor = .lightBlueGrey
-        static let highlightedColor: UIColor = .swiftOrange
+    weak var associatedErrorView: UIView?
+    
+    var fieldState = ContactFieldState.normal {
+        didSet {
+            setupFieldState()
+        }
     }
     
     override var isHighlighted: Bool {
         didSet {
-            layer.borderColor = isHighlighted ? Constants.highlightedColor.cgColor : Constants.borderColor.cgColor
+            fieldState = isHighlighted ? .editing : .normal
         }
     }
     
@@ -32,6 +35,11 @@ final class TopicButton: UIButton {
     }
     
     private func setup() {
-        layer.borderColor = Constants.borderColor.cgColor
+        setupFieldState()
+    }
+    
+    private func setupFieldState() {
+        layer.borderColor = fieldState.borderColor.cgColor
+        associatedErrorView?.isHidden = fieldState != .error
     }
 }

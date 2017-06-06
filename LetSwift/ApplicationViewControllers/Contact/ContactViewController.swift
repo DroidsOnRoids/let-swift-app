@@ -70,6 +70,7 @@ final class ContactViewController: AppViewController {
     }
     
     private func setupViews() {
+        topicButton.associatedErrorView = topicErrorLabel
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
@@ -116,6 +117,21 @@ final class ContactViewController: AppViewController {
             })
         }
         .add(to: disposeBag)
+        
+        listenForErrors(observable: viewModel.pickerResultObservable, view: topicButton)
+        
+        let contactFieldTuples: [(Observable<String>, ContactFieldProtocol)] = [
+            (viewModel.nameTextObservable, nameTextField),
+            (viewModel.emailTextObservable, emailTextField),
+            (viewModel.messageTextObservable, messageTextView)
+        ]
+        
+        contactFieldTuples.forEach { observable, field in
+            field.textObservable.bindNext(to: observable).add(to: disposeBag)
+            listenForErrors(observable: observable, view: field)
+        }
+        
+        sendButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.sendTapped), for: .touchUpInside)
     }
     
     private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {
@@ -130,11 +146,18 @@ final class ContactViewController: AppViewController {
             }
         })
     }
+    
+    private func listenForErrors<T>(observable: Observable<T>, view: ContactFieldBaseProtocol) {
+        observable.subscribeError { _ in
+            view.fieldState = .error
+        }
+        .add(to: disposeBag)
+    }
 }
 
 extension ContactViewController: Localizable {
     func setupLocalization() {
-        topicButton.setTitle(localized("CONTACT_TOPIC"), for: [])
+        topicButton.setTitle(localized("CONTACT_TOPIC") + "...", for: [])
         nameTextField.placeholder = localized("CONTACT_NAME")
         emailTextField.placeholder = localized("CONTACT_EMAIL")
         messageTextView.placeholder = localized("CONTACT_MESSAGE")
