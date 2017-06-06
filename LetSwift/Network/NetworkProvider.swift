@@ -32,7 +32,7 @@ struct NetworkProvider {
         alamofireManager = SessionManager(configuration: configuration)
     }
 
-    @discardableResult func eventsList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkResponse<NetworkPage<Event>>) -> ()) -> DataRequest {
+    @discardableResult func eventsList(with page: Int, perPage: Int = 5, completionHandler: @escaping (NetworkResponse<NetworkPage<Event>>) -> ()) -> DataRequest {
         let request = alamofireManager.request(NetworkRouter.eventsList([Constants.perPage: perPage, Constants.page: page]))
         request.responseJSON { response in
             response.result.responsePage(for: Constants.events, completionHandler: completionHandler)

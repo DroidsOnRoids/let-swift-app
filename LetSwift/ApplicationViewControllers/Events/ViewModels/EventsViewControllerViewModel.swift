@@ -26,7 +26,6 @@ final class EventsViewControllerViewModel {
 
     private enum Constants {
         static let minimumTimeForReminder: TimeInterval = 24.0 * 60.0 * 60.0
-        static let eventsPerPage = 20
     }
     
     private let disposeBag = DisposeBag()
@@ -44,7 +43,7 @@ final class EventsViewControllerViewModel {
     var eventsListRefreshObservable = Observable<Void>()
     var previousEventsCellDidSetObservable = Observable<Void>()
     var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
-    var previousEventsObservable = Observable<[Event]?>(nil)
+    var previousEventsObservable = Observable<[Event?]?>(nil)
     
     var eventDetailsRefreshObservable = Observable<Void>()
     var carouselCellDidSetObservable = Observable<Void>()
@@ -78,7 +77,7 @@ final class EventsViewControllerViewModel {
     init(events: [Event]?, delegate: EventsViewControllerDelegate?) {
         lastEventObservable = Observable<Event?>(events?.first)
         tableViewStateObservable = Observable<AppContentState>(events?.isEmpty ?? true ? .error : .content)
-        previousEventsObservable = Observable<[Event]?>(events?.tail)
+        previousEventsObservable = Observable<[Event?]?>(events?.tail)
         self.delegate = delegate
         
         setup()
@@ -102,7 +101,7 @@ final class EventsViewControllerViewModel {
 
     private func setup() {
         eventsListRefreshObservable.subscribeNext { [weak self] in
-            NetworkProvider.shared.eventsList(with: 1, perPage: Constants.eventsPerPage) { [weak self] response in
+            NetworkProvider.shared.eventsList(with: 1) { [weak self] response in
                 guard case .success(let events) = response, let firstEventId = events.elements.first?.id else {
                     self?.eventsListRefreshObservable.complete()
                     return
@@ -167,7 +166,7 @@ final class EventsViewControllerViewModel {
             .withLatest(from: previousEventsObservable, combine: { event in event.1 })
             .subscribeNext(startsWithInitialValue: true) { [weak self] events in
                 guard let weakSelf = self else { return }
-                let subviewModel = PreviousEventsListCellViewModel(previousEvents: weakSelf.previousEventsObservable, delegate: weakSelf.delegate)
+                let subviewModel = PreviousEventsListCellViewModel(previousEvents: weakSelf.previousEventsObservable, refreshObservable: weakSelf.eventsListRefreshObservable, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
             }
             .add(to: disposeBag)
