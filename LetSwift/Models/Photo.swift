@@ -10,11 +10,11 @@ import Mapper
 
 struct Photo: Mappable {
 
-    let thumbnail: URL?
-    let full: URL?
+    let thumb: URL?
+    let big: URL?
     
     init(map: Mapper) throws {
-        thumbnail = map.optionalFrom("thumbnail")
-        full = map.optionalFrom("full")
+        thumb = map.optionalFrom("thumb")
+        big = map.optionalFrom("big")
     }
 }

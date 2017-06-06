@@ -56,7 +56,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
         .add(to: disposeBag)
     }
 
-    private func setupScrollView(with images: [URL]) {
+    private func setupScrollView(with images: [Photo]) {
         let frameSize = scrollView.frame.size
 
         images.enumerated().forEach { index, card in
