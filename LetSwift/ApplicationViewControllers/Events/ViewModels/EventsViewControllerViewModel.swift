@@ -239,7 +239,7 @@ final class EventsViewControllerViewModel {
     private func checkAttendance() {
         guard let eventId = lastEventObservable.value?.facebook else { return }
 
-        attendanceStateObservable.next(isEventOutdated ? .loading : .notAllowed)
+        attendanceStateObservable.next(isEventOutdated ? .notAllowed : .loading)
 
         guard !isEventOutdated else { return }
         
