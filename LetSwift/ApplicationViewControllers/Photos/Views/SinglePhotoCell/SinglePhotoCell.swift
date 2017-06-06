@@ -11,6 +11,12 @@ import UIKit
 class SinglePhotoCell: UICollectionViewCell {
     
     static let cellIdentifier = String(describing: SinglePhotoCell.self)
+    
+    override var isHighlighted: Bool {
+        didSet {
+            highlightView(isHighlighted)
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
