@@ -15,7 +15,6 @@ final class PhotoGalleryViewController: AppViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    // TODO: private
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
     
     private let disposeBag = DisposeBag()
@@ -63,12 +62,6 @@ final class PhotoGalleryViewController: AppViewController {
             }))
         }
         .add(to: disposeBag)
-        
-        // TODO: It should be done this way...
-//        collectionView.itemDidSelectObservable.subscribeNext { [weak self] indexPath in
-//            self?.viewModel.photoSelectedObservable.next(indexPath.item)
-//        }
-//        .add(to: disposeBag)
     }
 }
 
@@ -81,7 +74,6 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: cellSize, height: cellSize)
     }
     
-    // TODO: ...not this way
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.photoSelectedObservable.next(indexPath.item)
     }
