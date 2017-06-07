@@ -121,6 +121,8 @@
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
+		D3A01F6B1EE7CD5700C16264 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A01F691EE7CD5700C16264 /* GalleryViewController.swift */; };
+		D3A01F6C1EE7CD5700C16264 /* GalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A01F6A1EE7CD5700C16264 /* GalleryViewController.xib */; };
 		D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */; };
 		D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288B1ECD9E0C00F29702 /* Observable.swift */; };
 		D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288D1ECD9E3600F29702 /* Disposable.swift */; };
@@ -293,6 +295,8 @@
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3A01F691EE7CD5700C16264 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		D3A01F6A1EE7CD5700C16264 /* GalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryViewController.xib; sourceTree = "<group>"; };
 		D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3AE288B1ECD9E0C00F29702 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D3AE288D1ECD9E3600F29702 /* Disposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
@@ -402,6 +406,8 @@
 				7E0842C51ECA00CA003F7C96 /* ViewModels */,
 				7E0842C11EC9FD9E003F7C96 /* PhotoGalleryViewController.swift */,
 				7E0842C21EC9FD9E003F7C96 /* PhotoGalleryViewController.xib */,
+				D3A01F691EE7CD5700C16264 /* GalleryViewController.swift */,
+				D3A01F6A1EE7CD5700C16264 /* GalleryViewController.xib */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -1091,6 +1097,7 @@
 				D341A18F1EDE91D10066E965 /* SplashImage.png in Resources */,
 				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
 				D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */,
+				D3A01F6C1EE7CD5700C16264 /* GalleryViewController.xib in Resources */,
 				D3EDA6F41EE15D8900C035ED /* TopicPickerViewController.xib in Resources */,
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
@@ -1292,6 +1299,7 @@
 				D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */,
 				D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
+				D3A01F6B1EE7CD5700C16264 /* GalleryViewController.swift in Sources */,
 				7EE1410D1EBCA4E4008378AB /* PreviousEventsListCellViewModel.swift in Sources */,
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
 				D3FF3F921E9F57DE00501F44 /* AppCoordinator.swift in Sources */,

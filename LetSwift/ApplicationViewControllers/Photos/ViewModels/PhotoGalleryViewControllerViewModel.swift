@@ -9,7 +9,7 @@
 final class PhotoGalleryViewControllerViewModel {
 
     let photosObservable: Observable<[Photo]>
-    let photoSelectedObservable = Observable<Int>(-1)
+    let photoSelectedObservable = Observable<Int>(0)
 
     weak var delegate: PhotoGalleryViewControllerDelegate?
     
@@ -23,10 +23,9 @@ final class PhotoGalleryViewControllerViewModel {
     }
     
     private func setup() {
-        photoSelectedObservable.subscribeNext { [weak self] index in
-            guard let photo = self?.photosObservable.value[index] else { return }
-            // TODO: do something with photo
-            print(photo)
+        photoSelectedObservable.subscribeCompleted { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.delegate?.presentGallery(with: weakSelf)
         }
         .add(to: disposeBag)
     }

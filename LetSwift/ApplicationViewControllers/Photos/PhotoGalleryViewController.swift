@@ -9,6 +9,7 @@
 import UIKit
 
 protocol PhotoGalleryViewControllerDelegate: class {
+    func presentGallery(with: PhotoGalleryViewControllerViewModel)
 }
 
 final class PhotoGalleryViewController: AppViewController {
@@ -76,5 +77,6 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.photoSelectedObservable.next(indexPath.item)
+        viewModel.photoSelectedObservable.complete()
     }
 }

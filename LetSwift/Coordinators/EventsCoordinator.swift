@@ -58,9 +58,18 @@ extension EventsCoordinator: EventsViewControllerDelegate {
     }
 
     func presentPhotoGalleryScreen(with photos: [Photo]) {
-        let viewModel = PhotoGalleryViewControllerViewModel(photos: photos, delegate: nil)
+        let viewModel = PhotoGalleryViewControllerViewModel(photos: photos, delegate: self)
         let viewController = PhotoGalleryViewController(viewModel: viewModel)
 
+        navigationViewController.pushViewController(viewController, animated: true)
+    }
+}
+
+extension EventsCoordinator: PhotoGalleryViewControllerDelegate {
+    func presentGallery(with viewModel: PhotoGalleryViewControllerViewModel) {
+        let viewController = GalleryViewController(viewModel: viewModel)
+        viewController.hidesBottomBarWhenPushed = true
+        
         navigationViewController.pushViewController(viewController, animated: true)
     }
 }
