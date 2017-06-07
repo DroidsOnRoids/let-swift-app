@@ -28,6 +28,10 @@ final class PhotoGalleryViewController: AppViewController {
         return true
     }
     
+    fileprivate var columnNumber: Int {
+        return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7.rawValue ? 3 : 2
+    }
+    
     convenience init(viewModel: PhotoGalleryViewControllerViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -80,9 +84,5 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     // TODO: ...not this way
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.photoSelectedObservable.next(indexPath.item)
-    }
-    
-    private var columnNumber: Int {
-        return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7.rawValue ? 3 : 2
     }
 }

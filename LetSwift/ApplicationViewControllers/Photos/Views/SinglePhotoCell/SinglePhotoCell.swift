@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SinglePhotoCell: UICollectionViewCell {
+final class SinglePhotoCell: UICollectionViewCell {
     
     @IBOutlet private weak var imageView: NetworkImageView!
     
