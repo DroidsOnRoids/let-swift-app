@@ -34,7 +34,17 @@ DEPENDENCIES:
   - HockeySDK (~> 4.1)
   - ImageEffects (~> 1.0)
   - ModelMapper (~> 6.0)
-  - MWPhotoBrowser (~> 2.1)
+  - MWPhotoBrowser (from `https://github.com/m-chojnacki/MWPhotoBrowser.git`, branch `fork`)
+
+EXTERNAL SOURCES:
+  MWPhotoBrowser:
+    :branch: fork
+    :git: https://github.com/m-chojnacki/MWPhotoBrowser.git
+
+CHECKOUT OPTIONS:
+  MWPhotoBrowser:
+    :commit: 36fc5afb0c8a2101aa56131d8fa29218d462344b
+    :git: https://github.com/m-chojnacki/MWPhotoBrowser.git
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -50,6 +60,6 @@ SPEC CHECKSUMS:
   MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: e7da6049ced2f220a32214da4a615cf0729f8c7d
+PODFILE CHECKSUM: a3127916afac854f2f1093f38c4ef91dc67c8bbd
 
 COCOAPODS: 1.2.0
