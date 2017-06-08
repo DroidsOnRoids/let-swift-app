@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class SinglePhotoCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: NetworkImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     
     static let cellIdentifier = String(describing: SinglePhotoCell.self)
     
@@ -21,11 +22,8 @@ final class SinglePhotoCell: UICollectionViewCell {
     }
 
     var imageURL: URL? {
-        get {
-            return imageView.imageURL
-        }
-        set {
-            imageView.imageURL = newValue
+        didSet {
+            imageView.sd_setImage(with: imageURL)
         }
     }
 }
