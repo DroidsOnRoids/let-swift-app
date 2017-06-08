@@ -11,7 +11,7 @@ import Alamofire
 enum NetworkRouter: URLRequestConvertible {
 
     private enum Constants {
-        static let basePath = "http://92.222.84.21:8080/api/"
+        static let basePath = "/api/"
         static let version = "v1"
     }
 
@@ -44,7 +44,7 @@ enum NetworkRouter: URLRequestConvertible {
     }
 
     func asURLRequest() throws -> URLRequest {
-        let url = try (Constants.basePath + Constants.version).asURL()
+        let url = URL.baseServerURL!.appendingPathComponent(Constants.basePath + Constants.version)
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.httpMethod = method.rawValue
 

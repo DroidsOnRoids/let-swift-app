@@ -10,11 +10,16 @@ import Mapper
 
 struct Photo: Mappable {
 
-    let thumbnail: URL?
-    let full: URL?
+    let thumb: URL?
+    let big: URL?
     
     init(map: Mapper) throws {
-        thumbnail = map.optionalFrom("thumbnail")
-        full = map.optionalFrom("full")
+        thumb = Photo.prependBaseURL(map.optionalFrom("thumb"))
+        big = Photo.prependBaseURL(map.optionalFrom("big"))
+    }
+    
+    private static func prependBaseURL(_ url: String?) -> URL? {
+        guard let url = url else { return nil }
+        return URL.baseServerURL?.appendingPathComponent(url)
     }
 }

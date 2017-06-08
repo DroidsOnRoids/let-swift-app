@@ -57,5 +57,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>BaseServerURL</key>
+	<string>http://92.222.84.21:8080</string>
 </dict>
 </plist>
