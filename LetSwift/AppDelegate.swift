@@ -9,6 +9,7 @@
 import UIKit
 import HockeySDK
 import FBSDKCoreKit
+import SDWebImage
 
 #if DEBUG
 let isDebugBuild = true
@@ -30,7 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance()
             .application(application, didFinishLaunchingWithOptions: launchOptions)
-
+        
+        SDWebImageManager.shared().imageCache.clearDisk()
+        
         let navigationController = UINavigationController()
         appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator.start()
