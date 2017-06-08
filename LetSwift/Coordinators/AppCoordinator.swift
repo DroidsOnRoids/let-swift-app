@@ -9,10 +9,20 @@
 import UIKit
 
 protocol AppCoordinatorDelegate: class {
+    var rotationLocked: Bool { get set }
     func presentLoginViewController(asPopupWindow: Bool)
 }
 
 final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
+    
+    var rotationLocked = true {
+        didSet {
+            if rotationLocked {
+                let key = UIInterfaceOrientation.portrait.rawValue
+                UIDevice.current.setValue(key, forKey: "orientation")
+            }
+        }
+    }
     
     fileprivate var initialEventsList: [Event]?
     

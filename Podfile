@@ -21,4 +21,5 @@ target 'LetSwift' do
   # Views
   pod 'ImageEffects', '~> 1.0'
   pod 'ESPullToRefresh', '~> 2.6'
+  pod 'MWPhotoBrowser', '~> 2.1'
 end

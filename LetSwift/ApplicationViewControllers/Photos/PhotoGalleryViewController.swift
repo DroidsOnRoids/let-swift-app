@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MWPhotoBrowser
 
 protocol PhotoGalleryViewControllerDelegate: class {
     func presentGallery(with: PhotoGalleryViewControllerViewModel)
@@ -17,6 +18,7 @@ final class PhotoGalleryViewController: AppViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
+    fileprivate var mwPhotos: [MWPhoto]?
     
     private let disposeBag = DisposeBag()
     
@@ -61,6 +63,8 @@ final class PhotoGalleryViewController: AppViewController {
                 
                 return cell
             }))
+            
+            weakSelf.mwPhotos = photos.map { MWPhoto(url: $0.big) }
         }
         .add(to: disposeBag)
     }
@@ -76,7 +80,30 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.photoSelectedObservable.next(indexPath.item)
-        viewModel.photoSelectedObservable.complete()
+        let browser = RotatingMVPhotoBrowser(delegate: self)
+        browser?.coordinatorDelegate = coordinatorDelegate
+        browser?.displayActionButton = false
+        browser?.enableGrid = false
+        browser?.lightMode = true
+        browser?.setCurrentPhotoIndex(UInt(indexPath.row))
+        
+        navigationController?.pushViewController(browser!, animated: true)
+    }
+}
+
+extension PhotoGalleryViewController: MWPhotoBrowserDelegate {
+    func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
+        return UInt(mwPhotos?.count ?? 0)
+    }
+    
+    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
+        return mwPhotos?[Int(index)]
+    }
+    
+    func translation(for string: String!, withDescription description: String!) -> String! {
+        switch string {
+        case "of": return localized("PHOTOS_OF")
+        default: return string
+        }
     }
 }
