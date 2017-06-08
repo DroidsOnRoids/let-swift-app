@@ -8,7 +8,7 @@
 
 import MWPhotoBrowser
 
-final class RotatingMVPhotoBrowser: MWPhotoBrowser {
+final class RotatingMWPhotoBrowser: MWPhotoBrowser {
     
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
