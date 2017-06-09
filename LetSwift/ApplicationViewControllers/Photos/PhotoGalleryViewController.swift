@@ -29,13 +29,13 @@ final class PhotoGalleryViewController: AppViewController {
         return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7.rawValue ? 3 : 2
     }
     
-    fileprivate var photoBrowser: MWPhotoBrowser {
-        let browser = RotatingMWPhotoBrowser(delegate: self)!
-        browser.coordinatorDelegate = coordinatorDelegate
-        browser.displayActionButton = false
-        browser.enableGrid = false
-        browser.lightMode = true
-        browser.setCurrentPhotoIndex(UInt(viewModel.photoSelectedObservable.value))
+    fileprivate var photoBrowser: MWPhotoBrowser? {
+        let browser = RotatingMWPhotoBrowser(delegate: self)
+        browser?.coordinatorDelegate = coordinatorDelegate
+        browser?.displayActionButton = false
+        browser?.enableGrid = false
+        browser?.lightMode = true
+        browser?.setCurrentPhotoIndex(UInt(viewModel.photoSelectedObservable.value))
         
         return browser
     }
@@ -73,8 +73,8 @@ final class PhotoGalleryViewController: AppViewController {
         .add(to: disposeBag)
         
         viewModel.photoSelectedObservable.subscribeNext { [weak self] _ in
-            guard let weakSelf = self else { return }
-            weakSelf.navigationController?.pushViewController(weakSelf.photoBrowser, animated: true)
+            guard let photoBrowser = self?.photoBrowser else { return }
+            self?.navigationController?.pushViewController(photoBrowser, animated: true)
         }
         .add(to: disposeBag)
     }
