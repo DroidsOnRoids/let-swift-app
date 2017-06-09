@@ -43,10 +43,7 @@ final class PreviousEventsListCellViewModel {
         .add(to: disposeBag)
 
         morePreviousEventsRequestObervable.subscribeNext { [weak self] in
-            guard let weakSelf = self, weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else {
-                self?.morePreviousEventsAvilabilityObservable.next(false)
-                return
-            }
+            guard let weakSelf = self, weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else { return }
 
             if weakSelf.morePreviousEventsRequest == nil {
                 weakSelf.getNextEventsPage()
@@ -74,13 +71,22 @@ final class PreviousEventsListCellViewModel {
             self?.morePreviousEventsRequest = nil
             
             guard case .success(let events) = response else {
-                self?.previousEventsObservable.next(currentEvents)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+                    self?.previousEventsObservable.next(currentEvents)
+                }
                 return
             }
 
             self?.totalPage = events.page.pageCount
             self?.currentPage += 1
-            self?.previousEventsObservable.next(currentEvents + events.elements)
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+                self?.previousEventsObservable.next(currentEvents + events.elements)
+            }
+
+            if self?.currentPage == self?.totalPage {
+                self?.morePreviousEventsAvilabilityObservable.next(false)
+            }
         }
     }
 }

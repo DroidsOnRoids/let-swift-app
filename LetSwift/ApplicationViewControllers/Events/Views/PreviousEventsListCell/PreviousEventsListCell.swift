@@ -54,11 +54,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
     private func reactiveSetup() {
         viewModel.previousEventsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] events in
-            UIView.animate(withDuration: 0.25) {
-                self?.scrollViewTrailingConstraint.constant = 0
-                self?.layoutIfNeeded()
-            }
-
+            self?.scrollViewMoveWithAnimation(about: 0.0)
             self?.spinnerView.animationActive = true
 
             guard let collectionView = self?.eventsCollectionView else { return }
@@ -90,12 +86,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
                 if weakSelf.isScrollViewDragging {
                     weakSelf.isMoreEventsRequested = true
                 } else {
-                    if self?.scrollViewTrailingConstraint.constant != 60.0 {
-                        UIView.animate(withDuration: 0.25) {
-                            weakSelf.scrollViewTrailingConstraint.constant = 60.0
-                            weakSelf.layoutIfNeeded()
-                        }
-                    }
+                    weakSelf.scrollViewMoveWithAnimation(about: 60.0)
                     weakSelf.viewModel.morePreviousEventsRequestObervable.next()
                 }
             }
@@ -107,21 +98,13 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
             weakSelf.isScrollViewDragging = false
             if weakSelf.isMoreEventsRequested && !weakSelf.spinnerView.isHidden && weakSelf.isSpinnerVisibleOnScreen {
-                if self?.scrollViewTrailingConstraint.constant != 60.0 {
-                    DispatchQueue.main.async {
-                        UIView.animate(withDuration: 0.25) {
-                            weakSelf.scrollViewTrailingConstraint.constant = 60.0
-                            weakSelf.layoutIfNeeded()
-                        }
-                    }
+                DispatchQueue.main.async {
+                    weakSelf.scrollViewMoveWithAnimation(about: 60.0)
                 }
                 weakSelf.viewModel.morePreviousEventsRequestObervable.next()
                 weakSelf.isMoreEventsRequested = false
             } else {
-                UIView.animate(withDuration: 0.25) {
-                    self?.scrollViewTrailingConstraint.constant = 0
-                    self?.layoutIfNeeded()
-                }
+                weakSelf.scrollViewMoveWithAnimation(about: 0.0)
                 weakSelf.viewModel.morePreviousEventsRequestCanceledObservable.next()
                 weakSelf.isMoreEventsRequested = false
             }
@@ -140,14 +123,23 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         .add(to: disposeBag)
 
         viewModel.morePreviousEventsAvilabilityObservable.subscribeNext { [weak self] available in
-            UIView.animate(withDuration: 0.25, animations: {
-                self?.scrollViewTrailingConstraint.constant = 0
-                self?.layoutIfNeeded()
-            }, completion: { _ in
-                self?.spinnerView.isHidden = !available
-                self?.scrollViewTrailingConstraint.constant = 0
-            })
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self?.scrollViewTrailingConstraint.constant = 0
+                    self?.layoutIfNeeded()
+                }, completion: { _ in
+                    self?.spinnerView.isHidden = !available
+                    self?.scrollViewTrailingConstraint.constant = 0
+                })
+            }
         }
         .add(to: disposeBag)
+    }
+
+    func scrollViewMoveWithAnimation(about space: CGFloat) {
+        UIView.animate(withDuration: 0.25) {
+            self.scrollViewTrailingConstraint.constant = space
+            self.layoutIfNeeded()
+        }
     }
 }
