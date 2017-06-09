@@ -72,16 +72,17 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
         eventsCollectionView.scrollViewDidScrollObservable.subscribeNext { [weak self] scrollView in
             guard let scrollView = scrollView, let weakSelf = self else { return }
-            let offset = scrollView.contentOffset
+
             let boundsWidth = scrollView.bounds.width
             let insets = scrollView.contentInset
-            let y = offset.x + boundsWidth - insets.right
+            let y = scrollView.contentOffset.x + boundsWidth - insets.right
             let additonalSpace: CGFloat = 70.0
-
             let spinnerOffset = y - scrollView.contentSize.width
+
             UIView.animate(withDuration: 0.01) {
                 self?.spinnerView.transform = CGAffineTransform(translationX: -spinnerOffset, y: 0)
             }
+
             if (y > scrollView.contentSize.width + additonalSpace) && !weakSelf.spinnerView.isHidden {
                 if weakSelf.isScrollViewDragging {
                     weakSelf.isMoreEventsRequested = true
@@ -117,26 +118,38 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         .add(to: disposeBag)
 
         viewModel.shouldScrollToFirstObservable.subscribeNext { [weak self] in
-            self?.eventsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .right, animated: false)
-            self?.spinnerView.isHidden = false
+            self?.restartCellState()
         }
         .add(to: disposeBag)
 
         viewModel.morePreviousEventsAvilabilityObservable.subscribeNext { [weak self] available in
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 0.25, animations: {
-                    self?.scrollViewTrailingConstraint.constant = 0
-                    self?.layoutIfNeeded()
-                }, completion: { _ in
-                    self?.spinnerView.isHidden = !available
-                    self?.scrollViewTrailingConstraint.constant = 0
-                })
-            }
+            self?.spinner(enable: available)
         }
         .add(to: disposeBag)
     }
 
-    func scrollViewMoveWithAnimation(about space: CGFloat) {
+    private func updateSpinnerOffset() {
+
+    }
+
+    private func restartCellState() {
+        eventsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .right, animated: false)
+        spinnerView.isHidden = false
+    }
+
+    private func spinner(enable: Bool) {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.25, animations: {
+                self.scrollViewTrailingConstraint.constant = 0
+                self.layoutIfNeeded()
+            }, completion: { _ in
+                self.spinnerView.isHidden = !enable
+                self.scrollViewTrailingConstraint.constant = 0
+            })
+        }
+    }
+
+    private func scrollViewMoveWithAnimation(about space: CGFloat) {
         UIView.animate(withDuration: 0.25) {
             self.scrollViewTrailingConstraint.constant = space
             self.layoutIfNeeded()
