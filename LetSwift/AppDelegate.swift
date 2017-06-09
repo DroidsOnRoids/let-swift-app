@@ -9,6 +9,7 @@
 import UIKit
 import HockeySDK
 import FBSDKCoreKit
+import SDWebImage
 
 #if DEBUG
 let isDebugBuild = true
@@ -30,7 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FBSDKApplicationDelegate.sharedInstance()
             .application(application, didFinishLaunchingWithOptions: launchOptions)
-
+        
+        SDWebImageManager.shared().imageCache.clearDisk()
+        
         let navigationController = UINavigationController()
         appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator.start()
@@ -41,6 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         return true
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return appCoordinator.rotationLocked ? .portrait : .allButUpsideDown
     }
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

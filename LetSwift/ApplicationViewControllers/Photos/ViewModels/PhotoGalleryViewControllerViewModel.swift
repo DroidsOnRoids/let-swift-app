@@ -6,27 +6,25 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
+import MWPhotoBrowser
+
 final class PhotoGalleryViewControllerViewModel {
 
     let photosObservable: Observable<[Photo]>
-    let photoSelectedObservable = Observable<Int>(-1)
-
-    weak var delegate: PhotoGalleryViewControllerDelegate?
+    let mwPhotosObservable = Observable<[MWPhoto]>([])
+    let photoSelectedObservable = Observable<Int>(0)
     
     private let disposeBag = DisposeBag()
 
-    init(photos: [Photo], delegate: PhotoGalleryViewControllerDelegate?) {
+    init(photos: [Photo]) {
         photosObservable = Observable<[Photo]>(photos)
-        self.delegate = delegate
         
         setup()
     }
     
     private func setup() {
-        photoSelectedObservable.subscribeNext { [weak self] index in
-            guard let photo = self?.photosObservable.value[index] else { return }
-            // TODO: do something with photo
-            print(photo)
+        photosObservable.subscribeNext(startsWithInitialValue: true) { [weak self] photos in
+            self?.mwPhotosObservable.next(photos.map { MWPhoto(url: $0.big) })
         }
         .add(to: disposeBag)
     }

@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
 
 final class PreviousEventCell: UICollectionViewCell {
     
-    @IBOutlet private weak var imageView: NetworkImageView!
+    @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
@@ -23,11 +24,8 @@ final class PreviousEventCell: UICollectionViewCell {
     }
     
     var imageURL: URL? {
-        get {
-            return imageView.imageURL
-        }
-        set {
-            imageView.imageURL = newValue
+        didSet {
+            imageView.sd_setImage(with: imageURL)
         }
     }
     

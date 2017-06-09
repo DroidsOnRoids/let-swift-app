@@ -8,6 +8,7 @@
 
 import UIKit
 import ImageEffects
+import SDWebImage
 
 class ReflectionShadowView: UIView {
     
@@ -49,11 +50,11 @@ class ReflectionShadowView: UIView {
     }
     
     @IBInspectable var imageURL: URL? {
-        set {
-            imageView.imageURL = newValue
-        }
-        get {
-            return imageView.imageURL
+        didSet {
+            imageView.sd_setImage(with: imageURL) { [weak self] image, _, _, _ in
+                guard let _ = image else { return }
+                self?.blurImage()
+            }
         }
     }
     
@@ -69,10 +70,8 @@ class ReflectionShadowView: UIView {
         return CGSize(width: imageWidth, height: imageHeight)
     }
     
-    var imageView: NetworkImageView!
+    var imageView: UIImageView!
     var shadowImageView: UIImageView!
-    
-    private let disposeBag = DisposeBag()
     
     private enum Constants {
         static let heightMultiplier: CGFloat = 0.06
@@ -110,13 +109,9 @@ class ReflectionShadowView: UIView {
     }
     
     private func setShadow() {
-        imageView = NetworkImageView()
+        imageView = UIImageView()
         imageView.layer.masksToBounds = true
         imageView.contentMode = contentMode
-        imageView.imageDownloadedObservable.subscribeNext { [weak self] in
-            self?.blurImage()
-        }
-        .add(to: disposeBag)
         
         shadowImageView = UIImageView()
         shadowImageView.contentMode = contentMode

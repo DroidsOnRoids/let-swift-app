@@ -63,7 +63,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
 
-            let subview = NetworkImageView(frame: frame)
+            let subview = UIImageView(frame: frame)
             subview.contentMode = .scaleAspectFill
             subview.clipsToBounds = true
             subview.image = #imageLiteral(resourceName: "PhotoMock")

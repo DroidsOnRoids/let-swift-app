@@ -24,6 +24,14 @@ class AppViewController: UIViewController {
         return false
     }
     
+    override var title: String? {
+        didSet {
+            if let navTitle = navigationItem.title {
+                navigationItem.titleView = setupTitleLabel(withTitle: navTitle)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,12 +41,7 @@ class AppViewController: UIViewController {
     private func setupNavigationBar() {
         title = localized(viewControllerTitleKey ?? "").uppercased()
         navigationController?.navigationBar.setValue(shouldHideShadow, forKey: "hidesShadow")
-        
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        if let navTitle = navigationItem.title {
-            navigationItem.titleView = setupTitleLabel(withTitle: navTitle)
-        }
         
         if shouldShowUserIcon {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
