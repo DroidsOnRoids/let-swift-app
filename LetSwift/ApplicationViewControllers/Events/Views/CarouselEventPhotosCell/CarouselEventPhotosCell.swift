@@ -42,16 +42,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
         .add(to: disposeBag)
 
         viewModel.currentPageObservable.subscribeNext { [weak self] page in
-            guard let weakSelf = self else { return }
-            let xOffset = weakSelf.scrollView.contentOffset.x
-            let singleWidth = weakSelf.scrollView.frame.width
-
-            if xOffset >= 0.0 {
-                let xPosition = CGFloat(page) * singleWidth
-
-                weakSelf.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
-                weakSelf.pageControl.currentPage = page
-            }
+            self?.pageControl.currentPage = page
         }
         .add(to: disposeBag)
     }
@@ -66,7 +57,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
             let subview = UIImageView(frame: frame)
             subview.contentMode = .scaleAspectFill
             subview.clipsToBounds = true
-            subview.image = #imageLiteral(resourceName: "PhotoMock")
+            subview.sd_setImage(with: images[index].big)
 
             scrollView.addSubview(subview)
         }

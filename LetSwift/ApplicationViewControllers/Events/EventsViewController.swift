@@ -35,6 +35,13 @@ class EventsViewController: CommonEventViewController {
     
     private let disposeBag = DisposeBag()
     
+    private func setup(staticImageCell cell: StaticImageCell) {
+        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
+            cell.imageURL = event?.coverImages.first?.big
+        }
+        .add(to: disposeBag)
+    }
+    
     private func setup(previousEventsCell cell: PreviousEventsListCell) {
         viewModel.previousEventsCellDidSetObservable.next()
         
@@ -48,9 +55,10 @@ class EventsViewController: CommonEventViewController {
         super.dispatchCellSetup(element: element, cell: cell, index: index)
         
         switch element {
+        case .image:
+            self.setup(staticImageCell: cell as! StaticImageCell)
         case .previousEvents:
             self.setup(previousEventsCell: cell as! PreviousEventsListCell)
-            
         default: break
         }
     }
@@ -61,7 +69,6 @@ class EventsViewController: CommonEventViewController {
         switch element {
         case .image, .eventSummary:
             viewModel.summaryCellDidTapObservable.next()
-            
         default: break
         }
     }

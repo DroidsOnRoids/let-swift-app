@@ -49,6 +49,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
                 if let event = element {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PreviousEventCell.cellIdentifier, for: indexPath) as! PreviousEventCell
+                    cell.imageURL = event.coverImages.first?.thumb
                     cell.title = event.title
                     cell.date = event.date?.stringDateValue
 
