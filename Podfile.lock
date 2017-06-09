@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   MWPhotoBrowser:
-    :commit: 36fc5afb0c8a2101aa56131d8fa29218d462344b
+    :commit: 90bd754175fef6fbb2644c4f67fffabc04adbf17
     :git: https://github.com/m-chojnacki/MWPhotoBrowser.git
 
 SPEC CHECKSUMS:
