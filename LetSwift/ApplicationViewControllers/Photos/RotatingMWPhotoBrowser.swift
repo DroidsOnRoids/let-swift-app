@@ -15,12 +15,10 @@ final class RotatingMWPhotoBrowser: MWPhotoBrowser {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coordinatorDelegate?.rotationLocked = false
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         coordinatorDelegate?.rotationLocked = true
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 }

@@ -74,7 +74,7 @@ final class PhotoGalleryViewController: AppViewController {
         
         viewModel.photoSelectedObservable.subscribeNext { [weak self] _ in
             guard let photoBrowser = self?.photoBrowser else { return }
-            self?.navigationController?.pushViewController(photoBrowser, animated: true)
+            self?.coordinatorDelegate?.pushOnRootNavigationController(photoBrowser, animated: true)
         }
         .add(to: disposeBag)
     }
