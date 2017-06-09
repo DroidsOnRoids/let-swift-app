@@ -26,6 +26,10 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             }
         }
     }
+
+    var isSpinnerVisibleOnScreen: Bool {
+        return bounds.contains(convert(spinnerView.bounds, from: spinnerView))
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -102,7 +106,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             guard let weakSelf = self else { return }
 
             weakSelf.isScrollViewDragging = false
-            if weakSelf.isMoreEventsRequested && !weakSelf.spinnerView.isHidden {
+            if weakSelf.isMoreEventsRequested && !weakSelf.spinnerView.isHidden && weakSelf.isSpinnerVisibleOnScreen {
                 if self?.scrollViewTrailingConstraint.constant != 60.0 {
                     DispatchQueue.main.async {
                         UIView.animate(withDuration: 0.25) {
