@@ -36,6 +36,13 @@
                             <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
                         </collectionViewFlowLayout>
                     </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfI-2X-5x7" customClass="SpinnerView" customModule="LetSwift" customModuleProvider="target">
+                        <rect key="frame" x="375" y="35" width="50" height="143.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="X1q-Hb-171"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Tuq-sL-QHB" secondAttribute="trailing" id="2Zj-DK-edD"/>
@@ -43,14 +50,19 @@
                     <constraint firstAttribute="trailing" secondItem="sB1-Pb-P7I" secondAttribute="trailing" constant="16" id="cUl-sN-HbG"/>
                     <constraint firstItem="sB1-Pb-P7I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="nU9-hz-oCb"/>
                     <constraint firstAttribute="bottom" secondItem="Tuq-sL-QHB" secondAttribute="bottom" constant="8" id="ncn-cH-bm8"/>
+                    <constraint firstItem="dfI-2X-5x7" firstAttribute="top" secondItem="Tuq-sL-QHB" secondAttribute="top" id="pWB-eg-pJg"/>
+                    <constraint firstItem="dfI-2X-5x7" firstAttribute="leading" secondItem="Tuq-sL-QHB" secondAttribute="trailing" id="ske-yM-hBH"/>
                     <constraint firstItem="Tuq-sL-QHB" firstAttribute="top" secondItem="sB1-Pb-P7I" secondAttribute="bottom" constant="12" id="wyy-Gt-9h3"/>
                     <constraint firstItem="Tuq-sL-QHB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="x1c-5e-42S"/>
+                    <constraint firstItem="dfI-2X-5x7" firstAttribute="bottom" secondItem="Tuq-sL-QHB" secondAttribute="bottom" id="yWo-fk-ueL"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.87058823529411766" green="0.89803921568627454" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="eventsCollectionView" destination="Tuq-sL-QHB" id="11Z-P2-f98"/>
                 <outlet property="previousTitleLabel" destination="sB1-Pb-P7I" id="3xN-SV-VPt"/>
+                <outlet property="scrollViewTrailingConstraint" destination="2Zj-DK-edD" id="sQA-Hr-4XL"/>
+                <outlet property="spinnerView" destination="dfI-2X-5x7" id="Y8x-Ey-0X4"/>
             </connections>
             <point key="canvasLocation" x="-1.5" y="149.5"/>
         </tableViewCell>

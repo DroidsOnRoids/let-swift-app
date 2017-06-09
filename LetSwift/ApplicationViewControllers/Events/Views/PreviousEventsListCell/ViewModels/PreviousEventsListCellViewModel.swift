@@ -17,9 +17,9 @@ final class PreviousEventsListCellViewModel {
 
     let previousEventsObservable: Observable<[Event?]?>
     let cellDidTapWithIndexObservable = Observable<Int>(-1)
-    let previousEventsRefreshObservable = Observable<Void>()
     let morePreviousEventsRequestObervable = Observable<Void>()
     let morePreviousEventsRequestCanceledObservable = Observable<Void>()
+    let morePreviousEventsAvilabilityObservable = Observable<Bool>(true)
     let refreshObservable: Observable<Void>
     let shouldScrollToFirstObservable = Observable<Void>()
 
@@ -42,24 +42,20 @@ final class PreviousEventsListCellViewModel {
         }
         .add(to: disposeBag)
 
-        previousEventsRefreshObservable.subscribeNext { [weak self] in
-            guard let weakSelf = self, let events = weakSelf.previousEventsObservable.value, !events.contains(where: { $0 == nil }) else { return }
-
-            guard weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else { return }
-
-            weakSelf.previousEventsObservable.next(events + [nil])
-        }
-        .add(to: disposeBag)
-
         morePreviousEventsRequestObervable.subscribeNext { [weak self] in
-            if self?.morePreviousEventsRequest == nil {
-                self?.getNextEventsPage()
+            guard let weakSelf = self, weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else {
+                self?.morePreviousEventsAvilabilityObservable.next(false)
+                return
+            }
+
+            if weakSelf.morePreviousEventsRequest == nil {
+                weakSelf.getNextEventsPage()
             }
         }
         .add(to: disposeBag)
 
         morePreviousEventsRequestCanceledObservable.subscribeNext { [weak self] in
-            let currentEvents = (self?.previousEventsObservable.value)?.flatMap { $0 } ?? []
+            let currentEvents = self?.previousEventsObservable.value ?? []
             self?.previousEventsObservable.next(currentEvents)
         }
         .add(to: disposeBag)
@@ -67,19 +63,18 @@ final class PreviousEventsListCellViewModel {
         refreshObservable.subscribeCompleted { [weak self] in
             self?.currentPage = 1
             self?.shouldScrollToFirstObservable.next()
+            self?.morePreviousEventsAvilabilityObservable.next(true)
         }
         .add(to: disposeBag)
     }
 
     private func getNextEventsPage() {
         morePreviousEventsRequest = NetworkProvider.shared.eventsList(with: currentPage + 1) { [weak self] response in
-            let currentEvents = (self?.previousEventsObservable.value)?.flatMap { $0 } ?? []
+            let currentEvents = self?.previousEventsObservable.value ?? []
             self?.morePreviousEventsRequest = nil
             
             guard case .success(let events) = response else {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.8) { [weak self] _ in
-                    self?.previousEventsObservable.next(currentEvents)
-                }
+                self?.previousEventsObservable.next(currentEvents)
                 return
             }
 
