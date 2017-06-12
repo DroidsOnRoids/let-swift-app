@@ -29,6 +29,10 @@ final class PreviousEventsListCellViewModel {
     private weak var morePreviousEventsRequest: Request?
     lazy private var morePreviousEventsDebouncer: Debouncer = Debouncer(delay: 0.1, callback: self.getNextEventsPage)
 
+    private var isLastPage: Bool {
+        return !(currentPage < totalPage || totalPage == -1)
+    }
+
     init(previousEvents events: Observable<[Event?]?>, refreshObservable refresh: Observable<Void>, delegate: EventsViewControllerDelegate?) {
         previousEventsObservable = events
         refreshObservable = refresh
@@ -45,7 +49,7 @@ final class PreviousEventsListCellViewModel {
         .add(to: disposeBag)
 
         morePreviousEventsRequestObervable.subscribeNext { [weak self] in
-            guard let weakSelf = self, weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else { return }
+            guard let weakSelf = self, !weakSelf.isLastPage else { return }
 
             if weakSelf.morePreviousEventsRequest == nil {
                 weakSelf.morePreviousEventsDebouncer.call()
