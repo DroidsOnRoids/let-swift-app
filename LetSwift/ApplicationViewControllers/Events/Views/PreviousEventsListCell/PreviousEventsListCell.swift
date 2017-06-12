@@ -123,8 +123,8 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         }
         .add(to: disposeBag)
 
-        viewModel.morePreviousEventsAvilabilityObservable.subscribeNext { [weak self] available in
-            self?.spinner(enable: available)
+        viewModel.morePreviousEventsAvilabilityObservable.subscribeNext { [weak self] enable in
+            self?.spinner(enable: enable)
         }
         .add(to: disposeBag)
 
