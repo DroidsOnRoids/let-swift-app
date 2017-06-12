@@ -8,10 +8,10 @@
 
 import Foundation
 
-class Debouncer: NSObject {
-    var callback: (() -> ())
-    var delay: Double
-    weak var timer: Timer?
+final class Debouncer {
+    private var callback: () -> ()
+    private var delay: Double
+    private weak var timer: Timer?
 
     init(delay: Double, callback: @escaping (() -> ())) {
         self.delay = delay
@@ -24,7 +24,7 @@ class Debouncer: NSObject {
         timer = nextTimer
     }
 
-    func fireNow() {
-        self.callback()
+    @objc private func fireNow() {
+        callback()
     }
 }
