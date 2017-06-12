@@ -76,7 +76,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             let boundsWidth = scrollView.bounds.width
             let insets = scrollView.contentInset
             let y = scrollView.contentOffset.x + boundsWidth - insets.right
-            let additonalSpace: CGFloat = 70.0
+            let additonalSpace: CGFloat = 65.0
             let spinnerOffset = y - scrollView.contentSize.width
 
             UIView.animate(withDuration: 0.01) {
@@ -126,10 +126,12 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             self?.spinner(enable: available)
         }
         .add(to: disposeBag)
-    }
 
-    private func updateSpinnerOffset() {
-
+        viewModel.morePreviousEventsRequestSentObservable.subscribeNext { [weak self] index in
+            self?.eventsCollectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: true)
+        }
+        .add(to: disposeBag)
+        
     }
 
     private func restartCellState() {

@@ -19,6 +19,7 @@ final class PreviousEventsListCellViewModel {
     let cellDidTapWithIndexObservable = Observable<Int>(-1)
     let morePreviousEventsRequestObervable = Observable<Void>()
     let morePreviousEventsRequestCanceledObservable = Observable<Void>()
+    let morePreviousEventsRequestSentObservable = Observable<Int>(-1)
     let morePreviousEventsAvilabilityObservable = Observable<Bool>(true)
     let refreshObservable: Observable<Void>
     let shouldScrollToFirstObservable = Observable<Void>()
@@ -26,6 +27,7 @@ final class PreviousEventsListCellViewModel {
     weak var delegate: EventsViewControllerDelegate?
 
     private var morePreviousEventsRequest: Request?
+    lazy private var morePreviousEventsDebouncer: Debouncer = Debouncer(delay: 0.1, callback: self.getNextEventsPage)
 
     init(previousEvents events: Observable<[Event?]?>, refreshObservable refresh: Observable<Void>, delegate: EventsViewControllerDelegate?) {
         previousEventsObservable = events
@@ -46,7 +48,7 @@ final class PreviousEventsListCellViewModel {
             guard let weakSelf = self, weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else { return }
 
             if weakSelf.morePreviousEventsRequest == nil {
-                weakSelf.getNextEventsPage()
+                weakSelf.morePreviousEventsDebouncer.call()
             }
         }
         .add(to: disposeBag)
@@ -71,18 +73,15 @@ final class PreviousEventsListCellViewModel {
             self?.morePreviousEventsRequest = nil
             
             guard case .success(let events) = response else {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
-                    self?.previousEventsObservable.next(currentEvents)
-                }
+                self?.previousEventsObservable.next(currentEvents)
                 return
             }
 
             self?.totalPage = events.page.pageCount
             self?.currentPage += 1
 
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
-                self?.previousEventsObservable.next(currentEvents + events.elements)
-            }
+            self?.previousEventsObservable.next(currentEvents + events.elements)
+            self?.morePreviousEventsRequestSentObservable.next(currentEvents.count)
 
             if self?.currentPage == self?.totalPage {
                 self?.morePreviousEventsAvilabilityObservable.next(false)
