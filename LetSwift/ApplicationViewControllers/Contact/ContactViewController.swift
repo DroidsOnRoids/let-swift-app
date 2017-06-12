@@ -16,7 +16,7 @@ final class ContactViewController: AppViewController {
     
     @IBOutlet private weak var containerView: UIView!
     
-    @IBOutlet fileprivate weak var topicButton: UIButton!
+    @IBOutlet fileprivate weak var topicButton: TopicButton!
     @IBOutlet fileprivate weak var nameTextField: ContactTextField!
     @IBOutlet fileprivate weak var emailTextField: ContactTextField!
     @IBOutlet fileprivate weak var messageTextView: ContactTextView!
@@ -66,10 +66,11 @@ final class ContactViewController: AppViewController {
         setupTouchToDismiss()
         setupKeyboardNotifications()
         setupLocalization()
+        setupViewModel()
     }
     
     private func setupViews() {
-        topicButton.layer.borderColor = UIColor.lightBlueGrey.cgColor
+        topicButton.associatedErrorView = topicErrorLabel
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
         messageTextView.associatedErrorView = messageErrorLabel
@@ -101,6 +102,38 @@ final class ContactViewController: AppViewController {
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillHide)
     }
     
+    private func setupViewModel() {
+        topicButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.pickerTapped), for: .touchUpInside)
+        
+        viewModel.pickerTitleObservable.subscribeNext { [weak self] title in
+            self?.topicButton.setTitle(title, for: [])
+        }
+        .add(to: disposeBag)
+        
+        viewModel.pickerTopicsObservable.subscribeNext { [weak self] topics in
+            guard let weakSelf = self, let topics = topics else { return }
+            TopicPickerViewController.present(on: weakSelf, items: topics, callback: { result in
+                weakSelf.viewModel.pickerResultObservable.next(result)
+            })
+        }
+        .add(to: disposeBag)
+        
+        listenForErrors(observable: viewModel.pickerResultObservable, view: topicButton)
+        
+        let contactFieldTuples: [(Observable<String>, ContactFieldProtocol)] = [
+            (viewModel.nameTextObservable, nameTextField),
+            (viewModel.emailTextObservable, emailTextField),
+            (viewModel.messageTextObservable, messageTextView)
+        ]
+        
+        contactFieldTuples.forEach { observable, field in
+            field.textObservable.bindNext(to: observable).add(to: disposeBag)
+            listenForErrors(observable: observable, view: field)
+        }
+        
+        sendButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.sendTapped), for: .touchUpInside)
+    }
+    
     private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {
         let keyboardOffset = frame.minY - upperKeyboardLimit
         
@@ -113,11 +146,18 @@ final class ContactViewController: AppViewController {
             }
         })
     }
+    
+    private func listenForErrors<T>(observable: Observable<T>, view: ContactFieldBaseProtocol) {
+        observable.subscribeError { _ in
+            view.fieldState = .error
+        }
+        .add(to: disposeBag)
+    }
 }
 
 extension ContactViewController: Localizable {
     func setupLocalization() {
-        topicButton.setTitle(localized("CONTACT_TOPIC"), for: [])
+        topicButton.setTitle(localized("CONTACT_TOPIC") + "...", for: [])
         nameTextField.placeholder = localized("CONTACT_NAME")
         emailTextField.placeholder = localized("CONTACT_EMAIL")
         messageTextView.placeholder = localized("CONTACT_MESSAGE")

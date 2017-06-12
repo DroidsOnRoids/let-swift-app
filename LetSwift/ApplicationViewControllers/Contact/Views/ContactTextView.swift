@@ -8,13 +8,15 @@
 
 import UIKit
 
-final class ContactTextView: UITextView {
+final class ContactTextView: UITextView, ContactFieldProtocol {
     
     private enum Constants {
         static let verticalInset: CGFloat = 16.0
         static let horizontalInset: CGFloat = 12.0
         static let insetLabelOffset: CGFloat = 5.0
     }
+    
+    let textObservable = Observable<String>("")
     
     weak var associatedErrorView: UIView?
     
@@ -81,6 +83,7 @@ extension ContactTextView: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-         placeholderLabel.isHidden = !textView.text.isEmpty
+        placeholderLabel.isHidden = !textView.text.isEmpty
+        textObservable.next(textView.text)
     }
 }

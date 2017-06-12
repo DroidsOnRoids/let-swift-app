@@ -59,6 +59,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
             guard let collectionView = self?.eventsCollectionView else { return }
             events?.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) ({ index, element, cell in
+                cell.imageURL = element?.coverImages.first?.thumb
                 cell.title = element?.title
                 cell.date = element?.date?.stringDateValue
             }))

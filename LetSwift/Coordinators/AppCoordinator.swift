@@ -9,10 +9,21 @@
 import UIKit
 
 protocol AppCoordinatorDelegate: class {
+    var rotationLocked: Bool { get set }
     func presentLoginViewController(asPopupWindow: Bool)
+    func pushOnRootNavigationController(_ viewController: UIViewController, animated: Bool)
 }
 
 final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
+    
+    var rotationLocked = true {
+        didSet {
+            if rotationLocked {
+                let key = UIInterfaceOrientation.portrait.rawValue
+                UIDevice.current.setValue(key, forKey: "orientation")
+            }
+        }
+    }
     
     fileprivate var initialEventsList: [Event]?
     
@@ -63,6 +74,10 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
         } else {
             present(viewController: viewController)
         }
+    }
+    
+    func pushOnRootNavigationController(_ viewController: UIViewController, animated: Bool) {
+        navigationViewController.pushViewController(viewController, animated: animated)
     }
     
     fileprivate func presentMainController() {

@@ -92,7 +92,7 @@
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shadowVisible" value="YES"/>
                             </userDefinedRuntimeAttributes>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaQ-hQ-e6f">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaQ-hQ-e6f" customClass="TopicButton" customModule="LetSwift" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="MJ3-3P-MNU"/>

@@ -33,7 +33,7 @@ final class SpeakerCardCell: UITableViewCell {
         card.lectureTitle = model.title
         card.speakerName = model.speaker?.name ?? ""
         card.speakerTitle = model.speaker?.job ?? ""
-        card.speakerImageURL = model.speaker?.avatar?.thumbnail
+        card.speakerImageURL = model.speaker?.avatar?.thumb
     }
 
     func addTapListeners(speaker: @escaping () -> Void, readMore: @escaping () -> Void) {

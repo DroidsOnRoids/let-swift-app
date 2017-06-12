@@ -10,13 +10,13 @@ import Foundation
 
 final class CarouselEventPhotosCellViewModel {
 
-    var photosObservable = Observable<[URL]>([])
+    var photosObservable = Observable<[Photo]>([])
     var currentPageObservable = Observable<Int>(0)
     var scrollViewSwipeDidFinishObservable = Observable<Int>(0)
     
     private let disposeBag = DisposeBag()
 
-    init(photos: [URL]) {
+    init(photos: [Photo]) {
         photosObservable.next(photos)
 
         setup()
