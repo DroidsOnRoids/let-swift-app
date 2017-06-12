@@ -80,7 +80,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
             let spinnerOffset = y - scrollView.contentSize.width
 
             UIView.animate(withDuration: 0.01) {
-                self?.spinnerView.transform = CGAffineTransform(translationX: -spinnerOffset, y: 0)
+                self?.spinnerView.transform = CGAffineTransform(translationX: -spinnerOffset, y: 0.0)
             }
 
             if (y > scrollView.contentSize.width + additonalSpace) && !weakSelf.spinnerView.isHidden {
