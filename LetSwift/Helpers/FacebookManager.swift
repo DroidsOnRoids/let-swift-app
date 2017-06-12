@@ -47,7 +47,9 @@ final class FacebookManager {
     let facebookLoginObservable = Observable<Void>()
     let facebookLogoutObservable = Observable<Void>()
     
-    private init() {}
+    private init() {
+        FBSDKGraphRequestConnection.setDefaultConnectionTimeout(NetworkProvider.timeout)
+    }
     
     var isLoggedIn: Bool {
         return FBSDKAccessToken.current() != nil
