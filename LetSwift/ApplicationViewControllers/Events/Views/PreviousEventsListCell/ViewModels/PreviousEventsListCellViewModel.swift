@@ -26,7 +26,7 @@ final class PreviousEventsListCellViewModel {
 
     weak var delegate: EventsViewControllerDelegate?
 
-    private var morePreviousEventsRequest: Request?
+    private weak var morePreviousEventsRequest: Request?
     lazy private var morePreviousEventsDebouncer: Debouncer = Debouncer(delay: 0.1, callback: self.getNextEventsPage)
 
     init(previousEvents events: Observable<[Event?]?>, refreshObservable refresh: Observable<Void>, delegate: EventsViewControllerDelegate?) {
