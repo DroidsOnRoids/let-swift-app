@@ -12,6 +12,15 @@ final class StaticImageCell: UITableViewCell {
     
     @IBOutlet private weak var reflectiveImageView: ReflectionShadowView!
     
+    var imageURL: URL? {
+        get {
+            return reflectiveImageView.imageURL
+        }
+        set {
+            reflectiveImageView.imageURL = newValue
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         

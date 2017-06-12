@@ -75,8 +75,6 @@ final class EventDetailsViewController: CommonEventViewController {
     }
     
     private func setup(carouselCell cell: CarouselEventPhotosCell) {
-        viewModel.carouselCellDidSetObservable.next()
-
         viewModel.carouselEventPhotosViewModelObservable.subscribeNext(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }

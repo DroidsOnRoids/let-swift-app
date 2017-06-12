@@ -46,7 +46,6 @@ final class EventsViewControllerViewModel {
     var previousEventsObservable = Observable<[Event?]?>(nil)
     
     var eventDetailsRefreshObservable = Observable<Void>()
-    var carouselCellDidSetObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
     var lectureCellDidTapObservable = Observable<Void>()
     var speakerCellDidTapObservable = Observable<Void>()
@@ -141,6 +140,9 @@ final class EventsViewControllerViewModel {
             
             weakSelf.tableViewStateObservable.next(event == nil ? .error : .content)
             
+            let carouselViewModel = CarouselEventPhotosCellViewModel(photos: event?.coverImages ?? [])
+            weakSelf.carouselEventPhotosViewModelObservable.next(carouselViewModel)
+            
             weakSelf.checkAttendance()
             weakSelf.notificationManager = NotificationManager(date: event?.date?.addingTimeInterval(-Constants.minimumTimeForReminder))
             
@@ -168,14 +170,6 @@ final class EventsViewControllerViewModel {
                 guard let weakSelf = self else { return }
                 let subviewModel = PreviousEventsListCellViewModel(previousEvents: weakSelf.previousEventsObservable, refreshObservable: weakSelf.eventsListRefreshObservable, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
-            }
-            .add(to: disposeBag)
-
-        carouselCellDidSetObservable
-            .withLatest(from: lastEventObservable, combine: { event in event.1?.coverImages ?? [] })
-            .subscribeNext(startsWithInitialValue: true) { [weak self] photos in
-                let subviewModel = CarouselEventPhotosCellViewModel(photos: photos)
-                self?.carouselEventPhotosViewModelObservable.next(subviewModel)
             }
             .add(to: disposeBag)
         
