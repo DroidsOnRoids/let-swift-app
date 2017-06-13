@@ -4,6 +4,9 @@
 def shared_pods
   use_frameworks!
 
+  #ignore cocoapods warnings
+  inhibit_all_warnings!
+
   # Views
   pod 'MWPhotoBrowser', :git => 'https://github.com/m-chojnacki/MWPhotoBrowser.git', :branch => 'fork'
 end
