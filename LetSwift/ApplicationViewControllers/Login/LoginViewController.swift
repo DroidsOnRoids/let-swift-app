@@ -50,9 +50,9 @@ final class LoginViewController: UIViewController {
     private func setupViewModel() {
         skipLoginButton.addTarget(viewModel, action: #selector(LoginViewControllerViewModel.skipButtonTapped), for: .touchUpInside)
         
-        viewModel.facebookAlertObservable.subscribeNext { [weak self] error in
+        viewModel.facebookAlertObservable.subscribeNext { [weak self] _ in
             guard let weakSelf = self else { return }
-            AlertHelper.showAlert(withTitle: localized("GENERAL_SOMETHING_WENT_WRONG"), message: error, on: weakSelf)
+            AlertHelper.showAlert(withTitle: localized("GENERAL_SOMETHING_WENT_WRONG"), message: localized("GENERAL_TRY_AGAIN_LATER"), on: weakSelf)
         }
         .add(to: disposeBag)
         

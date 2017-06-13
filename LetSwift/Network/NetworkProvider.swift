@@ -12,11 +12,11 @@ import Mapper
 struct NetworkProvider {
 
     static let shared = NetworkProvider()
+    static let timeout: TimeInterval = 10.0
     
     let alamofireManager: SessionManager
 
     private enum Constants {
-        static let timeout: TimeInterval = 10.0
         static let perPage = "per_page"
         static let page = "page"
         static let events = "events"
@@ -26,8 +26,8 @@ struct NetworkProvider {
 
     private init() {
         let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForResource = Constants.timeout
-        configuration.timeoutIntervalForRequest = Constants.timeout
+        configuration.timeoutIntervalForResource = NetworkProvider.timeout
+        configuration.timeoutIntervalForRequest = NetworkProvider.timeout
         
         alamofireManager = SessionManager(configuration: configuration)
     }
