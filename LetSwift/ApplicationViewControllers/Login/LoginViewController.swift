@@ -36,7 +36,7 @@ final class LoginViewController: UIViewController {
         
         setupLocalization()
         setupViews()
-        setupViewModel()
+        reactiveSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +47,7 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    private func setupViewModel() {
+    private func reactiveSetup() {
         skipLoginButton.addTarget(viewModel, action: #selector(LoginViewControllerViewModel.skipButtonTapped), for: .touchUpInside)
         
         viewModel.facebookAlertObservable.subscribeNext { [weak self] _ in

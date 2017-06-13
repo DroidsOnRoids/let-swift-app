@@ -66,7 +66,7 @@ final class ContactViewController: AppViewController {
         setupTouchToDismiss()
         setupKeyboardNotifications()
         setupLocalization()
-        setupViewModel()
+        reactiveSetup()
     }
     
     private func setupViews() {
@@ -102,7 +102,7 @@ final class ContactViewController: AppViewController {
         setupKeyboardNotification(name: Notification.Name.UIKeyboardWillHide)
     }
     
-    private func setupViewModel() {
+    private func reactiveSetup() {
         topicButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.pickerTapped), for: .touchUpInside)
         
         viewModel.pickerTitleObservable.subscribeNext { [weak self] title in

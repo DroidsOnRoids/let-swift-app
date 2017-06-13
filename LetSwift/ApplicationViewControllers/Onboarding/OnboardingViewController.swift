@@ -32,10 +32,10 @@ final class OnboardingViewController: UIViewController {
 
         scrollView.delegate = self
 
-        setupViewModel()
+        reactiveSetup()
     }
 
-    private func setupViewModel() {
+    private func reactiveSetup() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
 
         viewModel.currentPageObservable.subscribeNext { [weak self] page in

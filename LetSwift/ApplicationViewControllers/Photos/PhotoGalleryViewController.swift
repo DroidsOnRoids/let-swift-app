@@ -54,10 +54,10 @@ final class PhotoGalleryViewController: AppViewController {
         collectionView.registerCells([SinglePhotoCell.self])
         collectionView.delegate = self
         
-        setupViewModel()
+        reactiveSetup()
     }
     
-    private func setupViewModel() {
+    private func reactiveSetup() {
         viewModel.photosObservable.subscribeNext(startsWithInitialValue: true) { [weak self] photos in
             guard let weakSelf = self else { return }
             

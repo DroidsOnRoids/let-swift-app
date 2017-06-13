@@ -8,11 +8,7 @@
 
 import UIKit
 
-struct OnboardingCardModel {
-    let imageName: String
-    let title: String
-    let description: String
-}
+typealias OnboardingCardModel = (imageName: String, title: String, description: String)
 
 final class OnboardingCardView: DesignableView {
 
