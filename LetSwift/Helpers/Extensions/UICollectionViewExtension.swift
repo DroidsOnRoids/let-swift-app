@@ -61,6 +61,14 @@ extension UICollectionView: NibPresentable {
         return ObservableEvent(event: delegateProxy.scrollViewDidScrollObservable)
     }
 
+    var scrollViewWillEndDraggingObservable: ObservableEvent<Void> {
+        return ObservableEvent(event: delegateProxy.scrollViewWillEndDraggingObservable)
+    }
+
+    var scrollViewWillBeginDraggingObservable: ObservableEvent<Void> {
+        return ObservableEvent(event: delegateProxy.scrollViewWillBeginDraggingObservable)
+    }
+
     func registerNib(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         register(nib, forCellWithReuseIdentifier: identifier)
     }

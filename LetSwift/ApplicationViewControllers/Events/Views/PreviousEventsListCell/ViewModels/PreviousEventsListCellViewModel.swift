@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class PreviousEventsListCellViewModel {
     
@@ -16,11 +17,21 @@ final class PreviousEventsListCellViewModel {
 
     let previousEventsObservable: Observable<[Event?]?>
     let cellDidTapWithIndexObservable = Observable<Int>(-1)
-    let previousEventsRefreshObservable = Observable<Void>()
+    let morePreviousEventsRequestObervable = Observable<Void>()
+    let morePreviousEventsRequestCanceledObservable = Observable<Void>()
+    let morePreviousEventsRequestSentObservable = Observable<Int>(-1)
+    let morePreviousEventsAvilabilityObservable = Observable<Bool>(true)
     let refreshObservable: Observable<Void>
     let shouldScrollToFirstObservable = Observable<Void>()
 
     weak var delegate: EventsViewControllerDelegate?
+
+    private weak var morePreviousEventsRequest: Request?
+    lazy private var morePreviousEventsDebouncer: Debouncer = Debouncer(delay: 0.1, callback: self.getNextEventsPage)
+
+    private var isLastPage: Bool {
+        return !(currentPage < totalPage || totalPage == -1)
+    }
 
     init(previousEvents events: Observable<[Event?]?>, refreshObservable refresh: Observable<Void>, delegate: EventsViewControllerDelegate?) {
         previousEventsObservable = events
@@ -37,27 +48,34 @@ final class PreviousEventsListCellViewModel {
         }
         .add(to: disposeBag)
 
-        previousEventsRefreshObservable.subscribeNext { [weak self] in
-            guard let weakSelf = self, let events = weakSelf.previousEventsObservable.value, !events.contains(where: { $0 == nil }) else { return }
+        morePreviousEventsRequestObervable.subscribeNext { [weak self] in
+            guard let weakSelf = self, !weakSelf.isLastPage else { return }
 
-            guard weakSelf.currentPage < weakSelf.totalPage || weakSelf.totalPage == -1 else { return }
+            if weakSelf.morePreviousEventsRequest == nil {
+                weakSelf.morePreviousEventsDebouncer.call()
+            }
+        }
+        .add(to: disposeBag)
 
-            weakSelf.previousEventsObservable.next(events + [nil])
-            weakSelf.getNextEventsPage()
+        morePreviousEventsRequestCanceledObservable.subscribeNext { [weak self] in
+            let currentEvents = self?.previousEventsObservable.value ?? []
+            self?.previousEventsObservable.next(currentEvents)
         }
         .add(to: disposeBag)
 
         refreshObservable.subscribeCompleted { [weak self] in
             self?.currentPage = 1
             self?.shouldScrollToFirstObservable.next()
+            self?.morePreviousEventsAvilabilityObservable.next(true)
         }
         .add(to: disposeBag)
     }
 
     private func getNextEventsPage() {
-        NetworkProvider.shared.eventsList(with: currentPage + 1) { [weak self] response in
-            let currentEvents = (self?.previousEventsObservable.value)?.flatMap { $0 } ?? []
-
+        morePreviousEventsRequest = NetworkProvider.shared.eventsList(with: currentPage + 1) { [weak self] response in
+            let currentEvents = self?.previousEventsObservable.value ?? []
+            self?.morePreviousEventsRequest = nil
+            
             guard case .success(let events) = response else {
                 self?.previousEventsObservable.next(currentEvents)
                 return
@@ -65,7 +83,13 @@ final class PreviousEventsListCellViewModel {
 
             self?.totalPage = events.page.pageCount
             self?.currentPage += 1
+
             self?.previousEventsObservable.next(currentEvents + events.elements)
+            self?.morePreviousEventsRequestSentObservable.next(currentEvents.count)
+
+            if self?.currentPage == self?.totalPage {
+                self?.morePreviousEventsAvilabilityObservable.next(false)
+            }
         }
     }
 }

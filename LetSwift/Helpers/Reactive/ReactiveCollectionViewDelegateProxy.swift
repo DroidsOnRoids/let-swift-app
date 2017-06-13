@@ -12,6 +12,8 @@ final class ReactiveCollectionViewDelegateProxy: NSObject, UICollectionViewDeleg
 
     lazy var itemDidSelectObservable = Observable<IndexPath>(IndexPath(row: 0, section: 0))
     lazy var scrollViewDidScrollObservable = Observable<UIScrollView?>(nil)
+    lazy var scrollViewWillEndDraggingObservable = Observable<Void>()
+    lazy var scrollViewWillBeginDraggingObservable = Observable<Void>()
 
     private enum Constants {
         static let delegateAssociatedTag = UnsafeRawPointer(UnsafeMutablePointer<UInt8>.allocate(capacity: 1))
@@ -62,5 +64,13 @@ final class ReactiveCollectionViewDelegateProxy: NSObject, UICollectionViewDeleg
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewDidScrollObservable.next(scrollView)
+    }
+
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        scrollViewWillEndDraggingObservable.next()
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewWillBeginDraggingObservable.next()
     }
 }
