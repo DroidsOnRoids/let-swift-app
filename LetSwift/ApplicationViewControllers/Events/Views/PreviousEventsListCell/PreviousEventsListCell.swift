@@ -156,8 +156,8 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
     }
 
     private func scrollViewMoveWithAnimation(about space: CGFloat) {
+        scrollViewTrailingConstraint.constant = space
         UIView.animate(withDuration: 0.25) {
-            self.scrollViewTrailingConstraint.constant = space
             self.layoutIfNeeded()
         }
     }
