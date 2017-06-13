@@ -22,8 +22,8 @@ final class SpeakerCardCell: UITableViewCell {
     }
     
     private func setup() {
-        separatorInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: bounds.width)
-        
+        removeSeparators()
+
         card.addSpeakerTapTarget(target: self, action: #selector(speakerDidTap))
         card.addReadMoreTapTarget(target: self, action: #selector(readMoreDidTap))
     }
