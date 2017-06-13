@@ -146,12 +146,11 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
     private func spinner(enable: Bool) {
         DispatchQueue.main.async {
+            self.scrollViewTrailingConstraint.constant = 0.0
             UIView.animate(withDuration: 0.25, animations: {
-                self.scrollViewTrailingConstraint.constant = 0.0
                 self.layoutIfNeeded()
             }, completion: { _ in
                 self.spinnerView.isHidden = !enable
-                self.scrollViewTrailingConstraint.constant = 0.0
             })
         }
     }
