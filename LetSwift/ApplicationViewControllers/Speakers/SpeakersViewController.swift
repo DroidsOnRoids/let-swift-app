@@ -21,4 +21,11 @@ final class SpeakersViewController: AppViewController {
     override var shouldHideShadow: Bool {
         return true
     }
+
+    private var viewModel: SpeakersViewControllerViewModel!
+
+    convenience init(viewModel: SpeakersViewControllerViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
 }
