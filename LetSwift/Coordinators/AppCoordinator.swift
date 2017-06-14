@@ -82,9 +82,9 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
     fileprivate func presentMainController() {
         let coordinators = [
-            EventsCoordinator(navigationController: UINavigationController(), initialEventsList: initialEventsList, delegate: self),
-            SpeakersCoordinator(navigationController: UINavigationController(), delegate: self),
-            ContactCoordinator(navigationController: UINavigationController(), delegate: self)
+            EventsCoordinator(initialEventsList: initialEventsList, delegate: self),
+            SpeakersCoordinator(delegate: self),
+            ContactCoordinator(delegate: self)
         ]
         
         coordinators.forEach {
