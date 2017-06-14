@@ -10,7 +10,15 @@ import UIKit
 
 class LatestSpeakersTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var latestCollectionView: UICollectionView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
+
+        latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
+
+        ["sth", "sth"].bindable.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
+            //TODO: fill with data
+        }))
     }
 }
