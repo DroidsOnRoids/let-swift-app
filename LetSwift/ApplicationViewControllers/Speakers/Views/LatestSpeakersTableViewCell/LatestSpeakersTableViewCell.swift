@@ -10,8 +10,6 @@ import UIKit
 
 class LatestSpeakersTableViewCell: UITableViewCell {
 
-    static let cellIdentifier = String(describing: PreviousEventCell.self)
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }

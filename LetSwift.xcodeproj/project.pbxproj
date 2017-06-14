@@ -43,8 +43,8 @@
 		7EB744041EEE8466008092DC /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744031EEE8466008092DC /* Debouncer.swift */; };
 		7EB744061EEFDDC0008092DC /* UITableViewCellExtenion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744051EEFDDC0008092DC /* UITableViewCellExtenion.swift */; };
 		7EB744091EF130B6008092DC /* SpeakersViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744081EF130B6008092DC /* SpeakersViewControllerViewModel.swift */; };
-		7EB744121EF149EF008092DC /* LatestSpeakersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744101EF149EF008092DC /* LatestSpeakersTableViewCell.swift */; };
-		7EB744131EF149EF008092DC /* LatestSpeakersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744111EF149EF008092DC /* LatestSpeakersTableViewCell.xib */; };
+		7EB7441C1EF1519D008092DC /* LatestSpeakersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7441A1EF1519D008092DC /* LatestSpeakersTableViewCell.swift */; };
+		7EB7441D1EF1519D008092DC /* LatestSpeakersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB7441B1EF1519D008092DC /* LatestSpeakersTableViewCell.xib */; };
 		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
 		7ED1AC471EE04E7A00276F93 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */; };
 		7ED1AC481EE04E7A00276F93 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */; };
@@ -216,8 +216,8 @@
 		7EB744031EEE8466008092DC /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		7EB744051EEFDDC0008092DC /* UITableViewCellExtenion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtenion.swift; sourceTree = "<group>"; };
 		7EB744081EF130B6008092DC /* SpeakersViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersViewControllerViewModel.swift; sourceTree = "<group>"; };
-		7EB744101EF149EF008092DC /* LatestSpeakersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestSpeakersTableViewCell.swift; sourceTree = "<group>"; };
-		7EB744111EF149EF008092DC /* LatestSpeakersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestSpeakersTableViewCell.xib; sourceTree = "<group>"; };
+		7EB7441A1EF1519D008092DC /* LatestSpeakersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestSpeakersTableViewCell.swift; sourceTree = "<group>"; };
+		7EB7441B1EF1519D008092DC /* LatestSpeakersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestSpeakersTableViewCell.xib; sourceTree = "<group>"; };
 		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -486,10 +486,18 @@
 		7EB7440F1EF149AF008092DC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7EB744101EF149EF008092DC /* LatestSpeakersTableViewCell.swift */,
-				7EB744111EF149EF008092DC /* LatestSpeakersTableViewCell.xib */,
+				7EB744151EF150EF008092DC /* LatestSpeakersTableViewCell */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7EB744151EF150EF008092DC /* LatestSpeakersTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EB7441A1EF1519D008092DC /* LatestSpeakersTableViewCell.swift */,
+				7EB7441B1EF1519D008092DC /* LatestSpeakersTableViewCell.xib */,
+			);
+			path = LatestSpeakersTableViewCell;
 			sourceTree = "<group>";
 		};
 		7ED1ABF61EDEC4C100276F93 /* ViewModels */ = {
@@ -1146,7 +1154,7 @@
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D341A1911EDE936F0066E965 /* SplashViewController.xib in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
-				7EB744131EF149EF008092DC /* LatestSpeakersTableViewCell.xib in Resources */,
+				7EB7441D1EF1519D008092DC /* LatestSpeakersTableViewCell.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
 				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
@@ -1311,7 +1319,7 @@
 				D3429D101EE0364D00F18D30 /* ContactTextField.swift in Sources */,
 				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
 				D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */,
-				7EB744121EF149EF008092DC /* LatestSpeakersTableViewCell.swift in Sources */,
+				7EB7441C1EF1519D008092DC /* LatestSpeakersTableViewCell.swift in Sources */,
 				D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */,
 				D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */,
 				D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */,
