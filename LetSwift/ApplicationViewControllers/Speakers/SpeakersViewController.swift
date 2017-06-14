@@ -25,10 +25,29 @@ final class SpeakersViewController: AppViewController {
         return true
     }
 
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
+
     private var viewModel: SpeakersViewControllerViewModel!
 
     convenience init(viewModel: SpeakersViewControllerViewModel) {
         self.init()
         self.viewModel = viewModel
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setup()
+    }
+
+    private func setup() {
+        tableView.tableFooterView = UIView()
+
+        reactiveSetup()
+    }
+
+    private func reactiveSetup() {
+
     }
 }
