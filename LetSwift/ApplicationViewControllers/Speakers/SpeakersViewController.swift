@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol SpeakersViewControllerDelegate: class {
+}
+
 final class SpeakersViewController: AppViewController {
     
     override var viewControllerTitleKey: String? {
