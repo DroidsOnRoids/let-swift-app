@@ -12,7 +12,7 @@ final class ContactCoordinator: Coordinator, Startable {
 
     fileprivate weak var delegate: AppCoordinatorDelegate?
 
-    init(navigationController: UINavigationController, delegate: AppCoordinatorDelegate) {
+    init(navigationController: UINavigationController = UINavigationController(), delegate: AppCoordinatorDelegate) {
         self.delegate = delegate
 
         super.init(navigationController: navigationController)

@@ -9,9 +9,19 @@
 import UIKit
 
 final class SpeakersCoordinator: Coordinator, Startable {
-    
+
+    fileprivate weak var delegate: AppCoordinatorDelegate?
+
+    init(navigationController: UINavigationController = UINavigationController(), delegate: AppCoordinatorDelegate) {
+        self.delegate = delegate
+
+        super.init(navigationController: navigationController)
+    }
+
     func start() {
-        let controller = SpeakersViewController()
+        let controller = SpeakersViewController(viewModel: SpeakersViewControllerViewModel())
+        controller.coordinatorDelegate = delegate
+
         navigationViewController.viewControllers = [controller]
     }
 }
