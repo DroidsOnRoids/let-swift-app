@@ -12,15 +12,25 @@ protocol SpeakersViewControllerDelegate: class {
 }
 
 final class SpeakersViewController: AppViewController {
-    
+
+    private enum EventCellIdentifier: String {
+        case latestSpeakers = "LatestSpeakersTableViewCell"
+    }
+
+    private var allCells: [EventCellIdentifier] {
+        return [.latestSpeakers]
+    }
+
+    private lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
+
     override var viewControllerTitleKey: String? {
         return "SPEAKERS_TITLE"
     }
-    
+
     override var shouldShowUserIcon: Bool {
         return true
     }
-    
+
     override var shouldHideShadow: Bool {
         return true
     }
@@ -43,11 +53,22 @@ final class SpeakersViewController: AppViewController {
 
     private func setup() {
         tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 60.0
+        tableView.setFooterColor(.paleGrey)
+        tableView.setHeaderColor(.lightBlueGrey)
+
+        tableView.registerCells(allCells.map { $0.rawValue })
 
         reactiveSetup()
     }
-
+    
     private func reactiveSetup() {
+        bindableCells.bind(to: tableView.items() ({ tableView, index, element in
+            let indexPath = IndexPath(row: index, section: 0)
+            let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
 
+            return cell
+        }))
     }
 }
