@@ -107,6 +107,7 @@ final class ContactViewController: AppViewController {
         
         viewModel.pickerTitleObservable.subscribeNext { [weak self] title in
             self?.topicButton.setTitle(title, for: [])
+            self?.topicButton.setTitleColor(UIColor.highlightedBlack, for: [])
         }
         .add(to: disposeBag)
         
