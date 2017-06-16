@@ -10,6 +10,8 @@ import UIKit
 
 class LatestSpeakersTableViewCell: UITableViewCell {
 
+    private let mockedSpeakers: [Speaker] = Speaker.from(MockLoader.speakersMock!)!
+
     @IBOutlet private weak var latestCollectionView: UICollectionView!
     @IBOutlet private weak var LatestSpeakersTitleLabel: UILabel!
 
@@ -17,9 +19,9 @@ class LatestSpeakersTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
-
-        ["sth", "sth"].bindable.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
-            //TODO: fill with data
+        
+        Array(mockedSpeakers[0..<5]).bindable.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
+            cell.load(with: element)
         }))
 
         let attributedString = NSMutableAttributedString(string: LatestSpeakersTitleLabel.text!)

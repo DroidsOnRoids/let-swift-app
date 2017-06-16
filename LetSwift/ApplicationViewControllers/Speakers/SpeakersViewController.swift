@@ -55,7 +55,6 @@ final class SpeakersViewController: AppViewController {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-//        tableView.setFooterColor(.paleGrey)
         tableView.setHeaderColor(.paleGrey)
 
         searchBar.layer.borderWidth = 1
@@ -67,12 +66,23 @@ final class SpeakersViewController: AppViewController {
     }
     
     private func reactiveSetup() {
-        bindableCells.bind(to: tableView.items() ({ tableView, index, element in
+        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
-            cell.removeSeparators()
+            self?.dispatchCellSetup(element: element, cell: cell, index: index)
 
             return cell
         }))
+    }
+
+    private func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
+        switch element {
+        case .latestSpeakers:
+            setupLatestSpeakers(cell: cell as! LatestSpeakersTableViewCell)
+        }
+    }
+
+    private func setupLatestSpeakers(cell: LatestSpeakersTableViewCell) {
+        cell.removeSeparators()
     }
 }

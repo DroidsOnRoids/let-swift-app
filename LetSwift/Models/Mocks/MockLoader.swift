@@ -18,9 +18,22 @@ struct MockLoader {
 
         return json as? NSDictionary
     }
+
+    static func loadArrayMock(forPath path: String) -> NSArray? {
+        guard let file = Bundle.main.url(forResource: path, withExtension: "json"),
+            let data = try? Data(contentsOf: file),
+            let json = try? JSONSerialization.jsonObject(with: data, options: []) else { return nil }
+
+        return json as? NSArray
+    }
     
     static var eventDetailsMock: NSDictionary? {
         guard let result = loadMock(forPath: "event_details") else { return nil }
+        return result
+    }
+
+    static var speakersMock: NSArray? {
+        guard let result = loadArrayMock(forPath: "speakers") else { return nil }
         return result
     }
 }

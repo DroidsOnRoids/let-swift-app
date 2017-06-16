@@ -29,6 +29,18 @@ class LatestSpeakerCollectionViewCell: UICollectionViewCell {
         setup()
     }
 
+    func load(with speaker: Speaker) {
+        if let name = speaker.name.components(separatedBy: " ").first {
+            nameLabel.text = name
+        }
+
+        if let surname = speaker.name.components(separatedBy: " ").last {
+            surnameLabel.text = surname
+        }
+
+        imageView.sd_setImage(with: speaker.avatar?.thumb, placeholderImage: #imageLiteral(resourceName: "PhotoMock"))
+    }
+
     private func setup() {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.5
