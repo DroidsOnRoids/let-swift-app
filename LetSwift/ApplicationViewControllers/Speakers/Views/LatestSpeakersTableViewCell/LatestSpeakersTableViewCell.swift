@@ -18,14 +18,20 @@ class LatestSpeakersTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        setup()
+    }
+
+    private func setup() {
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
-        
+
+        LatestSpeakersTitleLabel.attributedText = LatestSpeakersTitleLabel.text?.attributed(withSpacing: 0.7)
+
+        reactiveSetup()
+    }
+
+    private func reactiveSetup() {
         Array(mockedSpeakers[0..<5]).bindable.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
             cell.load(with: element)
         }))
-
-        let attributedString = NSMutableAttributedString(string: LatestSpeakersTitleLabel.text!)
-        attributedString.addAttribute(NSKernAttributeName, value: CGFloat(0.7), range: NSRange(location: 0, length: attributedString.length))
-        LatestSpeakersTitleLabel.attributedText = attributedString
     }
 }

@@ -47,14 +47,6 @@ class LatestSpeakerCollectionViewCell: UICollectionViewCell {
         indicatorImageView.image = indicatorImageView.image?.withRenderingMode(.alwaysTemplate)
         indicatorImageView.tintColor = .white
 
-        let gradient = CAGradientLayer()
-        gradient.frame = imageView.bounds
-
-        let startColor = UIColor(colorLiteralRed: 0, green: 0, blue: 0, alpha: 0.1)
-        let endColor = UIColor.black
-
-        gradient.locations = [0.4, 1.0]
-        gradient.colors = [startColor.cgColor, endColor.cgColor]
-        imageView.layer.insertSublayer(gradient, at: 0)
+        imageView.addGradientShadow(with: [0.4, 1.0])
     }
 }

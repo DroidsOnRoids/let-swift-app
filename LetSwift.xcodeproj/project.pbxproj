@@ -48,6 +48,7 @@
 		7EB744211EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7441F1EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift */; };
 		7EB744221EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */; };
 		7EB744271EF3E0BD008092DC /* speakers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744261EF3E0BD008092DC /* speakers.json */; };
+		7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */; };
 		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
 		7ED1AC471EE04E7A00276F93 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */; };
 		7ED1AC481EE04E7A00276F93 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */; };
@@ -224,6 +225,7 @@
 		7EB7441F1EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestSpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
 		7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestSpeakerCollectionViewCell.xib; sourceTree = "<group>"; };
 		7EB744261EF3E0BD008092DC /* speakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = speakers.json; sourceTree = "<group>"; };
+		7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1051,6 +1053,7 @@
 				D3F3D97C1ED9E55600106197 /* UIScrollViewExtension.swift */,
 				D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */,
 				7EB744051EEFDDC0008092DC /* UITableViewCellExtenion.swift */,
+				7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1324,6 +1327,7 @@
 				7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift in Sources */,
 				D3840D991ECA0C2900975818 /* SpeakerDetailsViewController.swift in Sources */,
 				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
+				7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */,
 				D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */,
 				7EB744211EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift in Sources */,
 				7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedCell.swift in Sources */,
