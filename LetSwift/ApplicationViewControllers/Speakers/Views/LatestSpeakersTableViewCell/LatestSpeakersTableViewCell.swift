@@ -11,6 +11,7 @@ import UIKit
 class LatestSpeakersTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var latestCollectionView: UICollectionView!
+    @IBOutlet private weak var LatestSpeakersTitleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +21,9 @@ class LatestSpeakersTableViewCell: UITableViewCell {
         ["sth", "sth"].bindable.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
             //TODO: fill with data
         }))
+
+        let attributedString = NSMutableAttributedString(string: LatestSpeakersTitleLabel.text!)
+        attributedString.addAttribute(NSKernAttributeName, value: CGFloat(0.7), range: NSRange(location: 0, length: attributedString.length))
+        LatestSpeakersTitleLabel.attributedText = attributedString
     }
 }

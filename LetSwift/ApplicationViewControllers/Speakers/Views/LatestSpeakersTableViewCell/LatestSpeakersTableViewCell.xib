@@ -59,6 +59,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.87058823529999996" green="0.8980392157" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
+                <outlet property="LatestSpeakersTitleLabel" destination="JAM-6x-zgL" id="9e5-h0-Ltj"/>
                 <outlet property="latestCollectionView" destination="Rbf-iy-pCE" id="e3Q-Vz-HS0"/>
             </connections>
             <point key="canvasLocation" x="-25.5" y="223.5"/>

@@ -55,7 +55,7 @@ final class SpeakersViewController: AppViewController {
         tableView.tableFooterView = UIView()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.setFooterColor(.paleGrey)
+//        tableView.setFooterColor(.paleGrey)
         tableView.setHeaderColor(.paleGrey)
 
         searchBar.layer.borderWidth = 1
@@ -70,6 +70,7 @@ final class SpeakersViewController: AppViewController {
         bindableCells.bind(to: tableView.items() ({ tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
+            cell.removeSeparators()
 
             return cell
         }))
