@@ -54,9 +54,6 @@ final class PreviousEventCell: UICollectionViewCell {
     }
     
     private func setup() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.1
-        layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
-        layer.shadowRadius = 10.0
+        addShadow(opacity: 0.1, offset: CGSize(width: 0.0, height: 5.0), radius: 10.0)
     }
 }

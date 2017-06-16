@@ -42,10 +42,7 @@ class LatestSpeakerCollectionViewCell: UICollectionViewCell {
     }
 
     private func setup() {
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.5
-        layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        layer.shadowRadius = 5.0
+        addShadow()
 
         indicatorImageView.image = indicatorImageView.image?.withRenderingMode(.alwaysTemplate)
         indicatorImageView.tintColor = .white
