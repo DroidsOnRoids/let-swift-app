@@ -1,182 +1,182 @@
 [
-                 {
-                 "id": 14,
-                 "avatar": {
-                 "big": "/uploads/cache/4a7ecc10a566a75fe20cb50eecb8766f.jpeg",
-                 "thumb": "/uploads/cache/b2f91a4d90d534ed257456df6d01c7de.jpeg"
-                 },
-                 "name": "Paweł Szymankiewicz",
-                 "job": "Designer",
-                 "bio": "Pixel perfect freak who knows how to design beautiful UIs that developers will not hate him for. Design enthusiast with an IT background. Currently working at Droids On Roids as the Creative Lead."
-                 },
-                 {
-                 "id": 15,
-                 "avatar": {
-                 "big": "/uploads/cache/11275eae39e8f9cfc745dbf052048d16.jpeg",
-                 "thumb": "/uploads/cache/adeb018b01016110e00cf2b871345fb0.jpeg"
-                 },
-                 "name": "Mateusz Budzar",
-                 "job": "Android Developer",
-                 "bio": "Programista od 3 lat. Pasjonat czystego kodu, koszykarz amator, uwielbia czytanie książek. Lubi myśleć o sobie, że jest kucharzem, ale niczego jeszcze nie ugotował. Od jutra zamierza zdrowo się odżywiać i zacząć treningi. Jego motto to \"Małymi krokami do przodu\"."
-                 },
-                 {
-                 "id": 7,
-                 "avatar": {
-                 "big": "/uploads/cache/676d1c742cefabcd23369f890577e235.jpeg",
-                 "thumb": "/uploads/cache/c15226a8f6c29d8dbca99255a107b38b.jpeg"
-                 },
-                 "name": "Marcel Starczyk",
-                 "job": "iOS Developer",
-                 "bio": "iOS Developer z 4 letnim doświadczeniem na plecach. W dzień developer aplikacji mobilnych, nocami zajęty Game Developmentem w SpriteKit, SceneKit, Unity3D i Unreal Engine. Z zamiłowania gracz, aktualnie nie może uwierzyć w warstwę wizualną Uncharted 4. W wolnych chwilach oddaje się treningom siłowym oraz akrobatyce."
-                 },
-                 {
-                 "id": 8,
-                 "avatar": {
-                 "big": "/uploads/cache/41230c6330cfaa47e07090105b614def.jpeg",
-                 "thumb": "/uploads/cache/82d9453c068ca159dc4d97321019b8c2.jpeg"
-                 },
-                 "name": "Krystian Śliwa",
-                 "job": "iOS Developer",
-                 "bio": "iOS Developer z prawie 4 letnim stażem. Od półtora roku piszący prawie wyłącznie w Swifcie. Lubi zamieniać dobrą kawę w kod. Swoje pasje i zainteresowania poszerza każdego dnia o nowe doświadczenia pomagając innym w rozwiązaniu prawie każdego problemu. Poza pracą chętnie uprawia sport, m.in. biega i jeździ na rowerze."
-                 },
-                 {
-                 "id": 6,
-                 "avatar": {
-                 "big": "/uploads/cache/209ee01ae7aeec63c79cd5d39fa179ae.jpeg",
-                 "thumb": "/uploads/cache/1d26f89cb39419516fdfcfde40409673.jpeg"
-                 },
-                 "name": "Bazyli Zygan",
-                 "job": "iOS Developer",
-                 "bio": "Pracuje w branży od 15 lat. Od lat 11 zajmuje się programowaniem telefonów komórkowych. Pamięta czasy, kiedy telefon nie przypominał komputera i służył jednak zazwyczaj do dzwonienia i wysyłania SMSów. Zdążył się nauczyć na czym polegają ograniczenia tego typu urządzeń, zanim Apple wydał iPhone OS w 2007 i wywrócił świat smartfonów do góry nogami. Do dziś uczy się, jak to się stało. I tak naprawdę, CO się stało."
-                 },
-                 {
-                 "id": 12,
-                 "avatar": {
-                 "big": "/uploads/cache/9bc44914b9f3e44c8a35c12cbc66cf1e.jpeg",
-                 "thumb": "/uploads/cache/c859eb575945b156eaa1a027d97dcd84.jpeg"
-                 },
-                 "name": "Przemysław Mieszkowski",
-                 "job": "iOS Developer",
-                 "bio": "Developer programu Metagrid for iOS (www.metasystem.io) oraz twórca cenionych przez kompozytorów niestandardowych narzędzi muzyczny (www.artsunmuted.com).\nZ zamiłowania szarpidrut, poszukiwacz parzystych harmonicznych i wielbiciel zapachu syntezatorów analogowych. Biegacz, wegeterianin i cyklista."
-                 },
-                 {
-                 "id": 13,
-                 "avatar": {
-                 "big": "/uploads/cache/18d988c1ec807c36b0180909a91a44eb.jpeg",
-                 "thumb": "/uploads/cache/f623e281534036b56db2272b70804d4f.jpeg"
-                 },
-                 "name": "Michał Mynarski",
-                 "job": "iOS Developer",
-                 "bio": "Pracował w korporacji, pracował w banku, wyleczył się z takich pomysłów do końca życia. Uwielbia dobry UX, szczególnie taki, którego nie da się zaprogramować. Specjalista od relacji z hiszpańskim kodem i siesta developmentem."
-                 },
-                 {
-                 "id": 17,
-                 "avatar": {
-                 "big": "/uploads/cache/860db91346691689c351143bb189cdac.jpeg",
-                 "thumb": "/uploads/cache/e19cc8ffafb54861384ecf4bb1390ddd.jpeg"
-                 },
-                 "name": "Paweł Dudek",
-                 "job": "iOS Developer",
-                 "bio": "Programista iOS tworzący aplikacje od 2009 roku. Wyznawca TDD. Organizator w Mobile Warsaw. Co-founder w Mobile Academy. Uzależniony od kawy z dripa i wielbiciel craft cocktails."
-                 },
-                 {
-                 "id": 10,
-                 "avatar": {
-                 "big": "/uploads/cache/195370d51cb0d1100e374807d625368b.jpg",
-                 "thumb": "/uploads/cache/71896e61857f06e2e75ba00fca248380.jpg"
-                 },
-                 "name": "Michał Pyrka",
-                 "job": "iOS Developer",
-                 "bio": "Michał Pyrka to humanista-programista, który jest od 1. dnia ze Swiftem. Liczy na to, że za parę lat będzie to główny język wykładany w szkołach i uczelniach. Po godzinach jest sportowym świrem, który uwielbia płatać psikusy."
-                 },
-                 {
-                 "id": 18,
-                 "avatar": {
-                 "big": "/uploads/cache/665d2c160c445652c182d182f4202ead.jpeg",
-                 "thumb": "/uploads/cache/e3d3a2d32c20b1094f0e5448c0bb4185.jpeg"
-                 },
-                 "name": "Radosław Czemerys",
-                 "job": "Mobile Developer",
-                 "bio": "Radek swoją przyszłość związał z tworzeniem aplikacji mobilnych. Po kilku epizodach z natywnymi aplikacjami oraz z Xamarinem skupił się na frameworku stworzonym przez Facebooka - react-native. Po 1.5 roku pracy, kontrybucjach Open Source, wielu odpowiedziach na Stackoverflow postanowił podzielić się swoją wiedzą z innymi. Weekendy zwykle spędza latając tanimi liniami i oglądając niezależne kino."
-                 },
-                 {
-                 "id": 19,
-                 "avatar": {
-                 "big": "/uploads/cache/d4b106fa77a5d53d0673ce85fdf949d3.jpeg",
-                 "thumb": "/uploads/cache/37d0e4324985f25a72db1a26b158d168.jpeg"
-                 },
-                 "name": "Marcin Jackowski",
-                 "job": "iOS Developer",
-                 "bio": "Marcin Jackowski zarażony chorobą iOS prawie 3 lata temu. Na co dzień programista w Droids On Roids, gdzie od Swifta 1.0 zapomniał o istnieniu Objective-C. Mobilny świr który chętnie pogra w piłkę lub wypije dobrą „kawę”."
-                 },
-                 {
-                 "id": 20,
-                 "avatar": {
-                 "big": "/uploads/cache/ae06ea01d9206bcf4c51791c66e1f550.jpeg",
-                 "thumb": "/uploads/cache/4236589142b84d04791d7d07b987b570.jpeg"
-                 },
-                 "name": "Marcin Jackowski",
-                 "job": "iOS Developer",
-                 "bio": "Marcin Jackowski zarażony chorobą iOS prawie 3 lata temu. Na co dzień programista w Droids On Roids, gdzie od Swifta 1.0 zapomniał o istnieniu Objective-C. Mobilny świr który chętnie pogra w piłkę lub wypije dobrą „kawę”."
-                 },
-                 {
-                 "id": 21,
-                 "avatar": {
-                 "big": "/uploads/cache/c290d10d6c8776ef3ba36bd0d9c6fa9e.jpeg",
-                 "thumb": "/uploads/cache/7dfbe44281f65ddf7663500e83d3af4d.jpeg"
-                 },
-                 "name": "Adrian Kashivskyy",
-                 "job": "iOS Developer",
-                 "bio": "Adrian zaczął przygodę jako iOS developer w 2009 roku i obecnie pracuje jako Senior iOS Developer w Netguru. Jest wielkim fanem reaktywnego programowania, a niedawno został kontrybutorem Swift Evolution. W wolnym czasie lubi grać na pianinie i podróżować śladem bohaterów serii Assassin’s Creed."
-                 },
-                 {
-                 "id": 22,
-                 "avatar": {
-                 "big": "/uploads/cache/0796770ce18963fdfc2c6717597b2c43.jpeg",
-                 "thumb": "/uploads/cache/8f791f53d7bb5db0804b951303b4e0c1.jpeg"
-                 },
-                 "name": "Eliasz Sawicki",
-                 "job": "iOS Developer",
-                 "bio": "Jestem programistą w Bright Inventions, gdzie skupiam się na dostarczaniu doskonałego doświadczenia iOS'owego. Stale poszukuję nowych sposobów na doskonalenie własnych rozwiązań, o czym również piszę na swoim blogu (www.eliaszsawicki.com). Kiedy mój Mac śpi, najpewniej gram na gitarze lub czytam książki."
-                 },
-                 {
-                 "id": 23,
-                 "avatar": {
-                 "big": "/uploads/cache/943074ca194a079fd38fdd2ed1706fe2.jpeg",
-                 "thumb": "/uploads/cache/312367d326839c4525bddff79f930222.jpeg"
-                 },
-                 "name": "Waldemar Zubik",
-                 "job": "Mobile Developer",
-                 "bio": "Waldemar na co dzień zajmuje się projektowaniem architektury rozwiązań mobilnych. Jego spacjalność to Xamarin oraz Windows Phone. Zanim dołączył do zespołu EPAM, pracował jako Senior Developer w Nokii i Microsofcie. W wolnym czasie uwielbia grać w piłkę i jest zagorzałym kibicem FC Barcelona."
-                 },
-                 {
-                 "id": 24,
-                 "avatar": {
-                 "big": "/uploads/cache/08b4d0e6040c42878b7a057edcb97788.jpg",
-                 "thumb": "/uploads/cache/0868c85bef1302141d60449c98cd3ac6.jpg"
-                 },
-                 "name": "Łukasz Mróz",
-                 "job": "iOS Developer",
-                 "bio": "Uwielbia Apple’a. W Swifcie zakochał się od pierwszego commita. Ciągle uczy się nowych rzeczy. Ostatnio fascynuje się się wszystkim, co reaktywne. Przygodę z programowaniem zaczynał od PHP. Na co dzień w Droids on Roids we Wrocławiu tworzy aplikacje dla klientów z całego świata."
-                 },
-                 {
-                 "id": 25,
-                 "avatar": {
-                 "big": "/uploads/cache/9abb50a8998511b6efe55614969eb615.jpg",
-                 "thumb": "/uploads/cache/a90a70bada85d326e247f8986f9cc486.jpg"
-                 },
-                 "name": "Oktawian Chojnacki",
-                 "job": "iOS Developer",
-                 "bio": "Kocha Swifta tak bardzo, że śni o nim niemal każdej nocy. Za pasem ma 4 lata doświadczenia na platformie iOS. Web developer w poprzednim życiu. Ojciec wspaniałego syna. Uzależniony od kawy. Jeśli nie tworzy kodu to najprawdopodobniej czyta książkę. Wielbiciel Alana Turinga, Ivana E. Sutherlanda, Douglasa Engelbarta, Alana Kaya oraz - tak, zgadliście - Steve'a Jobsa."
-                 },
-                 {
-                 "id": 16,
-                 "avatar": {
-                 "big": "/uploads/cache/355e5b4325f00b355ebff28c8e321e0f.jpg",
-                 "thumb": "/uploads/cache/34dbdcfd6fca9d566eab72e9cfa9aaf2.jpg"
-                 },
-                 "name": "Piotr Sochalewski",
-                 "job": "iOS Developer",
-                 "bio": "Piotr Sochalewski w świetle dnia tworzy aplikacje dla Droids On Roids, zaś po zmroku dopieszcza prywatne projekty, ogląda zbyt dużo seriali, gra na ukochanym Xboksie oraz kibicuje FC Barcelonie. W wolnych chwilach kocha Realma i nienawidzi Core Date’y."
-                 }
+     {
+         "id": 14,
+         "avatar": {
+             "big": "/uploads/cache/4a7ecc10a566a75fe20cb50eecb8766f.jpeg",
+             "thumb": "/uploads/cache/b2f91a4d90d534ed257456df6d01c7de.jpeg"
+         },
+         "name": "Paweł Szymankiewicz",
+         "job": "Designer",
+         "bio": "Pixel perfect freak who knows how to design beautiful UIs that developers will not hate him for. Design enthusiast with an IT background. Currently working at Droids On Roids as the Creative Lead."
+     },
+     {
+         "id": 15,
+         "avatar": {
+             "big": "/uploads/cache/11275eae39e8f9cfc745dbf052048d16.jpeg",
+             "thumb": "/uploads/cache/adeb018b01016110e00cf2b871345fb0.jpeg"
+         },
+         "name": "Mateusz Budzar",
+         "job": "Android Developer",
+         "bio": "Programista od 3 lat. Pasjonat czystego kodu, koszykarz amator, uwielbia czytanie książek. Lubi myśleć o sobie, że jest kucharzem, ale niczego jeszcze nie ugotował. Od jutra zamierza zdrowo się odżywiać i zacząć treningi. Jego motto to \"Małymi krokami do przodu\"."
+     },
+     {
+         "id": 7,
+         "avatar": {
+             "big": "/uploads/cache/676d1c742cefabcd23369f890577e235.jpeg",
+             "thumb": "/uploads/cache/c15226a8f6c29d8dbca99255a107b38b.jpeg"
+         },
+         "name": "Marcel Starczyk",
+         "job": "iOS Developer",
+         "bio": "iOS Developer z 4 letnim doświadczeniem na plecach. W dzień developer aplikacji mobilnych, nocami zajęty Game Developmentem w SpriteKit, SceneKit, Unity3D i Unreal Engine. Z zamiłowania gracz, aktualnie nie może uwierzyć w warstwę wizualną Uncharted 4. W wolnych chwilach oddaje się treningom siłowym oraz akrobatyce."
+     },
+     {
+         "id": 8,
+         "avatar": {
+             "big": "/uploads/cache/41230c6330cfaa47e07090105b614def.jpeg",
+             "thumb": "/uploads/cache/82d9453c068ca159dc4d97321019b8c2.jpeg"
+         },
+         "name": "Krystian Śliwa",
+         "job": "iOS Developer",
+         "bio": "iOS Developer z prawie 4 letnim stażem. Od półtora roku piszący prawie wyłącznie w Swifcie. Lubi zamieniać dobrą kawę w kod. Swoje pasje i zainteresowania poszerza każdego dnia o nowe doświadczenia pomagając innym w rozwiązaniu prawie każdego problemu. Poza pracą chętnie uprawia sport, m.in. biega i jeździ na rowerze."
+     },
+     {
+         "id": 6,
+         "avatar": {
+             "big": "/uploads/cache/209ee01ae7aeec63c79cd5d39fa179ae.jpeg",
+             "thumb": "/uploads/cache/1d26f89cb39419516fdfcfde40409673.jpeg"
+         },
+         "name": "Bazyli Zygan",
+         "job": "iOS Developer",
+         "bio": "Pracuje w branży od 15 lat. Od lat 11 zajmuje się programowaniem telefonów komórkowych. Pamięta czasy, kiedy telefon nie przypominał komputera i służył jednak zazwyczaj do dzwonienia i wysyłania SMSów. Zdążył się nauczyć na czym polegają ograniczenia tego typu urządzeń, zanim Apple wydał iPhone OS w 2007 i wywrócił świat smartfonów do góry nogami. Do dziś uczy się, jak to się stało. I tak naprawdę, CO się stało."
+     },
+     {
+         "id": 12,
+         "avatar": {
+             "big": "/uploads/cache/9bc44914b9f3e44c8a35c12cbc66cf1e.jpeg",
+             "thumb": "/uploads/cache/c859eb575945b156eaa1a027d97dcd84.jpeg"
+         },
+         "name": "Przemysław Mieszkowski",
+         "job": "iOS Developer",
+         "bio": "Developer programu Metagrid for iOS (www.metasystem.io) oraz twórca cenionych przez kompozytorów niestandardowych narzędzi muzyczny (www.artsunmuted.com).\nZ zamiłowania szarpidrut, poszukiwacz parzystych harmonicznych i wielbiciel zapachu syntezatorów analogowych. Biegacz, wegeterianin i cyklista."
+     },
+     {
+         "id": 13,
+         "avatar": {
+             "big": "/uploads/cache/18d988c1ec807c36b0180909a91a44eb.jpeg",
+             "thumb": "/uploads/cache/f623e281534036b56db2272b70804d4f.jpeg"
+         },
+         "name": "Michał Mynarski",
+         "job": "iOS Developer",
+         "bio": "Pracował w korporacji, pracował w banku, wyleczył się z takich pomysłów do końca życia. Uwielbia dobry UX, szczególnie taki, którego nie da się zaprogramować. Specjalista od relacji z hiszpańskim kodem i siesta developmentem."
+     },
+     {
+         "id": 17,
+         "avatar": {
+             "big": "/uploads/cache/860db91346691689c351143bb189cdac.jpeg",
+             "thumb": "/uploads/cache/e19cc8ffafb54861384ecf4bb1390ddd.jpeg"
+         },
+         "name": "Paweł Dudek",
+         "job": "iOS Developer",
+         "bio": "Programista iOS tworzący aplikacje od 2009 roku. Wyznawca TDD. Organizator w Mobile Warsaw. Co-founder w Mobile Academy. Uzależniony od kawy z dripa i wielbiciel craft cocktails."
+     },
+     {
+         "id": 10,
+         "avatar": {
+             "big": "/uploads/cache/195370d51cb0d1100e374807d625368b.jpg",
+             "thumb": "/uploads/cache/71896e61857f06e2e75ba00fca248380.jpg"
+         },
+         "name": "Michał Pyrka",
+         "job": "iOS Developer",
+         "bio": "Michał Pyrka to humanista-programista, który jest od 1. dnia ze Swiftem. Liczy na to, że za parę lat będzie to główny język wykładany w szkołach i uczelniach. Po godzinach jest sportowym świrem, który uwielbia płatać psikusy."
+     },
+     {
+         "id": 18,
+         "avatar": {
+             "big": "/uploads/cache/665d2c160c445652c182d182f4202ead.jpeg",
+             "thumb": "/uploads/cache/e3d3a2d32c20b1094f0e5448c0bb4185.jpeg"
+         },
+         "name": "Radosław Czemerys",
+         "job": "Mobile Developer",
+         "bio": "Radek swoją przyszłość związał z tworzeniem aplikacji mobilnych. Po kilku epizodach z natywnymi aplikacjami oraz z Xamarinem skupił się na frameworku stworzonym przez Facebooka - react-native. Po 1.5 roku pracy, kontrybucjach Open Source, wielu odpowiedziach na Stackoverflow postanowił podzielić się swoją wiedzą z innymi. Weekendy zwykle spędza latając tanimi liniami i oglądając niezależne kino."
+     },
+     {
+         "id": 19,
+         "avatar": {
+             "big": "/uploads/cache/d4b106fa77a5d53d0673ce85fdf949d3.jpeg",
+             "thumb": "/uploads/cache/37d0e4324985f25a72db1a26b158d168.jpeg"
+         },
+         "name": "Marcin Jackowski",
+         "job": "iOS Developer",
+         "bio": "Marcin Jackowski zarażony chorobą iOS prawie 3 lata temu. Na co dzień programista w Droids On Roids, gdzie od Swifta 1.0 zapomniał o istnieniu Objective-C. Mobilny świr który chętnie pogra w piłkę lub wypije dobrą „kawę”."
+     },
+     {
+         "id": 20,
+         "avatar": {
+             "big": "/uploads/cache/ae06ea01d9206bcf4c51791c66e1f550.jpeg",
+             "thumb": "/uploads/cache/4236589142b84d04791d7d07b987b570.jpeg"
+         },
+         "name": "Marcin Jackowski",
+         "job": "iOS Developer",
+         "bio": "Marcin Jackowski zarażony chorobą iOS prawie 3 lata temu. Na co dzień programista w Droids On Roids, gdzie od Swifta 1.0 zapomniał o istnieniu Objective-C. Mobilny świr który chętnie pogra w piłkę lub wypije dobrą „kawę”."
+     },
+     {
+         "id": 21,
+         "avatar": {
+             "big": "/uploads/cache/c290d10d6c8776ef3ba36bd0d9c6fa9e.jpeg",
+             "thumb": "/uploads/cache/7dfbe44281f65ddf7663500e83d3af4d.jpeg"
+         },
+         "name": "Adrian Kashivskyy",
+         "job": "iOS Developer",
+         "bio": "Adrian zaczął przygodę jako iOS developer w 2009 roku i obecnie pracuje jako Senior iOS Developer w Netguru. Jest wielkim fanem reaktywnego programowania, a niedawno został kontrybutorem Swift Evolution. W wolnym czasie lubi grać na pianinie i podróżować śladem bohaterów serii Assassin’s Creed."
+     },
+     {
+         "id": 22,
+         "avatar": {
+             "big": "/uploads/cache/0796770ce18963fdfc2c6717597b2c43.jpeg",
+             "thumb": "/uploads/cache/8f791f53d7bb5db0804b951303b4e0c1.jpeg"
+         },
+         "name": "Eliasz Sawicki",
+         "job": "iOS Developer",
+         "bio": "Jestem programistą w Bright Inventions, gdzie skupiam się na dostarczaniu doskonałego doświadczenia iOS'owego. Stale poszukuję nowych sposobów na doskonalenie własnych rozwiązań, o czym również piszę na swoim blogu (www.eliaszsawicki.com). Kiedy mój Mac śpi, najpewniej gram na gitarze lub czytam książki."
+     },
+     {
+         "id": 23,
+         "avatar": {
+             "big": "/uploads/cache/943074ca194a079fd38fdd2ed1706fe2.jpeg",
+             "thumb": "/uploads/cache/312367d326839c4525bddff79f930222.jpeg"
+         },
+         "name": "Waldemar Zubik",
+         "job": "Mobile Developer",
+         "bio": "Waldemar na co dzień zajmuje się projektowaniem architektury rozwiązań mobilnych. Jego spacjalność to Xamarin oraz Windows Phone. Zanim dołączył do zespołu EPAM, pracował jako Senior Developer w Nokii i Microsofcie. W wolnym czasie uwielbia grać w piłkę i jest zagorzałym kibicem FC Barcelona."
+     },
+     {
+         "id": 24,
+         "avatar": {
+             "big": "/uploads/cache/08b4d0e6040c42878b7a057edcb97788.jpg",
+             "thumb": "/uploads/cache/0868c85bef1302141d60449c98cd3ac6.jpg"
+         },
+         "name": "Łukasz Mróz",
+         "job": "iOS Developer",
+         "bio": "Uwielbia Apple’a. W Swifcie zakochał się od pierwszego commita. Ciągle uczy się nowych rzeczy. Ostatnio fascynuje się się wszystkim, co reaktywne. Przygodę z programowaniem zaczynał od PHP. Na co dzień w Droids on Roids we Wrocławiu tworzy aplikacje dla klientów z całego świata."
+     },
+     {
+         "id": 25,
+         "avatar": {
+             "big": "/uploads/cache/9abb50a8998511b6efe55614969eb615.jpg",
+             "thumb": "/uploads/cache/a90a70bada85d326e247f8986f9cc486.jpg"
+         },
+         "name": "Oktawian Chojnacki",
+         "job": "iOS Developer",
+         "bio": "Kocha Swifta tak bardzo, że śni o nim niemal każdej nocy. Za pasem ma 4 lata doświadczenia na platformie iOS. Web developer w poprzednim życiu. Ojciec wspaniałego syna. Uzależniony od kawy. Jeśli nie tworzy kodu to najprawdopodobniej czyta książkę. Wielbiciel Alana Turinga, Ivana E. Sutherlanda, Douglasa Engelbarta, Alana Kaya oraz - tak, zgadliście - Steve'a Jobsa."
+     },
+     {
+         "id": 16,
+         "avatar": {
+             "big": "/uploads/cache/355e5b4325f00b355ebff28c8e321e0f.jpg",
+             "thumb": "/uploads/cache/34dbdcfd6fca9d566eab72e9cfa9aaf2.jpg"
+         },
+         "name": "Piotr Sochalewski",
+         "job": "iOS Developer",
+         "bio": "Piotr Sochalewski w świetle dnia tworzy aplikacje dla Droids On Roids, zaś po zmroku dopieszcza prywatne projekty, ogląda zbyt dużo seriali, gra na ukochanym Xboksie oraz kibicuje FC Barcelonie. W wolnych chwilach kocha Realma i nienawidzi Core Date’y."
+     }
 ]
