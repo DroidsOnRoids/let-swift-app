@@ -13,8 +13,8 @@ extension UIImageView {
         let gradient = CAGradientLayer()
         gradient.frame = bounds
 
-        let startColor = UIColor(colorLiteralRed: 0.0, green: 0.0, blue: 0.0, alpha: 0.1)
-        let endColor = UIColor.black
+        let startColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.1)
+        let endColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 
         gradient.locations = locations
         gradient.colors = [startColor.cgColor, endColor.cgColor]

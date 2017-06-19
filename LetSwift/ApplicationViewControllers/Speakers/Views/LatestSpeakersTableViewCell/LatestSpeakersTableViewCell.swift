@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LatestSpeakersTableViewCell: UITableViewCell {
+final class LatestSpeakersTableViewCell: UITableViewCell {
 
     private let mockedSpeakers: [Speaker] = Speaker.from(MockLoader.speakersMock!)!
 

@@ -57,7 +57,7 @@ final class SpeakersViewController: AppViewController {
         tableView.estimatedRowHeight = 60.0
         tableView.setHeaderColor(.paleGrey)
 
-        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor
 
         tableView.registerCells(allCells.map { $0.rawValue })
