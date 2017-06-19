@@ -17,47 +17,60 @@ struct NotificationManager {
         guard let date = date else { return [] }
         return UIApplication.shared.scheduledLocalNotifications?.filter { $0.fireDate == date } ?? []
     }
-    
+
+    private var permissionsGranted: Bool {
+        guard let notificationSettings = UIApplication.shared.currentUserNotificationSettings else { return false }
+        return notificationSettings.types == .alert
+    }
+
     var isNotificationActive: Bool {
         return !notifications.isEmpty
     }
-    
-    func succeededScheduleNotification(withMessage message: String, completionHandler: @escaping (Bool) -> ()) {
+
+    func succeededScheduleNotification(withMessage message: String, completionHandler: @escaping (Bool, Bool) -> ()) {
         guard let date = date, !isNotificationActive else { return }
-
-        let newNotificationState = isNotificationActive
         
-        ensurePermissions { granted in
-            let notification = UILocalNotification()
-            notification.alertBody = message
-            notification.fireDate = date
-            notification.timeZone = NSTimeZone.default
+        ensurePermissions { grantedPermissions in
+            DispatchQueue.main.async {
+                if grantedPermissions {
+                    let notification = UILocalNotification()
+                    notification.alertBody = message
+                    notification.fireDate = date
+                    notification.timeZone = NSTimeZone.default
 
-            UIApplication.shared.scheduleLocalNotification(notification)
+                    UIApplication.shared.scheduleLocalNotification(notification)
+                }
 
-            completionHandler(newNotificationState)
+                completionHandler(self.isNotificationActive, grantedPermissions)
+            }
         }
     }
 
     private func ensurePermissions(completionHandler: @escaping (Bool) -> ()) {
-        guard !DefaultsManager.shared.notificationsPromptShowed else { return }
-
         if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, error in
-                DefaultsManager.shared.notificationsPromptShowed = true
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, _ in
+                if !DefaultsManager.shared.notificationsPromptShowed && granted {
+                    completionHandler(granted)
+                } else if DefaultsManager.shared.notificationsPromptShowed {
+                    completionHandler(granted)
+                }
 
-                completionHandler(granted)
+                DefaultsManager.shared.notificationsPromptShowed = true
             }
         } else {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Did"), object: nil, queue: nil) {
-                _ in
-                DefaultsManager.shared.notificationsPromptShowed = true
-                NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Did"), object: nil)
+            if !DefaultsManager.shared.notificationsPromptShowed {
+                NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Did"), object: nil, queue: nil) { _ in
+                    DefaultsManager.shared.notificationsPromptShowed = true
+                    NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Did"), object: nil)
 
-                //TODO: check again permissions
-//                completionHandler(granted)
+                    if self.permissionsGranted {
+                        completionHandler(self.permissionsGranted)
+                    }
+                }
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: .alert, categories: nil))
+            } else {
+                completionHandler(permissionsGranted)
             }
-            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: .alert, categories: nil))
         }
     }
     

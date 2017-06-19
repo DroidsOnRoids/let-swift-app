@@ -52,6 +52,8 @@ final class EventsViewControllerViewModel {
 
     var eventDidFinishObservable = Observable<Event?>(nil)
 
+    var notificationPermissionsNotGrantedObservable = Observable<Void>()
+
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
     
@@ -281,13 +283,14 @@ final class EventsViewControllerViewModel {
         
         if notificationManager.isNotificationActive {
             notificationManager.cancelNotification()
+            notificationStateObservable.next(notificationManager.isNotificationActive ? .active : .notActive)
         } else {
             let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(lastEventObservable.value?.title ?? "")"
             
-            _ = notificationManager.succeededScheduleNotification(withMessage: message)
+            notificationManager.succeededScheduleNotification(withMessage: message) { [weak self] activeNotification, permissionsGranted in
+                permissionsGranted ? self?.notificationStateObservable.next(activeNotification ? .active : .notActive) : self?.notificationPermissionsNotGrantedObservable.next()
+            }
         }
-        
-        notificationStateObservable.next(notificationManager.isNotificationActive ? .active : .notActive)
     }
     
     private func summaryCellTapped() {
