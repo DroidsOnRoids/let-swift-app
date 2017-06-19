@@ -56,6 +56,9 @@ final class SpeakersViewController: AppViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.setHeaderColor(.paleGrey)
+        DispatchQueue.main.async { //TODO: to perform last
+            self.tableView.contentOffset.y -= 44
+        }
 
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor
