@@ -43,6 +43,12 @@
 		7EB744041EEE8466008092DC /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744031EEE8466008092DC /* Debouncer.swift */; };
 		7EB744061EEFDDC0008092DC /* UITableViewCellExtenion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744051EEFDDC0008092DC /* UITableViewCellExtenion.swift */; };
 		7EB744091EF130B6008092DC /* SpeakersViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744081EF130B6008092DC /* SpeakersViewControllerViewModel.swift */; };
+		7EB7441C1EF1519D008092DC /* LatestSpeakersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7441A1EF1519D008092DC /* LatestSpeakersTableViewCell.swift */; };
+		7EB7441D1EF1519D008092DC /* LatestSpeakersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB7441B1EF1519D008092DC /* LatestSpeakersTableViewCell.xib */; };
+		7EB744211EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7441F1EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift */; };
+		7EB744221EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */; };
+		7EB744271EF3E0BD008092DC /* speakers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744261EF3E0BD008092DC /* speakers.json */; };
+		7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */; };
 		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
 		7ED1AC471EE04E7A00276F93 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */; };
 		7ED1AC481EE04E7A00276F93 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */; };
@@ -214,6 +220,12 @@
 		7EB744031EEE8466008092DC /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		7EB744051EEFDDC0008092DC /* UITableViewCellExtenion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCellExtenion.swift; sourceTree = "<group>"; };
 		7EB744081EF130B6008092DC /* SpeakersViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersViewControllerViewModel.swift; sourceTree = "<group>"; };
+		7EB7441A1EF1519D008092DC /* LatestSpeakersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestSpeakersTableViewCell.swift; sourceTree = "<group>"; };
+		7EB7441B1EF1519D008092DC /* LatestSpeakersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestSpeakersTableViewCell.xib; sourceTree = "<group>"; };
+		7EB7441F1EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestSpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
+		7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestSpeakerCollectionViewCell.xib; sourceTree = "<group>"; };
+		7EB744261EF3E0BD008092DC /* speakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = speakers.json; sourceTree = "<group>"; };
+		7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -479,6 +491,33 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		7EB7440F1EF149AF008092DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7EB7441E1EF15288008092DC /* LatestSpeakerCollectionViewCell */,
+				7EB744151EF150EF008092DC /* LatestSpeakersTableViewCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7EB744151EF150EF008092DC /* LatestSpeakersTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EB7441A1EF1519D008092DC /* LatestSpeakersTableViewCell.swift */,
+				7EB7441B1EF1519D008092DC /* LatestSpeakersTableViewCell.xib */,
+			);
+			path = LatestSpeakersTableViewCell;
+			sourceTree = "<group>";
+		};
+		7EB7441E1EF15288008092DC /* LatestSpeakerCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EB7441F1EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift */,
+				7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */,
+			);
+			path = LatestSpeakerCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		7ED1ABF61EDEC4C100276F93 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,6 +774,7 @@
 			children = (
 				D335211E1ECEE78A000666D4 /* MockLoader.swift */,
 				D335211C1ECEE762000666D4 /* event_details.json */,
+				7EB744261EF3E0BD008092DC /* speakers.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -766,6 +806,7 @@
 		D33F07221EA9E8F600A74B9F /* Speakers */ = {
 			isa = PBXGroup;
 			children = (
+				7EB7440F1EF149AF008092DC /* Views */,
 				7EB744071EF13089008092DC /* ViewModels */,
 				D33F07281EA9E94D00A74B9F /* SpeakersViewController.swift */,
 				D33F07291EA9E94D00A74B9F /* SpeakersViewController.xib */,
@@ -1012,6 +1053,7 @@
 				D3F3D97C1ED9E55600106197 /* UIScrollViewExtension.swift */,
 				D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */,
 				7EB744051EEFDDC0008092DC /* UITableViewCellExtenion.swift */,
+				7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1123,6 +1165,7 @@
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
 				D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */,
+				7EB744271EF3E0BD008092DC /* speakers.json in Resources */,
 				D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */,
 				D39CC8241ED2B3FB007B0A1C /* SadFaceView.xib in Resources */,
 				D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */,
@@ -1132,6 +1175,7 @@
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D341A1911EDE936F0066E965 /* SplashViewController.xib in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
+				7EB7441D1EF1519D008092DC /* LatestSpeakersTableViewCell.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
 				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
@@ -1143,6 +1187,7 @@
 				7EF34FF11ED7175800517683 /* SpeakersToBeAnnouncedCell.xib in Resources */,
 				D3840D9A1ECA0C2900975818 /* SpeakerDetailsViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
+				7EB744221EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib in Resources */,
 				D34CCF601EC5AC9A00EFD3E4 /* SpeakerCardView.xib in Resources */,
 				7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */,
 				D3CFAE7D1EE6A1840009E4EF /* SinglePhotoCell.xib in Resources */,
@@ -1282,7 +1327,9 @@
 				7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift in Sources */,
 				D3840D991ECA0C2900975818 /* SpeakerDetailsViewController.swift in Sources */,
 				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
+				7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */,
 				D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */,
+				7EB744211EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift in Sources */,
 				7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedCell.swift in Sources */,
 				7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */,
 				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
@@ -1296,6 +1343,7 @@
 				D3429D101EE0364D00F18D30 /* ContactTextField.swift in Sources */,
 				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
 				D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */,
+				7EB7441C1EF1519D008092DC /* LatestSpeakersTableViewCell.swift in Sources */,
 				D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */,
 				D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */,
 				D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */,

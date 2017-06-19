@@ -36,4 +36,11 @@ extension UIView {
         group.motionEffects = [horizontal, vertical]
         addMotionEffect(group)
     }
+
+    func addShadow(withColor color: CGColor = UIColor.black.cgColor, opacity: Float = 0.5, offset: CGSize = CGSize(width: 0.0, height: 2.0), radius: CGFloat = 5.0) {
+        layer.shadowColor = color
+        layer.shadowOpacity = opacity
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
+    }
 }

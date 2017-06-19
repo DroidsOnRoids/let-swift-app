@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="380" id="1YY-1P-2gh" customClass="LatestSpeakersTableViewCell" customModule="LetSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YY-1P-2gh" id="WdY-BX-UfJ">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="226.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST LET SWIFT SPEAKERS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JAM-6x-zgL">
+                        <rect key="frame" x="16" y="12" width="343" height="15"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                        <color key="textColor" red="0.51764705879999995" green="0.56078431370000004" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Rbf-iy-pCE">
+                        <rect key="frame" x="0.0" y="38.5" width="375" height="180"/>
+                        <color key="backgroundColor" red="0.87058823529999996" green="0.8980392157" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" priority="999" constant="180" id="E6q-3r-5CE"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="rue-HE-j2l">
+                            <size key="itemSize" width="150" height="180"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASd-rT-gwg" customClass="SpinnerView" customModule="LetSwift" customModuleProvider="target">
+                        <rect key="frame" x="375" y="38" width="50" height="180.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Nc7-t3-dbt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Rbf-iy-pCE" secondAttribute="trailing" id="CD2-3A-EFI"/>
+                    <constraint firstItem="JAM-6x-zgL" firstAttribute="leading" secondItem="WdY-BX-UfJ" secondAttribute="leading" constant="16" id="Ihs-k0-aYK"/>
+                    <constraint firstItem="ASd-rT-gwg" firstAttribute="bottom" secondItem="Rbf-iy-pCE" secondAttribute="bottom" id="KrS-5p-M77"/>
+                    <constraint firstItem="JAM-6x-zgL" firstAttribute="top" secondItem="WdY-BX-UfJ" secondAttribute="top" constant="12" id="POh-g0-xdW"/>
+                    <constraint firstAttribute="trailing" secondItem="JAM-6x-zgL" secondAttribute="trailing" constant="16" id="Red-2l-1bU"/>
+                    <constraint firstItem="ASd-rT-gwg" firstAttribute="leading" secondItem="Rbf-iy-pCE" secondAttribute="trailing" id="Ti9-yi-cPA"/>
+                    <constraint firstItem="ASd-rT-gwg" firstAttribute="top" secondItem="Rbf-iy-pCE" secondAttribute="top" id="UQl-z8-UVr"/>
+                    <constraint firstAttribute="bottom" secondItem="Rbf-iy-pCE" secondAttribute="bottom" constant="8" id="ZIV-o5-aAp"/>
+                    <constraint firstItem="Rbf-iy-pCE" firstAttribute="top" secondItem="JAM-6x-zgL" secondAttribute="bottom" constant="12" id="qSI-kR-CZd"/>
+                    <constraint firstItem="Rbf-iy-pCE" firstAttribute="leading" secondItem="WdY-BX-UfJ" secondAttribute="leading" id="uxc-5J-nnK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.87058823529999996" green="0.8980392157" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="LatestSpeakersTitleLabel" destination="JAM-6x-zgL" id="9e5-h0-Ltj"/>
+                <outlet property="latestCollectionView" destination="Rbf-iy-pCE" id="e3Q-Vz-HS0"/>
+            </connections>
+            <point key="canvasLocation" x="-25.5" y="223.5"/>
+        </tableViewCell>
+    </objects>
+</document>

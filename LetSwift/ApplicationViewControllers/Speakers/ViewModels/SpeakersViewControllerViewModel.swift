@@ -10,4 +10,9 @@ import Foundation
 
 final class SpeakersViewControllerViewModel {
 
+    weak var delegate: SpeakersViewControllerDelegate?
+
+    init(delegate: SpeakersViewControllerDelegate?) {
+        self.delegate = delegate
+    }
 }
