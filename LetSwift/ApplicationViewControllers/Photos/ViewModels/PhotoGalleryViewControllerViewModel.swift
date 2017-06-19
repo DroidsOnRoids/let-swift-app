@@ -11,8 +11,9 @@ import MWPhotoBrowser
 final class PhotoGalleryViewControllerViewModel {
 
     let photosObservable: Observable<[Photo]>
-    let mwPhotosObservable = Observable<[MWPhoto]>([])
     let photoSelectedObservable = Observable<Int>(0)
+    let targetFrameObservable = Observable<CGRect>(.zero)
+    let sliderTitleObservable = Observable<String>("")
     
     private let disposeBag = DisposeBag()
 
@@ -23,9 +24,25 @@ final class PhotoGalleryViewControllerViewModel {
     }
     
     private func setup() {
-        photosObservable.subscribeNext(startsWithInitialValue: true) { [weak self] photos in
-            self?.mwPhotosObservable.next(photos.map { MWPhoto(url: $0.big) })
+        photosObservable.subscribeNext { [weak self] index in
+            self?.updateSliderTitle()
         }
         .add(to: disposeBag)
+        
+        photoSelectedObservable.subscribeNext(startsWithInitialValue: true) { [weak self] index in
+            self?.updateSliderTitle()
+        }
+        .add(to: disposeBag)
+    }
+    
+    private func updateSliderTitle() {
+        let currentIndex = photoSelectedObservable.value + 1
+        let middleText = localized("PHOTOS_OF")
+        let photosCount = photosObservable.value.count
+        
+        let newTitle = "\(currentIndex) \(middleText) \(photosCount)"
+        if sliderTitleObservable.value != newTitle {
+            sliderTitleObservable.next(newTitle)
+        }
     }
 }
