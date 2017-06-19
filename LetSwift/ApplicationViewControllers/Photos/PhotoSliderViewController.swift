@@ -130,11 +130,7 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     @objc private func panRecognized(sender: UIPanGestureRecognizer) {
-        let translation = sender.translation(in: view)
-        let translatedCenterY = view.center.y + translation.y
-        let progress = translatedCenterY / view.bounds.height
-        
-        print(progress)
+        // TODO: implement
     }
 }
 
