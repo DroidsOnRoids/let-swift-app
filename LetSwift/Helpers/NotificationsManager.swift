@@ -7,14 +7,11 @@
 //
 
 import UIKit
+import UserNotifications
 
 struct NotificationManager {
     
     let date: Date?
-    
-    private func ensurePermissions() {
-        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: .alert, categories: nil))
-    }
     
     private var notifications: [UILocalNotification] {
         guard let date = date else { return [] }
@@ -25,19 +22,43 @@ struct NotificationManager {
         return !notifications.isEmpty
     }
     
-    func succeededScheduleNotification(withMessage message: String) -> Bool {
-        guard let date = date, !isNotificationActive else { return false }
-        
-        ensurePermissions()
+    func succeededScheduleNotification(withMessage message: String, completionHandler: @escaping (Bool) -> ()) {
+        guard let date = date, !isNotificationActive else { return }
 
-        let notification = UILocalNotification()
-        notification.alertBody = message
-        notification.fireDate = date
-        notification.timeZone = NSTimeZone.default
+        let newNotificationState = isNotificationActive
         
-        UIApplication.shared.scheduleLocalNotification(notification)
-        
-        return isNotificationActive
+        ensurePermissions { granted in
+            let notification = UILocalNotification()
+            notification.alertBody = message
+            notification.fireDate = date
+            notification.timeZone = NSTimeZone.default
+
+            UIApplication.shared.scheduleLocalNotification(notification)
+
+            completionHandler(newNotificationState)
+        }
+    }
+
+    private func ensurePermissions(completionHandler: @escaping (Bool) -> ()) {
+        guard !DefaultsManager.shared.notificationsPromptShowed else { return }
+
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, error in
+                DefaultsManager.shared.notificationsPromptShowed = true
+
+                completionHandler(granted)
+            }
+        } else {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Did"), object: nil, queue: nil) {
+                _ in
+                DefaultsManager.shared.notificationsPromptShowed = true
+                NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Did"), object: nil)
+
+                //TODO: check again permissions
+//                completionHandler(granted)
+            }
+            UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: .alert, categories: nil))
+        }
     }
     
     func cancelNotification() {
