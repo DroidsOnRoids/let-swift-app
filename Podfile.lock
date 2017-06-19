@@ -8,13 +8,13 @@ PODS:
   - Bolts/Tasks (1.8.4)
   - DACircularProgress (2.3.1)
   - ESPullToRefresh (2.6)
-  - FBSDKCoreKit (4.22.0):
+  - FBSDKCoreKit (4.23.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.22.0):
+  - FBSDKLoginKit (4.23.0):
     - FBSDKCoreKit
-  - HockeySDK (4.1.4):
-    - HockeySDK/DefaultLib (= 4.1.4)
-  - HockeySDK/DefaultLib (4.1.4)
+  - HockeySDK (4.1.5):
+    - HockeySDK/DefaultLib (= 4.1.5)
+  - HockeySDK/DefaultLib (4.1.5)
   - ImageEffects (1.0.0)
   - MBProgressHUD (0.9.2)
   - ModelMapper (6.0.0)
@@ -51,9 +51,9 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   ESPullToRefresh: 85f4990acf87f78c6a1466bbbee7a75d7de24db9
-  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
-  FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
-  HockeySDK: 78a3f8bb9100277b531defc56c970369a3ca267a
+  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
+  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
+  HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93

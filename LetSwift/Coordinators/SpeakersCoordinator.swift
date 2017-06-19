@@ -19,9 +19,11 @@ final class SpeakersCoordinator: Coordinator, Startable {
     }
 
     func start() {
-        let controller = SpeakersViewController(viewModel: SpeakersViewControllerViewModel())
+        let controller = SpeakersViewController(viewModel: SpeakersViewControllerViewModel(delegate: self))
         controller.coordinatorDelegate = delegate
 
         navigationViewController.viewControllers = [controller]
     }
 }
+
+extension SpeakersCoordinator: SpeakersViewControllerDelegate { }
