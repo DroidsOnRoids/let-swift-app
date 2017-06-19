@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Did"), object: nil)
+        NotificationCenter.default.post(name: .didRegisterNotificationSettings, object: nil)
     }
 
     private func setupHockeyApp() {

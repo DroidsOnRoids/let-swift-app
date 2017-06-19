@@ -59,9 +59,9 @@ struct NotificationManager {
             }
         } else {
             if !DefaultsManager.shared.notificationsPromptShowed {
-                NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "Did"), object: nil, queue: nil) { _ in
+                NotificationCenter.default.addObserver(forName: .didRegisterNotificationSettings, object: nil, queue: nil) { _ in
                     DefaultsManager.shared.notificationsPromptShowed = true
-                    NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "Did"), object: nil)
+                    NotificationCenter.default.removeObserver(self, name: .didRegisterNotificationSettings, object: nil)
 
                     if self.permissionsGranted {
                         completionHandler(self.permissionsGranted)
