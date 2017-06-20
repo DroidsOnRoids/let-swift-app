@@ -30,6 +30,15 @@ final class DefaultsManager: NSObject {
             defaults.set(newValue, forKey: #keyPath(DefaultsManager.isLoginSkipped))
         }
     }
+
+    var notificationsPromptShowed: Bool {
+        get {
+            return defaults.bool(forKey: #keyPath(DefaultsManager.notificationsPromptShowed))
+        }
+        set {
+            defaults.set(newValue, forKey: #keyPath(DefaultsManager.notificationsPromptShowed))
+        }
+    }
     
     private override init() {
         super.init()

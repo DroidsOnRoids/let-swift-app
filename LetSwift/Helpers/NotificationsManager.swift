@@ -7,37 +7,71 @@
 //
 
 import UIKit
+import UserNotifications
 
 struct NotificationManager {
     
     let date: Date?
     
-    private func ensurePermissions() {
-        UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: .alert, categories: nil))
-    }
-    
     private var notifications: [UILocalNotification] {
         guard let date = date else { return [] }
         return UIApplication.shared.scheduledLocalNotifications?.filter { $0.fireDate == date } ?? []
     }
-    
+
+    private var permissionsGranted: Bool {
+        guard let notificationSettings = UIApplication.shared.currentUserNotificationSettings else { return false }
+        return notificationSettings.types == .alert
+    }
+
     var isNotificationActive: Bool {
         return !notifications.isEmpty
     }
-    
-    func succeededScheduleNotification(withMessage message: String) -> Bool {
-        guard let date = date, !isNotificationActive else { return false }
-        
-        ensurePermissions()
 
-        let notification = UILocalNotification()
-        notification.alertBody = message
-        notification.fireDate = date
-        notification.timeZone = NSTimeZone.default
+    func succeededScheduleNotification(withMessage message: String, completionHandler: @escaping (Bool, Bool) -> ()) {
+        guard let date = date, !isNotificationActive else { return }
         
-        UIApplication.shared.scheduleLocalNotification(notification)
-        
-        return isNotificationActive
+        ensurePermissions { grantedPermissions in
+            DispatchQueue.main.async {
+                if grantedPermissions {
+                    let notification = UILocalNotification()
+                    notification.alertBody = message
+                    notification.fireDate = date
+                    notification.timeZone = NSTimeZone.default
+
+                    UIApplication.shared.scheduleLocalNotification(notification)
+                }
+
+                completionHandler(self.isNotificationActive, grantedPermissions)
+            }
+        }
+    }
+
+    private func ensurePermissions(completionHandler: @escaping (Bool) -> ()) {
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, _ in
+                if !DefaultsManager.shared.notificationsPromptShowed && granted {
+                    completionHandler(granted)
+                } else if DefaultsManager.shared.notificationsPromptShowed {
+                    completionHandler(granted)
+                }
+
+                DefaultsManager.shared.notificationsPromptShowed = true
+            }
+        } else {
+            if !DefaultsManager.shared.notificationsPromptShowed {
+                NotificationCenter.default.addObserver(forName: .didRegisterNotificationSettings, object: nil, queue: nil) { _ in
+                    DefaultsManager.shared.notificationsPromptShowed = true
+                    NotificationCenter.default.removeObserver(self, name: .didRegisterNotificationSettings, object: nil)
+
+                    if self.permissionsGranted {
+                        completionHandler(self.permissionsGranted)
+                    }
+                }
+                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: .alert, categories: nil))
+            } else {
+                completionHandler(permissionsGranted)
+            }
+        }
     }
     
     func cancelNotification() {

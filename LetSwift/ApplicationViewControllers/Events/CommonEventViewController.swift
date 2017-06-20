@@ -153,6 +153,11 @@ class CommonEventViewController: AppViewController {
             self?.tableView.deselectRow(at: indexPath, animated: true)
         }
         .add(to: disposeBag)
+
+        viewModel.notificationPermissionsNotGrantedObservable.subscribeNext {
+             UIAlertController.showSettingsAlert()
+        }
+        .add(to: disposeBag)
     }
     
     func setup(attendCell cell: AttendButtonsRowCell) {
