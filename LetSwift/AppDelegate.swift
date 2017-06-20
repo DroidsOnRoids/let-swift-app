@@ -55,6 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .application(app, open: url, options: options)
     }
 
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        NotificationCenter.default.post(name: .didRegisterNotificationSettings, object: nil)
+    }
+
     private func setupHockeyApp() {
         BITHockeyManager.shared().configure(withIdentifier: hockeyAppId)
         BITHockeyManager.shared().start()
