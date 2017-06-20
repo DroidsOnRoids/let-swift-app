@@ -9,6 +9,5 @@
 import Foundation
 
 extension Notification.Name {
-
     static let didRegisterNotificationSettings = Notification.Name("DidRegisterNotificationSettings")
 }

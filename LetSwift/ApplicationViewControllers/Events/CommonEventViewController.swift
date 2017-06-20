@@ -154,8 +154,8 @@ class CommonEventViewController: AppViewController {
         }
         .add(to: disposeBag)
 
-        viewModel.notificationPermissionsNotGrantedObservable.subscribeNext { [weak self] in
-             self?.showSettingsDialog()
+        viewModel.notificationPermissionsNotGrantedObservable.subscribeNext {
+             UIAlertController.showSettingsAlert()
         }
         .add(to: disposeBag)
     }
@@ -249,22 +249,5 @@ class CommonEventViewController: AppViewController {
             viewModel.locationCellDidTapObservable.next()
         default: break
         }
-    }
-
-    private func showSettingsDialog() {
-        let alertController = UIAlertController(title: localized("EVENTS_NOTIFICATIONS_TITILE"), message: localized("EVENTS_NOTIFICATIONS_MESSAGE"), preferredStyle: .alert)
-
-        let settingsAction = UIAlertAction(title: localized("EVENTS_NOTIFICATIONS_SETTINGS"), style: .default) { _ in
-            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
-
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.openURL(settingsUrl)
-            }
-        }
-
-        alertController.addAction(settingsAction)
-        alertController.addAction(UIAlertAction(title: localized("EVENTS_NOTIFICATIONS_CANCEL"), style: .default, handler: nil))
-
-        present(alertController, animated: true)
     }
 }

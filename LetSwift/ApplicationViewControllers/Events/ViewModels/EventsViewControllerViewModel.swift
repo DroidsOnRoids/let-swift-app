@@ -288,7 +288,11 @@ final class EventsViewControllerViewModel {
             let message = "\(localized("GENERAL_NOTIFICATION_WHERE")) \(formattedTime) \(localized("GENERAL_NOTIFICATION_ON")) \(lastEventObservable.value?.title ?? "")"
             
             notificationManager.succeededScheduleNotification(withMessage: message) { [weak self] activeNotification, permissionsGranted in
-                permissionsGranted ? self?.notificationStateObservable.next(activeNotification ? .active : .notActive) : self?.notificationPermissionsNotGrantedObservable.next()
+                if permissionsGranted {
+                    self?.notificationStateObservable.next(activeNotification ? .active : .notActive)
+                } else {
+                    self?.notificationPermissionsNotGrantedObservable.next()
+                }
             }
         }
     }
