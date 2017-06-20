@@ -13,7 +13,7 @@ final class LatestSpeakersTableViewCell: UITableViewCell {
     private let mockedSpeakers: [Speaker] = Speaker.from(MockLoader.speakersMock!)!
 
     @IBOutlet private weak var latestCollectionView: UICollectionView!
-    @IBOutlet private weak var LatestSpeakersTitleLabel: UILabel!
+    @IBOutlet private weak var latestSpeakersTitleLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +24,8 @@ final class LatestSpeakersTableViewCell: UITableViewCell {
     private func setup() {
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
 
-        LatestSpeakersTitleLabel.attributedText = LatestSpeakersTitleLabel.text?.attributed(withSpacing: 0.7)
+        latestSpeakersTitleLabel.text = localized("SPEAKERS_LATEST_TITLE").uppercased()
+        latestSpeakersTitleLabel.attributedText = latestSpeakersTitleLabel.text?.attributed(withSpacing: 0.7)
 
         reactiveSetup()
     }
