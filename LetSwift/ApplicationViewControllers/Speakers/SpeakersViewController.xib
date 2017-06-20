@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jf2-D5-IYn">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="72" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
@@ -35,7 +35,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="vSb-iq-rGB" secondAttribute="trailing" id="6Jf-kA-d0V"/>
                 <constraint firstItem="vSb-iq-rGB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="9to-kW-coC"/>
-                <constraint firstAttribute="bottom" secondItem="jf2-D5-IYn" secondAttribute="bottom" constant="49" id="IFQ-of-cNO"/>
+                <constraint firstAttribute="bottom" secondItem="jf2-D5-IYn" secondAttribute="bottom" id="IFQ-of-cNO"/>
                 <constraint firstAttribute="trailing" secondItem="jf2-D5-IYn" secondAttribute="trailing" id="edT-V6-X5A"/>
                 <constraint firstItem="vSb-iq-rGB" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hCj-1w-zs4"/>
                 <constraint firstItem="jf2-D5-IYn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="v1R-Zh-IB3"/>
