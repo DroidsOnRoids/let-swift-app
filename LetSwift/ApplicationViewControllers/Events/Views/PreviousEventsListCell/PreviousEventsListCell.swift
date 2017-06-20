@@ -140,7 +140,10 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
     }
 
     private func restartCellState() {
-        eventsCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .right, animated: false)
+        let sectionNumber = 0
+        guard eventsCollectionView.numberOfItems(inSection: sectionNumber) > 0 else { return }
+
+        eventsCollectionView.scrollToItem(at: IndexPath(row: 0, section: sectionNumber), at: .right, animated: false)
         spinnerView.isHidden = false
     }
 
