@@ -61,6 +61,7 @@
             <connections>
                 <outlet property="LatestSpeakersTitleLabel" destination="JAM-6x-zgL" id="9e5-h0-Ltj"/>
                 <outlet property="latestCollectionView" destination="Rbf-iy-pCE" id="e3Q-Vz-HS0"/>
+                <outlet property="latestSpeakersTitleLabel" destination="JAM-6x-zgL" id="lFS-If-6lx"/>
             </connections>
             <point key="canvasLocation" x="-25.5" y="223.5"/>
         </tableViewCell>
