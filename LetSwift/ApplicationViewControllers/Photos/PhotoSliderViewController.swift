@@ -13,7 +13,9 @@ final class PhotoSliderViewController: UIViewController {
     @IBOutlet private weak var navbarView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     
-    private var pageViewController: UIPageViewController!
+    weak var coordinatorDelegate: AppCoordinatorDelegate?
+    
+    private var pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 32])
     private var isStatusBarHidden = false {
         didSet {
             setNeedsStatusBarAppearanceUpdate()
@@ -21,24 +23,9 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
+    fileprivate var singlePhotoViewControllers: [SinglePhotoViewController]!
     
     private let disposeBag = DisposeBag()
-    
-    override var modalPresentationStyle: UIModalPresentationStyle {
-        get {
-            return .overFullScreen
-        }
-        set {
-        }
-    }
-    
-    override var modalPresentationCapturesStatusBarAppearance: Bool {
-        get {
-            return true
-        }
-        set {
-        }
-    }
     
     override var prefersStatusBarHidden: Bool {
         return isStatusBarHidden
@@ -47,6 +34,8 @@ final class PhotoSliderViewController: UIViewController {
     convenience init(viewModel: PhotoGalleryViewControllerViewModel) {
         self.init()
         self.viewModel = viewModel
+        modalPresentationStyle = .overFullScreen
+        modalPresentationCapturesStatusBarAppearance = true
     }
 
     override func viewDidLoad() {
@@ -54,13 +43,18 @@ final class PhotoSliderViewController: UIViewController {
         setup()
     }
     
-    fileprivate var singlePhotoViewControllers: [SinglePhotoViewController]!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinatorDelegate?.rotationLocked = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        coordinatorDelegate?.rotationLocked = true
+    }
     
     private func setup() {
-        singlePhotoViewControllers = viewModel.photosObservable.value.map {
-            SinglePhotoViewController(photo: $0)
-        }
-        
+        singlePhotoViewControllers = viewModel.photosObservable.value.map(SinglePhotoViewController.init)
         let initialViewController = singlePhotoViewControllers[viewModel.photoSelectedObservable.value]
         setupPageViewController(initialViewController: initialViewController)
         view.bringSubview(toFront: navbarView)
@@ -69,9 +63,6 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     private func setupPageViewController(initialViewController: SinglePhotoViewController) {
-        let optionsDict = [UIPageViewControllerOptionInterPageSpacingKey : 32]
-        pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: optionsDict)
-        
         pageViewController.dataSource = self
         pageViewController.delegate = self
         pageViewController.setViewControllers([initialViewController], direction: .forward, animated: false)
@@ -80,20 +71,14 @@ final class PhotoSliderViewController: UIViewController {
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pageViewController.view)
         
-        pageViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        pageViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        pageViewController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        pageViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
+        pageViewController.view.pinToFit(view: view)
         pageViewController.didMove(toParentViewController: self)
     }
     
     private func setupGestureRecognizers() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognized))
-        view.addGestureRecognizer(tapRecognizer)
-        
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panRecognized))
-        view.addGestureRecognizer(panRecognizer)
+        [tapRecognizer, panRecognizer].forEach(view.addGestureRecognizer)
     }
     
     private func reactiveSetup() {
@@ -104,15 +89,15 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     @IBAction private func backButtonTapped(_ sender: UIButton) {
-        self.navbarView.isHidden = true
+        navbarView.isHidden = true
         
         UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
             self.view.frame = self.viewModel.targetFrameObservable.value
             self.view.layoutIfNeeded()
             self.view.alpha = 0.0
-        }, completion: { _ in
+        }) { _ in
             self.dismiss(animated: false)
-        })
+        }
     }
     
     @objc private func tapRecognized(sender: UITapGestureRecognizer) {
@@ -136,12 +121,11 @@ final class PhotoSliderViewController: UIViewController {
 
 extension PhotoSliderViewController: UIPageViewControllerDataSource {
     private func singleViewController(for viewController: SinglePhotoViewController, withOffset offset: Int) -> SinglePhotoViewController? {
-        let index = singlePhotoViewControllers.index(of: viewController)
-        guard let newIndex = index else { return nil }
-        let modifiedIndex = newIndex + offset
+        guard let index = singlePhotoViewControllers.index(of: viewController) else { return nil }
+        let modifiedIndex = index + offset
         
-        let exists = singlePhotoViewControllers.indices.contains(modifiedIndex)
-        return exists ? singlePhotoViewControllers[modifiedIndex] : nil
+        let indexExists = singlePhotoViewControllers.indices.contains(modifiedIndex)
+        return indexExists ? singlePhotoViewControllers[modifiedIndex] : nil
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -155,8 +139,8 @@ extension PhotoSliderViewController: UIPageViewControllerDataSource {
 
 extension PhotoSliderViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard let firstVC = pageViewController.viewControllers?.first, let index = singlePhotoViewControllers.index(of: firstVC as! SinglePhotoViewController) else { return }
-        
-        viewModel.photoSelectedObservable.next(index)
+        if let firstViewController = pageViewController.viewControllers?.first, let index = singlePhotoViewControllers.index(of: firstViewController as! SinglePhotoViewController) {
+            viewModel.photoSelectedObservable.next(index)
+        }
     }
 }

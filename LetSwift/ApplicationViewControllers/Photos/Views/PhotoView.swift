@@ -104,11 +104,8 @@ final class PhotoView: SizedScrollView {
     }
     
     @objc private func doubleTapRecognized(sender: UITapGestureRecognizer) {
-        if zoomScale == minimumZoomScale {
-            setZoomScale(minimumZoomScale * 2.0, animated: true)
-        } else {
-            setZoomScale(minimumZoomScale, animated: true)
-        }
+        let newZoomScale = zoomScale == minimumZoomScale ? minimumZoomScale * 2.0 : minimumZoomScale
+        setZoomScale(newZoomScale, animated: true)
     }
 }
 

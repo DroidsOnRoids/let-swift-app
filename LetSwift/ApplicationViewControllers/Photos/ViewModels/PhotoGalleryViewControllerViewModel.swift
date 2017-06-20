@@ -15,10 +15,13 @@ final class PhotoGalleryViewControllerViewModel {
     let targetFrameObservable = Observable<CGRect>(.zero)
     let sliderTitleObservable = Observable<String>("")
     
+    weak var delegate: PhotoGalleryViewControllerDelegate?
+    
     private let disposeBag = DisposeBag()
 
-    init(photos: [Photo]) {
+    init(photos: [Photo], delegate: PhotoGalleryViewControllerDelegate?) {
         photosObservable = Observable<[Photo]>(photos)
+        self.delegate = delegate
         
         setup()
     }
@@ -31,6 +34,12 @@ final class PhotoGalleryViewControllerViewModel {
         
         photoSelectedObservable.subscribeNext(startsWithInitialValue: true) { [weak self] index in
             self?.updateSliderTitle()
+        }
+        .add(to: disposeBag)
+        
+        photoSelectedObservable.subscribeCompleted { [weak self] in
+            guard let weakSelf = self else { return }
+            weakSelf.delegate?.presentPhotoSliderScreen(with: weakSelf)
         }
         .add(to: disposeBag)
     }

@@ -16,8 +16,8 @@ final class SinglePhotoViewController: UIViewController {
         static let spinnerSize: CGFloat = 45.0
     }
     
-    private var photoView: PhotoView!
-    private var spinner: DACircularProgressView!
+    private var photoView = PhotoView()
+    private var spinner = DACircularProgressView()
     
     private var photo: Photo?
     
@@ -38,20 +38,15 @@ final class SinglePhotoViewController: UIViewController {
     }
     
     private func setupPhotoView() {
-        photoView = PhotoView()
         photoView.isHidden = true
         
         photoView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(photoView)
         
-        photoView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        photoView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        photoView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        photoView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        photoView.pinToFit(view: view)
     }
     
     private func setupSpinner() {
-        spinner = DACircularProgressView()
         spinner.thicknessRatio = 0.25
         spinner.trackTintColor = .paleGrey
         spinner.progressTintColor = .swiftOrange
@@ -66,10 +61,10 @@ final class SinglePhotoViewController: UIViewController {
     }
     
     private func download() {
-        SDWebImageManager.shared().downloadImage(with: photo?.big, options: SDWebImageOptions(rawValue: 0), progress: { [weak self] (received, expected) in
-            let progress = Float(received) / Float(expected)
-            self?.spinner.progress = CGFloat(progress)
-        }, completed: { [weak self] (image, _, _, _, _) in
+        SDWebImageManager.shared().downloadImage(with: photo?.big, options: [], progress: { [weak self] received, expected in
+            let progress = CGFloat(received) / CGFloat(expected)
+            self?.spinner.progress = progress
+        }, completed: { [weak self] image, _, _, _, _ in
             if let image = image {
                 self?.photoView.display(image: image)
             }

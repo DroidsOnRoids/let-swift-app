@@ -26,6 +26,10 @@
 "EVENTS_SEE_PHOTOS" = "See photos";
 "EVENTS_PREVIOUS" = "Previous let Swift meet-ups";
 "EVENTS_TO_BE_ANNOUNCED" = "To be announced";
+"EVENTS_NOTIFICATIONS_TITILE" = "Notifications disabled";
+"EVENTS_NOTIFICATIONS_MESSAGE" = "Enable notifications in Settings";
+"EVENTS_NOTIFICATIONS_SETTINGS" = "Settings";
+"EVENTS_NOTIFICATIONS_CANCEL" = "Cancel";
 "SPEAKERS_TITLE" = "Speakers";
 "SPEAKERS_DETAILS_TITLE" = "Speaker details";
 "CONTACT_TITLE" = "Contact";

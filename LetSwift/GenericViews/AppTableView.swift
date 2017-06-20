@@ -27,10 +27,7 @@ final class AppTableView: UITableView {
         overlayView.translatesAutoresizingMaskIntoConstraints = false
         superview.addSubview(overlayView)
         
-        overlayView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        overlayView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        overlayView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        overlayView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        overlayView.pinToFit(view: self)
     }
     
     private func hideOverlayView() {

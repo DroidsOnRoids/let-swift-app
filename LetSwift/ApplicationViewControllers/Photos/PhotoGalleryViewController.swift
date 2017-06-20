@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PhotoGalleryViewControllerDelegate: class {
+    func presentPhotoSliderScreen(with viewModel: PhotoGalleryViewControllerViewModel)
+}
+
 final class PhotoGalleryViewController: AppViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -61,18 +65,10 @@ final class PhotoGalleryViewController: AppViewController {
         .add(to: disposeBag)
         
         viewModel.photoSelectedObservable.subscribeNext { [weak self] index in
-            guard let weakSelf = self else { return }
+            guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: IndexPath(row: index, section: 0)) else { return }
             
-            let cellView = weakSelf.collectionView.cellForItem(at: IndexPath(row: index, section: 0))!
             let targetFrame = weakSelf.collectionView.convert(cellView.frame, to: nil)
-            
             weakSelf.viewModel.targetFrameObservable.next(targetFrame)
-        }
-        .add(to: disposeBag)
-        
-        viewModel.photoSelectedObservable.subscribeCompleted { [weak self] in
-            guard let weakSelf = self else { return }
-            weakSelf.present(PhotoSliderViewController(viewModel: weakSelf.viewModel), animated: true)
         }
         .add(to: disposeBag)
     }
