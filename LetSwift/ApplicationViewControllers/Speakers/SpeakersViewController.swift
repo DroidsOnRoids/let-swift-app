@@ -62,6 +62,7 @@ final class SpeakersViewController: AppViewController {
 
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor
+        searchBar.placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
 
         tableView.registerCells(allCells.map { $0.rawValue })
 

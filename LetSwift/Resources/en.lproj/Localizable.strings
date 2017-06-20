@@ -32,6 +32,8 @@
 "EVENTS_NOTIFICATIONS_CANCEL" = "Cancel";
 "SPEAKERS_TITLE" = "Speakers";
 "SPEAKERS_DETAILS_TITLE" = "Speaker details";
+"SPEAKERS_LATEST_TITLE" = "Latest Let Swift Speakers";
+"SPEAKERS_SEARCH_PLACEHOLDER" = "Search speakers";
 "CONTACT_TITLE" = "Contact";
 "CONTACT_TOPIC" = "I want to";
 "CONTACT_NAME" = "Your name";

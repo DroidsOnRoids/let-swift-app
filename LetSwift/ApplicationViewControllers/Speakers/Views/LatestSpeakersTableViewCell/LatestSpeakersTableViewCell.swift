@@ -24,6 +24,7 @@ final class LatestSpeakersTableViewCell: UITableViewCell {
     private func setup() {
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
 
+        LatestSpeakersTitleLabel.text = localized("SPEAKERS_LATEST_TITLE").uppercased()
         LatestSpeakersTitleLabel.attributedText = LatestSpeakersTitleLabel.text?.attributed(withSpacing: 0.7)
 
         reactiveSetup()
