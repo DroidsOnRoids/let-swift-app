@@ -123,7 +123,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         .add(to: disposeBag)
 
         viewModel.shouldScrollToFirstObservable.subscribeNext { [weak self] in
-            self?.restartCellState()
+            self?.scrollToFirstItem()
         }
         .add(to: disposeBag)
 
@@ -139,11 +139,11 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
         
     }
 
-    private func restartCellState() {
-        let sectionNumber = 0
-        guard eventsCollectionView.numberOfItems(inSection: sectionNumber) > 0 else { return }
+    private func scrollToFirstItem() {
+        let firstIndex = IndexPath(row: 0, section: 0)
+        guard eventsCollectionView.numberOfItems(inSection: firstIndex.section) > 0 else { return }
 
-        eventsCollectionView.scrollToItem(at: IndexPath(row: 0, section: sectionNumber), at: .right, animated: false)
+        eventsCollectionView.scrollToItem(at: firstIndex, at: .right, animated: false)
         spinnerView.isHidden = false
     }
 
