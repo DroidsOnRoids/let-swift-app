@@ -143,6 +143,7 @@
 		D3AE28941ECDA3EC00F29702 /* Accumulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE28931ECDA3EC00F29702 /* Accumulator.swift */; };
 		D3AE28961ECDAEFF00F29702 /* ObserevableEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE28951ECDAEFF00F29702 /* ObserevableEvent.swift */; };
 		D3B505A31EDB3E5E00BBC6E5 /* AppContentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B505A21EDB3E5E00BBC6E5 /* AppContentState.swift */; };
+		D3B8109D1EFA6D1100604CC3 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */; };
 		D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */; };
 		D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */; };
 		D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */; };
@@ -332,6 +333,7 @@
 		D3AE28931ECDA3EC00F29702 /* Accumulator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accumulator.swift; sourceTree = "<group>"; };
 		D3AE28951ECDAEFF00F29702 /* ObserevableEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserevableEvent.swift; sourceTree = "<group>"; };
 		D3B505A21EDB3E5E00BBC6E5 /* AppContentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContentState.swift; sourceTree = "<group>"; };
+		D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshAnimator.swift; sourceTree = "<group>"; };
 		D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableView.swift; sourceTree = "<group>"; };
 		D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
@@ -1072,6 +1074,7 @@
 				7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */,
 				7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */,
 				7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */,
+				D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1453,6 +1456,7 @@
 				D3EDA6F61EE16AED00C035ED /* TopicButton.swift in Sources */,
 				D3429D141EE03B6900F18D30 /* ContactTextView.swift in Sources */,
 				D3CFAE7C1EE6A1840009E4EF /* SinglePhotoCell.swift in Sources */,
+				D3B8109D1EFA6D1100604CC3 /* CGRectExtension.swift in Sources */,
 				7EB7442D1EF8FE67008092DC /* UIAlertControllerExtension.swift in Sources */,
 				D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */,
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,

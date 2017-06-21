@@ -10,6 +10,11 @@ import UIKit
 
 final class PhotoSliderViewController: UIViewController {
     
+    private enum Constants {
+        static let animationDuration = 0.25
+        static let panThreshold: CGFloat = 250.0
+    }
+    
     @IBOutlet private weak var navbarView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     
@@ -90,32 +95,111 @@ final class PhotoSliderViewController: UIViewController {
     
     @IBAction private func backButtonTapped(_ sender: UIButton) {
         navbarView.isHidden = true
-        
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseOut, animations: {
-            self.view.frame = self.viewModel.targetFrameObservable.value
-            self.view.layoutIfNeeded()
-            self.view.alpha = 0.0
-        }) { _ in
-            self.dismiss(animated: false)
-        }
+        animateToDismiss()
     }
     
     @objc private func tapRecognized(sender: UITapGestureRecognizer) {
         if isStatusBarHidden {
             isStatusBarHidden = false
-            UIView.animate(withDuration: 0.25) {
+            UIView.animate(withDuration: Constants.animationDuration) {
                 self.navbarView.transform = .identity
             }
         } else {
             isStatusBarHidden = true
-            UIView.animate(withDuration: 0.25) {
+            UIView.animate(withDuration: Constants.animationDuration) {
                 self.navbarView.transform = CGAffineTransform(translationX: 0.0, y: -self.navbarView.bounds.height)
             }
         }
     }
     
+    var initialFrame: CGRect!
+    
+    var targetFrame: CGRect {
+        return viewModel.targetFrameObservable.value
+    }
+    
+
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        initialFrame = view.frame
+    }
+    
+
+    
     @objc private func panRecognized(sender: UIPanGestureRecognizer) {
-        // TODO: implement
+        let translation = sender.translation(in: view)
+        let progress = min(max(translation.y / Constants.panThreshold, -1.0), 1.0)
+        
+        switch sender.state {
+        case .began:
+            interactiveAnimationHasBegan(progress: progress, translation: translation)
+        case .changed:
+            interactiveAnimationHasChanged(progress: progress, translation: translation)
+        case .ended:
+            interactiveAnimationHasEnded(progress: progress, translation: translation)
+        default: break
+        }
+    }
+    
+    private func setFirstViewController(scaleToFill: Bool) {
+        guard let currentViewController = pageViewController.viewControllers?.first as? SinglePhotoViewController else { return }
+        currentViewController.scaleToFill = scaleToFill
+    }
+    
+    private func interactiveAnimationHasBegan(progress: CGFloat, translation: CGPoint) {
+        viewModel.targetVisibleObservable.value?(true)
+    }
+    
+    private func interactiveAnimationHasChanged(progress: CGFloat, translation: CGPoint) {
+        let reversedProgress = min(1.0 - progress, 1.0)
+        print(reversedProgress)
+        let alphaInterpolation = min(reversedProgress * 2.0 - 1.0, 1.0)
+        let scaleInterpolation = reversedProgress / 4.0 + 0.75
+        
+        var newFrame = initialFrame.scale(by: scaleInterpolation)
+        newFrame.origin.y *= 0.25
+        newFrame = newFrame.offsetBy(dx: translation.x, dy: translation.y)
+        
+        navbarView.isHidden = true
+        
+        view.backgroundColor = UIColor.black.withAlphaComponent(alphaInterpolation)
+        view.frame = newFrame
+    }
+    
+    private func interactiveAnimationHasEnded(progress: CGFloat, translation: CGPoint) {
+        if progress > 0.5 {
+            print("animuj do zamkniecia")
+            animateToDismiss()
+        } else {
+            print("animuj powrot")
+            animateToRestore()
+        }
+    }
+    
+    private func animateToDismiss() {
+        //coordinatorDelegate?.rotationLocked = true
+        viewModel.targetVisibleObservable.value?(true)
+        
+        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
+            self.view.backgroundColor = .clear
+            self.view.frame = self.targetFrame
+            self.view.layoutIfNeeded()
+            self.setFirstViewController(scaleToFill: true)
+        }) { _ in
+            self.viewModel.targetVisibleObservable.value?(false)
+            self.dismiss(animated: false)
+        }
+    }
+    
+    private func animateToRestore() {
+        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
+            self.view.backgroundColor = .black
+            self.view.frame = self.initialFrame
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.navbarView.isHidden = false
+        }
     }
 }
 

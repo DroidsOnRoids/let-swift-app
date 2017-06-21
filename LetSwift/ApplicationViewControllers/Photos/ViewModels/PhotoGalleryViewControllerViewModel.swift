@@ -13,6 +13,7 @@ final class PhotoGalleryViewControllerViewModel {
     let photosObservable: Observable<[Photo]>
     let photoSelectedObservable = Observable<Int>(0)
     let targetFrameObservable = Observable<CGRect>(.zero)
+    let targetVisibleObservable = Observable<((Bool) -> ())?>(nil)
     let sliderTitleObservable = Observable<String>("")
     
     weak var delegate: PhotoGalleryViewControllerDelegate?

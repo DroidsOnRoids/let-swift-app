@@ -27,11 +27,13 @@
 "EVENTS_PREVIOUS" = "Previous let Swift meet-ups";
 "EVENTS_TO_BE_ANNOUNCED" = "To be announced";
 "EVENTS_NOTIFICATIONS_TITILE" = "Notifications disabled";
-"EVENTS_NOTIFICATIONS_MESSAGE" = "Enable notifications in Settings";
+"EVENTS_NOTIFICATIONS_MESSAGE" = "Enable notifications in Settings.";
 "EVENTS_NOTIFICATIONS_SETTINGS" = "Settings";
 "EVENTS_NOTIFICATIONS_CANCEL" = "Cancel";
 "SPEAKERS_TITLE" = "Speakers";
 "SPEAKERS_DETAILS_TITLE" = "Speaker details";
+"SPEAKERS_LATEST_TITLE" = "Latest Let Swift Speakers";
+"SPEAKERS_SEARCH_PLACEHOLDER" = "Search speakers";
 "CONTACT_TITLE" = "Contact";
 "CONTACT_TOPIC" = "I want to";
 "CONTACT_NAME" = "Your name";
@@ -39,9 +41,9 @@
 "CONTACT_MESSAGE" = "Message";
 "CONTACT_SEND" = "Send";
 "CONTACT_TOPIC_ERROR" = "Choose the topic";
-"CONTACT_NAME_ERROR" = "Enter your name";
-"CONTACT_EMAIL_ERROR" = "Enter your email";
-"CONTACT_MESSAGE_ERROR" = "Enter the message";
+"CONTACT_NAME_ERROR" = "Type name";
+"CONTACT_EMAIL_ERROR" = "Type email address";
+"CONTACT_MESSAGE_ERROR" = "Type message";
 "CONTACT_CANCEL" = "Cancel";
 "CONTACT_TOPIC_SPEAK" = "Speak on the next event";
 "CONTACT_TOPIC_CLAIM" = "Claim a reward";

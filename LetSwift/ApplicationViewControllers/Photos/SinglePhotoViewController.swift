@@ -16,6 +16,20 @@ final class SinglePhotoViewController: UIViewController {
         static let spinnerSize: CGFloat = 45.0
     }
     
+    var scaleToFill = false {
+        didSet {
+            if scaleToFill {
+                let width = photoView.contentSize.width
+                let height = photoView.contentSize.height
+                let ratio = max(width, height) / min(width, height)
+                
+                photoView.transform = CGAffineTransform(scaleX: ratio, y: ratio)
+            } else {
+                photoView.transform = .identity
+            }
+        }
+    }
+    
     private var photoView = PhotoView()
     private var spinner = DACircularProgressView()
     

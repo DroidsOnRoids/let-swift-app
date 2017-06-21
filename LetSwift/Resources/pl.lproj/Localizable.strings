@@ -1,4 +1,5 @@
 "GENERAL_SOMETHING_WENT_WRONG" = "Coś poszło nie tak";
+"GENERAL_TRY_AGAIN_LATER" = "Spróbuj ponownie za chwilę.";
 "GENERAL_NOTIFICATION_WHERE" = "Widzimy się jutro o";
 "GENERAL_NOTIFICATION_ON" = "podczas";
 "GENERAL_LOGOUT" = "Wyloguj";
@@ -25,8 +26,14 @@
 "EVENTS_SEE_PHOTOS" = "Zobacz zdjęcia";
 "EVENTS_PREVIOUS" = "Poprzednie spotkania";
 "EVENTS_TO_BE_ANNOUNCED" = "Wkrótce";
+"EVENTS_NOTIFICATIONS_TITILE" = "Wyłączone powiadomienia";
+"EVENTS_NOTIFICATIONS_MESSAGE" = "Włącz powiadomienia w Ustawieniach.";
+"EVENTS_NOTIFICATIONS_SETTINGS" = "Ustawienia";
+"EVENTS_NOTIFICATIONS_CANCEL" = "Anuluj";
 "SPEAKERS_TITLE" = "Prelegenci";
 "SPEAKERS_DETAILS_TITLE" = "Prelegent";
+"SPEAKERS_LATEST_TITLE" = "Ostatni prelegenci";
+"SPEAKERS_SEARCH_PLACEHOLDER" = "Szukaj prelegentów";
 "CONTACT_TITLE" = "Kontakt";
 "CONTACT_TOPIC" = "Chcę";
 "CONTACT_NAME" = "Imię";
