@@ -36,7 +36,7 @@ struct NotificationManager {
                     let notification = UILocalNotification()
                     notification.alertBody = message
                     notification.fireDate = date
-                    notification.timeZone = NSTimeZone.default
+                    notification.timeZone = .current
 
                     UIApplication.shared.scheduleLocalNotification(notification)
                 }
