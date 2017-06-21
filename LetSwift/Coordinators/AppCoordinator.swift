@@ -11,7 +11,6 @@ import UIKit
 protocol AppCoordinatorDelegate: class {
     var rotationLocked: Bool { get set }
     func presentLoginViewController(asPopupWindow: Bool)
-    func pushOnRootNavigationController(_ viewController: UIViewController, animated: Bool)
 }
 
 final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {

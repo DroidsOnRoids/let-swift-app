@@ -66,7 +66,6 @@
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D3006AFD1EBC623B00716C23 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */; };
 		D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006B021EBC845300716C23 /* UIButtonExtension.swift */; };
-		D3062BC51EE951B6009AE3AB /* RotatingMWPhotoBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3062BC41EE951B6009AE3AB /* RotatingMWPhotoBrowser.swift */; };
 		D31216381EB2774F003674C7 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31216371EB2774F003674C7 /* UIImageExtension.swift */; };
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
 		D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */; };
@@ -110,7 +109,10 @@
 		D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A01EA7330C00C05AA6 /* LoginViewController.swift */; };
 		D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35839A11EA7330C00C05AA6 /* LoginViewController.xib */; };
 		D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */; };
+		D35AE6C61EF4464B00FFAD35 /* PhotoSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35AE6C41EF4464B00FFAD35 /* PhotoSliderViewController.swift */; };
+		D35AE6C71EF4464B00FFAD35 /* PhotoSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35AE6C51EF4464B00FFAD35 /* PhotoSliderViewController.xib */; };
 		D36396221EC0654400158BEF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36396211EC0654400158BEF /* PopoverView.swift */; };
+		D364260E1EF7FA6F002AB02E /* SinglePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */; };
 		D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F8A051ECEF10000DD44FE /* SpinnerView.swift */; };
 		D3840D961ECA05EC00975818 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3840D951ECA05EC00975818 /* TappableView.swift */; };
 		D3840D991ECA0C2900975818 /* SpeakerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3840D971ECA0C2900975818 /* SpeakerDetailsViewController.swift */; };
@@ -155,6 +157,8 @@
 		D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */; };
 		D3E0ADA31ED563BC00270F0E /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */; };
 		D3E0ADA61ED563FB00270F0E /* SplashViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */; };
+		D3E1B8551EF7A227008C226F /* SizedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E1B8541EF7A227008C226F /* SizedScrollView.swift */; };
+		D3E1B8591EF7A2BE008C226F /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E1B8581EF7A2BE008C226F /* PhotoView.swift */; };
 		D3E4AA751EE5577E00400015 /* ContactFieldProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E4AA741EE5577E00400015 /* ContactFieldProtocol.swift */; };
 		D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */; };
 		D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EDA6F11EE15D8900C035ED /* TopicPickerViewController.swift */; };
@@ -246,7 +250,6 @@
 		D121AE690A5B4EF2AD9CA521 /* Pods-LetSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwiftTests/Pods-LetSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		D3006B021EBC845300716C23 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
-		D3062BC41EE951B6009AE3AB /* RotatingMWPhotoBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotatingMWPhotoBrowser.swift; sourceTree = "<group>"; };
 		D31216371EB2774F003674C7 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryCell.swift; sourceTree = "<group>"; };
@@ -293,7 +296,10 @@
 		D35839A01EA7330C00C05AA6 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D35839A11EA7330C00C05AA6 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLabelAnimator.swift; sourceTree = "<group>"; };
+		D35AE6C41EF4464B00FFAD35 /* PhotoSliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSliderViewController.swift; sourceTree = "<group>"; };
+		D35AE6C51EF4464B00FFAD35 /* PhotoSliderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoSliderViewController.xib; sourceTree = "<group>"; };
 		D36396211EC0654400158BEF /* PopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
+		D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoViewController.swift; sourceTree = "<group>"; };
 		D37F8A051ECEF10000DD44FE /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		D3840D951ECA05EC00975818 /* TappableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
 		D3840D971ECA0C2900975818 /* SpeakerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailsViewController.swift; sourceTree = "<group>"; };
@@ -340,6 +346,8 @@
 		D3E0AD9F1ED5596600270F0E /* DisposingObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisposingObjectTests.swift; sourceTree = "<group>"; };
 		D3E0ADA21ED563BC00270F0E /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		D3E0ADA51ED563FB00270F0E /* SplashViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3E1B8541EF7A227008C226F /* SizedScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizedScrollView.swift; sourceTree = "<group>"; };
+		D3E1B8581EF7A2BE008C226F /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		D3E4AA741EE5577E00400015 /* ContactFieldProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFieldProtocol.swift; sourceTree = "<group>"; };
 		D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		D3EDA6F11EE15D8900C035ED /* TopicPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicPickerViewController.swift; sourceTree = "<group>"; };
@@ -431,7 +439,9 @@
 				7E0842C51ECA00CA003F7C96 /* ViewModels */,
 				7E0842C11EC9FD9E003F7C96 /* PhotoGalleryViewController.swift */,
 				7E0842C21EC9FD9E003F7C96 /* PhotoGalleryViewController.xib */,
-				D3062BC41EE951B6009AE3AB /* RotatingMWPhotoBrowser.swift */,
+				D35AE6C41EF4464B00FFAD35 /* PhotoSliderViewController.swift */,
+				D35AE6C51EF4464B00FFAD35 /* PhotoSliderViewController.xib */,
+				D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -606,6 +616,7 @@
 				D3840D951ECA05EC00975818 /* TappableView.swift */,
 				D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */,
 				D37F8A051ECEF10000DD44FE /* SpinnerView.swift */,
+				D3E1B8541EF7A227008C226F /* SizedScrollView.swift */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -993,6 +1004,7 @@
 			isa = PBXGroup;
 			children = (
 				D3CFAE791EE6A1570009E4EF /* SinglePhotoCell */,
+				D3E1B8581EF7A2BE008C226F /* PhotoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1184,6 +1196,7 @@
 				7EB7441D1EF1519D008092DC /* LatestSpeakersTableViewCell.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
 				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
+				D35AE6C71EF4464B00FFAD35 /* PhotoSliderViewController.xib in Resources */,
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* CommonEventViewController.xib in Resources */,
 				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */,
@@ -1355,7 +1368,6 @@
 				D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */,
 				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				7E0842C71ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift in Sources */,
-				D3062BC51EE951B6009AE3AB /* RotatingMWPhotoBrowser.swift in Sources */,
 				D3E4AA751EE5577E00400015 /* ContactFieldProtocol.swift in Sources */,
 				7E0842CF1ECF0F79003F7C96 /* Page.swift in Sources */,
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
@@ -1373,10 +1385,13 @@
 				D31216381EB2774F003674C7 /* UIImageExtension.swift in Sources */,
 				7E0842D51ECF2E5E003F7C96 /* NetworkError.swift in Sources */,
 				D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */,
+				D364260E1EF7FA6F002AB02E /* SinglePhotoViewController.swift in Sources */,
 				7EB744091EF130B6008092DC /* SpeakersViewControllerViewModel.swift in Sources */,
 				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
 				D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */,
+				D35AE6C61EF4464B00FFAD35 /* PhotoSliderViewController.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
+				D3E1B8551EF7A227008C226F /* SizedScrollView.swift in Sources */,
 				D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */,
 				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
 				D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */,
@@ -1393,6 +1408,7 @@
 				D36396221EC0654400158BEF /* PopoverView.swift in Sources */,
 				D33C4A291E9CD6320052E793 /* Localizable.swift in Sources */,
 				D3F3D97D1ED9E55600106197 /* UIScrollViewExtension.swift in Sources */,
+				D3E1B8591EF7A2BE008C226F /* PhotoView.swift in Sources */,
 				7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */,
 				7EA48D561EADDD5500CEC845 /* Event.swift in Sources */,
 				7E0842D11ECF225D003F7C96 /* NetworkResponse.swift in Sources */,

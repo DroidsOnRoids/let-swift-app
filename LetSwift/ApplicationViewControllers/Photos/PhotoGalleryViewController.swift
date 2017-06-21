@@ -7,7 +7,10 @@
 //
 
 import UIKit
-import MWPhotoBrowser
+
+protocol PhotoGalleryViewControllerDelegate: class {
+    func presentPhotoSliderScreen(with viewModel: PhotoGalleryViewControllerViewModel)
+}
 
 final class PhotoGalleryViewController: AppViewController {
     
@@ -27,17 +30,6 @@ final class PhotoGalleryViewController: AppViewController {
     
     fileprivate var columnNumber: Int {
         return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7.rawValue ? 3 : 2
-    }
-    
-    fileprivate var photoBrowser: MWPhotoBrowser? {
-        let browser = RotatingMWPhotoBrowser(delegate: self)
-        browser?.coordinatorDelegate = coordinatorDelegate
-        browser?.displayActionButton = false
-        browser?.enableGrid = false
-        browser?.lightMode = true
-        browser?.setCurrentPhotoIndex(UInt(viewModel.photoSelectedObservable.value))
-        
-        return browser
     }
     
     convenience init(viewModel: PhotoGalleryViewControllerViewModel) {
@@ -72,9 +64,11 @@ final class PhotoGalleryViewController: AppViewController {
         }
         .add(to: disposeBag)
         
-        viewModel.photoSelectedObservable.subscribeNext { [weak self] _ in
-            guard let photoBrowser = self?.photoBrowser else { return }
-            self?.coordinatorDelegate?.pushOnRootNavigationController(photoBrowser, animated: true)
+        viewModel.photoSelectedObservable.subscribeNext { [weak self] index in
+            guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: IndexPath(row: index, section: 0)) else { return }
+            
+            let targetFrame = weakSelf.collectionView.convert(cellView.frame, to: nil)
+            weakSelf.viewModel.targetFrameObservable.next(targetFrame)
         }
         .add(to: disposeBag)
     }
@@ -91,22 +85,6 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.photoSelectedObservable.next(indexPath.row)
-    }
-}
-
-extension PhotoGalleryViewController: MWPhotoBrowserDelegate {
-    func numberOfPhotos(in photoBrowser: MWPhotoBrowser!) -> UInt {
-        return UInt(viewModel.mwPhotosObservable.value.count)
-    }
-    
-    func photoBrowser(_ photoBrowser: MWPhotoBrowser!, photoAt index: UInt) -> MWPhotoProtocol! {
-        return viewModel.mwPhotosObservable.value[Int(index)]
-    }
-    
-    func translation(for string: String!, withDescription description: String!) -> String! {
-        switch string {
-        case "of": return localized("PHOTOS_OF")
-        default: return string
-        }
+        viewModel.photoSelectedObservable.complete()
     }
 }
