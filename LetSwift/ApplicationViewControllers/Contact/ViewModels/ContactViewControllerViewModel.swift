@@ -18,6 +18,8 @@ final class ContactViewControllerViewModel {
     let emailTextObservable = Observable<String>("")
     let messageTextObservable = Observable<String>("")
     
+    let emailEmptyObservable = Observable<Bool>(true)
+    
     private let disposeBag = DisposeBag()
     
     private let topics = [
@@ -61,6 +63,11 @@ final class ContactViewControllerViewModel {
             guard let weakSelf = self else { return }
             let newTitle = localized("CONTACT_TOPIC") + " " + weakSelf.topics[result].text.lowercased()
             weakSelf.pickerTitleObservable.next(newTitle)
+        }
+        .add(to: disposeBag)
+        
+        emailTextObservable.subscribeNext { [weak self] text in
+            self?.emailEmptyObservable.next(text.isEmpty)
         }
         .add(to: disposeBag)
     }

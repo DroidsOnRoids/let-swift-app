@@ -132,6 +132,11 @@ final class ContactViewController: AppViewController {
             listenForErrors(observable: observable, view: field)
         }
         
+        viewModel.emailEmptyObservable.subscribeNext { [weak self] isEmpty in
+            self?.emailErrorLabel.text = isEmpty ? localized("CONTACT_EMAIL_ERROR") : localized("CONTACT_EMAIL_INVALID_ERROR")
+        }
+        .add(to: disposeBag)
+        
         sendButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.sendTapped), for: .touchUpInside)
     }
     
