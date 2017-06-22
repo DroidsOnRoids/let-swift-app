@@ -57,8 +57,8 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         navigationViewController.pushViewController(viewController, animated: true)
     }
 
-    func presentPhotoGalleryScreen(with photos: [Photo]) {
-        let viewModel = PhotoGalleryViewControllerViewModel(photos: photos, delegate: self)
+    func presentPhotoGalleryScreen(with photos: [Photo], eventId: Int?) {
+        let viewModel = PhotoGalleryViewControllerViewModel(photos: photos, eventId: eventId, delegate: self)
         let viewController = PhotoGalleryViewController(viewModel: viewModel)
 
         navigationViewController.pushViewController(viewController, animated: true)

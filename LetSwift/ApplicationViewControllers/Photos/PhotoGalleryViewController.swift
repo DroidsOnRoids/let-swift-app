@@ -46,7 +46,19 @@ final class PhotoGalleryViewController: AppViewController {
         collectionView.registerCells([SinglePhotoCell.self])
         collectionView.delegate = self
         
+        setupPullToRefresh()
         reactiveSetup()
+    }
+    
+    private func setupPullToRefresh() {
+        collectionView.addPullToRefresh { [weak self] in
+            self?.viewModel.photosRefreshObservable.next()
+        }
+        
+        viewModel.photosRefreshObservable.subscribeCompleted { [weak self] in
+            self?.collectionView.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
     }
     
     private func reactiveSetup() {

@@ -11,6 +11,7 @@ import CoreGraphics
 final class PhotoGalleryViewControllerViewModel {
 
     let photosObservable: Observable<[Photo]>
+    let photosRefreshObservable = Observable<Void>()
     let photoSelectedObservable = Observable<Int>(0)
     let targetFrameObservable = Observable<CGRect>(.zero)
     let targetVisibleClousureObservable = Observable<((Bool) -> ())?>(nil)
@@ -20,17 +21,19 @@ final class PhotoGalleryViewControllerViewModel {
     weak var delegate: PhotoGalleryViewControllerDelegate?
     
     private let disposeBag = DisposeBag()
+    private let eventDetailsId: Int?
 
-    init(photos: [Photo], delegate: PhotoGalleryViewControllerDelegate?) {
+    init(photos: [Photo], eventId: Int?, delegate: PhotoGalleryViewControllerDelegate?) {
         photosObservable = Observable<[Photo]>(photos)
+        eventDetailsId = eventId
         self.delegate = delegate
         
         setup()
     }
     
     private func setup() {
-        photosObservable.subscribeNext { [weak self] index in
-            self?.updateSliderTitle()
+        photosRefreshObservable.subscribeNext { [weak self] in
+            self?.refreshPhotosFromEvent()
         }
         .add(to: disposeBag)
         
@@ -50,6 +53,17 @@ final class PhotoGalleryViewControllerViewModel {
             self?.targetVisibleClousureObservable.value?(hidden)
         }
         .add(to: disposeBag)
+    }
+    
+    private func refreshPhotosFromEvent() {
+        guard let eventDetailsId = eventDetailsId else { return }
+        NetworkProvider.shared.eventDetails(with: eventDetailsId) { [weak self] response in
+            if case .success(let event) = response {
+                self?.photosObservable.next(event.photos)
+            }
+            
+            self?.photosRefreshObservable.complete()
+        }
     }
     
     private func updateSliderTitle() {
