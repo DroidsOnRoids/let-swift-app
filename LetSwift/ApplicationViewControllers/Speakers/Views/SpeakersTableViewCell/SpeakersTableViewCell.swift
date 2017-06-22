@@ -10,15 +10,17 @@ import UIKit
 
 class SpeakersTableViewCell: UITableViewCell {
 
+    @IBOutlet private weak var speakerNameLabel: UILabel!
+    @IBOutlet private weak var speakerJobLabel: UILabel!
+    @IBOutlet private weak var speakerAvatarImageView: UIImageView!
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func load(with speaker: Speaker) {
+        speakerNameLabel.text = speaker.name
+        speakerJobLabel.text = speaker.job
+        speakerAvatarImageView.sd_setImage(with: speaker.avatar?.thumb, placeholderImage: #imageLiteral(resourceName: "SpeakerPlaceholder"))
     }
-    
 }

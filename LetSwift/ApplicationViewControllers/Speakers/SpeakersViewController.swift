@@ -39,6 +39,7 @@ final class SpeakersViewController: AppViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
 
+    private let disposeBag = DisposeBag()
     private var viewModel: SpeakersViewControllerViewModel!
 
     convenience init(viewModel: SpeakersViewControllerViewModel) {
@@ -90,6 +91,14 @@ final class SpeakersViewController: AppViewController {
     }
 
     private func setupSpeakers(cell: SpeakersTableViewCell, for index: Int) {
+        viewModel.speakerWithIndexResponseObservable.subscribeNext { incomingIndex, speaker in
+            guard let speaker = speaker, incomingIndex == index - 1  else { return }
+
+            cell.load(with: speaker)
+        }
+        .add(to: disposeBag)
+
+        viewModel.speakerWithIndexRequestObservable.next(index - 1)
     }
 
     private func setupLatestSpeakers(cell: LatestSpeakersTableViewCell) {

@@ -19,7 +19,9 @@ final class SpeakersCoordinator: Coordinator, Startable {
     }
 
     func start() {
-        let controller = SpeakersViewController(viewModel: SpeakersViewControllerViewModel(delegate: self))
+        //TODO: in some way pass through speakers data and latest speakers data
+        let mockedSpeakers: [Speaker] = Speaker.from(MockLoader.speakersMock!)!
+        let controller = SpeakersViewController(viewModel: SpeakersViewControllerViewModel(speakers: mockedSpeakers, delegate: self))
         controller.coordinatorDelegate = delegate
 
         navigationViewController.viewControllers = [controller]

@@ -64,6 +64,11 @@
                 </constraints>
             </tableViewCellContentView>
             <inset key="separatorInset" minX="72" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="speakerAvatarImageView" destination="qXl-6a-8pv" id="J72-uQ-otD"/>
+                <outlet property="speakerJobLabel" destination="X60-Zz-gt5" id="hsM-LV-hhk"/>
+                <outlet property="speakerNameLabel" destination="V48-kL-QVf" id="HLZ-qF-uez"/>
+            </connections>
             <point key="canvasLocation" x="34" y="85"/>
         </tableViewCell>
     </objects>
