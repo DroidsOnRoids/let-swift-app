@@ -22,6 +22,7 @@ final class LatestSpeakersTableViewCell: UITableViewCell {
     }
 
     private func setup() {
+        latestCollectionView.collectionViewLayout = AppCollectionViewFlowLayout(with: 180.0)
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
 
         latestSpeakersTitleLabel.text = localized("SPEAKERS_LATEST_TITLE").uppercased()

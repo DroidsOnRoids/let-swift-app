@@ -26,7 +26,7 @@ extension UIAlertController {
         }
 
         alertController.addAction(settingsAction)
-        alertController.addAction(UIAlertAction(title: localized("EVENTS_NOTIFICATIONS_CANCEL"), style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: localized("EVENTS_NOTIFICATIONS_CANCEL"), style: .cancel, handler: nil))
 
         anyViewController?.present(alertController, animated: true)
     }
