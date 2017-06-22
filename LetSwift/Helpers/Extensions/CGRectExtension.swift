@@ -12,8 +12,8 @@ extension CGRect {
     func scale(by k: CGFloat) -> CGRect {
         let newWidth = width * k
         let newHeight = height * k
-        let newX = (width - newWidth) / 2
-        let newY = (height - newHeight) / 2
+        let newX = (width - newWidth) / 2.0
+        let newY = (height - newHeight) / 2.0
         
         return CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
     }

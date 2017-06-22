@@ -21,6 +21,8 @@ final class PhotoSliderAnimator {
     private enum Constants {
         static let animationDuration = 0.25
         static let progressThreshold: CGFloat = 0.5
+        static let lowerTranslationMultiplier: CGFloat = 0.25
+        static let upperTranslationMultiplier: CGFloat = 1.75
     }
     
     private weak var delegate: PhotoSliderAnimatorDelegate?
@@ -45,7 +47,7 @@ final class PhotoSliderAnimator {
         let scaleInterpolation = reversedProgress / 4.0 + 0.75
         
         var newFrame = initialFrame.scale(by: scaleInterpolation)
-        newFrame.origin.y *= progress > 0.0 ? 0.25 : 1.75
+        newFrame.origin.y *= progress > 0.0 ? Constants.lowerTranslationMultiplier : Constants.upperTranslationMultiplier
         newFrame = newFrame.offsetBy(dx: translation.x, dy: translation.y)
         
         view.backgroundColor = UIColor.black.withAlphaComponent(alphaInterpolation)
