@@ -51,6 +51,8 @@
 		7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */; };
 		7EB7442B1EF82C20008092DC /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */; };
 		7EB7442D1EF8FE67008092DC /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */; };
+		7EB744331EFBE7EA008092DC /* SpeakersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744311EFBE7EA008092DC /* SpeakersTableViewCell.swift */; };
+		7EB744341EFBE7EA008092DC /* SpeakersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744321EFBE7EA008092DC /* SpeakersTableViewCell.xib */; };
 		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
 		7ED1AC471EE04E7A00276F93 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */; };
 		7ED1AC481EE04E7A00276F93 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */; };
@@ -230,6 +232,8 @@
 		7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		7EB744311EFBE7EA008092DC /* SpeakersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersTableViewCell.swift; sourceTree = "<group>"; };
+		7EB744321EFBE7EA008092DC /* SpeakersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersTableViewCell.xib; sourceTree = "<group>"; };
 		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7ED1AC451EE04E7A00276F93 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		7ED1AC461EE04E7A00276F93 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -498,6 +502,7 @@
 		7EB7440F1EF149AF008092DC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7EB744301EFBE7A4008092DC /* SpeakersTableViewCell */,
 				7EB7441E1EF15288008092DC /* LatestSpeakerCollectionViewCell */,
 				7EB744151EF150EF008092DC /* LatestSpeakersTableViewCell */,
 			);
@@ -520,6 +525,15 @@
 				7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */,
 			);
 			path = LatestSpeakerCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		7EB744301EFBE7A4008092DC /* SpeakersTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7EB744311EFBE7EA008092DC /* SpeakersTableViewCell.swift */,
+				7EB744321EFBE7EA008092DC /* SpeakersTableViewCell.xib */,
+			);
+			path = SpeakersTableViewCell;
 			sourceTree = "<group>";
 		};
 		7ED1ABF61EDEC4C100276F93 /* ViewModels */ = {
@@ -1195,6 +1209,7 @@
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 				7EB744221EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib in Resources */,
 				D34CCF601EC5AC9A00EFD3E4 /* SpeakerCardView.xib in Resources */,
+				7EB744341EFBE7EA008092DC /* SpeakersTableViewCell.xib in Resources */,
 				7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */,
 				D3CFAE7D1EE6A1840009E4EF /* SinglePhotoCell.xib in Resources */,
 				D3381F3F1EBC8DAC00453EB9 /* LaunchScreen.xib in Resources */,
@@ -1442,6 +1457,7 @@
 				D3FF3F991E9F5E5B00501F44 /* UIColorExtension.swift in Sources */,
 				7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */,
 				D3840D961ECA05EC00975818 /* TappableView.swift in Sources */,
+				7EB744331EFBE7EA008092DC /* SpeakersTableViewCell.swift in Sources */,
 				7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */,
 				7EA48D531EADD53D00CEC845 /* StaticImageCell.swift in Sources */,
 				D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */,

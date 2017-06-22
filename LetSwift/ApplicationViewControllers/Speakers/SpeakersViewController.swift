@@ -15,10 +15,11 @@ final class SpeakersViewController: AppViewController {
 
     private enum EventCellIdentifier: String {
         case latestSpeakers = "LatestSpeakersTableViewCell"
+        case speakers = "SpeakersTableViewCell"
     }
 
     private var allCells: [EventCellIdentifier] {
-        return [.latestSpeakers]
+        return [.latestSpeakers, .speakers, .speakers, .speakers]
     }
 
     private lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
@@ -83,7 +84,12 @@ final class SpeakersViewController: AppViewController {
         switch element {
         case .latestSpeakers:
             setupLatestSpeakers(cell: cell as! LatestSpeakersTableViewCell)
+        case .speakers:
+            setupSpeakers(cell: cell as! SpeakersTableViewCell, for: index)
         }
+    }
+
+    private func setupSpeakers(cell: SpeakersTableViewCell, for index: Int) {
     }
 
     private func setupLatestSpeakers(cell: LatestSpeakersTableViewCell) {

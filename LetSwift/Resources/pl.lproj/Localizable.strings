@@ -1,4 +1,5 @@
 "GENERAL_SOMETHING_WENT_WRONG" = "Coś poszło nie tak";
+"GENERAL_TRY_AGAIN_LATER" = "Spróbuj ponownie za chwilę.";
 "GENERAL_NOTIFICATION_WHERE" = "Widzimy się jutro o";
 "GENERAL_NOTIFICATION_ON" = "podczas";
 "GENERAL_LOGOUT" = "Wyloguj";
@@ -12,7 +13,7 @@
 "ONBOARDING_PRICE_TITLE" = "W pełni darmowe";
 "ONBOARDING_PRICE_DESCRIPTION" = "Darmowy wstęp, konkursy, nagrody i legendarne afterparty";
 "LOGIN_SUBTITLE" = "iOS Developers Meet-up";
-"LOGIN_PURPOSE_DESCRIPTION" = "Zaloguj przez Facebooka, by uzyskać pełny dostęp.";
+"LOGIN_PURPOSE_DESCRIPTION" = "Zaloguj przez Facebooka, by uzyskać\npełny dostęp.";
 "LOGIN_BUTTON_TITLE" = "Logowanie";
 "LOGIN_SKIP_BUTTON_TITLE" = "Pomiń logowanie";
 "EVENTS_TITLE" = "Spotkania";
@@ -25,8 +26,14 @@
 "EVENTS_SEE_PHOTOS" = "Zobacz zdjęcia";
 "EVENTS_PREVIOUS" = "Poprzednie spotkania";
 "EVENTS_TO_BE_ANNOUNCED" = "Wkrótce";
+"EVENTS_NOTIFICATIONS_TITILE" = "Wyłączone powiadomienia";
+"EVENTS_NOTIFICATIONS_MESSAGE" = "Włącz powiadomienia w Ustawieniach.";
+"EVENTS_NOTIFICATIONS_SETTINGS" = "Ustawienia";
+"EVENTS_NOTIFICATIONS_CANCEL" = "Anuluj";
 "SPEAKERS_TITLE" = "Prelegenci";
 "SPEAKERS_DETAILS_TITLE" = "Prelegent";
+"SPEAKERS_LATEST_TITLE" = "Ostatni prelegenci";
+"SPEAKERS_SEARCH_PLACEHOLDER" = "Szukaj prelegentów";
 "CONTACT_TITLE" = "Kontakt";
 "CONTACT_TOPIC" = "Chcę";
 "CONTACT_NAME" = "Imię";
@@ -36,11 +43,12 @@
 "CONTACT_TOPIC_ERROR" = "Temat wiadomości";
 "CONTACT_NAME_ERROR" = "Uzupełnij imię";
 "CONTACT_EMAIL_ERROR" = "Uzupełnij adres e-mail";
+"CONTACT_EMAIL_INVALID_ERROR" = "Popraw adres e-mail";
 "CONTACT_MESSAGE_ERROR" = "Uzupełnij wiadomość";
 "CONTACT_CANCEL" = "Anuluj";
-"CONTACT_TOPIC_SPEAK" = "poprowadzić talka";
-"CONTACT_TOPIC_CLAIM" = "odebrać nagrodę";
-"CONTACT_TOPIC_PARTNER" = "zostać sponsorem";
+"CONTACT_TOPIC_SPEAK" = "Poprowadzić talka";
+"CONTACT_TOPIC_CLAIM" = "Odebrać nagrodę";
+"CONTACT_TOPIC_PARTNER" = "Zostać sponsorem";
 "LECTURE_TITLE" = "Prelekcja";
 "LECTURE_READ_MORE" = "Więcej";
 "PHOTOS_TITLE" = "Zdjęcia";
