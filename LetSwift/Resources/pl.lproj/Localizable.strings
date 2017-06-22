@@ -13,7 +13,7 @@
 "ONBOARDING_PRICE_TITLE" = "W pełni darmowe";
 "ONBOARDING_PRICE_DESCRIPTION" = "Darmowy wstęp, konkursy, nagrody i legendarne afterparty";
 "LOGIN_SUBTITLE" = "iOS Developers Meet-up";
-"LOGIN_PURPOSE_DESCRIPTION" = "Zaloguj przez Facebooka, by uzyskać pełny dostęp.";
+"LOGIN_PURPOSE_DESCRIPTION" = "Zaloguj przez Facebooka, by uzyskać\npełny dostęp.";
 "LOGIN_BUTTON_TITLE" = "Logowanie";
 "LOGIN_SKIP_BUTTON_TITLE" = "Pomiń logowanie";
 "EVENTS_TITLE" = "Spotkania";
@@ -43,11 +43,12 @@
 "CONTACT_TOPIC_ERROR" = "Temat wiadomości";
 "CONTACT_NAME_ERROR" = "Uzupełnij imię";
 "CONTACT_EMAIL_ERROR" = "Uzupełnij adres e-mail";
+"CONTACT_EMAIL_INVALID_ERROR" = "Popraw adres e-mail";
 "CONTACT_MESSAGE_ERROR" = "Uzupełnij wiadomość";
 "CONTACT_CANCEL" = "Anuluj";
-"CONTACT_TOPIC_SPEAK" = "poprowadzić talka";
-"CONTACT_TOPIC_CLAIM" = "odebrać nagrodę";
-"CONTACT_TOPIC_PARTNER" = "zostać sponsorem";
+"CONTACT_TOPIC_SPEAK" = "Poprowadzić talka";
+"CONTACT_TOPIC_CLAIM" = "Odebrać nagrodę";
+"CONTACT_TOPIC_PARTNER" = "Zostać sponsorem";
 "LECTURE_TITLE" = "Prelekcja";
 "LECTURE_READ_MORE" = "Więcej";
 "PHOTOS_TITLE" = "Zdjęcia";

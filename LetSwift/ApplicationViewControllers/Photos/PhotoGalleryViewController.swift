@@ -2,7 +2,7 @@
 //  PhotosViewController.swift
 //  LetSwift
 //
-//  Created by Kinga Wilczek on 15.05.2017.
+//  Created by Kinga Wilczek, Marcin Chojnacki on 15.05.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
@@ -46,7 +46,19 @@ final class PhotoGalleryViewController: AppViewController {
         collectionView.registerCells([SinglePhotoCell.self])
         collectionView.delegate = self
         
+        setupPullToRefresh()
         reactiveSetup()
+    }
+    
+    private func setupPullToRefresh() {
+        collectionView.addPullToRefresh { [weak self] in
+            self?.viewModel.photosRefreshObservable.next()
+        }
+        
+        viewModel.photosRefreshObservable.subscribeCompleted { [weak self] in
+            self?.collectionView.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
     }
     
     private func reactiveSetup() {
@@ -66,6 +78,10 @@ final class PhotoGalleryViewController: AppViewController {
         
         viewModel.photoSelectedObservable.subscribeNext { [weak self] index in
             guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: IndexPath(row: index, section: 0)) else { return }
+            
+            weakSelf.viewModel.targetVisibleClousureObservable.next { hidden in
+                cellView.isHidden = hidden
+            }
             
             let targetFrame = weakSelf.collectionView.convert(cellView.frame, to: nil)
             weakSelf.viewModel.targetFrameObservable.next(targetFrame)

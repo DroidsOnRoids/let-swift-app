@@ -1,18 +1,11 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-def shared_pods
+target 'LetSwift' do
   use_frameworks!
 
-  #ignore cocoapods warnings
+  # Ignore cocoapods warnings
   inhibit_all_warnings!
-
-  # Views
-  pod 'MWPhotoBrowser', :git => 'https://github.com/m-chojnacki/MWPhotoBrowser.git', :branch => 'fork'
-end
-
-target 'LetSwift' do
-  shared_pods
 
   # Testing
   pod 'HockeySDK', '~> 4.1'
@@ -28,9 +21,6 @@ target 'LetSwift' do
   # Views
   pod 'ImageEffects', '~> 1.0'
   pod 'ESPullToRefresh', '~> 2.6'
-  pod 'MWPhotoBrowser', :git => 'https://github.com/m-chojnacki/MWPhotoBrowser.git', :branch => 'fork'
-end
-
-target 'LetSwiftTests' do
-  shared_pods
+  pod 'SDWebImage', '~> 3.8'
+  pod 'DACircularProgress', '~> 2.3'
 end
