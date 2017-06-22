@@ -20,7 +20,7 @@ final class PhotoSliderViewController: UIViewController {
     
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
-    fileprivate var pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 32])
+    fileprivate var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 32])
     
     fileprivate var isNavbarHidden = false {
         didSet {
@@ -36,10 +36,7 @@ final class PhotoSliderViewController: UIViewController {
         }
     }
     
-    fileprivate var targetFrame: CGRect {
-        return viewModel.targetFrameObservable.value
-    }
-    
+    fileprivate var targetFrame: CGRect!
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
     fileprivate var singlePhotoViewControllers: [SinglePhotoViewController]!
     
@@ -107,6 +104,11 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     private func reactiveSetup() {
+        viewModel.targetFrameObservable.subscribeNext(startsWithInitialValue: true) { [weak self] frame in
+            self?.targetFrame = frame
+        }
+        .add(to: disposeBag)
+        
         viewModel.sliderTitleObservable.subscribeNext(startsWithInitialValue: true) { [weak self] title in
             self?.titleLabel.text = title
         }
@@ -173,14 +175,14 @@ extension PhotoSliderViewController: UIPageViewControllerDelegate {
 
 extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     func prepareForInteractiveAnimation() {
-        viewModel.targetVisibleObservable.value?(true)
+        viewModel.targetVisibleObservable.next(true)
         isNavbarHidden = true
         isStatusBarHidden = false
     }
     
     func prepareForDismissing() {
         coordinatorDelegate?.rotationLocked = true
-        viewModel.targetVisibleObservable.value?(true)
+        viewModel.targetVisibleObservable.next(true)
         navbarView.isHidden = true
     }
     
@@ -190,7 +192,7 @@ extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     }
     
     func finishDismissing() {
-        viewModel.targetVisibleObservable.value?(false)
+        viewModel.targetVisibleObservable.next(false)
         dismiss(animated: false)
     }
     

@@ -67,7 +67,7 @@ final class PhotoGalleryViewController: AppViewController {
         viewModel.photoSelectedObservable.subscribeNext { [weak self] index in
             guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: IndexPath(row: index, section: 0)) else { return }
             
-            weakSelf.viewModel.targetVisibleObservable.next { hidden in
+            weakSelf.viewModel.targetVisibleClousureObservable.next { hidden in
                 cellView.isHidden = hidden
             }
             

@@ -13,7 +13,8 @@ final class PhotoGalleryViewControllerViewModel {
     let photosObservable: Observable<[Photo]>
     let photoSelectedObservable = Observable<Int>(0)
     let targetFrameObservable = Observable<CGRect>(.zero)
-    let targetVisibleObservable = Observable<((Bool) -> ())?>(nil)
+    let targetVisibleClousureObservable = Observable<((Bool) -> ())?>(nil)
+    let targetVisibleObservable = Observable<Bool?>(nil)
     let sliderTitleObservable = Observable<String>("")
     
     weak var delegate: PhotoGalleryViewControllerDelegate?
@@ -41,6 +42,12 @@ final class PhotoGalleryViewControllerViewModel {
         photoSelectedObservable.subscribeCompleted { [weak self] in
             guard let weakSelf = self else { return }
             weakSelf.delegate?.presentPhotoSliderScreen(with: weakSelf)
+        }
+        .add(to: disposeBag)
+        
+        targetVisibleObservable.subscribeNext { [weak self] hidden in
+            guard let hidden = hidden else { return }
+            self?.targetVisibleClousureObservable.value?(hidden)
         }
         .add(to: disposeBag)
     }
