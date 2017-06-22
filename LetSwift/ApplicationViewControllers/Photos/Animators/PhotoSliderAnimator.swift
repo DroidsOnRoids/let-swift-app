@@ -20,6 +20,7 @@ final class PhotoSliderAnimator {
     
     private enum Constants {
         static let animationDuration = 0.25
+        static let progressThreshold = 0.5
     }
     
     private weak var delegate: PhotoSliderAnimatorDelegate?
@@ -52,7 +53,7 @@ final class PhotoSliderAnimator {
     }
     
     func interactiveAnimationHasEnded(progress: CGFloat) {
-        if abs(progress) > 0.5 {
+        if abs(progress) > Constants.progressThreshold {
             animateToDismiss()
         } else {
             animateToRestore()
