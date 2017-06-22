@@ -15,15 +15,14 @@ final class PhotoSliderViewController: UIViewController {
         static let panThreshold: CGFloat = 250.0
     }
     
-    @IBOutlet private weak var navbarView: UIView!
+    @IBOutlet fileprivate weak var navbarView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
-    private var pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 32])
-    private var panRecognizer: UIPanGestureRecognizer!
+    fileprivate var pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 32])
     
-    private var isNavbarHidden = false {
+    fileprivate var isNavbarHidden = false {
         didSet {
             UIView.animate(withDuration: Constants.animationDuration) {
                 self.navbarView.alpha = self.isNavbarHidden ? 0.0 : 1.0
@@ -31,22 +30,21 @@ final class PhotoSliderViewController: UIViewController {
         }
     }
     
-    private var isStatusBarHidden = false {
+    fileprivate var isStatusBarHidden = false {
         didSet {
             setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    private var initialFrame: CGRect {
-        return UIScreen.main.bounds
-    }
-    
-    private var targetFrame: CGRect {
+    fileprivate var targetFrame: CGRect {
         return viewModel.targetFrameObservable.value
     }
     
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
     fileprivate var singlePhotoViewControllers: [SinglePhotoViewController]!
+    
+    private var animator: PhotoSliderAnimator!
+    private var panRecognizer: UIPanGestureRecognizer!
     
     private let disposeBag = DisposeBag()
     
@@ -78,9 +76,13 @@ final class PhotoSliderViewController: UIViewController {
     
     private func setup() {
         singlePhotoViewControllers = viewModel.photosObservable.value.map(SinglePhotoViewController.init)
+        animator = PhotoSliderAnimator(delegate: self, animate: view)
+        
         let initialViewController = singlePhotoViewControllers[viewModel.photoSelectedObservable.value]
         setupPageViewController(initialViewController: initialViewController)
+        
         view.bringSubview(toFront: navbarView)
+        
         setupGestureRecognizers()
         reactiveSetup()
     }
@@ -112,7 +114,7 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     @IBAction private func backButtonTapped(_ sender: UIButton) {
-        animateToDismiss()
+        animator.animateToDismiss()
     }
     
     @objc private func tapRecognized(sender: UITapGestureRecognizer) {
@@ -126,77 +128,20 @@ final class PhotoSliderViewController: UIViewController {
         
         switch sender.state {
         case .began:
-            interactiveAnimationHasBegan()
+            animator.interactiveAnimationHasBegan()
         case .changed:
-            interactiveAnimationHasChanged(progress: progress, translation: translation)
+            animator.interactiveAnimationHasChanged(progress: progress, translation: translation)
         case .ended:
-            interactiveAnimationHasEnded(progress: progress)
+            animator.interactiveAnimationHasEnded(progress: progress)
         case .cancelled:
-            interactiveAnimationHasCancelled()
+            animator.interactiveAnimationHasCancelled()
         default: break
         }
     }
     
-    private func setFirstViewController(scaleToFill: Bool) {
+    fileprivate func setFirstViewController(scaleToFill: Bool) {
         guard let currentViewController = pageViewController.viewControllers?.first as? SinglePhotoViewController else { return }
         currentViewController.scaleToFill = scaleToFill
-    }
-    
-    private func interactiveAnimationHasBegan() {
-        viewModel.targetVisibleObservable.value?(true)
-        isNavbarHidden = true
-        isStatusBarHidden = false
-    }
-    
-    private func interactiveAnimationHasChanged(progress: CGFloat, translation: CGPoint) {
-        let reversedProgress = 1.0 - abs(progress)
-        let alphaInterpolation = min(reversedProgress * 2.0 - 1.0, 1.0)
-        let scaleInterpolation = reversedProgress / 4.0 + 0.75
-        
-        var newFrame = initialFrame.scale(by: scaleInterpolation)
-        newFrame.origin.y *= progress > 0.0 ? 0.25 : 1.75
-        newFrame = newFrame.offsetBy(dx: translation.x, dy: translation.y)
-        
-        view.backgroundColor = UIColor.black.withAlphaComponent(alphaInterpolation)
-        view.frame = newFrame
-    }
-    
-    private func interactiveAnimationHasEnded(progress: CGFloat) {
-        if abs(progress) > 0.5 {
-            animateToDismiss()
-        } else {
-            animateToRestore()
-        }
-    }
-    
-    private func interactiveAnimationHasCancelled() {
-        animateToRestore()
-    }
-    
-    private func animateToDismiss() {
-        coordinatorDelegate?.rotationLocked = true
-        viewModel.targetVisibleObservable.value?(true)
-        navbarView.isHidden = true
-        
-        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
-            self.view.backgroundColor = .clear
-            self.view.frame = self.targetFrame
-            self.view.layoutIfNeeded()
-            self.setFirstViewController(scaleToFill: true)
-        }) { _ in
-            self.viewModel.targetVisibleObservable.value?(false)
-            self.dismiss(animated: false)
-        }
-    }
-    
-    private func animateToRestore() {
-        isNavbarHidden = false
-        
-        UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
-            self.view.backgroundColor = .black
-            self.view.frame = self.initialFrame
-            self.view.layoutIfNeeded()
-        })
     }
 }
 
@@ -223,5 +168,33 @@ extension PhotoSliderViewController: UIPageViewControllerDelegate {
         if let firstViewController = pageViewController.viewControllers?.first, let index = singlePhotoViewControllers.index(of: firstViewController as! SinglePhotoViewController) {
             viewModel.photoSelectedObservable.next(index)
         }
+    }
+}
+
+extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
+    func prepareForInteractiveAnimation() {
+        viewModel.targetVisibleObservable.value?(true)
+        isNavbarHidden = true
+        isStatusBarHidden = false
+    }
+    
+    func prepareForDismissing() {
+        coordinatorDelegate?.rotationLocked = true
+        viewModel.targetVisibleObservable.value?(true)
+        navbarView.isHidden = true
+    }
+    
+    func progressDismissing() {
+        view.frame = targetFrame
+        setFirstViewController(scaleToFill: true)
+    }
+    
+    func finishDismissing() {
+        viewModel.targetVisibleObservable.value?(false)
+        dismiss(animated: false)
+    }
+    
+    func prepareForRestore() {
+        isNavbarHidden = false
     }
 }
