@@ -21,10 +21,28 @@ final class PhotoSliderViewController: UIViewController {
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
     private var pageViewController: UIPageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 32])
+    private var panRecognizer: UIPanGestureRecognizer!
+    
+    private var isNavbarHidden = false {
+        didSet {
+            UIView.animate(withDuration: Constants.animationDuration) {
+                self.navbarView.alpha = self.isNavbarHidden ? 0.0 : 1.0
+            }
+        }
+    }
+    
     private var isStatusBarHidden = false {
         didSet {
             setNeedsStatusBarAppearanceUpdate()
         }
+    }
+    
+    private var initialFrame: CGRect {
+        return UIScreen.main.bounds
+    }
+    
+    private var targetFrame: CGRect {
+        return viewModel.targetFrameObservable.value
     }
     
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
@@ -53,9 +71,9 @@ final class PhotoSliderViewController: UIViewController {
         coordinatorDelegate?.rotationLocked = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        coordinatorDelegate?.rotationLocked = true
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        panRecognizer.isEnabled = size.width < size.height
     }
     
     private func setup() {
@@ -82,7 +100,7 @@ final class PhotoSliderViewController: UIViewController {
     
     private func setupGestureRecognizers() {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapRecognized))
-        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panRecognized))
+        panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panRecognized))
         [tapRecognizer, panRecognizer].forEach(view.addGestureRecognizer)
     }
     
@@ -94,38 +112,13 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     @IBAction private func backButtonTapped(_ sender: UIButton) {
-        navbarView.isHidden = true
         animateToDismiss()
     }
     
     @objc private func tapRecognized(sender: UITapGestureRecognizer) {
-        if isStatusBarHidden {
-            isStatusBarHidden = false
-            UIView.animate(withDuration: Constants.animationDuration) {
-                self.navbarView.transform = .identity
-            }
-        } else {
-            isStatusBarHidden = true
-            UIView.animate(withDuration: Constants.animationDuration) {
-                self.navbarView.transform = CGAffineTransform(translationX: 0.0, y: -self.navbarView.bounds.height)
-            }
-        }
+        isNavbarHidden = !isNavbarHidden
+        isStatusBarHidden = isNavbarHidden
     }
-    
-    var initialFrame: CGRect!
-    
-    var targetFrame: CGRect {
-        return viewModel.targetFrameObservable.value
-    }
-    
-
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        initialFrame = view.frame
-    }
-    
-
     
     @objc private func panRecognized(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: view)
@@ -133,11 +126,13 @@ final class PhotoSliderViewController: UIViewController {
         
         switch sender.state {
         case .began:
-            interactiveAnimationHasBegan(progress: progress, translation: translation)
+            interactiveAnimationHasBegan()
         case .changed:
             interactiveAnimationHasChanged(progress: progress, translation: translation)
         case .ended:
-            interactiveAnimationHasEnded(progress: progress, translation: translation)
+            interactiveAnimationHasEnded(progress: progress)
+        case .cancelled:
+            interactiveAnimationHasCancelled()
         default: break
         }
     }
@@ -147,39 +142,41 @@ final class PhotoSliderViewController: UIViewController {
         currentViewController.scaleToFill = scaleToFill
     }
     
-    private func interactiveAnimationHasBegan(progress: CGFloat, translation: CGPoint) {
+    private func interactiveAnimationHasBegan() {
         viewModel.targetVisibleObservable.value?(true)
+        isNavbarHidden = true
+        isStatusBarHidden = false
     }
     
     private func interactiveAnimationHasChanged(progress: CGFloat, translation: CGPoint) {
-        let reversedProgress = min(1.0 - progress, 1.0)
-        print(reversedProgress)
+        let reversedProgress = 1.0 - abs(progress)
         let alphaInterpolation = min(reversedProgress * 2.0 - 1.0, 1.0)
         let scaleInterpolation = reversedProgress / 4.0 + 0.75
         
         var newFrame = initialFrame.scale(by: scaleInterpolation)
-        newFrame.origin.y *= 0.25
+        newFrame.origin.y *= progress > 0.0 ? 0.25 : 1.75
         newFrame = newFrame.offsetBy(dx: translation.x, dy: translation.y)
-        
-        navbarView.isHidden = true
         
         view.backgroundColor = UIColor.black.withAlphaComponent(alphaInterpolation)
         view.frame = newFrame
     }
     
-    private func interactiveAnimationHasEnded(progress: CGFloat, translation: CGPoint) {
-        if progress > 0.5 {
-            print("animuj do zamkniecia")
+    private func interactiveAnimationHasEnded(progress: CGFloat) {
+        if abs(progress) > 0.5 {
             animateToDismiss()
         } else {
-            print("animuj powrot")
             animateToRestore()
         }
     }
     
+    private func interactiveAnimationHasCancelled() {
+        animateToRestore()
+    }
+    
     private func animateToDismiss() {
-        //coordinatorDelegate?.rotationLocked = true
+        coordinatorDelegate?.rotationLocked = true
         viewModel.targetVisibleObservable.value?(true)
+        navbarView.isHidden = true
         
         UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
             self.view.backgroundColor = .clear
@@ -193,13 +190,13 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     private func animateToRestore() {
+        isNavbarHidden = false
+        
         UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseOut, animations: {
             self.view.backgroundColor = .black
             self.view.frame = self.initialFrame
             self.view.layoutIfNeeded()
-        }) { _ in
-            self.navbarView.isHidden = false
-        }
+        })
     }
 }
 
