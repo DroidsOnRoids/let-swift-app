@@ -16,35 +16,21 @@ PODS:
     - HockeySDK/DefaultLib (= 4.1.5)
   - HockeySDK/DefaultLib (4.1.5)
   - ImageEffects (1.0.0)
-  - MBProgressHUD (0.9.2)
   - ModelMapper (6.0.0)
-  - MWPhotoBrowser (2.1.2):
-    - DACircularProgress (~> 2.3)
-    - MBProgressHUD (~> 0.9)
-    - SDWebImage (!= 3.7.2, ~> 3.7)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - DACircularProgress (~> 2.3)
   - ESPullToRefresh (~> 2.6)
   - FBSDKCoreKit (~> 4.22)
   - FBSDKLoginKit (~> 4.22)
   - HockeySDK (~> 4.1)
   - ImageEffects (~> 1.0)
   - ModelMapper (~> 6.0)
-  - MWPhotoBrowser (from `https://github.com/m-chojnacki/MWPhotoBrowser.git`, branch `fork`)
-
-EXTERNAL SOURCES:
-  MWPhotoBrowser:
-    :branch: fork
-    :git: https://github.com/m-chojnacki/MWPhotoBrowser.git
-
-CHECKOUT OPTIONS:
-  MWPhotoBrowser:
-    :commit: 90bd754175fef6fbb2644c4f67fffabc04adbf17
-    :git: https://github.com/m-chojnacki/MWPhotoBrowser.git
+  - SDWebImage (~> 3.8)
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -55,11 +41,9 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
   HockeySDK: 606b537bbfbe454ee440e92cc93bc634b3c77151
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
-  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
-  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
 
-PODFILE CHECKSUM: 1e3ec51d9900795ef0cee51014ae5a4c8a3497e6
+PODFILE CHECKSUM: f3c2d89e8036eb0d620edf4e9cee27918832d0ac
 
 COCOAPODS: 1.2.0

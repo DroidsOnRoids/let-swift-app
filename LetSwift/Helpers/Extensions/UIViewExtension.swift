@@ -43,4 +43,11 @@ extension UIView {
         layer.shadowOffset = offset
         layer.shadowRadius = radius
     }
+    
+    func pinToFit(view: UIView) {
+        leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
 }
