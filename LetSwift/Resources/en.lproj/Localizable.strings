@@ -43,6 +43,7 @@
 "CONTACT_TOPIC_ERROR" = "Choose the topic";
 "CONTACT_NAME_ERROR" = "Type name";
 "CONTACT_EMAIL_ERROR" = "Type email address";
+"CONTACT_EMAIL_INVALID_ERROR" = "Type valid email";
 "CONTACT_MESSAGE_ERROR" = "Type message";
 "CONTACT_CANCEL" = "Cancel";
 "CONTACT_TOPIC_SPEAK" = "Speak on the next event";

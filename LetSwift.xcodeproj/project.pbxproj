@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		531A1CCEB85B3DE5BC939B5A /* Pods_LetSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E84657CB4558B9F5B0BA3EA0 /* Pods_LetSwiftTests.framework */; };
 		7E02FE6E1EBB23EA005DADCB /* BindableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6B1EBB23EA005DADCB /* BindableArray.swift */; };
 		7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */; };
 		7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */; };
@@ -248,8 +247,6 @@
 		7EF34FEC1ED3308200517683 /* NetworkPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPage.swift; sourceTree = "<group>"; };
 		7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersToBeAnnouncedCell.swift; sourceTree = "<group>"; };
 		7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersToBeAnnouncedCell.xib; sourceTree = "<group>"; };
-		8CDFEE6A6ADA4F44628F4D98 /* Pods-LetSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwiftTests/Pods-LetSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
-		D121AE690A5B4EF2AD9CA521 /* Pods-LetSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwiftTests/Pods-LetSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		D3006B021EBC845300716C23 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		D30B0C391EFBB4C200765AC4 /* PhotoSliderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSliderAnimator.swift; sourceTree = "<group>"; };
@@ -378,7 +375,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				531A1CCEB85B3DE5BC939B5A /* Pods_LetSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,8 +394,6 @@
 			children = (
 				618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */,
 				5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */,
-				D121AE690A5B4EF2AD9CA521 /* Pods-LetSwiftTests.debug.xcconfig */,
-				8CDFEE6A6ADA4F44628F4D98 /* Pods-LetSwiftTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1097,12 +1091,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D33521151ECED328000666D4 /* Build configuration list for PBXNativeTarget "LetSwiftTests" */;
 			buildPhases = (
-				F1777CD59477B402077F739D /* [CP] Check Pods Manifest.lock */,
 				D33521081ECED328000666D4 /* Sources */,
 				D33521091ECED328000666D4 /* Frameworks */,
 				D335210A1ECED328000666D4 /* Resources */,
-				CBF44C3D108A117D0093D828 /* [CP] Embed Pods Frameworks */,
-				5DEC6B7053969C4030FF60F6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1278,36 +1269,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5DEC6B7053969C4030FF60F6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetSwiftTests/Pods-LetSwiftTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CBF44C3D108A117D0093D828 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetSwiftTests/Pods-LetSwiftTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D32A76CA1E9B9A7500388222 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1320,21 +1281,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "python LetSwift/Resources/Scripts/get_localizables.py";
-		};
-		F1777CD59477B402077F739D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1510,7 +1456,6 @@
 /* Begin XCBuildConfiguration section */
 		D33521131ECED328000666D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D121AE690A5B4EF2AD9CA521 /* Pods-LetSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1527,7 +1472,6 @@
 		};
 		D33521141ECED328000666D4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CDFEE6A6ADA4F44628F4D98 /* Pods-LetSwiftTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

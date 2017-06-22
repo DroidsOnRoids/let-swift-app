@@ -2,7 +2,7 @@
 //  PhotosViewController.swift
 //  LetSwift
 //
-//  Created by Kinga Wilczek on 15.05.2017.
+//  Created by Kinga Wilczek, Marcin Chojnacki on 15.05.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 

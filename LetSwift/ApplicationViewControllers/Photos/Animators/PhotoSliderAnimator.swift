@@ -20,7 +20,7 @@ final class PhotoSliderAnimator {
     
     private enum Constants {
         static let animationDuration = 0.25
-        static let progressThreshold = 0.5
+        static let progressThreshold: CGFloat = 0.5
     }
     
     private weak var delegate: PhotoSliderAnimatorDelegate?
