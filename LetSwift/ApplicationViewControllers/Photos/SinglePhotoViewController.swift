@@ -49,6 +49,11 @@ final class SinglePhotoViewController: UIViewController {
         setup()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        photoView.zoomScale = 1.0
+    }
+    
     private func setup() {
         setupPhotoView()
         setupSpinner()
