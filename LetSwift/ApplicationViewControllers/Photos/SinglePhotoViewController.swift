@@ -16,6 +16,10 @@ final class SinglePhotoViewController: UIViewController {
         static let spinnerSize: CGFloat = 45.0
     }
     
+    var canDismissInteractively: Bool {
+        return photoView.zoomScale == 1.0
+    }
+    
     var scaleToFill = false {
         didSet {
             if scaleToFill {

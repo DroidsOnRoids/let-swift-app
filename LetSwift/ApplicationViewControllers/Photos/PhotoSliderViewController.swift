@@ -36,6 +36,10 @@ final class PhotoSliderViewController: UIViewController {
         }
     }
     
+    private var currentViewController: SinglePhotoViewController? {
+        return pageViewController.viewControllers?.first as? SinglePhotoViewController
+    }
+    
     fileprivate var targetFrameClousure: (() -> CGRect)?
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
     fileprivate var singlePhotoViewControllers: [SinglePhotoViewController]!
@@ -125,6 +129,8 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     @objc private func panRecognized(sender: UIPanGestureRecognizer) {
+        guard currentViewController?.canDismissInteractively ?? false else { return }
+        
         let translation = sender.translation(in: view)
         let progress = min(max(translation.y / Constants.panThreshold, -1.0), 1.0)
         
@@ -142,8 +148,7 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     fileprivate func setFirstViewController(scaleToFill: Bool) {
-        guard let currentViewController = pageViewController.viewControllers?.first as? SinglePhotoViewController else { return }
-        currentViewController.scaleToFill = scaleToFill
+        currentViewController?.scaleToFill = scaleToFill
     }
 }
 
