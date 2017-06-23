@@ -77,7 +77,10 @@ final class PhotoGalleryViewController: AppViewController {
         .add(to: disposeBag)
         
         viewModel.photoSelectedObservable.subscribeNext { [weak self] index in
-            guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: IndexPath(row: index, section: 0)) else { return }
+            let indexPath = IndexPath(row: index, section: 0)
+            guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: indexPath) else { return }
+            
+            weakSelf.collectionView.scrollToShow(itemAt: indexPath, animated: true)
             
             weakSelf.viewModel.targetVisibleClousureObservable.next { hidden in
                 cellView.isHidden = hidden
@@ -101,8 +104,6 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.scrollToShow(itemAt: indexPath, animated: true)
-        
         viewModel.photoSelectedObservable.next(indexPath.row)
         viewModel.photoSelectedObservable.complete()
     }
