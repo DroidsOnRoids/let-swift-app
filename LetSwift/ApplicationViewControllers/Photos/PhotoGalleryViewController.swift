@@ -77,14 +77,18 @@ final class PhotoGalleryViewController: AppViewController {
         .add(to: disposeBag)
         
         viewModel.photoSelectedObservable.subscribeNext { [weak self] index in
-            guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: IndexPath(row: index, section: 0)) else { return }
+            let indexPath = IndexPath(row: index, section: 0)
+            guard let weakSelf = self, let cellView = weakSelf.collectionView.cellForItem(at: indexPath) else { return }
+            
+            weakSelf.collectionView.scrollToShow(itemAt: indexPath, animated: true)
             
             weakSelf.viewModel.targetVisibleClousureObservable.next { hidden in
                 cellView.isHidden = hidden
             }
             
-            let targetFrame = weakSelf.collectionView.convert(cellView.frame, to: nil)
-            weakSelf.viewModel.targetFrameObservable.next(targetFrame)
+            weakSelf.viewModel.targetFrameObservable.next {
+                return weakSelf.collectionView.convert(cellView.frame, to: nil)
+            }
         }
         .add(to: disposeBag)
     }

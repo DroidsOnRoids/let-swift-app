@@ -36,7 +36,7 @@ final class PhotoSliderViewController: UIViewController {
         }
     }
     
-    fileprivate var targetFrame: CGRect!
+    fileprivate var targetFrameClousure: (() -> CGRect)?
     fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
     fileprivate var singlePhotoViewControllers: [SinglePhotoViewController]!
     
@@ -104,8 +104,8 @@ final class PhotoSliderViewController: UIViewController {
     }
     
     private func reactiveSetup() {
-        viewModel.targetFrameObservable.subscribeNext(startsWithInitialValue: true) { [weak self] frame in
-            self?.targetFrame = frame
+        viewModel.targetFrameObservable.subscribeNext(startsWithInitialValue: true) { [weak self] frameClousure in
+            self?.targetFrameClousure = frameClousure
         }
         .add(to: disposeBag)
         
@@ -187,7 +187,7 @@ extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     }
     
     func progressDismissing() {
-        view.frame = targetFrame
+        view.frame = targetFrameClousure?() ?? .zero
         setFirstViewController(scaleToFill: true)
     }
     

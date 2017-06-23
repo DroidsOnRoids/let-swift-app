@@ -13,7 +13,7 @@ final class PhotoGalleryViewControllerViewModel {
     let photosObservable: Observable<[Photo]>
     let photosRefreshObservable = Observable<Void>()
     let photoSelectedObservable = Observable<Int>(0)
-    let targetFrameObservable = Observable<CGRect>(.zero)
+    let targetFrameObservable = Observable<(() -> CGRect)?>(nil)
     let targetVisibleClousureObservable = Observable<((Bool) -> ())?>(nil)
     let targetVisibleObservable = Observable<Bool?>(nil)
     let sliderTitleObservable = Observable<String>("")
