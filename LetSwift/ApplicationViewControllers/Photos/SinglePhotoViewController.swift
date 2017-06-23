@@ -80,7 +80,7 @@ final class SinglePhotoViewController: UIViewController {
             self?.spinner.progress = progress
         }, completed: { [weak self] image, _, _, _, _ in
             if let image = image {
-                self?.photoView.display(image: image)
+                self?.photoView.image = image
             }
             
             self?.spinner.isHidden = true

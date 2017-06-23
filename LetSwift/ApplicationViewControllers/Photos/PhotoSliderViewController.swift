@@ -197,6 +197,7 @@ extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     }
     
     func prepareForRestore() {
+        viewModel.targetVisibleObservable.next(false)
         isNavbarHidden = false
     }
 }
