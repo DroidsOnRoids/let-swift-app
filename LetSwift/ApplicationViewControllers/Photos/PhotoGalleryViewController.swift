@@ -83,8 +83,9 @@ final class PhotoGalleryViewController: AppViewController {
                 cellView.isHidden = hidden
             }
             
-            let targetFrame = weakSelf.collectionView.convert(cellView.frame, to: nil)
-            weakSelf.viewModel.targetFrameObservable.next(targetFrame)
+            weakSelf.viewModel.targetFrameObservable.next {
+                return weakSelf.collectionView.convert(cellView.frame, to: nil)
+            }
         }
         .add(to: disposeBag)
     }
