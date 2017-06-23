@@ -19,7 +19,7 @@ final class SpeakersViewController: AppViewController {
     }
 
     private var allCells: [EventCellIdentifier] {
-        return [.latestSpeakers, .speakers, .speakers, .speakers]
+        return [.latestSpeakers, .speakers]
     }
 
     private lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
@@ -36,8 +36,10 @@ final class SpeakersViewController: AppViewController {
         return true
     }
 
+    @IBOutlet private weak var tableView: AppTableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var tableView: UITableView!
+    
+    private let sadFaceView = SadFaceView()
 
     private let disposeBag = DisposeBag()
     private var viewModel: SpeakersViewControllerViewModel!
@@ -79,6 +81,28 @@ final class SpeakersViewController: AppViewController {
 
             return cell
         }))
+
+        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
+            switch state {
+            case .content:
+                self?.tableView.overlayView = nil
+            case .error:
+                self?.tableView.overlayView = self?.sadFaceView
+            case .loading:
+                self?.tableView.overlayView = SpinnerView()
+            }
+        }
+        .add(to: disposeBag)
+
+        viewModel.currentNumberOfSpeaker.subscribeNext { [weak self] speakersNumber in
+            guard speakersNumber >= 0 else { return }
+
+            self?.bindableCells.remove(updated: false) { $0 == .speakers }
+            self?.bindableCells.append([EventCellIdentifier](repeating: .speakers, count: speakersNumber))
+        }
+        .add(to: disposeBag)
+
+        viewModel.speakerLoadDataRequestObservable.next()
     }
 
     private func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
