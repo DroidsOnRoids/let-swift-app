@@ -76,4 +76,12 @@ extension UICollectionView: NibPresentable {
     func registerClass(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
         register(cellClass, forCellWithReuseIdentifier: identifier)
     }
+    
+    func scrollToShow(itemAt indexPath: IndexPath, animated: Bool) {
+        guard let cell = cellForItem(at: indexPath) else { return }
+        let collectionLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let cellSpacing = collectionLayout?.minimumInteritemSpacing ?? 0.0
+        
+        scrollRectToVisible(cell.frame.insetBy(dx: -cellSpacing, dy: -cellSpacing), animated: animated)
+    }
 }

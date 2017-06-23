@@ -100,6 +100,8 @@ extension PhotoGalleryViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.scrollToShow(itemAt: indexPath, animated: true)
+        
         viewModel.photoSelectedObservable.next(indexPath.row)
         viewModel.photoSelectedObservable.complete()
     }
