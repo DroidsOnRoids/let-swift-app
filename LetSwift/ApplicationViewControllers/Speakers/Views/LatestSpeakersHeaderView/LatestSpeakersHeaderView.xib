@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,14 +17,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="402" height="233"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5BG-V8-m4I">
-                    <rect key="frame" x="0.0" y="45" width="402" height="180"/>
+                    <rect key="frame" x="0.0" y="45" width="375" height="180"/>
                     <color key="backgroundColor" red="0.87058823529999996" green="0.8980392157" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" priority="999" constant="180" id="Chd-66-tHC"/>
+                        <constraint firstAttribute="width" secondItem="5BG-V8-m4I" secondAttribute="height" multiplier="25:12" priority="999" id="kzy-h1-hyW"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="8" minimumInteritemSpacing="8" id="ADK-fa-EtV">
                         <size key="itemSize" width="150" height="180"/>
@@ -33,14 +34,14 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H66-aJ-lKj" customClass="SpinnerView" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="402" y="45" width="50" height="179.5"/>
+                    <rect key="frame" x="375" y="45" width="50" height="179.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="RGD-9i-cLc"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LATEST LET SWIFT SPEAKERS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="utz-WD-gT3">
-                    <rect key="frame" x="16" y="12" width="370" height="21"/>
+                    <rect key="frame" x="16" y="12" width="343" height="21"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                     <color key="textColor" red="0.51764705879999995" green="0.56078431370000004" blue="0.61960784310000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -59,6 +60,7 @@
                 <constraint firstItem="H66-aJ-lKj" firstAttribute="leading" secondItem="5BG-V8-m4I" secondAttribute="trailing" id="qpO-gR-W7Z"/>
                 <constraint firstItem="5BG-V8-m4I" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="w4W-tf-kzg"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="99" y="-144.5"/>
         </view>
