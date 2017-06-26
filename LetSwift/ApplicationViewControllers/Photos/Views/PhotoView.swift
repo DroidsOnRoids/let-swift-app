@@ -2,13 +2,13 @@
 //  PhotoView.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 19.06.2017.
+//  Created by Marcin Chojnacki on 23.06.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
 
-final class PhotoView: SizedScrollView {
+final class PhotoView: UIScrollView {
     
     override var contentInset: UIEdgeInsets {
         get {
@@ -18,15 +18,33 @@ final class PhotoView: SizedScrollView {
         }
     }
     
-    fileprivate var imageView: UIImageView?
+    var image: UIImage? {
+        get {
+            return imageView.image
+        }
+        set {
+            let oldImage = imageView.image
+            imageView.image = newValue
+            
+            if oldImage?.size != newValue?.size {
+                updateImageView()
+                oldSize = nil
+            }
+        }
+    }
     
-    private var subviewBottomConstraint: NSLayoutConstraint?
-    private var subviewLeadingConstraint: NSLayoutConstraint?
-    private var subviewTopConstraint: NSLayoutConstraint?
-    private var subviewTrailingConstraint: NSLayoutConstraint?
+    fileprivate let imageView = UIImageView()
+    
+    private var oldSize: CGSize?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
+    }
+    
+    init(image: UIImage) {
+        super.init(frame: CGRect.zero)
+        self.image = image
         setup()
     }
     
@@ -35,86 +53,89 @@ final class PhotoView: SizedScrollView {
         setup()
     }
     
-    override func sizeHasChanged(to size: CGSize) {
-        updateMinZoomScaleForSize(size)
-    }
-    
-    func display(image: UIImage) {
-        imageView?.removeFromSuperview()
-        imageView = UIImageView(image: image)
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        if let imageView = imageView {
-            addSubview(imageView)
-            constraintToFit(imageView)
-            updateMinZoomScaleForSize(bounds.size)
+        if let _ = imageView.image, oldSize != bounds.size {
+            updateImageView()
+            oldSize = bounds.size
+        }
+        
+        if imageView.frame.width <= bounds.width {
+            imageView.center.x = bounds.width * 0.5
+        }
+        
+        if imageView.frame.height <= bounds.height {
+            imageView.center.y = bounds.height * 0.5
         }
     }
     
-    fileprivate func updateConstraintsForSize(_ size: CGSize) {
-        guard let imageView = imageView else { return }
-        
-        let yOffset = max(0, (size.height - imageView.frame.height) / 2)
-        subviewTopConstraint?.constant = yOffset
-        subviewBottomConstraint?.constant = yOffset
-        
-        let xOffset = max(0, (size.width - imageView.frame.width) / 2)
-        subviewLeadingConstraint?.constant = xOffset
-        subviewTrailingConstraint?.constant = xOffset
-        
-        layoutIfNeeded()
+    override func updateConstraints() {
+        super.updateConstraints()
+        updateImageView()
     }
     
     private func setup() {
-        showsHorizontalScrollIndicator = false
-        showsVerticalScrollIndicator = false
         delegate = self
+        showsVerticalScrollIndicator = false
+        showsHorizontalScrollIndicator = false
+        zoomScale = 1.0
+        maximumZoomScale = 4.0
         
-        setupTapRecognizer()
+        addSubview(imageView)
+        
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        doubleTapGesture.numberOfTapsRequired = 2
+        addGestureRecognizer(doubleTapGesture)
     }
     
-    private func setupTapRecognizer() {
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTapRecognized))
-        doubleTapRecognizer.numberOfTapsRequired = 2
-        addGestureRecognizer(doubleTapRecognizer)
+    private func scrollToCenter() {
+        let centerOffset = CGPoint(
+            x: (contentSize.width / 2.0) - (bounds.width / 2.0),
+            y: (contentSize.height / 2.0) - (bounds.height / 2.0)
+        )
+        
+        contentOffset = centerOffset
     }
     
-    private func constraintToFit(_ view: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
+    private func updateImageView() {
+        guard let image = imageView.image else { return }
         
-        subviewBottomConstraint = view.bottomAnchor.constraint(equalTo: bottomAnchor)
-        subviewLeadingConstraint = view.leadingAnchor.constraint(equalTo: leadingAnchor)
-        subviewTopConstraint = view.topAnchor.constraint(equalTo: topAnchor)
-        subviewTrailingConstraint = view.trailingAnchor.constraint(equalTo: trailingAnchor)
+        let widthRatio = (bounds.size.width / image.size.width)
+        let heightRatio = (bounds.size.height / image.size.height)
         
-        subviewBottomConstraint?.isActive = true
-        subviewLeadingConstraint?.isActive = true
-        subviewTopConstraint?.isActive = true
-        subviewTrailingConstraint?.isActive = true
+        var boundingSize = bounds.size
+        
+        if widthRatio < heightRatio {
+            boundingSize.height = boundingSize.width / image.size.width * image.size.height
+        } else if heightRatio < widthRatio {
+            boundingSize.width = boundingSize.height / image.size.height * image.size.width
+        }
+        
+        contentSize = CGSize(width: ceil(boundingSize.width), height: ceil(boundingSize.height))
+        
+        imageView.bounds.size = contentSize
+        imageView.center = contentCenter(for: bounds.size, contentSize: contentSize)
     }
     
-    private func updateMinZoomScaleForSize(_ size: CGSize) {
-        guard let imageView = imageView else { return }
+    fileprivate func contentCenter(for boundingSize: CGSize, contentSize: CGSize) -> CGPoint {
+        let horizontalOffest = (boundingSize.width > contentSize.width) ? ((boundingSize.width - contentSize.width) * 0.5) : 0.0
+        let verticalOffset = (boundingSize.height > contentSize.height) ? ((boundingSize.height - contentSize.height) * 0.5) : 0.0
         
-        let widthScale = size.width / imageView.bounds.width
-        let heightScale = size.height / imageView.bounds.height
-        let minScale = min(widthScale, heightScale)
-        
-        minimumZoomScale = minScale
-        zoomScale = minScale
+        return CGPoint(x: contentSize.width * 0.5 + horizontalOffest, y: contentSize.height * 0.5 + verticalOffset)
     }
     
-    @objc private func doubleTapRecognized(sender: UITapGestureRecognizer) {
-        let newZoomScale = zoomScale == minimumZoomScale ? minimumZoomScale * 2.0 : minimumZoomScale
-        setZoomScale(newZoomScale, animated: true)
+    @objc private func handleDoubleTap() {
+        setZoomScale(zoomScale == 1.0 ? 2.0 : 1.0, animated: true)
     }
 }
 
 extension PhotoView: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        imageView.center = contentCenter(for: bounds.size, contentSize: contentSize)
     }
     
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        updateConstraintsForSize(bounds.size)
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }

@@ -16,6 +16,10 @@ final class SinglePhotoViewController: UIViewController {
         static let spinnerSize: CGFloat = 45.0
     }
     
+    var canDismissInteractively: Bool {
+        return photoView.zoomScale == 1.0
+    }
+    
     var scaleToFill = false {
         didSet {
             if scaleToFill {
@@ -43,6 +47,11 @@ final class SinglePhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        photoView.zoomScale = 1.0
     }
     
     private func setup() {
@@ -80,7 +89,7 @@ final class SinglePhotoViewController: UIViewController {
             self?.spinner.progress = progress
         }, completed: { [weak self] image, _, _, _, _ in
             if let image = image {
-                self?.photoView.display(image: image)
+                self?.photoView.image = image
             }
             
             self?.spinner.isHidden = true
