@@ -42,10 +42,8 @@ struct NetworkProvider {
         return request
     }
 
-    @discardableResult func speakersList(with page: Int, perPage: Int = 5, query: String? = nil, completionHandler: @escaping (NetworkResponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
-        var params: [String : Any] = [Constants.perPage: perPage, Constants.page: page]
-        params[Constants.query] = query
-        
+    @discardableResult func speakersList(with page: Int, perPage: Int = 5, query: String = "", completionHandler: @escaping (NetworkResponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
+        let params: [String: Any] = [Constants.perPage: perPage, Constants.page: page, Constants.query: query]
         let request = alamofireManager.request(NetworkRouter.speakersList(params))
         request.responseJSON { response in
             response.result.responsePage(for: Constants.speakers, completionHandler: completionHandler)

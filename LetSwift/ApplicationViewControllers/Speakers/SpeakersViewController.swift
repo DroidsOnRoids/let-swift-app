@@ -13,17 +13,6 @@ protocol SpeakersViewControllerDelegate: class {
 
 final class SpeakersViewController: AppViewController {
 
-    private enum EventCellIdentifier: String {
-        case latestSpeakers = "LatestSpeakersTableViewCell"
-        case speakers = "SpeakersTableViewCell"
-    }
-
-    private var allCells: [EventCellIdentifier] {
-        return [.latestSpeakers, .speakers]
-    }
-
-    private lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
-
     override var viewControllerTitleKey: String? {
         return "SPEAKERS_TITLE"
     }
@@ -56,30 +45,34 @@ final class SpeakersViewController: AppViewController {
     }
 
     private func setup() {
-        tableView.tableFooterView = UIView()
+        let footerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 55.0)
+        let spinner = SpinnerView(frame: footerFrame)
+        spinner.image = #imageLiteral(resourceName: "WhiteSpinner")
+        spinner.backgroundColor = .paleGrey
+        tableView.tableFooterView = spinner
+
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.setHeaderColor(.paleGrey)
-        tableView.tableHeaderView = searchBar
         tableView.backgroundColor = .paleGrey
-        tableView.setFooterColor(.white)
+
+        let headerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 231.0)
+        tableView.tableHeaderView = LatestSpeakersHeaderView(frame: headerFrame)
 
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor
         searchBar.placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
+        tableView.contentInset.top += 44
 
-        tableView.registerCells(allCells.map { $0.rawValue })
+        tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
 
         reactiveSetup()
     }
     
     private func reactiveSetup() {
-        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
-            let indexPath = IndexPath(row: index, section: 0)
-            let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
-            self?.dispatchCellSetup(element: element, cell: cell, index: index)
-
-            return cell
+        viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self) ({ [weak self] index, speaker, cell in
+            cell.load(with: speaker)
+            self?.viewModel.checkIfLastSpeakerObservable.next(index)
         }))
 
         viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
@@ -94,38 +87,11 @@ final class SpeakersViewController: AppViewController {
         }
         .add(to: disposeBag)
 
-        viewModel.currentNumberOfSpeaker.subscribeNext { [weak self] speakersNumber in
-            guard speakersNumber >= 0 else { return }
-
-            self?.bindableCells.remove(updated: false) { $0 == .speakers }
-            self?.bindableCells.append([EventCellIdentifier](repeating: .speakers, count: speakersNumber))
+        viewModel.noMoreSpeakersToLoad.subscribeNext { [weak self] in
+            self?.tableView.tableFooterView = nil
         }
         .add(to: disposeBag)
 
         viewModel.speakerLoadDataRequestObservable.next()
-    }
-
-    private func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
-        switch element {
-        case .latestSpeakers:
-            setupLatestSpeakers(cell: cell as! LatestSpeakersTableViewCell)
-        case .speakers:
-            setupSpeakers(cell: cell as! SpeakersTableViewCell, for: index)
-        }
-    }
-
-    private func setupSpeakers(cell: SpeakersTableViewCell, for index: Int) {
-        viewModel.speakerWithIndexResponseObservable.subscribeNext { incomingIndex, speaker in
-            guard let speaker = speaker, incomingIndex == index - 1  else { return }
-
-            cell.load(with: speaker)
-        }
-        .add(to: disposeBag)
-
-        viewModel.speakerWithIndexRequestObservable.next(index - 1)
-    }
-
-    private func setupLatestSpeakers(cell: LatestSpeakersTableViewCell) {
-        cell.removeSeparators()
     }
 }

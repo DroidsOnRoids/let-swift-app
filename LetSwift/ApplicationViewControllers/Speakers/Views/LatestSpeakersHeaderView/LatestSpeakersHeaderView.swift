@@ -1,22 +1,22 @@
 //
-//  LatestSpeakersTableViewCell.swift
+//  LatestSpeakersHeaderView.swift
 //  LetSwift
 //
-//  Created by Kinga Wilczek on 14.06.2017.
+//  Created by Kinga Wilczek on 26.06.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
 
-final class LatestSpeakersTableViewCell: UITableViewCell {
+class LatestSpeakersHeaderView: DesignableView {
 
     private let mockedSpeakers: [Speaker] = Speaker.from(MockLoader.speakersMock!)!
 
     @IBOutlet private weak var latestCollectionView: UICollectionView!
     @IBOutlet private weak var latestSpeakersTitleLabel: UILabel!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func loadViewFromNib() {
+        super.loadViewFromNib()
 
         setup()
     }

@@ -10,12 +10,18 @@ import UIKit
 
 class SpeakersTableViewCell: UITableViewCell {
 
+    static let cellIdentifier = String(describing: SpeakersTableViewCell.self)
+
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerJobLabel: UILabel!
     @IBOutlet private weak var speakerAvatarImageView: UIImageView!
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        speakerNameLabel.text = ""
+        speakerJobLabel.text = ""
+        speakerAvatarImageView.image = #imageLiteral(resourceName: "SpeakerPlaceholder")
     }
 
     func load(with speaker: Speaker) {
