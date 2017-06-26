@@ -72,7 +72,10 @@ final class PhotoSliderViewController: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        panRecognizer.isEnabled = size.width < size.height
+        let isPortrait = size.width < size.height
+        panRecognizer.isEnabled = isPortrait
+        isNavbarHidden = !isPortrait
+        isStatusBarHidden = isNavbarHidden
     }
     
     private func setup() {
