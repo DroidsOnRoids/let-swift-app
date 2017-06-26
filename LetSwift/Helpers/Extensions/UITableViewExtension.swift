@@ -97,4 +97,8 @@ extension UITableView: NibPresentable {
             ($0 as? UIScrollView)?.delaysContentTouches = delaysContentTouches
         }
     }
+
+    var scrollViewWillEndDraggingObservable: ObservableEvent<UIScrollView?> {
+        return ObservableEvent(event: delegateProxy.scrollViewWillEndDraggingObservable)
+    }
 }

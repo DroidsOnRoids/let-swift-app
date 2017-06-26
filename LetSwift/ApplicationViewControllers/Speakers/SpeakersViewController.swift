@@ -45,11 +45,7 @@ final class SpeakersViewController: AppViewController {
     }
 
     private func setup() {
-        let footerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 55.0)
-        let spinner = SpinnerView(frame: footerFrame)
-        spinner.image = #imageLiteral(resourceName: "WhiteSpinner")
-        spinner.backgroundColor = .paleGrey
-        tableView.tableFooterView = spinner
+        showSpinner()
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
@@ -62,11 +58,18 @@ final class SpeakersViewController: AppViewController {
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor
         searchBar.placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
-        tableView.contentInset.top += 44
 
         tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
 
         reactiveSetup()
+    }
+
+    private func showSpinner() {
+        let footerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 55.0)
+        let spinner = SpinnerView(frame: footerFrame)
+        spinner.image = #imageLiteral(resourceName: "WhiteSpinner")
+        spinner.backgroundColor = .paleGrey
+        tableView.tableFooterView = spinner
     }
     
     private func reactiveSetup() {
@@ -76,13 +79,17 @@ final class SpeakersViewController: AppViewController {
         }))
 
         viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
+            guard let weakSelf = self else { return }
+
             switch state {
             case .content:
-                self?.tableView.overlayView = nil
+                weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
+                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -(64 + weakSelf.tableView.contentInset.top)), animated: false)
+                weakSelf.tableView.overlayView = nil
             case .error:
-                self?.tableView.overlayView = self?.sadFaceView
+                weakSelf.tableView.overlayView = weakSelf.sadFaceView
             case .loading:
-                self?.tableView.overlayView = SpinnerView()
+                weakSelf.tableView.overlayView = SpinnerView()
             }
         }
         .add(to: disposeBag)
@@ -93,5 +100,23 @@ final class SpeakersViewController: AppViewController {
         .add(to: disposeBag)
 
         viewModel.speakerLoadDataRequestObservable.next()
+
+        tableView.scrollViewWillEndDraggingObservable.subscribeNext { [weak self] scrollView in
+            guard let scrollView = scrollView else { return }
+
+            let offset = scrollView.contentOffset
+            let bounds = scrollView.bounds
+            let size = scrollView.contentSize
+            let inset = scrollView.contentInset
+            let y = offset.y + bounds.size.height + inset.bottom
+            let height = size.height
+            let distance: CGFloat = 10
+
+            if y > height + distance {
+                self?.showSpinner()
+                self?.viewModel.tryToLoadMoreData.next()
+            }
+        }
+        .add(to: disposeBag)
     }
 }
