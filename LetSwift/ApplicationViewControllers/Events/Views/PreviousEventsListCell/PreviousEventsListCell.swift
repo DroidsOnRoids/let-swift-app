@@ -21,7 +21,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
 
     var viewModel: PreviousEventsListCellViewModel! {
         didSet {
-            if viewModel != nil && viewModel !== oldValue {
+            if let _ = viewModel, viewModel !== oldValue {
                 reactiveSetup()
             }
         }

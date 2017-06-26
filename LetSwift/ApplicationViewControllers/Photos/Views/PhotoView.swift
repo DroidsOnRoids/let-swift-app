@@ -56,7 +56,7 @@ final class PhotoView: UIScrollView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        if imageView.image != nil && oldSize != bounds.size {
+        if let _ = imageView.image, oldSize != bounds.size {
             updateImageView()
             oldSize = bounds.size
         }

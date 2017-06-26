@@ -31,7 +31,7 @@ final class AppTableView: UITableView {
     }
     
     private func hideOverlayView() {
-        guard overlayView != nil, hideOverlayAnimated else { return }
+        guard let _ = overlayView, hideOverlayAnimated else { return }
         
         let oldOverlayView = overlayView
         

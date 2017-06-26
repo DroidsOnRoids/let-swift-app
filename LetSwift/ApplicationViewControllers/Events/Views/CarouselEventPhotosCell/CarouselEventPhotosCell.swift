@@ -19,7 +19,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
 
     var viewModel: CarouselEventPhotosCellViewModel! {
         didSet {
-            if viewModel != nil {
+            if let _ = viewModel {
                 reactiveSetup()
             }
         }
