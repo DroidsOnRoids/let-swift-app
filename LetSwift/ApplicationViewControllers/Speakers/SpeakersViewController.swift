@@ -2,13 +2,14 @@
 //  SpeakersViewController.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 21.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 21.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
 
 protocol SpeakersViewControllerDelegate: class {
+    func presentSpeakerDetailsScreen()
 }
 
 final class SpeakersViewController: AppViewController {
@@ -52,6 +53,7 @@ final class SpeakersViewController: AppViewController {
         tableView.backgroundColor = .paleGrey
 
         let headerView = LatestSpeakersHeaderView()
+        headerView.viewModel = viewModel
         headerView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerView
         headerView.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
@@ -62,7 +64,19 @@ final class SpeakersViewController: AppViewController {
 
         tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
 
+        setupPullToRefresh()
         reactiveSetup()
+    }
+
+    private func setupPullToRefresh() {
+        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
+            self?.viewModel.refreshDataObservable.next()
+        }
+
+        viewModel.refreshDataObservable.subscribeCompleted { [weak self] in
+            self?.sadFaceView.scrollView?.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
     }
 
     private func showSpinner() {
@@ -74,6 +88,11 @@ final class SpeakersViewController: AppViewController {
     }
     
     private func reactiveSetup() {
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] index in
+            self?.viewModel.speakerCellDidTapWithIndexObservable.next(index.row)
+        }
+        .add(to: disposeBag)
+
         viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self) ({ [weak self] index, speaker, cell in
             cell.load(with: speaker)
             self?.viewModel.checkIfLastSpeakerObservable.next(index)
@@ -85,26 +104,32 @@ final class SpeakersViewController: AppViewController {
             switch state {
             case .content:
                 weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
-                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -(64.0 + weakSelf.tableView.contentInset.top)), animated: false)
+                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
                 weakSelf.tableView.overlayView = nil
             case .error:
-                weakSelf.tableView.overlayView = weakSelf.sadFaceView
+                if !(weakSelf.tableView.overlayView is SadFaceView) {
+                    weakSelf.tableView.overlayView = weakSelf.sadFaceView
+                }
             case .loading:
                 weakSelf.tableView.overlayView = SpinnerView()
             }
         }
         .add(to: disposeBag)
 
-        viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
+        viewModel.errorOnLoadingMoreSpeakersObservable.subscribeNext { [weak self] in
             guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
 
-            UIView.animate(withDuration: 0.25,
-                           animations: {
-                                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
-                            },
-                           completion: { _ in
-                                self?.tableView.tableFooterView = nil
-                            })
+            UIView.animate(withDuration: 0.25, animations: {
+                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
+            },
+            completion: { _ in
+                self?.tableView.tableFooterView = UIView()
+            })
+        }
+        .add(to: disposeBag)
+
+        viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
+            self?.tableView.tableFooterView = UIView()
         }
         .add(to: disposeBag)
 

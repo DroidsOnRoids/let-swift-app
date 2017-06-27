@@ -13,6 +13,7 @@ final class SpeakersViewControllerViewModel {
 
     private enum Constants {
         static let speakersOrderCurrent = "current"
+        static let speakersOrderLatest = "recent"
         static let speakersPerPage = 10
     }
 
@@ -26,9 +27,14 @@ final class SpeakersViewControllerViewModel {
     var checkIfLastSpeakerObservable = Observable<Int>(-1)
     var tryToLoadMoreDataObservable = Observable<Void>()
     var noMoreSpeakersToLoadObservable = Observable<Void>()
+    var errorOnLoadingMoreSpeakersObservable = Observable<Void>()
+    var refreshDataObservable = Observable<Void>()
+    var speakerCellDidTapWithIndexObservable = Observable<Int>(-1)
+    var latestSpeakerCellDidTapWithIndexObservable = Observable<Int>(-1)
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
+    var latestSpeakers = [Speaker]().bindable
 
     init(delegate: SpeakersViewControllerDelegate?) {
         self.delegate = delegate
@@ -38,19 +44,8 @@ final class SpeakersViewControllerViewModel {
     }
 
     private func setup() {
-        speakerLoadDataRequestObservable.subscribeNext {
-            NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
-                switch response {
-                case let .success(responeObject):
-                    self?.speakers.values = []
-                    self?.speakers.append(responeObject.elements)
-                    self?.totalPage = responeObject.page.pageCount
-                    self?.tableViewStateObservable.next(.content)
-                    self?.currentPage = 1
-                case .error:
-                    self?.tableViewStateObservable.next(.error)
-                }
-            }
+        speakerLoadDataRequestObservable.subscribeNext { [weak self] in
+            self?.loadInitialData()
         }
         .add(to: disposeBag)
 
@@ -65,6 +60,56 @@ final class SpeakersViewControllerViewModel {
             self?.loadMoreData()
         }
         .add(to: disposeBag)
+
+        refreshDataObservable.subscribeNext { [weak self] in
+            self?.loadInitialData()
+        }
+        .add(to: disposeBag)
+
+        speakerCellDidTapWithIndexObservable.subscribeNext { [weak self] index in
+            //TODO: send id of speaker
+            self?.delegate?.presentSpeakerDetailsScreen()
+        }
+        .add(to: disposeBag)
+
+        latestSpeakerCellDidTapWithIndexObservable.subscribeNext { [weak self] index in
+            //TODO: send id of latest speaker
+            self?.delegate?.presentSpeakerDetailsScreen()
+        }
+        .add(to: disposeBag)
+    }
+
+    private func loadInitialData() {
+        guard pendingRequest == nil else { return }
+
+        pendingRequest = NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
+            switch response {
+            case let .success(responeObject):
+                self?.speakers.values = []
+                self?.speakers.append(responeObject.elements)
+                self?.totalPage = responeObject.page.pageCount
+                self?.currentPage = 1
+                self?.loadLatestSpeakers()
+            case .error:
+                self?.tableViewStateObservable.next(.error)
+                self?.refreshDataObservable.complete()
+                self?.pendingRequest = nil
+            }
+        }
+    }
+
+    private func loadLatestSpeakers() {
+        NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
+            switch response {
+            case let .success(responseLatest):
+                self?.latestSpeakers.append(responseLatest.elements)
+                self?.tableViewStateObservable.next(.content)
+            case .error:
+                self?.tableViewStateObservable.next(.error)
+            }
+            self?.refreshDataObservable.complete()
+            self?.pendingRequest = nil
+        }
     }
 
     private func loadMoreData() {
@@ -82,7 +127,7 @@ final class SpeakersViewControllerViewModel {
                 self?.speakers.append(responeObject.elements)
                 self?.totalPage = responeObject.page.pageCount
             default:
-                self?.noMoreSpeakersToLoadObservable.next()
+                self?.errorOnLoadingMoreSpeakersObservable.next()
             }
 
             self?.pendingRequest = nil
