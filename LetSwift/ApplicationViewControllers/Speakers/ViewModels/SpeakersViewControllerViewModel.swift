@@ -39,7 +39,6 @@ final class SpeakersViewControllerViewModel {
 
     private func setup() {
         speakerLoadDataRequestObservable.subscribeNext {
-            //TODO: establish number of speakers per page
             NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
                 switch response {
                 case let .success(responeObject):
