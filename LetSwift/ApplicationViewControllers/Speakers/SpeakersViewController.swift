@@ -113,15 +113,19 @@ final class SpeakersViewController: AppViewController {
         tableView.scrollViewWillEndDraggingObservable.subscribeNext { [weak self] scrollView in
             guard let scrollView = scrollView else { return }
 
-            let offset = scrollView.contentOffset
-            let bounds = scrollView.bounds
-            let size = scrollView.contentSize
-            let inset = scrollView.contentInset
-            let y = offset.y + bounds.size.height + inset.bottom
-            let height = size.height
-            let distance: CGFloat = 10.0
+            let checkIfTableViewEnd: () -> Bool = {
+                let offset = scrollView.contentOffset
+                let bounds = scrollView.bounds
+                let size = scrollView.contentSize
+                let inset = scrollView.contentInset
+                let y = offset.y + bounds.size.height + inset.bottom
+                let height = size.height
+                let distance: CGFloat = 10.0
 
-            if y > height + distance {
+                return y > height + distance
+            }
+
+            if checkIfTableViewEnd() {
                 self?.showSpinner()
                 self?.viewModel.tryToLoadMoreDataObservable.next()
             }
