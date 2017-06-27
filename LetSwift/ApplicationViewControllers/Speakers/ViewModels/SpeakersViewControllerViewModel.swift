@@ -29,6 +29,8 @@ final class SpeakersViewControllerViewModel {
     var noMoreSpeakersToLoadObservable = Observable<Void>()
     var errorOnLoadingMoreSpeakersObservable = Observable<Void>()
     var refreshDataObservable = Observable<Void>()
+    var speakerCellDidTapWithIndexObservable = Observable<Int>(-1)
+    var latestSpeakerCellDidTapWithIndexObservable = Observable<Int>(-1)
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
@@ -61,6 +63,18 @@ final class SpeakersViewControllerViewModel {
 
         refreshDataObservable.subscribeNext { [weak self] in
             self?.loadInitialData()
+        }
+        .add(to: disposeBag)
+
+        speakerCellDidTapWithIndexObservable.subscribeNext { [weak self] index in
+            //TODO: send id of speaker
+            self?.delegate?.presentSpeakerDetailsScreen()
+        }
+        .add(to: disposeBag)
+
+        latestSpeakerCellDidTapWithIndexObservable.subscribeNext { [weak self] index in
+            //TODO: send id of latest speaker
+            self?.delegate?.presentSpeakerDetailsScreen()
         }
         .add(to: disposeBag)
     }
