@@ -13,6 +13,7 @@ final class SpeakersViewControllerViewModel {
 
     private enum Constants {
         static let speakersOrderCurrent = "current"
+        static let speakersOrderLatest = "recent"
         static let speakersPerPage = 10
     }
 
@@ -71,8 +72,22 @@ final class SpeakersViewControllerViewModel {
                 self?.speakers.values = []
                 self?.speakers.append(responeObject.elements)
                 self?.totalPage = responeObject.page.pageCount
-                self?.tableViewStateObservable.next(.content)
                 self?.currentPage = 1
+                self?.loadLatestSpeakers()
+            case .error:
+                self?.tableViewStateObservable.next(.error)
+                self?.refreshDataObservable.complete()
+                self?.pendingRequest = nil
+            }
+        }
+    }
+
+    private func loadLatestSpeakers() {
+        NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
+            switch response {
+            case let .success(responseLatest):
+                print("fetched do sth with this")
+                self?.tableViewStateObservable.next(.content)
             case .error:
                 self?.tableViewStateObservable.next(.error)
             }

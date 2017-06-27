@@ -96,7 +96,7 @@ final class SpeakersViewController: AppViewController {
             switch state {
             case .content:
                 weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
-                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -(64.0 + weakSelf.tableView.contentInset.top)), animated: false)
+                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
                 weakSelf.tableView.overlayView = nil
             case .error:
                 if !(weakSelf.tableView.overlayView is SadFaceView) {
