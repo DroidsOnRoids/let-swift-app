@@ -10,9 +10,11 @@ import UIKit
 
 final class LatestSpeakersHeaderView: DesignableView {
 
+    private let disposeBag = DisposeBag()
+
     var viewModel: SpeakersViewControllerViewModel! {
         didSet {
-            if viewModel != nil {
+            if let _ = viewModel {
                 setup()
             }
         }
@@ -35,5 +37,10 @@ final class LatestSpeakersHeaderView: DesignableView {
         viewModel.latestSpeakers.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
             cell.load(with: element)
         }))
+
+        latestCollectionView.itemDidSelectObservable.subscribeNext { [weak self] index in
+            self?.viewModel.latestSpeakerCellDidTapWithIndexObservable.next(index.row)
+        }
+        .add(to: disposeBag)
     }
 }

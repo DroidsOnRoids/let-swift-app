@@ -9,6 +9,7 @@
 import UIKit
 
 protocol SpeakersViewControllerDelegate: class {
+    func presentSpeakerDetailsScreen()
 }
 
 final class SpeakersViewController: AppViewController {
@@ -87,6 +88,11 @@ final class SpeakersViewController: AppViewController {
     }
     
     private func reactiveSetup() {
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] index in
+            self?.viewModel.speakerCellDidTapWithIndexObservable.next(index.row)
+        }
+        .add(to: disposeBag)
+
         viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self) ({ [weak self] index, speaker, cell in
             cell.load(with: speaker)
             self?.viewModel.checkIfLastSpeakerObservable.next(index)
@@ -113,13 +119,12 @@ final class SpeakersViewController: AppViewController {
         viewModel.errorOnLoadingMoreSpeakersObservable.subscribeNext { [weak self] in
             guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
 
-            UIView.animate(withDuration: 0.25,
-                           animations: {
-                                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
-                            },
-                           completion: { _ in
-                                self?.tableView.tableFooterView = UIView()
-                            })
+            UIView.animate(withDuration: 0.25, animations: {
+                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
+            },
+            completion: { _ in
+                self?.tableView.tableFooterView = UIView()
+            })
         }
         .add(to: disposeBag)
 
