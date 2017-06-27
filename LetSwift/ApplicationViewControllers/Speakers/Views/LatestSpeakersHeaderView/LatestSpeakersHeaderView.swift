@@ -12,7 +12,7 @@ final class LatestSpeakersHeaderView: DesignableView {
 
     private let disposeBag = DisposeBag()
 
-    var viewModel: SpeakersViewControllerViewModel! {
+    var viewModel: SpeakersViewControllerViewModel? {
         didSet {
             if let _ = viewModel {
                 setup()
@@ -34,12 +34,12 @@ final class LatestSpeakersHeaderView: DesignableView {
     }
 
     private func reactiveSetup() {
-        viewModel.latestSpeakers.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
+        viewModel?.latestSpeakers.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
             cell.load(with: element)
         }))
 
         latestCollectionView.itemDidSelectObservable.subscribeNext { [weak self] index in
-            self?.viewModel.latestSpeakerCellDidTapWithIndexObservable.next(index.row)
+            self?.viewModel?.latestSpeakerCellDidTapWithIndexObservable.next(index.row)
         }
         .add(to: disposeBag)
     }
