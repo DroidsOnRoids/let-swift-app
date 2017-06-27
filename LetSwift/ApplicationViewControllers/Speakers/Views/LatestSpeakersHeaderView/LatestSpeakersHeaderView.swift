@@ -14,7 +14,7 @@ final class LatestSpeakersHeaderView: DesignableView {
 
     var viewModel: SpeakersViewControllerViewModel! {
         didSet {
-            if viewModel != nil {
+            if let _ = viewModel {
                 setup()
             }
         }
