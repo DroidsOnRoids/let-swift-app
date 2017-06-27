@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LatestSpeakersHeaderView: DesignableView {
+final class LatestSpeakersHeaderView: DesignableView {
 
     private let mockedSpeakers: [Speaker] = Speaker.from(MockLoader.speakersMock!)!
 
