@@ -84,7 +84,7 @@ final class SpeakersViewController: AppViewController {
             switch state {
             case .content:
                 weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
-                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -(64 + weakSelf.tableView.contentInset.top)), animated: false)
+                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -(64.0 + weakSelf.tableView.contentInset.top)), animated: false)
                 weakSelf.tableView.overlayView = nil
             case .error:
                 weakSelf.tableView.overlayView = weakSelf.sadFaceView
@@ -118,7 +118,7 @@ final class SpeakersViewController: AppViewController {
             let inset = scrollView.contentInset
             let y = offset.y + bounds.size.height + inset.bottom
             let height = size.height
-            let distance: CGFloat = 10
+            let distance: CGFloat = 10.0
 
             if y > height + distance {
                 self?.showSpinner()

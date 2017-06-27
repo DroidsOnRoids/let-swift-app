@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpeakersTableViewCell: UITableViewCell {
+final class SpeakersTableViewCell: UITableViewCell {
 
     static let cellIdentifier = String(describing: SpeakersTableViewCell.self)
 
