@@ -119,13 +119,12 @@ final class SpeakersViewController: AppViewController {
         viewModel.errorOnLoadingMoreSpeakersObservable.subscribeNext { [weak self] in
             guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
 
-            UIView.animate(withDuration: 0.25,
-                           animations: {
-                                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
-                            },
-                           completion: { _ in
-                                self?.tableView.tableFooterView = UIView()
-                            })
+            UIView.animate(withDuration: 0.25, animations: {
+                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
+            },
+            completion: { _ in
+                self?.tableView.tableFooterView = UIView()
+            })
         }
         .add(to: disposeBag)
 
