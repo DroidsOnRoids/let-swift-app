@@ -53,10 +53,11 @@ final class SpeakersViewController: AppViewController {
         tableView.setHeaderColor(.paleGrey)
         tableView.backgroundColor = .paleGrey
 
-        let headerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 231.0)
-        let latestSpeakersHeaderView = LatestSpeakersHeaderView(frame: headerFrame)
-        latestSpeakersHeaderView.viewModel = viewModel
-        tableView.tableHeaderView = latestSpeakersHeaderView
+        let headerView = LatestSpeakersHeaderView()
+        headerView.viewModel = viewModel
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableHeaderView = headerView
+        headerView.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
 
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor

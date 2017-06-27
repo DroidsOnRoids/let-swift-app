@@ -24,7 +24,7 @@ final class LatestSpeakersHeaderView: DesignableView {
     @IBOutlet private weak var latestSpeakersTitleLabel: UILabel!
 
     private func setup() {
-        latestCollectionView.collectionViewLayout = AppCollectionViewFlowLayout(with: 180.0)
+        latestCollectionView.delegate = self
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
 
         latestSpeakersTitleLabel.text = localized("SPEAKERS_LATEST_TITLE").uppercased()
@@ -42,5 +42,11 @@ final class LatestSpeakersHeaderView: DesignableView {
             self?.viewModel.latestSpeakerCellDidTapWithIndexObservable.next(index.row)
         }
         .add(to: disposeBag)
+    }
+}
+
+extension LatestSpeakersHeaderView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width * 0.4, height: collectionView.bounds.height)
     }
 }
