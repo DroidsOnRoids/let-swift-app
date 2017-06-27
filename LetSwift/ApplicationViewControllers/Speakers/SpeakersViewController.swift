@@ -94,7 +94,7 @@ final class SpeakersViewController: AppViewController {
         }
         .add(to: disposeBag)
 
-        viewModel.noMoreSpeakersToLoad.subscribeNext { [weak self] in
+        viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
             guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
 
             UIView.animate(withDuration: 0.25,
@@ -122,7 +122,7 @@ final class SpeakersViewController: AppViewController {
 
             if y > height + distance {
                 self?.showSpinner()
-                self?.viewModel.tryToLoadMoreData.next()
+                self?.viewModel.tryToLoadMoreDataObservable.next()
             }
         }
         .add(to: disposeBag)

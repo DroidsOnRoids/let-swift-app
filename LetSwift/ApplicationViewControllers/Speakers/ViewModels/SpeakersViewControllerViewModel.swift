@@ -11,11 +11,10 @@ import Alamofire
 
 final class SpeakersViewControllerViewModel {
 
-    enum Constants {
+    private enum Constants {
         static let speakersOrderCurrent = "current"
+        static let speakersPerPage = 10
     }
-
-    typealias ResponseSpeaker = (index: Int, speaker: Speaker?)
 
     private let disposeBag = DisposeBag()
     private var currentPage = 1
@@ -25,8 +24,8 @@ final class SpeakersViewControllerViewModel {
     var speakerLoadDataRequestObservable = Observable<Void>()
     var tableViewStateObservable: Observable<AppContentState>
     var checkIfLastSpeakerObservable = Observable<Int>(-1)
-    var tryToLoadMoreData = Observable<Void>()
-    var noMoreSpeakersToLoad = Observable<Void>()
+    var tryToLoadMoreDataObservable = Observable<Void>()
+    var noMoreSpeakersToLoadObservable = Observable<Void>()
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
@@ -41,7 +40,7 @@ final class SpeakersViewControllerViewModel {
     private func setup() {
         speakerLoadDataRequestObservable.subscribeNext {
             //TODO: establish number of speakers per page
-            NetworkProvider.shared.speakersList(with: 1, perPage: 10, query: "", order: "current") { [weak self] response in
+            NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
                 switch response {
                 case let .success(responeObject):
                     self?.speakers.values = []
@@ -63,7 +62,7 @@ final class SpeakersViewControllerViewModel {
         }
         .add(to: disposeBag)
 
-        tryToLoadMoreData.subscribeNext { [weak self] in
+        tryToLoadMoreDataObservable.subscribeNext { [weak self] in
             self?.loadMoreData()
         }
         .add(to: disposeBag)
@@ -73,18 +72,18 @@ final class SpeakersViewControllerViewModel {
         guard pendingRequest == nil else { return }
 
         guard currentPage < totalPage || totalPage == -1 else {
-            noMoreSpeakersToLoad.next()
+            noMoreSpeakersToLoadObservable.next()
             return
         }
 
-        pendingRequest = NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: 10, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
+        pendingRequest = NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
             switch response {
             case let .success(responeObject):
                 self?.currentPage += 1
                 self?.speakers.append(responeObject.elements)
                 self?.totalPage = responeObject.page.pageCount
             default:
-                self?.noMoreSpeakersToLoad.next()
+                self?.noMoreSpeakersToLoadObservable.next()
             }
 
             self?.pendingRequest = nil
