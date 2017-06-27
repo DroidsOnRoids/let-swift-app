@@ -53,7 +53,9 @@ final class SpeakersViewController: AppViewController {
         tableView.backgroundColor = .paleGrey
 
         let headerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 231.0)
-        tableView.tableHeaderView = LatestSpeakersHeaderView(frame: headerFrame)
+        let latestSpeakersHeaderView = LatestSpeakersHeaderView(frame: headerFrame)
+        latestSpeakersHeaderView.viewModel = viewModel
+        tableView.tableHeaderView = latestSpeakersHeaderView
 
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor
@@ -108,7 +110,7 @@ final class SpeakersViewController: AppViewController {
         }
         .add(to: disposeBag)
 
-        viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
+        viewModel.errorOnLoadingMoreSpeakersObservable.subscribeNext { [weak self] in
             guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
 
             UIView.animate(withDuration: 0.25,
@@ -118,6 +120,11 @@ final class SpeakersViewController: AppViewController {
                            completion: { _ in
                                 self?.tableView.tableFooterView = UIView()
                             })
+        }
+        .add(to: disposeBag)
+
+        viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
+            self?.tableView.tableFooterView = UIView()
         }
         .add(to: disposeBag)
 

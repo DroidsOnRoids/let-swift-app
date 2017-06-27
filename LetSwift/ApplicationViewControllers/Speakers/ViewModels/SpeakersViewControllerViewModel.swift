@@ -27,10 +27,12 @@ final class SpeakersViewControllerViewModel {
     var checkIfLastSpeakerObservable = Observable<Int>(-1)
     var tryToLoadMoreDataObservable = Observable<Void>()
     var noMoreSpeakersToLoadObservable = Observable<Void>()
+    var errorOnLoadingMoreSpeakersObservable = Observable<Void>()
     var refreshDataObservable = Observable<Void>()
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
+    var latestSpeakers = [Speaker]().bindable
 
     init(delegate: SpeakersViewControllerDelegate?) {
         self.delegate = delegate
@@ -86,7 +88,7 @@ final class SpeakersViewControllerViewModel {
         NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
             switch response {
             case let .success(responseLatest):
-                print("fetched do sth with this")
+                self?.latestSpeakers.append(responseLatest.elements)
                 self?.tableViewStateObservable.next(.content)
             case .error:
                 self?.tableViewStateObservable.next(.error)
@@ -111,7 +113,7 @@ final class SpeakersViewControllerViewModel {
                 self?.speakers.append(responeObject.elements)
                 self?.totalPage = responeObject.page.pageCount
             default:
-                self?.noMoreSpeakersToLoadObservable.next()
+                self?.errorOnLoadingMoreSpeakersObservable.next()
             }
 
             self?.pendingRequest = nil

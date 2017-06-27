@@ -10,16 +10,16 @@ import UIKit
 
 final class LatestSpeakersHeaderView: DesignableView {
 
-    private let mockedSpeakers: [Speaker] = Speaker.from(MockLoader.speakersMock!)!
+    var viewModel: SpeakersViewControllerViewModel! {
+        didSet {
+            if viewModel != nil {
+                setup()
+            }
+        }
+    }
 
     @IBOutlet private weak var latestCollectionView: UICollectionView!
     @IBOutlet private weak var latestSpeakersTitleLabel: UILabel!
-
-    override func loadViewFromNib() {
-        super.loadViewFromNib()
-
-        setup()
-    }
 
     private func setup() {
         latestCollectionView.collectionViewLayout = AppCollectionViewFlowLayout(with: 180.0)
@@ -32,7 +32,7 @@ final class LatestSpeakersHeaderView: DesignableView {
     }
 
     private func reactiveSetup() {
-        Array(mockedSpeakers[0..<5]).bindable.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
+        viewModel.latestSpeakers.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
             cell.load(with: element)
         }))
     }
