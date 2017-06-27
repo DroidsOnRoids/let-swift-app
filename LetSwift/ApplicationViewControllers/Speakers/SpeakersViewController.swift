@@ -27,8 +27,8 @@ final class SpeakersViewController: AppViewController {
 
     @IBOutlet private weak var tableView: AppTableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-    private let sadFaceView = SadFaceView()
 
+    private let sadFaceView = SadFaceView()
     private let disposeBag = DisposeBag()
     private var viewModel: SpeakersViewControllerViewModel!
 
