@@ -50,7 +50,6 @@
 		7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */; };
 		7EB7442B1EF82C20008092DC /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */; };
 		7EB7442D1EF8FE67008092DC /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */; };
-		7EB7442F1EFA6C67008092DC /* AppCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442E1EFA6C67008092DC /* AppCollectionViewFlowLayout.swift */; };
 		7EB744331EFBE7EA008092DC /* SpeakersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744311EFBE7EA008092DC /* SpeakersTableViewCell.swift */; };
 		7EB744341EFBE7EA008092DC /* SpeakersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744321EFBE7EA008092DC /* SpeakersTableViewCell.xib */; };
 		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
@@ -238,7 +237,6 @@
 		7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
-		7EB7442E1EFA6C67008092DC /* AppCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		7EB744311EFBE7EA008092DC /* SpeakersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersTableViewCell.swift; sourceTree = "<group>"; };
 		7EB744321EFBE7EA008092DC /* SpeakersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersTableViewCell.xib; sourceTree = "<group>"; };
 		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -657,7 +655,6 @@
 				D3AE28931ECDA3EC00F29702 /* Accumulator.swift */,
 				D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */,
 				7EB744031EEE8466008092DC /* Debouncer.swift */,
-				7EB7442E1EFA6C67008092DC /* AppCollectionViewFlowLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1405,7 +1402,6 @@
 				D3E0ADA31ED563BC00270F0E /* SplashViewController.swift in Sources */,
 				D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */,
 				7E0842CD1ECF02A0003F7C96 /* NetworkRouter.swift in Sources */,
-				7EB7442F1EFA6C67008092DC /* AppCollectionViewFlowLayout.swift in Sources */,
 				D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */,
 				D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */,
 				7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */,
