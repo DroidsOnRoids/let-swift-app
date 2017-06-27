@@ -2,7 +2,7 @@
 //  SpeakersViewController.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 21.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 21.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
@@ -61,7 +61,19 @@ final class SpeakersViewController: AppViewController {
 
         tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
 
+        setupPullToRefresh()
         reactiveSetup()
+    }
+
+    private func setupPullToRefresh() {
+        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
+            self?.viewModel.refreshDataObservable.next()
+        }
+
+        viewModel.refreshDataObservable.subscribeCompleted { [weak self] in
+            self?.sadFaceView.scrollView?.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
     }
 
     private func showSpinner() {
@@ -87,7 +99,9 @@ final class SpeakersViewController: AppViewController {
                 weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -(64.0 + weakSelf.tableView.contentInset.top)), animated: false)
                 weakSelf.tableView.overlayView = nil
             case .error:
-                weakSelf.tableView.overlayView = weakSelf.sadFaceView
+                if !(weakSelf.tableView.overlayView is SadFaceView) {
+                    weakSelf.tableView.overlayView = weakSelf.sadFaceView
+                }
             case .loading:
                 weakSelf.tableView.overlayView = SpinnerView()
             }
@@ -102,7 +116,7 @@ final class SpeakersViewController: AppViewController {
                                 spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
                             },
                            completion: { _ in
-                                self?.tableView.tableFooterView = nil
+                                self?.tableView.tableFooterView = UIView()
                             })
         }
         .add(to: disposeBag)

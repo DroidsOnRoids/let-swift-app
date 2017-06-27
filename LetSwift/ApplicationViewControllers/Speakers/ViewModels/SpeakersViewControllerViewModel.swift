@@ -26,6 +26,7 @@ final class SpeakersViewControllerViewModel {
     var checkIfLastSpeakerObservable = Observable<Int>(-1)
     var tryToLoadMoreDataObservable = Observable<Void>()
     var noMoreSpeakersToLoadObservable = Observable<Void>()
+    var refreshDataObservable = Observable<Void>()
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
@@ -38,19 +39,8 @@ final class SpeakersViewControllerViewModel {
     }
 
     private func setup() {
-        speakerLoadDataRequestObservable.subscribeNext {
-            NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
-                switch response {
-                case let .success(responeObject):
-                    self?.speakers.values = []
-                    self?.speakers.append(responeObject.elements)
-                    self?.totalPage = responeObject.page.pageCount
-                    self?.tableViewStateObservable.next(.content)
-                    self?.currentPage = 1
-                case .error:
-                    self?.tableViewStateObservable.next(.error)
-                }
-            }
+        speakerLoadDataRequestObservable.subscribeNext { [weak self] in
+            self?.loadInitialData()
         }
         .add(to: disposeBag)
 
@@ -65,6 +55,30 @@ final class SpeakersViewControllerViewModel {
             self?.loadMoreData()
         }
         .add(to: disposeBag)
+
+        refreshDataObservable.subscribeNext { [weak self] in
+            self?.loadInitialData()
+        }
+        .add(to: disposeBag)
+    }
+
+    private func loadInitialData() {
+        guard pendingRequest == nil else { return }
+
+        pendingRequest = NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
+            switch response {
+            case let .success(responeObject):
+                self?.speakers.values = []
+                self?.speakers.append(responeObject.elements)
+                self?.totalPage = responeObject.page.pageCount
+                self?.tableViewStateObservable.next(.content)
+                self?.currentPage = 1
+            case .error:
+                self?.tableViewStateObservable.next(.error)
+            }
+            self?.refreshDataObservable.complete()
+            self?.pendingRequest = nil
+        }
     }
 
     private func loadMoreData() {
