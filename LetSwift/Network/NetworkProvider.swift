@@ -22,6 +22,8 @@ struct NetworkProvider {
         static let events = "events"
         static let event = "event"
         static let speakers = "speakers"
+        static let query = "query"
+        static let order = "order"
     }
 
     private init() {
@@ -41,8 +43,12 @@ struct NetworkProvider {
         return request
     }
 
-    @discardableResult func speakersList(with page: Int, perPage: Int, completionHandler: @escaping (NetworkResponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
-        let request = alamofireManager.request(NetworkRouter.speakersList([Constants.perPage: perPage, Constants.page: page]))
+    @discardableResult func speakersList(with page: Int, perPage: Int = 5, query: String = "", order: String = "", completionHandler: @escaping (NetworkResponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
+        let params: [String: Any] = [Constants.perPage: perPage,
+                                     Constants.page: page,
+                                     Constants.query: query,
+                                     Constants.order: order]
+        let request = alamofireManager.request(NetworkRouter.speakersList(params))
         request.responseJSON { response in
             response.result.responsePage(for: Constants.speakers, completionHandler: completionHandler)
         }

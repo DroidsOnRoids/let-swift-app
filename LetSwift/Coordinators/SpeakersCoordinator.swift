@@ -26,4 +26,10 @@ final class SpeakersCoordinator: Coordinator, Startable {
     }
 }
 
-extension SpeakersCoordinator: SpeakersViewControllerDelegate { }
+extension SpeakersCoordinator: SpeakersViewControllerDelegate {
+    func presentSpeakerDetailsScreen() {
+        let viewController = SpeakerDetailsViewController()
+
+        navigationViewController.pushViewController(viewController, animated: true)
+    }
+}

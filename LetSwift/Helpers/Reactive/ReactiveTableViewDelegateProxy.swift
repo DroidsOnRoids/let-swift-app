@@ -11,6 +11,7 @@ import UIKit
 final class ReactiveTableViewDelegateProxy: NSObject, UITableViewDelegate {
 
     var itemDidSelectObservable = Observable<IndexPath>(IndexPath(row: 0, section: 0))
+    var scrollViewWillEndDraggingObservable = Observable<UIScrollView?>(nil)
 
     private enum Constants {
         static let delegateAssociatedTag = UnsafeRawPointer(UnsafeMutablePointer<UInt8>.allocate(capacity: 1))
@@ -57,5 +58,9 @@ final class ReactiveTableViewDelegateProxy: NSObject, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         itemDidSelectObservable.next(indexPath)
+    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        scrollViewWillEndDraggingObservable.next(scrollView)
     }
 }

@@ -2,26 +2,17 @@
 //  SpeakersViewController.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 21.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 21.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
 
 protocol SpeakersViewControllerDelegate: class {
+    func presentSpeakerDetailsScreen()
 }
 
 final class SpeakersViewController: AppViewController {
-
-    private enum EventCellIdentifier: String {
-        case latestSpeakers = "LatestSpeakersTableViewCell"
-    }
-
-    private var allCells: [EventCellIdentifier] {
-        return [.latestSpeakers]
-    }
-
-    private lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
 
     override var viewControllerTitleKey: String? {
         return "SPEAKERS_TITLE"
@@ -35,9 +26,11 @@ final class SpeakersViewController: AppViewController {
         return true
     }
 
+    @IBOutlet private weak var tableView: AppTableView!
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var tableView: UITableView!
 
+    private let sadFaceView = SadFaceView()
+    private let disposeBag = DisposeBag()
     private var viewModel: SpeakersViewControllerViewModel!
 
     convenience init(viewModel: SpeakersViewControllerViewModel) {
@@ -52,41 +45,116 @@ final class SpeakersViewController: AppViewController {
     }
 
     private func setup() {
-        tableView.tableFooterView = UIView()
+        showSpinner()
+
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.setHeaderColor(.paleGrey)
-        tableView.tableHeaderView = searchBar
         tableView.backgroundColor = .paleGrey
-        tableView.setFooterColor(.white)
+
+        let headerView = LatestSpeakersHeaderView()
+        headerView.viewModel = viewModel
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableHeaderView = headerView
+        headerView.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
 
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor.paleGrey.cgColor
         searchBar.placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
 
-        tableView.registerCells(allCells.map { $0.rawValue })
+        tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
 
+        setupPullToRefresh()
         reactiveSetup()
+    }
+
+    private func setupPullToRefresh() {
+        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
+            self?.viewModel.refreshDataObservable.next()
+        }
+
+        viewModel.refreshDataObservable.subscribeCompleted { [weak self] in
+            self?.sadFaceView.scrollView?.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
+    }
+
+    private func showSpinner() {
+        let footerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 55.0)
+        let spinner = SpinnerView(frame: footerFrame)
+        spinner.image = #imageLiteral(resourceName: "WhiteSpinner")
+        spinner.backgroundColor = .paleGrey
+        tableView.tableFooterView = spinner
     }
     
     private func reactiveSetup() {
-        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
-            let indexPath = IndexPath(row: index, section: 0)
-            let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
-            self?.dispatchCellSetup(element: element, cell: cell, index: index)
-
-            return cell
-        }))
-    }
-
-    private func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
-        switch element {
-        case .latestSpeakers:
-            setupLatestSpeakers(cell: cell as! LatestSpeakersTableViewCell)
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] index in
+            self?.viewModel.speakerCellDidTapWithIndexObservable.next(index.row)
         }
-    }
+        .add(to: disposeBag)
 
-    private func setupLatestSpeakers(cell: LatestSpeakersTableViewCell) {
-        cell.removeSeparators()
+        viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self) ({ [weak self] index, speaker, cell in
+            cell.load(with: speaker)
+            self?.viewModel.checkIfLastSpeakerObservable.next(index)
+        }))
+
+        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
+            guard let weakSelf = self else { return }
+
+            switch state {
+            case .content:
+                weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
+                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
+                weakSelf.tableView.overlayView = nil
+            case .error:
+                if !(weakSelf.tableView.overlayView is SadFaceView) {
+                    weakSelf.tableView.overlayView = weakSelf.sadFaceView
+                }
+            case .loading:
+                weakSelf.tableView.overlayView = SpinnerView()
+            }
+        }
+        .add(to: disposeBag)
+
+        viewModel.errorOnLoadingMoreSpeakersObservable.subscribeNext { [weak self] in
+            guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
+
+            UIView.animate(withDuration: 0.25, animations: {
+                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
+            },
+            completion: { _ in
+                self?.tableView.tableFooterView = UIView()
+            })
+        }
+        .add(to: disposeBag)
+
+        viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
+            self?.tableView.tableFooterView = UIView()
+        }
+        .add(to: disposeBag)
+
+        viewModel.speakerLoadDataRequestObservable.next()
+
+        tableView.scrollViewWillEndDraggingObservable.subscribeNext { [weak self] scrollView in
+            guard let scrollView = scrollView else { return }
+
+            let checkIfTableViewEnd: () -> Bool = {
+                let offset = scrollView.contentOffset
+                let bounds = scrollView.bounds
+                let size = scrollView.contentSize
+                let inset = scrollView.contentInset
+                let y = offset.y + bounds.size.height + inset.bottom
+                let height = size.height
+                let distance: CGFloat = 10.0
+
+                return y > height + distance
+            }
+
+            if checkIfTableViewEnd() {
+                self?.showSpinner()
+                self?.viewModel.tryToLoadMoreDataObservable.next()
+            }
+        }
+        .add(to: disposeBag)
     }
 }
