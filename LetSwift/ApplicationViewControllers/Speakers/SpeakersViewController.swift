@@ -95,7 +95,15 @@ final class SpeakersViewController: AppViewController {
         .add(to: disposeBag)
 
         viewModel.noMoreSpeakersToLoad.subscribeNext { [weak self] in
-            self?.tableView.tableFooterView = nil
+            guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
+
+            UIView.animate(withDuration: 0.25,
+                           animations: {
+                                spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
+                            },
+                           completion: { _ in
+                                self?.tableView.tableFooterView = nil
+                            })
         }
         .add(to: disposeBag)
 

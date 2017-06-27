@@ -7,14 +7,20 @@
 //
 
 import Foundation
+import Alamofire
 
 final class SpeakersViewControllerViewModel {
+
+    enum Constants {
+        static let speakersOrderCurrent = "current"
+    }
 
     typealias ResponseSpeaker = (index: Int, speaker: Speaker?)
 
     private let disposeBag = DisposeBag()
     private var currentPage = 1
     private var totalPage = -1
+    private var pendingRequest: Request?
 
     var speakerLoadDataRequestObservable = Observable<Void>()
     var tableViewStateObservable: Observable<AppContentState>
@@ -64,12 +70,14 @@ final class SpeakersViewControllerViewModel {
     }
 
     private func loadMoreData() {
+        guard pendingRequest == nil else { return }
+
         guard currentPage < totalPage || totalPage == -1 else {
             noMoreSpeakersToLoad.next()
             return
         }
 
-        NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: 10, query: "", order: "current") { [weak self] response in
+        pendingRequest = NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: 10, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
             switch response {
             case let .success(responeObject):
                 self?.currentPage += 1
@@ -78,6 +86,8 @@ final class SpeakersViewControllerViewModel {
             default:
                 self?.noMoreSpeakersToLoad.next()
             }
+
+            self?.pendingRequest = nil
         }
     }
 }
