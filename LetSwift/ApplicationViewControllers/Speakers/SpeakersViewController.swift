@@ -27,7 +27,7 @@ final class SpeakersViewController: AppViewController {
     }
 
     @IBOutlet private weak var tableView: AppTableView!
-    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var searchBar: ReactiveSearchBar!
 
     private let sadFaceView = SadFaceView()
     private let disposeBag = DisposeBag()
@@ -54,6 +54,7 @@ final class SpeakersViewController: AppViewController {
 
         let headerView = LatestSpeakersHeaderView()
         headerView.viewModel = viewModel
+        headerView.clipsToBounds = true
         headerView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerView
         headerView.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
@@ -149,6 +150,38 @@ final class SpeakersViewController: AppViewController {
             if checkIfTableViewEnd() {
                 self?.showSpinner()
                 self?.viewModel.tryToLoadMoreDataObservable.next()
+            }
+        }
+        .add(to: disposeBag)
+
+        searchBar.searchBarWillStartEditingObservable.subscribeNext { [weak self] in
+            if self?.tableView.isTableHeaderViewVisible ?? false {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self?.tableView.tableHeaderView?.alpha = 0.0
+                }, completion: { _ in
+                    self?.tableView.tableHeaderView?.alpha = 0.0
+                    self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+                    self?.tableView.beginUpdates()
+                    self?.tableView.endUpdates()
+                })
+            } else {
+                self?.tableView.tableHeaderView?.alpha = 0.0
+                self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+            }
+        }
+        .add(to: disposeBag)
+
+        searchBar.searchBarCancelButtonClicked.subscribeNext { [weak self] in
+            if self?.tableView.isTableHeaderViewVisible ?? false {
+                self?.tableView.tableHeaderView?.transform = .identity
+                UIView.animate(withDuration: 0.25) {
+                    self?.tableView.tableHeaderView?.alpha = 1.0
+                    self?.tableView.beginUpdates()
+                    self?.tableView.endUpdates()
+                }
+            } else {
+                self?.tableView.tableHeaderView?.transform = .identity
+                self?.tableView.tableHeaderView?.alpha = 1.0
             }
         }
         .add(to: disposeBag)

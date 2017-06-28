@@ -13,6 +13,7 @@ final class ReactiveSearchBar: UISearchBar {
     var searchBarTextDidEndEditingObservable = Observable<Void>()
     var searchBarSearchButtonClickedObservable = Observable<String>("")
     var searchBarCancelButtonClicked = Observable<Void>()
+    var searchBarWillStartEditingObservable = Observable<Void>()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,6 +39,7 @@ final class ReactiveSearchBar: UISearchBar {
 
 extension ReactiveSearchBar: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        searchBarWillStartEditingObservable.next()
         setShowsCancelButton(true, animated: true)
         return true
     }
