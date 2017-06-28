@@ -58,10 +58,6 @@ final class SpeakersViewController: AppViewController {
         tableView.tableHeaderView = headerView
         headerView.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
 
-        searchBar.layer.borderWidth = 1.0
-        searchBar.layer.borderColor = UIColor.paleGrey.cgColor
-        searchBar.placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
-
         tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
 
         setupPullToRefresh()
