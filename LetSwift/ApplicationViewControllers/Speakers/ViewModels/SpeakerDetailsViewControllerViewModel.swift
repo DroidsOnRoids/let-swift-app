@@ -8,6 +8,9 @@
 
 final class SpeakerDetailsViewControllerViewModel {
     
+    var speakerObservable = Observable<Speaker?>(nil)
+    var tableViewStateObservable = Observable<AppContentState>(.loading)
+    
     private let disposeBag = DisposeBag()
     private let speakerId: Int
     
@@ -17,15 +20,24 @@ final class SpeakerDetailsViewControllerViewModel {
     }
     
     private func setup() {
-        print(speakerId)
-        
-        NetworkProvider.shared.speakerDetails(with: speakerId) { response in
-            if case .success(let speaker) = response {
-                print(speaker)
-            }
+        speakerObservable.subscribeNext { [weak self] speaker in
+            self?.tableViewStateObservable.next(.content)
             
-            print(response)
-            //self?.eventsListRefreshObservable.complete()
+            print(speaker)
+        }
+        .add(to: disposeBag)
+        
+        loadInitialData()
+    }
+    
+    private func loadInitialData() {
+        NetworkProvider.shared.speakerDetails(with: speakerId) { [weak self] response in
+            switch response {
+            case let .success(speaker):
+                self?.speakerObservable.next(speaker)
+            case .error:
+                self?.tableViewStateObservable.next(.error)
+            }
         }
     }
 }
