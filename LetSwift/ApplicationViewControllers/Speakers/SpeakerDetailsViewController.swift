@@ -21,11 +21,14 @@ final class SpeakerDetailsViewController: AppViewController {
     @IBOutlet private weak var tableView: AppTableView!
     
     private var viewModel: SpeakerDetailsViewControllerViewModel!
+    private lazy var bindableCells: BindableArray<String> = self.allCells.bindable
     
     private let disposeBag = DisposeBag()
     private let sadFaceView = SadFaceView()
     private let allCells = [
-        SpeakerHeaderTableViewCell.cellIdentifier
+        SpeakerHeaderTableViewCell.cellIdentifier,
+        SpeakerWebsitesTableViewCell.cellIdentifier,
+        SpeakerBioTableViewCell.cellIdentifier
     ]
     
     convenience init(viewModel: SpeakerDetailsViewControllerViewModel) {
@@ -42,22 +45,27 @@ final class SpeakerDetailsViewController: AppViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.setFooterColor(.paleGrey)
-        //tableView.setHeaderColor(.lightBlueGrey)
+        // TODO: tableView.setHeaderColor(.lightBlueGrey)
         tableView.registerCells(allCells)
         
         reactiveSetup()
     }
     
     private func reactiveSetup() {
-        /*viewModel.speakerObservable.subscribeNext { [weak self] speaker in
-            
+        viewModel.speakerObservable.subscribeNext { [weak self] speaker in
+            if let shouldShowWebsites = speaker?.hasAnyWebsites, !shouldShowWebsites,
+                let index = self?.bindableCells.values.index(of: SpeakerWebsitesTableViewCell.cellIdentifier) {
+                self?.bindableCells.remove(at: index)
+            } else {
+                self?.tableView.reloadData()
+            }
         }
-        .add(to: disposeBag)*/
+        .add(to: disposeBag)
         
-        allCells.bindable.bind(to: tableView.items() ({ [weak self] tableView, index, element in
+        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element, for: indexPath)
-            //cell.layoutMargins = UIEdgeInsets.zero
+            cell.layoutMargins = UIEdgeInsets.zero
             
             self?.dispatchCellSetup(element: element, cell: cell, index: index)
             
@@ -80,14 +88,32 @@ final class SpeakerDetailsViewController: AppViewController {
     private func dispatchCellSetup(element: String, cell: UITableViewCell, index: Int) {
         switch element {
         case SpeakerHeaderTableViewCell.cellIdentifier:
-            self.setup(headerCell: cell as! SpeakerHeaderTableViewCell)
+            setup(headerCell: cell as! SpeakerHeaderTableViewCell)
+        case SpeakerBioTableViewCell.cellIdentifier:
+            setup(bioCell: cell as! SpeakerBioTableViewCell)
         default: break
         }
     }
     
     private func setup(headerCell cell: SpeakerHeaderTableViewCell) {
         viewModel.speakerObservable.subscribeNext { speaker in
+            guard let speaker = speaker else { return }
             
+            cell.avatarURL = speaker.avatar?.thumb
+            cell.speakerName = speaker.name
+            cell.speakerJob = speaker.job
+            
+            if speaker.hasAnyWebsites {
+                cell.removeSeparators()
+            }
+        }
+        .add(to: disposeBag)
+    }
+    
+    private func setup(bioCell cell: SpeakerBioTableViewCell) {
+        viewModel.speakerObservable.subscribeNext { speaker in
+            cell.speakerName = speaker?.firstName
+            cell.speakerBio = speaker?.bio
         }
         .add(to: disposeBag)
     }

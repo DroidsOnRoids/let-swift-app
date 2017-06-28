@@ -28,7 +28,7 @@ final class SpeakersCoordinator: Coordinator, Startable {
 
 extension SpeakersCoordinator: SpeakersViewControllerDelegate {
     func presentSpeakerDetailsScreen(with id: Int) {
-        let viewModel = SpeakerDetailsViewControllerViewModel(with: id % 2 == 0 ? 24 : 0)
+        let viewModel = SpeakerDetailsViewControllerViewModel(with: id)
         let viewController = SpeakerDetailsViewController(viewModel: viewModel)
 
         navigationViewController.pushViewController(viewController, animated: true)

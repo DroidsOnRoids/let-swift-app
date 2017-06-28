@@ -71,6 +71,10 @@
 		D30D3D021F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D011F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift */; };
 		D30D3D081F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D061F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift */; };
 		D30D3D091F03C6570056F8A7 /* SpeakerHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30D3D071F03C6570056F8A7 /* SpeakerHeaderTableViewCell.xib */; };
+		D30D3D0D1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D0B1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.swift */; };
+		D30D3D0E1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30D3D0C1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.xib */; };
+		D30D3D121F03D09D0056F8A7 /* SpeakerBioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D101F03D09D0056F8A7 /* SpeakerBioTableViewCell.swift */; };
+		D30D3D131F03D09D0056F8A7 /* SpeakerBioTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D30D3D111F03D09D0056F8A7 /* SpeakerBioTableViewCell.xib */; };
 		D31216381EB2774F003674C7 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31216371EB2774F003674C7 /* UIImageExtension.swift */; };
 		D319AD851EA62487001ECE0B /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D319AD841EA62487001ECE0B /* ArrayExtension.swift */; };
 		D31B084C1EB1285600C2D229 /* EventSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */; };
@@ -260,6 +264,10 @@
 		D30D3D011F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D30D3D061F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		D30D3D071F03C6570056F8A7 /* SpeakerHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		D30D3D0B1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerWebsitesTableViewCell.swift; sourceTree = "<group>"; };
+		D30D3D0C1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerWebsitesTableViewCell.xib; sourceTree = "<group>"; };
+		D30D3D101F03D09D0056F8A7 /* SpeakerBioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerBioTableViewCell.swift; sourceTree = "<group>"; };
+		D30D3D111F03D09D0056F8A7 /* SpeakerBioTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerBioTableViewCell.xib; sourceTree = "<group>"; };
 		D31216371EB2774F003674C7 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D31B084A1EB1285600C2D229 /* EventSummaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryCell.swift; sourceTree = "<group>"; };
@@ -518,6 +526,8 @@
 		7EB7440F1EF149AF008092DC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D30D3D0F1F03D0650056F8A7 /* SpeakerBioTableViewCell */,
+				D30D3D0A1F03CE100056F8A7 /* SpeakerWebsitesTableViewCell */,
 				D30D3D051F03C6280056F8A7 /* SpeakerHeaderTableViewCell */,
 				7EB744301EFBE7A4008092DC /* SpeakersTableViewCell */,
 				7EB7441E1EF15288008092DC /* LatestSpeakerCollectionViewCell */,
@@ -728,6 +738,24 @@
 				D30D3D071F03C6570056F8A7 /* SpeakerHeaderTableViewCell.xib */,
 			);
 			path = SpeakerHeaderTableViewCell;
+			sourceTree = "<group>";
+		};
+		D30D3D0A1F03CE100056F8A7 /* SpeakerWebsitesTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D30D3D0B1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.swift */,
+				D30D3D0C1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.xib */,
+			);
+			path = SpeakerWebsitesTableViewCell;
+			sourceTree = "<group>";
+		};
+		D30D3D0F1F03D0650056F8A7 /* SpeakerBioTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D30D3D101F03D09D0056F8A7 /* SpeakerBioTableViewCell.swift */,
+				D30D3D111F03D09D0056F8A7 /* SpeakerBioTableViewCell.xib */,
+			);
+			path = SpeakerBioTableViewCell;
 			sourceTree = "<group>";
 		};
 		D319AD7A1EA60F67001ECE0B /* Login */ = {
@@ -1229,6 +1257,7 @@
 				7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */,
 				7E52E6701F01318F0080EE8D /* LatestSpeakersHeaderView.xib in Resources */,
 				D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */,
+				D30D3D131F03D09D0056F8A7 /* SpeakerBioTableViewCell.xib in Resources */,
 				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D341A1911EDE936F0066E965 /* SplashViewController.xib in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
@@ -1247,6 +1276,7 @@
 				7EB744221EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib in Resources */,
 				D34CCF601EC5AC9A00EFD3E4 /* SpeakerCardView.xib in Resources */,
 				7EB744341EFBE7EA008092DC /* SpeakersTableViewCell.xib in Resources */,
+				D30D3D0E1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.xib in Resources */,
 				7EA48D4F1EADD4CE00CEC845 /* ShadowMask.png in Resources */,
 				D3CFAE7D1EE6A1840009E4EF /* SinglePhotoCell.xib in Resources */,
 				D3381F3F1EBC8DAC00453EB9 /* LaunchScreen.xib in Resources */,
@@ -1431,6 +1461,7 @@
 				7EF34FED1ED3308200517683 /* NetworkPage.swift in Sources */,
 				D3AE28901ECD9ECB00F29702 /* DisposeBag.swift in Sources */,
 				D3CFAE7F1EE6BFF10009E4EF /* URLExtension.swift in Sources */,
+				D30D3D0D1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.swift in Sources */,
 				D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */,
 				D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
@@ -1459,6 +1490,7 @@
 				7EB744331EFBE7EA008092DC /* SpeakersTableViewCell.swift in Sources */,
 				7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */,
 				7EA48D531EADD53D00CEC845 /* StaticImageCell.swift in Sources */,
+				D30D3D121F03D09D0056F8A7 /* SpeakerBioTableViewCell.swift in Sources */,
 				D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 				D3AE28921ECD9F8000F29702 /* DisposingObject.swift in Sources */,

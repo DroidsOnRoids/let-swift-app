@@ -9,6 +9,7 @@
 final class SpeakerDetailsViewControllerViewModel {
     
     var speakerObservable = Observable<Speaker?>(nil)
+    var areWebsitesVisibleObservable = Observable<Bool>(false)
     var tableViewStateObservable = Observable<AppContentState>(.loading)
     
     private let disposeBag = DisposeBag()
@@ -22,8 +23,6 @@ final class SpeakerDetailsViewControllerViewModel {
     private func setup() {
         speakerObservable.subscribeNext { [weak self] speaker in
             self?.tableViewStateObservable.next(.content)
-            
-            print(speaker)
         }
         .add(to: disposeBag)
         

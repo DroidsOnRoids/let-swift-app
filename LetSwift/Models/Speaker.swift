@@ -35,4 +35,13 @@ struct Speaker: Mappable {
         twitterUrl = map.optionalFrom("twitter_url")
         talks = map.optionalFrom("talks") ?? []
     }
+    
+    var hasAnyWebsites: Bool {
+        let websites: [Any?] = [githubUrl, websiteUrl, twitterUrl, email]
+        return !websites.filter { $0 != nil }.isEmpty
+    }
+    
+    var firstName: String {
+        return name.components(separatedBy: " ").first!
+    }
 }
