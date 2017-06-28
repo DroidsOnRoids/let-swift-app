@@ -16,11 +16,23 @@ struct Speaker: Mappable {
     let job: String?
     let bio: String?
     
+    let email: String?
+    let githubUrl: URL?
+    let websiteUrl: URL?
+    let twitterUrl: URL?
+    let talks: [Talk]
+    
     init(map: Mapper) throws {
         try id = map.from("id")
         avatar = map.optionalFrom("avatar")
         try name = map.from("name")
         job = map.optionalFrom("job")
         bio = map.optionalFrom("bio")
+        
+        email = map.optionalFrom("email")
+        githubUrl = map.optionalFrom("github_url")
+        websiteUrl = map.optionalFrom("website_url")
+        twitterUrl = map.optionalFrom("twitter_url")
+        talks = map.optionalFrom("talks") ?? []
     }
 }

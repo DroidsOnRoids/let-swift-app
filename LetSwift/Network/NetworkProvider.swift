@@ -22,6 +22,7 @@ struct NetworkProvider {
         static let events = "events"
         static let event = "event"
         static let speakers = "speakers"
+        static let speaker = "speaker"
         static let query = "query"
         static let order = "order"
     }
@@ -53,6 +54,15 @@ struct NetworkProvider {
             response.result.responsePage(for: Constants.speakers, completionHandler: completionHandler)
         }
 
+        return request
+    }
+    
+    @discardableResult func speakerDetails(with id: Int, completionHandler: @escaping (NetworkResponse<Speaker>) -> ()) -> DataRequest {
+        let request = alamofireManager.request(NetworkRouter.speakerDetails(id))
+        request.responseJSON { response in
+            response.result.responseObject(for: Constants.speaker, completionHandler: completionHandler)
+        }
+        
         return request
     }
 
