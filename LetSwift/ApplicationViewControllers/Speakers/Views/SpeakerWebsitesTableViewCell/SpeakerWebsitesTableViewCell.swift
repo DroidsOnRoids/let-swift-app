@@ -15,8 +15,10 @@ final class SpeakerWebsitesTableViewCell: UITableViewCell, SpeakerLoadable {
     @IBOutlet private weak var stackView: UIStackView!
     
     func load(with speaker: Speaker) {
+        let showLabel = speaker.websites.count <= 2
         speaker.websites.forEach { website in
-            stackView.addArrangedSubview(WebsiteView(website: website, showLabel: false))
+            let websiteView = WebsiteView(website: website, showLabel: showLabel)
+            stackView.addArrangedSubview(websiteView)
         }
     }
 }

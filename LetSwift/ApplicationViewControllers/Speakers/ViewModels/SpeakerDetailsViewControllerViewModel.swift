@@ -6,19 +6,6 @@
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
-import Foundation
-
-extension SpeakerWebsite {
-    func open() {
-        switch self {
-        case .github(let url), .website(let url), .twitter(let url):
-            print("Opening URL: \(url)")
-        case .email(let email):
-            print("Opening e-mail: \(email)")
-        }
-    }
-}
-
 final class SpeakerDetailsViewControllerViewModel {
     
     var speakerObservable = Observable<Speaker?>(nil)
