@@ -67,6 +67,7 @@
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D3006AFD1EBC623B00716C23 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */; };
 		D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006B021EBC845300716C23 /* UIButtonExtension.swift */; };
+		D309AFCB1F04F16B00BB679E /* SpeakerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */; };
 		D30B0C3A1EFBB4C200765AC4 /* PhotoSliderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30B0C391EFBB4C200765AC4 /* PhotoSliderAnimator.swift */; };
 		D30D3D021F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D011F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift */; };
 		D30D3D081F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D061F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift */; };
@@ -260,6 +261,7 @@
 		7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersToBeAnnouncedCell.xib; sourceTree = "<group>"; };
 		D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		D3006B021EBC845300716C23 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLoadable.swift; sourceTree = "<group>"; };
 		D30B0C391EFBB4C200765AC4 /* PhotoSliderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSliderAnimator.swift; sourceTree = "<group>"; };
 		D30D3D011F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D30D3D061F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -894,6 +896,7 @@
 				D33F07291EA9E94D00A74B9F /* SpeakersViewController.xib */,
 				D3840D971ECA0C2900975818 /* SpeakerDetailsViewController.swift */,
 				D3840D981ECA0C2900975818 /* SpeakerDetailsViewController.xib */,
+				D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */,
 			);
 			path = Speakers;
 			sourceTree = "<group>";
@@ -1455,6 +1458,7 @@
 				D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */,
 				7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */,
 				7ED1AC471EE04E7A00276F93 /* LoadingCollectionViewCell.swift in Sources */,
+				D309AFCB1F04F16B00BB679E /* SpeakerLoadable.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
 				D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */,
 				7EF34FEB1ED3305200517683 /* ResponseExtension.swift in Sources */,

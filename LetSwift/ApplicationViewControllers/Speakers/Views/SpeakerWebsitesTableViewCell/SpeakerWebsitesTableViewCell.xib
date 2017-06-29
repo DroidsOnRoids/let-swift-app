@@ -38,7 +38,7 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="20" id="ad6-40-dAK"/>
+                            <constraint firstAttribute="height" priority="999" constant="20" id="ad6-40-dAK"/>
                         </constraints>
                     </stackView>
                 </subviews>

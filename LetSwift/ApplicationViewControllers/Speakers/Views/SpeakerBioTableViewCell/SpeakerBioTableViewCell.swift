@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpeakerBioTableViewCell: UITableViewCell {
+final class SpeakerBioTableViewCell: UITableViewCell, SpeakerLoadable {
 
     static let cellIdentifier = String(describing: SpeakerBioTableViewCell.self)
     
@@ -17,9 +17,9 @@ final class SpeakerBioTableViewCell: UITableViewCell {
     
     fileprivate var aboutFormat = "%@"
     
-    func load(with data: Speaker) {
-        aboutLabel.text = data.firstName
-        bioLabel.attributedText = data.bio?.attributed(withSpacing: 0.9)
+    func load(with speaker: Speaker) {
+        aboutLabel.text = speaker.firstName
+        bioLabel.attributedText = speaker.bio?.attributed(withSpacing: 0.9)
     }
     
     override func awakeFromNib() {

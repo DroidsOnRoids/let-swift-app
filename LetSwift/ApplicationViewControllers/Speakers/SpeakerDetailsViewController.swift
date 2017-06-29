@@ -67,7 +67,7 @@ final class SpeakerDetailsViewController: AppViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: element, for: indexPath)
             cell.layoutMargins = UIEdgeInsets.zero
             
-            self?.dispatchCellSetup(element: element, cell: cell, index: index)
+            self?.setupCells(element: element, cell: cell, index: index)
             
             return cell
         }))
@@ -85,28 +85,10 @@ final class SpeakerDetailsViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    private func dispatchCellSetup(element: String, cell: UITableViewCell, index: Int) {
-        switch element {
-        case SpeakerHeaderTableViewCell.cellIdentifier:
-            setup(headerCell: cell as! SpeakerHeaderTableViewCell)
-        case SpeakerBioTableViewCell.cellIdentifier:
-            setup(bioCell: cell as! SpeakerBioTableViewCell)
-        default: break
-        }
-    }
-    
-    private func setup(headerCell cell: SpeakerHeaderTableViewCell) {
+    private func setupCells(element: String, cell: UITableViewCell, index: Int) {
         viewModel.speakerObservable.subscribeNext { speaker in
             guard let speaker = speaker else { return }
-            cell.load(with: speaker)
-        }
-        .add(to: disposeBag)
-    }
-    
-    private func setup(bioCell cell: SpeakerBioTableViewCell) {
-        viewModel.speakerObservable.subscribeNext { speaker in
-            guard let speaker = speaker else { return }
-            cell.load(with: speaker)
+            (cell as? SpeakerLoadable)?.load(with: speaker)
         }
         .add(to: disposeBag)
     }

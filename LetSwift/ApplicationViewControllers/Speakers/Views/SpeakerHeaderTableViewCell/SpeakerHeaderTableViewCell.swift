@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpeakerHeaderTableViewCell: UITableViewCell {
+final class SpeakerHeaderTableViewCell: UITableViewCell, SpeakerLoadable {
     
     private enum Constants {
         static let shadowInset: CGFloat = 10.0
@@ -27,12 +27,12 @@ final class SpeakerHeaderTableViewCell: UITableViewCell {
         setup()
     }
     
-    func load(with data: Speaker) {
-        avatarImageView.sd_setImage(with: data.avatar?.thumb, placeholderImage: #imageLiteral(resourceName: "PhotoMock"))
-        nameLabel.text = data.name
-        jobLabel.text = data.job
+    func load(with speaker: Speaker) {
+        avatarImageView.sd_setImage(with: speaker.avatar?.thumb, placeholderImage: #imageLiteral(resourceName: "PhotoMock"))
+        nameLabel.text = speaker.name
+        jobLabel.text = speaker.job
             
-        if data.hasAnyWebsites {
+        if speaker.hasAnyWebsites {
             removeSeparators()
         }
     }
