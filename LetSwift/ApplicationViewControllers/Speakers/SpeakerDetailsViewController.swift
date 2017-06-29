@@ -22,9 +22,9 @@ final class SpeakerDetailsViewController: AppViewController {
     
     private var viewModel: SpeakerDetailsViewControllerViewModel!
     private lazy var bindableCells: BindableArray<String> = self.allCells.bindable
-    
     private let disposeBag = DisposeBag()
     private let sadFaceView = SadFaceView()
+    
     private let allCells = [
         SpeakerHeaderTableViewCell.cellIdentifier,
         SpeakerWebsitesTableViewCell.cellIdentifier,

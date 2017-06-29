@@ -10,6 +10,12 @@ import UIKit
 
 final class SpeakerHeaderTableViewCell: UITableViewCell {
     
+    private enum Constants {
+        static let shadowInset: CGFloat = 10.0
+        static let shadowOffset: CGFloat = 30.0
+        static let shadowRadius: CGFloat = 15.0
+    }
+    
     static let cellIdentifier = String(describing: SpeakerHeaderTableViewCell.self)
 
     @IBOutlet private weak var avatarImageView: UIImageView!
@@ -52,8 +58,8 @@ final class SpeakerHeaderTableViewCell: UITableViewCell {
     private func setupAvatarShadow() {
         guard let shadowView = avatarImageView.superview else { return }
         
-        let shadowRect = shadowView.bounds.insetBy(dx: 10.0, dy: 30.0)
+        let shadowRect = shadowView.bounds.insetBy(dx: Constants.shadowInset, dy: Constants.shadowOffset)
         shadowView.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
-        shadowView.addShadow(offset: CGSize(width: 0.0, height: 30.0), radius: 15.0)
+        shadowView.addShadow(offset: CGSize(width: 0.0, height: Constants.shadowOffset), radius: Constants.shadowRadius)
     }
 }

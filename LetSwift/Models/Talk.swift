@@ -15,6 +15,7 @@ struct Talk: Mappable {
     let description: String?
     let tags: [String]?
     
+    // MARK: Extended fields
     let speaker: Speaker?
     let event: Event?
     
@@ -24,6 +25,7 @@ struct Talk: Mappable {
         description = map.optionalFrom("description")
         tags = map.optionalFrom("tags")
         
+        // MARK: Extended fields
         speaker = map.optionalFrom("speaker")
         event = map.optionalFrom("event")
     }
