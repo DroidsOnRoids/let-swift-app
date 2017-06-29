@@ -86,6 +86,7 @@
 		D31B08521EB12EA000C2D229 /* EventLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B08501EB12EA000C2D229 /* EventLocationCell.xib */; };
 		D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B08541EB1310500C2D229 /* EventTimeCell.swift */; };
 		D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B08551EB1310500C2D229 /* EventTimeCell.xib */; };
+		D31D86DA1F0545A9007D222C /* SpeakerWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
@@ -282,6 +283,7 @@
 		D31B08501EB12EA000C2D229 /* EventLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventLocationCell.xib; sourceTree = "<group>"; };
 		D31B08541EB1310500C2D229 /* EventTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTimeCell.swift; sourceTree = "<group>"; };
 		D31B08551EB1310500C2D229 /* EventTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeCell.xib; sourceTree = "<group>"; };
+		D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerWebsite.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */,
 				D3B505A21EDB3E5E00BBC6E5 /* AppContentState.swift */,
 				D3429D111EE0375100F18D30 /* ContactFieldState.swift */,
+				D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1411,6 +1414,7 @@
 				D35839A21EA7330C00C05AA6 /* LoginViewController.swift in Sources */,
 				7E0842C71ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift in Sources */,
 				D30B0C3A1EFBB4C200765AC4 /* PhotoSliderAnimator.swift in Sources */,
+				D31D86DA1F0545A9007D222C /* SpeakerWebsite.swift in Sources */,
 				D3E4AA751EE5577E00400015 /* ContactFieldProtocol.swift in Sources */,
 				7E0842CF1ECF0F79003F7C96 /* Page.swift in Sources */,
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
