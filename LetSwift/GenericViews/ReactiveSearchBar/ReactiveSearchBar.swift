@@ -41,6 +41,7 @@ extension ReactiveSearchBar: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBarWillStartEditingObservable.next()
         setShowsCancelButton(true, animated: true)
+        
         return true
     }
 

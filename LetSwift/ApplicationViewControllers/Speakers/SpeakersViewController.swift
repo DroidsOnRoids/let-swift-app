@@ -122,7 +122,6 @@ final class SpeakersViewController: AppViewController {
                 UIView.animate(withDuration: 0.25, animations: {
                     self?.tableView.tableHeaderView?.alpha = 0.0
                 }, completion: { _ in
-                    self?.tableView.tableHeaderView?.alpha = 0.0
                     self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
@@ -135,15 +134,14 @@ final class SpeakersViewController: AppViewController {
         .add(to: disposeBag)
 
         searchBar.searchBarCancelButtonClicked.subscribeNext { [weak self] in
+            self?.tableView.tableHeaderView?.transform = .identity
             if self?.tableView.isTableHeaderViewVisible ?? false {
-                self?.tableView.tableHeaderView?.transform = .identity
                 UIView.animate(withDuration: 0.25) {
                     self?.tableView.tableHeaderView?.alpha = 1.0
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
                 }
             } else {
-                self?.tableView.tableHeaderView?.transform = .identity
                 self?.tableView.tableHeaderView?.alpha = 1.0
             }
 
@@ -192,11 +190,11 @@ final class SpeakersViewController: AppViewController {
             let bounds = scrollView.bounds
             let size = scrollView.contentSize
             let inset = scrollView.contentInset
-            let currentOffset = offset.y + bounds.size.height + inset.bottom
+            let currentYOffset = offset.y + bounds.size.height + inset.bottom
             let height = size.height
             let distance: CGFloat = 10.0
 
-            if currentOffset > height + distance {
+            if currentYOffset > height + distance {
                 self?.showSpinner()
                 self?.viewModel.tryToLoadMoreDataObservable.next()
             }
