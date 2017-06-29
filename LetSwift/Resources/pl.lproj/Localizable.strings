@@ -34,6 +34,7 @@
 "SPEAKERS_DETAILS_TITLE" = "Prelegent";
 "SPEAKERS_LATEST_TITLE" = "Ostatni prelegenci";
 "SPEAKERS_SEARCH_PLACEHOLDER" = "Szukaj prelegentów";
+"SPEAKERS_ABOUT" = "%@";
 "CONTACT_TITLE" = "Kontakt";
 "CONTACT_TOPIC" = "Chcę";
 "CONTACT_NAME" = "Imię";

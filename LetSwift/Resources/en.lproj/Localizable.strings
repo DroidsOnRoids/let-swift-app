@@ -34,6 +34,7 @@
 "SPEAKERS_DETAILS_TITLE" = "Speaker details";
 "SPEAKERS_LATEST_TITLE" = "Latest Let Swift Speakers";
 "SPEAKERS_SEARCH_PLACEHOLDER" = "Search speakers";
+"SPEAKERS_ABOUT" = "About %@";
 "CONTACT_TITLE" = "Contact";
 "CONTACT_TOPIC" = "I want to";
 "CONTACT_NAME" = "Your name";

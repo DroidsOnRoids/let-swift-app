@@ -67,14 +67,14 @@ final class SpeakersViewControllerViewModel {
         .add(to: disposeBag)
 
         speakerCellDidTapWithIndexObservable.subscribeNext { [weak self] index in
-            //TODO: send id of speaker
-            self?.delegate?.presentSpeakerDetailsScreen()
+            guard let speakerId = self?.speakers.values[index].id else { return }
+            self?.delegate?.presentSpeakerDetailsScreen(with: speakerId)
         }
         .add(to: disposeBag)
 
         latestSpeakerCellDidTapWithIndexObservable.subscribeNext { [weak self] index in
-            //TODO: send id of latest speaker
-            self?.delegate?.presentSpeakerDetailsScreen()
+            guard let speakerId = self?.latestSpeakers.values[index].id else { return }
+            self?.delegate?.presentSpeakerDetailsScreen(with: speakerId)
         }
         .add(to: disposeBag)
     }

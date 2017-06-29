@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class LatestSpeakerCollectionViewCell: UICollectionViewCell {
+final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadable {
 
     static let cellIdentifier = String(describing: LatestSpeakerCollectionViewCell.self)
 

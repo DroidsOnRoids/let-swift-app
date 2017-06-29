@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SpeakersViewControllerDelegate: class {
-    func presentSpeakerDetailsScreen()
+    func presentSpeakerDetailsScreen(with id: Int)
 }
 
 final class SpeakersViewController: AppViewController {
