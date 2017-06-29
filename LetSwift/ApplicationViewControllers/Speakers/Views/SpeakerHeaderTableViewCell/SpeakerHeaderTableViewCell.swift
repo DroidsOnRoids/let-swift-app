@@ -22,33 +22,19 @@ final class SpeakerHeaderTableViewCell: UITableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var jobLabel: UILabel!
     
-    var avatarURL: URL? {
-        didSet {
-            avatarImageView.sd_setImage(with: avatarURL, placeholderImage: #imageLiteral(resourceName: "PhotoMock"))
-        }
-    }
-    
-    var speakerName: String? {
-        get {
-            return nameLabel.text
-        }
-        set {
-            nameLabel.text = newValue
-        }
-    }
-    
-    var speakerJob: String? {
-        get {
-            return jobLabel.text
-        }
-        set {
-            jobLabel.text = newValue
-        }
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
+    }
+    
+    func load(with data: Speaker) {
+        avatarImageView.sd_setImage(with: data.avatar?.thumb, placeholderImage: #imageLiteral(resourceName: "PhotoMock"))
+        nameLabel.text = data.name
+        jobLabel.text = data.job
+            
+        if data.hasAnyWebsites {
+            removeSeparators()
+        }
     }
     
     private func setup() {

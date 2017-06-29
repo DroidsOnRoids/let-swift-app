@@ -98,22 +98,15 @@ final class SpeakerDetailsViewController: AppViewController {
     private func setup(headerCell cell: SpeakerHeaderTableViewCell) {
         viewModel.speakerObservable.subscribeNext { speaker in
             guard let speaker = speaker else { return }
-            
-            cell.avatarURL = speaker.avatar?.thumb
-            cell.speakerName = speaker.name
-            cell.speakerJob = speaker.job
-            
-            if speaker.hasAnyWebsites {
-                cell.removeSeparators()
-            }
+            cell.load(with: speaker)
         }
         .add(to: disposeBag)
     }
     
     private func setup(bioCell cell: SpeakerBioTableViewCell) {
         viewModel.speakerObservable.subscribeNext { speaker in
-            cell.speakerName = speaker?.firstName
-            cell.speakerBio = speaker?.bio
+            guard let speaker = speaker else { return }
+            cell.load(with: speaker)
         }
         .add(to: disposeBag)
     }

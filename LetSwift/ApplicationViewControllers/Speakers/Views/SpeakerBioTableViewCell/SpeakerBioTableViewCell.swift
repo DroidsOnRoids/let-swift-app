@@ -17,23 +17,9 @@ final class SpeakerBioTableViewCell: UITableViewCell {
     
     fileprivate var aboutFormat = "%@"
     
-    var speakerName: String? {
-        didSet {
-            if let speakerName = speakerName {
-                aboutLabel.text = String(format: aboutFormat, speakerName)
-            } else {
-                aboutLabel.text = nil
-            }
-        }
-    }
-    
-    var speakerBio: String? {
-        get {
-            return bioLabel.text
-        }
-        set {
-            bioLabel.attributedText = newValue?.attributed(withSpacing: 0.9)
-        }
+    func load(with data: Speaker) {
+        aboutLabel.text = data.firstName
+        bioLabel.attributedText = data.bio?.attributed(withSpacing: 0.9)
     }
     
     override func awakeFromNib() {
