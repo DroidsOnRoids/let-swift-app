@@ -32,7 +32,7 @@ final class SpeakerHeaderTableViewCell: UITableViewCell, SpeakerLoadable {
         nameLabel.text = speaker.name
         jobLabel.text = speaker.job
             
-        if speaker.hasAnyWebsites {
+        if !speaker.websites.isEmpty {
             removeSeparators()
         }
     }

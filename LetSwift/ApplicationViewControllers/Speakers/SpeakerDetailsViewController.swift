@@ -53,7 +53,7 @@ final class SpeakerDetailsViewController: AppViewController {
     
     private func reactiveSetup() {
         viewModel.speakerObservable.subscribeNext { [weak self] speaker in
-            if let shouldShowWebsites = speaker?.hasAnyWebsites, !shouldShowWebsites,
+            if let shouldHideWebsites = speaker?.websites.isEmpty, shouldHideWebsites,
                 let index = self?.bindableCells.values.index(of: SpeakerWebsitesTableViewCell.cellIdentifier) {
                 self?.bindableCells.remove(at: index)
             } else {
