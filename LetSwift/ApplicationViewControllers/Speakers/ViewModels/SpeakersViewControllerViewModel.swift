@@ -15,10 +15,11 @@ final class SpeakersViewControllerViewModel {
         static let speakersOrderCurrent = "current"
         static let speakersOrderLatest = "recent"
         static let speakersPerPage = 10
+        static let firstPage = 1
     }
 
     private let disposeBag = DisposeBag()
-    private var currentPage = 1
+    private var currentPage = Constants.firstPage
     private var totalPage = -1
     private var pendingRequest: Request?
     private var searchQuery = ""
@@ -93,7 +94,7 @@ final class SpeakersViewControllerViewModel {
     }
 
     private func loadInitialData() {
-        pendingRequest = NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: searchQuery, order: Constants.speakersOrderCurrent) { [weak self] response in
+        pendingRequest = NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, query: searchQuery, order: Constants.speakersOrderCurrent) { [weak self] response in
             guard let weakSelf = self else { return }
 
             switch response {
@@ -101,7 +102,7 @@ final class SpeakersViewControllerViewModel {
                 weakSelf.speakers.values = []
                 weakSelf.speakers.append(responeObject.elements)
                 weakSelf.totalPage = responeObject.page.pageCount
-                weakSelf.currentPage = 1
+                weakSelf.currentPage = Constants.firstPage
 
                 if weakSelf.searchQuery.isEmpty || weakSelf.latestSpeakers.values.isEmpty {
                     weakSelf.loadLatestSpeakers()
@@ -119,7 +120,7 @@ final class SpeakersViewControllerViewModel {
     }
 
     private func loadLatestSpeakers() {
-        NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
+        NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
             switch response {
             case let .success(responseLatest):
                 self?.latestSpeakers.append(responseLatest.elements)
