@@ -29,6 +29,12 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
         setup()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        imageView.addGradientShadow(with: [0.4, 1.0])
+    }
+
     func load(with speaker: Speaker) {
         if let name = speaker.name.components(separatedBy: " ").first {
             nameLabel.text = name
