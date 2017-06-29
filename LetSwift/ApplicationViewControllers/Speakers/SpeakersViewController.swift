@@ -14,6 +14,10 @@ protocol SpeakersViewControllerDelegate: class {
 
 final class SpeakersViewController: AppViewController {
 
+    private enum Constants {
+        static let offsetToken = "OffsetToken"
+    }
+
     override var viewControllerTitleKey: String? {
         return "SPEAKERS_TITLE"
     }
@@ -30,6 +34,7 @@ final class SpeakersViewController: AppViewController {
     @IBOutlet private weak var searchBar: ReactiveSearchBar!
 
     private let sadFaceView = SadFaceView()
+    private let spinnerView = SpinnerView()
     private let disposeBag = DisposeBag()
     private var viewModel: SpeakersViewControllerViewModel!
 
@@ -85,41 +90,21 @@ final class SpeakersViewController: AppViewController {
     }
     
     private func reactiveSetup() {
-        tableView.itemDidSelectObservable.subscribeNext { [weak self] index in
-            self?.viewModel.speakerCellDidTapWithIndexObservable.next(index.row)
-        }
-        .add(to: disposeBag)
+        reactiveTableViewSetup()
+        reactiveLoadingSetup()
 
-        viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self) ({ [weak self] index, speaker, cell in
-            cell.load(with: speaker)
-            self?.viewModel.checkIfLastSpeakerObservable.next(index)
-        }))
+        viewModel.speakerLoadDataRequestObservable.next()
 
-        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
-            guard let weakSelf = self else { return }
+        reactiveSearchBarSetup()
+    }
 
-            switch state {
-            case .content:
-                weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
-                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
-                weakSelf.tableView.overlayView = nil
-            case .error:
-                if !(weakSelf.tableView.overlayView is SadFaceView) {
-                    weakSelf.tableView.overlayView = weakSelf.sadFaceView
-                }
-            case .loading:
-                weakSelf.tableView.overlayView = SpinnerView()
-            }
-        }
-        .add(to: disposeBag)
-
+    private func reactiveLoadingSetup() {
         viewModel.errorOnLoadingMoreSpeakersObservable.subscribeNext { [weak self] in
             guard let spinnerView = self?.tableView.tableFooterView as? SpinnerView else { return }
 
             UIView.animate(withDuration: 0.25, animations: {
                 spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
-            },
-            completion: { _ in
+            }, completion: { _ in
                 self?.tableView.tableFooterView = UIView()
             })
         }
@@ -129,31 +114,9 @@ final class SpeakersViewController: AppViewController {
             self?.tableView.tableFooterView = UIView()
         }
         .add(to: disposeBag)
+    }
 
-        viewModel.speakerLoadDataRequestObservable.next()
-
-        tableView.scrollViewWillEndDraggingObservable.subscribeNext { [weak self] scrollView in
-            guard let scrollView = scrollView else { return }
-
-            let checkIfTableViewEnd: () -> Bool = {
-                let offset = scrollView.contentOffset
-                let bounds = scrollView.bounds
-                let size = scrollView.contentSize
-                let inset = scrollView.contentInset
-                let y = offset.y + bounds.size.height + inset.bottom
-                let height = size.height
-                let distance: CGFloat = 10.0
-
-                return y > height + distance
-            }
-
-            if checkIfTableViewEnd() {
-                self?.showSpinner()
-                self?.viewModel.tryToLoadMoreDataObservable.next()
-            }
-        }
-        .add(to: disposeBag)
-
+    private func reactiveSearchBarSetup() {
         searchBar.searchBarWillStartEditingObservable.subscribeNext { [weak self] in
             if self?.tableView.isTableHeaderViewVisible ?? false {
                 UIView.animate(withDuration: 0.25, animations: {
@@ -182,6 +145,84 @@ final class SpeakersViewController: AppViewController {
             } else {
                 self?.tableView.tableHeaderView?.transform = .identity
                 self?.tableView.tableHeaderView?.alpha = 1.0
+            }
+
+            self?.viewModel.searchQueryObservable.next("")
+            self?.viewModel.speakerLoadDataRequestObservable.next()
+        }
+        .add(to: disposeBag)
+
+        searchBar.searchBarSearchButtonClickedObservable.subscribeNext { [weak self] query in
+            self?.viewModel.searchQueryObservable.next(query)
+            self?.viewModel.speakerLoadDataRequestObservable.next()
+        }
+        .add(to: disposeBag)
+
+        viewModel.searchBarShouldResignFirstResponderObservable.subscribeNext { [weak self] in
+            self?.searchBar.resignFirstResponder()
+        }
+        .add(to: disposeBag)
+    }
+
+    private func reactiveTableViewSetup() {
+        viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self) ({ [weak self] index, speaker, cell in
+            cell.load(with: speaker)
+            self?.viewModel.checkIfLastSpeakerObservable.next(index)
+        }))
+
+        tableView.itemDidSelectObservable.subscribeNext { [weak self] index in
+            self?.viewModel.speakerCellDidTapWithIndexObservable.next(index.row)
+            self?.viewModel.searchBarShouldResignFirstResponderObservable.next()
+
+            self?.tableView.deselectRow(at: index, animated: false)
+        }
+        .add(to: disposeBag)
+
+        tableView.scrollViewDidScrollObservable.subscribeNext { [weak self] scrollView in
+            guard let scrollView = scrollView, scrollView.isTracking else { return }
+
+            self?.viewModel.searchBarShouldResignFirstResponderObservable.next()
+        }
+        .add(to: disposeBag)
+
+        tableView.scrollViewWillEndDraggingObservable.subscribeNext { [weak self] scrollView in
+            guard let scrollView = scrollView else { return }
+
+            let offset = scrollView.contentOffset
+            let bounds = scrollView.bounds
+            let size = scrollView.contentSize
+            let inset = scrollView.contentInset
+            let currentOffset = offset.y + bounds.size.height + inset.bottom
+            let height = size.height
+            let distance: CGFloat = 10.0
+
+            if currentOffset > height + distance {
+                self?.showSpinner()
+                self?.viewModel.tryToLoadMoreDataObservable.next()
+            }
+        }
+        .add(to: disposeBag)
+
+        viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
+            guard let weakSelf = self else { return }
+
+            DispatchQueue.once(token: Constants.offsetToken) {
+                weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
+            }
+
+            switch state {
+            case .content:
+                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
+                weakSelf.tableView.overlayView = nil
+            case .error:
+                if !(weakSelf.tableView.overlayView is SadFaceView) {
+                    weakSelf.tableView.overlayView = weakSelf.sadFaceView
+                }
+            case .loading:
+                if !(weakSelf.tableView.overlayView is SpinnerView) {
+                    weakSelf.spinnerView.alpha = 1.0
+                    weakSelf.tableView.overlayView = weakSelf.spinnerView
+                }
             }
         }
         .add(to: disposeBag)

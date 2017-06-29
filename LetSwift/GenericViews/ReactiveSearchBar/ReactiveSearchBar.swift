@@ -10,7 +10,6 @@ import UIKit
 
 final class ReactiveSearchBar: UISearchBar {
 
-    var searchBarTextDidEndEditingObservable = Observable<Void>()
     var searchBarSearchButtonClickedObservable = Observable<String>("")
     var searchBarCancelButtonClicked = Observable<Void>()
     var searchBarWillStartEditingObservable = Observable<Void>()
@@ -32,6 +31,7 @@ final class ReactiveSearchBar: UISearchBar {
 
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.paleGrey.cgColor
+        layer.zPosition = 1
         placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
         tintColor = .bluishGrey
     }
@@ -42,10 +42,6 @@ extension ReactiveSearchBar: UISearchBarDelegate {
         searchBarWillStartEditingObservable.next()
         setShowsCancelButton(true, animated: true)
         return true
-    }
-
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBarTextDidEndEditingObservable.next()
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
