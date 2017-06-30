@@ -93,6 +93,11 @@ final class SpeakersViewController: AppViewController {
         reactiveTableViewSetup()
         reactiveLoadingSetup()
 
+        viewModel.sadFaceErrorLabelObservable.subscribeNext { [weak self] errorText in
+            self?.sadFaceView.setErrorLabel(text: errorText)
+        }
+        .add(to: disposeBag)
+
         viewModel.speakerLoadDataRequestObservable.next()
 
         reactiveSearchBarSetup()
@@ -214,6 +219,7 @@ final class SpeakersViewController: AppViewController {
                 weakSelf.tableView.overlayView = nil
             case .error:
                 if !(weakSelf.tableView.overlayView is SadFaceView) {
+                    weakSelf.sadFaceView.alpha = 1.0
                     weakSelf.tableView.overlayView = weakSelf.sadFaceView
                 }
             case .loading:

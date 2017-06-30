@@ -30,6 +30,10 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
         
         setupLocalization()
     }
+
+    func setErrorLabel(text: String) {
+        somethingWentWrongLabel.text = text
+    }
     
     func setupLocalization() {
         pullToRefreshLabel.text = localized("GENERAL_PULL_TO_REFRESH").uppercased()
