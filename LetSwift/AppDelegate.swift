@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var appCoordinator: AppCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        NetworkActivityIndicatorManager.shared.isEnabled = true
+
         setupHockeyApp()
         
         FBSDKApplicationDelegate.sharedInstance()
