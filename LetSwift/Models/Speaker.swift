@@ -8,35 +8,6 @@
 
 import Mapper
 
-enum SpeakerWebsite {
-    case github(url: URL)
-    case website(url: URL)
-    case twitter(url: URL)
-    case email(email: String)
-    
-    static func from(githubUrl: URL?, websiteUrl: URL?, twitterUrl: URL?, emailValue: String?) -> [SpeakerWebsite] {
-        var websites = [SpeakerWebsite]()
-        
-        if let githubUrl = githubUrl {
-            websites.append(github(url: githubUrl))
-        }
-        
-        if let websiteUrl = websiteUrl {
-            websites.append(website(url: websiteUrl))
-        }
-        
-        if let twitterUrl = twitterUrl {
-            websites.append(twitter(url: twitterUrl))
-        }
-        
-        if let emailValue = emailValue {
-            websites.append(email(email: emailValue))
-        }
-        
-        return websites
-    }
-}
-
 struct Speaker: Mappable {
 
     let id: Int

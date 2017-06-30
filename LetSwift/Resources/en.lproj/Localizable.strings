@@ -36,6 +36,7 @@
 "SPEAKERS_SEARCH_PLACEHOLDER" = "Search speakers";
 "SPEAKERS_ABOUT" = "About %@";
 "SPEAKERS_PARTICIPATED_IN" = "Participated in";
+"SPEAKERS_NO_RESULTS_FOUND" = "No results found";
 "CONTACT_TITLE" = "Contact";
 "CONTACT_TOPIC" = "I want to";
 "CONTACT_NAME" = "Your name";
@@ -51,6 +52,8 @@
 "CONTACT_TOPIC_SPEAK" = "Speak on the next event";
 "CONTACT_TOPIC_CLAIM" = "Claim a reward";
 "CONTACT_TOPIC_PARTNER" = "Become a partner";
+"CONTACT_SEND_SUCCESS_TITILE" = "Success";
+"CONTACT_SEND_SUCCESS_MESSAGE" = "Your message has been delivered. We will respond to you shortly.";
 "LECTURE_TITLE" = "Lecture details";
 "LECTURE_READ_MORE" = "Read more";
 "PHOTOS_TITLE" = "Photos";

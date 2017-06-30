@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpeakersViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
-                <outlet property="searchBar" destination="vSb-iq-rGB" id="zgp-fo-941"/>
+                <outlet property="searchBar" destination="vSb-iq-rGB" id="iqK-Bj-y6v"/>
                 <outlet property="tableView" destination="jf2-D5-IYn" id="wXQ-t5-nyg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -25,7 +25,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="72" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
-                <searchBar contentMode="redraw" placeholder="Search speakers" translatesAutoresizingMaskIntoConstraints="NO" id="vSb-iq-rGB">
+                <searchBar contentMode="redraw" placeholder="Search speakers" translatesAutoresizingMaskIntoConstraints="NO" id="vSb-iq-rGB" customClass="ReactiveSearchBar" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                     <color key="barTintColor" red="0.87058823529999996" green="0.8980392157" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <textInputTraits key="textInputTraits"/>
