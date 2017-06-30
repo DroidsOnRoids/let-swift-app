@@ -14,7 +14,6 @@ final class WebsiteView: DesignableView {
     @IBOutlet private weak var titleLabel: UILabel!
     
     private var website: SpeakerWebsite?
-    private var isTouchDown = false
     
     convenience init(website: SpeakerWebsite, showLabel: Bool) {
         self.init()
@@ -26,13 +25,16 @@ final class WebsiteView: DesignableView {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        isTouchDown = true
         highlightView(true)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touches.count <= 1 {
-            highlightView(false)
+        highlightView(false)
+        let shouldOpen = touches.reduce(false) { result, touch in
+            return result || frame.contains(touch.location(in: self))
+        }
+        
+        if shouldOpen {
             website?.open()
         }
     }

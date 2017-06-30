@@ -36,6 +36,7 @@
 "SPEAKERS_SEARCH_PLACEHOLDER" = "Search speakers";
 "SPEAKERS_ABOUT" = "About %@";
 "SPEAKERS_PARTICIPATED_IN" = "Participated in";
+"SPEAKERS_NO_RESULTS_FOUND" = "No results found";
 "CONTACT_TITLE" = "Contact";
 "CONTACT_TOPIC" = "I want to";
 "CONTACT_NAME" = "Your name";
