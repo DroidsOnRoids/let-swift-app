@@ -35,6 +35,7 @@ final class SpeakersViewControllerViewModel {
     var latestSpeakerCellDidTapWithIndexObservable = Observable<Int>(-1)
     var searchQueryObservable = Observable<String>("")
     var searchBarShouldResignFirstResponderObservable = Observable<Void>()
+    var sadFaceErrorLabelObservable = Observable<String>(localized("GENERAL_SOMETHING_WENT_WRONG"))
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
@@ -107,11 +108,12 @@ final class SpeakersViewControllerViewModel {
                 if weakSelf.searchQuery.isEmpty || weakSelf.latestSpeakers.values.isEmpty {
                     weakSelf.loadLatestSpeakers()
                 } else {
-                    weakSelf.tableViewStateObservable.next(.content)
+                    weakSelf.tableViewStateObservable.next(weakSelf.checkIfNoResultsFound())
                     weakSelf.pendingRequest = nil
                     weakSelf.refreshDataObservable.complete()
                 }
             case .error:
+                weakSelf.sadFaceErrorLabelObservable.next(localized("GENERAL_SOMETHING_WENT_WRONG"))
                 weakSelf.tableViewStateObservable.next(.error)
                 weakSelf.refreshDataObservable.complete()
                 weakSelf.pendingRequest = nil
@@ -121,15 +123,18 @@ final class SpeakersViewControllerViewModel {
 
     private func loadLatestSpeakers() {
         NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
+            guard let weakSelf = self else { return }
+
             switch response {
             case let .success(responseLatest):
-                self?.latestSpeakers.append(responseLatest.elements)
-                self?.tableViewStateObservable.next(.content)
+                weakSelf.latestSpeakers.append(responseLatest.elements)
+                weakSelf.tableViewStateObservable.next(weakSelf.checkIfNoResultsFound())
             case .error:
-                self?.tableViewStateObservable.next(.error)
+                weakSelf.sadFaceErrorLabelObservable.next(localized("GENERAL_SOMETHING_WENT_WRONG"))
+                weakSelf.tableViewStateObservable.next(.error)
             }
-            self?.refreshDataObservable.complete()
-            self?.pendingRequest = nil
+            weakSelf.refreshDataObservable.complete()
+            weakSelf.pendingRequest = nil
         }
     }
 
@@ -152,6 +157,15 @@ final class SpeakersViewControllerViewModel {
             }
 
             self?.pendingRequest = nil
+        }
+    }
+
+    private func checkIfNoResultsFound() -> AppContentState {
+        if speakers.values.isEmpty && !searchQuery.isEmpty {
+            sadFaceErrorLabelObservable.next(localized("SPEAKERS_NO_RESULTS_FOUND"))
+            return .error
+        } else {
+            return .content
         }
     }
 }
