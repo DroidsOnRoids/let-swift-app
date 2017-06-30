@@ -15,6 +15,7 @@ protocol LectureViewControllerDelegate: class {
 final class LectureViewController: AppViewController {
     
     @IBOutlet private weak var speakerCellView: TappableView!
+    @IBOutlet private weak var indicatorView: UIImageView!
     @IBOutlet private weak var speakerImageView: UIImageView!
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerTitleLabel: UILabel!
@@ -24,6 +25,7 @@ final class LectureViewController: AppViewController {
     @IBOutlet private weak var separatorConstraint: NSLayoutConstraint!
     
     private var viewModel: LectureViewControllerViewModel!
+    private let disposeBag = DisposeBag()
     
     override var viewControllerTitleKey: String? {
         return "LECTURE_TITLE"
@@ -46,7 +48,16 @@ final class LectureViewController: AppViewController {
     
     private func setup() {
         separatorConstraint.constant = 1.0 / UIScreen.main.scale
-        
         speakerCellView.addTarget(viewModel, action: #selector(LectureViewControllerViewModel.speakerCellTapped))
+        
+        reactiveSetup()
+    }
+    
+    private func reactiveSetup() {
+        viewModel.shouldAllowTappingSpeaker?.subscribeNext(startsWithInitialValue: true) { [weak self] allow in
+            self?.speakerCellView.selectionColor = allow ? .lightBlueGrey : nil
+            self?.indicatorView.isHidden = !allow
+        }
+        .add(to: disposeBag)
     }
 }

@@ -11,6 +11,7 @@ import UIKit
 final class SpeakerCardView: DesignableView, Localizable {
     
     @IBOutlet private weak var speakerCellView: TappableView!
+    @IBOutlet private weak var indicatorImageView: UIImageView!
     @IBOutlet private weak var speakerImageView: UIImageView!
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerTitleLabel: UILabel!
@@ -27,39 +28,46 @@ final class SpeakerCardView: DesignableView, Localizable {
         }
     }
     
-    var speakerName: String {
+    var speakerName: String? {
         get {
-            return speakerNameLabel.text ?? ""
+            return speakerNameLabel.text
         }
         set {
             speakerNameLabel.text = newValue
         }
     }
     
-    var speakerTitle: String {
+    var speakerTitle: String? {
         get {
-            return speakerTitleLabel.text ?? ""
+            return speakerTitleLabel.text
         }
         set {
             speakerTitleLabel.text = newValue
         }
     }
     
-    var lectureTitle: String {
+    var lectureTitle: String? {
         get {
-            return lectureTitleLabel.text ?? ""
+            return lectureTitleLabel.text
         }
         set {
             lectureTitleLabel.text = newValue
         }
     }
     
-    var lectureSummary: String {
+    var lectureSummary: String? {
         get {
-            return lectureSummaryLabel.text ?? ""
+            return lectureSummaryLabel.text
         }
         set {
             lectureSummaryLabel.text = newValue
+        }
+    }
+    
+    var isSpeakerCellTappable = true {
+        didSet {
+            speakerCellView.selectionColor = isSpeakerCellTappable ? .lightBlueGrey : nil
+            indicatorImageView.isHidden = !isSpeakerCellTappable
         }
     }
     

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SpeakerDetailsViewControllerDelegate: class {
+    func presentLectureScreen(with id: Int)
+}
+
 final class SpeakerDetailsViewController: AppViewController {
     
     override var viewControllerTitleKey: String? {
@@ -87,10 +91,20 @@ final class SpeakerDetailsViewController: AppViewController {
     }
     
     private func setupCells(element: String, cell: UITableViewCell, index: Int) {
-        viewModel.speakerObservable.subscribeNext { speaker in
+        viewModel.speakerObservable.subscribeNext { [weak self] speaker in
             guard let speaker = speaker else { return }
+            
             (cell as? SpeakerLoadable)?.load(with: speaker)
+            if let lecturesCell = cell as? SpeakerLecturesTableViewCell {
+                self?.setupLecturesCell(lecturesCell)
+            }
         }
         .add(to: disposeBag)
+    }
+    
+    private func setupLecturesCell(_ cell: SpeakerLecturesTableViewCell) {
+        cell.lectureDetailsObservable
+            .bindNext(to: viewModel.showLectureDetailsObservable)
+            .add(to: disposeBag)
     }
 }
