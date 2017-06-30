@@ -49,10 +49,27 @@ final class SpeakerDetailsViewController: AppViewController {
     private func setup() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        // TODO: tableView.setHeaderColor(.lightBlueGrey)
+        tableView.setHeaderColor(.lightBlueGrey)
         tableView.registerCells(allCells)
         
+        setupPullToRefresh()
         reactiveSetup()
+    }
+    
+    private func setupPullToRefresh() {
+        tableView.addPullToRefresh { [weak self] in
+            self?.viewModel.refreshObservable.next()
+        }
+        
+        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
+            self?.viewModel.refreshObservable.next()
+        }
+        
+        viewModel.refreshObservable.subscribeCompleted { [weak self] in
+            self?.tableView.finishPullToRefresh()
+            self?.sadFaceView.scrollView?.finishPullToRefresh()
+        }
+        .add(to: disposeBag)
     }
     
     private func removeCell(of cellType: String) {
