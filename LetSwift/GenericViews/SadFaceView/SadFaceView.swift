@@ -17,7 +17,7 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
 
     var errorText: String? {
         set {
-            somethingWentWrongLabel.text = errorText
+            somethingWentWrongLabel.text = newValue
         }
         get {
             return somethingWentWrongLabel.text
@@ -26,7 +26,7 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
 
     var pullToRefreshText: String? {
         set {
-            pullToRefreshLabel.text = pullToRefreshText
+            pullToRefreshLabel.text = newValue
         }
         get {
             return pullToRefreshLabel.text
