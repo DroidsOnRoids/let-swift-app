@@ -17,6 +17,7 @@ target 'LetSwift' do
   # Networking
   pod 'Alamofire', '~> 4.4'
   pod 'ModelMapper', '~> 6.0'
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
 
   # Views
   pod 'ImageEffects', '~> 1.0'

@@ -10,6 +10,7 @@ import UIKit
 import HockeySDK
 import FBSDKCoreKit
 import SDWebImage
+import AlamofireNetworkActivityIndicator
 
 #if DEBUG
 let isDebugBuild = true
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private var appCoordinator: AppCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        setupNetworkIndicator()
+
         setupHockeyApp()
         
         FBSDKApplicationDelegate.sharedInstance()
@@ -57,6 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
         NotificationCenter.default.post(name: .didRegisterNotificationSettings, object: nil)
+    }
+
+    private func setupNetworkIndicator() {
+        NetworkActivityIndicatorManager.shared.isEnabled = true
+        NetworkActivityIndicatorManager.shared.startDelay = 0.1
+        NetworkActivityIndicatorManager.shared.completionDelay = 0.2
     }
 
     private func setupHockeyApp() {
