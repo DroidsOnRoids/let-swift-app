@@ -30,6 +30,8 @@
 		7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */; };
 		7E52E66F1F01318F0080EE8D /* LatestSpeakersHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E52E66D1F01318F0080EE8D /* LatestSpeakersHeaderView.swift */; };
 		7E52E6701F01318F0080EE8D /* LatestSpeakersHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E52E66E1F01318F0080EE8D /* LatestSpeakersHeaderView.xib */; };
+		7E52E6781F0380870080EE8D /* ReactiveSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E52E6771F0380870080EE8D /* ReactiveSearchBar.swift */; };
+		7E5FAD6F1F03AE81002ACE38 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5FAD6E1F03AE81002ACE38 /* DispatchQueueExtension.swift */; };
 		7E7E412E1EA8C16A001DB179 /* AppShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */; };
 		7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */; };
 		7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */; };
@@ -225,6 +227,8 @@
 		7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7E52E66D1F01318F0080EE8D /* LatestSpeakersHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatestSpeakersHeaderView.swift; path = LetSwift/ApplicationViewControllers/Speakers/Views/LatestSpeakersHeaderView/LatestSpeakersHeaderView.swift; sourceTree = SOURCE_ROOT; };
 		7E52E66E1F01318F0080EE8D /* LatestSpeakersHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LatestSpeakersHeaderView.xib; path = LetSwift/ApplicationViewControllers/Speakers/Views/LatestSpeakersHeaderView/LatestSpeakersHeaderView.xib; sourceTree = SOURCE_ROOT; };
+		7E52E6771F0380870080EE8D /* ReactiveSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveSearchBar.swift; sourceTree = "<group>"; };
+		7E5FAD6E1F03AE81002ACE38 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShadowButton.swift; sourceTree = "<group>"; };
 		7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
 		7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersCoordinator.swift; sourceTree = "<group>"; };
@@ -473,6 +477,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		7E52E6721F028B470080EE8D /* ReactiveSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				7E52E6771F0380870080EE8D /* ReactiveSearchBar.swift */,
+			);
+			path = ReactiveSearchBar;
+			sourceTree = "<group>";
+		};
 		7E7E41301EAA6332001DB179 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,6 +653,7 @@
 		7EECA5A91E9B5EB300B3F724 /* GenericViews */ = {
 			isa = PBXGroup;
 			children = (
+				7E52E6721F028B470080EE8D /* ReactiveSearchBar */,
 				D39CC8201ED2B3B7007B0A1C /* SadFaceView */,
 				7EA48D4B1EADD47F00CEC845 /* ReflectiveShadowView */,
 				D38B14BD1E9F6C62009EA346 /* DesignableView.swift */,
@@ -1143,6 +1156,7 @@
 				7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */,
 				7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */,
 				D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */,
+				7E5FAD6E1F03AE81002ACE38 /* DispatchQueueExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1424,8 +1438,10 @@
 				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
 				D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */,
 				7E0842C91ECAD5D1003F7C96 /* Speaker.swift in Sources */,
+				7E52E6781F0380870080EE8D /* ReactiveSearchBar.swift in Sources */,
 				D34B850C1EB3214900DBC72D /* PreviousEventsListCell.swift in Sources */,
 				D33F07331EA9EA2700A74B9F /* ContactViewController.swift in Sources */,
+				7E5FAD6F1F03AE81002ACE38 /* DispatchQueueExtension.swift in Sources */,
 				7EE141111EBCCBD8008378AB /* ReactiveCollectionViewDataSource.swift in Sources */,
 				D3B505A31EDB3E5E00BBC6E5 /* AppContentState.swift in Sources */,
 				D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */,
