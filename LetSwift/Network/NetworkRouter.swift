@@ -59,8 +59,10 @@ enum NetworkRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
 
         switch self {
-        case .eventsList(let params), .speakersList(let params), .contact(let params):
+        case .eventsList(let params), .speakersList(let params):
             return try Alamofire.URLEncoding.default.encode(urlRequest, with: params)
+        case .contact(let params):
+            return try Alamofire.JSONEncoding.default.encode(urlRequest, with: params)
         case .eventDetails, .speakerDetails:
             return try Alamofire.URLEncoding.default.encode(urlRequest, with: nil)
         }

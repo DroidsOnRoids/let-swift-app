@@ -79,14 +79,14 @@ struct NetworkProvider {
         return request
     }
 
-    @discardableResult func sendContact(with email: String, type: String, name: String, message: String, completionHandler: @escaping (NetworkResponse<Void>) -> ()) -> DataRequest {
+    @discardableResult func sendContact(with email: String, type: String, name: String, message: String, completionHandler: @escaping (Result<Any>) -> ()) -> DataRequest {
         let params = [Constants.email: email,
                       Constants.type: type,
                       Constants.name: name,
                       Constants.message: message]
         let request = alamofireManager.request(NetworkRouter.contact(params))
         request.responseJSON { response in
-            print(response)
+            completionHandler(response.result)
         }
 
         return request
