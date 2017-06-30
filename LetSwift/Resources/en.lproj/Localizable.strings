@@ -54,6 +54,7 @@
 "CONTACT_TOPIC_PARTNER" = "Become a partner";
 "CONTACT_SEND_SUCCESS_TITILE" = "Success";
 "CONTACT_SEND_SUCCESS_MESSAGE" = "Your message has been delivered. We will respond to you shortly.";
+"CONTACT_SEND_FAILURE_TITLE" = "Something went wrong";
 "LECTURE_TITLE" = "Lecture details";
 "LECTURE_READ_MORE" = "Read more";
 "PHOTOS_TITLE" = "Photos";
