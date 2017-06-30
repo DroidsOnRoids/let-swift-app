@@ -108,7 +108,7 @@ final class SpeakersViewControllerViewModel {
                 if weakSelf.searchQuery.isEmpty || weakSelf.latestSpeakers.values.isEmpty {
                     weakSelf.loadLatestSpeakers()
                 } else {
-                    weakSelf.checkIfNoResultsFound()
+                    weakSelf.tableViewStateObservable.next(weakSelf.checkIfNoResultsFound())
                     weakSelf.pendingRequest = nil
                     weakSelf.refreshDataObservable.complete()
                 }
@@ -123,16 +123,18 @@ final class SpeakersViewControllerViewModel {
 
     private func loadLatestSpeakers() {
         NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
+            guard let weakSelf = self else { return }
+
             switch response {
             case let .success(responseLatest):
-                self?.latestSpeakers.append(responseLatest.elements)
-                self?.checkIfNoResultsFound()
+                weakSelf.latestSpeakers.append(responseLatest.elements)
+                weakSelf.tableViewStateObservable.next(weakSelf.checkIfNoResultsFound())
             case .error:
-                self?.sadFaceErrorLabelObservable.next(localized("GENERAL_SOMETHING_WENT_WRONG"))
-                self?.tableViewStateObservable.next(.error)
+                weakSelf.sadFaceErrorLabelObservable.next(localized("GENERAL_SOMETHING_WENT_WRONG"))
+                weakSelf.tableViewStateObservable.next(.error)
             }
-            self?.refreshDataObservable.complete()
-            self?.pendingRequest = nil
+            weakSelf.refreshDataObservable.complete()
+            weakSelf.pendingRequest = nil
         }
     }
 
@@ -158,12 +160,12 @@ final class SpeakersViewControllerViewModel {
         }
     }
 
-    private func checkIfNoResultsFound() {
+    private func checkIfNoResultsFound() -> AppContentState {
         if speakers.values.isEmpty && !searchQuery.isEmpty {
             sadFaceErrorLabelObservable.next(localized("SPEAKERS_NO_RESULTS_FOUND"))
-            tableViewStateObservable.next(.error)
+            return .error
         } else {
-            tableViewStateObservable.next(.content)
+            return .content
         }
     }
 }
