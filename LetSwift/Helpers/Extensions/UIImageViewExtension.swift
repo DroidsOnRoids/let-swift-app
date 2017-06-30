@@ -18,6 +18,7 @@ extension UIImageView {
 
         gradient.locations = locations
         gradient.colors = [startColor.cgColor, endColor.cgColor]
+        layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         layer.insertSublayer(gradient, at: 0)
     }
 }
