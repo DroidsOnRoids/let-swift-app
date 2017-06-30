@@ -31,7 +31,7 @@ final class WebsiteView: DesignableView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         highlightView(false)
         let shouldOpen = touches.reduce(false) { result, touch in
-            return result || frame.contains(touch.location(in: self))
+            return result || bounds.contains(touch.location(in: self))
         }
         
         if shouldOpen {
