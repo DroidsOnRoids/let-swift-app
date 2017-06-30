@@ -12,7 +12,7 @@ class SpeakerCardCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentifier = String(describing: SpeakerCardCollectionViewCell.self)
     
-    let lectureDetailsObservable = Observable<Int?>(nil)
+    var lectureDetailsObservable = Observable<Int?>(nil)
     
     private let lectureCard = SpeakerCardView()
     private var talkId: Int?
@@ -36,6 +36,11 @@ class SpeakerCardCollectionViewCell: UICollectionViewCell {
         lectureCard.isSpeakerCellTappable = false
         lectureCard.addReadMoreTapTarget(target: self, action: #selector(readMoreTapped))
         talkId = talk.id
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        lectureDetailsObservable = Observable<Int?>(nil)
     }
     
     private func setup() {

@@ -49,21 +49,32 @@ final class SpeakerDetailsViewController: AppViewController {
     private func setup() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.setFooterColor(.paleGrey)
         // TODO: tableView.setHeaderColor(.lightBlueGrey)
         tableView.registerCells(allCells)
         
         reactiveSetup()
     }
     
+    private func removeCell(of cellType: String) {
+        if let index = bindableCells.values.index(of: cellType) {
+            bindableCells.remove(at: index)
+        }
+    }
+    
     private func reactiveSetup() {
         viewModel.speakerObservable.subscribeNext { [weak self] speaker in
-            if let shouldHideWebsites = speaker?.websites.isEmpty, shouldHideWebsites,
-                let index = self?.bindableCells.values.index(of: SpeakerWebsitesTableViewCell.cellIdentifier) {
-                self?.bindableCells.remove(at: index)
-            } else {
-                self?.tableView.reloadData()
+            if speaker?.websites.isEmpty ?? true {
+                self?.removeCell(of: SpeakerWebsitesTableViewCell.cellIdentifier)
             }
+            
+            if speaker?.talks.isEmpty ?? true {
+                self?.removeCell(of: SpeakerLecturesTableViewCell.cellIdentifier)
+                self?.tableView.setFooterColor(.white)
+            } else {
+                self?.tableView.setFooterColor(.paleGrey)
+            }
+            
+            self?.tableView.reloadData()
         }
         .add(to: disposeBag)
         
