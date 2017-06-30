@@ -8,7 +8,17 @@
 
 import UIKit
 
-final class SpeakerWebsitesTableViewCell: UITableViewCell {
+final class SpeakerWebsitesTableViewCell: UITableViewCell, SpeakerLoadable {
     
     static let cellIdentifier = String(describing: SpeakerWebsitesTableViewCell.self)
+    
+    @IBOutlet private weak var stackView: UIStackView!
+    
+    func load(with speaker: Speaker) {
+        let showLabel = speaker.websites.count <= 2
+        speaker.websites.forEach { website in
+            let websiteView = WebsiteView(website: website, showLabel: showLabel)
+            stackView.addArrangedSubview(websiteView)
+        }
+    }
 }
