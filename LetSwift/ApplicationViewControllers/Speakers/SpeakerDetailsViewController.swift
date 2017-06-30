@@ -28,7 +28,8 @@ final class SpeakerDetailsViewController: AppViewController {
     private let allCells = [
         SpeakerHeaderTableViewCell.cellIdentifier,
         SpeakerWebsitesTableViewCell.cellIdentifier,
-        SpeakerBioTableViewCell.cellIdentifier
+        SpeakerBioTableViewCell.cellIdentifier,
+        SpeakerLecturesTableViewCell.cellIdentifier
     ]
     
     convenience init(viewModel: SpeakerDetailsViewControllerViewModel) {
