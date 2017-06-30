@@ -94,7 +94,7 @@ final class SpeakersViewController: AppViewController {
         reactiveLoadingSetup()
 
         viewModel.sadFaceErrorLabelObservable.subscribeNext { [weak self] errorText in
-            self?.sadFaceView.setErrorLabel(text: errorText)
+            self?.sadFaceView.errorText = errorText
         }
         .add(to: disposeBag)
 

@@ -14,6 +14,24 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
     @IBOutlet private weak var somethingWentWrongLabel: UILabel!
     
     var scrollView: UIScrollView?
+
+    var errorText: String? {
+        set {
+            somethingWentWrongLabel.text = errorText
+        }
+        get {
+            return somethingWentWrongLabel.text
+        }
+    }
+
+    var pullToRefreshText: String? {
+        set {
+            pullToRefreshLabel.text = pullToRefreshText
+        }
+        get {
+            return pullToRefreshLabel.text
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,14 +48,10 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
         
         setupLocalization()
     }
-
-    func setErrorLabel(text: String) {
-        somethingWentWrongLabel.text = text
-    }
     
     func setupLocalization() {
-        pullToRefreshLabel.text = localized("GENERAL_PULL_TO_REFRESH").uppercased()
-        somethingWentWrongLabel.text = localized("GENERAL_SOMETHING_WENT_WRONG")
+        pullToRefreshText = localized("GENERAL_PULL_TO_REFRESH").uppercased()
+        errorText = localized("GENERAL_SOMETHING_WENT_WRONG")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
