@@ -101,4 +101,14 @@ extension UITableView: NibPresentable {
     var scrollViewWillEndDraggingObservable: ObservableEvent<UIScrollView?> {
         return ObservableEvent(event: delegateProxy.scrollViewWillEndDraggingObservable)
     }
+
+    var scrollViewDidScrollObservable: ObservableEvent<UIScrollView?> {
+        return ObservableEvent(event: delegateProxy.scrollViewDidScrollObservable)
+    }
+
+    var isTableHeaderViewVisible: Bool {
+        guard let tableHeaderView = tableHeaderView else { return false }
+        
+        return contentOffset.y < tableHeaderView.frame.size.height
+    }
 }

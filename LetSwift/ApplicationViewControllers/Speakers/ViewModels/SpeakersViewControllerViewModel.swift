@@ -15,12 +15,14 @@ final class SpeakersViewControllerViewModel {
         static let speakersOrderCurrent = "current"
         static let speakersOrderLatest = "recent"
         static let speakersPerPage = 10
+        static let firstPage = 1
     }
 
     private let disposeBag = DisposeBag()
-    private var currentPage = 1
+    private var currentPage = Constants.firstPage
     private var totalPage = -1
     private var pendingRequest: Request?
+    private var searchQuery = ""
 
     var speakerLoadDataRequestObservable = Observable<Void>()
     var tableViewStateObservable: Observable<AppContentState>
@@ -31,6 +33,8 @@ final class SpeakersViewControllerViewModel {
     var refreshDataObservable = Observable<Void>()
     var speakerCellDidTapWithIndexObservable = Observable<Int>(-1)
     var latestSpeakerCellDidTapWithIndexObservable = Observable<Int>(-1)
+    var searchQueryObservable = Observable<String>("")
+    var searchBarShouldResignFirstResponderObservable = Observable<Void>()
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
@@ -45,6 +49,9 @@ final class SpeakersViewControllerViewModel {
 
     private func setup() {
         speakerLoadDataRequestObservable.subscribeNext { [weak self] in
+            guard self?.pendingRequest == nil else { return }
+
+            self?.tableViewStateObservable.next(.loading)
             self?.loadInitialData()
         }
         .add(to: disposeBag)
@@ -62,6 +69,8 @@ final class SpeakersViewControllerViewModel {
         .add(to: disposeBag)
 
         refreshDataObservable.subscribeNext { [weak self] in
+            guard self?.pendingRequest == nil else { return }
+
             self?.loadInitialData()
         }
         .add(to: disposeBag)
@@ -77,29 +86,41 @@ final class SpeakersViewControllerViewModel {
             self?.delegate?.presentSpeakerDetailsScreen(with: speakerId)
         }
         .add(to: disposeBag)
+
+        searchQueryObservable.subscribeNext { [weak self] query in
+            self?.searchQuery = query
+        }
+        .add(to: disposeBag)
     }
 
     private func loadInitialData() {
-        guard pendingRequest == nil else { return }
+        pendingRequest = NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, query: searchQuery, order: Constants.speakersOrderCurrent) { [weak self] response in
+            guard let weakSelf = self else { return }
 
-        pendingRequest = NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
             switch response {
             case let .success(responeObject):
-                self?.speakers.values = []
-                self?.speakers.append(responeObject.elements)
-                self?.totalPage = responeObject.page.pageCount
-                self?.currentPage = 1
-                self?.loadLatestSpeakers()
+                weakSelf.speakers.values = []
+                weakSelf.speakers.append(responeObject.elements)
+                weakSelf.totalPage = responeObject.page.pageCount
+                weakSelf.currentPage = Constants.firstPage
+
+                if weakSelf.searchQuery.isEmpty || weakSelf.latestSpeakers.values.isEmpty {
+                    weakSelf.loadLatestSpeakers()
+                } else {
+                    weakSelf.tableViewStateObservable.next(.content)
+                    weakSelf.pendingRequest = nil
+                    weakSelf.refreshDataObservable.complete()
+                }
             case .error:
-                self?.tableViewStateObservable.next(.error)
-                self?.refreshDataObservable.complete()
-                self?.pendingRequest = nil
+                weakSelf.tableViewStateObservable.next(.error)
+                weakSelf.refreshDataObservable.complete()
+                weakSelf.pendingRequest = nil
             }
         }
     }
 
     private func loadLatestSpeakers() {
-        NetworkProvider.shared.speakersList(with: 1, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
+        NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
             switch response {
             case let .success(responseLatest):
                 self?.latestSpeakers.append(responseLatest.elements)
@@ -120,7 +141,7 @@ final class SpeakersViewControllerViewModel {
             return
         }
 
-        pendingRequest = NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: Constants.speakersPerPage, query: "", order: Constants.speakersOrderCurrent) { [weak self] response in
+        pendingRequest = NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: Constants.speakersPerPage, query: searchQuery, order: Constants.speakersOrderCurrent) { [weak self] response in
             switch response {
             case let .success(responeObject):
                 self?.currentPage += 1
