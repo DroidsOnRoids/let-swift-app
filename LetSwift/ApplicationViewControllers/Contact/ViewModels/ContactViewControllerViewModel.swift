@@ -55,7 +55,12 @@ final class ContactViewControllerViewModel {
     
     @objc func sendTapped() {
         guard fieldsAreValid else { return }
-        // TODO: Send message
+        NetworkProvider.shared.sendContact(with: emailTextObservable.value,
+                                           type: "sth",
+                                           name: nameTextObservable.value,
+                                           message: messageTextObservable.value) { _ in
+
+                                            }
     }
     
     private func setup() {
