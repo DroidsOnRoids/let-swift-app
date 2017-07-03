@@ -10,8 +10,6 @@ import Foundation
 import Alamofire
 
 final class ContactViewControllerViewModel {
-
-    typealias NetworkResponse = (result: Result<Any>?, error: String?)
     
     let pickerTitleObservable = Observable<String?>(nil)
     let pickerTopicsObservable = Observable<[String]?>(nil)
@@ -23,7 +21,7 @@ final class ContactViewControllerViewModel {
     
     let emailEmptyObservable = Observable<Bool>(true)
 
-    let sendStatusObservable = Observable<Result<Any>?>(nil) //TODO: insert here NetworkResponse
+    let sendStatusObservable = Observable<Result<Any>?>(nil)
     let blockSendButton = Observable<Bool>(false)
     
     private let disposeBag = DisposeBag()

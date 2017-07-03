@@ -147,7 +147,7 @@ final class ContactViewController: AppViewController {
                 AlertHelper.showAlert(withTitle: localized("CONTACT_SEND_SUCCESS_TITILE"), message: localized("CONTACT_SEND_SUCCESS_MESSAGE"), on: weakSelf)
                 weakSelf.resetPools()
             case .failure:
-                AlertHelper.showAlert(withTitle: localized("CONTACT_SEND_FAILURE_TITLE"), message: "Inser Error Here", on: weakSelf)
+                AlertHelper.showAlert(withTitle: localized("CONTACT_SEND_FAILURE_TITLE"), message: localized("CONTACT_SEND_FAILURE_MESSAGE"), on: weakSelf)
             }
         }
         .add(to: disposeBag)
