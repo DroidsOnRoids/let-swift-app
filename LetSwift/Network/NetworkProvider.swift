@@ -24,6 +24,10 @@ struct NetworkProvider {
         static let speakers = "speakers"
         static let speaker = "speaker"
         static let query = "query"
+        static let email = "email"
+        static let type = "type"
+        static let name = "name"
+        static let message = "message"
     }
 
     private init() {
@@ -77,6 +81,19 @@ struct NetworkProvider {
         let request = alamofireManager.request(NetworkRouter.eventDetails(id))
         request.responseJSON { response in
             response.result.responseObject(for: Constants.event, completionHandler: completionHandler)
+        }
+
+        return request
+    }
+
+    @discardableResult func sendContact(with email: String, type: String, name: String, message: String, completionHandler: @escaping (Result<Any>) -> ()) -> DataRequest {
+        let params = [Constants.email: email,
+                      Constants.type: type,
+                      Constants.name: name,
+                      Constants.message: message]
+        let request = alamofireManager.request(NetworkRouter.contact(params))
+        request.responseJSON { response in
+            completionHandler(response.result)
         }
 
         return request
