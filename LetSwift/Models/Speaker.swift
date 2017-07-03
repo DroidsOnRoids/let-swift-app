@@ -17,10 +17,7 @@ struct Speaker: Mappable {
     let bio: String?
     
     // MARK: Extended fields
-    let email: String?
-    let githubUrl: URL?
-    let websiteUrl: URL?
-    let twitterUrl: URL?
+    let websites: [SpeakerWebsite]
     let talks: [Talk]
     
     init(map: Mapper) throws {
@@ -31,18 +28,13 @@ struct Speaker: Mappable {
         bio = map.optionalFrom("bio")
         
         // MARK: Extended fields
-        email = map.optionalFrom("email")
-        githubUrl = map.optionalFrom("github_url")
-        websiteUrl = map.optionalFrom("website_url")
-        twitterUrl = map.optionalFrom("twitter_url")
+        websites = SpeakerWebsite.from(githubUrl: map.optionalFrom("github_url"),
+                                       websiteUrl: map.optionalFrom("website_url"),
+                                       twitterUrl: map.optionalFrom("twitter_url"),
+                                       emailValue: map.optionalFrom("email"))
         talks = map.optionalFrom("talks") ?? []
     }
-    
-    var hasAnyWebsites: Bool {
-        let websites: [Any?] = [githubUrl, websiteUrl, twitterUrl, email]
-        return !websites.flatMap { $0 }.isEmpty
-    }
-    
+        
     var firstName: String {
         return name.components(separatedBy: " ").first ?? name
     }

@@ -9,7 +9,6 @@
 final class SpeakerDetailsViewControllerViewModel {
     
     var speakerObservable = Observable<Speaker?>(nil)
-    var areWebsitesVisibleObservable = Observable<Bool>(false)
     var tableViewStateObservable = Observable<AppContentState>(.loading)
     
     private let disposeBag = DisposeBag()
