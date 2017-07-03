@@ -17,9 +17,7 @@ final class SpeakerWebsitesTableViewCell: UITableViewCell, SpeakerLoadable {
     func load(with speaker: Speaker) {
         let showLabel = speaker.websites.count <= 2
         
-        stackView.subviews.forEach { subview in
-            subview.removeFromSuperview()
-        }
+        stackView.subviews.forEach { $0.removeFromSuperview() }
         
         speaker.websites.forEach { website in
             let websiteView = WebsiteView(website: website, showLabel: showLabel)
