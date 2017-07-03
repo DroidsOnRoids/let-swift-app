@@ -154,6 +154,15 @@ final class ContactViewController: AppViewController {
 
         viewModel.blockSendButton.subscribeNext { [weak self] blocked in
             self?.sendButton.isEnabled = !blocked
+            self?.sendButton.showSpinner(blocked)
+
+            if blocked {
+                self?.sendButton.setTitle(localized("CONTACT_LOADING"), for: [])
+                self?.sendButton.backgroundColor = .lightBlueGrey
+            } else {
+                self?.sendButton.setTitle(localized("CONTACT_SEND"), for: [])
+                self?.sendButton.backgroundColor = .swiftOrange
+            }
         }
         .add(to: disposeBag)
     }
