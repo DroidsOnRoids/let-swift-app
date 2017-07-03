@@ -20,4 +20,20 @@ extension UIButton {
         
         return largerFrame.contains(point) ? self : nil
     }
+
+    func showSpinner(_ shouldShow: Bool) {
+        if shouldShow {
+            setImage(UIImage(), for: [])
+
+            let spinner = SpinnerView()
+            spinner.image = #imageLiteral(resourceName: "WhiteSpinner")
+            
+            imageView?.addSubview(spinner)
+            imageView?.clipsToBounds = false
+            spinner.frame.origin.x -= 15.0
+        } else {
+            setImage(nil, for: [])
+            imageView?.subviews.forEach { ($0 as? SpinnerView)?.removeFromSuperview() }
+        }
+    }
 }
