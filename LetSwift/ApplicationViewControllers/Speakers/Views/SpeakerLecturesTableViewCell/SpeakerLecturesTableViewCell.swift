@@ -89,13 +89,8 @@ extension SpeakerLecturesTableViewCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: UIScreen.main.bounds.width - sizeOffset, height: collectionView.bounds.height)
     }
     
-    /*func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        guard let collectionView = scrollView as? UICollectionView else { return }
-        collectionView.setContentOffset(offsetWithPagination(for: collectionView, target: collectionView.contentOffset.x), animated: true)
-    }*/
-    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard let collectionView = scrollView as? UICollectionView else { return }
-        targetContentOffset.pointee = offsetWithPagination(for: collectionView, target: collectionView.contentOffset.x)
+        targetContentOffset.pointee = offsetWithPagination(for: collectionView, target: targetContentOffset.pointee.x)
     }
 }
