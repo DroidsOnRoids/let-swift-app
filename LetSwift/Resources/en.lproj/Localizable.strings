@@ -36,13 +36,14 @@
 "SPEAKERS_SEARCH_PLACEHOLDER" = "Search speakers";
 "SPEAKERS_ABOUT" = "About %@";
 "SPEAKERS_PARTICIPATED_IN" = "Participated in";
-"SPEAKERS_NO_RESULTS_FOUND" = "No results found";
+"SPEAKERS_NO_RESULTS_FOUND" = "No speakers found";
 "CONTACT_TITLE" = "Contact";
 "CONTACT_TOPIC" = "I want to";
 "CONTACT_NAME" = "Your name";
 "CONTACT_EMAIL" = "Your email";
 "CONTACT_MESSAGE" = "Message";
 "CONTACT_SEND" = "Send";
+"CONTACT_LOADING" = "Loading...";
 "CONTACT_TOPIC_ERROR" = "Choose the topic";
 "CONTACT_NAME_ERROR" = "Type name";
 "CONTACT_EMAIL_ERROR" = "Type email address";
@@ -55,6 +56,7 @@
 "CONTACT_SEND_SUCCESS_TITILE" = "Success";
 "CONTACT_SEND_SUCCESS_MESSAGE" = "Your message has been delivered. We will respond to you shortly.";
 "CONTACT_SEND_FAILURE_TITLE" = "Something went wrong";
+"CONTACT_SEND_FAILURE_MESSAGE" = "Try again later";
 "LECTURE_TITLE" = "Lecture details";
 "LECTURE_READ_MORE" = "Read more";
 "PHOTOS_TITLE" = "Photos";

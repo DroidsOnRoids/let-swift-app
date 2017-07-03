@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SpeakerCardCollectionViewCell: UICollectionViewCell {
+final class SpeakerCardCollectionViewCell: UICollectionViewCell {
     
     static let cellIdentifier = String(describing: SpeakerCardCollectionViewCell.self)
     
