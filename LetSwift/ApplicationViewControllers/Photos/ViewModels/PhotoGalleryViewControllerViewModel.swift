@@ -17,6 +17,8 @@ final class PhotoGalleryViewControllerViewModel {
     let targetVisibleClousureObservable = Observable<((Bool) -> ())?>(nil)
     let targetVisibleObservable = Observable<Bool?>(nil)
     let sliderTitleObservable = Observable<String>("")
+    let lastNaviagtionBarHiddenObservable = Observable<Bool>(false)
+    let restoreNaviationBarVisibilityObservable = Observable<Bool>(false)
     
     weak var delegate: PhotoGalleryViewControllerDelegate?
     
@@ -51,6 +53,13 @@ final class PhotoGalleryViewControllerViewModel {
         targetVisibleObservable.subscribeNext { [weak self] hidden in
             guard let hidden = hidden else { return }
             self?.targetVisibleClousureObservable.value?(hidden)
+        }
+        .add(to: disposeBag)
+
+        restoreNaviationBarVisibilityObservable.subscribeCompleted { [weak self] in
+            guard let weakSelf = self else { return }
+
+            weakSelf.lastNaviagtionBarHiddenObservable.next(weakSelf.restoreNaviationBarVisibilityObservable.value)
         }
         .add(to: disposeBag)
     }

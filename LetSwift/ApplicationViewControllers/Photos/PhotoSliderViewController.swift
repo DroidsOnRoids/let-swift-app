@@ -119,6 +119,12 @@ final class PhotoSliderViewController: UIViewController {
             self?.titleLabel.text = title
         }
         .add(to: disposeBag)
+
+        viewModel.lastNaviagtionBarHiddenObservable.subscribeNext { [weak self] hidden in
+            self?.isNavbarHidden = hidden
+            self?.isStatusBarHidden = hidden
+        }
+        .add(to: disposeBag)
     }
     
     @IBAction private func backButtonTapped(_ sender: UIButton) {
@@ -183,6 +189,7 @@ extension PhotoSliderViewController: UIPageViewControllerDelegate {
 extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     func prepareForInteractiveAnimation() {
         viewModel.targetVisibleObservable.next(true)
+        viewModel.restoreNaviationBarVisibilityObservable.next(isNavbarHidden)
         isNavbarHidden = true
         isStatusBarHidden = false
     }
@@ -205,6 +212,6 @@ extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     
     func prepareForRestore() {
         viewModel.targetVisibleObservable.next(false)
-        isNavbarHidden = false
+        viewModel.restoreNaviationBarVisibilityObservable.complete()
     }
 }
