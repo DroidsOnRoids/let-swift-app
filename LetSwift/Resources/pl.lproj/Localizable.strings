@@ -35,6 +35,8 @@
 "SPEAKERS_LATEST_TITLE" = "Ostatni prelegenci";
 "SPEAKERS_SEARCH_PLACEHOLDER" = "Szukaj prelegentów";
 "SPEAKERS_ABOUT" = "%@";
+"SPEAKERS_PARTICIPATED_IN" = "Uczestniczył w";
+"SPEAKERS_NO_RESULTS_FOUND" = "Brak prelegentów";
 "CONTACT_TITLE" = "Kontakt";
 "CONTACT_TOPIC" = "Chcę";
 "CONTACT_NAME" = "Imię";
@@ -50,6 +52,9 @@
 "CONTACT_TOPIC_SPEAK" = "Poprowadzić talka";
 "CONTACT_TOPIC_CLAIM" = "Odebrać nagrodę";
 "CONTACT_TOPIC_PARTNER" = "Zostać sponsorem";
+"CONTACT_SEND_SUCCESS_TITILE" = "Wysłano";
+"CONTACT_SEND_SUCCESS_MESSAGE" = "Twoja wiadomość została dostarczona. Odpowiemy na nią tak szybko, jak to możliwe.";
+"CONTACT_SEND_FAILURE_TITLE" = "Coś poszło nie tak";
 "LECTURE_TITLE" = "Prelekcja";
 "LECTURE_READ_MORE" = "Więcej";
 "PHOTOS_TITLE" = "Zdjęcia";

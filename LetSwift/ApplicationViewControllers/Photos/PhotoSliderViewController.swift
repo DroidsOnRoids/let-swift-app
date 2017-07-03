@@ -64,7 +64,7 @@ final class PhotoSliderViewController: UIViewController {
         super.viewDidLoad()
         setup()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coordinatorDelegate?.rotationLocked = false
@@ -74,7 +74,6 @@ final class PhotoSliderViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         let isPortrait = size.width < size.height
         panRecognizer.isEnabled = isPortrait
-        isNavbarHidden = !isPortrait
         isStatusBarHidden = isNavbarHidden
     }
     
