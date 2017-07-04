@@ -45,7 +45,7 @@ extension EventsCoordinator: EventsViewControllerDelegate {
     }
     
     func presentSpeakerDetailsScreen(with id: Int) {
-        let viewModel = SpeakerDetailsViewControllerViewModel(with: id)
+        let viewModel = SpeakerDetailsViewControllerViewModel(with: id, delegate: self)
         let viewController = SpeakerDetailsViewController(viewModel: viewModel)
         
         navigationViewController.pushViewController(viewController, animated: true)
@@ -72,5 +72,14 @@ extension EventsCoordinator: PhotoGalleryViewControllerDelegate {
         viewController.coordinatorDelegate = delegate
         
         navigationViewController.present(viewController, animated: true)
+    }
+}
+
+extension EventsCoordinator: SpeakerDetailsViewControllerDelegate {
+    func presentLectureScreen(with id: Int) {
+        let viewModel = LectureViewControllerViewModel(delegate: nil)
+        let viewController = LectureViewController(viewModel: viewModel)
+
+        navigationViewController.pushViewController(viewController, animated: true)
     }
 }
