@@ -24,7 +24,10 @@ struct NetworkProvider {
         static let speakers = "speakers"
         static let speaker = "speaker"
         static let query = "query"
-        static let order = "order"
+        static let email = "email"
+        static let type = "type"
+        static let name = "name"
+        static let message = "message"
     }
 
     private init() {
@@ -44,14 +47,22 @@ struct NetworkProvider {
         return request
     }
 
-    @discardableResult func speakersList(with page: Int, perPage: Int = 5, query: String = "", order: String = "", completionHandler: @escaping (NetworkResponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
+    @discardableResult func speakersList(with page: Int, perPage: Int = 5, query: String = "", completionHandler: @escaping (NetworkResponse<NetworkPage<Speaker>>) -> ()) -> DataRequest {
         let params: [String: Any] = [Constants.perPage: perPage,
                                      Constants.page: page,
-                                     Constants.query: query,
-                                     Constants.order: order]
+                                     Constants.query: query]
         let request = alamofireManager.request(NetworkRouter.speakersList(params))
         request.responseJSON { response in
             response.result.responsePage(for: Constants.speakers, completionHandler: completionHandler)
+        }
+
+        return request
+    }
+
+    @discardableResult func latestSpeakers(completionHandler: @escaping (NetworkResponse<[Speaker]>) -> ()) -> DataRequest {
+        let request = alamofireManager.request(NetworkRouter.latestSpeakers)
+        request.responseJSON { response in
+            response.result.responseArray(for: Constants.speakers, completionHandler: completionHandler)
         }
 
         return request
@@ -70,6 +81,19 @@ struct NetworkProvider {
         let request = alamofireManager.request(NetworkRouter.eventDetails(id))
         request.responseJSON { response in
             response.result.responseObject(for: Constants.event, completionHandler: completionHandler)
+        }
+
+        return request
+    }
+
+    @discardableResult func sendContact(with email: String, type: String, name: String, message: String, completionHandler: @escaping (Result<Any>) -> ()) -> DataRequest {
+        let params = [Constants.email: email,
+                      Constants.type: type,
+                      Constants.name: name,
+                      Constants.message: message]
+        let request = alamofireManager.request(NetworkRouter.contact(params))
+        request.responseJSON { response in
+            completionHandler(response.result)
         }
 
         return request

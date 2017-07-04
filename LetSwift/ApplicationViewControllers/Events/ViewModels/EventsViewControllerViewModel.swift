@@ -48,7 +48,7 @@ final class EventsViewControllerViewModel {
     var eventDetailsRefreshObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
     var lectureCellDidTapObservable = Observable<Void>()
-    var speakerCellDidTapObservable = Observable<Void>()
+    var speakerCellDidTapObservable = Observable<Int>(-1)
 
     var eventDidFinishObservable = Observable<Event?>(nil)
 
@@ -175,8 +175,10 @@ final class EventsViewControllerViewModel {
             }
             .add(to: disposeBag)
         
-        speakerCellDidTapObservable.subscribeNext { [weak self] in
-            self?.speakerCellTapped()
+        speakerCellDidTapObservable.subscribeNext { [weak self] index in
+            guard index != -1 else { return }
+
+            self?.speakerCellTapped(with: index)
         }
         .add(to: disposeBag)
         
@@ -306,8 +308,10 @@ final class EventsViewControllerViewModel {
         MapHelper.openMaps(withCoordinates: coordinates, name: lastEventObservable.value?.placeName ?? lastEventObservable.value?.title)
     }
     
-    private func speakerCellTapped() {
-        delegate?.presentSpeakerDetailsScreen()
+    private func speakerCellTapped(with index: Int) {
+        guard let speaker = lastEventObservable.value?.talks[safe: index]?.speaker else { return }
+
+        delegate?.presentSpeakerDetailsScreen(with: speaker.id)
     }
     
     private func lectureCellTapped() {

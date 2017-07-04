@@ -138,6 +138,33 @@ final class ContactViewController: AppViewController {
         .add(to: disposeBag)
         
         sendButton.addTarget(viewModel, action: #selector(ContactViewControllerViewModel.sendTapped), for: .touchUpInside)
+
+        viewModel.sendStatusObservable.subscribeNext { [weak self] result in
+            guard let weakSelf = self, let result = result else { return }
+
+            switch result {
+            case .success:
+                AlertHelper.showAlert(withTitle: localized("CONTACT_SEND_SUCCESS_TITILE"), message: localized("CONTACT_SEND_SUCCESS_MESSAGE"), on: weakSelf)
+                weakSelf.resetPools()
+            case .failure:
+                AlertHelper.showAlert(withTitle: localized("CONTACT_SEND_FAILURE_TITLE"), message: localized("CONTACT_SEND_FAILURE_MESSAGE"), on: weakSelf)
+            }
+        }
+        .add(to: disposeBag)
+
+        viewModel.blockSendButton.subscribeNext { [weak self] blocked in
+            self?.sendButton.isEnabled = !blocked
+            self?.sendButton.showSpinner(blocked)
+
+            if blocked {
+                self?.sendButton.setTitle(localized("CONTACT_LOADING"), for: [])
+                self?.sendButton.backgroundColor = .lightBlueGrey
+            } else {
+                self?.sendButton.setTitle(localized("CONTACT_SEND"), for: [])
+                self?.sendButton.backgroundColor = .swiftOrange
+            }
+        }
+        .add(to: disposeBag)
     }
     
     private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {
@@ -158,6 +185,20 @@ final class ContactViewController: AppViewController {
             view.fieldState = .error
         }
         .add(to: disposeBag)
+    }
+
+    private func resetPools() {
+        topicButton.setTitle(localized("CONTACT_TOPIC") + "...", for: [])
+        topicButton.setTitleColor(.placeholder, for: [])
+        nameTextField.text = ""
+        emailTextField.text = ""
+        messageTextView.text = ""
+        sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
+
+        viewModel.pickerResultObservable.next(-1)
+        viewModel.nameTextObservable.next("")
+        viewModel.emailTextObservable.next("")
+        viewModel.messageTextObservable.next("")
     }
 }
 

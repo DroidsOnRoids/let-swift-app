@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 final class ContactViewControllerViewModel {
     
@@ -19,13 +20,16 @@ final class ContactViewControllerViewModel {
     let messageTextObservable = Observable<String>("")
     
     let emailEmptyObservable = Observable<Bool>(true)
+
+    let sendStatusObservable = Observable<Result<Any>?>(nil)
+    let blockSendButton = Observable<Bool>(false)
     
     private let disposeBag = DisposeBag()
     
     private let topics = [
-        (tag: "SPEAKER", text: localized("CONTACT_TOPIC_SPEAK")),
+        (tag: "TALK", text: localized("CONTACT_TOPIC_SPEAK")),
         (tag: "REWARD", text: localized("CONTACT_TOPIC_CLAIM")),
-        (tag: "PARTNER", text: localized("CONTACT_TOPIC_PARTNER"))
+        (tag: "SPONSOR", text: localized("CONTACT_TOPIC_PARTNER"))
     ]
     
     private var fieldsAreValid: Bool {
@@ -55,12 +59,20 @@ final class ContactViewControllerViewModel {
     
     @objc func sendTapped() {
         guard fieldsAreValid else { return }
-        // TODO: Send message
+
+        blockSendButton.next(true)
+        NetworkProvider.shared.sendContact(with: emailTextObservable.value,
+                                           type: topics[pickerResultObservable.value].tag,
+                                           name: nameTextObservable.value,
+                                           message: messageTextObservable.value) { [weak self] result in
+                                                self?.sendStatusObservable.next(result)
+                                                self?.blockSendButton.next(false)
+                                           }
     }
     
     private func setup() {
         pickerResultObservable.subscribeNext { [weak self] result in
-            guard let weakSelf = self else { return }
+            guard let weakSelf = self, result != -1 else { return }
             let newTitle = localized("CONTACT_TOPIC") + " " + weakSelf.topics[result].text.lowercased()
             weakSelf.pickerTitleObservable.next(newTitle)
         }
