@@ -13,10 +13,12 @@ final class LectureViewControllerViewModel {
     weak var delegate: LectureViewControllerDelegate?
     
     let shouldAllowTappingSpeaker: Observable<Bool>?
+    let talkObservable: Observable<Talk>
     
-    init(delegate: LectureViewControllerDelegate?) {
+    init(with talk: Talk, delegate: LectureViewControllerDelegate?) {
         self.delegate = delegate
-        self.shouldAllowTappingSpeaker = Observable<Bool>(delegate != nil)
+        shouldAllowTappingSpeaker = Observable<Bool>(delegate != nil)
+        talkObservable = Observable<Talk>(talk)
         setup()
     }
     

@@ -16,7 +16,7 @@ struct Talk: Mappable {
     let tags: [String]?
     
     // MARK: Extended fields
-    let speaker: Speaker?
+    var speaker: Speaker?
     let event: Event?
     
     init(map: Mapper) throws {

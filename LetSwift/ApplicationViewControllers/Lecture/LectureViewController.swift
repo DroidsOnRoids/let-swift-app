@@ -24,6 +24,8 @@ final class LectureViewController: AppViewController {
     @IBOutlet private weak var speakerImageView: UIImageView!
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerTitleLabel: UILabel!
+    @IBOutlet private weak var eventDateLabel: UILabel!
+    @IBOutlet private weak var eventTimeLabel: UILabel!
     @IBOutlet private weak var lectureTitleLabel: UILabel!
     @IBOutlet private weak var lectureSummaryLabel: UILabel!
     
@@ -62,6 +64,17 @@ final class LectureViewController: AppViewController {
         viewModel.shouldAllowTappingSpeaker?.subscribeNext(startsWithInitialValue: true) { [weak self] allow in
             self?.speakerCellView.selectionColor = allow ? .lightBlueGrey : nil
             self?.indicatorView.isHidden = !allow
+        }
+        .add(to: disposeBag)
+        
+        viewModel.talkObservable.subscribeNext(startsWithInitialValue: true) { [weak self] talk in
+            self?.speakerImageView.sd_setImage(with: talk.speaker?.avatar?.thumb, placeholderImage: self?.speakerImageView.image)
+            self?.speakerNameLabel.text = talk.speaker?.name
+            self?.speakerTitleLabel.text = talk.speaker?.job
+            self?.eventDateLabel.text = talk.event?.date?.stringDateValue
+            self?.eventTimeLabel.text = talk.event?.date?.stringTimeValue
+            self?.lectureTitleLabel.text = talk.title
+            self?.lectureSummaryLabel.text = talk.description
         }
         .add(to: disposeBag)
     }

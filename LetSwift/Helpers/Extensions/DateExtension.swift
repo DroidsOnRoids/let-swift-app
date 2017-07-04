@@ -18,4 +18,11 @@ extension Date {
         formatter.dateFormat = "dd.MM.yyyy"
         return formatter.string(from: self)
     }
+    
+    var stringTimeValue: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.timeZone = .current
+        return formatter.string(from: self)
+    }
 }

@@ -32,7 +32,8 @@ final class SpeakerDetailsViewControllerViewModel {
         
         showLectureDetailsObservable.subscribeNext { [weak self] talkId in
             guard let talkId = talkId else { return }
-            if let talkToShow = self?.speakerObservable.value?.talks.filter({ $0.id == talkId }).first {
+            if var talkToShow = self?.speakerObservable.value?.talks.filter({ $0.id == talkId }).first {
+                talkToShow.speaker = self?.speakerObservable.value?.withoutExtendedFields
                 self?.delegate?.presentLectureScreen(with: talkToShow)
             }
         }

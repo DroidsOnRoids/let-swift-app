@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LectureViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
+                <outlet property="eventDateLabel" destination="yNu-Gw-hNh" id="A6D-Vv-g1T"/>
+                <outlet property="eventTimeLabel" destination="8bH-0C-rCq" id="EgT-c3-JME"/>
                 <outlet property="indicatorView" destination="G4Z-1o-Obo" id="0R8-QS-tLc"/>
                 <outlet property="lectureSummaryLabel" destination="nyp-C6-Ufk" id="y10-dX-Xfd"/>
                 <outlet property="lectureTitleLabel" destination="I1h-bH-eTC" id="xPc-FP-Y41"/>

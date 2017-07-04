@@ -57,14 +57,6 @@ final class EventsViewControllerViewModel {
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
     
-    var formattedTime: String? {
-        guard let eventDate = lastEventObservable.value?.date else { return nil }
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.timeZone = TimeZone.current
-        return formatter.string(from: eventDate)
-    }
-
     var isReminderAllowed: Bool {
         guard let date = lastEventObservable.value?.date else { return false }
         return !date.addingTimeInterval(-Constants.minimumTimeForReminder).isOutdated
@@ -281,7 +273,7 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func remindButtonTapped() {
-        guard let formattedTime = formattedTime else { return }
+        guard let formattedTime = lastEventObservable.value?.date?.stringTimeValue else { return }
         
         if notificationManager.isNotificationActive {
             notificationManager.cancelNotification()
