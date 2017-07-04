@@ -16,9 +16,9 @@ final class SpeakersViewControllerViewModel {
         static let firstPage = 1
     }
 
-    enum errorReason {
+    enum ErrorReason {
         case requestFail
-        case notFound
+        case speakerNotFound
     }
 
     private let disposeBag = DisposeBag()
@@ -38,7 +38,7 @@ final class SpeakersViewControllerViewModel {
     var latestSpeakerCellDidTapWithIndexObservable = Observable<Int>(-1)
     var searchQueryObservable = Observable<String>("")
     var searchBarShouldResignFirstResponderObservable = Observable<Void>()
-    var errorViewStateObservable = Observable<errorReason>(.requestFail)
+    var errorViewStateObservable = Observable<ErrorReason>(.requestFail)
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
@@ -166,7 +166,7 @@ final class SpeakersViewControllerViewModel {
 
     private func checkIfNoResultsFound() -> AppContentState {
         if speakers.values.isEmpty && !searchQuery.isEmpty {
-            errorViewStateObservable.next(.notFound)
+            errorViewStateObservable.next(.speakerNotFound)
             return .error
         } else {
             return .content

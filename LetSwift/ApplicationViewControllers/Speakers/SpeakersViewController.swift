@@ -107,7 +107,7 @@ final class SpeakersViewController: AppViewController {
                 self?.addPullToRefresh()
                 self?.sadFaceView.errorText = localized("GENERAL_SOMETHING_WENT_WRONG")
                 self?.sadFaceView.isPullToRefreshVisible = true
-            case .notFound:
+            case .speakerNotFound:
                 self?.removePullToRefresh()
                 self?.sadFaceView.errorText = localized("SPEAKERS_NO_RESULTS_FOUND")
                 self?.sadFaceView.isPullToRefreshVisible = false
