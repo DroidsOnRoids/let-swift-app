@@ -71,14 +71,22 @@ final class SpeakersViewController: AppViewController {
     }
 
     private func setupPullToRefresh() {
-        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
-            self?.viewModel.refreshDataObservable.next()
-        }
+        addPullToRefresh()
 
         viewModel.refreshDataObservable.subscribeCompleted { [weak self] in
             self?.sadFaceView.scrollView?.finishPullToRefresh()
         }
         .add(to: disposeBag)
+    }
+
+    private func addPullToRefresh() {
+        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
+            self?.viewModel.refreshDataObservable.next()
+        }
+    }
+
+    private func removePullToRefresh() {
+        sadFaceView.scrollView?.removePullToRefresh()
     }
 
     private func showSpinner() {
@@ -93,8 +101,17 @@ final class SpeakersViewController: AppViewController {
         reactiveTableViewSetup()
         reactiveLoadingSetup()
 
-        viewModel.sadFaceErrorLabelObservable.subscribeNext { [weak self] errorText in
-            self?.sadFaceView.errorText = errorText
+        viewModel.errorViewStateObservable.subscribeNext { [weak self] state in
+            switch state {
+            case .requestFail:
+                self?.addPullToRefresh()
+                self?.sadFaceView.errorText = localized("GENERAL_SOMETHING_WENT_WRONG")
+                self?.sadFaceView.isPullToRefreshVisible = true
+            case .notFound:
+                self?.removePullToRefresh()
+                self?.sadFaceView.errorText = localized("SPEAKERS_NO_RESULTS_FOUND")
+                self?.sadFaceView.isPullToRefreshVisible = false
+            }
         }
         .add(to: disposeBag)
 
