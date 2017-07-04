@@ -27,7 +27,7 @@ final class PhotoGalleryViewController: AppViewController {
     override var shouldHideShadow: Bool {
         return true
     }
-    
+
     fileprivate var columnNumber: Int {
         return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7.rawValue ? 3 : 2
     }
@@ -41,7 +41,14 @@ final class PhotoGalleryViewController: AppViewController {
         super.viewDidLoad()
         setup()
     }
-    
+
+    override func setNeedsStatusBarAppearanceUpdate() {
+        super.setNeedsStatusBarAppearanceUpdate()
+
+        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = false
+    }
+
     private func setup() {
         collectionView.registerCells([SinglePhotoCell.self])
         collectionView.delegate = self
@@ -84,6 +91,12 @@ final class PhotoGalleryViewController: AppViewController {
             
             weakSelf.viewModel.targetVisibleClousureObservable.next { hidden in
                 cellView.isHidden = hidden
+
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 0.2) {
+                        self?.setNeedsStatusBarAppearanceUpdate()
+                    }
+                }
             }
             
             weakSelf.viewModel.targetFrameObservable.next {

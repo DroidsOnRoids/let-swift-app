@@ -64,7 +64,7 @@ final class PhotoSliderViewController: UIViewController {
         super.viewDidLoad()
         setup()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         coordinatorDelegate?.rotationLocked = false
@@ -74,7 +74,6 @@ final class PhotoSliderViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         let isPortrait = size.width < size.height
         panRecognizer.isEnabled = isPortrait
-        isNavbarHidden = !isPortrait
         isStatusBarHidden = isNavbarHidden
     }
     
@@ -118,6 +117,12 @@ final class PhotoSliderViewController: UIViewController {
         
         viewModel.sliderTitleObservable.subscribeNext(startsWithInitialValue: true) { [weak self] title in
             self?.titleLabel.text = title
+        }
+        .add(to: disposeBag)
+
+        viewModel.lastNaviagtionBarHiddenObservable.subscribeNext { [weak self] hidden in
+            self?.isNavbarHidden = hidden
+            self?.isStatusBarHidden = hidden
         }
         .add(to: disposeBag)
     }
@@ -184,6 +189,7 @@ extension PhotoSliderViewController: UIPageViewControllerDelegate {
 extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     func prepareForInteractiveAnimation() {
         viewModel.targetVisibleObservable.next(true)
+        viewModel.restoreNaviationBarVisibilityObservable.next(isNavbarHidden)
         isNavbarHidden = true
         isStatusBarHidden = false
     }
@@ -206,6 +212,6 @@ extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     
     func prepareForRestore() {
         viewModel.targetVisibleObservable.next(false)
-        isNavbarHidden = false
+        viewModel.restoreNaviationBarVisibilityObservable.complete()
     }
 }
