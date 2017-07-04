@@ -72,6 +72,9 @@
 		D309AFCB1F04F16B00BB679E /* SpeakerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */; };
 		D309AFCE1F04F79D00BB679E /* WebsiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309AFCD1F04F79D00BB679E /* WebsiteView.swift */; };
 		D309AFD01F04F7F100BB679E /* WebsiteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D309AFCF1F04F7F100BB679E /* WebsiteView.xib */; };
+		D309AFD41F05107800BB679E /* SpeakerLecturesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309AFD21F05107800BB679E /* SpeakerLecturesTableViewCell.swift */; };
+		D309AFD51F05107800BB679E /* SpeakerLecturesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D309AFD31F05107800BB679E /* SpeakerLecturesTableViewCell.xib */; };
+		D309AFDD1F05179B00BB679E /* SpeakerCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309AFDB1F05179B00BB679E /* SpeakerCardCollectionViewCell.swift */; };
 		D30B0C3A1EFBB4C200765AC4 /* PhotoSliderAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30B0C391EFBB4C200765AC4 /* PhotoSliderAnimator.swift */; };
 		D30D3D021F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D011F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift */; };
 		D30D3D081F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D3D061F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift */; };
@@ -271,6 +274,9 @@
 		D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLoadable.swift; sourceTree = "<group>"; };
 		D309AFCD1F04F79D00BB679E /* WebsiteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteView.swift; sourceTree = "<group>"; };
 		D309AFCF1F04F7F100BB679E /* WebsiteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteView.xib; sourceTree = "<group>"; };
+		D309AFD21F05107800BB679E /* SpeakerLecturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLecturesTableViewCell.swift; sourceTree = "<group>"; };
+		D309AFD31F05107800BB679E /* SpeakerLecturesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerLecturesTableViewCell.xib; sourceTree = "<group>"; };
+		D309AFDB1F05179B00BB679E /* SpeakerCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeakerCardCollectionViewCell.swift; path = ../SpeakerCardCollectionViewCell/SpeakerCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D30B0C391EFBB4C200765AC4 /* PhotoSliderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSliderAnimator.swift; sourceTree = "<group>"; };
 		D30D3D011F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D30D3D061F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -550,6 +556,7 @@
 				D30D3D0F1F03D0650056F8A7 /* SpeakerBioTableViewCell */,
 				D30D3D0A1F03CE100056F8A7 /* SpeakerWebsitesTableViewCell */,
 				D30D3D051F03C6280056F8A7 /* SpeakerHeaderTableViewCell */,
+				D309AFD11F05104F00BB679E /* SpeakerLecturesTableViewCell */,
 				7EB744301EFBE7A4008092DC /* SpeakersTableViewCell */,
 				7EB7441E1EF15288008092DC /* LatestSpeakerCollectionViewCell */,
 				7EB744151EF150EF008092DC /* LatestSpeakersHeaderView */,
@@ -753,6 +760,16 @@
 				D309AFCF1F04F7F100BB679E /* WebsiteView.xib */,
 			);
 			path = WebsiteView;
+			sourceTree = "<group>";
+		};
+		D309AFD11F05104F00BB679E /* SpeakerLecturesTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D309AFDB1F05179B00BB679E /* SpeakerCardCollectionViewCell.swift */,
+				D309AFD21F05107800BB679E /* SpeakerLecturesTableViewCell.swift */,
+				D309AFD31F05107800BB679E /* SpeakerLecturesTableViewCell.xib */,
+			);
+			path = SpeakerLecturesTableViewCell;
 			sourceTree = "<group>";
 		};
 		D30B0C381EFBB49400765AC4 /* Animators */ = {
@@ -1285,6 +1302,7 @@
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
 				D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */,
 				7EB744271EF3E0BD008092DC /* speakers.json in Resources */,
+				D309AFD51F05107800BB679E /* SpeakerLecturesTableViewCell.xib in Resources */,
 				D34B850D1EB3214900DBC72D /* PreviousEventsListCell.xib in Resources */,
 				D39CC8241ED2B3FB007B0A1C /* SadFaceView.xib in Resources */,
 				D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */,
@@ -1434,6 +1452,7 @@
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
 				7ED7106E1EE1AA11003950A6 /* NibRepresentable.swift in Sources */,
+				D309AFDD1F05179B00BB679E /* SpeakerCardCollectionViewCell.swift in Sources */,
 				D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */,
 				D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */,
 				D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */,
@@ -1450,6 +1469,7 @@
 				7EB744091EF130B6008092DC /* SpeakersViewControllerViewModel.swift in Sources */,
 				7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */,
 				D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */,
+				D309AFD41F05107800BB679E /* SpeakerLecturesTableViewCell.swift in Sources */,
 				D35AE6C61EF4464B00FFAD35 /* PhotoSliderViewController.swift in Sources */,
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
 				D3E1B8551EF7A227008C226F /* SizedScrollView.swift in Sources */,

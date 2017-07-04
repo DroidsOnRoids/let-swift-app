@@ -29,10 +29,10 @@ final class SpeakerCardCell: UITableViewCell {
     }
 
     func loadData(with model: Talk) {
-        card.lectureSummary = model.description ?? ""
+        card.lectureSummary = model.description
         card.lectureTitle = model.title
-        card.speakerName = model.speaker?.name ?? ""
-        card.speakerTitle = model.speaker?.job ?? ""
+        card.speakerName = model.speaker?.name
+        card.speakerTitle = model.speaker?.job
         card.speakerImageURL = model.speaker?.avatar?.thumb
     }
 

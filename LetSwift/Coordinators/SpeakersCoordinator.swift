@@ -28,9 +28,18 @@ final class SpeakersCoordinator: Coordinator, Startable {
 
 extension SpeakersCoordinator: SpeakersViewControllerDelegate {
     func presentSpeakerDetailsScreen(with id: Int) {
-        let viewModel = SpeakerDetailsViewControllerViewModel(with: id)
+        let viewModel = SpeakerDetailsViewControllerViewModel(with: id, delegate: self)
         let viewController = SpeakerDetailsViewController(viewModel: viewModel)
 
+        navigationViewController.pushViewController(viewController, animated: true)
+    }
+}
+
+extension SpeakersCoordinator: SpeakerDetailsViewControllerDelegate {
+    func presentLectureScreen(with id: Int) {
+        let viewModel = LectureViewControllerViewModel(delegate: nil)
+        let viewController = LectureViewController(viewModel: viewModel)
+        
         navigationViewController.pushViewController(viewController, animated: true)
     }
 }

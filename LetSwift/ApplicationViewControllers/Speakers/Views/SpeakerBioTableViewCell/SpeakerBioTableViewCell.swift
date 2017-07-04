@@ -28,6 +28,7 @@ final class SpeakerBioTableViewCell: UITableViewCell, SpeakerLoadable {
     }
     
     private func setup() {
+        removeSeparators()
         setupLocalization()
     }
 }

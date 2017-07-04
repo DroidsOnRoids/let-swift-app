@@ -10,7 +10,7 @@ import UIKit
 
 final class TappableView: UIView {
     
-    @IBInspectable var selectionColor: UIColor = .lightBlueGrey
+    @IBInspectable var selectionColor: UIColor? = .lightBlueGrey
     
     private var originalBackground: UIColor!
     private var isTouchDown = false
@@ -37,7 +37,10 @@ final class TappableView: UIView {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         isTouchDown = true
         originalBackground = backgroundColor
-        backgroundColor = selectionColor
+        
+        if let selectionColor = selectionColor {
+            backgroundColor = selectionColor
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

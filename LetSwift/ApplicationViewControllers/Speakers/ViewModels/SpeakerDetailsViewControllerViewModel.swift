@@ -8,20 +8,36 @@
 
 final class SpeakerDetailsViewControllerViewModel {
     
-    var speakerObservable = Observable<Speaker?>(nil)
-    var tableViewStateObservable = Observable<AppContentState>(.loading)
+    weak var delegate: SpeakerDetailsViewControllerDelegate?
+    
+    let speakerObservable = Observable<Speaker?>(nil)
+    let tableViewStateObservable = Observable<AppContentState>(.loading)
+    let showLectureDetailsObservable = Observable<Int?>(nil)
+    let refreshObservable = Observable<Void>()
     
     private let disposeBag = DisposeBag()
     private let speakerId: Int
     
-    init(with id: Int) {
+    init(with id: Int, delegate: SpeakerDetailsViewControllerDelegate?) {
         speakerId = id
+        self.delegate = delegate
         setup()
     }
     
     private func setup() {
         speakerObservable.subscribeNext { [weak self] speaker in
             self?.tableViewStateObservable.next(.content)
+        }
+        .add(to: disposeBag)
+        
+        showLectureDetailsObservable.subscribeNext { [weak self] talkId in
+            guard let talkId = talkId else { return }
+            self?.delegate?.presentLectureScreen(with: talkId)
+        }
+        .add(to: disposeBag)
+        
+        refreshObservable.subscribeNext { [weak self] in
+            self?.refreshData()
         }
         .add(to: disposeBag)
         
@@ -36,6 +52,16 @@ final class SpeakerDetailsViewControllerViewModel {
             case .error:
                 self?.tableViewStateObservable.next(.error)
             }
+        }
+    }
+    
+    private func refreshData() {
+        NetworkProvider.shared.speakerDetails(with: speakerId) { [weak self] response in
+            if case .success(let speaker) = response {
+                self?.speakerObservable.next(speaker)
+            }
+            
+            self?.refreshObservable.complete()
         }
     }
 }
