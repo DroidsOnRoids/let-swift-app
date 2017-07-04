@@ -9,7 +9,12 @@
 import UIKit
 
 protocol LectureViewControllerDelegate: class {
+    func presentSpeakerDetailsScreen(with id: Int)
     func presentSpeakerDetailsScreen()
+}
+
+extension LectureViewControllerDelegate {
+    func presentSpeakerDetailsScreen() { } //TODO: fix for now, remove when implemented with id everywhere
 }
 
 final class LectureViewController: AppViewController {
