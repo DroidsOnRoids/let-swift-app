@@ -99,7 +99,7 @@ final class EventDetailsViewController: CommonEventViewController {
 
                         weakSelf.viewModel.speakerCellDidTapObservable.next(event.talks.count - speakerIndex)
                     }, readMore: { [weak self] in
-                        self?.viewModel.lectureCellDidTapObservable.next()
+                        self?.viewModel.lectureCellDidTapObservable.next(talk)
                     })
                 }
                 .add(to: disposeBag)
