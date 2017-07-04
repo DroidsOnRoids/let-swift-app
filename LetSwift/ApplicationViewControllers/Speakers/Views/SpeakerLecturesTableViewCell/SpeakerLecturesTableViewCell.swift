@@ -10,6 +10,11 @@ import UIKit
 
 final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
     
+    fileprivate enum Constants {
+        static let singleCardWidth: CGFloat = 16.0
+        static let multipleCardWidth: CGFloat = 30.0
+    }
+    
     static let cellIdentifier = String(describing: SpeakerLecturesTableViewCell.self)
     
     let lectureDetailsObservable = Observable<Int?>(nil)
@@ -42,9 +47,17 @@ final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
                 .add(to: weakSelf.disposeBag)
         }))
     }
-    
-    // MARK: Custom CollectionView pagination
-    fileprivate func cellWidth(for collectionView: UICollectionView) -> CGFloat {
+}
+
+extension SpeakerLecturesTableViewCell: Localizable {
+    func setupLocalization() {
+        titleLabel.text = localized("SPEAKERS_PARTICIPATED_IN").uppercased()
+    }
+}
+
+// MARK: Custom CollectionView pagination
+extension SpeakerLecturesTableViewCell {
+    private func cellWidth(for collectionView: UICollectionView) -> CGFloat {
         guard let currentIndexPath = collectionView.indexPathsForVisibleItems.first else { return 0.0 }
         
         let exampleCell = collectionView.cellForItem(at: currentIndexPath)
@@ -53,14 +66,14 @@ final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
         return cellWidth
     }
     
-    fileprivate func cellMargin(for collectionView: UICollectionView) -> CGFloat {
+    private func cellMargin(for collectionView: UICollectionView) -> CGFloat {
         let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
         let spacing = flowLayout?.minimumInteritemSpacing ?? 0.0
         
         return spacing
     }
     
-    fileprivate func closestMultiplicity(of: CGFloat, to: CGFloat) -> CGFloat {
+    private func closestMultiplicity(of: CGFloat, to: CGFloat) -> CGFloat {
         let multiplicityCount = max((to / of).rounded(), 0.0)
         return multiplicityCount * of
     }
@@ -77,15 +90,9 @@ final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
     }
 }
 
-extension SpeakerLecturesTableViewCell: Localizable {
-    func setupLocalization() {
-        titleLabel.text = localized("SPEAKERS_PARTICIPATED_IN").uppercased()
-    }
-}
-
 extension SpeakerLecturesTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let sizeOffset: CGFloat = collectionView.numberOfItems(inSection: 0) > 1 ? 30.0 : 16.0
+        let sizeOffset: CGFloat = collectionView.numberOfItems(inSection: 0) > 1 ? Constants.multipleCardWidth : Constants.singleCardWidth
         return CGSize(width: UIScreen.main.bounds.width - sizeOffset, height: collectionView.bounds.height)
     }
     
