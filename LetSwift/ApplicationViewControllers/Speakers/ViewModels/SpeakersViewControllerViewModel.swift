@@ -12,8 +12,6 @@ import Alamofire
 final class SpeakersViewControllerViewModel {
 
     private enum Constants {
-        static let speakersOrderCurrent = "current"
-        static let speakersOrderLatest = "recent"
         static let speakersPerPage = 10
         static let firstPage = 1
     }
@@ -95,7 +93,7 @@ final class SpeakersViewControllerViewModel {
     }
 
     private func loadInitialData() {
-        pendingRequest = NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, query: searchQuery, order: Constants.speakersOrderCurrent) { [weak self] response in
+        pendingRequest = NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, query: searchQuery) { [weak self] response in
             guard let weakSelf = self else { return }
 
             switch response {
@@ -122,12 +120,13 @@ final class SpeakersViewControllerViewModel {
     }
 
     private func loadLatestSpeakers() {
-        NetworkProvider.shared.speakersList(with: Constants.firstPage, perPage: Constants.speakersPerPage, order: Constants.speakersOrderLatest) { [weak self] response in
+        NetworkProvider.shared.latestSpeakers { [weak self] response in
             guard let weakSelf = self else { return }
 
             switch response {
-            case let .success(responseLatest):
-                weakSelf.latestSpeakers.append(responseLatest.elements)
+            case let .success(latestSpeakers):
+                weakSelf.latestSpeakers.values = []
+                weakSelf.latestSpeakers.append(latestSpeakers)
                 weakSelf.tableViewStateObservable.next(weakSelf.checkIfNoResultsFound())
             case .error:
                 weakSelf.sadFaceErrorLabelObservable.next(localized("GENERAL_SOMETHING_WENT_WRONG"))
@@ -146,7 +145,7 @@ final class SpeakersViewControllerViewModel {
             return
         }
 
-        pendingRequest = NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: Constants.speakersPerPage, query: searchQuery, order: Constants.speakersOrderCurrent) { [weak self] response in
+        pendingRequest = NetworkProvider.shared.speakersList(with: currentPage + 1, perPage: Constants.speakersPerPage, query: searchQuery) { [weak self] response in
             switch response {
             case let .success(responeObject):
                 self?.currentPage += 1

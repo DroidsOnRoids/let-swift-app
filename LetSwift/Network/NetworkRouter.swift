@@ -22,6 +22,7 @@ enum NetworkRouter: URLRequestConvertible {
     // MARK: Speakres
     case speakersList(Parameters)
     case speakerDetails(Int)
+    case latestSpeakers
 
     //MARK: Contact
     case contact(Parameters)
@@ -31,7 +32,8 @@ enum NetworkRouter: URLRequestConvertible {
         case .eventsList,
              .eventDetails,
              .speakersList,
-             .speakerDetails:
+             .speakerDetails,
+             .latestSpeakers:
             return .get
         case .contact:
             return .post
@@ -48,6 +50,9 @@ enum NetworkRouter: URLRequestConvertible {
             return "/speakers"
         case .speakerDetails(let id):
             return "/speakers/\(id)"
+        case .latestSpeakers:
+            return "/speakers/recent"
+
         case .contact:
             return "/contact"
         }
@@ -63,7 +68,7 @@ enum NetworkRouter: URLRequestConvertible {
             return try Alamofire.URLEncoding.default.encode(urlRequest, with: params)
         case .contact(let params):
             return try Alamofire.JSONEncoding.default.encode(urlRequest, with: params)
-        case .eventDetails, .speakerDetails:
+        case .eventDetails, .speakerDetails, .latestSpeakers:
             return try Alamofire.URLEncoding.default.encode(urlRequest, with: nil)
         }
     }
