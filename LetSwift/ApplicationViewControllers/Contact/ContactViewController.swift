@@ -189,10 +189,16 @@ final class ContactViewController: AppViewController {
 
     private func resetPools() {
         topicButton.setTitle(localized("CONTACT_TOPIC") + "...", for: [])
+        topicButton.setTitleColor(.placeholder, for: [])
         nameTextField.text = ""
         emailTextField.text = ""
         messageTextView.text = ""
         sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
+
+        viewModel.pickerResultObservable.next(-1)
+        viewModel.nameTextObservable.next("")
+        viewModel.emailTextObservable.next("")
+        viewModel.messageTextObservable.next("")
     }
 }
 

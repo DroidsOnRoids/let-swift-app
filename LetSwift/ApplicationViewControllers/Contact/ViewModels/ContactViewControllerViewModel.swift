@@ -72,7 +72,7 @@ final class ContactViewControllerViewModel {
     
     private func setup() {
         pickerResultObservable.subscribeNext { [weak self] result in
-            guard let weakSelf = self else { return }
+            guard let weakSelf = self, result != -1 else { return }
             let newTitle = localized("CONTACT_TOPIC") + " " + weakSelf.topics[result].text.lowercased()
             weakSelf.pickerTitleObservable.next(newTitle)
         }
