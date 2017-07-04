@@ -36,7 +36,7 @@ extension SpeakersCoordinator: SpeakersViewControllerDelegate {
 }
 
 extension SpeakersCoordinator: SpeakerDetailsViewControllerDelegate {
-    func presentLectureScreen(with id: Int) {
+    func presentLectureScreen(with talk: Talk) {
         let viewModel = LectureViewControllerViewModel(delegate: nil)
         let viewController = LectureViewController(viewModel: viewModel)
         

@@ -32,7 +32,9 @@ final class SpeakerDetailsViewControllerViewModel {
         
         showLectureDetailsObservable.subscribeNext { [weak self] talkId in
             guard let talkId = talkId else { return }
-            self?.delegate?.presentLectureScreen(with: talkId)
+            if let talkToShow = self?.speakerObservable.value?.talks.filter({ $0.id == talkId }).first {
+                self?.delegate?.presentLectureScreen(with: talkToShow)
+            }
         }
         .add(to: disposeBag)
         
