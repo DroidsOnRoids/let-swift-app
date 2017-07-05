@@ -38,6 +38,7 @@ struct Event: Mappable {
     var withoutExtendedFields: Event {
         var newEvent = self
         newEvent.talks = []
+        
         return newEvent
     }
 

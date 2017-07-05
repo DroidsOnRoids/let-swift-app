@@ -16,6 +16,7 @@ extension Date {
     var stringDateValue: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy"
+        
         return formatter.string(from: self)
     }
     
@@ -23,6 +24,7 @@ extension Date {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
         formatter.timeZone = .current
+        
         return formatter.string(from: self)
     }
 }

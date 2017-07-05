@@ -31,11 +31,10 @@ final class SpeakerDetailsViewControllerViewModel {
         .add(to: disposeBag)
         
         showLectureDetailsObservable.subscribeNext { [weak self] talkId in
-            guard let talkId = talkId else { return }
-            if var talkToShow = self?.speakerObservable.value?.talks.filter({ $0.id == talkId }).first {
-                talkToShow.speaker = self?.speakerObservable.value?.withoutExtendedFields
-                self?.delegate?.presentLectureScreen(with: talkToShow)
-            }
+            guard let talkId = talkId, var talkToShow = self?.speakerObservable.value?.talks.filter({ $0.id == talkId }).first else { return }
+            
+            talkToShow.speaker = self?.speakerObservable.value?.withoutExtendedFields
+            self?.delegate?.presentLectureScreen(with: talkToShow)
         }
         .add(to: disposeBag)
         

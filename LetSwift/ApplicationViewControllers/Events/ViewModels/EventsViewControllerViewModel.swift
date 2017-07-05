@@ -168,13 +168,13 @@ final class EventsViewControllerViewModel {
             .add(to: disposeBag)
         
         speakerCellDidTapObservable.subscribeNext { [weak self] index in
-            guard index != -1 else { return }
+            guard index > -1 else { return }
             self?.speakerCellTapped(with: index)
         }
         .add(to: disposeBag)
         
         lectureCellDidTapObservable.subscribeNext { [weak self] index in
-            guard index != -1 else { return }
+            guard index > -1 else { return }
             self?.lectureCellTapped(with: index)
         }
         .add(to: disposeBag)

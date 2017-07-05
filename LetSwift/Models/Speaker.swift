@@ -42,6 +42,7 @@ struct Speaker: Mappable {
     var withoutExtendedFields: Speaker {
         var newSpeaker = self
         newSpeaker.talks = []
+        
         return newSpeaker
     }
 }
