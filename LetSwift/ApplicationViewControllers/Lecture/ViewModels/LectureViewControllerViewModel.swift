@@ -10,11 +10,11 @@ import Foundation
 
 final class LectureViewControllerViewModel {
     
-    weak var delegate: LectureViewControllerDelegate?
+    weak var delegate: SpeakerLectureFlowDelegate?
     
     let talkObservable: Observable<Talk>
     
-    init(with talk: Talk, delegate: LectureViewControllerDelegate?) {
+    init(with talk: Talk, delegate: SpeakerLectureFlowDelegate?) {
         self.delegate = delegate
         talkObservable = Observable<Talk>(talk)
     }

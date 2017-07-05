@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol LectureViewControllerDelegate: class {
-    func presentSpeakerDetailsScreen(with id: Int)
-}
-
 final class LectureViewController: AppViewController {
     
     @IBOutlet private weak var speakerCellView: TappableView!

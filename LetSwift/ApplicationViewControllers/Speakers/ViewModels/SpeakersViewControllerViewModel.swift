@@ -40,11 +40,11 @@ final class SpeakersViewControllerViewModel {
     var searchBarShouldResignFirstResponderObservable = Observable<Void>()
     var errorViewStateObservable = Observable<ErrorReason>(.requestFail)
 
-    weak var delegate: SpeakersViewControllerDelegate?
+    weak var delegate: SpeakerLectureFlowDelegate?
     var speakers = [Speaker]().bindable
     var latestSpeakers = [Speaker]().bindable
 
-    init(delegate: SpeakersViewControllerDelegate?) {
+    init(delegate: SpeakerLectureFlowDelegate?) {
         self.delegate = delegate
         tableViewStateObservable = Observable<AppContentState>(.loading)
 

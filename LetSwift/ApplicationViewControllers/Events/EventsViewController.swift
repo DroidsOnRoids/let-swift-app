@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol EventsViewControllerDelegate: LectureViewControllerDelegate, SpeakerDetailsViewControllerDelegate {
+protocol EventsViewControllerDelegate: SpeakerLectureFlowDelegate {
     func presentEventDetailsScreen(fromViewModel: EventsViewControllerViewModel)
     func presentEventDetailsScreen(fromEventId: Int)
     func presentPhotoGalleryScreen(with photos: [Photo], eventId: Int?)

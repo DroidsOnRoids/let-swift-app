@@ -8,7 +8,7 @@
 
 final class SpeakerDetailsViewControllerViewModel {
     
-    weak var delegate: SpeakerDetailsViewControllerDelegate?
+    weak var delegate: SpeakerLectureFlowDelegate?
     
     let speakerObservable = Observable<Speaker?>(nil)
     let tableViewStateObservable = Observable<AppContentState>(.loading)
@@ -18,7 +18,7 @@ final class SpeakerDetailsViewControllerViewModel {
     private let disposeBag = DisposeBag()
     private let speakerId: Int
     
-    init(with id: Int, delegate: SpeakerDetailsViewControllerDelegate?) {
+    init(with id: Int, delegate: SpeakerLectureFlowDelegate?) {
         speakerId = id
         self.delegate = delegate
         setup()

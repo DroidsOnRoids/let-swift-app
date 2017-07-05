@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SpeakersViewControllerDelegate: class {
-    func presentSpeakerDetailsScreen(with id: Int)
-}
-
 final class SpeakersViewController: AppViewController {
 
     private enum Constants {
