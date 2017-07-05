@@ -12,6 +12,7 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
     
     @IBOutlet private weak var pullToRefreshLabel: UILabel!
     @IBOutlet private weak var somethingWentWrongLabel: UILabel!
+    @IBOutlet private weak var arrowImageView: UIImageView!
     
     var scrollView: UIScrollView?
 
@@ -30,6 +31,14 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
         }
         get {
             return pullToRefreshLabel.text
+        }
+    }
+
+    var isPullToRefreshVisible: Bool = true {
+        didSet {
+            arrowImageView.isHidden = !isPullToRefreshVisible
+            pullToRefreshLabel.isHidden = !isPullToRefreshVisible
+            scrollView?.isScrollEnabled = isPullToRefreshVisible
         }
     }
     

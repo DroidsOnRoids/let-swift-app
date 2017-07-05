@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SadFaceView" customModule="LetSwift" customModuleProvider="target">
             <connections>
+                <outlet property="arrowImageView" destination="PM9-Gk-TI3" id="zaF-OV-rSL"/>
                 <outlet property="pullToRefreshLabel" destination="lkJ-2v-Qw7" id="6xc-Xh-6e5"/>
                 <outlet property="somethingWentWrongLabel" destination="hy0-Sw-BMn" id="ayl-Ij-p19"/>
             </connections>
@@ -24,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ArrowUp" translatesAutoresizingMaskIntoConstraints="NO" id="PM9-Gk-TI3">
-                            <rect key="frame" x="177.5" y="22" width="19" height="12"/>
+                            <rect key="frame" x="178" y="22" width="19" height="12"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="19" id="7Iv-EE-0Z2"/>
                                 <constraint firstAttribute="height" constant="12" id="yd5-ec-KgD"/>
@@ -76,7 +77,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-257" y="126"/>
+            <point key="canvasLocation" x="-257.5" y="125.5"/>
         </scrollView>
     </objects>
     <resources>

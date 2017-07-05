@@ -16,6 +16,11 @@ final class SpeakersViewControllerViewModel {
         static let firstPage = 1
     }
 
+    enum ErrorReason {
+        case requestFail
+        case speakerNotFound
+    }
+
     private let disposeBag = DisposeBag()
     private var currentPage = Constants.firstPage
     private var totalPage = -1
@@ -33,7 +38,7 @@ final class SpeakersViewControllerViewModel {
     var latestSpeakerCellDidTapWithIndexObservable = Observable<Int>(-1)
     var searchQueryObservable = Observable<String>("")
     var searchBarShouldResignFirstResponderObservable = Observable<Void>()
-    var sadFaceErrorLabelObservable = Observable<String>(localized("GENERAL_SOMETHING_WENT_WRONG"))
+    var errorViewStateObservable = Observable<ErrorReason>(.requestFail)
 
     weak var delegate: SpeakersViewControllerDelegate?
     var speakers = [Speaker]().bindable
@@ -111,7 +116,7 @@ final class SpeakersViewControllerViewModel {
                     weakSelf.refreshDataObservable.complete()
                 }
             case .error:
-                weakSelf.sadFaceErrorLabelObservable.next(localized("GENERAL_SOMETHING_WENT_WRONG"))
+                weakSelf.errorViewStateObservable.next(.requestFail)
                 weakSelf.tableViewStateObservable.next(.error)
                 weakSelf.refreshDataObservable.complete()
                 weakSelf.pendingRequest = nil
@@ -129,7 +134,7 @@ final class SpeakersViewControllerViewModel {
                 weakSelf.latestSpeakers.append(latestSpeakers)
                 weakSelf.tableViewStateObservable.next(weakSelf.checkIfNoResultsFound())
             case .error:
-                weakSelf.sadFaceErrorLabelObservable.next(localized("GENERAL_SOMETHING_WENT_WRONG"))
+                weakSelf.errorViewStateObservable.next(.requestFail)
                 weakSelf.tableViewStateObservable.next(.error)
             }
             weakSelf.refreshDataObservable.complete()
@@ -161,7 +166,7 @@ final class SpeakersViewControllerViewModel {
 
     private func checkIfNoResultsFound() -> AppContentState {
         if speakers.values.isEmpty && !searchQuery.isEmpty {
-            sadFaceErrorLabelObservable.next(localized("SPEAKERS_NO_RESULTS_FOUND"))
+            errorViewStateObservable.next(.speakerNotFound)
             return .error
         } else {
             return .content
