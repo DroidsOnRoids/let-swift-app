@@ -13,6 +13,9 @@ final class ReactiveSearchBar: UISearchBar {
     var searchBarSearchButtonClickedObservable = Observable<String>("")
     var searchBarCancelButtonClicked = Observable<Void>()
     var searchBarWillStartEditingObservable = Observable<Void>()
+    var searchBarTextDidChangeObservable = Observable<String>("")
+
+    fileprivate lazy var textDidChangeDebouncer: Debouncer = Debouncer(delay: 0.3, callback: self.textDidChange)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,9 +38,17 @@ final class ReactiveSearchBar: UISearchBar {
         placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
         tintColor = .bluishGrey
     }
+
+    private func textDidChange() {
+        searchBarTextDidChangeObservable.next(text ?? "")
+    }
 }
 
 extension ReactiveSearchBar: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        textDidChangeDebouncer.call()
+    }
+
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         searchBarWillStartEditingObservable.next()
         setShowsCancelButton(true, animated: true)

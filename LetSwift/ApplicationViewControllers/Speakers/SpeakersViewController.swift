@@ -184,6 +184,12 @@ final class SpeakersViewController: AppViewController {
             self?.searchBar.enableCancelButton()
         }
         .add(to: disposeBag)
+
+        searchBar.searchBarTextDidChangeObservable.subscribeNext { [weak self] query in
+            self?.viewModel.searchQueryObservable.next(query)
+            self?.viewModel.speakerLoadDataRequestObservable.next()
+        }
+        .add(to: disposeBag)
     }
 
     private func reactiveTableViewSetup() {
