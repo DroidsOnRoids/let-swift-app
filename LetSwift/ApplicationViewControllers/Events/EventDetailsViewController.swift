@@ -95,9 +95,7 @@ final class EventDetailsViewController: CommonEventViewController {
                     cell.loadData(with: talk)
 
                     cell.addTapListeners(speaker: { [weak self] in
-                        guard let weakSelf = self else { return }
-
-                        weakSelf.viewModel.speakerCellDidTapObservable.next(event.talks.count - speakerIndex)
+                        self?.viewModel.speakerCellDidTapObservable.next(event.talks.count - speakerIndex)
                     }, readMore: { [weak self] in
                         self?.viewModel.lectureCellDidTapObservable.next()
                     })
