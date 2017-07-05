@@ -61,7 +61,7 @@ final class ContactViewController: AppViewController {
         
         let sendButtonFrame = sendButton.superview?.convert(sendButton.frame, to: view) ?? sendButton.frame
         upperKeyboardLimit = sendButtonFrame.maxY + Constants.keyboardMargin
-        messageErrorTextViewHeight = messageTextView.frame.size.height
+        messageErrorTextViewHeight = messageTextView.frame.height
     }
     
     private func setup() {
