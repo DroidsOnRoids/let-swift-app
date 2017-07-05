@@ -28,6 +28,7 @@
 		7E31D0A41EAE3D7C0030147C /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A31EAE3D7C0030147C /* Talk.swift */; };
 		7E31D0A61EAE3D970030147C /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A51EAE3D970030147C /* Photo.swift */; };
 		7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */; };
+		7E3388ED1F0CF710008E9798 /* UISearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3388EC1F0CF710008E9798 /* UISearchBarExtension.swift */; };
 		7E52E66F1F01318F0080EE8D /* LatestSpeakersHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E52E66D1F01318F0080EE8D /* LatestSpeakersHeaderView.swift */; };
 		7E52E6701F01318F0080EE8D /* LatestSpeakersHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E52E66E1F01318F0080EE8D /* LatestSpeakersHeaderView.xib */; };
 		7E52E6781F0380870080EE8D /* ReactiveSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E52E6771F0380870080EE8D /* ReactiveSearchBar.swift */; };
@@ -232,6 +233,7 @@
 		7E31D0A31EAE3D7C0030147C /* Talk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
 		7E31D0A51EAE3D970030147C /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewControllerViewModel.swift; sourceTree = "<group>"; };
+		7E3388EC1F0CF710008E9798 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
 		7E52E66D1F01318F0080EE8D /* LatestSpeakersHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatestSpeakersHeaderView.swift; path = LetSwift/ApplicationViewControllers/Speakers/Views/LatestSpeakersHeaderView/LatestSpeakersHeaderView.swift; sourceTree = SOURCE_ROOT; };
 		7E52E66E1F01318F0080EE8D /* LatestSpeakersHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LatestSpeakersHeaderView.xib; path = LetSwift/ApplicationViewControllers/Speakers/Views/LatestSpeakersHeaderView/LatestSpeakersHeaderView.xib; sourceTree = SOURCE_ROOT; };
 		7E52E6771F0380870080EE8D /* ReactiveSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveSearchBar.swift; sourceTree = "<group>"; };
@@ -1194,6 +1196,7 @@
 				7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */,
 				D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */,
 				7E5FAD6E1F03AE81002ACE38 /* DispatchQueueExtension.swift */,
+				7E3388EC1F0CF710008E9798 /* UISearchBarExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1466,6 +1469,7 @@
 				D3AE28961ECDAEFF00F29702 /* ObserevableEvent.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
 				D31216381EB2774F003674C7 /* UIImageExtension.swift in Sources */,
+				7E3388ED1F0CF710008E9798 /* UISearchBarExtension.swift in Sources */,
 				7E0842D51ECF2E5E003F7C96 /* NetworkError.swift in Sources */,
 				D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */,
 				D364260E1EF7FA6F002AB02E /* SinglePhotoViewController.swift in Sources */,
