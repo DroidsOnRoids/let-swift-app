@@ -17,7 +17,7 @@ struct Talk: Mappable {
     
     // MARK: Extended fields
     var speaker: Speaker?
-    let event: Event?
+    var event: Event?
     
     init(map: Mapper) throws {
         try id = map.from("id")

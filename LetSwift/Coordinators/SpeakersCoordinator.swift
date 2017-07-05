@@ -37,7 +37,7 @@ extension SpeakersCoordinator: SpeakersViewControllerDelegate {
 
 extension SpeakersCoordinator: SpeakerDetailsViewControllerDelegate {
     func presentLectureScreen(with talk: Talk) {
-        let viewModel = LectureViewControllerViewModel(with: talk, delegate: nil)
+        let viewModel = LectureViewControllerViewModel(with: talk, delegate: self)
         let viewController = LectureViewController(viewModel: viewModel)
         
         navigationViewController.pushViewController(viewController, animated: true)

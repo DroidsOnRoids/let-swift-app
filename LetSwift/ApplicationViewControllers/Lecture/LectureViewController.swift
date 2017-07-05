@@ -10,17 +10,11 @@ import UIKit
 
 protocol LectureViewControllerDelegate: class {
     func presentSpeakerDetailsScreen(with id: Int)
-    func presentSpeakerDetailsScreen()
-}
-
-extension LectureViewControllerDelegate {
-    func presentSpeakerDetailsScreen() { } //TODO: fix for now, remove when implemented with id everywhere
 }
 
 final class LectureViewController: AppViewController {
     
     @IBOutlet private weak var speakerCellView: TappableView!
-    @IBOutlet private weak var indicatorView: UIImageView!
     @IBOutlet private weak var speakerImageView: UIImageView!
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerTitleLabel: UILabel!
@@ -61,12 +55,6 @@ final class LectureViewController: AppViewController {
     }
     
     private func reactiveSetup() {
-        viewModel.shouldAllowTappingSpeaker?.subscribeNext(startsWithInitialValue: true) { [weak self] allow in
-            self?.speakerCellView.selectionColor = allow ? .lightBlueGrey : nil
-            self?.indicatorView.isHidden = !allow
-        }
-        .add(to: disposeBag)
-        
         viewModel.talkObservable.subscribeNext(startsWithInitialValue: true) { [weak self] talk in
             self?.speakerImageView.sd_setImage(with: talk.speaker?.avatar?.thumb, placeholderImage: self?.speakerImageView.image)
             self?.speakerNameLabel.text = talk.speaker?.name

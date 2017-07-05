@@ -47,7 +47,7 @@ final class EventsViewControllerViewModel {
     
     var eventDetailsRefreshObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
-    var lectureCellDidTapObservable = Observable<Talk?>(nil)
+    var lectureCellDidTapObservable = Observable<Int>(-1)
     var speakerCellDidTapObservable = Observable<Int>(-1)
 
     var eventDidFinishObservable = Observable<Event?>(nil)
@@ -173,9 +173,9 @@ final class EventsViewControllerViewModel {
         }
         .add(to: disposeBag)
         
-        lectureCellDidTapObservable.subscribeNext { [weak self] talk in
-            guard let talk = talk else { return }
-            self?.lectureCellTapped(with: talk)
+        lectureCellDidTapObservable.subscribeNext { [weak self] index in
+            guard index != -1 else { return }
+            self?.lectureCellTapped(with: index)
         }
         .add(to: disposeBag)
 
@@ -306,7 +306,10 @@ final class EventsViewControllerViewModel {
         delegate?.presentSpeakerDetailsScreen(with: speaker.id)
     }
     
-    private func lectureCellTapped(with talk: Talk) {
+    private func lectureCellTapped(with index: Int) {
+        guard let event = lastEventObservable.value, var talk = event.talks[safe: index] else { return }
+        
+        talk.event = event.withoutExtendedFields
         delegate?.presentLectureScreen(with: talk)
     }
 }
