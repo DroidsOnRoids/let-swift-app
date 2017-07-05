@@ -11,13 +11,11 @@ import UIKit
 typealias OnboardingCardModel = (imageName: String, title: String, description: String)
 
 final class OnboardingCardView: DesignableView {
-
-    @IBOutlet private weak var onboardingImageView: UIImageView!
+    
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: MultiSizeLabel!
     
     func setData(with model: OnboardingCardModel) {
-        onboardingImageView.image =  UIImage(named: model.imageName)
         titleLabel.text = model.title
         descriptionLabel.text = model.description
     }
