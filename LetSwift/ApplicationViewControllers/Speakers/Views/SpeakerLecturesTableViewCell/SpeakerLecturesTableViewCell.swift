@@ -55,41 +55,6 @@ extension SpeakerLecturesTableViewCell: Localizable {
     }
 }
 
-// MARK: Custom CollectionView pagination
-extension SpeakerLecturesTableViewCell {
-    private func cellWidth(for collectionView: UICollectionView) -> CGFloat {
-        guard let currentIndexPath = collectionView.indexPathsForVisibleItems.first else { return 0.0 }
-        
-        let exampleCell = collectionView.cellForItem(at: currentIndexPath)
-        let cellWidth = exampleCell?.bounds.width ?? collectionView.bounds.width
-        
-        return cellWidth
-    }
-    
-    private func cellMargin(for collectionView: UICollectionView) -> CGFloat {
-        let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        let spacing = flowLayout?.minimumInteritemSpacing ?? 0.0
-        
-        return spacing
-    }
-    
-    private func closestMultiplicity(of: CGFloat, to: CGFloat) -> CGFloat {
-        let multiplicityCount = max((to / of).rounded(), 0.0)
-        return multiplicityCount * of
-    }
-    
-    fileprivate func offsetWithPagination(for collectionView: UICollectionView, target: CGFloat) -> CGPoint {
-        let myCellWidth = cellWidth(for: collectionView)
-        let myCellMargin = cellMargin(for: collectionView)
-        let multiplicity = closestMultiplicity(of: myCellWidth + myCellMargin, to: target)
-        
-        let maxOffset = collectionView.contentSize.width - collectionView.bounds.width
-        let newOffset = min(max(multiplicity - myCellMargin, 0.0), maxOffset)
-        
-        return CGPoint(x: newOffset, y: collectionView.contentOffset.y)
-    }
-}
-
 extension SpeakerLecturesTableViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sizeOffset: CGFloat = collectionView.numberOfItems(inSection: 0) > 1 ? Constants.multipleCardWidth : Constants.singleCardWidth
@@ -98,6 +63,6 @@ extension SpeakerLecturesTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         guard let collectionView = scrollView as? UICollectionView else { return }
-        targetContentOffset.pointee = offsetWithPagination(for: collectionView, target: targetContentOffset.pointee.x)
+        targetContentOffset.pointee = collectionView.offsetWithPagination(target: targetContentOffset.pointee.x)
     }
 }
