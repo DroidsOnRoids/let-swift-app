@@ -14,6 +14,7 @@ final class SpeakersViewControllerViewModel {
     private enum Constants {
         static let speakersPerPage = 10
         static let firstPage = 1
+        static let cancelCode = -999
     }
 
     enum ErrorReason {
@@ -117,7 +118,9 @@ final class SpeakersViewControllerViewModel {
                     weakSelf.pendingRequest = nil
                     weakSelf.refreshDataObservable.complete()
                 }
-            case .error:
+            case .error(let error):
+                guard (error as NSError).code != Constants.cancelCode else { return }
+
                 weakSelf.errorViewStateObservable.next(.requestFail)
                 weakSelf.tableViewStateObservable.next(.error)
                 weakSelf.refreshDataObservable.complete()
