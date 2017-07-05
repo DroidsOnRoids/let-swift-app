@@ -84,4 +84,31 @@ extension UICollectionView: NibPresentable {
         
         scrollRectToVisible(cell.frame.insetBy(dx: -cellSpacing, dy: -cellSpacing), animated: animated)
     }
+    
+    // MARK: Custom card pagination
+    private var cellWidth: CGFloat {
+        guard let currentIndexPath = indexPathsForVisibleItems.first else { return 0.0 }
+        
+        let exampleCell = cellForItem(at: currentIndexPath)
+        let cellWidth = exampleCell?.bounds.width ?? bounds.width
+        
+        return cellWidth
+    }
+    
+    private var cellMargin: CGFloat {
+        let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let spacing = flowLayout?.minimumInteritemSpacing ?? 0.0
+        
+        return spacing
+    }
+    
+    func offsetWithPagination(target: CGFloat) -> CGPoint {
+        let fullCellSize = cellWidth + cellMargin
+        let nearestPageOffset = max((target / fullCellSize).rounded(), 0.0) * fullCellSize
+        
+        let maxOffset = contentSize.width - bounds.width
+        let newOffset = min(max(nearestPageOffset - cellMargin, 0.0), maxOffset)
+        
+        return CGPoint(x: newOffset, y: contentOffset.y)
+    }
 }
