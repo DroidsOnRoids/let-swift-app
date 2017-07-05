@@ -92,6 +92,8 @@ final class SpeakersViewControllerViewModel {
         .add(to: disposeBag)
 
         searchQueryObservable.subscribeNext { [weak self] query in
+            self?.pendingRequest?.cancel()
+            self?.pendingRequest = nil
             self?.searchQuery = query
         }
         .add(to: disposeBag)
