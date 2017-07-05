@@ -14,7 +14,8 @@ protocol OnboardingViewControllerCoordinatorDelegate: class {
 
 final class OnboardingViewController: UIViewController {
 
-    @IBOutlet private weak var scrollView: UIScrollView!
+    @IBOutlet private weak var scrollView: AppScrollView!
+    @IBOutlet private weak var onboardingImageView: OnboardingImageView!
     @IBOutlet fileprivate weak var continueButton: UIButton!
     @IBOutlet private weak var onboardingPageControl: UIPageControl!
 
@@ -37,6 +38,11 @@ final class OnboardingViewController: UIViewController {
 
     private func reactiveSetup() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
+        
+        scrollView.contentOffsetObservable.subscribeNext { [weak self] offset in
+            self?.onboardingImageView.circlesRotation = offset.x * 0.005
+        }
+        .add(to: disposeBag)
 
         viewModel.currentPageObservable.subscribeNext { [weak self] page in
             guard let weakSelf = self else { return }

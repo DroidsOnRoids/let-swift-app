@@ -32,6 +32,31 @@ final class OnboardingImageView: MultilayerImageView {
         }
     }
     
+    var circlesRotation: CGFloat = 0.0 {
+        didSet {
+            layers[OnboardingLayers.outerCircle.rawValue].transform = CGAffineTransform(rotationAngle: circlesRotation)
+            layers[OnboardingLayers.innerCircle.rawValue].transform = CGAffineTransform(rotationAngle: circlesRotation * 0.5)
+        }
+    }
+    
+    var whiteIconImage: UIImage? {
+        get {
+            return layers[OnboardingLayers.icon.rawValue].image
+        }
+        set {
+            return layers[OnboardingLayers.icon.rawValue].image = newValue
+        }
+    }
+    
+    var whiteIconAlpha: CGFloat {
+        get {
+            return layers[OnboardingLayers.icon.rawValue].alpha
+        }
+        set {
+            return layers[OnboardingLayers.icon.rawValue].alpha = newValue
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
