@@ -173,6 +173,7 @@ final class SpeakersViewController: AppViewController {
         .add(to: disposeBag)
 
         searchBar.searchBarSearchButtonClickedObservable.subscribeNext { [weak self] query in
+            self?.searchBar.enableCancelButton()
             self?.viewModel.searchQueryObservable.next(query)
             self?.viewModel.speakerLoadDataRequestObservable.next()
         }
@@ -180,6 +181,7 @@ final class SpeakersViewController: AppViewController {
 
         viewModel.searchBarShouldResignFirstResponderObservable.subscribeNext { [weak self] in
             self?.searchBar.resignFirstResponder()
+            self?.searchBar.enableCancelButton()
         }
         .add(to: disposeBag)
     }
