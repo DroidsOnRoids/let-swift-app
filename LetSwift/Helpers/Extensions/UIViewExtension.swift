@@ -21,9 +21,7 @@ extension UIView {
         }
     }
 
-    func addParallax() {
-        let amount = 10
-
+    func addParallax(amount: Int = 10) {
         let horizontal = UIInterpolatingMotionEffect(keyPath: Constants.motionEffectForTranslationX, type: .tiltAlongHorizontalAxis)
         horizontal.minimumRelativeValue = -amount
         horizontal.maximumRelativeValue = amount

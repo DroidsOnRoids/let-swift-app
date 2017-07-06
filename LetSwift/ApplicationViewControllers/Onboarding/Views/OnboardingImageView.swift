@@ -69,5 +69,13 @@ final class OnboardingImageView: MultilayerImageView {
     
     private func setup() {
         addLayers(OnboardingLayers.allLayers.map { $0.image })
+        setupParallax()
+    }
+    
+    private func setupParallax() {
+        layers.enumerated().forEach { index, element in
+            let reversedIndex = layers.count - index
+            element.addParallax(amount: reversedIndex * 5)
+        }
     }
 }
