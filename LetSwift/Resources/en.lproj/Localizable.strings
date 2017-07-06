@@ -43,7 +43,7 @@
 "CONTACT_EMAIL" = "Your email";
 "CONTACT_MESSAGE" = "Message";
 "CONTACT_SEND" = "Send";
-"CONTACT_LOADING" = "Loading...";
+"CONTACT_LOADING" = "Sending…";
 "CONTACT_TOPIC_ERROR" = "Choose the topic";
 "CONTACT_NAME_ERROR" = "Type name";
 "CONTACT_EMAIL_ERROR" = "Type email address";
