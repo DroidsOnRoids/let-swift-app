@@ -7,6 +7,12 @@ target 'LetSwift' do
   # Ignore cocoapods warnings
   inhibit_all_warnings!
 
+  # Acknowledgements
+  post_install do | installer |
+      require 'fileutils'
+      FileUtils.cp_r('Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-acknowledgements.plist', 'Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+  end
+
   # Testing
   pod 'HockeySDK', '~> 4.1'
 
