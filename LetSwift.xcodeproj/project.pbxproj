@@ -37,6 +37,7 @@
 		7E7E41331EAA676F001DB179 /* EventsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */; };
 		7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */; };
 		7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */; };
+		7E8D0DE91F0E3E5D0028C156 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7E8D0DE81F0E3E5D0028C156 /* Settings.bundle */; };
 		7E9E04331EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9E04321EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift */; };
 		7EA48D451EADC12C00CEC845 /* Startable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D441EADC12C00CEC845 /* Startable.swift */; };
 		7EA48D4D1EADD4A300CEC845 /* ReflectiveShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */; };
@@ -244,6 +245,7 @@
 		7E7E41321EAA676F001DB179 /* EventsCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCoordinator.swift; sourceTree = "<group>"; };
 		7E7E41341EAA6780001DB179 /* SpeakersCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersCoordinator.swift; sourceTree = "<group>"; };
 		7E7E41361EAA6790001DB179 /* ContactCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCoordinator.swift; sourceTree = "<group>"; };
+		7E8D0DE81F0E3E5D0028C156 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7E9E04321EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDelegateProxy.swift; sourceTree = "<group>"; };
 		7EA48D441EADC12C00CEC845 /* Startable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Startable.swift; sourceTree = "<group>"; };
 		7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectiveShadowView.swift; sourceTree = "<group>"; };
@@ -866,6 +868,7 @@
 		D32A76C01E9B9A4600388222 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7E8D0DE81F0E3E5D0028C156 /* Settings.bundle */,
 				D32A76C51E9B9A4600388222 /* Scripts */,
 				D32A76C21E9B9A4600388222 /* Localizable.strings */,
 				D341A18E1EDE91D10066E965 /* SplashImage.png */,
@@ -1311,6 +1314,7 @@
 				D309AFD01F04F7F100BB679E /* WebsiteView.xib in Resources */,
 				D3EDA6F41EE15D8900C035ED /* TopicPickerViewController.xib in Resources */,
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
+				7E8D0DE91F0E3E5D0028C156 /* Settings.bundle in Resources */,
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
 				D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */,
 				7EB744271EF3E0BD008092DC /* speakers.json in Resources */,
