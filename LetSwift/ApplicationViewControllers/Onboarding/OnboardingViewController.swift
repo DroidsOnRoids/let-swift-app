@@ -35,19 +35,52 @@ final class OnboardingViewController: UIViewController {
 
         reactiveSetup()
     }
+    
+    private func alphaValue(forSingleWidth singleWidth: CGFloat, offset: CGFloat) -> CGFloat {
+        let halfWidth = singleWidth / 2.0
+        var result = abs(offset.truncatingRemainder(dividingBy: singleWidth))
+        
+        if result > halfWidth {
+            result -= 2.0 * (result - halfWidth)
+        }
+        
+        result /= halfWidth
+        result = 1.0 - result
+        
+        return result
+    }
+    
+    private func pageNumber(forSingleWidth singleWidth: CGFloat, offset: CGFloat) -> Int {
+        return Int(floor(offset / singleWidth + 0.5))
+    }
 
     private func reactiveSetup() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
         
         scrollView.contentOffsetObservable.subscribeNext { [weak self] offset in
-            self?.onboardingImageView.circlesRotation = offset.x * 0.005
+            guard let weakSelf = self else { return }
+            let singleWidth = weakSelf.scrollView.frame.width
+            
+            weakSelf.onboardingImageView.circlesRotation = offset.x * 0.005
+            weakSelf.onboardingImageView.whiteIconAlpha = weakSelf.alphaValue(forSingleWidth: singleWidth, offset: offset.x)
+            weakSelf.viewModel.swipeDidFinish(with: weakSelf.pageNumber(forSingleWidth: singleWidth, offset: offset.x))
         }
         .add(to: disposeBag)
 
         viewModel.currentPageObservable.subscribeNext { [weak self] page in
             guard let weakSelf = self else { return }
             
-            let xOffset = weakSelf.scrollView.contentOffset.x
+            //weakSelf.onboardingImageView.whiteIconImage =
+            switch page {
+            case 0: weakSelf.onboardingImageView.whiteIconImage = #imageLiteral(resourceName: "OnboardingPrice")
+            case 1: weakSelf.onboardingImageView.whiteIconImage = #imageLiteral(resourceName: "OnboardingMeetups")
+            case 2: weakSelf.onboardingImageView.whiteIconImage = #imageLiteral(resourceName: "OnboardingSpeakers")
+            default: break
+            }
+            
+            
+            weakSelf.onboardingPageControl.currentPage = page
+            /*let xOffset = weakSelf.scrollView.contentOffset.x
             let singleWidth = weakSelf.scrollView.frame.width
             
             if xOffset >= 0.0 && xOffset <= weakSelf.scrollView.contentSize.width - singleWidth {
@@ -55,7 +88,7 @@ final class OnboardingViewController: UIViewController {
 
                 weakSelf.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
                 weakSelf.onboardingPageControl.currentPage = page
-            }
+            }*/
         }
         .add(to: disposeBag)
 
@@ -92,7 +125,7 @@ final class OnboardingViewController: UIViewController {
 }
 
 extension OnboardingViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    /*func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         viewModel.swipeDidFinish(with: Int(scrollView.contentOffset.x / scrollView.frame.width))
-    }
+    }*/
 }

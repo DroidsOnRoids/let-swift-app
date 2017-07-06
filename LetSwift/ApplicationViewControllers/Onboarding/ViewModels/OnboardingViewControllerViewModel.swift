@@ -28,12 +28,12 @@ final class OnboardingViewControllerViewModel {
     }
 
     weak var delegate: OnboardingViewControllerCoordinatorDelegate?
-
-    var currentPageObservable = Observable<Int>(0)
-    var continueButtonTitleObservable = Observable<String>(Constants.onboardingContinueTitle)
-    var onboardingCardsObservable = Observable<[OnboardingCardModel]>([])
     
-    private var maxCardIndex = 0
+    let currentPageObservable = Observable<Int>(0)
+    let continueButtonTitleObservable = Observable<String>(Constants.onboardingContinueTitle)
+    let onboardingCardsObservable = Observable<[OnboardingCardModel]>([])
+    
+    private let maxCardIndex: Int
 
     init(delegate: OnboardingViewControllerCoordinatorDelegate?) {
         self.delegate = delegate
