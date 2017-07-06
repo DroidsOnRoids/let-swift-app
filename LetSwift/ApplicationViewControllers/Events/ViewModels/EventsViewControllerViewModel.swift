@@ -47,7 +47,7 @@ final class EventsViewControllerViewModel {
     
     var eventDetailsRefreshObservable = Observable<Void>()
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
-    var lectureCellDidTapObservable = Observable<Void>()
+    var lectureCellDidTapObservable = Observable<Int>(-1)
     var speakerCellDidTapObservable = Observable<Int>(-1)
 
     var eventDidFinishObservable = Observable<Event?>(nil)
@@ -57,14 +57,6 @@ final class EventsViewControllerViewModel {
     var notificationManager: NotificationManager!
     weak var delegate: EventsViewControllerDelegate?
     
-    var formattedTime: String? {
-        guard let eventDate = lastEventObservable.value?.date else { return nil }
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        formatter.timeZone = TimeZone.current
-        return formatter.string(from: eventDate)
-    }
-
     var isReminderAllowed: Bool {
         guard let date = lastEventObservable.value?.date else { return false }
         return !date.addingTimeInterval(-Constants.minimumTimeForReminder).isOutdated
@@ -176,14 +168,14 @@ final class EventsViewControllerViewModel {
             .add(to: disposeBag)
         
         speakerCellDidTapObservable.subscribeNext { [weak self] index in
-            guard index != -1 else { return }
-
+            guard index > -1 else { return }
             self?.speakerCellTapped(with: index)
         }
         .add(to: disposeBag)
         
-        lectureCellDidTapObservable.subscribeNext { [weak self] in
-            self?.lectureCellTapped()
+        lectureCellDidTapObservable.subscribeNext { [weak self] index in
+            guard index > -1 else { return }
+            self?.lectureCellTapped(with: index)
         }
         .add(to: disposeBag)
 
@@ -281,7 +273,7 @@ final class EventsViewControllerViewModel {
     }
     
     @objc func remindButtonTapped() {
-        guard let formattedTime = formattedTime else { return }
+        guard let formattedTime = lastEventObservable.value?.date?.stringTimeValue else { return }
         
         if notificationManager.isNotificationActive {
             notificationManager.cancelNotification()
@@ -314,7 +306,10 @@ final class EventsViewControllerViewModel {
         delegate?.presentSpeakerDetailsScreen(with: speaker.id)
     }
     
-    private func lectureCellTapped() {
-        delegate?.presentLectureScreen()
+    private func lectureCellTapped(with index: Int) {
+        guard let event = lastEventObservable.value, var talk = event.talks[safe: index] else { return }
+        
+        talk.event = event.withoutExtendedFields
+        delegate?.presentLectureScreen(with: talk)
     }
 }

@@ -10,7 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LectureViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
-                <outlet property="indicatorView" destination="G4Z-1o-Obo" id="0R8-QS-tLc"/>
+                <outlet property="eventDateLabel" destination="yNu-Gw-hNh" id="A6D-Vv-g1T"/>
+                <outlet property="eventTimeLabel" destination="8bH-0C-rCq" id="EgT-c3-JME"/>
                 <outlet property="lectureSummaryLabel" destination="nyp-C6-Ufk" id="y10-dX-Xfd"/>
                 <outlet property="lectureTitleLabel" destination="I1h-bH-eTC" id="xPc-FP-Y41"/>
                 <outlet property="separatorConstraint" destination="60a-fp-KKf" id="pvK-Ez-6xQ"/>
@@ -120,7 +121,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aA2-5p-f2e">
                                     <rect key="frame" x="16" y="137" width="327" height="174"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super simple: Renderable!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1h-bH-eTC">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super simple: Renderable!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1h-bH-eTC">
                                             <rect key="frame" x="0.0" y="0.0" width="188.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <nil key="textColor"/>

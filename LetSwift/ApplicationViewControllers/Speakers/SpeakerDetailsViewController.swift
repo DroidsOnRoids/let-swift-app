@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SpeakerDetailsViewControllerDelegate: class {
-    func presentLectureScreen(with id: Int)
-}
-
 final class SpeakerDetailsViewController: AppViewController {
     
     override var viewControllerTitleKey: String? {

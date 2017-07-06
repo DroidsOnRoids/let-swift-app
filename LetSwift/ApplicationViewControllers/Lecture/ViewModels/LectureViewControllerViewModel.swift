@@ -10,21 +10,17 @@ import Foundation
 
 final class LectureViewControllerViewModel {
     
-    weak var delegate: LectureViewControllerDelegate?
+    weak var delegate: SpeakerLectureFlowDelegate?
     
-    let shouldAllowTappingSpeaker: Observable<Bool>?
+    let talkObservable: Observable<Talk>
     
-    init(delegate: LectureViewControllerDelegate?) {
+    init(with talk: Talk, delegate: SpeakerLectureFlowDelegate?) {
         self.delegate = delegate
-        self.shouldAllowTappingSpeaker = Observable<Bool>(delegate != nil)
-        setup()
+        talkObservable = Observable<Talk>(talk)
     }
     
     @objc func speakerCellTapped() {
-        delegate?.presentSpeakerDetailsScreen()
-    }
-    
-    private func setup() {
-        // TODO: implement
+        guard let speakerId = talkObservable.value.speaker?.id else { return }
+        delegate?.presentSpeakerDetailsScreen(with: speakerId)
     }
 }
