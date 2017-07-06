@@ -51,10 +51,13 @@ class ReflectionShadowView: UIView {
     
     @IBInspectable var imageURL: URL? {
         didSet {
-            imageView.sd_setImage(with: imageURL, placeholderImage: #imageLiteral(resourceName: "PhotoMock"),
-                                  options: []) { [weak self] image, _, _, _ in
-                guard let _ = image else { return }
-                self?.blurImage()
+            imageView.sd_setImage(with: imageURL) { [weak self] image, _, _, _ in
+                guard let image = image else {
+                    self?.image = #imageLiteral(resourceName: "PhotoMock")
+                    return
+                }
+
+                self?.image = image
             }
         }
     }

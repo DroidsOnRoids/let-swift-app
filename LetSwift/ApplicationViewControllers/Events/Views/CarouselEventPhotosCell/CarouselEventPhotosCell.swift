@@ -16,6 +16,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
     fileprivate var lastContentOffset: CGFloat = 0.0
     
     private let disposeBag = DisposeBag()
+    private let placeholderView = UIImageView(image: #imageLiteral(resourceName: "PhotoMock"))
 
     var viewModel: CarouselEventPhotosCellViewModel! {
         didSet {
@@ -29,6 +30,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
         super.awakeFromNib()
 
         scrollView.delegate = self
+        setupPlaceholder()
     }
 
     private func reactiveSetup() {
@@ -48,6 +50,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
     }
 
     private func setupScrollView(with images: [Photo]) {
+        placeholderView.isHidden = images.count > 0
         let frameSize = scrollView.frame.size
 
         images.enumerated().forEach { index, card in
@@ -57,13 +60,27 @@ final class CarouselEventPhotosCell: UITableViewCell {
             let subview = UIImageView(frame: frame)
             subview.contentMode = .scaleAspectFill
             subview.clipsToBounds = true
-            subview.sd_setImage(with: images[index].big)
+            subview.sd_setImage(with: images[index].big) { image, _, _, _ in
+                guard image == nil else { return }
+
+                subview.image = #imageLiteral(resourceName: "PhotoMock")
+            }
 
             scrollView.addSubview(subview)
         }
 
         scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(images.count),
                                         height: frameSize.height)
+    }
+
+    private func setupPlaceholder() {
+        placeholderView.contentMode = .scaleAspectFill
+        placeholderView.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.addSubview(placeholderView)
+        placeholderView.pinToFit(view: contentView)
+        clipsToBounds = true
+        placeholderView.isHidden = true
     }
 }
 
