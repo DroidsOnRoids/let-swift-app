@@ -20,7 +20,7 @@ struct Event: Mappable {
     let coverImages: [Photo]
     let photos: [Photo]
     let placeCoordinates: CLLocationCoordinate2D?
-    let talks: [Talk]
+    var talks: [Talk]
     
     init(map: Mapper) throws {
         try id = map.from("id")
@@ -33,6 +33,13 @@ struct Event: Mappable {
         photos = map.optionalFrom("photos") ?? []
         placeCoordinates = map.optionalFrom("place_coordinates")
         talks = map.optionalFrom("talks") ?? []
+    }
+    
+    var withoutExtendedFields: Event {
+        var newEvent = self
+        newEvent.talks = []
+        
+        return newEvent
     }
 
     //MARK: this will be removed after NetworkingLayer - now this is needed for mocking event in EventsViewControllerViewModel.swift in line 15

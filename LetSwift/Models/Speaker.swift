@@ -18,7 +18,7 @@ struct Speaker: Mappable {
     
     // MARK: Extended fields
     let websites: [SpeakerWebsite]
-    let talks: [Talk]
+    var talks: [Talk]
     
     init(map: Mapper) throws {
         try id = map.from("id")
@@ -37,5 +37,12 @@ struct Speaker: Mappable {
         
     var firstName: String {
         return name.components(separatedBy: " ").first ?? name
+    }
+    
+    var withoutExtendedFields: Speaker {
+        var newSpeaker = self
+        newSpeaker.talks = []
+        
+        return newSpeaker
     }
 }

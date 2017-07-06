@@ -28,7 +28,6 @@
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="6"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="image" keyPath="image" value="PhotoMock"/>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
@@ -45,7 +44,4 @@
             <point key="canvasLocation" x="58.5" y="102"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="PhotoMock" width="1920" height="1277"/>
-    </resources>
 </document>

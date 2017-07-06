@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpeakersCoordinator: Coordinator, Startable {
+final class SpeakersCoordinator: Coordinator, Startable, SpeakerLectureFlowDelegate {
 
     fileprivate weak var delegate: AppCoordinatorDelegate?
 
@@ -23,23 +23,5 @@ final class SpeakersCoordinator: Coordinator, Startable {
         controller.coordinatorDelegate = delegate
 
         navigationViewController.viewControllers = [controller]
-    }
-}
-
-extension SpeakersCoordinator: SpeakersViewControllerDelegate {
-    func presentSpeakerDetailsScreen(with id: Int) {
-        let viewModel = SpeakerDetailsViewControllerViewModel(with: id, delegate: self)
-        let viewController = SpeakerDetailsViewController(viewModel: viewModel)
-
-        navigationViewController.pushViewController(viewController, animated: true)
-    }
-}
-
-extension SpeakersCoordinator: SpeakerDetailsViewControllerDelegate {
-    func presentLectureScreen(with id: Int) {
-        let viewModel = LectureViewControllerViewModel(delegate: nil)
-        let viewController = LectureViewController(viewModel: viewModel)
-        
-        navigationViewController.pushViewController(viewController, animated: true)
     }
 }

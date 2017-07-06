@@ -91,13 +91,14 @@ final class EventDetailsViewController: CommonEventViewController {
 
                     guard event.talks.count >= speakerIndex else { return }
 
-                    let talk = event.talks[event.talks.count - speakerIndex]
+                    let talkId = event.talks.count - speakerIndex
+                    let talk = event.talks[talkId]
                     cell.loadData(with: talk)
 
                     cell.addTapListeners(speaker: { [weak self] in
-                        self?.viewModel.speakerCellDidTapObservable.next(event.talks.count - speakerIndex)
+                        self?.viewModel.speakerCellDidTapObservable.next(talkId)
                     }, readMore: { [weak self] in
-                        self?.viewModel.lectureCellDidTapObservable.next()
+                        self?.viewModel.lectureCellDidTapObservable.next(talkId)
                     })
                 }
                 .add(to: disposeBag)
