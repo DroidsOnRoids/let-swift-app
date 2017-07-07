@@ -21,12 +21,16 @@ final class SpeakersTableViewCell: UITableViewCell, SpeakerLoadable {
 
         speakerNameLabel.text = ""
         speakerJobLabel.text = ""
-        speakerAvatarImageView.image = #imageLiteral(resourceName: "SpeakerPlaceholder")
+        speakerAvatarImageView.image = nil
     }
 
     func load(with speaker: Speaker) {
         speakerNameLabel.text = speaker.name
         speakerJobLabel.text = speaker.job
-        speakerAvatarImageView.sd_setImage(with: speaker.avatar?.thumb, placeholderImage: #imageLiteral(resourceName: "SpeakerPlaceholder"))
+        speakerAvatarImageView.sd_setImage(with: speaker.avatar?.thumb) { [weak self] image, _, _, _ in
+            guard image == nil else { return }
+
+            self?.speakerAvatarImageView.image = #imageLiteral(resourceName: "SpeakerPlaceholder")
+        }
     }
 }
