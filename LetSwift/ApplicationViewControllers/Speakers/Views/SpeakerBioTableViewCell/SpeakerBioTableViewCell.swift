@@ -19,7 +19,7 @@ final class SpeakerBioTableViewCell: UITableViewCell, SpeakerLoadable {
     
     func load(with speaker: Speaker) {
         aboutLabel.text = speaker.firstName
-        bioLabel.attributedText = speaker.bio?.attributed(withSpacing: 0.9)
+        bioLabel.attributedText = speaker.bio?.attributed(withSpacing: 0.9).with(lineHeight: 18.0)
     }
     
     override func awakeFromNib() {
