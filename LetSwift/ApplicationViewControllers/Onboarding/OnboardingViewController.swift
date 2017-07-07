@@ -16,12 +16,16 @@ final class OnboardingViewController: UIViewController {
 
     @IBOutlet private weak var scrollView: AppScrollView!
     @IBOutlet private weak var onboardingImageView: OnboardingImageView!
-    @IBOutlet fileprivate weak var continueButton: UIButton!
+    @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var onboardingPageControl: UIPageControl!
 
     fileprivate var viewModel: OnboardingViewControllerViewModel!
     
     private let disposeBag = DisposeBag()
+    
+    private var singleWidth: CGFloat {
+        return scrollView.frame.width
+    }
     
     convenience init(viewModel: OnboardingViewControllerViewModel) {
         self.init()
@@ -30,13 +34,10 @@ final class OnboardingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        scrollView.delegate = self
-
         reactiveSetup()
     }
     
-    private func alphaValue(forSingleWidth singleWidth: CGFloat, offset: CGFloat) -> CGFloat {
+    private func alphaValue(for offset: CGFloat) -> CGFloat {
         let halfWidth = singleWidth / 2.0
         var result = abs(offset.truncatingRemainder(dividingBy: singleWidth))
         
@@ -50,8 +51,10 @@ final class OnboardingViewController: UIViewController {
         return result
     }
     
-    private func pageNumber(forSingleWidth singleWidth: CGFloat, offset: CGFloat) -> Int {
-        return Int(floor(offset / singleWidth + 0.5))
+    private func pageNumber(for offset: CGFloat) -> Int {
+        let page = Int(floor(offset / singleWidth + 0.5))
+        
+        return min(max(page, 0), onboardingPageControl.numberOfPages)
     }
 
     private func reactiveSetup() {
@@ -59,36 +62,33 @@ final class OnboardingViewController: UIViewController {
         
         scrollView.contentOffsetObservable.subscribeNext { [weak self] offset in
             guard let weakSelf = self else { return }
-            let singleWidth = weakSelf.scrollView.frame.width
             
             weakSelf.onboardingImageView.circlesRotation = offset.x * 0.005
-            weakSelf.onboardingImageView.whiteIconAlpha = weakSelf.alphaValue(forSingleWidth: singleWidth, offset: offset.x)
-            weakSelf.viewModel.swipeDidFinish(with: weakSelf.pageNumber(forSingleWidth: singleWidth, offset: offset.x))
+            weakSelf.onboardingImageView.whiteIconAlpha = weakSelf.alphaValue(for: offset.x)
+            
+            let pageNumber = weakSelf.pageNumber(for: offset.x)
+            if pageNumber != weakSelf.viewModel.currentPageObservable.value {
+                weakSelf.viewModel.currentPageObservable.next(pageNumber)
+            }
+        }
+        .add(to: disposeBag)
+        
+        viewModel.pageRequestObservable.subscribeNext { [weak self] requestedPage in
+            guard let weakSelf = self else { return }
+            
+            let xOffset = CGFloat(requestedPage) * weakSelf.singleWidth
+            weakSelf.scrollView.setContentOffset(CGPoint(x: xOffset, y: 0.0), animated: true)
         }
         .add(to: disposeBag)
 
-        viewModel.currentPageObservable.subscribeNext { [weak self] page in
-            guard let weakSelf = self else { return }
-            
-            //weakSelf.onboardingImageView.whiteIconImage =
-            switch page {
-            case 0: weakSelf.onboardingImageView.whiteIconImage = #imageLiteral(resourceName: "OnboardingPrice")
-            case 1: weakSelf.onboardingImageView.whiteIconImage = #imageLiteral(resourceName: "OnboardingMeetups")
-            case 2: weakSelf.onboardingImageView.whiteIconImage = #imageLiteral(resourceName: "OnboardingSpeakers")
-            default: break
-            }
-            
-            
-            weakSelf.onboardingPageControl.currentPage = page
-            /*let xOffset = weakSelf.scrollView.contentOffset.x
-            let singleWidth = weakSelf.scrollView.frame.width
-            
-            if xOffset >= 0.0 && xOffset <= weakSelf.scrollView.contentSize.width - singleWidth {
-                let xPosition = CGFloat(page) * singleWidth
-
-                weakSelf.scrollView.setContentOffset(CGPoint(x: xPosition, y: 0.0), animated: true)
-                weakSelf.onboardingPageControl.currentPage = page
-            }*/
+        viewModel.currentPageObservable.subscribeNext(startsWithInitialValue: true) { [weak self] page in
+            self?.onboardingPageControl.currentPage = page
+        }
+        .add(to: disposeBag)
+        
+        viewModel.currentIconObservable.subscribeNext(startsWithInitialValue: true) { [weak self] iconName in
+            guard let iconName = iconName else { return }
+            self?.onboardingImageView.whiteIconImage = UIImage(named: iconName)
         }
         .add(to: disposeBag)
 
@@ -98,20 +98,19 @@ final class OnboardingViewController: UIViewController {
         .add(to: disposeBag)
         
         viewModel.onboardingCardsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] cards in
-            DispatchQueue.main.async {
-                self?.setupScrollView(with: cards)
-                self?.onboardingPageControl.numberOfPages = cards.count
-            }
+            self?.setupScrollView(with: cards)
+            self?.onboardingPageControl.numberOfPages = cards.count
         }
         .add(to: disposeBag)
     }
     
     private func setupScrollView(with cards: [OnboardingCardModel]) {
         let frameSize = scrollView.frame.size
+        
+        scrollView.subviews.forEach { $0.removeFromSuperview() }
 
         cards.enumerated().forEach { index, card in
-            let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
-                               size: frameSize)
+            let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0), size: frameSize)
             
             let subview = OnboardingCardView(frame: frame)
             subview.setData(with: card)
@@ -119,13 +118,6 @@ final class OnboardingViewController: UIViewController {
             scrollView.addSubview(subview)
         }
 
-        scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(cards.count),
-                                        height: frameSize.height)
+        scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(cards.count), height: frameSize.height)
     }
-}
-
-extension OnboardingViewController: UIScrollViewDelegate {
-    /*func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        viewModel.swipeDidFinish(with: Int(scrollView.contentOffset.x / scrollView.frame.width))
-    }*/
 }

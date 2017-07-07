@@ -8,15 +8,13 @@
 
 import UIKit
 
-typealias OnboardingCardModel = (imageName: String, title: String, description: String)
-
 final class OnboardingCardView: DesignableView {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: MultiSizeLabel!
     
     func setData(with model: OnboardingCardModel) {
-        titleLabel.text = model.title
-        descriptionLabel.text = model.description
+        titleLabel.text = localized(model.titleKey)
+        descriptionLabel.text = localized(model.descriptionKey)
     }
 }
