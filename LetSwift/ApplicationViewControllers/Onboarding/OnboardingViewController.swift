@@ -13,6 +13,10 @@ protocol OnboardingViewControllerCoordinatorDelegate: class {
 }
 
 final class OnboardingViewController: UIViewController {
+    
+    private enum Constants {
+        static let rotationScaleFactor: CGFloat = 0.005
+    }
 
     @IBOutlet private weak var scrollView: AppScrollView!
     @IBOutlet private weak var onboardingImageView: OnboardingImageView!
@@ -23,7 +27,7 @@ final class OnboardingViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    private var singleWidth: CGFloat {
+    private var scrollViewWidth: CGFloat {
         return scrollView.frame.width
     }
     
@@ -34,25 +38,18 @@ final class OnboardingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         reactiveSetup()
     }
     
-    private func alphaValue(for offset: CGFloat) -> CGFloat {
-        let halfWidth = singleWidth / 2.0
-        var result = abs(offset.truncatingRemainder(dividingBy: singleWidth))
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        if result > halfWidth {
-            result -= 2.0 * (result - halfWidth)
-        }
-        
-        result /= halfWidth
-        result = 1.0 - result
-        
-        return result
+        viewModel.pageWidthObservable.next(scrollViewWidth)
     }
     
     private func pageNumber(for offset: CGFloat) -> Int {
-        let page = Int(floor(offset / singleWidth + 0.5))
+        let page = Int(floor(offset / scrollViewWidth + 0.5))
         
         return min(max(page, 0), onboardingPageControl.numberOfPages)
     }
@@ -61,22 +58,27 @@ final class OnboardingViewController: UIViewController {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
         
         scrollView.contentOffsetObservable.subscribeNext { [weak self] offset in
+            self?.viewModel.contentOffsetObservable.next(offset.x)
+        }
+        .add(to: disposeBag)
+        
+        viewModel.contentOffsetObservable.subscribeNext { [weak self] offset in
             guard let weakSelf = self else { return }
             
-            weakSelf.onboardingImageView.circlesRotation = offset.x * 0.005
-            weakSelf.onboardingImageView.whiteIconAlpha = weakSelf.alphaValue(for: offset.x)
-            
-            let pageNumber = weakSelf.pageNumber(for: offset.x)
-            if pageNumber != weakSelf.viewModel.currentPageObservable.value {
-                weakSelf.viewModel.currentPageObservable.next(pageNumber)
-            }
+            weakSelf.onboardingImageView.circlesRotation = offset * Constants.rotationScaleFactor
+            weakSelf.viewModel.currentPageObservable.nextDistinct(weakSelf.pageNumber(for: offset))
+        }
+        .add(to: disposeBag)
+        
+        viewModel.iconAlphaObservable.subscribeNext { [weak self] alpha in
+            self?.onboardingImageView.whiteIconAlpha = alpha
         }
         .add(to: disposeBag)
         
         viewModel.pageRequestObservable.subscribeNext { [weak self] requestedPage in
             guard let weakSelf = self else { return }
             
-            let xOffset = CGFloat(requestedPage) * weakSelf.singleWidth
+            let xOffset = CGFloat(requestedPage) * weakSelf.scrollViewWidth
             weakSelf.scrollView.setContentOffset(CGPoint(x: xOffset, y: 0.0), animated: true)
         }
         .add(to: disposeBag)

@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import CoreGraphics
 
 struct OnboardingCardModel {
+    
     let imageName: String
     let titleKey: String
     let descriptionKey: String
@@ -31,7 +33,10 @@ final class OnboardingViewControllerViewModel {
     
     let pageRequestObservable = Observable<Int>(0)
     let currentPageObservable = Observable<Int>(0)
+    let pageWidthObservable = Observable<CGFloat>(0.0)
+    let contentOffsetObservable = Observable<CGFloat>(0.0)
     let currentIconObservable = Observable<String?>(nil)
+    let iconAlphaObservable = Observable<CGFloat>(1.0)
     let continueButtonTitleObservable = Observable<String>(Constants.onboardingContinueTitle)
     let onboardingCardsObservable = Observable<[OnboardingCardModel]>(Constants.defaultCards)
     
@@ -45,11 +50,18 @@ final class OnboardingViewControllerViewModel {
     private func setup() {
         currentPageObservable.subscribeNext { [weak self] page in
             guard let weakSelf = self else { return }
-            
+            print(page)
             weakSelf.currentIconObservable.next(weakSelf.onboardingCardsObservable.value[page].imageName)
             
             let isOnLastPage = page >= weakSelf.onboardingCardsObservable.value.count - 1
             weakSelf.continueButtonTitleObservable.next(isOnLastPage ? Constants.onboardingFinishTitle : Constants.onboardingContinueTitle)
+        }
+        .add(to: disposeBag)
+        
+        contentOffsetObservable.subscribeNext { [weak self] offset in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.iconAlphaObservable.next(weakSelf.alphaValue(for: offset))
         }
         .add(to: disposeBag)
     }
@@ -60,5 +72,19 @@ final class OnboardingViewControllerViewModel {
         } else {
             delegate?.onboardingHasCompleted()
         }
+    }
+    
+    private func alphaValue(for offset: CGFloat) -> CGFloat {
+        let halfWidth = pageWidthObservable.value / 2.0
+        var result = abs(offset.truncatingRemainder(dividingBy: pageWidthObservable.value))
+        
+        if result > halfWidth {
+            result -= 2.0 * (result - halfWidth)
+        }
+        
+        result /= halfWidth
+        result = 1.0 - result
+        
+        return result
     }
 }

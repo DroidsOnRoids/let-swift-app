@@ -104,3 +104,11 @@ final class Observable<Element> {
         nextObservers.forEach { $0.value(value) }
     }
 }
+
+extension Observable where Element: Equatable {
+    func nextDistinct(_ value: Element) {
+        if self.value != value {
+            self.value = value
+        }
+    }
+}

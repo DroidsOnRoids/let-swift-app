@@ -11,10 +11,10 @@ import UIKit
 class MultilayerImageView: UIView {
     
     var layers: [UIImageView] {
-        return subviews as? [UIImageView] ?? []
+        return subviews.flatMap { $0 as? UIImageView }
     }
     
-    func addLayers(_ layers: [UIImage]) {
+    func setLayers(_ layers: [UIImage]) {
         removeAllLayers()
         
         let imageViews = layers.map { UIImageView(image: $0) }
@@ -32,18 +32,11 @@ class MultilayerImageView: UIView {
             guard let parentImage = parentImageView.image, let image = $0.image else { return }
             let widthRatio = image.size.width / parentImage.size.width
             let heightRatio = image.size.height / parentImage.size.height
-            pinToCenter(view: $0, widthRatio: widthRatio, heightRatio: heightRatio)
+            $0.pinToCenter(view: self, widthRatio: widthRatio, heightRatio: heightRatio)
         }
     }
     
     func removeAllLayers() {
         subviews.forEach { $0.removeFromSuperview() }
-    }
-    
-    private func pinToCenter(view: UIView, widthRatio: CGFloat = 1.0, heightRatio: CGFloat = 1.0) {
-        view.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        view.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        view.widthAnchor.constraint(equalTo: widthAnchor, multiplier: widthRatio).isActive = true
-        view.heightAnchor.constraint(equalTo: heightAnchor, multiplier: heightRatio).isActive = true
     }
 }
