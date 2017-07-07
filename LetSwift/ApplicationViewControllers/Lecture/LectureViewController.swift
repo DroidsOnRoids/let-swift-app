@@ -63,7 +63,7 @@ final class LectureViewController: AppViewController {
             self?.eventDateLabel.attributedText = talk.event?.date?.stringDateValue.attributed(withSpacing: Constants.mediumLetterSpacing)
             self?.eventTimeLabel.attributedText = talk.event?.date?.stringTimeValue.attributed(withSpacing: Constants.mediumLetterSpacing)
             self?.lectureTitleLabel.attributedText = talk.title.attributed(withSpacing: Constants.normalLetterSpacing)
-            self?.lectureSummaryLabel.attributedText = talk.description?.attributed(withSpacing: Constants.mediumLetterSpacing)
+            self?.lectureSummaryLabel.attributedText = talk.description?.attributed(withSpacing: Constants.mediumLetterSpacing).with(lineHeight: 18.0)
         }
         .add(to: disposeBag)
     }
