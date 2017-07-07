@@ -160,7 +160,7 @@ final class ContactViewController: AppViewController {
             self?.sendButton.showSpinner(blocked)
 
             if blocked {
-                self?.sendButton.setTitle(localized("CONTACT_LOADING"), for: [])
+                self?.sendButton.setTitle(localized("CONTACT_LOADING").uppercased(), for: [])
                 self?.sendButton.backgroundColor = .lightBlueGrey
             } else {
                 self?.sendButton.setTitle(localized("CONTACT_SEND"), for: [])
