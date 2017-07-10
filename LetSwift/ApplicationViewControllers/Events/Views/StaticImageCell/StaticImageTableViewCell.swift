@@ -1,5 +1,5 @@
 //
-//  StaticImageCell.swift
+//  StaticImageTableViewCell.swift
 //  LetSwift
 //
 //  Created by Kinga Wilczek on 24.04.2017.

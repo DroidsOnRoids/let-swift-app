@@ -1,5 +1,5 @@
 //
-//  PreviousEventCell.swift
+//  PreviousEventCollectionViewCell.swift
 //  LetSwift
 //
 //  Created by Marcin Chojnacki on 27.04.2017.

@@ -1,5 +1,5 @@
 //
-//  CarouselEventPhotosCellViewModel.swift
+//  CarouselEventPhotosTableViewCellViewModel.swift
 //  LetSwift
 //
 //  Created by Kinga Wilczek on 09.05.2017.

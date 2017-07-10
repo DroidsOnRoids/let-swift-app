@@ -1,5 +1,5 @@
 //
-//  EventTimeCell.swift
+//  EventTimeTableViewCell.swift
 //  LetSwift
 //
 //  Created by Marcin Chojnacki on 26.04.2017.
