@@ -65,8 +65,8 @@
 		7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE141121EBCCC21008378AB /* UICollectionViewExtension.swift */; };
 		7EF34FEB1ED3305200517683 /* ResponseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34FEA1ED3305200517683 /* ResponseExtension.swift */; };
 		7EF34FED1ED3308200517683 /* NetworkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34FEC1ED3308200517683 /* NetworkPage.swift */; };
-		7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedCell.swift */; };
-		7EF34FF11ED7175800517683 /* SpeakersToBeAnnouncedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedCell.xib */; };
+		7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift */; };
+		7EF34FF11ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */; };
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D3006AFD1EBC623B00716C23 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */; };
 		D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006B021EBC845300716C23 /* UIButtonExtension.swift */; };
@@ -273,8 +273,8 @@
 		7EE141121EBCCC21008378AB /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 		7EF34FEA1ED3305200517683 /* ResponseExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseExtension.swift; sourceTree = "<group>"; };
 		7EF34FEC1ED3308200517683 /* NetworkPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPage.swift; sourceTree = "<group>"; };
-		7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersToBeAnnouncedCell.swift; sourceTree = "<group>"; };
-		7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersToBeAnnouncedCell.xib; sourceTree = "<group>"; };
+		7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersToBeAnnouncedTableViewCell.swift; sourceTree = "<group>"; };
+		7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersToBeAnnouncedTableViewCell.xib; sourceTree = "<group>"; };
 		D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		D3006B021EBC845300716C23 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLoadable.swift; sourceTree = "<group>"; };
@@ -1124,8 +1124,8 @@
 				D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */,
 				D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */,
 				D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */,
-				7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedCell.swift */,
-				7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedCell.xib */,
+				7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift */,
+				7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */,
 			);
 			path = SpeakerCardCell;
 			sourceTree = "<group>";
@@ -1339,7 +1339,7 @@
 				D335211D1ECEE762000666D4 /* event_details.json in Resources */,
 				D34CCF591EC5AAF900EFD3E4 /* LectureViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
-				7EF34FF11ED7175800517683 /* SpeakersToBeAnnouncedCell.xib in Resources */,
+				7EF34FF11ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib in Resources */,
 				D3840D9A1ECA0C2900975818 /* SpeakerDetailsViewController.xib in Resources */,
 				D3FF3F8B1E9F51F100501F44 /* OnboardingViewController.xib in Resources */,
 				7EB744221EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib in Resources */,
@@ -1442,7 +1442,7 @@
 				7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */,
 				D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */,
 				7EB744211EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift in Sources */,
-				7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedCell.swift in Sources */,
+				7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift in Sources */,
 				7E52E66F1F01318F0080EE8D /* LatestSpeakersHeaderView.swift in Sources */,
 				7E7E41351EAA6780001DB179 /* SpeakersCoordinator.swift in Sources */,
 				D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */,
