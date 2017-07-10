@@ -15,7 +15,7 @@ class CommonEventViewController: AppViewController {
         case attend = "AttendButtonsRowCell"
         case eventSummary = "EventSummaryCell"
         case eventLocation = "EventLocationCell"
-        case eventTime = "EventTimeCell"
+        case eventTime = "EventTimeTableViewCell"
         case previousEvents = "PreviousEventsListTableViewCell"
         case carouselEventPhotos = "CarouselEventPhotosTableViewCell"
         case speakerCardHeaderCell = "SpeakerCardHeaderCell"
@@ -217,7 +217,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func setup(timeCell cell: EventTimeCell) {
+    func setup(timeCell cell: EventTimeTableViewCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.date = event?.date?.stringDateValue
             cell.time = event?.date?.stringTimeValue
@@ -237,7 +237,7 @@ class CommonEventViewController: AppViewController {
             self.setup(locationCell: cell as! EventLocationCell)
             
         case .eventTime:
-            self.setup(timeCell: cell as! EventTimeCell)
+            self.setup(timeCell: cell as! EventTimeTableViewCell)
             
         default: break
         }

@@ -90,8 +90,8 @@
 		D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */; };
 		D31B08511EB12EA000C2D229 /* EventLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B084F1EB12EA000C2D229 /* EventLocationCell.swift */; };
 		D31B08521EB12EA000C2D229 /* EventLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B08501EB12EA000C2D229 /* EventLocationCell.xib */; };
-		D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B08541EB1310500C2D229 /* EventTimeCell.swift */; };
-		D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B08551EB1310500C2D229 /* EventTimeCell.xib */; };
+		D31B08561EB1310500C2D229 /* EventTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31B08541EB1310500C2D229 /* EventTimeTableViewCell.swift */; };
+		D31B08571EB1310500C2D229 /* EventTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B08551EB1310500C2D229 /* EventTimeTableViewCell.xib */; };
 		D31D86DA1F0545A9007D222C /* SpeakerWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
 		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
@@ -297,8 +297,8 @@
 		D31B084B1EB1285600C2D229 /* EventSummaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventSummaryCell.xib; sourceTree = "<group>"; };
 		D31B084F1EB12EA000C2D229 /* EventLocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLocationCell.swift; sourceTree = "<group>"; };
 		D31B08501EB12EA000C2D229 /* EventLocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventLocationCell.xib; sourceTree = "<group>"; };
-		D31B08541EB1310500C2D229 /* EventTimeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTimeCell.swift; sourceTree = "<group>"; };
-		D31B08551EB1310500C2D229 /* EventTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeCell.xib; sourceTree = "<group>"; };
+		D31B08541EB1310500C2D229 /* EventTimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTimeTableViewCell.swift; sourceTree = "<group>"; };
+		D31B08551EB1310500C2D229 /* EventTimeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventTimeTableViewCell.xib; sourceTree = "<group>"; };
 		D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerWebsite.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -522,7 +522,7 @@
 				7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosTableViewCell */,
 				D34B85091EB3210E00DBC72D /* PreviousEventsListTableViewCell */,
 				D3F0917A1EB200790029E15E /* PreviousEventCollectionViewCell */,
-				D31B08531EB130C600C2D229 /* EventTimeCell */,
+				D31B08531EB130C600C2D229 /* EventTimeTableViewCell */,
 				D31B084E1EB12E6800C2D229 /* EventLocationCell */,
 				D31B08491EB1282E00C2D229 /* EventSummaryCell */,
 				7EA48D461EADD35D00CEC845 /* StaticImageCell */,
@@ -849,12 +849,13 @@
 			path = EventLocationCell;
 			sourceTree = "<group>";
 		};
-		D31B08531EB130C600C2D229 /* EventTimeCell */ = {
+		D31B08531EB130C600C2D229 /* EventTimeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D31B08541EB1310500C2D229 /* EventTimeCell.swift */,
-				D31B08551EB1310500C2D229 /* EventTimeCell.xib */,
+				D31B08541EB1310500C2D229 /* EventTimeTableViewCell.swift */,
+				D31B08551EB1310500C2D229 /* EventTimeTableViewCell.xib */,
 			);
+			name = EventTimeTableViewCell;
 			path = EventTimeCell;
 			sourceTree = "<group>";
 		};
@@ -1311,7 +1312,7 @@
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
 				7E8D0DE91F0E3E5D0028C156 /* Settings.bundle in Resources */,
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
-				D31B08571EB1310500C2D229 /* EventTimeCell.xib in Resources */,
+				D31B08571EB1310500C2D229 /* EventTimeTableViewCell.xib in Resources */,
 				7EB744271EF3E0BD008092DC /* speakers.json in Resources */,
 				D309AFD51F05107800BB679E /* SpeakerLecturesTableViewCell.xib in Resources */,
 				D34B850D1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib in Resources */,
@@ -1529,7 +1530,7 @@
 				7EE141131EBCCC21008378AB /* UICollectionViewExtension.swift in Sources */,
 				D309AFCB1F04F16B00BB679E /* SpeakerLoadable.swift in Sources */,
 				D33F072A1EA9E94D00A74B9F /* SpeakersViewController.swift in Sources */,
-				D31B08561EB1310500C2D229 /* EventTimeCell.swift in Sources */,
+				D31B08561EB1310500C2D229 /* EventTimeTableViewCell.swift in Sources */,
 				D309AFCE1F04F79D00BB679E /* WebsiteView.swift in Sources */,
 				7EF34FEB1ED3305200517683 /* ResponseExtension.swift in Sources */,
 				7EF34FED1ED3308200517683 /* NetworkPage.swift in Sources */,

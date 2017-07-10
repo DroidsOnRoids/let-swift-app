@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventTimeCell: AppTableViewCell {
+final class EventTimeTableViewCell: AppTableViewCell {
     
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
