@@ -160,7 +160,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func setup(attendCell cell: AttendButtonsRowCell) {
+    func setup(attendCell cell: AttendButtonsRowTableViewCell) {
         cell.addLeftTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped))
         cell.addRightTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped))
         
@@ -228,7 +228,7 @@ class CommonEventViewController: AppViewController {
     func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
         switch element {
         case .attend:
-            self.setup(attendCell: cell as! AttendButtonsRowCell)
+            self.setup(attendCell: cell as! AttendButtonsRowTableViewCell)
             
         case .eventSummary:
             self.setup(summaryCell: cell as! EventSummaryCell)

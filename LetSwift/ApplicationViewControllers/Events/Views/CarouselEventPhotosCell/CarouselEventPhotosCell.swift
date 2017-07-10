@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CarouselEventPhotosCell: UITableViewCell {
+final class CarouselEventPhotosTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
@@ -84,7 +84,7 @@ final class CarouselEventPhotosCell: UITableViewCell {
     }
 }
 
-extension CarouselEventPhotosCell: UIScrollViewDelegate {
+extension CarouselEventPhotosTableViewCell: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         viewModel.scrollViewSwipeDidFinishObservable.next(Int(scrollView.contentOffset.x / scrollView.frame.width))
     }

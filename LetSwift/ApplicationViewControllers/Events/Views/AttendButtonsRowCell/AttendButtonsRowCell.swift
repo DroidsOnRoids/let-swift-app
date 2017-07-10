@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AttendButtonsRowCell: UITableViewCell {
+final class AttendButtonsRowTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var attendButton: AppShadowButton!
     @IBOutlet private weak var remindButton: AppShadowButton!

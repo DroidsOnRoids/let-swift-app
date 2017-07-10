@@ -43,7 +43,7 @@ final class EventDetailsViewController: CommonEventViewController {
             (cell as! EventSummaryCell).isClickable = false
             
         case .carouselEventPhotos:
-            self.setup(carouselCell: cell as! CarouselEventPhotosCell)
+            self.setup(carouselCell: cell as! CarouselEventPhotosTableViewCell)
         
         case .speakerCardCell:
             self.setup(speakerCardCell: cell as! SpeakerCardCell, index: index)
@@ -74,7 +74,7 @@ final class EventDetailsViewController: CommonEventViewController {
         .add(to: disposeBag)
     }
     
-    private func setup(carouselCell cell: CarouselEventPhotosCell) {
+    private func setup(carouselCell cell: CarouselEventPhotosTableViewCell) {
         viewModel.carouselEventPhotosViewModelObservable.subscribeNext(startsWithInitialValue: true) { viewModel in
             cell.viewModel = viewModel
         }
