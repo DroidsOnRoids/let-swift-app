@@ -19,7 +19,7 @@ class CommonEventViewController: AppViewController {
         case previousEvents = "PreviousEventsListTableViewCell"
         case carouselEventPhotos = "CarouselEventPhotosTableViewCell"
         case speakerCardHeaderCell = "SpeakerCardHeaderTableViewCell"
-        case speakerCardCell = "SpeakerCardCell"
+        case speakerCardCell = "SpeakerCardTableViewCell"
         case speakersToBeAnnouncedCell = "SpeakersToBeAnnouncedTableViewCell"
     }
 

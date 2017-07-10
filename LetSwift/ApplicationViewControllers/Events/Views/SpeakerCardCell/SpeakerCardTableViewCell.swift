@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpeakerCardCell: UITableViewCell {
+final class SpeakerCardTableViewCell: UITableViewCell {
     
     @IBOutlet weak var card: SpeakerCardView!
     

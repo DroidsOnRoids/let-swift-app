@@ -46,7 +46,7 @@ final class EventDetailsViewController: CommonEventViewController {
             self.setup(carouselCell: cell as! CarouselEventPhotosTableViewCell)
         
         case .speakerCardCell:
-            self.setup(speakerCardCell: cell as! SpeakerCardCell, index: index)
+            self.setup(speakerCardCell: cell as! SpeakerCardTableViewCell, index: index)
 
         default: break
         }
@@ -81,7 +81,7 @@ final class EventDetailsViewController: CommonEventViewController {
         .add(to: disposeBag)
     }
     
-    private func setup(speakerCardCell cell: SpeakerCardCell, index: Int) {
+    private func setup(speakerCardCell cell: SpeakerCardTableViewCell, index: Int) {
         viewModel.lastEventObservable
                 .filter { !($0?.talks.isEmpty ?? true) }
                 .subscribeNext(startsWithInitialValue: true) { [weak self] event in
