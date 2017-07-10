@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class PreviousEventsListCell: UITableViewCell, Localizable {
+final class PreviousEventsListTableViewCell: UITableViewCell, Localizable {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
     @IBOutlet private weak var previousTitleLabel: UILabel!
@@ -19,7 +19,7 @@ final class PreviousEventsListCell: UITableViewCell, Localizable {
     private var isScrollViewDragging = false
     private let disposeBag = DisposeBag()
 
-    var viewModel: PreviousEventsListCellViewModel! {
+    var viewModel: PreviousEventsListTableViewCellViewModel! {
         didSet {
             if let _ = viewModel, viewModel !== oldValue {
                 reactiveSetup()
