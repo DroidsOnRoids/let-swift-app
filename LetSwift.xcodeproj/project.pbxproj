@@ -123,6 +123,7 @@
 		D3429D141EE03B6900F18D30 /* ContactTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D131EE03B6900F18D30 /* ContactTextView.swift */; };
 		D34B850C1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B850A1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift */; };
 		D34B850D1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34B850B1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib */; };
+		D342B39B1F1371EE0011A34B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D342B39A1F1371EE0011A34B /* AppLabel.swift */; };
 		D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */; };
 		D34CCF591EC5AAF900EFD3E4 /* LectureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34CCF571EC5AAF900EFD3E4 /* LectureViewController.xib */; };
 		D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CCF5D1EC5AC9A00EFD3E4 /* SpeakerCardView.swift */; };
@@ -333,6 +334,7 @@
 		D3429D131EE03B6900F18D30 /* ContactTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTextView.swift; sourceTree = "<group>"; };
 		D34B850A1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListTableViewCell.swift; sourceTree = "<group>"; };
 		D34B850B1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventsListTableViewCell.xib; sourceTree = "<group>"; };
+		D342B39A1F1371EE0011A34B /* AppLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
 		D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
 		D34CCF571EC5AAF900EFD3E4 /* LectureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LectureViewController.xib; sourceTree = "<group>"; };
 		D34CCF5D1EC5AC9A00EFD3E4 /* SpeakerCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardView.swift; sourceTree = "<group>"; };
@@ -685,6 +687,7 @@
 				D3E1B8541EF7A227008C226F /* SizedScrollView.swift */,
 				7E8D0DEC1F0FC3D30028C156 /* AppCollectionView.swift */,
 				D33920271F0D448D0073CECB /* AppScrollView.swift */,
+				D342B39A1F1371EE0011A34B /* AppLabel.swift */,
 			);
 			path = GenericViews;
 			sourceTree = "<group>";
@@ -1478,6 +1481,7 @@
 				7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift in Sources */,
 				D390FDC11EC2EAE5005F257F /* CommonEventViewController.swift in Sources */,
 				D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift in Sources */,
+				D342B39B1F1371EE0011A34B /* AppLabel.swift in Sources */,
 				7E0842D31ECF2286003F7C96 /* NetworkProvider.swift in Sources */,
 				D3AE28961ECDAEFF00F29702 /* ObserevableEvent.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
