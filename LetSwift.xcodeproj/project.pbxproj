@@ -171,8 +171,8 @@
 		D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */; };
 		D3C0ACF41EC4E84700CFF98D /* SpeakerCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */; };
 		D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */; };
-		D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */; };
-		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */; };
+		D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift */; };
+		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib */; };
 		D3CFAE7C1EE6A1840009E4EF /* SinglePhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFAE7A1EE6A1840009E4EF /* SinglePhotoCell.swift */; };
 		D3CFAE7D1EE6A1840009E4EF /* SinglePhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3CFAE7B1EE6A1840009E4EF /* SinglePhotoCell.xib */; };
 		D3CFAE7F1EE6BFF10009E4EF /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */; };
@@ -383,8 +383,8 @@
 		D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableView.swift; sourceTree = "<group>"; };
 		D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardCell.swift; sourceTree = "<group>"; };
 		D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardCell.xib; sourceTree = "<group>"; };
-		D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardHeaderCell.swift; sourceTree = "<group>"; };
-		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderCell.xib; sourceTree = "<group>"; };
+		D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		D3CFAE7A1EE6A1840009E4EF /* SinglePhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoCell.swift; sourceTree = "<group>"; };
 		D3CFAE7B1EE6A1840009E4EF /* SinglePhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SinglePhotoCell.xib; sourceTree = "<group>"; };
 		D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
@@ -1122,8 +1122,8 @@
 			children = (
 				D3C0ACF21EC4E84700CFF98D /* SpeakerCardCell.swift */,
 				D3C0ACF31EC4E84700CFF98D /* SpeakerCardCell.xib */,
-				D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderCell.swift */,
-				D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderCell.xib */,
+				D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift */,
+				D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib */,
 				7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift */,
 				7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */,
 			);
@@ -1335,7 +1335,7 @@
 				D35AE6C71EF4464B00FFAD35 /* PhotoSliderViewController.xib in Resources */,
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* CommonEventViewController.xib in Resources */,
-				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */,
+				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib in Resources */,
 				D335211D1ECEE762000666D4 /* event_details.json in Resources */,
 				D34CCF591EC5AAF900EFD3E4 /* LectureViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
@@ -1475,7 +1475,7 @@
 				D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */,
 				7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift in Sources */,
 				D390FDC11EC2EAE5005F257F /* CommonEventViewController.swift in Sources */,
-				D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */,
+				D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift in Sources */,
 				7E0842D31ECF2286003F7C96 /* NetworkProvider.swift in Sources */,
 				D3AE28961ECDAEFF00F29702 /* ObserevableEvent.swift in Sources */,
 				D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */,
