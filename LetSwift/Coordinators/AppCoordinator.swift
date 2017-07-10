@@ -93,7 +93,7 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
 
         let viewController = TabBarViewController(controllers: coordinators.map({ ($0).navigationViewController }))
         
-        present(viewController: viewController)
+        present(viewController: viewController, animated: false)
     }
 }
 
