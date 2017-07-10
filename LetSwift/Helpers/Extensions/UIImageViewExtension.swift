@@ -21,4 +21,8 @@ extension UIImageView {
         layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         layer.insertSublayer(gradient, at: 0)
     }
+
+    func removeAllLayers() {
+        layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+    }
 }

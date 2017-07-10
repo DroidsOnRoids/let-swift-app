@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingCardView" customModule="LetSwift" customModuleProvider="target">
             <connections>
                 <outlet property="descriptionLabel" destination="Tns-4T-KVA" id="5qn-t2-jhl"/>
-                <outlet property="onboardingImageView" destination="8MO-0e-SII" id="wDo-RW-EiH"/>
                 <outlet property="titleLabel" destination="V43-ac-z18" id="q4N-cI-ASC"/>
             </connections>
         </placeholder>
@@ -40,43 +39,6 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OnboardingMeetups" translatesAutoresizingMaskIntoConstraints="NO" id="8MO-0e-SII">
-                    <rect key="frame" x="40" y="0.0" width="294" height="269"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="294" id="7Yo-VG-Ohd" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                                    <real key="value" value="235"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                                    <real key="value" value="235"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                                    <real key="value" value="294"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                                    <real key="value" value="294"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </constraint>
-                        <constraint firstAttribute="height" constant="269" id="UJa-9d-uLf" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                                    <real key="value" value="215"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                                    <real key="value" value="215"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                                    <real key="value" value="269"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                                    <real key="value" value="269"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </constraint>
-                    </constraints>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No entry fee, contests, prizes and awesome afterparty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tns-4T-KVA" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="32" y="367.5" width="311" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -100,26 +62,24 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="8MO-0e-SII" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="98R-7v-ePN"/>
-                <constraint firstItem="V43-ac-z18" firstAttribute="top" secondItem="8MO-0e-SII" secondAttribute="bottom" constant="70" id="Q7O-j8-P7n" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                <constraint firstItem="V43-ac-z18" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="339" id="DZD-h3-IJT" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="54"/>
+                            <real key="value" value="269"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="70"/>
+                            <real key="value" value="285"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="70"/>
+                            <real key="value" value="339"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="70"/>
+                            <real key="value" value="339"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </constraint>
                 <constraint firstItem="Tns-4T-KVA" firstAttribute="top" secondItem="V43-ac-z18" secondAttribute="bottom" constant="8" id="QB8-pN-bzO"/>
                 <constraint firstItem="V43-ac-z18" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aQX-nS-o6R"/>
-                <constraint firstItem="8MO-0e-SII" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="b4a-nM-MtT"/>
                 <constraint firstItem="Tns-4T-KVA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="32" id="o2I-8Q-xRn" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
@@ -157,7 +117,4 @@
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="OnboardingMeetups" width="293" height="267"/>
-    </resources>
 </document>
