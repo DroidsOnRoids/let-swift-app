@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventSummaryCell: AppTableViewCell {
+final class EventSummaryTableViewCell: AppTableViewCell {
     
     @IBOutlet private weak var eventTitleLabel: UILabel!
     @IBOutlet private weak var eventDescriptionLabel: UILabel!

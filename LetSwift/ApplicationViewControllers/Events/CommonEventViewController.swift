@@ -13,7 +13,7 @@ class CommonEventViewController: AppViewController {
     enum EventCellIdentifier: String {
         case image = "StaticImageCell"
         case attend = "AttendButtonsRowCell"
-        case eventSummary = "EventSummaryCell"
+        case eventSummary = "EventSummaryTableViewCell"
         case eventLocation = "EventLocationTableViewCell"
         case eventTime = "EventTimeTableViewCell"
         case previousEvents = "PreviousEventsListTableViewCell"
@@ -202,7 +202,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func setup(summaryCell cell: EventSummaryCell) {
+    func setup(summaryCell cell: EventSummaryTableViewCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.eventTitle = event?.title
         }
@@ -231,7 +231,7 @@ class CommonEventViewController: AppViewController {
             self.setup(attendCell: cell as! AttendButtonsRowTableViewCell)
             
         case .eventSummary:
-            self.setup(summaryCell: cell as! EventSummaryCell)
+            self.setup(summaryCell: cell as! EventSummaryTableViewCell)
             
         case .eventLocation:
             self.setup(locationCell: cell as! EventLocationTableViewCell)

@@ -40,7 +40,7 @@ final class EventDetailsViewController: CommonEventViewController {
 
         switch element {
         case .eventSummary:
-            (cell as! EventSummaryCell).isClickable = false
+            (cell as! EventSummaryTableViewCell).isClickable = false
             
         case .carouselEventPhotos:
             self.setup(carouselCell: cell as! CarouselEventPhotosTableViewCell)
