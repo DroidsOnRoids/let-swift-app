@@ -50,7 +50,7 @@ final class PhotoGalleryViewController: AppViewController {
     }
 
     private func setup() {
-        collectionView.registerCells([SinglePhotoCell.self])
+        collectionView.registerCells([SinglePhotoCollectionViewCell.self])
         collectionView.delegate = self
         
         setupPullToRefresh()
@@ -75,7 +75,7 @@ final class PhotoGalleryViewController: AppViewController {
             photos.bindable.bind(to: weakSelf.collectionView.items() ({ collectionView, index, element in
                 let indexPath = IndexPath(row: index, section: 0)
                 
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SinglePhotoCell.cellIdentifier, for: indexPath) as! SinglePhotoCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SinglePhotoCollectionViewCell.cellIdentifier, for: indexPath) as! SinglePhotoCollectionViewCell
                 cell.imageURL = element.thumb
                 
                 return cell
