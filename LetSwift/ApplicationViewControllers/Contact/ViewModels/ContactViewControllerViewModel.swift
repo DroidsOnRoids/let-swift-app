@@ -34,17 +34,15 @@ final class ContactViewControllerViewModel {
     
     private var fieldsAreValid: Bool {
         let validationRules = [
-            (pickerResultObservable.value >= 0, { self.pickerResultObservable.error() }),
-            (!nameTextObservable.value.isEmpty, { self.nameTextObservable.error() }),
-            (isValid(email: emailTextObservable.value), { self.emailTextObservable.error() }),
-            (!messageTextObservable.value.isEmpty, { self.messageTextObservable.error() })
+            (condition: pickerResultObservable.value >= 0, error: { self.pickerResultObservable.error() }),
+            (condition: !nameTextObservable.value.isEmpty, error: { self.nameTextObservable.error() }),
+            (condition: isValid(email: emailTextObservable.value), error: { self.emailTextObservable.error() }),
+            (condition: !messageTextObservable.value.isEmpty, error: { self.messageTextObservable.error() })
         ]
         
         validationRules
-            .filter { isValid, _ in !isValid }
-            .forEach { _, errorClosure in
-            errorClosure()
-        }
+            .filter { !$0.condition }
+            .forEach { $0.error() }
         
         return !validationRules.contains(where: { isValid, _ in !isValid })
     }
