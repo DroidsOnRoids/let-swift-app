@@ -32,6 +32,7 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        guard let _ = imageView.image else { return }
         imageView.addGradientShadow(with: [0.4, 1.0])
     }
 
@@ -44,7 +45,13 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
             surnameLabel.text = surname
         }
 
-        imageView.sd_setImage(with: speaker.avatar?.thumb, placeholderImage: #imageLiteral(resourceName: "PhotoMock"))
+        imageView.removeAllLayers()
+        imageView.sd_setImage(with: speaker.avatar?.thumb) { [weak self] image, _, _, _ in
+            self?.imageView.addGradientShadow(with: [0.4, 1.0])
+            guard image == nil else { return }
+
+            self?.imageView.image = #imageLiteral(resourceName: "PhotoMock")
+        }
     }
 
     private func setup() {
@@ -52,7 +59,5 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
 
         indicatorImageView.image = indicatorImageView.image?.withRenderingMode(.alwaysTemplate)
         indicatorImageView.tintColor = .white
-
-        imageView.addGradientShadow(with: [0.4, 1.0])
     }
 }

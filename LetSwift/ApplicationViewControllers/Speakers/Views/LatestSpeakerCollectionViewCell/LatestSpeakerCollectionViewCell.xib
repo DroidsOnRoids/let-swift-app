@@ -20,7 +20,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ega-cY-eJo">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="197"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="yc3-SU-wTx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yc3-SU-wTx">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="197"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tomasz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvR-45-4rI">
@@ -84,6 +84,5 @@
     </objects>
     <resources>
         <image name="IndicatorLight" width="8" height="13"/>
-        <image name="PhotoMock" width="1920" height="1277"/>
     </resources>
 </document>
