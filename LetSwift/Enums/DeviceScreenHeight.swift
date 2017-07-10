@@ -14,5 +14,5 @@ enum DeviceScreenHeight: CGFloat {
     case inch4¨7 = 667.0
     case inch5¨5 = 736.0
     
-    static let deviceHeight = UIScreen.main.bounds.maxY
+    static let deviceHeight: DeviceScreenHeight? = DeviceScreenHeight(rawValue: UIScreen.main.bounds.maxY)
 }
