@@ -189,8 +189,8 @@
 		D3EDA6F41EE15D8900C035ED /* TopicPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3EDA6F21EE15D8900C035ED /* TopicPickerViewController.xib */; };
 		D3EDA6F61EE16AED00C035ED /* TopicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EDA6F51EE16AED00C035ED /* TopicButton.swift */; };
 		D3F091791EB1FE770029E15E /* AppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091781EB1FE770029E15E /* AppTableViewCell.swift */; };
-		D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCell.swift */; };
-		D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F091881EB205FE0029E15E /* PreviousEventCell.xib */; };
+		D3F091891EB205FE0029E15E /* PreviousEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F091871EB205FE0029E15E /* PreviousEventCollectionViewCell.swift */; };
+		D3F0918A1EB205FE0029E15E /* PreviousEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3F091881EB205FE0029E15E /* PreviousEventCollectionViewCell.xib */; };
 		D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F172101EB8A66200F9A91C /* MapHelper.swift */; };
 		D3F3D97D1ED9E55600106197 /* UIScrollViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3F3D97C1ED9E55600106197 /* UIScrollViewExtension.swift */; };
 		D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */; };
@@ -401,8 +401,8 @@
 		D3EDA6F21EE15D8900C035ED /* TopicPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopicPickerViewController.xib; sourceTree = "<group>"; };
 		D3EDA6F51EE16AED00C035ED /* TopicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicButton.swift; sourceTree = "<group>"; };
 		D3F091781EB1FE770029E15E /* AppTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableViewCell.swift; sourceTree = "<group>"; };
-		D3F091871EB205FE0029E15E /* PreviousEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCell.swift; sourceTree = "<group>"; };
-		D3F091881EB205FE0029E15E /* PreviousEventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventCell.xib; sourceTree = "<group>"; };
+		D3F091871EB205FE0029E15E /* PreviousEventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventCollectionViewCell.swift; sourceTree = "<group>"; };
+		D3F091881EB205FE0029E15E /* PreviousEventCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventCollectionViewCell.xib; sourceTree = "<group>"; };
 		D3F172101EB8A66200F9A91C /* MapHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapHelper.swift; sourceTree = "<group>"; };
 		D3F3D97C1ED9E55600106197 /* UIScrollViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtension.swift; sourceTree = "<group>"; };
 		D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeConstraint.swift; sourceTree = "<group>"; };
@@ -521,7 +521,7 @@
 			children = (
 				7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosTableViewCell */,
 				D34B85091EB3210E00DBC72D /* PreviousEventsListTableViewCell */,
-				D3F0917A1EB200790029E15E /* PreviousEventCell */,
+				D3F0917A1EB200790029E15E /* PreviousEventCollectionViewCell */,
 				D31B08531EB130C600C2D229 /* EventTimeCell */,
 				D31B084E1EB12E6800C2D229 /* EventLocationCell */,
 				D31B08491EB1282E00C2D229 /* EventSummaryCell */,
@@ -1161,12 +1161,13 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		D3F0917A1EB200790029E15E /* PreviousEventCell */ = {
+		D3F0917A1EB200790029E15E /* PreviousEventCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D3F091871EB205FE0029E15E /* PreviousEventCell.swift */,
-				D3F091881EB205FE0029E15E /* PreviousEventCell.xib */,
+				D3F091871EB205FE0029E15E /* PreviousEventCollectionViewCell.swift */,
+				D3F091881EB205FE0029E15E /* PreviousEventCollectionViewCell.xib */,
 			);
+			name = PreviousEventCollectionViewCell;
 			path = PreviousEventCell;
 			sourceTree = "<group>";
 		};
@@ -1316,7 +1317,7 @@
 				D34B850D1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib in Resources */,
 				D39CC8241ED2B3FB007B0A1C /* SadFaceView.xib in Resources */,
 				D3C0ACF51EC4E84700CFF98D /* SpeakerCardCell.xib in Resources */,
-				D3F0918A1EB205FE0029E15E /* PreviousEventCell.xib in Resources */,
+				D3F0918A1EB205FE0029E15E /* PreviousEventCollectionViewCell.xib in Resources */,
 				7EA48D541EADD53D00CEC845 /* StaticImageCell.xib in Resources */,
 				7E52E6701F01318F0080EE8D /* LatestSpeakersHeaderView.xib in Resources */,
 				D31B084D1EB1285600C2D229 /* EventSummaryCell.xib in Resources */,
@@ -1565,7 +1566,7 @@
 				7E31D0A81EAE40390030147C /* EventsViewControllerViewModel.swift in Sources */,
 				7EA48D531EADD53D00CEC845 /* StaticImageCell.swift in Sources */,
 				D30D3D121F03D09D0056F8A7 /* SpeakerBioTableViewCell.swift in Sources */,
-				D3F091891EB205FE0029E15E /* PreviousEventCell.swift in Sources */,
+				D3F091891EB205FE0029E15E /* PreviousEventCollectionViewCell.swift in Sources */,
 				D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */,
 				D3AE28921ECD9F8000F29702 /* DisposingObject.swift in Sources */,
 				7EB7442B1EF82C20008092DC /* NotificationNameExtension.swift in Sources */,

@@ -44,7 +44,7 @@ final class PreviousEventsListTableViewCell: UITableViewCell, Localizable {
     private func setup() {
         removeSeparators()
 
-        eventsCollectionView.registerCells([PreviousEventCell.self])
+        eventsCollectionView.registerCells([PreviousEventCollectionViewCell.self])
 
         spinnerView.image = #imageLiteral(resourceName: "WhiteSpinner")
         spinnerView.backgroundColor = .clear
@@ -62,7 +62,7 @@ final class PreviousEventsListTableViewCell: UITableViewCell, Localizable {
             self?.spinnerView.animationActive = true
 
             guard let collectionView = self?.eventsCollectionView else { return }
-            events?.bindable.bind(to: collectionView.item(with: PreviousEventCell.cellIdentifier, cellType: PreviousEventCell.self) ({ index, element, cell in
+            events?.bindable.bind(to: collectionView.item(with: PreviousEventCollectionViewCell.cellIdentifier, cellType: PreviousEventCollectionViewCell.self) ({ index, element, cell in
                 cell.imageURL = element?.coverImages.first?.thumb
                 cell.title = element?.title
                 cell.date = element?.date?.stringDateValue
