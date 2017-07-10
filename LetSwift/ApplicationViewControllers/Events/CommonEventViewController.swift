@@ -11,7 +11,7 @@ import UIKit
 class CommonEventViewController: AppViewController {
     
     enum EventCellIdentifier: String {
-        case image = "StaticImageCell"
+        case image = "StaticImageTableViewCell"
         case attend = "AttendButtonsRowCell"
         case eventSummary = "EventSummaryTableViewCell"
         case eventLocation = "EventLocationTableViewCell"
