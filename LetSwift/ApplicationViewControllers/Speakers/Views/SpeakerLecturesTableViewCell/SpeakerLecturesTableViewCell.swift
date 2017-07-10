@@ -33,6 +33,7 @@ final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
         collectionView.delegate = self
         collectionView.registerClass(SpeakerCardCollectionViewCell.self, forCellReuseIdentifier: SpeakerCardCollectionViewCell.cellIdentifier)
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
+        collectionView.canCancelContentTouches = true
         removeSeparators()
         setupLocalization()
     }
