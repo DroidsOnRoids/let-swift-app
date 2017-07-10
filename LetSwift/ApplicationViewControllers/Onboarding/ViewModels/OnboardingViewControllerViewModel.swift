@@ -7,6 +7,14 @@
 //
 
 import Foundation
+import CoreGraphics
+
+struct OnboardingCardModel {
+    
+    let imageName: String
+    let titleKey: String
+    let descriptionKey: String
+}
 
 final class OnboardingViewControllerViewModel {
     
@@ -14,63 +22,69 @@ final class OnboardingViewControllerViewModel {
         static let onboardingContinueTitle = localized("ONBOARDING_CONTINUE").uppercased()
         static let onboardingFinishTitle = localized("ONBOARDING_FINISH").uppercased()
         
-        static let onboardingMeetupsImageName = "OnboardingMeetups"
-        static let onboardingSpeakersImageName = "OnboardingSpeakers"
-        static let onboardingPriceImageName = "OnboardingPrice"
-        
-        static let onboardingMeetupsTitle = localized("ONBOARDING_MEETUPS_TITLE")
-        static let onboardingSpeakersTitle = localized("ONBOARDING_SPEAKERS_TITLE")
-        static let onboardingPriceTitle = localized("ONBOARDING_PRICE_TITLE")
-        
-        static let onboardingMeetupsDescription = localized("ONBOARDING_MEETUPS_DESCRIPTION")
-        static let onboardingSpeakersDescription = localized("ONBOARDING_SPEAKERS_DESCRIPTION")
-        static let onboardingPriceDescription = localized("ONBOARDING_PRICE_DESCRIPTION")
+        static let defaultCards = [
+            OnboardingCardModel(imageName: "OnboardingMeetups", titleKey: "ONBOARDING_MEETUPS_TITLE", descriptionKey: "ONBOARDING_MEETUPS_DESCRIPTION"),
+            OnboardingCardModel(imageName: "OnboardingSpeakers", titleKey: "ONBOARDING_SPEAKERS_TITLE", descriptionKey: "ONBOARDING_SPEAKERS_DESCRIPTION"),
+            OnboardingCardModel(imageName: "OnboardingPrice", titleKey: "ONBOARDING_PRICE_TITLE", descriptionKey: "ONBOARDING_PRICE_DESCRIPTION")
+        ]
     }
 
     weak var delegate: OnboardingViewControllerCoordinatorDelegate?
-
-    var currentPageObservable = Observable<Int>(0)
-    var continueButtonTitleObservable = Observable<String>(Constants.onboardingContinueTitle)
-    var onboardingCardsObservable = Observable<[OnboardingCardModel]>([])
     
-    private var maxCardIndex = 0
-
+    let pageRequestObservable = Observable<Int>(0)
+    let currentPageObservable = Observable<Int>(0)
+    let pageWidthObservable = Observable<CGFloat>(0.0)
+    let contentOffsetObservable = Observable<CGFloat>(0.0)
+    let currentIconObservable = Observable<String?>(nil)
+    let iconAlphaObservable = Observable<CGFloat>(1.0)
+    let continueButtonTitleObservable = Observable<String>(Constants.onboardingContinueTitle)
+    let onboardingCardsObservable = Observable<[OnboardingCardModel]>(Constants.defaultCards)
+    
+    private let disposeBag = DisposeBag()
+    
     init(delegate: OnboardingViewControllerCoordinatorDelegate?) {
         self.delegate = delegate
-        
-        let cards = [OnboardingCardModel(imageName: Constants.onboardingMeetupsImageName,
-                      title: Constants.onboardingMeetupsTitle,
-                      description: Constants.onboardingMeetupsDescription),
-                     OnboardingCardModel(imageName: Constants.onboardingSpeakersImageName,
-                      title: Constants.onboardingSpeakersTitle,
-                      description: Constants.onboardingSpeakersDescription),
-                     OnboardingCardModel(imageName: Constants.onboardingPriceImageName,
-                      title: Constants.onboardingPriceTitle,
-                      description: Constants.onboardingPriceDescription)]
-
-        maxCardIndex = cards.count - 1
-        onboardingCardsObservable.next(cards)
+        setup()
     }
-
+    
+    private func setup() {
+        currentPageObservable.subscribeNext { [weak self] page in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.currentIconObservable.next(weakSelf.onboardingCardsObservable.value[page].imageName)
+            
+            let isOnLastPage = page >= weakSelf.onboardingCardsObservable.value.count - 1
+            weakSelf.continueButtonTitleObservable.next(isOnLastPage ? Constants.onboardingFinishTitle : Constants.onboardingContinueTitle)
+        }
+        .add(to: disposeBag)
+        
+        contentOffsetObservable.subscribeNext { [weak self] offset in
+            guard let weakSelf = self else { return }
+            
+            weakSelf.iconAlphaObservable.next(weakSelf.alphaValue(for: offset))
+        }
+        .add(to: disposeBag)
+    }
+    
     @objc func continueButtonTapped() {
-        if continueButtonTitleObservable.value == Constants.onboardingContinueTitle {
-            currentPageObservable.next(currentPageObservable.value + 1)
-            detectCountinueButtonTitleChange()
+        if currentPageObservable.value < onboardingCardsObservable.value.count - 1 {
+            pageRequestObservable.next(currentPageObservable.value + 1)
         } else {
             delegate?.onboardingHasCompleted()
         }
     }
-
-    func swipeDidFinish(with page: Int) {
-        currentPageObservable.next(page)
-        detectCountinueButtonTitleChange()
-    }
     
-    private func detectCountinueButtonTitleChange() {
-        if continueButtonTitleObservable.value == Constants.onboardingContinueTitle && currentPageObservable.value == maxCardIndex {
-            continueButtonTitleObservable.next(Constants.onboardingFinishTitle)
-        } else if continueButtonTitleObservable.value == Constants.onboardingFinishTitle && currentPageObservable.value < maxCardIndex {
-            continueButtonTitleObservable.next(Constants.onboardingContinueTitle)
+    private func alphaValue(for offset: CGFloat) -> CGFloat {
+        let halfWidth = pageWidthObservable.value / 2.0
+        var result = abs(offset.truncatingRemainder(dividingBy: pageWidthObservable.value))
+        
+        if result > halfWidth {
+            result -= 2.0 * (result - halfWidth)
         }
+        
+        result /= halfWidth
+        result = 1.0 - result
+        
+        return result
     }
 }

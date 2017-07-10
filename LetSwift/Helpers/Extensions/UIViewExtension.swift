@@ -21,9 +21,7 @@ extension UIView {
         }
     }
 
-    func addParallax() {
-        let amount = 10
-
+    func addParallax(amount: Int = 10) {
         let horizontal = UIInterpolatingMotionEffect(keyPath: Constants.motionEffectForTranslationX, type: .tiltAlongHorizontalAxis)
         horizontal.minimumRelativeValue = -amount
         horizontal.maximumRelativeValue = amount
@@ -56,5 +54,12 @@ extension UIView {
         trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: margins.right).isActive = true
         topAnchor.constraint(equalTo: view.topAnchor, constant: margins.top).isActive = true
         bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -margins.bottom).isActive = true
+    }
+    
+    func pinToCenter(view: UIView, widthRatio: CGFloat = 1.0, heightRatio: CGFloat = 1.0) {
+        centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: widthRatio).isActive = true
+        heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: heightRatio).isActive = true
     }
 }
