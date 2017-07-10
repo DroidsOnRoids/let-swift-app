@@ -12,7 +12,7 @@ class CommonEventViewController: AppViewController {
     
     enum EventCellIdentifier: String {
         case image = "StaticImageTableViewCell"
-        case attend = "AttendButtonsRowCell"
+        case attend = "AttendButtonsRowTableViewCell"
         case eventSummary = "EventSummaryTableViewCell"
         case eventLocation = "EventLocationTableViewCell"
         case eventTime = "EventTimeTableViewCell"

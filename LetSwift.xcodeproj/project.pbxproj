@@ -146,8 +146,8 @@
 		D38B14C01E9F9100009EA346 /* MultiSizeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */; };
 		D38B14C21E9F9A73009EA346 /* DeviceScreenHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */; };
 		D38C054D1EC1C35500EDBEB5 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38C054C1EC1C35500EDBEB5 /* PopoverViewController.swift */; };
-		D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */; };
-		D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */; };
+		D390058B1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39005891EB0D9AE00275219 /* AttendButtonsRowTableViewCell.swift */; };
+		D390058C1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D390058A1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.xib */; };
 		D390FDC11EC2EAE5005F257F /* CommonEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390FDC01EC2EAE5005F257F /* CommonEventViewController.swift */; };
 		D395F38C1EADD710004B6226 /* AppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D395F38B1EADD710004B6226 /* AppViewController.swift */; };
 		D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D397ED881EA7BE14002141E8 /* DefaultsManager.swift */; };
@@ -356,8 +356,8 @@
 		D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiSizeLabel.swift; sourceTree = "<group>"; };
 		D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceScreenHeight.swift; sourceTree = "<group>"; };
 		D38C054C1EC1C35500EDBEB5 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
-		D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendButtonsRowCell.swift; sourceTree = "<group>"; };
-		D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendButtonsRowCell.xib; sourceTree = "<group>"; };
+		D39005891EB0D9AE00275219 /* AttendButtonsRowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendButtonsRowTableViewCell.swift; sourceTree = "<group>"; };
+		D390058A1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendButtonsRowTableViewCell.xib; sourceTree = "<group>"; };
 		D390FDC01EC2EAE5005F257F /* CommonEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonEventViewController.swift; sourceTree = "<group>"; };
 		D395F38B1EADD710004B6226 /* AppViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppViewController.swift; sourceTree = "<group>"; };
 		D397ED881EA7BE14002141E8 /* DefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
@@ -526,7 +526,7 @@
 				D31B084E1EB12E6800C2D229 /* EventLocationTableViewCell */,
 				D31B08491EB1282E00C2D229 /* EventSummaryTableViewCell */,
 				7EA48D461EADD35D00CEC845 /* StaticImageTableViewCell */,
-				D390058D1EB0D9B200275219 /* AttendButtonsRowCell */,
+				D390058D1EB0D9B200275219 /* AttendButtonsRowTableViewCell */,
 				D3C0ACF11EC4E84700CFF98D /* SpeakerCardCell */,
 			);
 			path = Views;
@@ -1030,12 +1030,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		D390058D1EB0D9B200275219 /* AttendButtonsRowCell */ = {
+		D390058D1EB0D9B200275219 /* AttendButtonsRowTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				D39005891EB0D9AE00275219 /* AttendButtonsRowCell.swift */,
-				D390058A1EB0D9AE00275219 /* AttendButtonsRowCell.xib */,
+				D39005891EB0D9AE00275219 /* AttendButtonsRowTableViewCell.swift */,
+				D390058A1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.xib */,
 			);
+			name = AttendButtonsRowTableViewCell;
 			path = AttendButtonsRowCell;
 			sourceTree = "<group>";
 		};
@@ -1309,7 +1310,7 @@
 				D30D3D091F03C6570056F8A7 /* SpeakerHeaderTableViewCell.xib in Resources */,
 				D341A18F1EDE91D10066E965 /* SplashImage.png in Resources */,
 				D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */,
-				D390058C1EB0D9AE00275219 /* AttendButtonsRowCell.xib in Resources */,
+				D390058C1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.xib in Resources */,
 				D309AFD01F04F7F100BB679E /* WebsiteView.xib in Resources */,
 				D3EDA6F41EE15D8900C035ED /* TopicPickerViewController.xib in Resources */,
 				D33F07341EA9EA2700A74B9F /* ContactViewController.xib in Resources */,
@@ -1541,7 +1542,7 @@
 				D3CFAE7F1EE6BFF10009E4EF /* URLExtension.swift in Sources */,
 				D30D3D0D1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.swift in Sources */,
 				D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */,
-				D390058B1EB0D9AE00275219 /* AttendButtonsRowCell.swift in Sources */,
+				D390058B1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.swift in Sources */,
 				D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */,
 				7EE1410D1EBCA4E4008378AB /* PreviousEventsListTableViewCellViewModel.swift in Sources */,
 				D34E3CBD1EA62C6700C678B0 /* AttributedStringHelper.swift in Sources */,
