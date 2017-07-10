@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CarouselEventPhotosCellViewModel {
+final class CarouselEventPhotosTableViewCellViewModel {
 
     var photosObservable = Observable<[Photo]>([])
     var currentPageObservable = Observable<Int>(0)

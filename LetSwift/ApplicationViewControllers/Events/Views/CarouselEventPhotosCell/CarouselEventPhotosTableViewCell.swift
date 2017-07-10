@@ -18,7 +18,7 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
     private let disposeBag = DisposeBag()
     private let placeholderView = UIImageView(image: #imageLiteral(resourceName: "PhotoMock"))
 
-    var viewModel: CarouselEventPhotosCellViewModel! {
+    var viewModel: CarouselEventPhotosTableViewCellViewModel! {
         didSet {
             if let _ = viewModel {
                 reactiveSetup()

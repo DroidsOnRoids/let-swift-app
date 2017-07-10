@@ -46,7 +46,7 @@ final class EventsViewControllerViewModel {
     var previousEventsObservable = Observable<[Event?]?>(nil)
     
     var eventDetailsRefreshObservable = Observable<Void>()
-    var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
+    var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosTableViewCellViewModel?>(nil)
     var lectureCellDidTapObservable = Observable<Int>(-1)
     var speakerCellDidTapObservable = Observable<Int>(-1)
 
@@ -134,7 +134,7 @@ final class EventsViewControllerViewModel {
             
             weakSelf.tableViewStateObservable.next(event == nil ? .error : .content)
             
-            let carouselViewModel = CarouselEventPhotosCellViewModel(photos: event?.coverImages ?? [])
+            let carouselViewModel = CarouselEventPhotosTableViewCellViewModel(photos: event?.coverImages ?? [])
             weakSelf.carouselEventPhotosViewModelObservable.next(carouselViewModel)
             
             weakSelf.checkAttendance()

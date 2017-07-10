@@ -10,9 +10,9 @@
 		7E02FE6E1EBB23EA005DADCB /* BindableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6B1EBB23EA005DADCB /* BindableArray.swift */; };
 		7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */; };
 		7E02FE701EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */; };
-		7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift */; };
-		7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */; };
-		7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift */; };
+		7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.swift */; };
+		7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib */; };
+		7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift */; };
 		7E0842C31EC9FD9E003F7C96 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842C11EC9FD9E003F7C96 /* PhotoGalleryViewController.swift */; };
 		7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E0842C21EC9FD9E003F7C96 /* PhotoGalleryViewController.xib */; };
 		7E0842C71ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0842C61ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift */; };
@@ -218,9 +218,9 @@
 		7E02FE6B1EBB23EA005DADCB /* BindableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableArray.swift; sourceTree = "<group>"; };
 		7E02FE6C1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSource.swift; sourceTree = "<group>"; };
 		7E02FE6D1EBB23EA005DADCB /* ReactiveTableViewDataSourceProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSourceProxy.swift; sourceTree = "<group>"; };
-		7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselEventPhotosCell.swift; sourceTree = "<group>"; };
-		7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselEventPhotosCell.xib; sourceTree = "<group>"; };
-		7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselEventPhotosCellViewModel.swift; sourceTree = "<group>"; };
+		7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselEventPhotosTableViewCell.swift; sourceTree = "<group>"; };
+		7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarouselEventPhotosTableViewCell.xib; sourceTree = "<group>"; };
+		7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselEventPhotosTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		7E0842C11EC9FD9E003F7C96 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		7E0842C21EC9FD9E003F7C96 /* PhotoGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoGalleryViewController.xib; sourceTree = "<group>"; };
 		7E0842C61ECA0114003F7C96 /* PhotoGalleryViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewControllerViewModel.swift; sourceTree = "<group>"; };
@@ -458,20 +458,21 @@
 			path = Reactive;
 			sourceTree = "<group>";
 		};
-		7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosCell */ = {
+		7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				7E0842B91EC1E519003F7C96 /* ViewModels */,
-				7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift */,
-				7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib */,
+				7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.swift */,
+				7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib */,
 			);
+			name = CarouselEventPhotosTableViewCell;
 			path = CarouselEventPhotosCell;
 			sourceTree = "<group>";
 		};
 		7E0842B91EC1E519003F7C96 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift */,
+				7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -518,7 +519,7 @@
 		7E7E41311EAA633E001DB179 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosCell */,
+				7E0842B41EC1BB41003F7C96 /* CarouselEventPhotosTableViewCell */,
 				D34B85091EB3210E00DBC72D /* PreviousEventsListCell */,
 				D3F0917A1EB200790029E15E /* PreviousEventCell */,
 				D31B08531EB130C600C2D229 /* EventTimeCell */,
@@ -1325,7 +1326,7 @@
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
 				D33F072B1EA9E94D00A74B9F /* SpeakersViewController.xib in Resources */,
 				D35AE6C71EF4464B00FFAD35 /* PhotoSliderViewController.xib in Resources */,
-				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosCell.xib in Resources */,
+				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* CommonEventViewController.xib in Resources */,
 				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderCell.xib in Resources */,
 				D335211D1ECEE762000666D4 /* event_details.json in Resources */,
@@ -1428,7 +1429,7 @@
 				7EB744061EEFDDC0008092DC /* UITableViewCellExtenion.swift in Sources */,
 				D33920241F0D3FFE0073CECB /* MultilayerImageView.swift in Sources */,
 				7E31D0A61EAE3D970030147C /* Photo.swift in Sources */,
-				7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosCell.swift in Sources */,
+				7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.swift in Sources */,
 				D3840D991ECA0C2900975818 /* SpeakerDetailsViewController.swift in Sources */,
 				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
 				7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */,
@@ -1465,7 +1466,7 @@
 				D3FF3F8A1E9F51F100501F44 /* OnboardingViewController.swift in Sources */,
 				D397ED891EA7BE14002141E8 /* DefaultsManager.swift in Sources */,
 				D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */,
-				7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosCellViewModel.swift in Sources */,
+				7E0842BB1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift in Sources */,
 				D390FDC11EC2EAE5005F257F /* CommonEventViewController.swift in Sources */,
 				D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderCell.swift in Sources */,
 				7E0842D31ECF2286003F7C96 /* NetworkProvider.swift in Sources */,
