@@ -16,7 +16,7 @@ final class SpeakerCardView: DesignableView, Localizable {
     @IBOutlet private weak var speakerNameLabel: UILabel!
     @IBOutlet private weak var speakerTitleLabel: UILabel!
     @IBOutlet private weak var lectureTitleLabel: UILabel!
-    @IBOutlet private weak var lectureSummaryLabel: UILabel!
+    @IBOutlet private weak var lectureSummaryLabel: AppLabel!
     @IBOutlet private weak var readMoreButton: UIButton!
     
     @IBOutlet private weak var upperSeparatorConstraint: NSLayoutConstraint!
