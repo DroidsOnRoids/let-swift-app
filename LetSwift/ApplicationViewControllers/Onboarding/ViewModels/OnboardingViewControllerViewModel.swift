@@ -50,7 +50,7 @@ final class OnboardingViewControllerViewModel {
     private func setup() {
         currentPageObservable.subscribeNext { [weak self] page in
             guard let weakSelf = self else { return }
-            print(page)
+            
             weakSelf.currentIconObservable.next(weakSelf.onboardingCardsObservable.value[page].imageName)
             
             let isOnLastPage = page >= weakSelf.onboardingCardsObservable.value.count - 1
