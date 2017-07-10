@@ -100,8 +100,10 @@ final class OnboardingViewController: UIViewController {
         .add(to: disposeBag)
         
         viewModel.onboardingCardsObservable.subscribeNext(startsWithInitialValue: true) { [weak self] cards in
-            self?.setupScrollView(with: cards)
-            self?.onboardingPageControl.numberOfPages = cards.count
+            DispatchQueue.main.async {
+                self?.setupScrollView(with: cards)
+                self?.onboardingPageControl.numberOfPages = cards.count
+            }
         }
         .add(to: disposeBag)
     }
