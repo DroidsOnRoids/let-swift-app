@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventLocationCell: AppTableViewCell {
+final class EventLocationTableViewCell: AppTableViewCell {
     
     @IBOutlet private weak var locationLabel: UILabel!
     

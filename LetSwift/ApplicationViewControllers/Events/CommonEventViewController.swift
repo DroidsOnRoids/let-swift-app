@@ -14,7 +14,7 @@ class CommonEventViewController: AppViewController {
         case image = "StaticImageCell"
         case attend = "AttendButtonsRowCell"
         case eventSummary = "EventSummaryCell"
-        case eventLocation = "EventLocationCell"
+        case eventLocation = "EventLocationTableViewCell"
         case eventTime = "EventTimeTableViewCell"
         case previousEvents = "PreviousEventsListTableViewCell"
         case carouselEventPhotos = "CarouselEventPhotosTableViewCell"
@@ -209,7 +209,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func setup(locationCell cell: EventLocationCell) {
+    func setup(locationCell cell: EventLocationTableViewCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.placeName = event?.placeName ?? ""
             cell.placeLocation = event?.placeStreet ?? ""
@@ -234,7 +234,7 @@ class CommonEventViewController: AppViewController {
             self.setup(summaryCell: cell as! EventSummaryCell)
             
         case .eventLocation:
-            self.setup(locationCell: cell as! EventLocationCell)
+            self.setup(locationCell: cell as! EventLocationTableViewCell)
             
         case .eventTime:
             self.setup(timeCell: cell as! EventTimeTableViewCell)
