@@ -10,7 +10,7 @@ import UIKit
 
 final class SpeakerCardHeaderTableViewCell: UITableViewCell, Localizable {
 
-    @IBOutlet private weak var speakersLabel: UILabel!
+    @IBOutlet private weak var speakersLabel: AppLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
