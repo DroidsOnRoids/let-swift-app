@@ -29,7 +29,7 @@ final class PhotoGalleryViewController: AppViewController {
     }
 
     fileprivate var columnNumber: Int {
-        return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7.rawValue ? 3 : 2
+        return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7 ? 3 : 2
     }
     
     convenience init(viewModel: PhotoGalleryViewControllerViewModel) {

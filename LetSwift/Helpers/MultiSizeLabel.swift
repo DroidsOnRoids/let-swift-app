@@ -13,7 +13,7 @@ class MultiSizeLabel: UILabel {
     @IBInspectable
     var inch3¨5: CGFloat = 0.0 {
         didSet {
-            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch3¨5.rawValue {
+            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch3¨5 {
                 font = font.withSize(inch3¨5)
             }
         }
@@ -22,7 +22,7 @@ class MultiSizeLabel: UILabel {
     @IBInspectable
     var inch4¨0: CGFloat = 0.0 {
         didSet {
-            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch4¨0.rawValue {
+            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch4¨0 {
                 font = font.withSize(inch4¨0)
             }
         }
@@ -31,7 +31,7 @@ class MultiSizeLabel: UILabel {
     @IBInspectable
     var inch4¨7: CGFloat = 0.0 {
         didSet {
-            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch4¨7.rawValue {
+            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch4¨7 {
                 font = font.withSize(inch4¨7)
             }
         }
@@ -40,7 +40,7 @@ class MultiSizeLabel: UILabel {
     @IBInspectable
     var inch5¨5: CGFloat = 0.0 {
         didSet {
-            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch5¨5.rawValue {
+            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch5¨5 {
                 font = font.withSize(inch5¨5)
             }
         }
