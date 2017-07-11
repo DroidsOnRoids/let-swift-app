@@ -14,7 +14,7 @@ final class OnboardingCardView: DesignableView {
     @IBOutlet private weak var descriptionLabel: MultiSizeLabel!
     
     func setData(with model: OnboardingCardModel) {
-        titleLabel.text = localized(model.titleKey)
-        descriptionLabel.text = localized(model.descriptionKey)
+        titleLabel.attributedText = localized(model.titleKey).attributed(withSpacing: 1.0)
+        descriptionLabel.attributedText = localized(model.descriptionKey).attributed(withSpacing: 0.9)
     }
 }
