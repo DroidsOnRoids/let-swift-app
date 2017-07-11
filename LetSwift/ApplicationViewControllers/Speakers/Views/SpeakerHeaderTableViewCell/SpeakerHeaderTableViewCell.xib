@@ -14,11 +14,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41l-6M-QcQ">
-                        <rect key="frame" x="142.5" y="32" width="90" height="90"/>
+                        <rect key="frame" x="143" y="32" width="90" height="90"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="JUd-C3-0is">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
@@ -39,17 +39,27 @@
                             <constraint firstAttribute="width" constant="90" id="gd0-sk-gLJ"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGs-Gn-eyN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGs-Gn-eyN" customClass="AppLabel" customModule="LetSwift" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="138" width="375" height="21"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <color key="textColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="letterSpacing">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh3-7S-X0h">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qh3-7S-X0h" customClass="AppLabel" customModule="LetSwift" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="167" width="375" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                         <color key="textColor" red="0.031372549019607843" green="0.14509803921568626" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="letterSpacing">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
                 <constraints>

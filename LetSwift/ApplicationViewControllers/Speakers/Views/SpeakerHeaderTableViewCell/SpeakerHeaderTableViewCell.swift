@@ -19,8 +19,8 @@ final class SpeakerHeaderTableViewCell: UITableViewCell, SpeakerLoadable {
     static let cellIdentifier = String(describing: SpeakerHeaderTableViewCell.self)
 
     @IBOutlet private weak var avatarImageView: UIImageView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var jobLabel: UILabel!
+    @IBOutlet private weak var nameLabel: AppLabel!
+    @IBOutlet private weak var jobLabel: AppLabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

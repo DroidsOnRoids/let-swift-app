@@ -19,7 +19,7 @@ final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
     
     var lectureDetailsObservable = Observable<Int?>(nil)
     
-    @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var titleLabel: AppLabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private let disposeBag = DisposeBag()

@@ -21,7 +21,7 @@ final class LatestSpeakersHeaderView: DesignableView {
     }
 
     @IBOutlet private weak var latestCollectionView: UICollectionView!
-    @IBOutlet private weak var latestSpeakersTitleLabel: UILabel!
+    @IBOutlet private weak var latestSpeakersTitleLabel: AppLabel!
 
     private func setup() {
         latestCollectionView.delegate = self
