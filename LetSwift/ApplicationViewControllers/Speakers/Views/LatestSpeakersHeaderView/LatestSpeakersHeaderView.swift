@@ -28,7 +28,6 @@ final class LatestSpeakersHeaderView: DesignableView {
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
 
         latestSpeakersTitleLabel.text = localized("SPEAKERS_LATEST_TITLE").uppercased()
-        latestSpeakersTitleLabel.attributedText = latestSpeakersTitleLabel.text?.attributed(withSpacing: 0.7)
 
         reactiveSetup()
     }
