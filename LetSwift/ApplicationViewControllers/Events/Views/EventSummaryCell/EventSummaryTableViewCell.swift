@@ -10,8 +10,8 @@ import UIKit
 
 final class EventSummaryTableViewCell: AppTableViewCell {
     
-    @IBOutlet private weak var eventTitleLabel: UILabel!
-    @IBOutlet private weak var eventDescriptionLabel: UILabel!
+    @IBOutlet private weak var eventTitleLabel: AppLabel!
+    @IBOutlet private weak var eventDescriptionLabel: AppLabel!
     @IBOutlet private weak var indicatorView: UIImageView!
     
     var eventTitle: String? {

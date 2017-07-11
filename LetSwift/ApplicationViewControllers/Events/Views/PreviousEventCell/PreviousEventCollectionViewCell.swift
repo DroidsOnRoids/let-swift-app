@@ -12,8 +12,8 @@ import SDWebImage
 final class PreviousEventCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
+    @IBOutlet private weak var titleLabel: AppLabel!
+    @IBOutlet private weak var dateLabel: AppLabel!
     
     static let cellIdentifier = String(describing: PreviousEventCollectionViewCell.self)
     
