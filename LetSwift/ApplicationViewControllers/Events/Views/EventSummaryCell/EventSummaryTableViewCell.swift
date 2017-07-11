@@ -1,5 +1,5 @@
 //
-//  EventSummaryCell.swift
+//  EventSummaryTableViewCell.swift
 //  LetSwift
 //
 //  Created by Marcin Chojnacki on 26.04.2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EventSummaryCell: AppTableViewCell {
+final class EventSummaryTableViewCell: AppTableViewCell {
     
     @IBOutlet private weak var eventTitleLabel: UILabel!
     @IBOutlet private weak var eventDescriptionLabel: UILabel!

@@ -1,5 +1,5 @@
 //
-//  CarouselEventPhotosCellViewModel.swift
+//  CarouselEventPhotosTableViewCellViewModel.swift
 //  LetSwift
 //
 //  Created by Kinga Wilczek on 09.05.2017.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class CarouselEventPhotosCellViewModel {
+final class CarouselEventPhotosTableViewCellViewModel {
 
     var photosObservable = Observable<[Photo]>([])
     var currentPageObservable = Observable<Int>(0)

@@ -11,16 +11,16 @@ import UIKit
 class CommonEventViewController: AppViewController {
     
     enum EventCellIdentifier: String {
-        case image = "StaticImageCell"
-        case attend = "AttendButtonsRowCell"
-        case eventSummary = "EventSummaryCell"
-        case eventLocation = "EventLocationCell"
-        case eventTime = "EventTimeCell"
-        case previousEvents = "PreviousEventsListCell"
-        case carouselEventPhotos = "CarouselEventPhotosCell"
-        case speakerCardHeaderCell = "SpeakerCardHeaderCell"
-        case speakerCardCell = "SpeakerCardCell"
-        case speakersToBeAnnouncedCell = "SpeakersToBeAnnouncedCell"
+        case image = "StaticImageTableViewCell"
+        case attend = "AttendButtonsRowTableViewCell"
+        case eventSummary = "EventSummaryTableViewCell"
+        case eventLocation = "EventLocationTableViewCell"
+        case eventTime = "EventTimeTableViewCell"
+        case previousEvents = "PreviousEventsListTableViewCell"
+        case carouselEventPhotos = "CarouselEventPhotosTableViewCell"
+        case speakerCardHeaderCell = "SpeakerCardHeaderTableViewCell"
+        case speakerCardCell = "SpeakerCardTableViewCell"
+        case speakersToBeAnnouncedCell = "SpeakersToBeAnnouncedTableViewCell"
     }
 
     var allCells: [EventCellIdentifier] {
@@ -160,7 +160,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func setup(attendCell cell: AttendButtonsRowCell) {
+    func setup(attendCell cell: AttendButtonsRowTableViewCell) {
         cell.addLeftTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.attendButtonTapped))
         cell.addRightTapTarget(target: viewModel, action: #selector(EventsViewControllerViewModel.remindButtonTapped))
         
@@ -202,14 +202,14 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func setup(summaryCell cell: EventSummaryCell) {
+    func setup(summaryCell cell: EventSummaryTableViewCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.eventTitle = event?.title
         }
         .add(to: disposeBag)
     }
     
-    func setup(locationCell cell: EventLocationCell) {
+    func setup(locationCell cell: EventLocationTableViewCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.placeName = event?.placeName ?? ""
             cell.placeLocation = event?.placeStreet ?? ""
@@ -217,7 +217,7 @@ class CommonEventViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    func setup(timeCell cell: EventTimeCell) {
+    func setup(timeCell cell: EventTimeTableViewCell) {
         viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { event in
             cell.date = event?.date?.stringDateValue
             cell.time = event?.date?.stringTimeValue
@@ -228,16 +228,16 @@ class CommonEventViewController: AppViewController {
     func dispatchCellSetup(element: EventCellIdentifier, cell: UITableViewCell, index: Int) {
         switch element {
         case .attend:
-            self.setup(attendCell: cell as! AttendButtonsRowCell)
+            self.setup(attendCell: cell as! AttendButtonsRowTableViewCell)
             
         case .eventSummary:
-            self.setup(summaryCell: cell as! EventSummaryCell)
+            self.setup(summaryCell: cell as! EventSummaryTableViewCell)
             
         case .eventLocation:
-            self.setup(locationCell: cell as! EventLocationCell)
+            self.setup(locationCell: cell as! EventLocationTableViewCell)
             
         case .eventTime:
-            self.setup(timeCell: cell as! EventTimeCell)
+            self.setup(timeCell: cell as! EventTimeTableViewCell)
             
         default: break
         }

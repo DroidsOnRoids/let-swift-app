@@ -42,11 +42,11 @@ final class EventsViewControllerViewModel {
     
     var eventsListRefreshObservable = Observable<Void>()
     var previousEventsCellDidSetObservable = Observable<Void>()
-    var previousEventsViewModelObservable = Observable<PreviousEventsListCellViewModel?>(nil)
+    var previousEventsViewModelObservable = Observable<PreviousEventsListTableViewCellViewModel?>(nil)
     var previousEventsObservable = Observable<[Event?]?>(nil)
     
     var eventDetailsRefreshObservable = Observable<Void>()
-    var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosCellViewModel?>(nil)
+    var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosTableViewCellViewModel?>(nil)
     var lectureCellDidTapObservable = Observable<Int>(-1)
     var speakerCellDidTapObservable = Observable<Int>(-1)
 
@@ -134,7 +134,7 @@ final class EventsViewControllerViewModel {
             
             weakSelf.tableViewStateObservable.next(event == nil ? .error : .content)
             
-            let carouselViewModel = CarouselEventPhotosCellViewModel(photos: event?.coverImages ?? [])
+            let carouselViewModel = CarouselEventPhotosTableViewCellViewModel(photos: event?.coverImages ?? [])
             weakSelf.carouselEventPhotosViewModelObservable.next(carouselViewModel)
             
             weakSelf.checkAttendance()
@@ -162,7 +162,7 @@ final class EventsViewControllerViewModel {
             .withLatest(from: previousEventsObservable, combine: { event in event.1 })
             .subscribeNext(startsWithInitialValue: true) { [weak self] events in
                 guard let weakSelf = self else { return }
-                let subviewModel = PreviousEventsListCellViewModel(previousEvents: weakSelf.previousEventsObservable, refreshObservable: weakSelf.eventsListRefreshObservable, delegate: weakSelf.delegate)
+                let subviewModel = PreviousEventsListTableViewCellViewModel(previousEvents: weakSelf.previousEventsObservable, refreshObservable: weakSelf.eventsListRefreshObservable, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
             }
             .add(to: disposeBag)

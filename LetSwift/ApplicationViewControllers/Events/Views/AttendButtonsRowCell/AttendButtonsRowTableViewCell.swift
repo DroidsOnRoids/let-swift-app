@@ -1,5 +1,5 @@
 //
-//  AttendButtonsRowCell.swift
+//  AttendButtonsRowTableViewCell.swift
 //  LetSwift
 //
 //  Created by Marcin Chojnacki on 26.04.2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AttendButtonsRowCell: UITableViewCell {
+final class AttendButtonsRowTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var attendButton: AppShadowButton!
     @IBOutlet private weak var remindButton: AppShadowButton!

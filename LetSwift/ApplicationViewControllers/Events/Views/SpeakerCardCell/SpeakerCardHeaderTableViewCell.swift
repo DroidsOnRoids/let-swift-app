@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpeakerCardHeaderCell: UITableViewCell, Localizable {
+final class SpeakerCardHeaderTableViewCell: UITableViewCell, Localizable {
 
     @IBOutlet private weak var speakersLabel: UILabel!
     

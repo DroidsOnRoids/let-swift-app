@@ -9,11 +9,11 @@
 import UIKit
 import SDWebImage
 
-final class SinglePhotoCell: UICollectionViewCell {
+final class SinglePhotoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var imageView: UIImageView!
     
-    static let cellIdentifier = String(describing: SinglePhotoCell.self)
+    static let cellIdentifier = String(describing: SinglePhotoCollectionViewCell.self)
     
     override var isHighlighted: Bool {
         didSet {

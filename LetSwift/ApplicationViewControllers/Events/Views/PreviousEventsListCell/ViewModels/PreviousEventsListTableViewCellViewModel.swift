@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-final class PreviousEventsListCellViewModel {
+final class PreviousEventsListTableViewCellViewModel {
     
     private let disposeBag = DisposeBag()
     private var currentPage = 1

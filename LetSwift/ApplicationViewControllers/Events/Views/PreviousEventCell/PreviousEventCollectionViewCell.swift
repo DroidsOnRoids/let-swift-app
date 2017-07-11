@@ -1,5 +1,5 @@
 //
-//  PreviousEventCell.swift
+//  PreviousEventCollectionViewCell.swift
 //  LetSwift
 //
 //  Created by Marcin Chojnacki on 27.04.2017.
@@ -9,13 +9,13 @@
 import UIKit
 import SDWebImage
 
-final class PreviousEventCell: UICollectionViewCell {
+final class PreviousEventCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
-    static let cellIdentifier = String(describing: PreviousEventCell.self)
+    static let cellIdentifier = String(describing: PreviousEventCollectionViewCell.self)
     
     override var isHighlighted: Bool {
         didSet {

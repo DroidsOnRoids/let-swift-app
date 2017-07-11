@@ -1,5 +1,5 @@
 //
-//  SpeakersToBeAnnouncedCell.swift
+//  SpeakersToBeAnnouncedTableViewCell.swift
 //  LetSwift
 //
 //  Created by Kinga Wilczek on 25.05.2017.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpeakersToBeAnnouncedCell: UITableViewCell {
+final class SpeakersToBeAnnouncedTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var labelBackgroundView: UIView!
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
@@ -29,7 +29,7 @@ final class SpeakersToBeAnnouncedCell: UITableViewCell {
     }
 }
 
-extension SpeakersToBeAnnouncedCell: Localizable {
+extension SpeakersToBeAnnouncedTableViewCell: Localizable {
     func setupLocalization() {
         descriptionLabel.text = localized("EVENTS_TO_BE_ANNOUNCED").uppercased()
     }
