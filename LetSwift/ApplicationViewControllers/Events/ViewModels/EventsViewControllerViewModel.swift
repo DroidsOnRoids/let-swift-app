@@ -24,6 +24,14 @@ final class EventsViewControllerViewModel {
         case active
     }
 
+    enum ActionButtonsState {
+        case hidden
+        case toHide
+        case showed
+        case toShow
+        case initial
+    }
+
     private enum Constants {
         static let minimumTimeForReminder: TimeInterval = 24.0 * 60.0 * 60.0
     }
@@ -32,6 +40,7 @@ final class EventsViewControllerViewModel {
     private var eventDetailsId: Int?
     
     var lastEventObservable: Observable<Event?>
+    var actionButtonsStateObservable = Observable<ActionButtonsState>(.initial)
     var tableViewStateObservable: Observable<AppContentState>
     var attendanceStateObservable = Observable<AttendanceState>(.loading)
     var notificationStateObservable = Observable<NotificationState>(.notActive)
@@ -49,8 +58,6 @@ final class EventsViewControllerViewModel {
     var carouselEventPhotosViewModelObservable = Observable<CarouselEventPhotosTableViewCellViewModel?>(nil)
     var lectureCellDidTapObservable = Observable<Int>(-1)
     var speakerCellDidTapObservable = Observable<Int>(-1)
-
-    var eventDidFinishObservable = Observable<Event?>(nil)
 
     var notificationPermissionsNotGrantedObservable = Observable<Void>()
 
@@ -72,7 +79,8 @@ final class EventsViewControllerViewModel {
         tableViewStateObservable = Observable<AppContentState>(events?.isEmpty ?? true ? .error : .content)
         previousEventsObservable = Observable<[Event?]?>(events?.tail)
         self.delegate = delegate
-        
+
+        updateActionButtonsState()
         setup()
     }
     
@@ -86,6 +94,7 @@ final class EventsViewControllerViewModel {
             switch response {
             case let .success(event):
                 self?.lastEventObservable.next(event)
+                self?.updateActionButtonsState()
             case .error:
                 self?.tableViewStateObservable.next(.error)
             }
@@ -103,6 +112,7 @@ final class EventsViewControllerViewModel {
                 NetworkProvider.shared.eventDetails(with: firstEventId) { response in
                     if case .success(let event) = response {
                         self?.lastEventObservable.next(event)
+                        self?.updateActionButtonsState()
                     }
                     
                     self?.eventsListRefreshObservable.complete()
@@ -122,6 +132,7 @@ final class EventsViewControllerViewModel {
             NetworkProvider.shared.eventDetails(with: eventDetailsId) { response in
                 if case .success(let event) = response {
                     self?.lastEventObservable.next(event)
+                    self?.updateActionButtonsState()
                 }
                 
                 self?.eventDetailsRefreshObservable.complete()
@@ -223,7 +234,7 @@ final class EventsViewControllerViewModel {
 
     @objc private func eventFinished() {
         attendanceStateObservable.next(.notAllowed)
-        eventDidFinishObservable.next(lastEventObservable.value)
+        updateActionButtonsState()
     }
     
     private func checkAttendance() {
@@ -311,5 +322,25 @@ final class EventsViewControllerViewModel {
         
         talk.event = event.withoutExtendedFields
         delegate?.presentLectureScreen(with: talk)
+    }
+
+    private func updateActionButtonsState() {
+        guard let event = lastEventObservable.value, let date = event.date else { return }
+
+        if date.isOutdated, event.photos.isEmpty {
+            switch actionButtonsStateObservable.value {
+            case .showed, .toShow:
+                actionButtonsStateObservable.nextDistinct(.toHide)
+            default:
+                actionButtonsStateObservable.nextDistinct(.hidden)
+            }
+        } else {
+            switch actionButtonsStateObservable.value {
+            case .toHide, .hidden:
+                actionButtonsStateObservable.nextDistinct(.toShow)
+            default:
+                actionButtonsStateObservable.nextDistinct(.showed)
+            }
+        }
     }
 }
