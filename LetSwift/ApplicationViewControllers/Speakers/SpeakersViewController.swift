@@ -124,13 +124,13 @@ final class SpeakersViewController: AppViewController {
             UIView.animate(withDuration: 0.25, animations: {
                 spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
             }, completion: { _ in
-                self?.tableView.tableFooterView = UIView()
+                self?.tableView.tableFooterView = UITableView.emptyFooter
             })
         }
         .add(to: disposeBag)
 
         viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
-            self?.tableView.tableFooterView = UIView()
+            self?.tableView.tableFooterView = UITableView.emptyFooter
         }
         .add(to: disposeBag)
     }

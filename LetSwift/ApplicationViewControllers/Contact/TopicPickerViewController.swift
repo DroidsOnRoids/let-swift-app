@@ -68,7 +68,7 @@ class TopicPickerViewController: UIViewController {
         containerView.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
         containerView.layer.shadowRadius = 15.0
         
-        tableView.tableFooterView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 1.0))
+        tableView.tableFooterView = UITableView.emptyFooter
     }
     
     private func setupDismissing() {
