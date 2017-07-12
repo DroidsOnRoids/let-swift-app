@@ -163,7 +163,7 @@ final class ContactViewController: AppViewController {
                 self?.sendButton.setTitle(localized("CONTACT_LOADING").uppercased(), for: [])
                 self?.sendButton.backgroundColor = .lightBlueGrey
             } else {
-                self?.sendButton.setTitle(localized("CONTACT_SEND"), for: [])
+                self?.sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
                 self?.sendButton.backgroundColor = .swiftOrange
             }
         }
