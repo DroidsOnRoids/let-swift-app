@@ -10,14 +10,18 @@ import UIKit
 
 extension UIView {
     private enum Constants {
+        static let pressEffectEnabled = false
         static let motionEffectForTranslationX = "layer.transform.translation.x"
         static let motionEffectForTranslationY = "layer.transform.translation.y"
     }
 
     func highlightView(_ isHighlighted: Bool) {
         UIView.animate(withDuration: 0.05) {
-            self.transform = isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
-            self.alpha = isHighlighted ? 0.75 : 1.0
+            if Constants.pressEffectEnabled {
+                self.transform = isHighlighted ? CGAffineTransform(translationX: 0.0, y: 2.0) : .identity
+            }
+            
+            self.alpha = isHighlighted ? 0.6 : 1.0
         }
     }
 
