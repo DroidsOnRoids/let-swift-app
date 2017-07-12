@@ -327,7 +327,7 @@ final class EventsViewControllerViewModel {
     private func updateActionButtonsState() {
         guard let event = lastEventObservable.value, let date = event.date else { return }
 
-        if date.isOutdated, event.photos.isEmpty {
+        if date.isOutdated && event.photos.isEmpty {
             switch actionButtonsStateObservable.value {
             case .showed, .toShow:
                 actionButtonsStateObservable.nextDistinct(.toHide)

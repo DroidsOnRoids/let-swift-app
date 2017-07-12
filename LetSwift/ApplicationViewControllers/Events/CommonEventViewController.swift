@@ -140,12 +140,16 @@ class CommonEventViewController: AppViewController {
                 guard let index = self?.bindableCells.values.index(of: .attend) else { return }
 
                 self?.bindableCells.remove(at: index, updated: false)
+                self?.tableView.beginUpdates()
                 self?.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                self?.tableView.endUpdates()
             case .toShow:
                 guard !(self?.bindableCells.values.contains(.attend) ?? false) else { return }
 
                 self?.bindableCells.insert(.attend, at: 1, updated:  false)
+                self?.tableView.beginUpdates()
                 self?.tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+                self?.tableView.endUpdates()
             default: break
             }
         }
