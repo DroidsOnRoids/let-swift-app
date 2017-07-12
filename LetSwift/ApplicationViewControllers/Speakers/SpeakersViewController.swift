@@ -94,6 +94,11 @@ final class SpeakersViewController: AppViewController {
         tableView.tableFooterView = spinner
     }
     
+    private func collapseHeaderView() {
+        tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+        tableView.tableHeaderView?.isHidden = true
+    }
+    
     private func reactiveSetup() {
         reactiveTableViewSetup()
         reactiveLoadingSetup()
@@ -141,19 +146,20 @@ final class SpeakersViewController: AppViewController {
                 UIView.animate(withDuration: 0.25, animations: {
                     self?.tableView.tableHeaderView?.alpha = 0.0
                 }, completion: { _ in
-                    self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.00001)
+                    self?.collapseHeaderView()
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
                 })
             } else {
                 self?.tableView.tableHeaderView?.alpha = 0.0
-                self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.00001)
+                self?.collapseHeaderView()
             }
         }
         .add(to: disposeBag)
 
         searchBar.searchBarCancelButtonClicked.subscribeNext { [weak self] in
             self?.tableView.tableHeaderView?.transform = .identity
+            self?.tableView.tableHeaderView?.isHidden = false
             if self?.tableView.isTableHeaderViewVisible ?? false {
                 UIView.animate(withDuration: 0.25) {
                     self?.tableView.tableHeaderView?.alpha = 1.0
