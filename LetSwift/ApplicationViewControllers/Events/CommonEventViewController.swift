@@ -116,17 +116,6 @@ class CommonEventViewController: AppViewController {
         }
         .add(to: disposeBag)
         
-        viewModel.lastEventObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self,
-                let eventDate =  event?.date,
-                event?.photos.isEmpty ?? true,
-                eventDate.addingTimeInterval(20.0).isOutdated,
-                let index = weakSelf.bindableCells.values.index(of: .attend) else { return }
-            
-            weakSelf.bindableCells.remove(at: index)
-        }
-        .add(to: disposeBag)
-        
         bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
@@ -136,12 +125,32 @@ class CommonEventViewController: AppViewController {
             
             return cell
         }))
-        
-        viewModel.eventDidFinishObservable.subscribeNext(startsWithInitialValue: true) { [weak self] event in
-            guard let weakSelf = self, let event = event else { return }
-            if weakSelf.bindableCells.values.contains(.attend), let index = weakSelf.bindableCells.values.index(of: .attend), event.photos.isEmpty {
-                weakSelf.bindableCells.remove(at: index, updated: false)
-                weakSelf.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+
+        viewModel.actionButtonsStateObservable.subscribeNext { [weak self] state in
+            switch state {
+            case .hidden:
+                guard let index = self?.bindableCells.values.index(of: .attend) else { return }
+
+                self?.bindableCells.remove(at: index)
+            case .showed:
+                guard !(self?.bindableCells.values.contains(.attend) ?? false) else { return }
+
+                self?.bindableCells.insert(.attend, at: 1)
+            case .toHide:
+                guard let index = self?.bindableCells.values.index(of: .attend) else { return }
+
+                self?.bindableCells.remove(at: index, updated: false)
+                self?.tableView.beginUpdates()
+                self?.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
+                self?.tableView.endUpdates()
+            case .toShow:
+                guard !(self?.bindableCells.values.contains(.attend) ?? false) else { return }
+
+                self?.bindableCells.insert(.attend, at: 1, updated:  false)
+                self?.tableView.beginUpdates()
+                self?.tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
+                self?.tableView.endUpdates()
+            default: break
             }
         }
         .add(to: disposeBag)

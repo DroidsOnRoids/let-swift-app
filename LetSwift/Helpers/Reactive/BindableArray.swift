@@ -40,6 +40,11 @@ final class BindableArray<T> {
         events.forEach { $0(values, updated) }
     }
 
+    func insert(_ element: T, at index: Int, updated: Bool = true) {
+        values.insert(element, at: index)
+        events.forEach { $0(values, updated) }
+    }
+
     func remove(at index: Int, updated: Bool = true) {
         values.remove(at: index)
         events.forEach { $0(values, updated) }
