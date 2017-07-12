@@ -57,6 +57,7 @@
 		7EB7442D1EF8FE67008092DC /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */; };
 		7EB744331EFBE7EA008092DC /* SpeakersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744311EFBE7EA008092DC /* SpeakersTableViewCell.swift */; };
 		7EB744341EFBE7EA008092DC /* SpeakersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744321EFBE7EA008092DC /* SpeakersTableViewCell.xib */; };
+		7EC198B11F162F7D003FF7E2 /* AppCompilationConditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC198B01F162F7D003FF7E2 /* AppCompilationConditions.swift */; };
 		7ED1ABF81EDEC4ED00276F93 /* ContactViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */; };
 		7ED7106E1EE1AA11003950A6 /* NibRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED7106D1EE1AA11003950A6 /* NibRepresentable.swift */; };
 		7EE1410D1EBCA4E4008378AB /* PreviousEventsListTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE1410C1EBCA4E4008378AB /* PreviousEventsListTableViewCellViewModel.swift */; };
@@ -238,8 +239,8 @@
 		7E31D0A51EAE3D970030147C /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		7E31D0A71EAE40390030147C /* EventsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7E3388EC1F0CF710008E9798 /* UISearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISearchBarExtension.swift; sourceTree = "<group>"; };
-		7E52E66D1F01318F0080EE8D /* LatestSpeakersHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LatestSpeakersHeaderView.swift; path = LatestSpeakersHeaderView.swift; sourceTree = "<group>"; };
-		7E52E66E1F01318F0080EE8D /* LatestSpeakersHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LatestSpeakersHeaderView.xib; path = LatestSpeakersHeaderView.xib; sourceTree = "<group>"; };
+		7E52E66D1F01318F0080EE8D /* LatestSpeakersHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestSpeakersHeaderView.swift; sourceTree = "<group>"; };
+		7E52E66E1F01318F0080EE8D /* LatestSpeakersHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestSpeakersHeaderView.xib; sourceTree = "<group>"; };
 		7E52E6771F0380870080EE8D /* ReactiveSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveSearchBar.swift; sourceTree = "<group>"; };
 		7E5FAD6E1F03AE81002ACE38 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		7E7E412D1EA8C16A001DB179 /* AppShadowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppShadowButton.swift; sourceTree = "<group>"; };
@@ -266,6 +267,7 @@
 		7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		7EB744311EFBE7EA008092DC /* SpeakersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersTableViewCell.swift; sourceTree = "<group>"; };
 		7EB744321EFBE7EA008092DC /* SpeakersTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersTableViewCell.xib; sourceTree = "<group>"; };
+		7EC198B01F162F7D003FF7E2 /* AppCompilationConditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCompilationConditions.swift; sourceTree = "<group>"; };
 		7ED1ABF71EDEC4ED00276F93 /* ContactViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7ED7106D1EE1AA11003950A6 /* NibRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibRepresentable.swift; sourceTree = "<group>"; };
 		7EE1410C1EBCA4E4008378AB /* PreviousEventsListTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -283,7 +285,7 @@
 		D309AFCF1F04F7F100BB679E /* WebsiteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteView.xib; sourceTree = "<group>"; };
 		D309AFD21F05107800BB679E /* SpeakerLecturesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLecturesTableViewCell.swift; sourceTree = "<group>"; };
 		D309AFD31F05107800BB679E /* SpeakerLecturesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerLecturesTableViewCell.xib; sourceTree = "<group>"; };
-		D309AFDB1F05179B00BB679E /* SpeakerCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeakerCardCollectionViewCell.swift; path = SpeakerCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		D309AFDB1F05179B00BB679E /* SpeakerCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D30B0C391EFBB4C200765AC4 /* PhotoSliderAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSliderAnimator.swift; sourceTree = "<group>"; };
 		D30D3D011F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerDetailsViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D30D3D061F03C6570056F8A7 /* SpeakerHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 		D3FF3F8F1E9F577B00501F44 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		D3FF3F911E9F57DE00501F44 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E437B153D31BD3671A49A418 /* Pods-LetSwift.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LetSwift.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift.appstore.xcconfig"; sourceTree = "<group>"; };
 		E84657CB4558B9F5B0BA3EA0 /* Pods_LetSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LetSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -442,6 +445,7 @@
 			children = (
 				618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */,
 				5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */,
+				E437B153D31BD3671A49A418 /* Pods-LetSwift.appstore.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -467,7 +471,6 @@
 				7E0842B51EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.swift */,
 				7E0842B61EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib */,
 			);
-			name = CarouselEventPhotosTableViewCell;
 			path = CarouselEventPhotosTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -476,7 +479,6 @@
 			children = (
 				7E0842BA1EC1E567003F7C96 /* CarouselEventPhotosTableViewCellViewModel.swift */,
 			);
-			name = ViewModels;
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
@@ -541,7 +543,6 @@
 				7EA48D511EADD53D00CEC845 /* StaticImageTableViewCell.swift */,
 				7EA48D521EADD53D00CEC845 /* StaticImageTableViewCell.xib */,
 			);
-			name = StaticImageTableViewCell;
 			path = StaticImageTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -584,7 +585,6 @@
 				7E52E66D1F01318F0080EE8D /* LatestSpeakersHeaderView.swift */,
 				7E52E66E1F01318F0080EE8D /* LatestSpeakersHeaderView.xib */,
 			);
-			name = LatestSpeakersHeaderView;
 			path = LatestSpeakersHeaderView;
 			sourceTree = "<group>";
 		};
@@ -658,6 +658,7 @@
 				D3429D111EE0375100F18D30 /* ContactFieldState.swift */,
 				D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */,
 				D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */,
+				7EC198B01F162F7D003FF7E2 /* AppCompilationConditions.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -842,7 +843,6 @@
 				D31B084A1EB1285600C2D229 /* EventSummaryTableViewCell.swift */,
 				D31B084B1EB1285600C2D229 /* EventSummaryTableViewCell.xib */,
 			);
-			name = EventSummaryTableViewCell;
 			path = EventSummaryTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -852,7 +852,6 @@
 				D31B084F1EB12EA000C2D229 /* EventLocationTableViewCell.swift */,
 				D31B08501EB12EA000C2D229 /* EventLocationTableViewCell.xib */,
 			);
-			name = EventLocationTableViewCell;
 			path = EventLocationTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -862,7 +861,6 @@
 				D31B08541EB1310500C2D229 /* EventTimeTableViewCell.swift */,
 				D31B08551EB1310500C2D229 /* EventTimeTableViewCell.xib */,
 			);
-			name = EventTimeTableViewCell;
 			path = EventTimeTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -992,7 +990,6 @@
 				D34B850A1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift */,
 				D34B850B1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib */,
 			);
-			name = PreviousEventsListTableViewCell;
 			path = PreviousEventsListTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -1040,7 +1037,6 @@
 				D39005891EB0D9AE00275219 /* AttendButtonsRowTableViewCell.swift */,
 				D390058A1EB0D9AE00275219 /* AttendButtonsRowTableViewCell.xib */,
 			);
-			name = AttendButtonsRowTableViewCell;
 			path = AttendButtonsRowTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -1131,7 +1127,6 @@
 				7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift */,
 				7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */,
 			);
-			name = SpeakerCardTableViewCell;
 			path = SpeakerCardTableViewCell;
 			sourceTree = "<group>";
 		};
@@ -1150,7 +1145,6 @@
 				D3CFAE7A1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.swift */,
 				D3CFAE7B1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.xib */,
 			);
-			name = SinglePhotoCollectionViewCell;
 			path = SinglePhotoCollectionViewCell;
 			sourceTree = "<group>";
 		};
@@ -1178,7 +1172,6 @@
 				D3F091871EB205FE0029E15E /* PreviousEventCollectionViewCell.swift */,
 				D3F091881EB205FE0029E15E /* PreviousEventCollectionViewCell.xib */,
 			);
-			name = PreviousEventCollectionViewCell;
 			path = PreviousEventCollectionViewCell;
 			sourceTree = "<group>";
 		};
@@ -1471,6 +1464,7 @@
 				D31D86DA1F0545A9007D222C /* SpeakerWebsite.swift in Sources */,
 				D3E4AA751EE5577E00400015 /* ContactFieldProtocol.swift in Sources */,
 				7E0842CF1ECF0F79003F7C96 /* Page.swift in Sources */,
+				7EC198B11F162F7D003FF7E2 /* AppCompilationConditions.swift in Sources */,
 				D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */,
 				D3FF3F871E9F4E5500501F44 /* MultiSizeConstraint.swift in Sources */,
 				7E8D0DED1F0FC3D30028C156 /* AppCollectionView.swift in Sources */,
@@ -1611,6 +1605,84 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7EC198AD1F162B9A003FF7E2 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APP_STORE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AppStore;
+		};
+		7EC198AE1F162B9A003FF7E2 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E437B153D31BD3671A49A418 /* Pods-LetSwift.appstore.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Droids On Roids Sp. z o.o.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Droids On Roids Sp. z o.o.";
+				DEVELOPMENT_TEAM = URYNPG7RQE;
+				INFOPLIST_FILE = LetSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "LetSwiftApp InHouse";
+				SWIFT_VERSION = 3.0;
+			};
+			name = AppStore;
+		};
+		7EC198AF1F162B9A003FF7E2 /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 27FAFL2WP5;
+				INFOPLIST_FILE = LetSwiftTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
+			};
+			name = AppStore;
+		};
 		D33521131ECED328000666D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1780,6 +1852,7 @@
 			buildConfigurations = (
 				D33521131ECED328000666D4 /* Debug */,
 				D33521141ECED328000666D4 /* Release */,
+				7EC198AF1F162B9A003FF7E2 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1789,6 +1862,7 @@
 			buildConfigurations = (
 				D39A73581E9776D900F10620 /* Debug */,
 				D39A73591E9776D900F10620 /* Release */,
+				7EC198AD1F162B9A003FF7E2 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1798,6 +1872,7 @@
 			buildConfigurations = (
 				D39A735B1E9776D900F10620 /* Debug */,
 				D39A735C1E9776D900F10620 /* Release */,
+				7EC198AE1F162B9A003FF7E2 /* AppStore */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
