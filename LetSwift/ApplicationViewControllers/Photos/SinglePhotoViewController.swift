@@ -13,7 +13,7 @@ import SDWebImage
 final class SinglePhotoViewController: UIViewController {
     
     private enum Constants {
-        static let spinnerSize: CGFloat = 45.0
+        static let centerItemSize: CGFloat = 45.0
     }
     
     var canDismissInteractively: Bool {
@@ -34,8 +34,49 @@ final class SinglePhotoViewController: UIViewController {
         }
     }
     
-    private var photoView = PhotoView()
-    private var spinner = DACircularProgressView()
+    private var contentState: AppContentState? {
+        didSet {
+            guard let contentState = contentState else { return }
+            switch contentState {
+            case .content:
+                photoView.isHidden = false
+                errorView.isHidden = true
+                spinnerView.isHidden = true
+            case .error:
+                photoView.isHidden = true
+                errorView.isHidden = false
+                spinnerView.isHidden = true
+            case .loading:
+                photoView.isHidden = true
+                errorView.isHidden = true
+                spinnerView.isHidden = false
+            }
+        }
+    }
+    
+    private let photoView: PhotoView = {
+        let photoView = PhotoView()
+        photoView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return photoView
+    }()
+    
+    private let errorView: UIImageView = {
+        let errorView = UIImageView(image: #imageLiteral(resourceName: "GalleryError"))
+        errorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return errorView
+    }()
+    
+    private let spinnerView: DACircularProgressView = {
+        let spinnerView = DACircularProgressView()
+        spinnerView.translatesAutoresizingMaskIntoConstraints = false
+        spinnerView.thicknessRatio = 0.25
+        spinnerView.trackTintColor = .paleGrey
+        spinnerView.progressTintColor = .swiftOrange
+        
+        return spinnerView
+    }()
     
     private var photo: Photo?
     
@@ -49,51 +90,37 @@ final class SinglePhotoViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        download()
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         photoView.zoomScale = 1.0
     }
     
     private func setup() {
-        setupPhotoView()
-        setupSpinner()
-        download()
-    }
-    
-    private func setupPhotoView() {
-        photoView.isHidden = true
-        
-        photoView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(photoView)
+        [photoView, errorView, spinnerView].forEach(view.addSubview)
         
         photoView.pinToFit(view: view)
-    }
-    
-    private func setupSpinner() {
-        spinner.thicknessRatio = 0.25
-        spinner.trackTintColor = .paleGrey
-        spinner.progressTintColor = .swiftOrange
-        
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(spinner)
-        
-        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        spinner.widthAnchor.constraint(equalToConstant: Constants.spinnerSize).isActive = true
-        spinner.heightAnchor.constraint(equalToConstant: Constants.spinnerSize).isActive = true
+        errorView.pinToCenter(view: view, width: Constants.centerItemSize, height: Constants.centerItemSize)
+        spinnerView.pinToCenter(view: view, width: Constants.centerItemSize, height: Constants.centerItemSize)
     }
     
     private func download() {
+        contentState = .loading
+        
         SDWebImageManager.shared().downloadImage(with: photo?.big, options: [], progress: { [weak self] received, expected in
             let progress = CGFloat(received) / CGFloat(expected)
-            self?.spinner.progress = progress
+            self?.spinnerView.progress = progress
         }, completed: { [weak self] image, _, _, _, _ in
             if let image = image {
                 self?.photoView.image = image
+                self?.contentState = .content
+            } else {
+                self?.contentState = .error
             }
-            
-            self?.spinner.isHidden = true
-            self?.photoView.isHidden = false
         })
     }
 }
