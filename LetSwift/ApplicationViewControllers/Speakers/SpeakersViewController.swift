@@ -141,13 +141,13 @@ final class SpeakersViewController: AppViewController {
                 UIView.animate(withDuration: 0.25, animations: {
                     self?.tableView.tableHeaderView?.alpha = 0.0
                 }, completion: { _ in
-                    self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+                    self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.00001)
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
                 })
             } else {
                 self?.tableView.tableHeaderView?.alpha = 0.0
-                self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+                self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.00001)
             }
         }
         .add(to: disposeBag)
