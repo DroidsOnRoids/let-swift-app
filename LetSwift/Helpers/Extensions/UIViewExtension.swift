@@ -66,4 +66,11 @@ extension UIView {
         widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: widthRatio).isActive = true
         heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: heightRatio).isActive = true
     }
+    
+    func pinToCenter(view: UIView, width: CGFloat, height: CGFloat) {
+        centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        widthAnchor.constraint(equalToConstant: width).isActive = true
+        heightAnchor.constraint(equalToConstant: height).isActive = true
+    }
 }
