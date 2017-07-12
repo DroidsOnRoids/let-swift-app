@@ -90,6 +90,11 @@ final class SinglePhotoViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        download()
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         photoView.zoomScale = 1.0
@@ -101,8 +106,6 @@ final class SinglePhotoViewController: UIViewController {
         photoView.pinToFit(view: view)
         errorView.pinToCenter(view: view, width: Constants.centerItemSize, height: Constants.centerItemSize)
         spinnerView.pinToCenter(view: view, width: Constants.centerItemSize, height: Constants.centerItemSize)
-        
-        download()
     }
     
     private func download() {
