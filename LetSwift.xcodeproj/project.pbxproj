@@ -1656,13 +1656,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Droids On Roids Sp. z o.o.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Droids On Roids Sp. z o.o.";
-				DEVELOPMENT_TEAM = URYNPG7RQE;
+				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "LetSwiftApp InHouse";
+				PROVISIONING_PROFILE = "9f5b209a-bcec-4dc2-8683-7eb50ab20406";
+				PROVISIONING_PROFILE_SPECIFIER = "Let Swift App Store";
 				SWIFT_VERSION = 3.0;
 			};
 			name = AppStore;
@@ -1819,7 +1820,7 @@
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = WILDCARD;
 				SWIFT_VERSION = 3.0;
@@ -1837,7 +1838,7 @@
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LetSwiftApp InHouse";
 				SWIFT_VERSION = 3.0;
