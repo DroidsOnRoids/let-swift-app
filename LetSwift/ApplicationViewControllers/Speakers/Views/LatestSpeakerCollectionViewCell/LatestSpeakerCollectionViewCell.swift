@@ -13,8 +13,8 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
     static let cellIdentifier = String(describing: LatestSpeakerCollectionViewCell.self)
 
     @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var surnameLabel: UILabel!
+    @IBOutlet private weak var nameLabel: AppLabel!
+    @IBOutlet private weak var surnameLabel: AppLabel!
     @IBOutlet private weak var indicatorImageView: UIImageView!
 
     override var isHighlighted: Bool {

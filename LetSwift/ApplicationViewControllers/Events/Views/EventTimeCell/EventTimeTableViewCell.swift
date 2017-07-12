@@ -10,8 +10,8 @@ import UIKit
 
 final class EventTimeTableViewCell: AppTableViewCell {
     
-    @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var dateLabel: AppLabel!
+    @IBOutlet private weak var timeLabel: AppLabel!
     
     @IBOutlet private weak var separatorConstraint: NSLayoutConstraint!
     

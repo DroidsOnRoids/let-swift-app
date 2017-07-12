@@ -17,12 +17,12 @@ final class LectureViewController: AppViewController {
     
     @IBOutlet private weak var speakerCellView: TappableView!
     @IBOutlet private weak var speakerImageView: UIImageView!
-    @IBOutlet private weak var speakerNameLabel: UILabel!
-    @IBOutlet private weak var speakerTitleLabel: UILabel!
-    @IBOutlet private weak var eventDateLabel: UILabel!
-    @IBOutlet private weak var eventTimeLabel: UILabel!
-    @IBOutlet private weak var lectureTitleLabel: UILabel!
-    @IBOutlet private weak var lectureSummaryLabel: UILabel!
+    @IBOutlet private weak var speakerNameLabel: AppLabel!
+    @IBOutlet private weak var speakerTitleLabel: AppLabel!
+    @IBOutlet private weak var eventDateLabel: AppLabel!
+    @IBOutlet private weak var eventTimeLabel: AppLabel!
+    @IBOutlet private weak var lectureTitleLabel: AppLabel!
+    @IBOutlet private weak var lectureSummaryLabel: AppLabel!
     
     @IBOutlet private weak var separatorConstraint: NSLayoutConstraint!
     
@@ -58,12 +58,12 @@ final class LectureViewController: AppViewController {
     private func reactiveSetup() {
         viewModel.talkObservable.subscribeNext(startsWithInitialValue: true) { [weak self] talk in
             self?.speakerImageView.sd_setImage(with: talk.speaker?.avatar?.thumb, placeholderImage: self?.speakerImageView.image)
-            self?.speakerNameLabel.attributedText = talk.speaker?.name.attributed(withSpacing: Constants.normalLetterSpacing)
-            self?.speakerTitleLabel.attributedText = talk.speaker?.job?.attributed(withSpacing: Constants.normalLetterSpacing)
-            self?.eventDateLabel.attributedText = talk.event?.date?.stringDateValue.attributed(withSpacing: Constants.mediumLetterSpacing)
-            self?.eventTimeLabel.attributedText = talk.event?.date?.stringTimeValue.attributed(withSpacing: Constants.mediumLetterSpacing)
-            self?.lectureTitleLabel.attributedText = talk.title.attributed(withSpacing: Constants.normalLetterSpacing)
-            self?.lectureSummaryLabel.attributedText = talk.description?.attributed(withSpacing: Constants.mediumLetterSpacing).with(lineHeight: 18.0)
+            self?.speakerNameLabel.text = talk.speaker?.name
+            self?.speakerTitleLabel.text = talk.speaker?.job
+            self?.eventDateLabel.text = talk.event?.date?.stringDateValue
+            self?.eventTimeLabel.text = talk.event?.date?.stringTimeValue
+            self?.lectureTitleLabel.text = talk.title
+            self?.lectureSummaryLabel.text = talk.description
         }
         .add(to: disposeBag)
     }

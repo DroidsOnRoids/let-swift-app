@@ -59,6 +59,10 @@ extension UITableView: NibPresentable {
     }
 
     // MARK: Header and footer
+    static var emptyFooter: UIView {
+        return UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 1.0))
+    }
+    
     private func createHeaderFooterView(_ color: UIColor, negativeOffset: Bool) -> UIView {
         let offset: CGFloat = 1000.0
         let offsetView = UIView()

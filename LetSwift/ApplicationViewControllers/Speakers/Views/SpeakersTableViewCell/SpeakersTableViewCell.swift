@@ -12,8 +12,8 @@ final class SpeakersTableViewCell: UITableViewCell, SpeakerLoadable {
 
     static let cellIdentifier = String(describing: SpeakersTableViewCell.self)
 
-    @IBOutlet private weak var speakerNameLabel: UILabel!
-    @IBOutlet private weak var speakerJobLabel: UILabel!
+    @IBOutlet private weak var speakerNameLabel: AppLabel!
+    @IBOutlet private weak var speakerJobLabel: AppLabel!
     @IBOutlet private weak var speakerAvatarImageView: UIImageView!
 
     override func prepareForReuse() {

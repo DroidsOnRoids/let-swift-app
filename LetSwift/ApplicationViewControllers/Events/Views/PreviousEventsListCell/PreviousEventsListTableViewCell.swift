@@ -11,7 +11,7 @@ import UIKit
 final class PreviousEventsListTableViewCell: UITableViewCell, Localizable {
 
     @IBOutlet private weak var eventsCollectionView: UICollectionView!
-    @IBOutlet private weak var previousTitleLabel: UILabel!
+    @IBOutlet private weak var previousTitleLabel: AppLabel!
     @IBOutlet private weak var spinnerView: SpinnerView!
     @IBOutlet private weak var scrollViewTrailingConstraint: NSLayoutConstraint!
 

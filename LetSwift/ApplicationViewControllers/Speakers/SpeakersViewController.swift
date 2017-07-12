@@ -12,6 +12,7 @@ final class SpeakersViewController: AppViewController {
 
     private enum Constants {
         static let offsetToken = "OffsetToken"
+        static let headerOffset: CGFloat = 1000.0
     }
 
     override var viewControllerTitleKey: String? {
@@ -44,21 +45,22 @@ final class SpeakersViewController: AppViewController {
 
         setup()
     }
-
+    
     private func setup() {
         showSpinner()
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.setHeaderColor(.paleGrey)
-        tableView.backgroundColor = .paleGrey
-
+        
         let headerView = LatestSpeakersHeaderView()
         headerView.viewModel = viewModel
-        headerView.clipsToBounds = true
         headerView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerView
         headerView.widthAnchor.constraint(equalTo: tableView.widthAnchor).isActive = true
+        
+        let colorView = UIView(frame: CGRect(x: 0.0, y: -Constants.headerOffset, width: max(tableView.bounds.width, tableView.bounds.height), height: Constants.headerOffset))
+        colorView.backgroundColor = headerView.subviews.first?.backgroundColor
+        headerView.addSubview(colorView)
 
         tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
 
@@ -88,9 +90,13 @@ final class SpeakersViewController: AppViewController {
     private func showSpinner() {
         let footerFrame = CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: 55.0)
         let spinner = SpinnerView(frame: footerFrame)
-        spinner.image = #imageLiteral(resourceName: "WhiteSpinner")
-        spinner.backgroundColor = .paleGrey
+        spinner.image = #imageLiteral(resourceName: "GreyLoader")
         tableView.tableFooterView = spinner
+    }
+    
+    private func collapseHeaderView() {
+        tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+        tableView.tableHeaderView?.isHidden = true
     }
     
     private func reactiveSetup() {
@@ -123,13 +129,13 @@ final class SpeakersViewController: AppViewController {
             UIView.animate(withDuration: 0.25, animations: {
                 spinnerView.transform = CGAffineTransform(translationX: 0.0, y: 50.0)
             }, completion: { _ in
-                self?.tableView.tableFooterView = UIView()
+                self?.tableView.tableFooterView = UITableView.emptyFooter
             })
         }
         .add(to: disposeBag)
 
         viewModel.noMoreSpeakersToLoadObservable.subscribeNext { [weak self] in
-            self?.tableView.tableFooterView = UIView()
+            self?.tableView.tableFooterView = UITableView.emptyFooter
         }
         .add(to: disposeBag)
     }
@@ -140,19 +146,20 @@ final class SpeakersViewController: AppViewController {
                 UIView.animate(withDuration: 0.25, animations: {
                     self?.tableView.tableHeaderView?.alpha = 0.0
                 }, completion: { _ in
-                    self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+                    self?.collapseHeaderView()
                     self?.tableView.beginUpdates()
                     self?.tableView.endUpdates()
                 })
             } else {
                 self?.tableView.tableHeaderView?.alpha = 0.0
-                self?.tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
+                self?.collapseHeaderView()
             }
         }
         .add(to: disposeBag)
 
         searchBar.searchBarCancelButtonClicked.subscribeNext { [weak self] in
             self?.tableView.tableHeaderView?.transform = .identity
+            self?.tableView.tableHeaderView?.isHidden = false
             if self?.tableView.isTableHeaderViewVisible ?? false {
                 UIView.animate(withDuration: 0.25) {
                     self?.tableView.tableHeaderView?.alpha = 1.0

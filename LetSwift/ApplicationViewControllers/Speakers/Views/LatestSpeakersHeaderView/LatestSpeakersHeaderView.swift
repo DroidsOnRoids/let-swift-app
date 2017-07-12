@@ -21,14 +21,13 @@ final class LatestSpeakersHeaderView: DesignableView {
     }
 
     @IBOutlet private weak var latestCollectionView: UICollectionView!
-    @IBOutlet private weak var latestSpeakersTitleLabel: UILabel!
+    @IBOutlet private weak var latestSpeakersTitleLabel: AppLabel!
 
     private func setup() {
         latestCollectionView.delegate = self
         latestCollectionView.registerCells([LatestSpeakerCollectionViewCell.self])
 
         latestSpeakersTitleLabel.text = localized("SPEAKERS_LATEST_TITLE").uppercased()
-        latestSpeakersTitleLabel.attributedText = latestSpeakersTitleLabel.text?.attributed(withSpacing: 0.7)
 
         reactiveSetup()
     }
