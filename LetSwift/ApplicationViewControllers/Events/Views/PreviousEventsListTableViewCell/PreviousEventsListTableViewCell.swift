@@ -74,7 +74,7 @@ final class PreviousEventsListTableViewCell: UITableViewCell, Localizable {
             self?.spinnerView.animationActive = true
 
             guard let collectionView = self?.eventsCollectionView else { return }
-            events?.bindable.bind(to: collectionView.item(with: PreviousEventCollectionViewCell.cellIdentifier, cellType: PreviousEventCollectionViewCell.self) ({ index, element, cell in
+            events?.bindable.bind(to: collectionView.item(with: PreviousEventCollectionViewCell.cellIdentifier, cellType: PreviousEventCollectionViewCell.self) ({ _, element, cell in
                 cell.imageURL = element?.coverImages.first?.thumb
                 cell.title = element?.title
                 cell.date = element?.date?.stringDateValue

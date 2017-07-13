@@ -49,7 +49,7 @@ final class AppTableView: UITableView {
         
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
             oldOverlayView?.alpha = 0.0
-        }, completion: { completed in
+        }, completion: { _ in
             oldOverlayView?.removeFromSuperview()
         })
     }

@@ -32,7 +32,7 @@ extension UICollectionView: NibPresentable {
                         cellFormer?(index, element, cell)
                         return cell
                     }
-                    ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { proxy in
+                    ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { _ in
                         delegate.collectionView(self, observedElements: source)
                     }
                 }
@@ -46,7 +46,7 @@ extension UICollectionView: NibPresentable {
             return { cellFormer in
                 return { source in
                     let delegate = ReactiveCollectionViewDataSource<S>(cellFormer: cellFormer)
-                    ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { proxy in
+                    ReactiveCollectionViewDataSourceProxy.subscribeToProxy(collectionView: self, datasource: delegate) { _ in
                         delegate.collectionView(self, observedElements: source)
                     }
                 }

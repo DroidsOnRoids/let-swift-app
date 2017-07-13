@@ -183,7 +183,7 @@ final class EventsViewControllerViewModel {
 
         previousEventsCellDidSetObservable
             .withLatest(from: previousEventsObservable, combine: { event in event.1 })
-            .subscribeNext(startsWithInitialValue: true) { [weak self] events in
+            .subscribeNext(startsWithInitialValue: true) { [weak self] _ in
                 guard let weakSelf = self else { return }
                 let subviewModel = PreviousEventsListTableViewCellViewModel(previousEvents: weakSelf.previousEventsObservable, refreshObservable: weakSelf.eventsListRefreshObservable, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
@@ -213,16 +213,12 @@ final class EventsViewControllerViewModel {
             }
             .add(to: disposeBag)
 
-        guard let time = lastEventObservable
-                            .value?
-                            .date?
+        guard let time = lastEventObservable.value?.date?
                             .addingTimeInterval(-Constants.minimumTimeForReminder)
                             .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: time, target: self, selector: #selector(eventReminderTimeFinished), userInfo: nil, repeats: false)
 
-        guard let eventLeftTime = lastEventObservable
-                                    .value?
-                                    .date?
+        guard let eventLeftTime = lastEventObservable.value?.date?
                                     .timeIntervalSince(Date()) else { return }
         Timer.scheduledTimer(timeInterval: eventLeftTime, target: self, selector: #selector(eventFinished), userInfo: nil, repeats: false)
 

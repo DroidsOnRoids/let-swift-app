@@ -68,7 +68,7 @@ final class BindableArray<T> {
     }
 
     private func notify(event: ([T], Bool) -> ()) {
-        values.enumerated().forEach { index, element in
+        values.forEach { _ in
             event(values, true)
         }
     }

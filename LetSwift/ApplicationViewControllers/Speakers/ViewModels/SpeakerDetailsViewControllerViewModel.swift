@@ -37,7 +37,7 @@ final class SpeakerDetailsViewControllerViewModel {
     }
     
     private func setup() {
-        speakerObservable.subscribeNext { [weak self] speaker in
+        speakerObservable.subscribeNext { [weak self] _ in
             self?.tableViewStateObservable.next(.content)
         }
         .add(to: disposeBag)

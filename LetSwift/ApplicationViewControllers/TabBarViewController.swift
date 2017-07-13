@@ -60,7 +60,7 @@ final class TabBarViewController: UITabBarController {
             guard let controller = tabControllers[safe: index] else { return }
             
             controller.tabBarItem = UITabBarItem(title: nil, image: value.imageInactive, selectedImage: value.imageActive)
-            controller.tabBarItem.imageInsets = UIEdgeInsetsMake(Constants.offset, 0.0, -Constants.offset, 0.0)
+            controller.tabBarItem.imageInsets = UIEdgeInsets(top: Constants.offset, left: 0.0, bottom: -Constants.offset, right: 0.0)
             controller.tabBarItem.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: 100.0)
         }
     }

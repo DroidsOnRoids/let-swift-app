@@ -62,10 +62,10 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
     }
 
     private func setupScrollView(with images: [Photo]) {
-        placeholderView.isHidden = images.count > 0
+        placeholderView.isHidden = !images.isEmpty
         let frameSize = scrollView.frame.size
 
-        images.enumerated().forEach { index, card in
+        images.enumerated().forEach { index, _ in
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
 

@@ -27,9 +27,9 @@ final class MapHelper {
     
     private static var mapLaunchOptions: [String : Any] {
         if #available(iOS 10.0, *) {
-            return [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDefault]
+            return [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
         } else {
-            return [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+            return [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
         }
     }
     

@@ -61,7 +61,7 @@ class ReflectionShadowView: UIView {
         }
     }
     
-    @IBInspectable var imageURL: URL? {
+    var imageURL: URL? {
         didSet {
             imageView.sd_setImage(with: imageURL) { [weak self] image, _, _, _ in
                 guard let image = image else {
