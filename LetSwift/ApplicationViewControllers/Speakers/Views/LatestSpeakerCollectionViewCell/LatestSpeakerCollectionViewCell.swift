@@ -33,6 +33,8 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
         super.layoutSubviews()
 
         guard let _ = imageView.image else { return }
+        
+        imageView.layoutIfNeeded()
         imageView.addGradientShadow(with: [0.4, 1.0])
     }
 
