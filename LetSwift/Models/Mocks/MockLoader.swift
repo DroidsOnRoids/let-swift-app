@@ -20,7 +20,6 @@
 
 import Foundation
 
-// MARK: Remove when networking layer will be available
 struct MockLoader {
 
     static func loadMock<T>(forPath path: String) -> T? {
