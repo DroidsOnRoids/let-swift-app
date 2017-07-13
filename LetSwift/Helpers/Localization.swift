@@ -18,7 +18,7 @@ fileprivate enum LocalizationStrategy {
     case forcedLanguage(Language)
 }
 
-fileprivate let localizationStrategy: LocalizationStrategy = isDebugBuild ?
+fileprivate let localizationStrategy: LocalizationStrategy = appCompilationCondition == .debug ?
     .automatic : .forcedLanguage(.polish)
 
 fileprivate let fallbackLanguage: Language = .english

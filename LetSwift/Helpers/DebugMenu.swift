@@ -8,6 +8,7 @@
 
 import UIKit
 
+#if !APP_STORE
 fileprivate struct DebugMenu {
     
     private let alertController: UIAlertController
@@ -71,3 +72,4 @@ extension UIWindow {
         }
     }
 }
+#endif

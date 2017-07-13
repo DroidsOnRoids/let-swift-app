@@ -2,20 +2,27 @@
 //  AppDelegate.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 07.04.2017.
+//  Created by Marcin Chojnacki, Kinga Wilczek on 07.04.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 
 import UIKit
-import HockeySDK
 import FBSDKCoreKit
 import SDWebImage
 import AlamofireNetworkActivityIndicator
 
-#if DEBUG
-let isDebugBuild = true
+#if !APP_STORE
+import HockeySDK
 #else
-let isDebugBuild = false
+//TODO: insert fabric here
+#endif
+
+#if DEBUG
+let appCompilationCondition: AppCompilationConditions = .debug
+#elseif APP_STORE
+let appCompilationCondition: AppCompilationConditions = .appStore
+#else
+let appCompilationCondition: AppCompilationConditions = .release
 #endif
 
 @UIApplicationMain
@@ -30,8 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupNetworkIndicator()
 
+        #if !APP_STORE
         setupHockeyApp()
-        
+        #else
+        //TODO: insert fabric setup here
+        #endif
+    
         FBSDKApplicationDelegate.sharedInstance()
             .application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -68,12 +79,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkActivityIndicatorManager.shared.completionDelay = 0.2
     }
 
+    #if !APP_STORE
     private func setupHockeyApp() {
         BITHockeyManager.shared().configure(withIdentifier: hockeyAppId)
         BITHockeyManager.shared().start()
 
-        if !isDebugBuild {
+        if appCompilationCondition == .release {
             BITHockeyManager.shared().authenticator.authenticateInstallation()
         }
     }
+    #endif
 }
