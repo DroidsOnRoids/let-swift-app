@@ -22,10 +22,10 @@ func +(left: NSAttributedString, right: String) -> NSAttributedString {
     return result
 }
 
-fileprivate func paragraphStyleWith(lineHeight: CGFloat) -> NSParagraphStyle {
+fileprivate func paragraphStyleWith(lineSpacing: CGFloat) -> NSParagraphStyle {
     let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.minimumLineHeight = lineHeight
-    paragraphStyle.maximumLineHeight = lineHeight
+    paragraphStyle.lineBreakMode = .byTruncatingTail
+    paragraphStyle.lineSpacing = lineSpacing
     
     return paragraphStyle
 }
@@ -47,8 +47,8 @@ extension String {
         return attributed(withAttributes: [NSFontAttributeName: font])
     }
     
-    func attributed(withLineHeight lineHeight: CGFloat) -> NSAttributedString {
-        return attributed(withAttributes: [NSParagraphStyleAttributeName: paragraphStyleWith(lineHeight: lineHeight)])
+    func attributed(withLineSpacing lineSpacing: CGFloat) -> NSAttributedString {
+        return attributed(withAttributes: [NSParagraphStyleAttributeName: paragraphStyleWith(lineSpacing: lineSpacing)])
     }
     
     func attributed(withAttributes attributes: [String : Any]) -> NSAttributedString {
@@ -69,8 +69,8 @@ extension NSAttributedString {
         return with(attributes: [NSFontAttributeName: font])
     }
     
-    func with(lineHeight: CGFloat) -> NSAttributedString {
-        return with(attributes: [NSParagraphStyleAttributeName: paragraphStyleWith(lineHeight: lineHeight)])
+    func with(lineSpacing: CGFloat) -> NSAttributedString {
+        return with(attributes: [NSParagraphStyleAttributeName: paragraphStyleWith(lineSpacing: lineSpacing)])
     }
     
     func with(attributes: [String : Any]) -> NSAttributedString {
