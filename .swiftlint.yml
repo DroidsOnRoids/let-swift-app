@@ -1,51 +1,56 @@
 disabled_rules: # rule identifiers to exclude from running
-#  - colon
-#  - comma
-  - nesting
-  - class_delegate_protocol # protocols should be class only to be weakly referenced
-#  - control_statement
-  - trailing_whitespace  # no trailing whitespace after line
-  - void_return # () -> Void
-  - cyclomatic_complexity # number of independent paths throught ie function
-#  - empty_parentheses_with_trailing_closure
+  - cyclomatic_complexity
+  - trailing_whitespace
+  - void_return
   - unused_optional_binding
+  - force_cast
+opt_in_rules: # some rules are only opt-in
+#  - attributes
+#  - closure_end_indentation
+#  - closure_spacing
+#  - empty_count
+#  - explicit_init
+  - file_header
+#  - first_where
+#  - operator_usage_whitespace
+#  - overridden_super_call
+#  - private_outlet
+#  - prohibited_super_call
+#  - redundant_nil_coalescing
+#  - sorted_imports
+#  - vertical_parameter_alignment_on_call
 excluded: # paths to ignore during linting. Takes precedence over `included`.
-#  - Carthage
   - Pods
-#  - LetSwiftUITests
-  - LetSwiftTests
-# - Source/ExcludedFolder
-# - Source/ExcludedFile.swift
+
 # configurable rules can be customized from this configuration file
 # binary rules can set their severity level
-force_cast: warning # implicitly
-force_try:
-  severity: warning # explicitly
-# rules that have both warning and error levels, can set just the warning level
-# implicitly
-trailing_whitespace:
-  warning: 2
-line_length: 1000
-# they can set both implicitly with an array
-type_body_length:
-  - 300 # warning
-  - 400 # error
-# or they can set both explicitly
-file_length:
-  warning: 300
-  error: 500
-# naming rules can set warnings/errors for min_length and max_length
-# additionally they can set excluded names
+type_body_length: 300
+function_body_length: 80
+line_length: 240
 type_name:
-  min_length: 3 # only warning
-  excluded: iPhone # excluded via string
-function_parameter_count:
-  warning: 5
-  error: 6
+  max_length: 60
 identifier_name:
-  min_length: 2
-  max_length:
-    warning: 50
-cyclomatic_complexity:
-  warning: 6
-reporter: "xcode" # reporter type (xcode, json, csv, checkstyle)
+  allowed_symbols: ¨
+  min_length: 1
+  max_length: 60
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/  .*?\.swift
+                    \/\/  LetSwift
+                    \/\/
+                    \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
+                    \/\/  Copyright © \d{4} Droids On Roids\. All rights reserved\.
+                    \/\/
+                    \/\/  Licensed under the Apache License, Version 2\.0 \(the "License"\);
+                    \/\/  you may not use this file except in compliance with the License\.
+                    \/\/  You may obtain a copy of the License at
+                    \/\/
+                    \/\/       http:\/\/www\.apache\.org\/licenses\/LICENSE-2\.0
+                    \/\/
+                    \/\/  Unless required by applicable law or agreed to in writing, software
+                    \/\/  distributed under the License is distributed on an "AS IS" BASIS,
+                    \/\/  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.
+                    \/\/  See the License for the specific language governing permissions and
+                    \/\/  limitations under the License\.
+                    \/\/
