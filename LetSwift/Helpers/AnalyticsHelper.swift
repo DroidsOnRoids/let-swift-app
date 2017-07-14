@@ -61,28 +61,27 @@ final class FabricAnalyticsHelper: AnalyticsHelper {
     }
     
     override func reportFacebookLogin() {
-        print("R2")
         Answers.logLogin(withMethod: "Facebook", success: true, customAttributes: nil)
     }
     
     override func reportOpenEventDetails(id: Int) {
-        print("R1 \(id)")
+        Answers.logContentView(withName: "Event \(id)", contentType: "Event details", contentId: "event-\(id)")
     }
     
     override func reportOpenSpeakerDetails(id: Int) {
-        print("R3 \(id)")
+        Answers.logContentView(withName: "Speaker \(id)", contentType: "Speaker details", contentId: "speaker-\(id)")
     }
     
     override func reportEmailSending(type: String) {
-        print("R4 \(type)")
+        Answers.logCustomEvent(withName: "Email Sending", customAttributes: ["Topic tag": type])
     }
     
     override func reportEventAttendance(id: Int) {
-        print("R5 \(id)")
+        Answers.logCustomEvent(withName: "Event Attendance", customAttributes: ["Event ID": id])
     }
     
     override func reportReminderSet(id: Int) {
-        print("R6 \(id)")
+        Answers.logCustomEvent(withName: "Reminder Set", customAttributes: ["Event ID": id])
     }
 }
 #else
