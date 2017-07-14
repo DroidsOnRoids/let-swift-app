@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance()
             .application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        SDWebImageManager.shared().imageCache.clearDisk()
+        SDWebImageManager.shared().imageCache?.clearDisk()
         
         let navigationController = UINavigationController()
         appCoordinator = AppCoordinator(navigationController: navigationController)
