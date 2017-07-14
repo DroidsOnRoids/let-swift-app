@@ -17,9 +17,9 @@ target 'LetSwift' do
   pod 'SwiftLint', '~> 0.20'
 
   # Testing
-  pod 'HockeySDK', '~> 4.1'#, :configurations => ['Debug', 'Release']
-  pod 'Fabric', '~> 1.6'#, :configuration => 'AppStore'
-  pod 'Crashlytics', '~> 3.8'#, :configuration => 'AppStore'
+  pod 'HockeySDK', '~> 4.1', :configurations => ['Debug', 'Release']
+  pod 'Fabric', '~> 1.6', :configuration => 'AppStore'
+  pod 'Crashlytics', '~> 3.8', :configuration => 'AppStore'
 
   # Facebook SDK
   pod 'FBSDKCoreKit', '~> 4.22'
