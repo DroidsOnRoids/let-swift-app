@@ -31,6 +31,7 @@ extension SpeakerLectureFlowDelegate where Self: Coordinator {
         let viewController = SpeakerDetailsViewController(viewModel: viewModel)
         
         navigationViewController.pushViewController(viewController, animated: true)
+        AnalyticsHelper.shared.reportOpenSpeakerDetails(id: id)
     }
     
     func presentLectureScreen(with talk: Talk) {

@@ -45,12 +45,12 @@ class AnalyticsHelper {
     }
     
     func setupAnalytics() { }
-    func reportOpenEventDetails() { }
     func reportFacebookLogin() { }
-    func reportOpenSpeakerDetails() { }
-    func reportEmailSending() { }
-    func reportEventAttendance() { }
-    func reportReminderSet() { }
+    func reportOpenEventDetails(id: Int) { }
+    func reportOpenSpeakerDetails(id: Int) { }
+    func reportEmailSending(type: String) { }
+    func reportEventAttendance(id: Int) { }
+    func reportReminderSet(id: Int) { }
 }
 
 #if APP_STORE
@@ -60,29 +60,29 @@ final class FabricAnalyticsHelper: AnalyticsHelper {
         Fabric.with([Crashlytics.self, Answers.self])
     }
     
-    override func reportOpenEventDetails() {
-        print("R1")
-    }
-    
     override func reportFacebookLogin() {
         print("R2")
         Answers.logLogin(withMethod: "Facebook", success: true, customAttributes: nil)
     }
     
-    override func reportOpenSpeakerDetails() {
-        print("R3")
+    override func reportOpenEventDetails(id: Int) {
+        print("R1 \(id)")
     }
     
-    override func reportEmailSending() {
-        print("R4")
+    override func reportOpenSpeakerDetails(id: Int) {
+        print("R3 \(id)")
     }
     
-    override func reportEventAttendance() {
-        print("R5")
+    override func reportEmailSending(type: String) {
+        print("R4 \(type)")
     }
     
-    override func reportReminderSet() {
-        print("R6")
+    override func reportEventAttendance(id: Int) {
+        print("R5 \(id)")
+    }
+    
+    override func reportReminderSet(id: Int) {
+        print("R6 \(id)")
     }
 }
 #else
