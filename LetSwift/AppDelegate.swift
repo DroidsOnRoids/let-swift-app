@@ -23,12 +23,6 @@ import FBSDKCoreKit
 import SDWebImage
 import AlamofireNetworkActivityIndicator
 
-#if !APP_STORE
-import HockeySDK
-#else
-//TODO: insert fabric here
-#endif
-
 #if DEBUG
 let appCompilationCondition: AppCompilationConditions = .debug
 #elseif APP_STORE
@@ -48,12 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupNetworkIndicator()
-
-        #if !APP_STORE
-        setupHockeyApp()
-        #else
-        //TODO: insert fabric setup here
-        #endif
+        AnalyticsHelper.shared.setupAnalytics()
     
         FBSDKApplicationDelegate.sharedInstance()
             .application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -90,15 +79,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkActivityIndicatorManager.shared.startDelay = 0.1
         NetworkActivityIndicatorManager.shared.completionDelay = 0.2
     }
-
-    #if !APP_STORE
-    private func setupHockeyApp() {
-        BITHockeyManager.shared().configure(withIdentifier: hockeyAppId)
-        BITHockeyManager.shared().start()
-
-        if appCompilationCondition == .release {
-            BITHockeyManager.shared().authenticator.authenticateInstallation()
-        }
-    }
-    #endif
 }
