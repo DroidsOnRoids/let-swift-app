@@ -22,6 +22,6 @@ import UIKit
 
 extension UISearchBar {
     func enableCancelButton() {
-        subviews.flatMap({$0.subviews}).forEach({ ($0 as? UIButton)?.isEnabled = true })
+        subviews.flatMap({ $0.subviews }).forEach({ ($0 as? UIButton)?.isEnabled = true })
     }
 }

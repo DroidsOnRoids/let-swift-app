@@ -55,3 +55,5 @@ file_header:
     \/\/  See the License for the specific language governing permissions and
     \/\/  limitations under the License\.
     \/\/
+private_outlet:
+  allow_private_set: true

@@ -150,7 +150,7 @@ class ReflectionShadowView: UIView {
         
         let mask = CALayer()
         mask.contents = UIImage(named: "ShadowMask")?.cgImage
-        mask.frame =  shadowImageView.bounds
+        mask.frame = shadowImageView.bounds
         
         shadowImageView.layer.mask = mask
         shadowImageView.layer.masksToBounds = true
