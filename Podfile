@@ -13,6 +13,9 @@ target 'LetSwift' do
       FileUtils.cp_r('Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-acknowledgements.plist', 'LetSwift/Resources/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
   end
 
+  # Host utils
+  pod 'SwiftLint', '~> 0.20'
+
   # Testing
   pod 'HockeySDK', '~> 4.1'
 
@@ -22,12 +25,12 @@ target 'LetSwift' do
 
   # Networking
   pod 'Alamofire', '~> 4.4'
-  pod 'ModelMapper', '~> 6.0'
   pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
+  pod 'ModelMapper', '~> 6.0'
 
   # Views
   pod 'ImageEffects', '~> 1.0'
   pod 'ESPullToRefresh', '~> 2.6'
-  pod 'SDWebImage', '~> 3.8'
+  pod 'SDWebImage', '~> 4.0'
   pod 'DACircularProgress', '~> 2.3'
 end

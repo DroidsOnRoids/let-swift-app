@@ -71,7 +71,7 @@ struct NotificationManager {
             }
         } else {
             if !DefaultsManager.shared.notificationsPromptShowed {
-                NotificationCenter.default.addObserver(forName: .didRegisterNotificationSettings, object: nil, queue: nil) { _ in
+                _ = NotificationCenter.default.addObserver(forName: .didRegisterNotificationSettings, object: nil, queue: nil) { _ in
                     DefaultsManager.shared.notificationsPromptShowed = true
                     NotificationCenter.default.removeObserver(self, name: .didRegisterNotificationSettings, object: nil)
 

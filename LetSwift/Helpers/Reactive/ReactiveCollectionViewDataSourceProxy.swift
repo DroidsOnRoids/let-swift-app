@@ -78,6 +78,6 @@ final class ReactiveCollectionViewDataSourceProxy: NSObject, UICollectionViewDat
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return dataSourceMethods?.collectionView(collectionView ,cellForItemAt: indexPath) ?? UICollectionViewCell()
+        return dataSourceMethods?.collectionView(collectionView, cellForItemAt: indexPath) ?? UICollectionViewCell()
     }
 }

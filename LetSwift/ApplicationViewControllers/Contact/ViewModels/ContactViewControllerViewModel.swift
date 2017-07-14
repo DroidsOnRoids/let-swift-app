@@ -75,9 +75,9 @@ final class ContactViewControllerViewModel {
                                            type: topics[pickerResultObservable.value].tag,
                                            name: nameTextObservable.value,
                                            message: messageTextObservable.value) { [weak self] result in
-                                                self?.sendStatusObservable.next(result)
-                                                self?.blockSendButton.next(false)
-                                           }
+            self?.sendStatusObservable.next(result)
+            self?.blockSendButton.next(false)
+        }
     }
     
     private func setup() {

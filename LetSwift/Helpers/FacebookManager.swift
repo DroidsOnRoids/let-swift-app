@@ -123,7 +123,7 @@ final class FacebookManager {
                     return
                 }
                 
-                request.start(completionHandler: { (_, result: Any?, error: Error?) in
+                request.start(completionHandler: { (_, result, _) in
                     callback(result)
                 })
             }
@@ -151,8 +151,8 @@ final class FacebookManager {
     private func attendanceRequest(forEventId id: String) -> FBSDKGraphRequest? {
         guard isLoggedIn else { return nil }
         let parameters: [AnyHashable : Any] = [
-            "user" : FBSDKAccessToken.current().userID,
-            "fields" : "rsvp_status"
+            "user": FBSDKAccessToken.current().userID,
+            "fields": "rsvp_status"
         ]
         
         return FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: parameters, httpMethod: "GET")

@@ -19,9 +19,10 @@ PODS:
   - HockeySDK/DefaultLib (4.1.6)
   - ImageEffects (1.0.0)
   - ModelMapper (6.0.0)
-  - SDWebImage (3.8.2):
-    - SDWebImage/Core (= 3.8.2)
-  - SDWebImage/Core (3.8.2)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - SwiftLint (0.20.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -33,7 +34,8 @@ DEPENDENCIES:
   - HockeySDK (~> 4.1)
   - ImageEffects (~> 1.0)
   - ModelMapper (~> 6.0)
-  - SDWebImage (~> 3.8)
+  - SDWebImage (~> 4.0)
+  - SwiftLint (~> 0.20)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
@@ -46,8 +48,9 @@ SPEC CHECKSUMS:
   HockeySDK: 95db557d54489a570dcdefae0d02f98eecc279a3
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
-  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
-PODFILE CHECKSUM: d630981eaa69cdd1f3d6a84492521bdc344950c9
+PODFILE CHECKSUM: 2fba1c91cc2dd87be3e203c9c28247affe3df3a6
 
 COCOAPODS: 1.2.0

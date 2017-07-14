@@ -32,7 +32,7 @@ final class PhotoSliderViewController: UIViewController {
     
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
-    fileprivate var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey : 32])
+    fileprivate var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey: 32])
     
     fileprivate var isNavbarHidden = false {
         didSet {

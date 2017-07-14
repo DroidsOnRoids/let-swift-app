@@ -53,7 +53,7 @@ class CommonEventViewController: AppViewController {
         return true
     }
 
-    @IBOutlet weak var tableView: AppTableView!
+    @IBOutlet private(set) weak var tableView: AppTableView!
     private let sadFaceView = SadFaceView()
     
     var viewModel: EventsViewControllerViewModel!

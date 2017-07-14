@@ -61,7 +61,7 @@ class ReflectionShadowView: UIView {
         }
     }
     
-    @IBInspectable var imageURL: URL? {
+    var imageURL: URL? {
         didSet {
             imageView.sd_setImage(with: imageURL) { [weak self] image, _, _, _ in
                 guard let image = image else {
@@ -150,7 +150,7 @@ class ReflectionShadowView: UIView {
         
         let mask = CALayer()
         mask.contents = UIImage(named: "ShadowMask")?.cgImage
-        mask.frame =  shadowImageView.bounds
+        mask.frame = shadowImageView.bounds
         
         shadowImageView.layer.mask = mask
         shadowImageView.layer.masksToBounds = true

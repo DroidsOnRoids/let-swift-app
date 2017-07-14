@@ -36,7 +36,7 @@ enum NetworkRouter: URLRequestConvertible {
     case speakerDetails(Int)
     case latestSpeakers
 
-    //MARK: Contact
+    // MARK: Contact
     case contact(Parameters)
 
     var method: HTTPMethod {
