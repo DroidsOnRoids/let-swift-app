@@ -1235,7 +1235,7 @@
 			buildConfigurationList = D39A735A1E9776D900F10620 /* Build configuration list for PBXNativeTarget "LetSwift" */;
 			buildPhases = (
 				55C950299D3F1E49CA4A2669 /* [CP] Check Pods Manifest.lock */,
-				D32A76CA1E9B9A7500388222 /* ShellScript */,
+				D32A76CA1E9B9A7500388222 /* Run Localization Script */,
 				D3AA9D131F176E5500F48D06 /* Run SwiftLint */,
 				D39A73441E9776D900F10620 /* Sources */,
 				D39A73451E9776D900F10620 /* Frameworks */,
@@ -1401,13 +1401,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D32A76CA1E9B9A7500388222 /* ShellScript */ = {
+		D32A76CA1E9B9A7500388222 /* Run Localization Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Localization Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1426,7 +1427,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint --config .swiftlint.yml\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

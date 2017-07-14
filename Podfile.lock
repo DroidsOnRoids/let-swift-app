@@ -22,6 +22,7 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SwiftLint (0.20.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - ImageEffects (~> 1.0)
   - ModelMapper (~> 6.0)
   - SDWebImage (~> 3.8)
+  - SwiftLint (~> 0.20)
 
 SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
@@ -47,7 +49,8 @@ SPEC CHECKSUMS:
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
-PODFILE CHECKSUM: d630981eaa69cdd1f3d6a84492521bdc344950c9
+PODFILE CHECKSUM: 99f724e013a7c016837da84ce53be49f1ebe69df
 
 COCOAPODS: 1.2.0

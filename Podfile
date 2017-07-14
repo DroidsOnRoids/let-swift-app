@@ -13,6 +13,9 @@ target 'LetSwift' do
       FileUtils.cp_r('Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-acknowledgements.plist', 'LetSwift/Resources/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
   end
 
+  # Host utils
+  pod 'SwiftLint', '~> 0.20'
+
   # Testing
   pod 'HockeySDK', '~> 4.1'
 
