@@ -80,7 +80,7 @@ final class ContactViewControllerViewModel {
             self?.blockSendButton.next(false)
                                             
             if case .success = result {
-                AnalyticsHelper.shared.reportEmailSending(type: type)
+                analyticsHelper.reportEmailSending?(type: type)
             }
         }
     }

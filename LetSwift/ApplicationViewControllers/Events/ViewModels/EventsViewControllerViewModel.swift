@@ -285,7 +285,7 @@ final class EventsViewControllerViewModel {
                 self?.attendanceStateObservable.next(newAttendance)
                 
                 if let id = self?.lastEventObservable.value?.id, newAttendance == .attending {
-                    AnalyticsHelper.shared.reportEventAttendance(id: id)
+                    analyticsHelper.reportEventAttendance?(id: id)
                 }
             } else {
                 self?.attendanceStateObservable.next(oldAttendance)
@@ -308,7 +308,7 @@ final class EventsViewControllerViewModel {
                     self?.notificationStateObservable.next(activeNotification ? .active : .notActive)
                     
                     if let id = self?.lastEventObservable.value?.id, activeNotification {
-                        AnalyticsHelper.shared.reportEventAttendance(id: id)
+                        analyticsHelper.reportEventAttendance?(id: id)
                     }
                 } else {
                     self?.notificationPermissionsNotGrantedObservable.next()

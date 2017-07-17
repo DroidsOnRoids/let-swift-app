@@ -48,7 +48,7 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         navigationViewController.pushViewController(viewController, animated: true)
         
         if let event = viewModel.lastEventObservable.value {
-            AnalyticsHelper.shared.reportOpenEventDetails(id: event.id)
+            analyticsHelper.reportOpenEventDetails?(id: event.id)
         }
     }
     
@@ -58,7 +58,7 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         viewController.coordinatorDelegate = delegate
         
         navigationViewController.pushViewController(viewController, animated: true)
-        AnalyticsHelper.shared.reportOpenEventDetails(id: eventId)
+        analyticsHelper.reportOpenEventDetails?(id: eventId)
     }
     
     func presentPhotoGalleryScreen(with photos: [Photo], eventId: Int?) {

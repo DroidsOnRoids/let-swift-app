@@ -122,7 +122,7 @@
 		D3429D121EE0375100F18D30 /* ContactFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D111EE0375100F18D30 /* ContactFieldState.swift */; };
 		D3429D141EE03B6900F18D30 /* ContactTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D131EE03B6900F18D30 /* ContactTextView.swift */; };
 		D342B39B1F1371EE0011A34B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D342B39A1F1371EE0011A34B /* AppLabel.swift */; };
-		D3498DD21F18EA1600CDE97E /* AnalyticsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3498DD11F18EA1600CDE97E /* AnalyticsHelper.swift */; };
+		D3498DD21F18EA1600CDE97E /* AnalyticsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3498DD11F18EA1600CDE97E /* AnalyticsHelpers.swift */; };
 		D34B850C1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B850A1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift */; };
 		D34B850D1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34B850B1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib */; };
 		D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */; };
@@ -175,6 +175,7 @@
 		D3C0ACF51EC4E84700CFF98D /* SpeakerCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardTableViewCell.xib */; };
 		D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift */; };
 		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib */; };
+		D3C155941F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C155931F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift */; };
 		D3CFAE7C1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFAE7A1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.swift */; };
 		D3CFAE7D1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3CFAE7B1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.xib */; };
 		D3CFAE7F1EE6BFF10009E4EF /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */; };
@@ -334,7 +335,7 @@
 		D3429D111EE0375100F18D30 /* ContactFieldState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFieldState.swift; sourceTree = "<group>"; };
 		D3429D131EE03B6900F18D30 /* ContactTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTextView.swift; sourceTree = "<group>"; };
 		D342B39A1F1371EE0011A34B /* AppLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
-		D3498DD11F18EA1600CDE97E /* AnalyticsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsHelper.swift; sourceTree = "<group>"; };
+		D3498DD11F18EA1600CDE97E /* AnalyticsHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsHelpers.swift; sourceTree = "<group>"; };
 		D34B850A1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListTableViewCell.swift; sourceTree = "<group>"; };
 		D34B850B1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventsListTableViewCell.xib; sourceTree = "<group>"; };
 		D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +390,7 @@
 		D3C0ACF31EC4E84700CFF98D /* SpeakerCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardTableViewCell.xib; sourceTree = "<group>"; };
 		D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		D3C155931F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsHelperProtocol.swift; sourceTree = "<group>"; };
 		D3CFAE7A1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3CFAE7B1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SinglePhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
@@ -703,7 +705,7 @@
 				7E02FE6A1EBB17C4005DADCB /* Reactive */,
 				D3AE28931ECDA3EC00F29702 /* Accumulator.swift */,
 				D3D83DC11EBB10CE003572EF /* AlertHelper.swift */,
-				D3498DD11F18EA1600CDE97E /* AnalyticsHelper.swift */,
+				D3498DD11F18EA1600CDE97E /* AnalyticsHelpers.swift */,
 				D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */,
 				7EB744031EEE8466008092DC /* Debouncer.swift */,
 				D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */,
@@ -747,6 +749,7 @@
 		7EECA5AD1E9B5EF900B3F724 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D3C155931F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift */,
 				D3E4AA741EE5577E00400015 /* ContactFieldProtocol.swift */,
 				D3AE288D1ECD9E3600F29702 /* Disposable.swift */,
 				D33C4A281E9CD6320052E793 /* Localizable.swift */,
@@ -1502,7 +1505,7 @@
 				D31B084C1EB1285600C2D229 /* EventSummaryTableViewCell.swift in Sources */,
 				D378B9A51F0CFC7000C99D5F /* SpeakerLectureFlow.swift in Sources */,
 				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
-				D3498DD21F18EA1600CDE97E /* AnalyticsHelper.swift in Sources */,
+				D3498DD21F18EA1600CDE97E /* AnalyticsHelpers.swift in Sources */,
 				D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */,
 				7E0842C91ECAD5D1003F7C96 /* Speaker.swift in Sources */,
 				D33920261F0D418B0073CECB /* OnboardingImageView.swift in Sources */,
@@ -1586,6 +1589,7 @@
 				7EB7442B1EF82C20008092DC /* NotificationNameExtension.swift in Sources */,
 				D3FF3F8E1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift in Sources */,
 				7E02FE6E1EBB23EA005DADCB /* BindableArray.swift in Sources */,
+				D3C155941F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

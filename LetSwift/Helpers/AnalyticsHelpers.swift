@@ -1,5 +1,5 @@
 //
-//  AnalyticsHelper.swift
+//  AnalyticsHelpers.swift
 //  LetSwift
 //
 //  Created by Marcin Chojnacki on 14.07.2017.
@@ -25,70 +25,61 @@ import Crashlytics
 import HockeySDK
 #endif
 
-class AnalyticsHelper {
+let analyticsHelper: AnalyticsHelperProtocol = {
+#if APP_STORE
+    return FabricAnalyticsHelper()
+#else
+    return HockeyAnalyticsHelper()
+#endif
+}()
+
+#if APP_STORE
+final class FabricAnalyticsHelper: AnalyticsHelperProtocol {
     
-    static let shared: AnalyticsHelper = {
-        #if APP_STORE
-        return FabricAnalyticsHelper()
-        #else
-        return HockeyAnalyticsHelper()
-        #endif
-    }()
+    private let disposeBag = DisposeBag()
     
-    fileprivate let disposeBag = DisposeBag()
-    
-    fileprivate init() {
+    func setupAnalytics() {
+        Fabric.with([Crashlytics.self, Answers.self])
+        
         FacebookManager.shared.facebookLoginObservable.subscribeNext { [weak self] in
             self?.reportFacebookLogin()
         }
         .add(to: disposeBag)
     }
     
-    func setupAnalytics() { }
-    func reportFacebookLogin() { }
-    func reportOpenEventDetails(id: Int) { }
-    func reportOpenSpeakerDetails(id: Int) { }
-    func reportEmailSending(type: String) { }
-    func reportEventAttendance(id: Int) { }
-    func reportReminderSet(id: Int) { }
-}
-
-#if APP_STORE
-final class FabricAnalyticsHelper: AnalyticsHelper {
-    
-    override func setupAnalytics() {
-        Fabric.with([Crashlytics.self, Answers.self])
-    }
-    
-    override func reportFacebookLogin() {
+    func reportFacebookLogin() {
         Answers.logLogin(withMethod: "Facebook", success: true, customAttributes: nil)
     }
     
-    override func reportOpenEventDetails(id: Int) {
+    func reportOpenEventDetails(id: Int) {
         Answers.logContentView(withName: "Event \(id)", contentType: "Event details", contentId: "event-\(id)")
     }
     
-    override func reportOpenSpeakerDetails(id: Int) {
+    func reportOpenSpeakerDetails(id: Int) {
         Answers.logContentView(withName: "Speaker \(id)", contentType: "Speaker details", contentId: "speaker-\(id)")
     }
     
-    override func reportEmailSending(type: String) {
+    func reportEmailSending(type: String) {
         Answers.logCustomEvent(withName: "Email Sending", customAttributes: ["Topic tag": type])
     }
     
-    override func reportEventAttendance(id: Int) {
+    func reportEventAttendance(id: Int) {
         Answers.logCustomEvent(withName: "Event Attendance", customAttributes: ["Event ID": id])
     }
     
-    override func reportReminderSet(id: Int) {
+    func reportReminderSet(id: Int) {
         Answers.logCustomEvent(withName: "Reminder Set", customAttributes: ["Event ID": id])
     }
 }
 #else
-final class HockeyAnalyticsHelper: AnalyticsHelper {
+final class HockeyAnalyticsHelper: AnalyticsHelperProtocol {
     
-    override func setupAnalytics() {
-        BITHockeyManager.shared().configure(withIdentifier: hockeyAppId)
+    private static let hockeyAppId = "3cc4c0d1fd694100b2d187995356d5ef"
+    
+    private let disposeBag = DisposeBag()
+    
+    func setupAnalytics() {
+        BITHockeyManager.shared().configure(withIdentifier: HockeyAnalyticsHelper.hockeyAppId)
         BITHockeyManager.shared().start()
         
         if appCompilationCondition == .release {
