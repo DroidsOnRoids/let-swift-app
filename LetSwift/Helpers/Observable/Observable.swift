@@ -25,9 +25,9 @@ final class Observable<Element> {
     typealias CompletedObserver = () -> ()
     typealias Predicate = (Element) -> Bool
     
-    private var nextObservers = [Int : NextObserver]()
-    private var errorObservers = [Int : ErrorObserver]()
-    private var completedObservers = [Int : CompletedObserver]()
+    private var nextObservers = [Int: NextObserver]()
+    private var errorObservers = [Int: ErrorObserver]()
+    private var completedObservers = [Int: CompletedObserver]()
     
     private let idAccumulator = accumulator()
 
@@ -61,7 +61,7 @@ final class Observable<Element> {
         let id = idAccumulator()
         nextObservers[id] = onNext
         
-        return DisposingObject() { [weak self] in
+        return DisposingObject { [weak self] in
             self?.nextObservers.removeValue(forKey: id)
         }
     }
@@ -70,7 +70,7 @@ final class Observable<Element> {
         let id = idAccumulator()
         errorObservers[id] = onError
         
-        return DisposingObject() { [weak self] in
+        return DisposingObject { [weak self] in
             self?.errorObservers.removeValue(forKey: id)
         }
     }
@@ -79,7 +79,7 @@ final class Observable<Element> {
         let id = idAccumulator()
         completedObservers[id] = onCompleted
         
-        return DisposingObject() { [weak self] in
+        return DisposingObject { [weak self] in
             self?.completedObservers.removeValue(forKey: id)
         }
     }

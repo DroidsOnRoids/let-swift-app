@@ -1,8 +1,8 @@
 //
-//  DisposingObjectTests.swift
+//  AnalyticsHelperProtocol.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 24.05.2017.
+//  Created by Marcin Chojnacki on 17.07.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,23 +18,14 @@
 //  limitations under the License.
 //
 
-import XCTest
-@testable import LetSwift
+import Foundation
 
-final class DisposingObjectTests: XCTestCase {
-    
-    func testDisposingObjectDisposeCalledOnlyOnce() {
-        // GIVEN
-        var disposeCount = 0
-        var disposingObject: DisposingObject? = DisposingObject {
-            disposeCount += 1
-        }
-        
-        // WHEN
-        disposingObject?.dispose()
-        disposingObject = nil
-        
-        // THEN
-        XCTAssert(disposeCount == 1, "Object has been disposed not only once")
-    }
+@objc protocol AnalyticsHelperProtocol {
+    func setupAnalytics()
+    @objc optional func reportFacebookLogin()
+    @objc optional func reportOpenEventDetails(id: Int)
+    @objc optional func reportOpenSpeakerDetails(id: Int)
+    @objc optional func reportEmailSending(type: String)
+    @objc optional func reportEventAttendance(id: Int)
+    @objc optional func reportReminderSet(id: Int)
 }

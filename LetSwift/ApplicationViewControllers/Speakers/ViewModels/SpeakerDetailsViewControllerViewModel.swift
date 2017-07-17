@@ -37,13 +37,13 @@ final class SpeakerDetailsViewControllerViewModel {
     }
     
     private func setup() {
-        speakerObservable.subscribeNext { [weak self] speaker in
+        speakerObservable.subscribeNext { [weak self] _ in
             self?.tableViewStateObservable.next(.content)
         }
         .add(to: disposeBag)
         
         showLectureDetailsObservable.subscribeNext { [weak self] talkId in
-            guard let talkId = talkId, var talkToShow = self?.speakerObservable.value?.talks.filter({ $0.id == talkId }).first else { return }
+            guard let talkId = talkId, var talkToShow = self?.speakerObservable.value?.talks.first(where: { $0.id == talkId }) else { return }
             
             talkToShow.speaker = self?.speakerObservable.value?.withoutExtendedFields
             self?.delegate?.presentLectureScreen(with: talkToShow)

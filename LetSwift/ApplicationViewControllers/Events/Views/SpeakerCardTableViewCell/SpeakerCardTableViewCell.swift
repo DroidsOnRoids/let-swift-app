@@ -22,7 +22,7 @@ import UIKit
 
 final class SpeakerCardTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var card: SpeakerCardView!
+    @IBOutlet private weak var card: SpeakerCardView!
     
     private var speakerTapListener: (() -> Void)?
     private var readMoreTapListener: (() -> Void)?

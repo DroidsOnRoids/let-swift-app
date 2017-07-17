@@ -1,5 +1,5 @@
 //
-//  SpeakerCardCollectionViewCell
+//  SpeakerCardCollectionViewCell.swift
 //  LetSwift
 //
 //  Created by Marcin Chojnacki on 29.06.2017.

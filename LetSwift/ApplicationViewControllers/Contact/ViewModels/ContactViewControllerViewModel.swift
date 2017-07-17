@@ -69,15 +69,20 @@ final class ContactViewControllerViewModel {
     
     @objc func sendTapped() {
         guard fieldsAreValid else { return }
+        let type = topics[pickerResultObservable.value].tag
 
         blockSendButton.next(true)
         NetworkProvider.shared.sendContact(with: emailTextObservable.value,
-                                           type: topics[pickerResultObservable.value].tag,
+                                           type: type,
                                            name: nameTextObservable.value,
                                            message: messageTextObservable.value) { [weak self] result in
-                                                self?.sendStatusObservable.next(result)
-                                                self?.blockSendButton.next(false)
-                                           }
+            self?.sendStatusObservable.next(result)
+            self?.blockSendButton.next(false)
+                                            
+            if case .success = result {
+                analyticsHelper.reportEmailSending?(type: type)
+            }
+        }
     }
     
     private func setup() {

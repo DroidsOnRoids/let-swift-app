@@ -33,7 +33,7 @@ extension UITableView: NibPresentable {
                         cellFormer(index, element, cell)
                         return cell
                     }
-                    ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
+                    ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { _ in
                         delegate.tableView(self, observedElements: source)
                     }
                 }
@@ -47,7 +47,7 @@ extension UITableView: NibPresentable {
             return { cellFormer in
                 return { source, shouldUpdate in
                     let delegate = ReactiveTableViewDataSource<S>(cellFormer: cellFormer)
-                    ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { proxy in
+                    ReactiveTableViewDataSourceProxy.subscribeToProxy(tableView: self, datasource: delegate) { _ in
                         delegate.tableView(self, observedElements: source, updated: shouldUpdate)
                     }
                 }

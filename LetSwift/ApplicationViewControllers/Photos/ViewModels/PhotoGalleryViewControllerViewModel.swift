@@ -51,7 +51,7 @@ final class PhotoGalleryViewControllerViewModel {
         }
         .add(to: disposeBag)
         
-        photoSelectedObservable.subscribeNext(startsWithInitialValue: true) { [weak self] index in
+        photoSelectedObservable.subscribeNext(startsWithInitialValue: true) { [weak self] _ in
             self?.updateSliderTitle()
         }
         .add(to: disposeBag)

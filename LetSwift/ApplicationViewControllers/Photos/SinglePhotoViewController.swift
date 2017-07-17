@@ -122,11 +122,10 @@ final class SinglePhotoViewController: UIViewController {
     
     private func download() {
         contentState = .loading
-        
-        SDWebImageManager.shared().downloadImage(with: photo?.big, options: [], progress: { [weak self] received, expected in
+        SDWebImageManager.shared().loadImage(with: photo?.big, options: [], progress: { [weak self] received, expected, _ in
             let progress = CGFloat(received) / CGFloat(expected)
             self?.spinnerView.progress = progress
-        }, completed: { [weak self] image, _, _, _, _ in
+        }, completed: { [weak self] image, _, _, _, _, _ in
             if let image = image {
                 self?.photoView.image = image
                 self?.contentState = .content

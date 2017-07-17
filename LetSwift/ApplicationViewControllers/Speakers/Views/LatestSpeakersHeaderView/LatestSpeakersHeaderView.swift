@@ -45,7 +45,7 @@ final class LatestSpeakersHeaderView: DesignableView {
     }
 
     private func reactiveSetup() {
-        viewModel?.latestSpeakers.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ index, element, cell in
+        viewModel?.latestSpeakers.bind(to: latestCollectionView.item(with: LatestSpeakerCollectionViewCell.cellIdentifier, cellType: LatestSpeakerCollectionViewCell.self) ({ _, element, cell in
             cell.load(with: element)
         }))
     }

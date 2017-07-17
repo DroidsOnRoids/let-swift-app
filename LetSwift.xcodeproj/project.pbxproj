@@ -95,7 +95,6 @@
 		D31B08571EB1310500C2D229 /* EventTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D31B08551EB1310500C2D229 /* EventTimeTableViewCell.xib */; };
 		D31D86DA1F0545A9007D222C /* SpeakerWebsite.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */; };
 		D32A76C81E9B9A4600388222 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C21E9B9A4600388222 /* Localizable.strings */; };
-		D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */ = {isa = PBXBuildFile; fileRef = D32A76C61E9B9A4600388222 /* get_localizables.py */; };
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
 		D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521171ECED909000666D4 /* LocationMapperExtension.swift */; };
 		D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521191ECED98E000666D4 /* DateMapperExtension.swift */; };
@@ -123,6 +122,7 @@
 		D3429D121EE0375100F18D30 /* ContactFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D111EE0375100F18D30 /* ContactFieldState.swift */; };
 		D3429D141EE03B6900F18D30 /* ContactTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3429D131EE03B6900F18D30 /* ContactTextView.swift */; };
 		D342B39B1F1371EE0011A34B /* AppLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D342B39A1F1371EE0011A34B /* AppLabel.swift */; };
+		D3498DD21F18EA1600CDE97E /* AnalyticsHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3498DD11F18EA1600CDE97E /* AnalyticsHelpers.swift */; };
 		D34B850C1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34B850A1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift */; };
 		D34B850D1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D34B850B1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib */; };
 		D34CCF581EC5AAF900EFD3E4 /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */; };
@@ -175,6 +175,7 @@
 		D3C0ACF51EC4E84700CFF98D /* SpeakerCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardTableViewCell.xib */; };
 		D3C0ACF81EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift */; };
 		D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib */; };
+		D3C155941F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C155931F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift */; };
 		D3CFAE7C1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFAE7A1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.swift */; };
 		D3CFAE7D1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3CFAE7B1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.xib */; };
 		D3CFAE7F1EE6BFF10009E4EF /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */; };
@@ -305,7 +306,6 @@
 		D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerWebsite.swift; sourceTree = "<group>"; };
 		D32A76C31E9B9A4600388222 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D32A76C41E9B9A4600388222 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D32A76C61E9B9A4600388222 /* get_localizables.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = get_localizables.py; sourceTree = "<group>"; };
 		D32A76CB1E9B9B5C00388222 /* Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		D335210C1ECED328000666D4 /* LetSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D33521101ECED328000666D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -335,6 +335,7 @@
 		D3429D111EE0375100F18D30 /* ContactFieldState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactFieldState.swift; sourceTree = "<group>"; };
 		D3429D131EE03B6900F18D30 /* ContactTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTextView.swift; sourceTree = "<group>"; };
 		D342B39A1F1371EE0011A34B /* AppLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLabel.swift; sourceTree = "<group>"; };
+		D3498DD11F18EA1600CDE97E /* AnalyticsHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsHelpers.swift; sourceTree = "<group>"; };
 		D34B850A1EB3214900DBC72D /* PreviousEventsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousEventsListTableViewCell.swift; sourceTree = "<group>"; };
 		D34B850B1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreviousEventsListTableViewCell.xib; sourceTree = "<group>"; };
 		D34CCF561EC5AAF900EFD3E4 /* LectureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
@@ -389,6 +390,7 @@
 		D3C0ACF31EC4E84700CFF98D /* SpeakerCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardTableViewCell.xib; sourceTree = "<group>"; };
 		D3C0ACF61EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		D3C0ACF71EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		D3C155931F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsHelperProtocol.swift; sourceTree = "<group>"; };
 		D3CFAE7A1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D3CFAE7B1EE6A1840009E4EF /* SinglePhotoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SinglePhotoCollectionViewCell.xib; sourceTree = "<group>"; };
 		D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
@@ -703,6 +705,7 @@
 				7E02FE6A1EBB17C4005DADCB /* Reactive */,
 				D3AE28931ECDA3EC00F29702 /* Accumulator.swift */,
 				D3D83DC11EBB10CE003572EF /* AlertHelper.swift */,
+				D3498DD11F18EA1600CDE97E /* AnalyticsHelpers.swift */,
 				D34E3CBC1EA62C6700C678B0 /* AttributedStringHelper.swift */,
 				7EB744031EEE8466008092DC /* Debouncer.swift */,
 				D3E74F6C1EA925B600B1C8D1 /* DebugMenu.swift */,
@@ -746,6 +749,7 @@
 		7EECA5AD1E9B5EF900B3F724 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				D3C155931F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift */,
 				D3E4AA741EE5577E00400015 /* ContactFieldProtocol.swift */,
 				D3AE288D1ECD9E3600F29702 /* Disposable.swift */,
 				D33C4A281E9CD6320052E793 /* Localizable.swift */,
@@ -867,20 +871,11 @@
 		D32A76C01E9B9A4600388222 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D32A76C51E9B9A4600388222 /* Scripts */,
 				D32A76C21E9B9A4600388222 /* Localizable.strings */,
 				7E8D0DE81F0E3E5D0028C156 /* Settings.bundle */,
 				D341A18E1EDE91D10066E965 /* SplashImage.png */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		D32A76C51E9B9A4600388222 /* Scripts */ = {
-			isa = PBXGroup;
-			children = (
-				D32A76C61E9B9A4600388222 /* get_localizables.py */,
-			);
-			path = Scripts;
 			sourceTree = "<group>";
 		};
 		D3337CB91E9E0D1100746A50 /* Onboarding */ = {
@@ -1235,12 +1230,13 @@
 			buildConfigurationList = D39A735A1E9776D900F10620 /* Build configuration list for PBXNativeTarget "LetSwift" */;
 			buildPhases = (
 				55C950299D3F1E49CA4A2669 /* [CP] Check Pods Manifest.lock */,
-				D32A76CA1E9B9A7500388222 /* ShellScript */,
+				D3AA9D131F176E5500F48D06 /* Run SwiftLint */,
 				D39A73441E9776D900F10620 /* Sources */,
 				D39A73451E9776D900F10620 /* Frameworks */,
 				D39A73461E9776D900F10620 /* Resources */,
 				5A3623B87DCCF47186237207 /* [CP] Embed Pods Frameworks */,
 				10876692B5C005622AB3BCC3 /* [CP] Copy Pods Resources */,
+				D3498DD01F18DEB500CDE97E /* Run Fabric */,
 			);
 			buildRules = (
 			);
@@ -1326,7 +1322,6 @@
 				7E52E6701F01318F0080EE8D /* LatestSpeakersHeaderView.xib in Resources */,
 				D31B084D1EB1285600C2D229 /* EventSummaryTableViewCell.xib in Resources */,
 				D30D3D131F03D09D0056F8A7 /* SpeakerBioTableViewCell.xib in Resources */,
-				D32A76C91E9B9A4600388222 /* get_localizables.py in Resources */,
 				D341A1911EDE936F0066E965 /* SplashViewController.xib in Resources */,
 				D38B14BC1E9F6AEC009EA346 /* OnboardingCardView.xib in Resources */,
 				D39A73531E9776D900F10620 /* Assets.xcassets in Resources */,
@@ -1400,18 +1395,33 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D32A76CA1E9B9A7500388222 /* ShellScript */ = {
+		D3498DD01F18DEB500CDE97E /* Run Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Fabric";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "python LetSwift/Resources/Scripts/get_localizables.py";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a8e75b541d587d423fed61dc758338860e6337b 70c2eee6ad3d350f6c1bf2baac87e144c111f10ea91c7fd9c1c84b9fccdd6b3d";
+		};
+		D3AA9D131F176E5500F48D06 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1495,6 +1505,7 @@
 				D31B084C1EB1285600C2D229 /* EventSummaryTableViewCell.swift in Sources */,
 				D378B9A51F0CFC7000C99D5F /* SpeakerLectureFlow.swift in Sources */,
 				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
+				D3498DD21F18EA1600CDE97E /* AnalyticsHelpers.swift in Sources */,
 				D3EDA6F31EE15D8900C035ED /* TopicPickerViewController.swift in Sources */,
 				7E0842C91ECAD5D1003F7C96 /* Speaker.swift in Sources */,
 				D33920261F0D418B0073CECB /* OnboardingImageView.swift in Sources */,
@@ -1578,6 +1589,7 @@
 				7EB7442B1EF82C20008092DC /* NotificationNameExtension.swift in Sources */,
 				D3FF3F8E1E9F540F00501F44 /* OnboardingViewControllerViewModel.swift in Sources */,
 				7E02FE6E1EBB23EA005DADCB /* BindableArray.swift in Sources */,
+				D3C155941F1CA5C8002A26D6 /* AnalyticsHelperProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
