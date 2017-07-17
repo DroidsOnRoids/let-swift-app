@@ -25,7 +25,6 @@ final class EventTimeTableViewCell: AppTableViewCell {
     @IBOutlet private weak var dateLabel: AppLabel!
     @IBOutlet private weak var timeLabel: AppLabel!
     @IBOutlet private weak var clockImageView: UIImageView!
-
     @IBOutlet private weak var separatorConstraint: NSLayoutConstraint!
     
     var date: String? {
@@ -65,6 +64,6 @@ final class EventTimeTableViewCell: AppTableViewCell {
     @objc private func easterEgg() {
         UIView.animate(withDuration: 0.25, delay: 0.0, options: [.curveLinear, .repeat], animations: { [weak self] in
             self?.clockImageView.transform = CGAffineTransform(rotationAngle: .pi)
-        }, completion: nil)
+        })
     }
 }
