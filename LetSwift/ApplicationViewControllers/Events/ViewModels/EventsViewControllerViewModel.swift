@@ -283,6 +283,10 @@ final class EventsViewControllerViewModel {
         FacebookManager.shared.changeEvent(attendanceTo: attendanceToFbState(newAttendance)!, forId: eventId) { [weak self] result in
             if result {
                 self?.attendanceStateObservable.next(newAttendance)
+                
+                if let id = self?.lastEventObservable.value?.id, newAttendance == .attending {
+                    analyticsHelper.reportEventAttendance?(id: id)
+                }
             } else {
                 self?.attendanceStateObservable.next(oldAttendance)
                 self?.facebookAlertObservable.next(nil)
@@ -302,6 +306,10 @@ final class EventsViewControllerViewModel {
             notificationManager.succeededScheduleNotification(withMessage: message) { [weak self] activeNotification, permissionsGranted in
                 if permissionsGranted {
                     self?.notificationStateObservable.next(activeNotification ? .active : .notActive)
+                    
+                    if let id = self?.lastEventObservable.value?.id, activeNotification {
+                        analyticsHelper.reportEventAttendance?(id: id)
+                    }
                 } else {
                     self?.notificationPermissionsNotGrantedObservable.next()
                 }

@@ -8,8 +8,11 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - Crashlytics (3.8.5):
+    - Fabric (~> 1.6.3)
   - DACircularProgress (2.3.1)
   - ESPullToRefresh (2.6)
+  - Fabric (1.6.12)
   - FBSDKCoreKit (4.24.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.24.0):
@@ -27,8 +30,10 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - AlamofireNetworkActivityIndicator (~> 2.2)
+  - Crashlytics (~> 3.8)
   - DACircularProgress (~> 2.3)
   - ESPullToRefresh (~> 2.6)
+  - Fabric (~> 1.6)
   - FBSDKCoreKit (~> 4.22)
   - FBSDKLoginKit (~> 4.22)
   - HockeySDK (~> 4.1)
@@ -41,8 +46,10 @@ SPEC CHECKSUMS:
   Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   ESPullToRefresh: 85f4990acf87f78c6a1466bbbee7a75d7de24db9
+  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
   FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
   HockeySDK: 95db557d54489a570dcdefae0d02f98eecc279a3
@@ -51,6 +58,6 @@ SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
-PODFILE CHECKSUM: 2fba1c91cc2dd87be3e203c9c28247affe3df3a6
+PODFILE CHECKSUM: 6ae25cf8d0a421b3598f191719349579dcccbf51
 
 COCOAPODS: 1.2.0
