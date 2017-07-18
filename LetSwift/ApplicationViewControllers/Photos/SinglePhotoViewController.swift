@@ -25,7 +25,7 @@ import SDWebImage
 final class SinglePhotoViewController: UIViewController {
     
     private enum Constants {
-        static let centerItemSize: CGFloat = 45.0
+        static let spinnerSize: CGFloat = 45.0
     }
     
     var canDismissInteractively: Bool {
@@ -73,8 +73,8 @@ final class SinglePhotoViewController: UIViewController {
         return photoView
     }()
     
-    private let errorView: UIImageView = {
-        let errorView = UIImageView(image: #imageLiteral(resourceName: "GalleryError"))
+    private let errorView: PhotoErrorView = {
+        let errorView = PhotoErrorView()
         errorView.translatesAutoresizingMaskIntoConstraints = false
         
         return errorView
@@ -116,8 +116,8 @@ final class SinglePhotoViewController: UIViewController {
         [photoView, errorView, spinnerView].forEach(view.addSubview)
         
         photoView.pinToFit(view: view)
-        errorView.pinToCenter(view: view, width: Constants.centerItemSize, height: Constants.centerItemSize)
-        spinnerView.pinToCenter(view: view, width: Constants.centerItemSize, height: Constants.centerItemSize)
+        errorView.pinToFit(view: view)
+        spinnerView.pinToCenter(view: view, width: Constants.spinnerSize, height: Constants.spinnerSize)
     }
     
     private func download() {

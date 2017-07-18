@@ -71,6 +71,7 @@
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D3006AFD1EBC623B00716C23 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */; };
 		D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006B021EBC845300716C23 /* UIButtonExtension.swift */; };
+		D304E6C41F16396000D14FA4 /* PhotoErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304E6C31F16396000D14FA4 /* PhotoErrorView.swift */; };
 		D309AFCB1F04F16B00BB679E /* SpeakerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */; };
 		D309AFCE1F04F79D00BB679E /* WebsiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D309AFCD1F04F79D00BB679E /* WebsiteView.swift */; };
 		D309AFD01F04F7F100BB679E /* WebsiteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D309AFCF1F04F7F100BB679E /* WebsiteView.xib */; };
@@ -281,6 +282,7 @@
 		7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersToBeAnnouncedTableViewCell.xib; sourceTree = "<group>"; };
 		D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		D3006B021EBC845300716C23 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		D304E6C31F16396000D14FA4 /* PhotoErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoErrorView.swift; path = ../PhotoErrorView.swift; sourceTree = "<group>"; };
 		D309AFCA1F04F16B00BB679E /* SpeakerLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLoadable.swift; sourceTree = "<group>"; };
 		D309AFCD1F04F79D00BB679E /* WebsiteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteView.swift; sourceTree = "<group>"; };
 		D309AFCF1F04F7F100BB679E /* WebsiteView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebsiteView.xib; sourceTree = "<group>"; };
@@ -1129,6 +1131,7 @@
 			isa = PBXGroup;
 			children = (
 				D3CFAE791EE6A1570009E4EF /* SinglePhotoCollectionViewCell */,
+				D304E6C31F16396000D14FA4 /* PhotoErrorView.swift */,
 				D3E1B8581EF7A2BE008C226F /* PhotoView.swift */,
 			);
 			path = Views;
@@ -1464,6 +1467,7 @@
 				D39A734C1E9776D900F10620 /* AppDelegate.swift in Sources */,
 				D3429D101EE0364D00F18D30 /* ContactTextField.swift in Sources */,
 				7E7E41371EAA6790001DB179 /* ContactCoordinator.swift in Sources */,
+				D304E6C41F16396000D14FA4 /* PhotoErrorView.swift in Sources */,
 				D3D376521EBB2D090060FAE3 /* NotificationsManager.swift in Sources */,
 				D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */,
 				D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */,
