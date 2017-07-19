@@ -182,7 +182,8 @@ final class EventsViewControllerViewModel {
         .add(to: disposeBag)
 
         previousEventsCellDidSetObservable
-            .subscribeNext(startsWithInitialValue: true) { [weak self] in
+            .withLatest(from: previousEventsObservable, combine: { event in event.1 })
+            .subscribeNext(startsWithInitialValue: true) { [weak self] _ in
                 guard let weakSelf = self else { return }
                 let subviewModel = PreviousEventsListTableViewCellViewModel(previousEvents: weakSelf.previousEventsObservable, refreshObservable: weakSelf.eventsListRefreshObservable, delegate: weakSelf.delegate)
                 weakSelf.previousEventsViewModelObservable.next(subviewModel)
