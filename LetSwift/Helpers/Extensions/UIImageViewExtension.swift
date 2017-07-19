@@ -37,4 +37,11 @@ extension UIImageView {
     func removeAllLayers() {
         layer.sublayers?.forEach { $0.removeFromSuperlayer() }
     }
+    
+    func setImage(url: URL, errorPlaceholder: UIImage) {
+        sd_setImage(with: url) { [weak self] newImage, _, _, _ in
+            guard newImage == nil else { return }
+            self?.image = errorPlaceholder
+        }
+    }
 }
