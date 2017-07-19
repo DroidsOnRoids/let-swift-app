@@ -51,21 +51,6 @@ final class PhotoErrorView: UIView {
         return view
     }
     
-    private var extendedErrorMode: Bool? {
-        didSet {
-            guard let extendedErrorMode = extendedErrorMode else { return }
-            if extendedErrorMode {
-                errorImageView.isHidden = true
-                sadFaceImageView.isHidden = false
-                
-                startCrying()
-            } else {
-                errorImageView.isHidden = false
-                sadFaceImageView.isHidden = true
-            }
-        }
-    }
-    
     private let errorImageView: UIImageView = {
         let errorImageView = UIImageView(image: #imageLiteral(resourceName: "GalleryError"))
         errorImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,13 +75,23 @@ final class PhotoErrorView: UIView {
         setup()
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if superview == nil {
+            timer?.invalidate()
+            timer = nil
+        }
+    }
+    
     private func setup() {
         [errorImageView, sadFaceImageView].forEach(addSubview)
         
         errorImageView.pinToCenter(view: self, width: Constants.errorImageSize, height: Constants.errorImageSize)
         sadFaceImageView.pinToCenter(view: self, width: Constants.sadFaceSize, height: Constants.sadFaceSize)
         
-        extendedErrorMode = false
+        errorImageView.isHidden = false
+        sadFaceImageView.isHidden = true
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         gestureRecognizer.numberOfTapsRequired = Constants.tapsToActivate
@@ -104,7 +99,8 @@ final class PhotoErrorView: UIView {
     }
     
     private func startCrying() {
-        Timer.scheduledTimer(timeInterval: Constants.cryingInterval, target: self, selector: #selector(cry), userInfo: nil, repeats: true)
+        guard timer == nil else { return }
+        timer = Timer.scheduledTimer(timeInterval: Constants.cryingInterval, target: self, selector: #selector(cry), userInfo: nil, repeats: true)
     }
 
     @objc private func cry() {
@@ -122,6 +118,9 @@ final class PhotoErrorView: UIView {
     }
     
     @objc private func handleTap() {
-        extendedErrorMode = true
+        errorImageView.isHidden = true
+        sadFaceImageView.isHidden = false
+        
+        startCrying()
     }
 }
