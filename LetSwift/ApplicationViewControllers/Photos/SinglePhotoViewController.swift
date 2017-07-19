@@ -32,6 +32,10 @@ final class SinglePhotoViewController: UIViewController {
         return photoView.zoomScale == 1.0
     }
     
+    var shouldHideTargetThumbnail: Bool {
+        return contentState == .content
+    }
+    
     var scaleToFill = false {
         didSet {
             if scaleToFill {
@@ -110,6 +114,16 @@ final class SinglePhotoViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         photoView.zoomScale = 1.0
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let parentColor = parent?.view?.superview?.backgroundColor else { return }
+        let parentAlpha = parentColor.cgColor.alpha
+        
+        errorView.alpha = parentAlpha
+        spinnerView.alpha = parentAlpha
     }
     
     private func setup() {
