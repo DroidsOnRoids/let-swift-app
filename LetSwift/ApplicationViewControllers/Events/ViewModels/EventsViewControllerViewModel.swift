@@ -107,6 +107,7 @@ final class EventsViewControllerViewModel {
             case let .success(event):
                 self?.lastEventObservable.next(event)
                 self?.updateActionButtonsState()
+                analyticsHelper.reportOpenEventDetails?(id: event.id, name: event.title)
             case .error:
                 self?.tableViewStateObservable.next(.error)
             }

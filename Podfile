@@ -18,8 +18,8 @@ target 'LetSwift' do
 
   # Testing
   pod 'HockeySDK', '~> 4.1', :configurations => ['Debug', 'Release']
-  pod 'Fabric', '~> 1.6', :configuration => 'AppStore'
-  pod 'Crashlytics', '~> 3.8', :configuration => 'AppStore'
+  pod 'Fabric', '~> 1.6'
+  pod 'Crashlytics', '~> 3.8'
 
   # Facebook SDK
   pod 'FBSDKCoreKit', '~> 4.22'

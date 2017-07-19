@@ -51,12 +51,12 @@ final class FabricAnalyticsHelper: AnalyticsHelperProtocol {
         Answers.logLogin(withMethod: "Facebook", success: true, customAttributes: nil)
     }
     
-    func reportOpenEventDetails(id: Int) {
-        Answers.logContentView(withName: "Event \(id)", contentType: "Event details", contentId: "event-\(id)")
+    func reportOpenEventDetails(id: Int, name: String) {
+        Answers.logContentView(withName: name, contentType: "Event details", contentId: "event-\(id)")
     }
     
-    func reportOpenSpeakerDetails(id: Int) {
-        Answers.logContentView(withName: "Speaker \(id)", contentType: "Speaker details", contentId: "speaker-\(id)")
+    func reportOpenSpeakerDetails(id: Int, name: String) {
+        Answers.logContentView(withName: name, contentType: "Speaker details", contentId: "speaker-\(id)")
     }
     
     func reportEmailSending(type: String) {
