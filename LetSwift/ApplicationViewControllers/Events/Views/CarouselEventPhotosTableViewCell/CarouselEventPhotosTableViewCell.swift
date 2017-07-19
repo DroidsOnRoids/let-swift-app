@@ -58,17 +58,17 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
 
     private func setupScrollView(with images: [Photo]) {
         let frameSize = scrollView.frame.size
+        
+        scrollView.subviews.forEach { $0.removeFromSuperview() }
 
         images.enumerated().forEach { index, _ in
-            guard let imageURL = images[index].big else { return }
-            
             let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0),
                                size: frameSize)
 
             let subview = UIImageView(frame: frame)
             subview.contentMode = .scaleAspectFill
             subview.clipsToBounds = true
-            subview.setImage(url: imageURL, errorPlaceholder: #imageLiteral(resourceName: "PhotoMock"))
+            subview.setImage(url: images[index].big, errorPlaceholder: #imageLiteral(resourceName: "PhotoMock"))
             
             scrollView.addSubview(subview)
         }

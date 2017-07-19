@@ -62,8 +62,8 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
         imageView.removeAllLayers()
         imageView.sd_setImage(with: speaker.avatar?.thumb) { [weak self] image, _, _, _ in
             self?.imageView.addGradientShadow(with: [0.4, 1.0])
+            
             guard image == nil else { return }
-
             self?.imageView.image = #imageLiteral(resourceName: "PhotoMock")
         }
     }
