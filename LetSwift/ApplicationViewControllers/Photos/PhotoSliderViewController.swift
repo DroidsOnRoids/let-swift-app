@@ -48,7 +48,7 @@ final class PhotoSliderViewController: UIViewController {
         }
     }
     
-    private var currentViewController: SinglePhotoViewController? {
+    fileprivate var currentViewController: SinglePhotoViewController? {
         return pageViewController.viewControllers?.first as? SinglePhotoViewController
     }
     
@@ -200,7 +200,7 @@ extension PhotoSliderViewController: UIPageViewControllerDelegate {
 
 extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     func prepareForInteractiveAnimation() {
-        viewModel.targetVisibleObservable.next(true)
+        viewModel.targetVisibleObservable.next(currentViewController?.shouldHideTargetThumbnail ?? false)
         viewModel.restoreNaviationBarVisibilityObservable.next(isNavbarHidden)
         isNavbarHidden = true
         isStatusBarHidden = false
@@ -208,7 +208,7 @@ extension PhotoSliderViewController: PhotoSliderAnimatorDelegate {
     
     func prepareForDismissing() {
         coordinatorDelegate?.rotationLocked = true
-        viewModel.targetVisibleObservable.next(true)
+        viewModel.targetVisibleObservable.next(currentViewController?.shouldHideTargetThumbnail ?? false)
         navbarView.isHidden = true
     }
     
