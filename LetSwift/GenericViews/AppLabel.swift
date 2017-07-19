@@ -54,7 +54,7 @@ final class AppLabel: UILabel {
         }
         
         if lineHeight >= 0.0 {
-            attributed = attributed.with(lineSpacing: lineHeight / 4.5)
+            attributed = attributed.with(lineSpacing: lineHeight / 5.0)
         }
         
         attributedText = attributed
