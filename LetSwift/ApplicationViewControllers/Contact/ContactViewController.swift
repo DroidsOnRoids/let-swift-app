@@ -24,7 +24,6 @@ final class ContactViewController: AppViewController {
     
     private enum Constants {
         static let keyboardMargin: CGFloat = 16.0
-        static let minumumMessageTextViewTopSpace: CGFloat = 80.0
     }
     
     @IBOutlet private weak var containerView: UIView!
@@ -187,15 +186,18 @@ final class ContactViewController: AppViewController {
         
         UIView.animate(withDuration: animationDuration, delay: 0.0, options: animationOptions, animations: {
             let translationY = self.shouldMoveContainer && keyboardOffset < 0.0 ? keyboardOffset : 0.0
-            if name == Notification.Name.UIKeyboardWillHide {
-                self.containerView.transform = .identity
-                self.messageTextView.transform = .identity
-                self.messageTextView.frame.size.height = self.messageErrorTextViewHeight
-            } else {
+            
+            self.containerView.transform = .identity
+            self.messageTextView.transform = .identity
+            self.messageTextView.frame.size.height = self.messageErrorTextViewHeight
+                
+            if name == Notification.Name.UIKeyboardWillShow {
                 self.containerView.transform = CGAffineTransform(translationX: 0.0, y: translationY)
-                if self.messageTextView.frame.origin.y + translationY < Constants.minumumMessageTextViewTopSpace {
-                    self.messageTextView.frame.size.height += self.messageTextView.frame.origin.y + translationY
-                    self.messageTextView.transform = CGAffineTransform(translationX: 0.0, y: -self.messageTextView.frame.origin.y - translationY)
+                let targetTranslation = self.messageTextView.frame.origin.y + translationY
+                
+                if targetTranslation < 0.0 {
+                    self.messageTextView.frame.size.height += targetTranslation
+                    self.messageTextView.transform = CGAffineTransform(translationX: 0.0, y: -targetTranslation)
                 }
             }
         })
