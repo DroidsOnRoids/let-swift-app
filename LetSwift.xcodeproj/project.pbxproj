@@ -298,6 +298,7 @@
 		D30D3D101F03D09D0056F8A7 /* SpeakerBioTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerBioTableViewCell.swift; sourceTree = "<group>"; };
 		D30D3D111F03D09D0056F8A7 /* SpeakerBioTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerBioTableViewCell.xib; sourceTree = "<group>"; };
 		D31216371EB2774F003674C7 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		D3128A211F20CBF2005458B5 /* PrivacyParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyParser.swift; sourceTree = "<group>"; };
 		D319AD841EA62487001ECE0B /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		D31B084A1EB1285600C2D229 /* EventSummaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		D31B084B1EB1285600C2D229 /* EventSummaryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventSummaryTableViewCell.xib; sourceTree = "<group>"; };
@@ -824,6 +825,14 @@
 			path = SpeakerBioTableViewCell;
 			sourceTree = "<group>";
 		};
+		D3128A201F20CBF2005458B5 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				D3128A211F20CBF2005458B5 /* PrivacyParser.swift */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
 		D319AD7A1EA60F67001ECE0B /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -873,6 +882,7 @@
 		D32A76C01E9B9A4600388222 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D3128A201F20CBF2005458B5 /* Scripts */,
 				D32A76C21E9B9A4600388222 /* Localizable.strings */,
 				7E8D0DE81F0E3E5D0028C156 /* Settings.bundle */,
 				D341A18E1EDE91D10066E965 /* SplashImage.png */,
@@ -1234,6 +1244,7 @@
 			buildPhases = (
 				55C950299D3F1E49CA4A2669 /* [CP] Check Pods Manifest.lock */,
 				D3AA9D131F176E5500F48D06 /* Run SwiftLint */,
+				D3128A231F20CC6A005458B5 /* Update Privacy Policy */,
 				D39A73441E9776D900F10620 /* Sources */,
 				D39A73451E9776D900F10620 /* Frameworks */,
 				D39A73461E9776D900F10620 /* Resources */,
@@ -1397,6 +1408,22 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D3128A231F20CC6A005458B5 /* Update Privacy Policy */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				PRIVACY.md,
+			);
+			name = "Update Privacy Policy";
+			outputPaths = (
+				LetSwift/Resources/Settings.bundle/PrivacyPolicy.plist,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcrun --sdk macosx swift \"LetSwift/Resources/Scripts/PrivacyParser.swift\" plist $SCRIPT_INPUT_FILE_0 > $SCRIPT_OUTPUT_FILE_0";
 		};
 		D3498DD01F18DEB500CDE97E /* Run Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
