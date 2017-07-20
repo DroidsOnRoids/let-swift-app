@@ -14,6 +14,14 @@
                 <key>File</key>
                 <string>Acknowledgements</string>
             </dict>
+            <dict>
+                <key>Type</key>
+                <string>PSChildPaneSpecifier</string>
+                <key>Title</key>
+                <string>PrivacyPolicy</string>
+                <key>File</key>
+                <string>PrivacyPolicy</string>
+            </dict>
         </array>
     </dict>
 </plist>
