@@ -23,8 +23,8 @@ import Foundation
 @objc protocol AnalyticsHelperProtocol {
     func setupAnalytics()
     @objc optional func reportFacebookLogin()
-    @objc optional func reportOpenEventDetails(id: Int)
-    @objc optional func reportOpenSpeakerDetails(id: Int)
+    @objc optional func reportOpenEventDetails(id: Int, name: String)
+    @objc optional func reportOpenSpeakerDetails(id: Int, name: String)
     @objc optional func reportEmailSending(type: String)
     @objc optional func reportEventAttendance(id: Int)
     @objc optional func reportReminderSet(id: Int)

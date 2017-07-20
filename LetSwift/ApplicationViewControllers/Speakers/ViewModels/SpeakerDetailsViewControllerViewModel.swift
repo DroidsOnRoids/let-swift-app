@@ -63,6 +63,7 @@ final class SpeakerDetailsViewControllerViewModel {
             switch response {
             case let .success(speaker):
                 self?.speakerObservable.next(speaker)
+                analyticsHelper.reportOpenSpeakerDetails?(id: speaker.id, name: speaker.name)
             case .error:
                 self?.tableViewStateObservable.next(.error)
             }
