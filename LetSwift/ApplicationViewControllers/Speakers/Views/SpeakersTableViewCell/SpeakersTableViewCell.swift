@@ -28,21 +28,9 @@ final class SpeakersTableViewCell: UITableViewCell, SpeakerLoadable {
     @IBOutlet private weak var speakerJobLabel: AppLabel!
     @IBOutlet private weak var speakerAvatarImageView: UIImageView!
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-        speakerNameLabel.text = ""
-        speakerJobLabel.text = ""
-        speakerAvatarImageView.image = nil
-    }
-
     func load(with speaker: Speaker) {
         speakerNameLabel.text = speaker.name
         speakerJobLabel.text = speaker.job
-        speakerAvatarImageView.sd_setImage(with: speaker.avatar?.thumb) { [weak self] image, _, _, _ in
-            guard image == nil else { return }
-
-            self?.speakerAvatarImageView.image = #imageLiteral(resourceName: "SpeakerPlaceholder")
-        }
+        speakerAvatarImageView.setImage(url: speaker.avatar?.thumb, errorPlaceholder: #imageLiteral(resourceName: "SpeakerPlaceholder"))
     }
 }

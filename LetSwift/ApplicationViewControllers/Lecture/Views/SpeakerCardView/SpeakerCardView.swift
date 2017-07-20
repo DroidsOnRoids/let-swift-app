@@ -36,7 +36,7 @@ final class SpeakerCardView: DesignableView, Localizable {
     
     var speakerImageURL: URL? {
         didSet {
-            speakerImageView.sd_setImage(with: speakerImageURL, placeholderImage: speakerImageView.image)
+            speakerImageView.setImage(url: speakerImageURL, errorPlaceholder: speakerImageView.image)
         }
     }
     

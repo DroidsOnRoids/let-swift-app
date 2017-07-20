@@ -37,11 +37,7 @@ final class PreviousEventCollectionViewCell: UICollectionViewCell {
     
     var imageURL: URL? {
         didSet {
-            imageView.sd_setImage(with: imageURL) { [weak self] image, _, _, _ in
-                guard image == nil else { return }
-
-                self?.imageView.image = #imageLiteral(resourceName: "PhotoMock")
-            }
+            imageView.setImage(url: imageURL, errorPlaceholder: #imageLiteral(resourceName: "PhotoMock"))
         }
     }
     

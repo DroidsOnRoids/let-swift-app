@@ -22,22 +22,10 @@ import Foundation
 
 final class CarouselEventPhotosTableViewCellViewModel {
 
-    var photosObservable = Observable<[Photo]>([])
-    var currentPageObservable = Observable<Int>(0)
-    var scrollViewSwipeDidFinishObservable = Observable<Int>(0)
-    
-    private let disposeBag = DisposeBag()
+    let photosObservable = Observable<[Photo]>([])
+    let currentPageObservable = Observable<Int>(0)
 
     init(photos: [Photo]) {
         photosObservable.next(photos)
-
-        setup()
-    }
-
-    private func setup() {
-        scrollViewSwipeDidFinishObservable.subscribeNext { [weak self] page in
-            self?.currentPageObservable.next(page)
-        }
-        .add(to: disposeBag)
     }
 }

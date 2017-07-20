@@ -69,7 +69,7 @@ final class LectureViewController: AppViewController {
     
     private func reactiveSetup() {
         viewModel.talkObservable.subscribeNext(startsWithInitialValue: true) { [weak self] talk in
-            self?.speakerImageView.sd_setImage(with: talk.speaker?.avatar?.thumb, placeholderImage: self?.speakerImageView.image)
+            self?.speakerImageView.setImage(url: talk.speaker?.avatar?.thumb, errorPlaceholder: self?.speakerImageView.image)
             self?.speakerNameLabel.text = talk.speaker?.name
             self?.speakerTitleLabel.text = talk.speaker?.job
             self?.eventDateLabel.text = talk.event?.date?.stringDateValue
