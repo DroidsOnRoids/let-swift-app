@@ -56,7 +56,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aab-yD-613" customClass="AppLabel" customModule="LetSwift" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="26" width="327" height="78"/>
+                            <rect key="frame" x="0.0" y="26" width="326.5" height="78"/>
                             <string key="text">Krótka historia o tym jak Apple będąc kompletnym nowicjuszem na rynku w kilka lat urosło do rangi najlepszego twórcy procesorów ARM Krótka historia o tym jak Apple będąc kompletnym nowicjuszem na rynku w kilka lat urosło do rangi najlepszego twórcy procesorów ARM […]</string>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                             <color key="textColor" red="0.61960784310000006" green="0.63921568630000003" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,7 +147,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="zW9-Vz-fwf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7Da-2N-t6s" secondAttribute="bottom" constant="12" id="0vc-HL-IcO"/>
+                <constraint firstItem="zW9-Vz-fwf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7Da-2N-t6s" secondAttribute="bottom" priority="999" constant="12" id="0vc-HL-IcO"/>
                 <constraint firstItem="7Da-2N-t6s" firstAttribute="leading" secondItem="FtQ-q8-a1b" secondAttribute="leading" constant="16" id="4az-BA-yKQ"/>
                 <constraint firstAttribute="trailing" secondItem="zW9-Vz-fwf" secondAttribute="trailing" id="Fhu-UC-SkP"/>
                 <constraint firstItem="402-dn-UWl" firstAttribute="top" secondItem="FtQ-q8-a1b" secondAttribute="top" id="L79-Hg-KMV"/>

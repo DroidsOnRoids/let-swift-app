@@ -78,10 +78,6 @@ final class EventDetailsViewController: CommonEventViewController {
                 [.speakerCardCell, .speakersToBeAnnouncedCell].contains($0)
             }
             self?.bindableCells.append(speakersTalks.isEmpty ? [.speakersToBeAnnouncedCell] : speakersTalks)
-            
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
         }
         .add(to: disposeBag)
     }
@@ -95,24 +91,26 @@ final class EventDetailsViewController: CommonEventViewController {
     
     private func setup(speakerCardCell cell: SpeakerCardTableViewCell, index: Int) {
         viewModel.lastEventObservable
-                .filter { !($0?.talks.isEmpty ?? true) }
-                .subscribeNext(startsWithInitialValue: true) { [weak self] event in
-                    guard let weakSelf = self, let event = event else { return }
+            .filter { !($0?.talks.isEmpty ?? true) }
+            .subscribeNext(startsWithInitialValue: true) { [weak self] event in
+                guard let weakSelf = self, let event = event else { return }
 
-                    let speakerIndex = weakSelf.bindableCells.values.count - index
+                let speakerIndex = weakSelf.bindableCells.values.count - index
 
-                    guard event.talks.count >= speakerIndex else { return }
+                guard event.talks.count >= speakerIndex else { return }
 
-                    let talkId = event.talks.count - speakerIndex
-                    let talk = event.talks[talkId]
-                    cell.loadData(with: talk)
+                let talkId = event.talks.count - speakerIndex
+                let talk = event.talks[talkId]
+                cell.loadData(with: talk)
 
-                    cell.addTapListeners(speaker: { [weak self] in
-                        self?.viewModel.speakerCellDidTapObservable.next(talkId)
-                    }, readMore: { [weak self] in
-                        self?.viewModel.lectureCellDidTapObservable.next(talkId)
-                    })
-                }
-                .add(to: disposeBag)
+                cell.addTapListeners(speaker: { [weak self] in
+                    self?.viewModel.speakerCellDidTapObservable.next(talkId)
+                }, readMore: { [weak self] in
+                    self?.viewModel.lectureCellDidTapObservable.next(talkId)
+                })
+                
+                cell.layoutIfNeeded()
+            }
+            .add(to: disposeBag)
     }
 }
