@@ -72,6 +72,7 @@ class CommonEventViewController: AppViewController {
     }
 
     private func setup() {
+        tableView.childAutomaticallyUpdatesContentInset = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.setFooterColor(.paleGrey)
