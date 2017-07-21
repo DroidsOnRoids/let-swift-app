@@ -74,12 +74,12 @@ final class FabricAnalyticsHelper: AnalyticsHelperProtocol {
 #else
 final class HockeyAnalyticsHelper: AnalyticsHelperProtocol {
     
-    private static let hockeyAppId = "3cc4c0d1fd694100b2d187995356d5ef"
-    
     private let disposeBag = DisposeBag()
     
     func setupAnalytics() {
-        BITHockeyManager.shared().configure(withIdentifier: HockeyAnalyticsHelper.hockeyAppId)
+        guard let hockeyAppId = Bundle.main.infoDictionary?["HockeyAppId"] as? String else { return }
+        
+        BITHockeyManager.shared().configure(withIdentifier: hockeyAppId)
         BITHockeyManager.shared().start()
         
         if appCompilationCondition == .release {
