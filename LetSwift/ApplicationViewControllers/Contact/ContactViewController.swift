@@ -216,6 +216,7 @@ final class ContactViewController: AppViewController {
         nameTextField.text = ""
         emailTextField.text = ""
         messageTextView.text = ""
+        messageTextView.textViewDidChange(messageTextView)
         sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
 
         viewModel.pickerResultObservable.next(-1)
