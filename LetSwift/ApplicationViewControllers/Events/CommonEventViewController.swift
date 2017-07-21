@@ -34,7 +34,7 @@ class CommonEventViewController: AppViewController {
         case speakerCardCell = "SpeakerCardTableViewCell"
         case speakersToBeAnnouncedCell = "SpeakersToBeAnnouncedTableViewCell"
     }
-
+    
     var allCells: [EventCellIdentifier] {
         return []
     }
@@ -52,12 +52,13 @@ class CommonEventViewController: AppViewController {
     override var shouldHideShadow: Bool {
         return true
     }
-
-    @IBOutlet private(set) weak var tableView: AppTableView!
-    private let sadFaceView = SadFaceView()
     
     var viewModel: EventsViewControllerViewModel!
+
+    @IBOutlet private(set) weak var tableView: AppTableView!
     
+    private var cellNeedsSetup = [UITableViewCell: Bool]()
+    private let sadFaceView = SadFaceView()
     private let disposeBag = DisposeBag()
     
     convenience init(viewModel: EventsViewControllerViewModel) {
@@ -134,7 +135,10 @@ class CommonEventViewController: AppViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: element.rawValue, for: indexPath)
             cell.layoutMargins = UIEdgeInsets.zero
             
-            self?.dispatchCellSetup(element: element, cell: cell, index: index)
+            if self?.cellNeedsSetup[cell] ?? true {
+                self?.dispatchCellSetup(element: element, cell: cell, index: index)
+                self?.cellNeedsSetup[cell] = false
+            }
             
             return cell
         }))
