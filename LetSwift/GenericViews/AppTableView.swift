@@ -23,6 +23,7 @@ import UIKit
 final class AppTableView: UITableView {
     
     var hideOverlayAnimated = true
+    var childAutomaticallyUpdatesContentInset = false
     
     var overlayView: UIView? = nil {
         willSet {
@@ -39,7 +40,8 @@ final class AppTableView: UITableView {
         overlayView.translatesAutoresizingMaskIntoConstraints = false
         superview.addSubview(overlayView)
         
-        overlayView.pinToFit(view: self, with: self.contentInset)
+        overlayView.pinToFit(view: self,
+                             with: childAutomaticallyUpdatesContentInset ? .zero : contentInset)
     }
     
     private func hideOverlayView() {

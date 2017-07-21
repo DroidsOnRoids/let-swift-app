@@ -25,6 +25,7 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
     
+    private let placeholderView = UIImageView(image: #imageLiteral(resourceName: "PhotoMock"))
     private let disposeBag = DisposeBag()
 
     var viewModel: CarouselEventPhotosTableViewCellViewModel! {
@@ -37,16 +38,13 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        scrollView.delegate = self
+        setup()
     }
 
     private func reactiveSetup() {
         viewModel.photosObservable.subscribeNext(startsWithInitialValue: true) { [weak self] photos in
-            DispatchQueue.main.async {
-                self?.setupScrollView(with: photos)
-                self?.pageControl.numberOfPages = photos.count
-                self?.pageControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            }
+            self?.setupScrollView(with: photos)
+            self?.pageControl.numberOfPages = photos.count
         }
         .add(to: disposeBag)
 
@@ -57,6 +55,8 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
     }
 
     private func setupScrollView(with images: [Photo]) {
+        placeholderView.isHidden = !images.isEmpty
+        
         let frameSize = scrollView.frame.size
         
         scrollView.subviews.forEach { $0.removeFromSuperview() }
@@ -75,6 +75,19 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
 
         scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(images.count),
                                         height: frameSize.height)
+    }
+    
+    private func setup() {
+        scrollView.delegate = self
+        
+        pageControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        
+        placeholderView.contentMode = .scaleAspectFill
+        placeholderView.clipsToBounds = true
+        placeholderView.translatesAutoresizingMaskIntoConstraints = false
+        placeholderView.isHidden = true
+        contentView.addSubview(placeholderView)
+        placeholderView.pinToFit(view: contentView)
     }
 }
 
