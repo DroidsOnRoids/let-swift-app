@@ -70,5 +70,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>HockeyAppId</key>
+	<string>3cc4c0d1fd694100b2d187995356d5ef</string>
 </dict>
 </plist>
