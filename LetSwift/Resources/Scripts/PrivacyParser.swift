@@ -100,12 +100,10 @@ struct HTMLOutputParser: MarkdownParser {
         let padding = String(repeating: " ", count: offset)
         let outLine = replaceLinks(line: line)
         
-        for rule in HTMLOutputParser.parseRules {
-            if outLine.hasPrefix(rule.markdown) {
-                let strippedLine = outLine.strippedPrefix(count: rule.markdown.characters.count)
-                
-                return padding + rule.opening + strippedLine + rule.closing
-            }
+        for rule in HTMLOutputParser.parseRules where outLine.hasPrefix(rule.markdown) {
+            let strippedLine = outLine.strippedPrefix(count: rule.markdown.characters.count)
+            
+            return padding + rule.opening + strippedLine + rule.closing
         }
         
         return outLine
@@ -146,10 +144,8 @@ struct PlistOutputParser: MarkdownParser {
         
         let newLine = "\n"
         
-        for prefix in ["## ", "### "] {
-            if line.hasPrefix(prefix) {
-                return line.strippedPrefix(count: prefix.characters.count) + newLine
-            }
+        for prefix in ["## ", "### "] where line.hasPrefix(prefix) {
+            return line.strippedPrefix(count: prefix.characters.count) + newLine
         }
         
         return line + newLine
