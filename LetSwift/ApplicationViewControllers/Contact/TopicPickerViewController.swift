@@ -88,6 +88,14 @@ class TopicPickerViewController: UIViewController {
         cancelView.addGestureRecognizer(recognizer)
         
         doneButton.addTarget(self, action: #selector(closePicker), for: .touchUpInside)
+
+        NotificationCenter
+            .default
+            .notification(Notification.Name.UIKeyboardWillShow)
+            .subscribeNext { [weak self] _ in
+                self?.closePicker()
+            }
+            .add(to: disposeBag)
     }
     
     private func setupTableView() {
