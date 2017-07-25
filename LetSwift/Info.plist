@@ -25,7 +25,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb153944045135905</string>
+				<string>fb$(FACEBOOK_APP_ID)</string>
 			</array>
 		</dict>
 	</array>
@@ -34,7 +34,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>7a8e75b541d587d423fed61dc758338860e6337b</string>
+		<string>$(FABRIC_KEY)</string>
 		<key>Kits</key>
 		<array>
 			<dict>
@@ -46,7 +46,7 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>153944045135905</string>
+	<string>$(FACEBOOK_APP_ID)</string>
 	<key>FacebookDisplayName</key>
 	<string>let Swift</string>
 	<key>LSApplicationQueriesSchemes</key>
@@ -71,6 +71,6 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
 	<key>HockeyAppId</key>
-	<string>3cc4c0d1fd694100b2d187995356d5ef</string>
+	<string>$(HOCKEY_APP_ID)</string>
 </dict>
 </plist>
