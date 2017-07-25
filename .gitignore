@@ -20,6 +20,7 @@ xcuserdata/
 ## Other
 *.moved-aside
 *.xcuserstate
+LetSwift/Resources/Config.xcconfig
 
 ## Obj-C/Swift specific
 *.hmap
