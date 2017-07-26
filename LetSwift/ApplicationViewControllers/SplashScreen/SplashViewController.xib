@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,10 +20,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplashImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="ulb-5a-hnF">
-                    <rect key="frame" x="154.5" y="304.5" width="65" height="58"/>
+                    <rect key="frame" x="150.5" y="296" width="73" height="75"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="58" id="vLo-DG-T9l"/>
-                        <constraint firstAttribute="width" constant="65" id="wQT-83-SBr"/>
+                        <constraint firstAttribute="height" constant="75" id="vLo-DG-T9l"/>
+                        <constraint firstAttribute="width" constant="73" id="wQT-83-SBr"/>
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xS8-ZB-dmz" customClass="SpinnerView" customModule="LetSwift" customModuleProvider="target">
@@ -46,6 +46,6 @@
         </view>
     </objects>
     <resources>
-        <image name="SplashImage.png" width="192" height="174"/>
+        <image name="SplashImage.png" width="219" height="225"/>
     </resources>
 </document>
