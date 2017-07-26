@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umi-1E-Ewt" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="35" y="224" width="304" height="24.5"/>
+                    <rect key="frame" x="35" y="237" width="304" height="24.5"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="21"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VpC-JC-mhY" customClass="AppShadowButton" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="35" y="355.5" width="162" height="46"/>
+                    <rect key="frame" x="35" y="368.5" width="162" height="46"/>
                     <color key="backgroundColor" red="0.23357817530632019" green="0.34701001644134521" blue="0.5960078239440918" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="162" id="CX9-Mn-b4v"/>
@@ -68,20 +68,20 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwiftLogo" translatesAutoresizingMaskIntoConstraints="NO" id="k10-ck-Rjs">
-                    <rect key="frame" x="35" y="65" width="27" height="25"/>
+                    <rect key="frame" x="35" y="65" width="37" height="38"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="25" id="Zfv-Yo-gBw"/>
-                        <constraint firstAttribute="width" constant="27" id="ilZ-Vm-3M2"/>
+                        <constraint firstAttribute="height" constant="38" id="Zfv-Yo-gBw"/>
+                        <constraint firstAttribute="width" constant="37" id="ilZ-Vm-3M2"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="let Swift" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyd-cF-Lyv">
-                    <rect key="frame" x="35" y="104" width="234" height="28"/>
+                    <rect key="frame" x="35" y="117" width="234" height="28"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="24"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS Developers Meet-up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eXT-3r-5ma" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="35" y="138" width="234" height="20"/>
+                    <rect key="frame" x="35" y="151" width="234" height="20"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                     <color key="textColor" red="0.59607843137254901" green="0.61960784313725492" blue="0.65098039215686276" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yWL-VT-RZa">
-                    <rect key="frame" x="35" y="206" width="30" height="2"/>
+                    <rect key="frame" x="35" y="219" width="30" height="2"/>
                     <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="2" id="8r8-hj-6c2"/>
@@ -109,7 +109,7 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tam-kx-89C" customClass="MultiSizeLabel" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="35" y="265.5" width="305" height="41"/>
+                    <rect key="frame" x="35" y="278.5" width="305" height="41"/>
                     <string key="text">Login by Facebook to gain 
 full access.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -227,6 +227,6 @@ full access.</string>
     </objects>
     <resources>
         <image name="FacebookIcon" width="18" height="19"/>
-        <image name="SwiftLogo" width="27" height="25"/>
+        <image name="SwiftLogo" width="37" height="38"/>
     </resources>
 </document>
