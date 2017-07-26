@@ -64,7 +64,7 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
             self?.imageView.addGradientShadow(with: [0.4, 1.0])
             
             guard image == nil else { return }
-            self?.imageView.image = #imageLiteral(resourceName: "PhotoMock")
+            self?.imageView.image = #imageLiteral(resourceName: "LatestSpeakerPlaceholder")
         }
     }
 

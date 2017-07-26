@@ -65,7 +65,7 @@ class ReflectionShadowView: UIView {
         didSet {
             imageView.sd_setImage(with: imageURL) { [weak self] image, _, _, _ in
                 guard let image = image else {
-                    self?.image = #imageLiteral(resourceName: "PhotoMock")
+                    self?.image = #imageLiteral(resourceName: "EventPlaceholder")
                     return
                 }
 
