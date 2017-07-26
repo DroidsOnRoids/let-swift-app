@@ -112,8 +112,8 @@ final class ContactViewController: AppViewController {
     }
     
     private func setupKeyboardNotifications() {
-        setupKeyboardNotification(name: Notification.Name.UIKeyboardWillShow)
-        setupKeyboardNotification(name: Notification.Name.UIKeyboardWillHide)
+        setupKeyboardNotification(name: .UIKeyboardWillShow)
+        setupKeyboardNotification(name: .UIKeyboardWillHide)
     }
     
     private func reactiveSetup() {

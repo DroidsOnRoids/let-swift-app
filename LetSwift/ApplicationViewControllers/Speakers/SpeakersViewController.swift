@@ -132,6 +132,16 @@ final class SpeakersViewController: AppViewController {
         viewModel.speakerLoadDataRequestObservable.next()
 
         reactiveSearchBarSetup()
+
+        NotificationCenter
+            .default
+            .notification(.didSelectAppTapBarWithController)
+            .subscribeNext { [weak self] notification in
+                guard let navigationController = notification?.object as? UINavigationController, navigationController.visibleViewController is SpeakersViewController else { return }
+
+                self?.clearStateAndScrollToTop()
+            }
+            .add(to: disposeBag)
     }
 
     private func reactiveLoadingSetup() {
@@ -170,20 +180,7 @@ final class SpeakersViewController: AppViewController {
         .add(to: disposeBag)
 
         searchBar.searchBarCancelButtonClicked.subscribeNext { [weak self] in
-            self?.tableView.tableHeaderView?.transform = .identity
-            self?.tableView.tableHeaderView?.isHidden = false
-            if self?.tableView.isTableHeaderViewVisible ?? false {
-                UIView.animate(withDuration: 0.25) {
-                    self?.tableView.tableHeaderView?.alpha = 1.0
-                    self?.tableView.beginUpdates()
-                    self?.tableView.endUpdates()
-                }
-            } else {
-                self?.tableView.tableHeaderView?.alpha = 1.0
-            }
-
-            self?.viewModel.searchQueryObservable.next("")
-            self?.viewModel.speakerLoadDataRequestObservable.next()
+            self?.clearSearchData()
         }
         .add(to: disposeBag)
 
@@ -270,5 +267,32 @@ final class SpeakersViewController: AppViewController {
             }
         }
         .add(to: disposeBag)
+    }
+
+    private func clearSearchData() {
+        tableView.tableHeaderView?.transform = .identity
+        tableView.tableHeaderView?.isHidden = false
+        if tableView.isTableHeaderViewVisible {
+            UIView.animate(withDuration: 0.25) {
+                self.tableView.tableHeaderView?.alpha = 1.0
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            }
+        } else {
+            tableView.tableHeaderView?.alpha = 1.0
+        }
+
+        viewModel.searchQueryObservable.next("")
+        viewModel.speakerLoadDataRequestObservable.next()
+    }
+
+    private func clearStateAndScrollToTop() {
+        if searchBar.showsCancelButton {
+            searchBar.showsCancelButton = false
+            clearSearchData()
+        } else {
+            let indexPath = IndexPath(row: 0, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
 }
