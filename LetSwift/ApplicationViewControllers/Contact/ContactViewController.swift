@@ -127,6 +127,7 @@ final class ContactViewController: AppViewController {
         
         viewModel.pickerTopicsObservable.subscribeNext { [weak self] topics in
             guard let weakSelf = self, let topics = topics else { return }
+            [weakSelf.nameTextField, weakSelf.emailTextField, weakSelf.messageTextView].forEach { _ = ($0 as AnyObject).resignFirstResponder() }
             TopicPickerViewController.present(on: weakSelf, items: topics, callback: { result in
                 weakSelf.viewModel.pickerResultObservable.next(result)
             })
