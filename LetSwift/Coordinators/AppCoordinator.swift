@@ -38,17 +38,13 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
     
     fileprivate var initialEventsList: [Event]?
     
-    private var isInTestMode: Bool {
-        return ProcessInfo.processInfo.environment["isUITest"] != nil
-    }
-    
     private var shouldShowOnboardingScreen: Bool {
-        guard !isInTestMode else { return true }
+        guard !UIApplication.isInTestMode else { return true }
         return !DefaultsManager.shared.isOnboardingCompleted
     }
     
     fileprivate var shouldShowLoginScreen: Bool {
-        guard !isInTestMode else { return true }
+        guard !UIApplication.isInTestMode else { return true }
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
     }
     
