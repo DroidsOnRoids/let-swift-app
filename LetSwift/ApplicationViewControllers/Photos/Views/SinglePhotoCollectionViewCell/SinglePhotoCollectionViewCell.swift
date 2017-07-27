@@ -35,7 +35,7 @@ final class SinglePhotoCollectionViewCell: UICollectionViewCell {
 
     var imageURL: URL? {
         didSet {
-            imageView.sd_setImage(with: imageURL)
+            imageView.setImage(url: imageURL, errorPlaceholder: #imageLiteral(resourceName: "PhotoPlaceholder"))
         }
     }
 }
