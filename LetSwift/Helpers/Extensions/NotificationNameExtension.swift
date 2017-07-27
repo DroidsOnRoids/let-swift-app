@@ -22,4 +22,5 @@ import Foundation
 
 extension Notification.Name {
     static let didRegisterNotificationSettings = Notification.Name("DidRegisterNotificationSettings")
+    static let didSelectAppTapBarWithController = Notification.Name("DidSelectAppTapBarWithController")
 }

@@ -39,6 +39,10 @@ final class TabBarViewController: UITabBarController {
         
         setupTabBar()
     }
+
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        NotificationCenter.default.post(name: .didSelectAppTapBarWithController, object: selectedViewController)
+    }
     
     private func setupTabBar() {
         tabBar.clipsToBounds = true
