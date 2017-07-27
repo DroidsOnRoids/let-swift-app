@@ -31,16 +31,19 @@ final class GradientView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        
         setup()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         gradient.frame = bounds
     }
     

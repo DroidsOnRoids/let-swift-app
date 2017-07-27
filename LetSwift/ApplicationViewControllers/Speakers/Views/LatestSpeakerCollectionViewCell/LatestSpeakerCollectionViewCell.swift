@@ -52,8 +52,10 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
         }
         
         imageView.sd_setImage(with: speaker.avatar?.thumb) { [weak self] image, _, _, _ in
-            self?.gradientView.isHidden = image == nil
-            if image == nil {
+            let isNoImage = image == nil
+            
+            self?.gradientView.isHidden = isNoImage
+            if isNoImage {
                 self?.imageView.image = #imageLiteral(resourceName: "LatestSpeakerPlaceholder")
             }
         }
