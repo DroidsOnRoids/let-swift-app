@@ -179,6 +179,7 @@ final class SpeakersViewController: AppViewController {
                     self?.tableView.endUpdates()
                 })
             } else {
+                self?.tableView.reloadData()
                 self?.tableView.tableHeaderView?.alpha = 0.0
                 self?.collapseHeaderView() 
             }
@@ -300,7 +301,10 @@ final class SpeakersViewController: AppViewController {
             searchBar.showsCancelButton = false
             clearSearchData()
         } else {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+            let firstIndex = IndexPath(row: 0, section: 0)
+            guard tableView.numberOfRows(inSection: firstIndex.section)  > 0 else { return }
+
+            tableView.scrollToRow(at: firstIndex, at: .bottom, animated: true)
         }
     }
 }
