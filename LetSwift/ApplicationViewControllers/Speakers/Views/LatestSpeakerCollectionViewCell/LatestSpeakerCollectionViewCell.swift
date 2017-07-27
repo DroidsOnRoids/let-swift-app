@@ -25,6 +25,7 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
     static let cellIdentifier = String(describing: LatestSpeakerCollectionViewCell.self)
 
     @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var gradientView: GradientView!
     @IBOutlet private weak var nameLabel: AppLabel!
     @IBOutlet private weak var surnameLabel: AppLabel!
     @IBOutlet private weak var indicatorImageView: UIImageView!
@@ -41,15 +42,6 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
         setup()
     }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        guard let _ = imageView.image else { return }
-        
-        imageView.layoutIfNeeded()
-        imageView.addGradientShadow(with: [0.4, 1.0])
-    }
-
     func load(with speaker: Speaker) {
         if let name = speaker.name.components(separatedBy: " ").first {
             nameLabel.text = name
@@ -58,13 +50,14 @@ final class LatestSpeakerCollectionViewCell: UICollectionViewCell, SpeakerLoadab
         if let surname = speaker.name.components(separatedBy: " ").last {
             surnameLabel.text = surname
         }
-
-        imageView.removeAllLayers()
+        
         imageView.sd_setImage(with: speaker.avatar?.thumb) { [weak self] image, _, _, _ in
-            self?.imageView.addGradientShadow(with: [0.4, 1.0])
+            let isNoImage = image == nil
             
-            guard image == nil else { return }
-            self?.imageView.image = #imageLiteral(resourceName: "PhotoMock")
+            self?.gradientView.isHidden = isNoImage
+            if isNoImage {
+                self?.imageView.image = #imageLiteral(resourceName: "LatestSpeakerPlaceholder")
+            }
         }
     }
 

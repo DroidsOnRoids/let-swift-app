@@ -40,7 +40,7 @@ final class SpeakerHeaderTableViewCell: UITableViewCell, SpeakerLoadable {
     }
     
     func load(with speaker: Speaker) {
-        avatarImageView.setImage(url: speaker.avatar?.thumb, errorPlaceholder: #imageLiteral(resourceName: "PhotoMock"))
+        avatarImageView.setImage(url: speaker.avatar?.thumb, errorPlaceholder: #imageLiteral(resourceName: "BigSpeakerPlaceholder"))
         nameLabel.text = speaker.name
         jobLabel.text = speaker.job
             

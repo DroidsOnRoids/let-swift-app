@@ -37,7 +37,7 @@ final class PreviousEventCollectionViewCell: UICollectionViewCell {
     
     var imageURL: URL? {
         didSet {
-            imageView.setImage(url: imageURL, errorPlaceholder: #imageLiteral(resourceName: "PhotoMock"))
+            imageView.setImage(url: imageURL, errorPlaceholder: #imageLiteral(resourceName: "PreviousEventPlaceholder"))
         }
     }
     
