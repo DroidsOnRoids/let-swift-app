@@ -21,6 +21,7 @@ opt_in_rules: # some rules are only opt-in
   - vertical_parameter_alignment_on_call
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Pods
+  - LetSwiftUITests/SnapshotHelper.swift
 
 # configurable rules can be customized from this configuration file
 # binary rules can set their severity level

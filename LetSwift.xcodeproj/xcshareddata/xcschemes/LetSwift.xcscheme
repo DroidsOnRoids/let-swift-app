@@ -38,6 +38,16 @@
                ReferencedContainer = "container:LetSwift.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D3755BE11F29DDD60087651E"
+               BuildableName = "LetSwiftUITests.xctest"
+               BlueprintName = "LetSwiftUITests"
+               ReferencedContainer = "container:LetSwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

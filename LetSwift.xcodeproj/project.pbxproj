@@ -138,6 +138,8 @@
 		D35AE6C71EF4464B00FFAD35 /* PhotoSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35AE6C51EF4464B00FFAD35 /* PhotoSliderViewController.xib */; };
 		D36396221EC0654400158BEF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36396211EC0654400158BEF /* PopoverView.swift */; };
 		D364260E1EF7FA6F002AB02E /* SinglePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */; };
+		D3755BE51F29DDD60087651E /* LetSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3755BE41F29DDD60087651E /* LetSwiftUITests.swift */; };
+		D3755BEE1F29DE2E0087651E /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3755BED1F29DE2E0087651E /* SnapshotHelper.swift */; };
 		D378B9A51F0CFC7000C99D5F /* SpeakerLectureFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378B9A41F0CFC7000C99D5F /* SpeakerLectureFlow.swift */; };
 		D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F8A051ECEF10000DD44FE /* SpinnerView.swift */; };
 		D3840D961ECA05EC00975818 /* TappableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3840D951ECA05EC00975818 /* TappableView.swift */; };
@@ -209,6 +211,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		D33521111ECED328000666D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D39A73401E9776D900F10620 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D39A73471E9776D900F10620;
+			remoteInfo = LetSwift;
+		};
+		D3755BE71F29DDD60087651E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D39A73401E9776D900F10620 /* Project object */;
 			proxyType = 1;
@@ -358,6 +367,10 @@
 		D35AE6C51EF4464B00FFAD35 /* PhotoSliderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoSliderViewController.xib; sourceTree = "<group>"; };
 		D36396211EC0654400158BEF /* PopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
 		D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoViewController.swift; sourceTree = "<group>"; };
+		D3755BE21F29DDD60087651E /* LetSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3755BE41F29DDD60087651E /* LetSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetSwiftUITests.swift; sourceTree = "<group>"; };
+		D3755BE61F29DDD60087651E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3755BED1F29DE2E0087651E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		D378B9A41F0CFC7000C99D5F /* SpeakerLectureFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLectureFlow.swift; sourceTree = "<group>"; };
 		D37F8A051ECEF10000DD44FE /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		D3840D951ECA05EC00975818 /* TappableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappableView.swift; sourceTree = "<group>"; };
@@ -434,6 +447,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		D33521091ECED328000666D4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3755BDF1F29DDD60087651E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1039,6 +1059,16 @@
 			path = SpeakerCardView;
 			sourceTree = "<group>";
 		};
+		D3755BE31F29DDD60087651E /* LetSwiftUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D3755BE41F29DDD60087651E /* LetSwiftUITests.swift */,
+				D3755BED1F29DE2E0087651E /* SnapshotHelper.swift */,
+				D3755BE61F29DDD60087651E /* Info.plist */,
+			);
+			path = LetSwiftUITests;
+			sourceTree = "<group>";
+		};
 		D38B14B81E9F6A6A009EA346 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1064,6 +1094,7 @@
 				C5A0D5FC67682B06B2AAF7D2 /* Frameworks */,
 				D39A734A1E9776D900F10620 /* LetSwift */,
 				D335210D1ECED328000666D4 /* LetSwiftTests */,
+				D3755BE31F29DDD60087651E /* LetSwiftUITests */,
 				1A86DDB4F4F54CB551A9D401 /* Pods */,
 				D39A73491E9776D900F10620 /* Products */,
 			);
@@ -1074,6 +1105,7 @@
 			children = (
 				D39A73481E9776D900F10620 /* LetSwift.app */,
 				D335210C1ECED328000666D4 /* LetSwiftTests.xctest */,
+				D3755BE21F29DDD60087651E /* LetSwiftUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1249,6 +1281,24 @@
 			productReference = D335210C1ECED328000666D4 /* LetSwiftTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D3755BE11F29DDD60087651E /* LetSwiftUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3755BEC1F29DDD60087651E /* Build configuration list for PBXNativeTarget "LetSwiftUITests" */;
+			buildPhases = (
+				D3755BDE1F29DDD60087651E /* Sources */,
+				D3755BDF1F29DDD60087651E /* Frameworks */,
+				D3755BE01F29DDD60087651E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3755BE81F29DDD60087651E /* PBXTargetDependency */,
+			);
+			name = LetSwiftUITests;
+			productName = LetSwiftUITests;
+			productReference = D3755BE21F29DDD60087651E /* LetSwiftUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		D39A73471E9776D900F10620 /* LetSwift */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D39A735A1E9776D900F10620 /* Build configuration list for PBXNativeTarget "LetSwift" */;
@@ -1288,6 +1338,12 @@
 						ProvisioningStyle = Manual;
 						TestTargetID = D39A73471E9776D900F10620;
 					};
+					D3755BE11F29DDD60087651E = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = URYNPG7RQE;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D39A73471E9776D900F10620;
+					};
 					D39A73471E9776D900F10620 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 27FAFL2WP5;
@@ -1311,12 +1367,20 @@
 			targets = (
 				D39A73471E9776D900F10620 /* LetSwift */,
 				D335210B1ECED328000666D4 /* LetSwiftTests */,
+				D3755BE11F29DDD60087651E /* LetSwiftUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D335210A1ECED328000666D4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3755BE01F29DDD60087651E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1475,6 +1539,15 @@
 				D33EFB8F1ED2F8AB001DA18C /* DisposeBagTests.swift in Sources */,
 				D33EFB8D1ED2F88A001DA18C /* ObservableTests.swift in Sources */,
 				D3E0ADA01ED5596600270F0E /* DisposingObjectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3755BDE1F29DDD60087651E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3755BE51F29DDD60087651E /* LetSwiftUITests.swift in Sources */,
+				D3755BEE1F29DE2E0087651E /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1644,6 +1717,11 @@
 			target = D39A73471E9776D900F10620 /* LetSwift */;
 			targetProxy = D33521111ECED328000666D4 /* PBXContainerItemProxy */;
 		};
+		D3755BE81F29DDD60087651E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D39A73471E9776D900F10620 /* LetSwift */;
+			targetProxy = D3755BE71F29DDD60087651E /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1770,6 +1848,46 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
 			};
 			name = Release;
+		};
+		D3755BE91F29DDD60087651E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = URYNPG7RQE;
+				INFOPLIST_FILE = LetSwiftUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LetSwift;
+			};
+			name = Debug;
+		};
+		D3755BEA1F29DDD60087651E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = URYNPG7RQE;
+				INFOPLIST_FILE = LetSwiftUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LetSwift;
+			};
+			name = Release;
+		};
+		D3755BEB1F29DDD60087651E /* AppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = URYNPG7RQE;
+				INFOPLIST_FILE = LetSwiftUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = LetSwift;
+			};
+			name = AppStore;
 		};
 		D39A73581E9776D900F10620 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1912,6 +2030,15 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D3755BEC1F29DDD60087651E /* Build configuration list for PBXNativeTarget "LetSwiftUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3755BE91F29DDD60087651E /* Debug */,
+				D3755BEA1F29DDD60087651E /* Release */,
+				D3755BEB1F29DDD60087651E /* AppStore */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D39A73431E9776D900F10620 /* Build configuration list for PBXProject "LetSwift" */ = {
 			isa = XCConfigurationList;
