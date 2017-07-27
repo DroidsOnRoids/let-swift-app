@@ -25,7 +25,7 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var pageControl: UIPageControl!
     
-    private let placeholderView = UIImageView(image: #imageLiteral(resourceName: "PhotoMock"))
+    private let placeholderView = UIImageView(image: #imageLiteral(resourceName: "EventPlaceholder"))
     private let disposeBag = DisposeBag()
 
     var viewModel: CarouselEventPhotosTableViewCellViewModel! {
@@ -68,7 +68,7 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
             let subview = UIImageView(frame: frame)
             subview.contentMode = .scaleAspectFill
             subview.clipsToBounds = true
-            subview.setImage(url: images[index].big, errorPlaceholder: #imageLiteral(resourceName: "PhotoMock"))
+            subview.setImage(url: images[index].big, errorPlaceholder: #imageLiteral(resourceName: "EventPlaceholder"))
             
             scrollView.addSubview(subview)
         }

@@ -14,13 +14,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="199"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="41l-6M-QcQ">
                         <rect key="frame" x="143" y="32" width="90" height="90"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="JUd-C3-0is">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BigSpeakerPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JUd-C3-0is">
                                 <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -83,6 +83,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="PhotoMock" width="1920" height="1277"/>
+        <image name="BigSpeakerPlaceholder" width="91" height="91"/>
     </resources>
 </document>

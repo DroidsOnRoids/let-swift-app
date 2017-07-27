@@ -36,7 +36,7 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pmm-3T-0RZ" customClass="TappableView" customModule="LetSwift" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PhotoMock" translatesAutoresizingMaskIntoConstraints="NO" id="pqb-XG-DcD">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SpeakerPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="pqb-XG-DcD">
                                             <rect key="frame" x="16" y="16" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="725-6B-195"/>
@@ -103,7 +103,7 @@
                                     </constraints>
                                 </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.03.2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNu-Gw-hNh" customClass="AppLabel" customModule="LetSwift" customModuleProvider="target">
-                                    <rect key="frame" x="39" y="89" width="68" height="16"/>
+                                    <rect key="frame" x="39" y="89" width="67.5" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.59607843140000005" green="0.61960784310000006" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -114,14 +114,14 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ClockIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zao-YF-DNa">
-                                    <rect key="frame" x="123" y="89" width="16" height="16"/>
+                                    <rect key="frame" x="122.5" y="89" width="16" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="16" id="dOO-HK-InH"/>
                                         <constraint firstAttribute="height" constant="16" id="pcX-cZ-Jrh"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07:00 PM CET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bH-0C-rCq" customClass="AppLabel" customModule="LetSwift" customModuleProvider="target">
-                                    <rect key="frame" x="147" y="89" width="87" height="16"/>
+                                    <rect key="frame" x="146.5" y="89" width="87" height="16"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.59607843140000005" green="0.61960784310000006" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -142,7 +142,7 @@
                                     <rect key="frame" x="16" y="137" width="327" height="174"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Super simple: Renderable!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I1h-bH-eTC" customClass="AppLabel" customModule="LetSwift" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="189" height="18"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="188.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -222,6 +222,6 @@ Przedstawię Renderable - pierwszy komponent konceptu architektury, którą nazy
         <image name="CalendarIcon" width="15" height="16"/>
         <image name="ClockIcon" width="16" height="16"/>
         <image name="IndicatorLight" width="8" height="13"/>
-        <image name="PhotoMock" width="1920" height="1277"/>
+        <image name="SpeakerPlaceholder" width="40" height="40"/>
     </resources>
 </document>
