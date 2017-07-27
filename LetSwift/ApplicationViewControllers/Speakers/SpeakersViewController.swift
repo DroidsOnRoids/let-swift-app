@@ -291,8 +291,7 @@ final class SpeakersViewController: AppViewController {
             searchBar.showsCancelButton = false
             clearSearchData()
         } else {
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
         }
     }
 }
