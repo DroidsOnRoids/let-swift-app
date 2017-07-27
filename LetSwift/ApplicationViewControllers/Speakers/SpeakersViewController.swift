@@ -57,6 +57,12 @@ final class SpeakersViewController: AppViewController {
 
         setup()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        viewModel.searchBarShouldResignFirstResponderObservable.next()
+    }
     
     private func setup() {
         showSpinner()
@@ -164,7 +170,7 @@ final class SpeakersViewController: AppViewController {
                 })
             } else {
                 self?.tableView.tableHeaderView?.alpha = 0.0
-                self?.collapseHeaderView()
+                self?.collapseHeaderView() 
             }
         }
         .add(to: disposeBag)
@@ -195,8 +201,11 @@ final class SpeakersViewController: AppViewController {
         .add(to: disposeBag)
 
         viewModel.searchBarShouldResignFirstResponderObservable.subscribeNext { [weak self] in
-            self?.searchBar.resignFirstResponder()
-            self?.searchBar.enableCancelButton()
+            guard let weakSelf = self, weakSelf.searchBar.isFirstResponder else { return }
+
+            weakSelf.tableView.reloadData()
+            weakSelf.searchBar.resignFirstResponder()
+            weakSelf.searchBar.enableCancelButton()
         }
         .add(to: disposeBag)
 
