@@ -1314,6 +1314,7 @@
 				D39A73461E9776D900F10620 /* Resources */,
 				5A3623B87DCCF47186237207 /* [CP] Embed Pods Frameworks */,
 				10876692B5C005622AB3BCC3 /* [CP] Copy Pods Resources */,
+				D34AC3A41F2BC59D00C88C80 /* Remove Localization */,
 				D3498DD01F18DEB500CDE97E /* Run Fabric */,
 			);
 			buildRules = (
@@ -1516,6 +1517,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a8e75b541d587d423fed61dc758338860e6337b 70c2eee6ad3d350f6c1bf2baac87e144c111f10ea91c7fd9c1c84b9fccdd6b3d";
+		};
+		D34AC3A41F2BC59D00C88C80 /* Remove Localization */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Remove Localization";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"$CONFIGURATION\" = \"AppStore\" ]\nthen\n    rm -rf \"${CODESIGNING_FOLDER_PATH}/en.lproj\"\nfi";
 		};
 		D3AA9D131F176E5500F48D06 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
