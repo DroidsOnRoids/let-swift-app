@@ -25,6 +25,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - SimulatorStatusMagic (1.9.5)
   - SwiftLint (0.20.1)
 
 DEPENDENCIES:
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - ImageEffects (~> 1.0)
   - ModelMapper (~> 6.0)
   - SDWebImage (~> 4.0)
+  - SimulatorStatusMagic (~> 1.9)
   - SwiftLint (~> 0.20)
 
 SPEC CHECKSUMS:
@@ -56,8 +58,9 @@ SPEC CHECKSUMS:
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SimulatorStatusMagic: b3b4c5c49a07e8b1c452cc0327275e267a865fea
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
-PODFILE CHECKSUM: f52fa17e650aa17911e3c33cee60fbe105d04403
+PODFILE CHECKSUM: 7d7bea635e8c87f81a678520b81e3ce20b2f4e86
 
 COCOAPODS: 1.2.0
