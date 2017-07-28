@@ -184,6 +184,16 @@ class CommonEventViewController: AppViewController {
              UIAlertController.showSettingsAlert()
         }
         .add(to: disposeBag)
+        
+        NotificationCenter
+            .default
+            .notification(.didSelectAppTapBarWithController)
+            .subscribeNext { [weak self] notification in
+                guard let navigationController = notification?.object as? UINavigationController, navigationController.visibleViewController is EventsViewController else { return }
+
+                self?.tableView.scrollToTop()
+            }
+            .add(to: disposeBag)
     }
     
     func setup(attendCell cell: AttendButtonsRowTableViewCell) {

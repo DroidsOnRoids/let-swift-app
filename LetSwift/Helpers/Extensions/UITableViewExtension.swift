@@ -127,4 +127,11 @@ extension UITableView: NibPresentable {
         
         return contentOffset.y < tableHeaderView.frame.size.height
     }
+    
+    func scrollToTop() {
+        let firstIndex = IndexPath(row: 0, section: 0)
+        guard numberOfRows(inSection: firstIndex.section) > 0 else { return }
+        
+        scrollToRow(at: firstIndex, at: .bottom, animated: true)
+    }
 }
