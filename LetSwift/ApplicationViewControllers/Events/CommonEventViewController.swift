@@ -72,6 +72,12 @@ class CommonEventViewController: AppViewController {
         setup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
+    }
+
     private func setup() {
         tableView.childAutomaticallyUpdatesContentInset = true
         tableView.rowHeight = UITableViewAutomaticDimension

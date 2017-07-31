@@ -53,6 +53,12 @@ final class SpeakerDetailsViewController: AppViewController {
         super.viewDidLoad()
         setup()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tableView.reloadData()
+    }
     
     private func setup() {
         tableView.rowHeight = UITableViewAutomaticDimension
