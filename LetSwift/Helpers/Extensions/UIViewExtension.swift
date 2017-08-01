@@ -25,7 +25,6 @@ extension UIView {
         static let pressEffectEnabled = false
         static let motionEffectForTranslationX = "layer.transform.translation.x"
         static let motionEffectForTranslationY = "layer.transform.translation.y"
-        static let exclusiveTouch = "exclusiveTouch"
     }
 
     func highlightView(_ isHighlighted: Bool) {
@@ -90,6 +89,6 @@ extension UIView {
     override open func awakeFromNib() {
         super.awakeFromNib()
 
-        setValue(true, forKey: Constants.exclusiveTouch)
+        isExclusiveTouch = true
     }
 }
