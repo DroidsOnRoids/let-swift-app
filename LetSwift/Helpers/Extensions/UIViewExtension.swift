@@ -85,4 +85,10 @@ extension UIView {
         widthAnchor.constraint(equalToConstant: width).isActive = true
         heightAnchor.constraint(equalToConstant: height).isActive = true
     }
+
+    override open func awakeFromNib() {
+        super.awakeFromNib()
+
+        isExclusiveTouch = true
+    }
 }

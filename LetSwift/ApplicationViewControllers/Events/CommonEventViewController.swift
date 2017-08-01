@@ -71,7 +71,7 @@ class CommonEventViewController: AppViewController {
         
         setup()
     }
-
+    
     private func setup() {
         tableView.childAutomaticallyUpdatesContentInset = true
         tableView.rowHeight = UITableViewAutomaticDimension
