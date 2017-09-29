@@ -47,6 +47,11 @@
                BlueprintName = "LetSwiftUITests"
                ReferencedContainer = "container:LetSwift.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "LetSwiftUITests/testTakeSnapshots()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
