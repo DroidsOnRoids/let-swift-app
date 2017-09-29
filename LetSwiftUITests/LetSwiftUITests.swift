@@ -23,7 +23,7 @@ import XCTest
 class LetSwiftUITests: XCTestCase {
     
     private enum Constants {
-        static let eventDetailsToTest = "Let Swift #10"
+        static let eventDetailsToTest = "LET SWIFT #10"
     }
         
     override func setUp() {
