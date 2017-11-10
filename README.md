@@ -60,4 +60,4 @@ Let Swift App is maintained by Droids On Roids. For more details visit our [webs
 Check out our other [open source projects](https://github.com/DroidsOnRoids) and [our blog](https://www.thedroidsonroids.com/blog).
 
 ##
-![App Store](https://devimages.apple.com.edgekey.net/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg)
+[![App Store](https://devimages.apple.com.edgekey.net/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg)](https://itunes.apple.com/us/app/let-swift/id1265027315?l=pl&ls=1&mt=8)
