@@ -1,8 +1,8 @@
 //
-//  UITableViewCellExtenion.swift
+//  DictionaryExtension.swift
 //  LetSwift
 //
-//  Created by Kinga Wilczek on 13.06.2017.
+//  Created by Sebastian Osiński on 10.11.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,15 @@
 //  limitations under the License.
 //
 
-import UIKit
+extension Dictionary {
 
-extension UITableViewCell {
-    func removeSeparators() {
-        let largeIndent: CGFloat = .infinity
-        separatorInset = UIEdgeInsets(top: 0.0, left: largeIndent, bottom: 0.0, right: 0.0)
-        indentationWidth = -largeIndent
-        indentationLevel = 1
+    func mapKeys<K: Hashable>(_ transform: (Key) -> K) -> [K: Value] {
+        var mappedDictionary = [K: Value]()
+
+        for (key, value) in self {
+            mappedDictionary[transform(key)] = value
+        }
+
+        return mappedDictionary
     }
 }

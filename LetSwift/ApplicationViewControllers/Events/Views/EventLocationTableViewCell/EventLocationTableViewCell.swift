@@ -44,7 +44,7 @@ final class EventLocationTableViewCell: AppTableViewCell {
     
     private func refreshLocationLabel() {
         locationLabel.attributedText = (placeName.uppercased()
-            .attributed(withFont: UIFont.systemFont(ofSize: 13.0, weight: UIFontWeightSemibold))
+            .attributed(withFont: UIFont.systemFont(ofSize: 13.0, weight: UIFont.Weight.semibold))
             .with(color: .black) + " — " + placeLocation.attributed()).with(spacing: 0.9)
     }
 }

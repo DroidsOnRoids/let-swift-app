@@ -44,11 +44,11 @@ final class AttendButtonsRowTableViewCell: UITableViewCell {
             guard isRightButtonVisible != oldValue else { return }
             
             if isRightButtonVisible {
-                currentEventConstraint.priority = Constants.highPriorityContraint
-                pastEventConstraint.priority = Constants.lowPriorityConstraint
+                currentEventConstraint.priority = UILayoutPriority(rawValue: Constants.highPriorityContraint)
+                pastEventConstraint.priority = UILayoutPriority(rawValue: Constants.lowPriorityConstraint)
             } else {
-                currentEventConstraint.priority = Constants.lowPriorityConstraint
-                pastEventConstraint.priority = Constants.highPriorityContraint
+                currentEventConstraint.priority = UILayoutPriority(rawValue: Constants.lowPriorityConstraint)
+                pastEventConstraint.priority = UILayoutPriority(rawValue: Constants.highPriorityContraint)
             }
             
             UIView.animate(withDuration: 0.2) {

@@ -67,7 +67,7 @@ class AppViewController: UIViewController {
     private func setupTitleLabel(withTitle title: String) -> UILabel {
         let titleLabel = UILabel()
         titleLabel.attributedText = title
-            .attributed(withFont: .systemFont(ofSize: 15.0, weight: UIFontWeightSemibold))
+            .attributed(withFont: .systemFont(ofSize: 15.0, weight: UIFont.Weight.semibold))
             .with(color: .highlightedBlack)
             .with(spacing: 1.0)
         

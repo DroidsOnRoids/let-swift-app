@@ -105,7 +105,7 @@ class TopicPickerViewController: UIViewController {
             let cellIdentifier = "SimpleCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
             
-            cell.textLabel?.attributedText = element.attributed(withFont: .systemFont(ofSize: 14.0, weight: UIFontWeightRegular)).with(color: .coolGrey)
+            cell.textLabel?.attributedText = element.attributed(withFont: .systemFont(ofSize: 14.0, weight: UIFont.Weight.regular)).with(color: .coolGrey)
             
             return cell
         }))
