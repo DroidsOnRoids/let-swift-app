@@ -28,8 +28,8 @@ final class AttendButtonsRowTableViewCell: UITableViewCell {
     @IBOutlet private weak var pastEventConstraint: NSLayoutConstraint!
     
     private enum Constants {
-        static let lowPriorityConstraint: Float = 250.0
-        static let highPriorityContraint: Float = 999.0
+        static let lowPriorityConstraint = UILayoutPriority(250.0)
+        static let highPriorityContraint = UILayoutPriority(999.0)
     }
     
     var isLeftButtonActive = true {
@@ -44,11 +44,11 @@ final class AttendButtonsRowTableViewCell: UITableViewCell {
             guard isRightButtonVisible != oldValue else { return }
             
             if isRightButtonVisible {
-                currentEventConstraint.priority = UILayoutPriority(rawValue: Constants.highPriorityContraint)
-                pastEventConstraint.priority = UILayoutPriority(rawValue: Constants.lowPriorityConstraint)
+                currentEventConstraint.priority = Constants.highPriorityContraint
+                pastEventConstraint.priority = Constants.lowPriorityConstraint
             } else {
-                currentEventConstraint.priority = UILayoutPriority(rawValue: Constants.lowPriorityConstraint)
-                pastEventConstraint.priority = UILayoutPriority(rawValue: Constants.highPriorityContraint)
+                currentEventConstraint.priority = Constants.lowPriorityConstraint
+                pastEventConstraint.priority = Constants.highPriorityContraint
             }
             
             UIView.animate(withDuration: 0.2) {
