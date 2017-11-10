@@ -19,7 +19,6 @@
 //
 
 extension Dictionary {
-
     func mapKeys<K: Hashable>(_ transform: (Key) -> K) -> [K: Value] {
         var mappedDictionary = [K: Value]()
 

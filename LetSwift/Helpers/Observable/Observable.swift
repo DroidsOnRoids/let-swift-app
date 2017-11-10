@@ -126,7 +126,6 @@ extension Observable where Element: Equatable {
 }
 
 extension Observable where Element == Void {
-
     convenience init() {
         self.init(())
     }
