@@ -36,14 +36,6 @@ class AppViewController: UIViewController {
         return false
     }
     
-    override var title: String? {
-        didSet {
-            if let navTitle = navigationItem.title {
-                navigationItem.titleView = setupTitleLabel(withTitle: navTitle)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +46,7 @@ class AppViewController: UIViewController {
         title = localized(viewControllerTitleKey ?? "").uppercased()
         navigationController?.navigationBar.setValue(shouldHideShadow, forKey: "hidesShadow")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
+
         if shouldShowUserIcon {
             navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
             navigationItem.rightBarButtonItem?.tintColor = .black
@@ -62,18 +54,6 @@ class AppViewController: UIViewController {
             navigationItem.rightBarButtonItem?.target = self
             navigationItem.rightBarButtonItem?.action = #selector(userIconTapped(_:))
         }
-    }
-    
-    private func setupTitleLabel(withTitle title: String) -> UILabel {
-        let titleLabel = UILabel()
-        titleLabel.attributedText = title
-            .attributed(withFont: .systemFont(ofSize: 15.0, weight: UIFont.Weight.semibold))
-            .with(color: .highlightedBlack)
-            .with(spacing: 1.0)
-        
-        titleLabel.sizeToFit()
-        
-        return titleLabel
     }
     
     @objc private func logOutTapped() {
