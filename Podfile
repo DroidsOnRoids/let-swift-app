@@ -33,7 +33,7 @@ target 'LetSwift' do
 
   # Views
   pod 'ImageEffects', '~> 1.0'
-  pod 'ESPullToRefresh', '~> 2.6'
+  pod 'ESPullToRefresh', '~> 2.7'
   pod 'SDWebImage', '~> 4.0'
   pod 'DACircularProgress', '~> 2.3'
 end
