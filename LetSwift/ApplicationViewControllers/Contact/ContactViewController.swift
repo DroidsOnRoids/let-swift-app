@@ -84,6 +84,8 @@ final class ContactViewController: AppViewController {
     }
     
     private func setupViews() {
+        containerView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 16.0).isActive = true
+
         topicButton.associatedErrorView = topicErrorLabel
         nameTextField.associatedErrorView = nameErrorLabel
         emailTextField.associatedErrorView = emailErrorLabel
