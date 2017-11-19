@@ -33,6 +33,10 @@ This app allows you to keep up to date with the latest events info like speakers
 $ git clone https://github.com/DroidsOnRoids/let-swift-app.git
 $ cd let-swift-app
 ```
+#### Install bundler and gems
+```
+gem install bundler && bundle install
+```
 #### Install pods
 ```
 $ pod install
