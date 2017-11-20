@@ -81,11 +81,11 @@ extension UICollectionView: NibPresentable {
         return ObservableEvent(event: delegateProxy.scrollViewWillBeginDraggingObservable)
     }
 
-    func registerNib(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
+    @nonobjc func register(_ nib: UINib?, forCellReuseIdentifier identifier: String) {
         register(nib, forCellWithReuseIdentifier: identifier)
     }
 
-    func registerClass(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
+    @nonobjc func register(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String) {
         register(cellClass, forCellWithReuseIdentifier: identifier)
     }
     

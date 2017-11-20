@@ -28,8 +28,8 @@ final class AttendButtonsRowTableViewCell: UITableViewCell {
     @IBOutlet private weak var pastEventConstraint: NSLayoutConstraint!
     
     private enum Constants {
-        static let lowPriorityConstraint: Float = 250.0
-        static let highPriorityContraint: Float = 999.0
+        static let lowPriorityConstraint = UILayoutPriority(250.0)
+        static let highPriorityContraint = UILayoutPriority(999.0)
     }
     
     var isLeftButtonActive = true {
