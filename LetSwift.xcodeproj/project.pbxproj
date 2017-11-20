@@ -68,6 +68,7 @@
 		7EF34FED1ED3308200517683 /* NetworkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34FEC1ED3308200517683 /* NetworkPage.swift */; };
 		7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift */; };
 		7EF34FF11ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */; };
+		91B1FEDB1FB5EF8200D6F62D /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91B1FEDA1FB5EF8200D6F62D /* DictionaryExtension.swift */; };
 		A603BB8FB972616540054F38 /* Pods_LetSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFC6B3F4F394D64FCA296C53 /* Pods_LetSwift.framework */; };
 		D3006AFD1EBC623B00716C23 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */; };
 		D3006B031EBC845300716C23 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3006B021EBC845300716C23 /* UIButtonExtension.swift */; };
@@ -295,6 +296,7 @@
 		7EF34FEC1ED3308200517683 /* NetworkPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkPage.swift; sourceTree = "<group>"; };
 		7EF34FEE1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersToBeAnnouncedTableViewCell.swift; sourceTree = "<group>"; };
 		7EF34FEF1ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakersToBeAnnouncedTableViewCell.xib; sourceTree = "<group>"; };
+		91B1FEDA1FB5EF8200D6F62D /* DictionaryExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
 		D3006AFC1EBC623B00716C23 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
 		D3006B021EBC845300716C23 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		D304E6C31F16396000D14FA4 /* PhotoErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoErrorView.swift; path = ../PhotoErrorView.swift; sourceTree = "<group>"; };
@@ -1259,6 +1261,7 @@
 				D39D71131EB651D100F8743C /* UITableViewExtension.swift */,
 				D39D71171EB6551C00F8743C /* UIViewExtension.swift */,
 				D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */,
+				91B1FEDA1FB5EF8200D6F62D /* DictionaryExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1333,24 +1336,27 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Droids On Roids";
 				TargetAttributes = {
 					D335210B1ECED328000666D4 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 27FAFL2WP5;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Manual;
 						TestTargetID = D39A73471E9776D900F10620;
 					};
 					D3755BE11F29DDD60087651E = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = URYNPG7RQE;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D39A73471E9776D900F10620;
 					};
 					D39A73471E9776D900F10620 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = 27FAFL2WP5;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -1611,6 +1617,7 @@
 				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
 				7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */,
 				D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */,
+				91B1FEDB1FB5EF8200D6F62D /* DictionaryExtension.swift in Sources */,
 				7EB744211EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift in Sources */,
 				7EF34FF01ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.swift in Sources */,
 				7E52E66F1F01318F0080EE8D /* LatestSpeakersHeaderView.swift in Sources */,
@@ -1790,13 +1797,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1804,7 +1814,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1845,7 +1859,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9f5b209a-bcec-4dc2-8683-7eb50ab20406";
 				PROVISIONING_PROFILE_SPECIFIER = "Let Swift App Store";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = AppStore;
 		};
@@ -1860,7 +1875,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
 			};
 			name = AppStore;
@@ -1876,7 +1892,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
 			};
 			name = Debug;
@@ -1892,7 +1909,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
 			};
 			name = Release;
@@ -1906,7 +1924,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LetSwift;
 			};
 			name = Debug;
@@ -1919,7 +1938,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LetSwift;
 			};
 			name = Release;
@@ -1932,7 +1952,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LetSwift;
 			};
 			name = AppStore;
@@ -1941,13 +1962,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1955,7 +1979,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1991,13 +2019,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2005,7 +2036,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2044,7 +2079,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = WILDCARD;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2062,7 +2098,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LetSwiftApp InHouse";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

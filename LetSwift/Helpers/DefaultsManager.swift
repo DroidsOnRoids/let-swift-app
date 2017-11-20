@@ -25,7 +25,7 @@ final class DefaultsManager: NSObject {
     static let shared = DefaultsManager()
     private let defaults = UserDefaults.standard
     
-    var isOnboardingCompleted: Bool {
+    @objc var isOnboardingCompleted: Bool {
         get {
             return defaults.bool(forKey: #keyPath(DefaultsManager.isOnboardingCompleted))
         }
@@ -34,7 +34,7 @@ final class DefaultsManager: NSObject {
         }
     }
     
-    var isLoginSkipped: Bool {
+    @objc var isLoginSkipped: Bool {
         get {
             return defaults.bool(forKey: #keyPath(DefaultsManager.isLoginSkipped))
         }
@@ -43,7 +43,7 @@ final class DefaultsManager: NSObject {
         }
     }
 
-    var notificationsPromptShowed: Bool {
+    @objc var notificationsPromptShowed: Bool {
         get {
             return defaults.bool(forKey: #keyPath(DefaultsManager.notificationsPromptShowed))
         }

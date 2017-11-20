@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupNetworkIndicator()
+        setupAppearance()
         analyticsHelper.setupAnalytics()
     
         FBSDKApplicationDelegate.sharedInstance()
@@ -85,5 +86,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NetworkActivityIndicatorManager.shared.isEnabled = true
         NetworkActivityIndicatorManager.shared.startDelay = 0.1
         NetworkActivityIndicatorManager.shared.completionDelay = 0.2
+    }
+
+    private func setupAppearance() {
+        UINavigationBar.appearance().titleTextAttributes = [
+            .font: UIFont.systemFont(ofSize: 15.0, weight: UIFont.Weight.semibold),
+            .foregroundColor: UIColor.highlightedBlack,
+            .kern: 1.0
+        ]
     }
 }

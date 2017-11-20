@@ -48,44 +48,44 @@ extension String {
     }
     
     func attributed(withColor color: UIColor) -> NSAttributedString {
-        return attributed(withAttributes: [NSForegroundColorAttributeName: color])
+        return attributed(withAttributes: [.foregroundColor: color])
     }
     
     func attributed(withSpacing spacing: CGFloat) -> NSAttributedString {
-        return attributed(withAttributes: [NSKernAttributeName: spacing])
+        return attributed(withAttributes: [.kern: spacing])
     }
     
     func attributed(withFont font: UIFont) -> NSAttributedString {
-        return attributed(withAttributes: [NSFontAttributeName: font])
+        return attributed(withAttributes: [.font: font])
     }
     
     func attributed(withLineSpacing lineSpacing: CGFloat) -> NSAttributedString {
-        return attributed(withAttributes: [NSParagraphStyleAttributeName: paragraphStyle(with: lineSpacing)])
+        return attributed(withAttributes: [.paragraphStyle: paragraphStyle(with: lineSpacing)])
     }
     
-    func attributed(withAttributes attributes: [String : Any]) -> NSAttributedString {
+    func attributed(withAttributes attributes: [NSAttributedStringKey : Any]) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: attributes)
     }
 }
 
 extension NSAttributedString {
     func with(color: UIColor) -> NSAttributedString {
-        return with(attributes: [NSForegroundColorAttributeName: color])
+        return with(attributes: [.foregroundColor: color])
     }
     
     func with(spacing: CGFloat) -> NSAttributedString {
-        return with(attributes: [NSKernAttributeName: spacing])
+        return with(attributes: [.kern: spacing])
     }
     
     func with(font: UIFont) -> NSAttributedString {
-        return with(attributes: [NSFontAttributeName: font])
+        return with(attributes: [.font: font])
     }
     
     func with(lineSpacing: CGFloat) -> NSAttributedString {
-        return with(attributes: [NSParagraphStyleAttributeName: paragraphStyle(with: lineSpacing)])
+        return with(attributes: [.paragraphStyle: paragraphStyle(with: lineSpacing)])
     }
     
-    func with(attributes: [String : Any]) -> NSAttributedString {
+    func with(attributes: [NSAttributedStringKey : Any]) -> NSAttributedString {
         let fullRange = NSRange(location: 0, length: string.characters.count)
         let newString = NSMutableAttributedString(attributedString: self)
         newString.addAttributes(attributes, range: fullRange)
