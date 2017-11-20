@@ -24,8 +24,8 @@ This app allows you to keep up to date with the latest events info like speakers
 
 ## Requirements
 * iOS 9+
-* Xcode 8.2+
-* Swift 3.1
+* Xcode 9.1+
+* Swift 4.0
 
 ## Installation guide
 #### Download repo

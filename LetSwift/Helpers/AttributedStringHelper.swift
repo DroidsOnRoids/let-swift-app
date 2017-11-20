@@ -34,7 +34,7 @@ func + (left: NSAttributedString, right: String) -> NSAttributedString {
     return result
 }
 
-fileprivate func paragraphStyle(with lineSpacing: CGFloat) -> NSParagraphStyle {
+private func paragraphStyle(with lineSpacing: CGFloat) -> NSParagraphStyle {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineBreakMode = .byTruncatingTail
     paragraphStyle.lineSpacing = lineSpacing
@@ -63,7 +63,7 @@ extension String {
         return attributed(withAttributes: [.paragraphStyle: paragraphStyle(with: lineSpacing)])
     }
     
-    func attributed(withAttributes attributes: [NSAttributedStringKey : Any]) -> NSAttributedString {
+    func attributed(withAttributes attributes: [NSAttributedStringKey: Any]) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: attributes)
     }
 }
@@ -85,8 +85,8 @@ extension NSAttributedString {
         return with(attributes: [.paragraphStyle: paragraphStyle(with: lineSpacing)])
     }
     
-    func with(attributes: [NSAttributedStringKey : Any]) -> NSAttributedString {
-        let fullRange = NSRange(location: 0, length: string.characters.count)
+    func with(attributes: [NSAttributedStringKey: Any]) -> NSAttributedString {
+        let fullRange = NSRange(location: 0, length: string.count)
         let newString = NSMutableAttributedString(attributedString: self)
         newString.addAttributes(attributes, range: fullRange)
         

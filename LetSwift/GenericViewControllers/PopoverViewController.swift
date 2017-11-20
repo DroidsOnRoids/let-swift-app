@@ -128,9 +128,9 @@ final class PopoverViewController: UIViewController {
     private func closePopover() {
         UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseIn, animations: {
             self.container.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }) { _ in
+        }, completion: { _ in
             self.dismiss(animated: false)
-        }
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

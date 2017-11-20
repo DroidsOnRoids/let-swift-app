@@ -33,11 +33,11 @@ enum FacebookEventAttendance: String {
     case maybe
 }
 
-fileprivate enum FacebookPermissions {
+private enum FacebookPermissions {
     static let rsvpEvent = "rsvp_event"
 }
 
-fileprivate enum FacebookError: Int {
+private enum FacebookError: Int {
     case missingPermissions = 200
     case missingExtendedPermissions = 299 // HACK: Undocumented status code
     
@@ -138,7 +138,7 @@ final class FacebookManager {
         }
         
         sendGraphRequest(request) { result in
-            guard let resultDict = (result as? [String : Any]) else {
+            guard let resultDict = (result as? [String: Any]) else {
                 callback?(false)
                 return
             }
@@ -150,7 +150,7 @@ final class FacebookManager {
     
     private func attendanceRequest(forEventId id: String) -> FBSDKGraphRequest? {
         guard isLoggedIn else { return nil }
-        let parameters: [AnyHashable : Any] = [
+        let parameters: [AnyHashable: Any] = [
             "user": FBSDKAccessToken.current().userID,
             "fields": "rsvp_status"
         ]
@@ -165,7 +165,7 @@ final class FacebookManager {
         }
         
         sendGraphRequest(request) { result in
-            guard let resultDict = (result as? [String : Any]), let data = resultDict["data"], let dataArray = (data as? [Any]) else {
+            guard let resultDict = (result as? [String: Any]), let data = resultDict["data"], let dataArray = (data as? [Any]) else {
                 callback(.unknown)
                 return
             }

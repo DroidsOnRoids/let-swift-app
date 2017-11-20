@@ -132,9 +132,9 @@ class TopicPickerViewController: UIViewController {
         UIView.animate(withDuration: Constants.animationDuration, delay: 0.0, options: .curveEaseInOut, animations: {
             self.view.backgroundColor = .clear
             self.containerView.transform = self.outOfScreenTransform
-        }) { _ in
+        }, completion: { _ in
             self.dismiss(animated: false)
-        }
+        })
     }
 }
 
