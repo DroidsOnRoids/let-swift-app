@@ -96,9 +96,11 @@ final class SpeakersViewController: AppViewController {
     }
 
     private func addPullToRefresh() {
-        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
-            self?.viewModel.refreshDataObservable.next()
-        }
+        sadFaceView.scrollView?.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
+    }
+    
+    @objc private func pullToRefreshAction() {
+        viewModel.refreshDataObservable.next()
     }
 
     private func removePullToRefresh() {

@@ -175,7 +175,6 @@
 		D3AE28961ECDAEFF00F29702 /* ObserevableEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE28951ECDAEFF00F29702 /* ObserevableEvent.swift */; };
 		D3B505A31EDB3E5E00BBC6E5 /* AppContentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B505A21EDB3E5E00BBC6E5 /* AppContentState.swift */; };
 		D3B8109D1EFA6D1100604CC3 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */; };
-		D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */; };
 		D3BA380A1ED45C7F00BF63A2 /* AppTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */; };
 		D3C0ACF41EC4E84700CFF98D /* SpeakerCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0ACF21EC4E84700CFF98D /* SpeakerCardTableViewCell.swift */; };
 		D3C0ACF51EC4E84700CFF98D /* SpeakerCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C0ACF31EC4E84700CFF98D /* SpeakerCardTableViewCell.xib */; };
@@ -410,7 +409,6 @@
 		D3AE28951ECDAEFF00F29702 /* ObserevableEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserevableEvent.swift; sourceTree = "<group>"; };
 		D3B505A21EDB3E5E00BBC6E5 /* AppContentState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppContentState.swift; sourceTree = "<group>"; };
 		D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
-		D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PullToRefreshAnimator.swift; sourceTree = "<group>"; };
 		D3BA38091ED45C7F00BF63A2 /* AppTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTableView.swift; sourceTree = "<group>"; };
 		D3C0ACF21EC4E84700CFF98D /* SpeakerCardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerCardTableViewCell.swift; sourceTree = "<group>"; };
 		D3C0ACF31EC4E84700CFF98D /* SpeakerCardTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeakerCardTableViewCell.xib; sourceTree = "<group>"; };
@@ -750,7 +748,6 @@
 				D3FF3F861E9F4E5500501F44 /* MultiSizeConstraint.swift */,
 				D38B14BF1E9F9100009EA346 /* MultiSizeLabel.swift */,
 				D3D376511EBB2D090060FAE3 /* NotificationsManager.swift */,
-				D3BA38051ED44AD500BF63A2 /* PullToRefreshAnimator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1456,7 +1453,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/HockeySDK/HockeySDKResources.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/HockeySDK/HockeySDKResources.bundle,
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -1496,7 +1493,6 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageEffects/ImageEffects.framework",
@@ -1510,7 +1506,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageEffects.framework",
@@ -1703,7 +1698,6 @@
 				7EB744041EEE8466008092DC /* Debouncer.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
 				D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */,
-				D3BA38061ED44AD500BF63A2 /* PullToRefreshAnimator.swift in Sources */,
 				D34CCF5F1EC5AC9A00EFD3E4 /* SpeakerCardView.swift in Sources */,
 				D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */,
 				D3E0ADA61ED563FB00270F0E /* SplashViewControllerViewModel.swift in Sources */,
@@ -1853,7 +1847,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Droids on Roids Sp. z o.o. (27FAFL2WP5)";
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2074,7 +2068,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2093,7 +2087,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Droids On Roids Sp. z o.o.";
 				DEVELOPMENT_TEAM = URYNPG7RQE;
 				INFOPLIST_FILE = LetSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";

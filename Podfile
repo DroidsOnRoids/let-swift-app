@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'LetSwift' do
   use_frameworks!
@@ -33,7 +33,6 @@ target 'LetSwift' do
 
   # Views
   pod 'ImageEffects', '~> 1.0'
-  pod 'ESPullToRefresh', '~> 2.7'
   pod 'SDWebImage', '~> 4.0'
   pod 'DACircularProgress', '~> 2.3'
 end

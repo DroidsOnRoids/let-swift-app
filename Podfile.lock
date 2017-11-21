@@ -11,7 +11,6 @@ PODS:
   - Crashlytics (3.8.5):
     - Fabric (~> 1.6.3)
   - DACircularProgress (2.3.1)
-  - ESPullToRefresh (2.7)
   - Fabric (1.6.12)
   - FBSDKCoreKit (4.24.0):
     - Bolts (~> 1.7)
@@ -33,7 +32,6 @@ DEPENDENCIES:
   - AlamofireNetworkActivityIndicator (~> 2.2)
   - Crashlytics (~> 3.8)
   - DACircularProgress (~> 2.3)
-  - ESPullToRefresh (~> 2.7)
   - Fabric (~> 1.6)
   - FBSDKCoreKit (~> 4.22)
   - FBSDKLoginKit (~> 4.22)
@@ -50,7 +48,6 @@ SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  ESPullToRefresh: 119e2710b82b75536aab2bbe4883ba119fca35c8
   Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   FBSDKCoreKit: f8c9eb0dd34a9cd277c7b60da4b32226d142502d
   FBSDKLoginKit: 1214c6d5a1c4995b694d8db8a9ba6910c6028acf
@@ -61,6 +58,6 @@ SPEC CHECKSUMS:
   SimulatorStatusMagic: b3b4c5c49a07e8b1c452cc0327275e267a865fea
   SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
-PODFILE CHECKSUM: ccc9756e69a19fcc63f55c564822c71070252f37
+PODFILE CHECKSUM: c3259f83a9e350f3039c03140c233c08b6cd0abe
 
 COCOAPODS: 1.3.1

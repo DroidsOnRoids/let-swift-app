@@ -76,8 +76,6 @@ class CommonEventViewController: AppViewController {
         tableView.childAutomaticallyUpdatesContentInset = true
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.setFooterColor(.paleGrey)
-        tableView.setHeaderColor(.lightBlueGrey)
         
         let inset = navigationController?.navigationBar.frame.maxY ?? 0.0
         sadFaceView.scrollView?.contentInset = UIEdgeInsets(top: inset, left: 0.0, bottom: -inset, right: 0.0)
@@ -89,13 +87,8 @@ class CommonEventViewController: AppViewController {
     }
     
     private func setupPullToRefresh() {
-        tableView.addPullToRefresh { [weak self] in
-            self?.refreshObservable?.next()
-        }
-        
-        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
-            self?.refreshObservable?.next()
-        }
+        tableView.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
+        sadFaceView.scrollView?.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
         
         refreshObservable?.subscribeCompleted { [weak self] in
             self?.tableView.finishPullToRefresh()
@@ -104,6 +97,10 @@ class CommonEventViewController: AppViewController {
             self?.tableView.reloadData()
         }
         .add(to: disposeBag)
+    }
+    
+    @objc private func pullToRefreshAction() {
+        refreshObservable?.next()
     }
     
     private func reactiveSetup() {

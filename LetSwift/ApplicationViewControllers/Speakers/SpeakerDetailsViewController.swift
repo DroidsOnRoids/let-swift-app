@@ -57,7 +57,6 @@ final class SpeakerDetailsViewController: AppViewController {
     private func setup() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
-        tableView.setHeaderColor(.lightBlueGrey)
         tableView.registerCells(allCells)
         
         setupPullToRefresh()
@@ -65,19 +64,19 @@ final class SpeakerDetailsViewController: AppViewController {
     }
     
     private func setupPullToRefresh() {
-        tableView.addPullToRefresh { [weak self] in
-            self?.viewModel.refreshObservable.next()
-        }
+        tableView.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
         
-        sadFaceView.scrollView?.addPullToRefresh { [weak self] in
-            self?.viewModel.refreshObservable.next()
-        }
+        sadFaceView.scrollView?.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
         
         viewModel.refreshObservable.subscribeCompleted { [weak self] in
             self?.tableView.finishPullToRefresh()
             self?.sadFaceView.scrollView?.finishPullToRefresh()
         }
         .add(to: disposeBag)
+    }
+    
+    @objc private func pullToRefreshAction() {
+        viewModel.refreshObservable.next()
     }
     
     private func removeCell(of cellType: String) {
@@ -94,9 +93,9 @@ final class SpeakerDetailsViewController: AppViewController {
             
             if speaker?.talks.isEmpty ?? true {
                 self?.removeCell(of: SpeakerLecturesTableViewCell.cellIdentifier)
-                self?.tableView.setFooterColor(.white)
+                self?.tableView.backgroundColor = .white
             } else {
-                self?.tableView.setFooterColor(.paleGrey)
+                self?.tableView.backgroundColor = .paleGrey
             }
             
             self?.tableView.reloadData()
