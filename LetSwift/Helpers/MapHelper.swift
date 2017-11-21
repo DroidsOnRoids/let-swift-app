@@ -25,7 +25,7 @@ final class MapHelper {
     
     private init() {}
     
-    private static var mapLaunchOptions: [String : Any] {
+    private static var mapLaunchOptions: [String: Any] {
         if #available(iOS 10.0, *) {
             return [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
         } else {
@@ -34,7 +34,7 @@ final class MapHelper {
     }
     
     static func openMaps(withCoordinates coordinates: CLLocationCoordinate2D, name: String?) {
-        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinates, addressDictionary:nil))
+        let mapItem = MKMapItem(placemark: MKPlacemark(coordinate: coordinates, addressDictionary: nil))
         mapItem.name = name
         mapItem.openInMaps(launchOptions: mapLaunchOptions)
     }

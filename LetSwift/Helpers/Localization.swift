@@ -25,21 +25,21 @@ enum Language: String {
     case polish = "pl"
 }
 
-fileprivate enum LocalizationStrategy {
+private enum LocalizationStrategy {
     case automatic
     case forcedLanguage(Language)
 }
 
-fileprivate let localizationStrategy: LocalizationStrategy = appCompilationCondition == .debug ?
+private let localizationStrategy: LocalizationStrategy = appCompilationCondition == .debug ?
     .automatic : .forcedLanguage(.polish)
 
-fileprivate let fallbackLanguage: Language = .english
+private let fallbackLanguage: Language = .english
 
-fileprivate func localizeAutomatic(_ key: String) -> String {
+private func localizeAutomatic(_ key: String) -> String {
     return NSLocalizedString(key, comment: "")
 }
 
-fileprivate func localizeForced(_ key: String, forLanguage language: Language) -> String {
+private func localizeForced(_ key: String, forLanguage language: Language) -> String {
     guard let path = Bundle.main.path(forResource: language.rawValue, ofType: "lproj"),
         let bundle = Bundle(path: path) else { return key }
     

@@ -24,7 +24,7 @@ extension String {
     func replacePattern(_ pattern: String, with template: String) -> String {
         guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return self }
         
-        let range = NSRange(location: 0, length: characters.count)
+        let range = NSRange(location: 0, length: count)
         let replaced = regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: template)
         
         return replaced
@@ -33,7 +33,7 @@ extension String {
     func strippedPrefix(count: Int = 1) -> String {
         let stripIndex = index(startIndex, offsetBy: count)
         
-        return substring(from: stripIndex)
+        return String(self[stripIndex...])
     }
 }
 
@@ -101,7 +101,7 @@ struct HTMLOutputParser: MarkdownParser {
         let outLine = replaceLinks(line: line)
         
         for rule in HTMLOutputParser.parseRules where outLine.hasPrefix(rule.markdown) {
-            let strippedLine = outLine.strippedPrefix(count: rule.markdown.characters.count)
+            let strippedLine = outLine.strippedPrefix(count: rule.markdown.count)
             
             return padding + rule.opening + strippedLine + rule.closing
         }
@@ -145,7 +145,7 @@ struct PlistOutputParser: MarkdownParser {
         let newLine = "\n"
         
         for prefix in ["## ", "### "] where line.hasPrefix(prefix) {
-            return line.strippedPrefix(count: prefix.characters.count) + newLine
+            return line.strippedPrefix(count: prefix.count) + newLine
         }
         
         return line + newLine
