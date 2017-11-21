@@ -1092,10 +1092,10 @@
 		D39A733F1E9776D900F10620 = {
 			isa = PBXGroup;
 			children = (
-				C5A0D5FC67682B06B2AAF7D2 /* Frameworks */,
 				D39A734A1E9776D900F10620 /* LetSwift */,
 				D335210D1ECED328000666D4 /* LetSwiftTests */,
 				D3755BE31F29DDD60087651E /* LetSwiftUITests */,
+				C5A0D5FC67682B06B2AAF7D2 /* Frameworks */,
 				1A86DDB4F4F54CB551A9D401 /* Pods */,
 				D39A73491E9776D900F10620 /* Products */,
 			);
@@ -1853,7 +1853,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9f5b209a-bcec-4dc2-8683-7eb50ab20406";
 				PROVISIONING_PROFILE_SPECIFIER = "Let Swift App Store";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = AppStore;
@@ -1869,7 +1868,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
 			};
@@ -1886,7 +1884,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
 			};
@@ -1903,7 +1900,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LetSwift.app/LetSwift";
 			};
@@ -1918,7 +1914,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LetSwift;
 			};
@@ -1932,7 +1927,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LetSwift;
 			};
@@ -1946,7 +1940,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LetSwift;
 			};
@@ -2073,7 +2066,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = WILDCARD;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -2092,7 +2084,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LetSwiftApp InHouse";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;

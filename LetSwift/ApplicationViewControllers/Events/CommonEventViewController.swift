@@ -160,7 +160,7 @@ class CommonEventViewController: AppViewController {
             case .toShow:
                 guard !(self?.bindableCells.values.contains(.attend) ?? false) else { return }
 
-                self?.bindableCells.insert(.attend, at: 1, updated:  false)
+                self?.bindableCells.insert(.attend, at: 1, updated: false)
                 self?.tableView.beginUpdates()
                 self?.tableView.insertRows(at: [IndexPath(row: 1, section: 0)], with: .fade)
                 self?.tableView.endUpdates()

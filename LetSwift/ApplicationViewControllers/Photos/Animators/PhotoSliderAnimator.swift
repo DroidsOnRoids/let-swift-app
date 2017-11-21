@@ -85,9 +85,9 @@ final class PhotoSliderAnimator {
             self.delegate?.progressDismissing()
             self.view.backgroundColor = .clear
             self.view.layoutIfNeeded()
-        }) { _ in
+        }, completion: { _ in
             self.delegate?.finishDismissing()
-        }
+        })
     }
     
     private func animateToRestore() {
