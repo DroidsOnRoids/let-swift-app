@@ -21,15 +21,17 @@
 import UIKit
 
 extension UIScrollView {
-    func addPullToRefresh(callback: @escaping () -> ()) {
-        es.addPullToRefresh(animator: PullToRefreshAnimator(), handler: callback)
+    func addPullToRefresh(object: Any, action: Selector) {
+        refreshControl = UIRefreshControl()
+        refreshControl?.addTarget(object, action: action, for: .valueChanged)
     }
 
     func removePullToRefresh() {
-        es.removeRefreshHeader()
+        refreshControl = nil
     }
     
     func finishPullToRefresh() {
-        es.stopPullToRefresh(ignoreDate: true, ignoreFooter: true)
+        refreshControl?.endRefreshing()
     }
+    
 }

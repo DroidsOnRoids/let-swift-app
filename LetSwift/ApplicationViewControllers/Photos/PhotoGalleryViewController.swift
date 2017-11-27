@@ -70,14 +70,16 @@ final class PhotoGalleryViewController: AppViewController {
     }
     
     private func setupPullToRefresh() {
-        collectionView.addPullToRefresh { [weak self] in
-            self?.viewModel.photosRefreshObservable.next()
-        }
+        collectionView.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
         
         viewModel.photosRefreshObservable.subscribeCompleted { [weak self] in
             self?.collectionView.finishPullToRefresh()
         }
         .add(to: disposeBag)
+    }
+    
+    @objc private func pullToRefreshAction() {
+        viewModel.photosRefreshObservable.next()
     }
     
     private func reactiveSetup() {

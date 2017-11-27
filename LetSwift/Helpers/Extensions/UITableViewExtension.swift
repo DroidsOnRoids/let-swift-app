@@ -19,7 +19,6 @@
 //
 
 import UIKit
-import ESPullToRefresh
 
 extension UITableView: NibPresentable {
     func item<Cell: UITableViewCell, T, S: Sequence>(with identifier: String, cellType: Cell.Type = Cell.self)
