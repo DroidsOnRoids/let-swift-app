@@ -36,10 +36,10 @@ let appCompilationCondition: AppCompilationConditions = .release
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
     
-    private var appCoordinator: AppCoordinator!
+    var window: UIWindow? = UIWindow()
+    
+    private lazy var appCoordinator = AppCoordinator(window: self.window)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupNetworkIndicator()
@@ -57,14 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 #endif
         
-        let navigationController = UINavigationController()
-        appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator.start()
-        
-        window = UIWindow()
-        window?.tintColor = .swiftOrange
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
 
         return true
     }

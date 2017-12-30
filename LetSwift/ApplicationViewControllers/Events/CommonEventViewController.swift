@@ -105,7 +105,7 @@ class CommonEventViewController: AppViewController {
     
     private func reactiveSetup() {
         viewModel.loginScreenObservable.subscribeNext { [weak self] in
-            self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+            self?.coordinatorDelegate?.presentLoginViewController()
         }
         .add(to: disposeBag)
         

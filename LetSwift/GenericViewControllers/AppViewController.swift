@@ -68,7 +68,7 @@ class AppViewController: UIViewController {
             
             popover.setupPopover(anchor: anchor, title: localized("GENERAL_LOGOUT"), arrowPosition: 0.9, action: #selector(logOutTapped)).presentPopover(on: self)
         } else {
-            coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+            coordinatorDelegate?.presentLoginViewController()
         }
     }
 }

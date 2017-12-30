@@ -20,20 +20,20 @@
 
 import UIKit
 
-final class ContactCoordinator: Coordinator, Startable {
+final class ContactCoordinator: Startable, Navigable {
 
-    fileprivate weak var delegate: AppCoordinatorDelegate?
+    private weak var delegate: AppCoordinatorDelegate?
+    
+    let navigationController = UINavigationController()
 
-    init(navigationController: UINavigationController = UINavigationController(), delegate: AppCoordinatorDelegate) {
+    init(delegate: AppCoordinatorDelegate?) {
         self.delegate = delegate
-
-        super.init(navigationController: navigationController)
     }
     
     func start() {
         let controller = ContactViewController(viewModel: ContactViewControllerViewModel())
         controller.coordinatorDelegate = delegate
 
-        navigationViewController.viewControllers = [controller]
+        navigationController.viewControllers = [controller]
     }
 }

@@ -1,8 +1,8 @@
 //
-//  Coordinator.swift
+//  Navigable.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki, Kinga Wilczek on 13.04.2017.
+//  Created by Marcin Chojnacki on 30.12.2017.
 //  Copyright © 2017 Droids On Roids. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,12 +20,6 @@
 
 import UIKit
 
-class Coordinator {
-    
-    var childCoordinators = [Coordinator]()
-    let navigationViewController: UINavigationController
-    
-    init(navigationController: UINavigationController) {
-        self.navigationViewController = navigationController
-    }
+protocol Navigable {
+    var navigationController: UINavigationController { get }
 }

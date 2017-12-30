@@ -25,18 +25,18 @@ protocol SpeakerLectureFlowDelegate: class {
     func presentLectureScreen(with talk: Talk)
 }
 
-extension SpeakerLectureFlowDelegate where Self: Coordinator {
+extension SpeakerLectureFlowDelegate where Self: Navigable {
     func presentSpeakerDetailsScreen(with id: Int) {
         let viewModel = SpeakerDetailsViewControllerViewModel(with: id, delegate: self)
         let viewController = SpeakerDetailsViewController(viewModel: viewModel)
         
-        navigationViewController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func presentLectureScreen(with talk: Talk) {
         let viewModel = LectureViewControllerViewModel(with: talk, delegate: self)
         let viewController = LectureViewController(viewModel: viewModel)
         
-        navigationViewController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
