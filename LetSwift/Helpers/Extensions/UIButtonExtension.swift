@@ -21,18 +21,6 @@
 import UIKit
 
 extension UIButton {
-    private enum Constants {
-        static let minimumHitArea = CGSize(width: 50, height: 50)
-    }
-    
-    open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
-        let widthToAdd = max(Constants.minimumHitArea.width - bounds.width, 0)
-        let heightToAdd = max(Constants.minimumHitArea.height - bounds.height, 0)
-        let largerFrame = bounds.insetBy(dx: -widthToAdd / 2, dy: -heightToAdd / 2)
-        
-        return largerFrame.contains(point) ? self : nil
-    }
-
     func showSpinner(_ shouldShow: Bool) {
         if shouldShow {
             setImage(UIImage(), for: [])

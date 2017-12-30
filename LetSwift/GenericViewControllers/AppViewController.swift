@@ -48,11 +48,10 @@ class AppViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         if shouldShowUserIcon {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: nil)
-            navigationItem.rightBarButtonItem?.tintColor = .black
+            let userIcon = UIBarButtonItem(image: #imageLiteral(resourceName: "UserIcon"), style: .plain, target: self, action: #selector(userIconTapped))
+            userIcon.tintColor = .black
             
-            navigationItem.rightBarButtonItem?.target = self
-            navigationItem.rightBarButtonItem?.action = #selector(userIconTapped(_:))
+            navigationItem.rightBarButtonItem = userIcon
         }
     }
     
