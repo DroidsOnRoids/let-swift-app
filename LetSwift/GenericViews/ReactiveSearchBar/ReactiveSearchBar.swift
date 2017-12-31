@@ -43,11 +43,7 @@ final class ReactiveSearchBar: UISearchBar {
 
     private func setup() {
         delegate = self
-
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.paleGrey.cgColor
-        layer.zPosition = 1
-        placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
+        
         tintColor = .bluishGrey
     }
 
