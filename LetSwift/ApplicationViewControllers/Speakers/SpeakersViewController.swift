@@ -40,7 +40,10 @@ final class SpeakersViewController: AppViewController {
     }
 
     @IBOutlet private weak var tableView: AppTableView!
-    @IBOutlet private weak var searchBar: ReactiveSearchBar!
+    
+    private var searchBar: ReactiveSearchBar {
+        return navigationItem.searchController!.searchBar as! ReactiveSearchBar
+    }
 
     private let sadFaceView = SadFaceView()
     private let spinnerView = SpinnerView()
@@ -71,6 +74,7 @@ final class SpeakersViewController: AppViewController {
         tableView.estimatedRowHeight = 60.0
         
         let headerView = LatestSpeakersHeaderView()
+        headerView.backgroundColor = .white
         headerView.viewModel = viewModel
         headerView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerView
@@ -81,6 +85,13 @@ final class SpeakersViewController: AppViewController {
         headerView.addSubview(colorView)
 
         tableView.registerCells([SpeakersTableViewCell.cellIdentifier])
+        
+        let searchController = ReactiveUISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = localized("SPEAKERS_SEARCH_PLACEHOLDER")
+        
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
 
         setupPullToRefresh()
         reactiveSetup()
@@ -112,11 +123,6 @@ final class SpeakersViewController: AppViewController {
         let spinner = SpinnerView(frame: footerFrame)
         spinner.image = #imageLiteral(resourceName: "GreyLoader")
         tableView.tableFooterView = spinner
-    }
-    
-    private func collapseHeaderView() {
-        tableView.tableHeaderView?.transform = CGAffineTransform(scaleX: 1.0, y: 0.001)
-        tableView.tableHeaderView?.isHidden = true
     }
     
     private func reactiveSetup() {
@@ -172,19 +178,7 @@ final class SpeakersViewController: AppViewController {
 
     private func reactiveSearchBarSetup() {
         searchBar.searchBarWillStartEditingObservable.subscribeNext { [weak self] in
-            if self?.tableView.isTableHeaderViewVisible ?? false {
-                UIView.animate(withDuration: 0.25, animations: {
-                    self?.tableView.tableHeaderView?.alpha = 0.0
-                }, completion: { _ in
-                    self?.collapseHeaderView()
-                    self?.tableView.beginUpdates()
-                    self?.tableView.endUpdates()
-                })
-            } else {
-                self?.tableView.reloadData()
-                self?.tableView.tableHeaderView?.alpha = 0.0
-                self?.collapseHeaderView() 
-            }
+            self?.tableView.reloadData()
         }
         .add(to: disposeBag)
 
@@ -258,13 +252,8 @@ final class SpeakersViewController: AppViewController {
         viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
             guard let weakSelf = self else { return }
 
-            DispatchQueue.once(token: Constants.offsetToken) {
-                weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
-            }
-
             switch state {
             case .content:
-                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
                 weakSelf.tableView.overlayView = nil
             case .error:
                 if !(weakSelf.tableView.overlayView is SadFaceView) {
@@ -306,4 +295,14 @@ final class SpeakersViewController: AppViewController {
             tableView.scrollToTop()
         }
     }
+
+}
+
+final class ReactiveUISearchController: UISearchController {
+    let reactiveSearchBar = ReactiveSearchBar()
+
+    override var searchBar: UISearchBar {
+        return reactiveSearchBar
+    }
+    
 }

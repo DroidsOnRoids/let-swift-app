@@ -1847,7 +1847,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Droids on Roids Sp. z o.o. (27FAFL2WP5)";
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2061,7 +2061,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2079,7 +2079,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Droids On Roids Sp. z o.o.";
 				DEVELOPMENT_TEAM = URYNPG7RQE;
 				INFOPLIST_FILE = LetSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
