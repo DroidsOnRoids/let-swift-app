@@ -29,6 +29,7 @@ final class PhotoSliderViewController: UIViewController {
     
     @IBOutlet fileprivate weak var navbarView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var statusBarTopConstraint: NSLayoutConstraint!
     
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
@@ -96,6 +97,7 @@ final class PhotoSliderViewController: UIViewController {
         let initialViewController = singlePhotoViewControllers[viewModel.photoSelectedObservable.value]
         setupPageViewController(initialViewController: initialViewController)
         
+        statusBarTopConstraint.constant = UIApplication.shared.statusBarFrame.height
         view.bringSubview(toFront: navbarView)
         
         setupGestureRecognizers()

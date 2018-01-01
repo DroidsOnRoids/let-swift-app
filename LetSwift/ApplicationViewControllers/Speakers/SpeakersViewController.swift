@@ -40,7 +40,8 @@ final class SpeakersViewController: AppViewController {
 
     @IBOutlet private weak var tableView: AppTableView!
     @IBOutlet private weak var searchBar: ReactiveSearchBar!
-
+    @IBOutlet private weak var topConstraint: NSLayoutConstraint!
+    
     private let sadFaceView = SadFaceView()
     private let spinnerView = SpinnerView()
     private let disposeBag = DisposeBag()
@@ -73,6 +74,10 @@ final class SpeakersViewController: AppViewController {
     
     private func setup() {
         showSpinner()
+        
+        if let navigationBarHeight = navigationController?.navigationBar.frame.maxY {
+            topConstraint.constant = navigationBarHeight
+        }
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0

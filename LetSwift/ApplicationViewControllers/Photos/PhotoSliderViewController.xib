@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoSliderViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
                 <outlet property="navbarView" destination="ZRW-7C-C9s" id="VpL-kY-aCM"/>
+                <outlet property="statusBarTopConstraint" destination="a2z-DO-Sd4" id="xrE-Bt-s6s"/>
                 <outlet property="titleLabel" destination="bg0-cJ-ZzT" id="aCz-sI-xjW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -26,6 +27,9 @@
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 7" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg0-cJ-ZzT">
                             <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="2i0-0c-g8b"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -50,7 +54,6 @@
                         <constraint firstAttribute="bottom" secondItem="bg0-cJ-ZzT" secondAttribute="bottom" id="Zed-cv-DAL"/>
                         <constraint firstItem="bg0-cJ-ZzT" firstAttribute="top" secondItem="ZRW-7C-C9s" secondAttribute="top" constant="20" id="a2z-DO-Sd4"/>
                         <constraint firstItem="ufV-P7-qN4" firstAttribute="leading" secondItem="ZRW-7C-C9s" secondAttribute="leading" constant="8" id="iIb-JC-BXg"/>
-                        <constraint firstAttribute="height" constant="64" id="u5n-er-x16"/>
                     </constraints>
                 </view>
             </subviews>
