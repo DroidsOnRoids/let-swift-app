@@ -23,7 +23,6 @@ import UIKit
 final class SpeakersViewController: AppViewController {
 
     private enum Constants {
-        static let offsetToken = "OffsetToken"
         static let headerOffset: CGFloat = 1000.0
     }
 
@@ -46,6 +45,7 @@ final class SpeakersViewController: AppViewController {
     private let spinnerView = SpinnerView()
     private let disposeBag = DisposeBag()
     private var viewModel: SpeakersViewControllerViewModel!
+    private var isContentInsetAdjusted = false
 
     convenience init(viewModel: SpeakersViewControllerViewModel) {
         self.init()
@@ -56,6 +56,13 @@ final class SpeakersViewController: AppViewController {
         super.viewDidLoad()
 
         setup()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        if !isContentInsetAdjusted {
+            tableView.contentInset.top += searchBar.bounds.height
+            isContentInsetAdjusted = true
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -258,13 +265,8 @@ final class SpeakersViewController: AppViewController {
         viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
             guard let weakSelf = self else { return }
 
-            DispatchQueue.once(token: Constants.offsetToken) {
-                weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
-            }
-
             switch state {
             case .content:
-                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
                 weakSelf.tableView.overlayView = nil
             case .error:
                 if !(weakSelf.tableView.overlayView is SadFaceView) {
