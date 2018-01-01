@@ -22,9 +22,6 @@ import UIKit
 import FBSDKCoreKit
 import SDWebImage
 import AlamofireNetworkActivityIndicator
-#if DEBUG
-import SimulatorStatusMagic
-#endif
 
 #if DEBUG
 let appCompilationCondition: AppCompilationConditions = .debug
@@ -50,12 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .application(application, didFinishLaunchingWithOptions: launchOptions)
         
         SDWebImageManager.shared().imageCache?.clearDisk()
-        
-#if DEBUG
-        if UIApplication.isInTestMode {
-            SDStatusBarManager.sharedInstance().enableOverrides()
-        }
-#endif
         
         appCoordinator.start()
 

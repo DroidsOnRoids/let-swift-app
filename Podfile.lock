@@ -1,20 +1,20 @@
 PODS:
-  - Alamofire (4.5.1)
+  - Alamofire (4.6.0)
   - AlamofireNetworkActivityIndicator (2.2.0):
     - Alamofire (~> 4.5)
-  - Bolts (1.8.4):
-    - Bolts/AppLinks (= 1.8.4)
-    - Bolts/Tasks (= 1.8.4)
-  - Bolts/AppLinks (1.8.4):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.8.4)
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.9.3):
     - Fabric (~> 1.7.2)
   - DACircularProgress (2.3.1)
   - Fabric (1.7.2)
-  - FBSDKCoreKit (4.28.0):
+  - FBSDKCoreKit (4.29.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.28.0):
+  - FBSDKLoginKit (4.29.0):
     - FBSDKCoreKit
   - HockeySDK (4.1.6):
     - HockeySDK/DefaultLib (= 4.1.6)
@@ -24,7 +24,6 @@ PODS:
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
-  - SimulatorStatusMagic (1.9.5)
   - SwiftLint (0.24.0)
 
 DEPENDENCIES:
@@ -39,25 +38,23 @@ DEPENDENCIES:
   - ImageEffects (~> 1.0)
   - ModelMapper (~> 6.0)
   - SDWebImage (~> 4.0)
-  - SimulatorStatusMagic (~> 1.9)
   - SwiftLint (~> 0.20)
 
 SPEC CHECKSUMS:
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireNetworkActivityIndicator: 81e1630e7cfed22a4e4e82a174c59e651dc4f8ca
-  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: dbb07d01876c171c5ccbdf7826410380189e452c
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   Fabric: 9cd6a848efcf1b8b07497e0b6a2e7d336353ba15
-  FBSDKCoreKit: ca961e279113f691fd83dc634c0bbad9d4e3f370
-  FBSDKLoginKit: b077381c27d800f21661757e8140cf2c80a91e4a
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   HockeySDK: 95db557d54489a570dcdefae0d02f98eecc279a3
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   ModelMapper: 3596a82f26c43491f6a8d3a00bcdba6ba0e62a93
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  SimulatorStatusMagic: b3b4c5c49a07e8b1c452cc0327275e267a865fea
   SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
 
-PODFILE CHECKSUM: bb0fd2dc96860d5122d0430e447e9b82bcccd04b
+PODFILE CHECKSUM: 57617fe36192d903fd87685a403f06be6ab6af94
 
 COCOAPODS: 1.3.1
