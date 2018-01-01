@@ -138,7 +138,9 @@ final class SinglePhotoViewController: UIViewController {
         contentState = .loading
         SDWebImageManager.shared().loadImage(with: photo?.big, options: [], progress: { [weak self] received, expected, _ in
             let progress = CGFloat(received) / CGFloat(expected)
-            self?.spinnerView.progress = progress
+            DispatchQueue.main.async {
+                self?.spinnerView.progress = progress
+            }
         }, completed: { [weak self] image, _, _, _, _, _ in
             if let image = image {
                 self?.photoView.image = image
