@@ -65,7 +65,9 @@ final class PreviousEventsListTableViewCell: UITableViewCell, Localizable {
     }
     
     func setupLocalization() {
-        previousTitleLabel.text = localized("EVENTS_PREVIOUS").uppercased()
+        previousTitleLabel.text = localized("EVENTS_PREVIOUS")
+            .replacingPlaceholders(with: EventBranding.current.name)
+            .uppercased()
     }
 
     private func reactiveSetup() {

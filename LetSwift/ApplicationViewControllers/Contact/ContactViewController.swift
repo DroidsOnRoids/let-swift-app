@@ -85,6 +85,8 @@ final class ContactViewController: AppViewController {
     
     private func setupViews() {
         containerView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 16.0).isActive = true
+        
+        sendButton.backgroundColor = EventBranding.current.color
 
         topicButton.associatedErrorView = topicErrorLabel
         nameTextField.associatedErrorView = nameErrorLabel
@@ -178,7 +180,7 @@ final class ContactViewController: AppViewController {
                 self?.sendButton.backgroundColor = .lightBlueGrey
             } else {
                 self?.sendButton.setTitle(localized("CONTACT_SEND").uppercased(), for: [])
-                self?.sendButton.backgroundColor = .swiftOrange
+                self?.sendButton.backgroundColor = EventBranding.current.color
             }
         }
         .add(to: disposeBag)

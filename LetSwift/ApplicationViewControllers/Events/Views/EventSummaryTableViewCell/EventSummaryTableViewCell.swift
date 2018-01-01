@@ -35,15 +35,6 @@ final class EventSummaryTableViewCell: AppTableViewCell {
         }
     }
     
-    var eventDescription: String? {
-        get {
-            return eventDescriptionLabel.text
-        }
-        set {
-            eventDescriptionLabel.text = newValue
-        }
-    }
-    
     var isClickable: Bool {
         get {
             return selectionStyle != .none
@@ -52,5 +43,16 @@ final class EventSummaryTableViewCell: AppTableViewCell {
             selectionStyle = newValue ? .default : .none
             indicatorView.isHidden = !newValue
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        setup()
+    }
+    
+    private func setup() {
+        eventTitleLabel.textColor = EventBranding.current.color
+        eventDescriptionLabel.text = EventBranding.current.description
     }
 }

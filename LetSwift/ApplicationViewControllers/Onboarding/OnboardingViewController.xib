@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
                 <outlet property="continueButton" destination="f9A-tk-41g" id="2TZ-fH-zwD"/>
+                <outlet property="eventNameLabel" destination="xd8-lj-byD" id="Ie0-Kz-NOX"/>
                 <outlet property="onboardingImageView" destination="R0f-mr-ihr" id="XXY-R2-hGx"/>
                 <outlet property="onboardingPageControl" destination="fF2-0z-4jP" id="Peu-NH-6W4"/>
                 <outlet property="scrollView" destination="FFj-cd-Xx2" id="yfX-8t-AXH"/>

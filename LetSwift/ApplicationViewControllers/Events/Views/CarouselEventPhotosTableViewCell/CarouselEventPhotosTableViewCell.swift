@@ -81,6 +81,7 @@ final class CarouselEventPhotosTableViewCell: UITableViewCell {
         scrollView.delegate = self
         
         pageControl.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        pageControl.currentPageIndicatorTintColor = EventBranding.current.color
         
         placeholderView.contentMode = .scaleAspectFill
         placeholderView.clipsToBounds = true

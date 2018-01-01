@@ -7,12 +7,11 @@
 "ONBOARDING_CONTINUE" = "Kontynuuj";
 "ONBOARDING_FINISH" = "Wszystko jasne!";
 "ONBOARDING_MEETUPS_TITLE" = "Comiesięczne spotkania";
-"ONBOARDING_MEETUPS_DESCRIPTION" = "let Swift to cykliczne spotkania społeczności developerskiej iOS we Wrocławiu";
+"ONBOARDING_MEETUPS_DESCRIPTION" = "{0} to cykliczne spotkania społeczności developerskiej {1} we Wrocławiu";
 "ONBOARDING_SPEAKERS_TITLE" = "Doskonali mówcy";
 "ONBOARDING_SPEAKERS_DESCRIPTION" = "Co miesiąc gościmy prelegentów z całej Polski";
 "ONBOARDING_PRICE_TITLE" = "W pełni darmowe";
 "ONBOARDING_PRICE_DESCRIPTION" = "Darmowy wstęp, konkursy, nagrody i legendarne afterparty";
-"LOGIN_SUBTITLE" = "iOS Developers Meet-up";
 "LOGIN_PURPOSE_DESCRIPTION" = "Zaloguj przez Facebooka,\nby uzyskać pełny dostęp.";
 "LOGIN_BUTTON_TITLE" = "Logowanie";
 "LOGIN_SKIP_BUTTON_TITLE" = "Pomiń logowanie";

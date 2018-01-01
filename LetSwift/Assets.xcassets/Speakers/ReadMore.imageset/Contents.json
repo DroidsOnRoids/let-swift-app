@@ -6,7 +6,10 @@
     }
   ],
   "info" : {
-    "author" : "zeplin",
-    "version" : "1"
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
   }
 }
