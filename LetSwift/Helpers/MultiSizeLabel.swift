@@ -20,7 +20,7 @@
 
 import UIKit
 
-class MultiSizeLabel: UILabel {
+final class MultiSizeLabel: UILabel {
     
     @IBInspectable
     var inch3¨5: CGFloat = 0.0 {
@@ -54,6 +54,15 @@ class MultiSizeLabel: UILabel {
         didSet {
             if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch5¨5 {
                 font = font.withSize(inch5¨5)
+            }
+        }
+    }
+    
+    @IBInspectable
+    var inch5¨8: CGFloat = 0.0 {
+        didSet {
+            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch5¨8 {
+                font = font.withSize(inch5¨8)
             }
         }
     }

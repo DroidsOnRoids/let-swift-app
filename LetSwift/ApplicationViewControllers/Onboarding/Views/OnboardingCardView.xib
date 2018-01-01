@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,12 +29,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
                             <real key="value" value="15"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
                             <real key="value" value="19"/>
                         </userDefinedRuntimeAttribute>
@@ -47,12 +42,6 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
                             <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="15"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="15"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
                             <real key="value" value="13"/>
@@ -70,12 +59,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
                             <real key="value" value="285"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="339"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="339"/>
-                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </constraint>
                 <constraint firstItem="Tns-4T-KVA" firstAttribute="top" secondItem="V43-ac-z18" secondAttribute="bottom" constant="8" id="QB8-pN-bzO"/>
@@ -88,9 +71,6 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
                             <real key="value" value="12"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="32"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
                             <real key="value" value="52"/>
                         </userDefinedRuntimeAttribute>
@@ -100,9 +80,6 @@
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
                             <real key="value" value="52"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="32"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
                             <real key="value" value="12"/>
