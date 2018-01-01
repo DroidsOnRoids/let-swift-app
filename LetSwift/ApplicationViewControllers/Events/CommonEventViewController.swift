@@ -91,10 +91,10 @@ class CommonEventViewController: AppViewController {
         sadFaceView.scrollView?.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
         
         refreshObservable?.subscribeCompleted { [weak self] in
+            self?.tableView.reloadData()
+            
             self?.tableView.finishPullToRefresh()
             self?.sadFaceView.scrollView?.finishPullToRefresh()
-
-            self?.tableView.reloadData()
         }
         .add(to: disposeBag)
     }
