@@ -20,7 +20,7 @@
 
 import UIKit
 
-class MultiSizeConstraint: NSLayoutConstraint {
+final class MultiSizeConstraint: NSLayoutConstraint {
     
     @IBInspectable
     var inch3¨5: CGFloat = 0.0 {
@@ -58,4 +58,12 @@ class MultiSizeConstraint: NSLayoutConstraint {
         }
     }
     
+    @IBInspectable
+    var inch5¨8: CGFloat = 0.0 {
+        didSet {
+            if DeviceScreenHeight.deviceHeight == DeviceScreenHeight.inch5¨8 {
+                constant = inch5¨8
+            }
+        }
+    }
 }
