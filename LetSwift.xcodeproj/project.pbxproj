@@ -730,8 +730,6 @@
 		7EECA5AA1E9B5EC500B3F724 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				D3FF3F931E9F5DD200501F44 /* Extensions */,
-				D33521161ECED8DA000666D4 /* MapperExtensions */,
 				D3AE288A1ECD9DE200F29702 /* Observable */,
 				7E02FE6A1EBB17C4005DADCB /* Reactive */,
 				D3AE28931ECDA3EC00F29702 /* Accumulator.swift */,
@@ -1117,6 +1115,7 @@
 				7EECA5A11E9B52C400B3F724 /* ApplicationViewControllers */,
 				7EECA5A31E9B572500B3F724 /* Coordinators */,
 				7EECA5A71E9B5E8600B3F724 /* Enums */,
+				D3FF3F931E9F5DD200501F44 /* Extensions */,
 				7EECA5A81E9B5E9B00B3F724 /* GenericViewControllers */,
 				7EECA5A91E9B5EB300B3F724 /* GenericViews */,
 				7EECA5AA1E9B5EC500B3F724 /* Helpers */,
@@ -1238,6 +1237,7 @@
 		D3FF3F931E9F5DD200501F44 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D33521161ECED8DA000666D4 /* MapperExtensions */,
 				D319AD841EA62487001ECE0B /* ArrayExtension.swift */,
 				D3B8109C1EFA6D1100604CC3 /* CGRectExtension.swift */,
 				7E0842CA1ECAE47B003F7C96 /* DateExtension.swift */,
