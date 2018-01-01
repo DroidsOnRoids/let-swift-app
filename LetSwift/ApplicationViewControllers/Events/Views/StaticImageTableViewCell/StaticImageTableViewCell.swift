@@ -41,6 +41,5 @@ final class StaticImageTableViewCell: UITableViewCell {
     
     private func setup() {
         removeSeparators()
-        reflectiveImageView.addParallax()
     }
 }
