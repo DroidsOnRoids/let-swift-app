@@ -27,15 +27,15 @@ final class PhotoSliderViewController: UIViewController {
         static let panThreshold: CGFloat = 250.0
     }
     
-    @IBOutlet fileprivate weak var navbarView: UIView!
+    @IBOutlet private weak var navbarView: UIView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var statusBarTopConstraint: NSLayoutConstraint!
     
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
-    fileprivate var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey: 32])
+    private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey: 32])
     
-    fileprivate var isNavbarHidden = false {
+    private var isNavbarHidden = false {
         didSet {
             UIView.animate(withDuration: Constants.animationDuration) {
                 self.navbarView.alpha = self.isNavbarHidden ? 0.0 : 1.0
@@ -43,19 +43,19 @@ final class PhotoSliderViewController: UIViewController {
         }
     }
     
-    fileprivate var isStatusBarHidden = false {
+    private var isStatusBarHidden = false {
         didSet {
             setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    fileprivate var currentViewController: SinglePhotoViewController? {
+    private var currentViewController: SinglePhotoViewController? {
         return pageViewController.viewControllers?.first as? SinglePhotoViewController
     }
     
-    fileprivate var targetFrameClousure: (() -> CGRect)?
-    fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
-    fileprivate var singlePhotoViewControllers: [SinglePhotoViewController]!
+    private var targetFrameClousure: (() -> CGRect)?
+    private var viewModel: PhotoGalleryViewControllerViewModel!
+    private var singlePhotoViewControllers: [SinglePhotoViewController]!
     
     private var animator: PhotoSliderAnimator!
     private var panRecognizer: UIPanGestureRecognizer!
@@ -169,7 +169,7 @@ final class PhotoSliderViewController: UIViewController {
         }
     }
     
-    fileprivate func setFirstViewController(scaleToFill: Bool) {
+    private func setFirstViewController(scaleToFill: Bool) {
         currentViewController?.scaleToFill = scaleToFill
     }
 }

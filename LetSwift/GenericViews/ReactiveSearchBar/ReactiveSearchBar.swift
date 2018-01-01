@@ -27,7 +27,7 @@ final class ReactiveSearchBar: UISearchBar {
     var searchBarWillStartEditingObservable = Observable<Void>()
     var searchBarTextDidChangeObservable = Observable<String>("")
 
-    fileprivate lazy var textDidChangeDebouncer: Debouncer = Debouncer(delay: 0.3, callback: self.textDidChange)
+    private lazy var textDidChangeDebouncer = Debouncer(delay: 0.3, callback: self.textDidChange)
 
     override init(frame: CGRect) {
         super.init(frame: frame)

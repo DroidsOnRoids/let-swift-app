@@ -43,7 +43,7 @@ class CommonEventViewController: AppViewController {
         return nil
     }
 
-    lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
+    lazy var bindableCells = self.allCells.bindable
     
     override var nibName: String? {
         return String(describing: CommonEventViewController.self)

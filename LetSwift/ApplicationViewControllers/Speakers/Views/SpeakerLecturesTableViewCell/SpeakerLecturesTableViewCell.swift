@@ -22,7 +22,7 @@ import UIKit
 
 final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
     
-    fileprivate enum Constants {
+    private enum Constants {
         static let singleCardWidth: CGFloat = 16.0
         static let multipleCardWidth: CGFloat = 30.0
     }
@@ -31,7 +31,7 @@ final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
     
     var lectureDetailsObservable = Observable<Int?>(nil)
     
-    @IBOutlet fileprivate weak var titleLabel: AppLabel!
+    @IBOutlet private weak var titleLabel: AppLabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     
     private let disposeBag = DisposeBag()

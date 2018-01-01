@@ -28,10 +28,10 @@ protocol LoginViewControllerDelegate: class {
 final class LoginViewController: UIViewController {
 
     @IBOutlet private weak var animatedGreetingLabel: UILabel!
-    @IBOutlet fileprivate weak var facebookButton: UIButton!
-    @IBOutlet fileprivate weak var loginPurposeDescriptionLabel: UILabel!
-    @IBOutlet fileprivate weak var loginSubtitleLabel: MultiSizeLabel!
-    @IBOutlet fileprivate weak var skipLoginButton: UIButton!
+    @IBOutlet private weak var facebookButton: UIButton!
+    @IBOutlet private weak var loginPurposeDescriptionLabel: UILabel!
+    @IBOutlet private weak var loginSubtitleLabel: MultiSizeLabel!
+    @IBOutlet private weak var skipLoginButton: UIButton!
     
     private let disposeBag = DisposeBag()
     

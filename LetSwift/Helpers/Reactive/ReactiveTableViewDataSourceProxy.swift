@@ -26,7 +26,7 @@ final class ReactiveTableViewDataSourceProxy: NSObject, UITableViewDataSource {
         static let delegateAssociatedTag = UnsafeRawPointer(UnsafeMutablePointer<UInt8>.allocate(capacity: 1))
     }
 
-    fileprivate var dataSourceMethods: UITableViewDataSource?
+    private var dataSourceMethods: UITableViewDataSource?
 
     class func assignedProxyFor(_ object: AnyObject) -> ReactiveTableViewDataSourceProxy? {
         return objc_getAssociatedObject(object, Constants.delegateAssociatedTag) as? ReactiveTableViewDataSourceProxy

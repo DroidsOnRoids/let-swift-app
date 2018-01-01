@@ -23,7 +23,7 @@ import UIKit
 final class SpeakersToBeAnnouncedTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var labelBackgroundView: UIView!
-    @IBOutlet fileprivate weak var descriptionLabel: AppLabel!
+    @IBOutlet private weak var descriptionLabel: AppLabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

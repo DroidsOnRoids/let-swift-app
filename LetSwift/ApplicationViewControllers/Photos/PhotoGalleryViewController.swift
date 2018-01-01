@@ -28,7 +28,7 @@ final class PhotoGalleryViewController: AppViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     
-    fileprivate var viewModel: PhotoGalleryViewControllerViewModel!
+    private var viewModel: PhotoGalleryViewControllerViewModel!
     
     private let disposeBag = DisposeBag()
     
@@ -40,7 +40,7 @@ final class PhotoGalleryViewController: AppViewController {
         return true
     }
 
-    fileprivate var columnNumber: Int {
+    private var columnNumber: Int {
         return DeviceScreenHeight.deviceHeight > DeviceScreenHeight.inch4¨7 ? 3 : 2
     }
     

@@ -44,7 +44,7 @@ final class ContactTextView: UITextView, ContactFieldProtocol {
         }
     }
     
-    fileprivate let placeholderLabel = UILabel()
+    private let placeholderLabel = UILabel()
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)

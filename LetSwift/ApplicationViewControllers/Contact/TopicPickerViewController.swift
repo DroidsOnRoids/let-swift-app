@@ -31,8 +31,8 @@ class TopicPickerViewController: UIViewController {
     
     @IBOutlet private weak var cancelView: UIView!
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet fileprivate weak var titleLabel: UILabel!
-    @IBOutlet fileprivate weak var doneButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var doneButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
     
     private var items: [String]?

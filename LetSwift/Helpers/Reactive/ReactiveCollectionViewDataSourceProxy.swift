@@ -26,7 +26,7 @@ final class ReactiveCollectionViewDataSourceProxy: NSObject, UICollectionViewDat
         static let delegateAssociatedTag = UnsafeRawPointer(UnsafeMutablePointer<UInt8>.allocate(capacity: 1))
     }
 
-    fileprivate var dataSourceMethods: UICollectionViewDataSource?
+    private var dataSourceMethods: UICollectionViewDataSource?
 
     class func assignedProxyFor(_ object: AnyObject) -> ReactiveCollectionViewDataSourceProxy? {
         return objc_getAssociatedObject(object, Constants.delegateAssociatedTag) as? ReactiveCollectionViewDataSourceProxy
