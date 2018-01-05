@@ -21,17 +21,22 @@
 import UIKit
 
 extension UIScrollView {
-    func addPullToRefresh(object: Any, action: Selector) {
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(object, action: action, for: .valueChanged)
+    func addPullToRefresh(object: Any?, action: Selector) {
+        let pullToRefresh = UIRefreshControl()
+        pullToRefresh.addTarget(object, action: action, for: .valueChanged)
+        
+        addSubview(pullToRefresh)
     }
 
     func removePullToRefresh() {
-        refreshControl = nil
+        refreshControlSubview?.removeFromSuperview()
     }
     
     func finishPullToRefresh() {
-        refreshControl?.endRefreshing()
+        refreshControlSubview?.endRefreshing()
     }
     
+    private var refreshControlSubview: UIRefreshControl? {
+        return subviews.first(where: { $0 is UIRefreshControl }) as? UIRefreshControl
+    }
 }

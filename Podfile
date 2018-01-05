@@ -16,7 +16,6 @@ target 'LetSwift' do
   pod 'SwiftLint', '~> 0.20'
 
   # Testing
-  pod 'SimulatorStatusMagic', '~> 1.9', :configurations => ['Debug']
   pod 'HockeySDK', '~> 4.1', :configurations => ['Debug', 'Release']
   pod 'Fabric', '~> 1.6'
   pod 'Crashlytics', '~> 3.8'

@@ -37,16 +37,11 @@ final class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupTabBar()
-    }
-
-    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        NotificationCenter.default.post(name: .didSelectAppTapBarWithController, object: selectedViewController)
+        tabBar.itemPositioning = .centered
     }
     
-    private func setupTabBar() {
-        tabBar.clipsToBounds = true
-        tabBar.itemPositioning = .centered
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        NotificationCenter.default.post(name: .didSelectAppTapBarWithController, object: selectedViewController)
     }
     
     private func setupTabs(controllers: [UIViewController]) {

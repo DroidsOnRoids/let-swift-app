@@ -28,16 +28,16 @@ final class ContactViewController: AppViewController {
     
     @IBOutlet private weak var containerView: UIView!
     
-    @IBOutlet fileprivate weak var topicButton: TopicButton!
-    @IBOutlet fileprivate weak var nameTextField: ContactTextField!
-    @IBOutlet fileprivate weak var emailTextField: ContactTextField!
-    @IBOutlet fileprivate weak var messageTextView: ContactTextView!
-    @IBOutlet fileprivate weak var sendButton: AppShadowButton!
+    @IBOutlet private weak var topicButton: TopicButton!
+    @IBOutlet private weak var nameTextField: ContactTextField!
+    @IBOutlet private weak var emailTextField: ContactTextField!
+    @IBOutlet private weak var messageTextView: ContactTextView!
+    @IBOutlet private weak var sendButton: AppShadowButton!
     
-    @IBOutlet fileprivate weak var topicErrorLabel: UILabel!
-    @IBOutlet fileprivate weak var nameErrorLabel: UILabel!
-    @IBOutlet fileprivate weak var emailErrorLabel: UILabel!
-    @IBOutlet fileprivate weak var messageErrorLabel: UILabel!
+    @IBOutlet private weak var topicErrorLabel: UILabel!
+    @IBOutlet private weak var nameErrorLabel: UILabel!
+    @IBOutlet private weak var emailErrorLabel: UILabel!
+    @IBOutlet private weak var messageErrorLabel: UILabel!
     
     override var viewControllerTitleKey: String? {
         return "CONTACT_TITLE"

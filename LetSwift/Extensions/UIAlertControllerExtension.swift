@@ -33,7 +33,7 @@ extension UIAlertController {
             guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
 
             if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.openURL(settingsUrl)
+                UIApplication.shared.open(settingsUrl)
             }
         }
 

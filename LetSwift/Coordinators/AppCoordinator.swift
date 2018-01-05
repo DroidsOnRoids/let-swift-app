@@ -22,10 +22,13 @@ import UIKit
 
 protocol AppCoordinatorDelegate: class {
     var rotationLocked: Bool { get set }
-    func presentLoginViewController(asPopupWindow: Bool)
+    
+    func presentLoginViewController()
 }
 
-final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
+final class AppCoordinator: AppCoordinatorDelegate, Startable {
+    
+    typealias ChildCoordinator = Startable & Navigable
     
     var rotationLocked = true {
         didSet {
@@ -36,36 +39,44 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
         }
     }
     
-    fileprivate var initialEventsList: [Event]?
+    private let window: UIWindow
+    private var initialEventsList: [Event]?
+    private var childCoordinators = [ChildCoordinator]()
     
     private var shouldShowOnboardingScreen: Bool {
         guard !UIApplication.isInTestMode else { return true }
+
         return !DefaultsManager.shared.isOnboardingCompleted
     }
     
-    fileprivate var shouldShowLoginScreen: Bool {
+    private var shouldShowLoginScreen: Bool {
         guard !UIApplication.isInTestMode else { return true }
+
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
     }
     
+    private var hasAppStarted: Bool {
+        return window.rootViewController is UITabBarController
+    }
+    
+    init(window: UIWindow? = nil) {
+        self.window = window ?? UIWindow()
+        self.window.tintColor = .swiftOrange
+    }
+    
     func start() {
-        navigationViewController.setNavigationBarHidden(true, animated: false)
-        
         presentSplashScreen()
+        window.makeKeyAndVisible()
     }
     
-    private func present(viewController: UIViewController, animated: Bool = true) {
-        navigationViewController.setViewControllers([viewController], animated: animated)
-    }
-    
-    fileprivate func presentSplashScreen() {
+    private func presentSplashScreen() {
         let viewModel = SplashViewControllerViewModel(delegate: self)
         let viewController = SplashViewController(viewModel: viewModel)
         
-        present(viewController: viewController, animated: false)
+        window.rootViewController = viewController
     }
     
-    fileprivate func presentFirstAppController() {
+    private func presentFirstAppController() {
         if shouldShowOnboardingScreen {
             presentOnboardingViewController()
         } else if shouldShowLoginScreen {
@@ -75,49 +86,37 @@ final class AppCoordinator: Coordinator, AppCoordinatorDelegate, Startable {
         }
     }
     
-    fileprivate func presentOnboardingViewController() {
+    private func presentOnboardingViewController() {
         let viewModel = OnboardingViewControllerViewModel(delegate: self)
         let viewController = OnboardingViewController(viewModel: viewModel)
         
-        present(viewController: viewController)
+        window.rootViewController = viewController
     }
     
-    func presentLoginViewController(asPopupWindow: Bool = false) {
+    func presentLoginViewController() {
         let viewModel = LoginViewControllerViewModel(delegate: self)
         let viewController = LoginViewController(viewModel: viewModel)
-        
-        if asPopupWindow {
-            navigationViewController.pushViewController(viewController, animated: true)
-        } else {
-            present(viewController: viewController)
-        }
+
+        window.rootViewController?.present(viewController, animated: true)
     }
     
-    func pushOnRootNavigationController(_ viewController: UIViewController, animated: Bool) {
-        navigationViewController.pushViewController(viewController, animated: animated)
-    }
-    
-    fileprivate func presentMainController() {
-        let coordinators = [
-            EventsCoordinator(initialEventsList: initialEventsList, delegate: self),
+    private func presentMainController() {
+        childCoordinators = [
+            EventsCoordinator(delegate: self, initialEventsList: initialEventsList),
             SpeakersCoordinator(delegate: self),
             ContactCoordinator(delegate: self)
         ]
+        childCoordinators.forEach { $0.start() }
         
-        coordinators.forEach {
-            ($0 as! Startable).start()
-            self.childCoordinators.append($0)
-        }
-
-        let viewController = TabBarViewController(controllers: coordinators.map({ ($0).navigationViewController }))
-        
-        present(viewController: viewController, animated: false)
+        let tabBarController = TabBarViewController(controllers: childCoordinators.map { $0.navigationController })
+        window.rootViewController = tabBarController
     }
 }
 
 extension AppCoordinator: SplashViewControllerDelegate {
     func initialLoadingHasFinished(events: [Event]?) {
         initialEventsList = events
+        
         presentFirstAppController()
     }
 }
@@ -132,19 +131,19 @@ extension AppCoordinator: OnboardingViewControllerCoordinatorDelegate {
 
 extension AppCoordinator: LoginViewControllerDelegate {
     func facebookLoginCompleted() {
-        if navigationViewController.viewControllers.count > 1 {
-            navigationViewController.popViewController(animated: true)
-        } else {
-            presentMainController()
-        }
+        dismissLoginViewController()
     }
     
     func loginHasSkipped() {
         DefaultsManager.shared.isLoginSkipped = true
         
-        if navigationViewController.viewControllers.count > 1 {
-            navigationViewController.popViewController(animated: true)
-        } else {
+        dismissLoginViewController()
+    }
+    
+    private func dismissLoginViewController() {
+        window.rootViewController?.dismiss(animated: true)
+        
+        if !hasAppStarted {
             presentMainController()
         }
     }

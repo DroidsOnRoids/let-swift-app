@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Menlo.ttc">
+            <string>Menlo-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
@@ -29,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-cd-Xx2" customClass="AppScrollView" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="88" width="375" height="519"/>
+                    <rect key="frame" x="0.0" y="88" width="375" height="531"/>
                 </scrollView>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0f-mr-ihr" customClass="OnboardingImageView" customModule="LetSwift" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="88" width="375" height="269"/>
@@ -43,12 +49,6 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
                                     <real key="value" value="215"/>
                                 </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                                    <real key="value" value="269"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                                    <real key="value" value="269"/>
-                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </constraint>
                     </constraints>
@@ -58,8 +58,17 @@
                     <color key="pageIndicatorTintColor" red="0.81568627449999997" green="0.85490196080000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="currentPageIndicatorTintColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9A-tk-41g">
-                    <rect key="frame" x="0.0" y="607" width="375" height="28"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9A-tk-41g">
+                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="ab6-35-54C" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="inch5¨8">
+                                    <real key="value" value="64"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </constraint>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                     <state key="normal" title="CONTINUE">
                         <color key="titleColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,15 +83,6 @@
                 <constraint firstAttribute="trailing" secondItem="xd8-lj-byD" secondAttribute="trailing" id="0SU-1c-uKc"/>
                 <constraint firstItem="fF2-0z-4jP" firstAttribute="top" secondItem="R0f-mr-ihr" secondAttribute="bottom" constant="17" id="G4b-U1-jeQ" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="17"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
                             <real key="value" value="9"/>
                         </userDefinedRuntimeAttribute>
@@ -100,15 +100,12 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
                             <real key="value" value="36"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="44"/>
-                        </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
                             <real key="value" value="52"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </constraint>
-                <constraint firstAttribute="bottom" secondItem="f9A-tk-41g" secondAttribute="bottom" constant="32" id="Xo9-NG-6VJ"/>
+                <constraint firstAttribute="bottom" secondItem="f9A-tk-41g" secondAttribute="bottom" id="Xo9-NG-6VJ"/>
                 <constraint firstItem="FFj-cd-Xx2" firstAttribute="top" secondItem="xd8-lj-byD" secondAttribute="bottom" constant="24" id="dju-1C-FYs" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
@@ -116,9 +113,6 @@
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
                             <real key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨7">
-                            <real key="value" value="24"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
                             <real key="value" value="32"/>

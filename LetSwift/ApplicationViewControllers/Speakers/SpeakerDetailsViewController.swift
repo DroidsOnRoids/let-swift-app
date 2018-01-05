@@ -33,7 +33,7 @@ final class SpeakerDetailsViewController: AppViewController {
     @IBOutlet private weak var tableView: AppTableView!
     
     private var viewModel: SpeakerDetailsViewControllerViewModel!
-    private lazy var bindableCells: BindableArray<String> = self.allCells.bindable
+    private lazy var bindableCells = self.allCells.bindable
     private let disposeBag = DisposeBag()
     private let sadFaceView = SadFaceView()
     

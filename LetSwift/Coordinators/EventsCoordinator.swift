@@ -20,16 +20,17 @@
 
 import UIKit
 
-final class EventsCoordinator: Coordinator, Startable {
+final class EventsCoordinator: Startable, Navigable {
     
-    fileprivate weak var delegate: AppCoordinatorDelegate?
-    fileprivate let initialEventsList: [Event]?
+    private weak var delegate: AppCoordinatorDelegate?
+
+    let navigationController = UINavigationController()
+
+    private let initialEventsList: [Event]?
     
-    init(navigationController: UINavigationController = UINavigationController(), initialEventsList: [Event]?, delegate: AppCoordinatorDelegate) {
+    init(delegate: AppCoordinatorDelegate?, initialEventsList: [Event]?) {
         self.delegate = delegate
         self.initialEventsList = initialEventsList
-        
-        super.init(navigationController: navigationController)
     }
     
     func start() {
@@ -37,7 +38,7 @@ final class EventsCoordinator: Coordinator, Startable {
         let viewController = EventsViewController(viewModel: viewModel)
         viewController.coordinatorDelegate = delegate
         
-        navigationViewController.viewControllers = [viewController]
+        navigationController.viewControllers = [viewController]
     }
 }
 
@@ -45,7 +46,7 @@ extension EventsCoordinator: EventsViewControllerDelegate {
     func presentEventDetailsScreen(fromViewModel viewModel: EventsViewControllerViewModel) {
         let viewController = EventDetailsViewController(viewModel: viewModel)
         
-        navigationViewController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
         
         if let event = viewModel.lastEventObservable.value {
             analyticsHelper.reportOpenEventDetails?(id: event.id, name: event.title)
@@ -57,14 +58,14 @@ extension EventsCoordinator: EventsViewControllerDelegate {
         let viewController = EventDetailsViewController(viewModel: viewModel)
         viewController.coordinatorDelegate = delegate
         
-        navigationViewController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
     
     func presentPhotoGalleryScreen(with photos: [Photo], eventId: Int?) {
         let viewModel = PhotoGalleryViewControllerViewModel(photos: photos, eventId: eventId, delegate: self)
         let viewController = PhotoGalleryViewController(viewModel: viewModel)
 
-        navigationViewController.pushViewController(viewController, animated: true)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
 
@@ -73,6 +74,6 @@ extension EventsCoordinator: PhotoGalleryViewControllerDelegate {
         let viewController = PhotoSliderViewController(viewModel: viewModel)
         viewController.coordinatorDelegate = delegate
         
-        navigationViewController.present(viewController, animated: true)
+        navigationController.present(viewController, animated: true)
     }
 }

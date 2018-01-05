@@ -23,7 +23,6 @@ import UIKit
 final class SpeakersViewController: AppViewController {
 
     private enum Constants {
-        static let offsetToken = "OffsetToken"
         static let headerOffset: CGFloat = 1000.0
     }
 
@@ -41,11 +40,13 @@ final class SpeakersViewController: AppViewController {
 
     @IBOutlet private weak var tableView: AppTableView!
     @IBOutlet private weak var searchBar: ReactiveSearchBar!
-
+    @IBOutlet private weak var topConstraint: NSLayoutConstraint!
+    
     private let sadFaceView = SadFaceView()
     private let spinnerView = SpinnerView()
     private let disposeBag = DisposeBag()
     private var viewModel: SpeakersViewControllerViewModel!
+    private var isContentInsetAdjusted = false
 
     convenience init(viewModel: SpeakersViewControllerViewModel) {
         self.init()
@@ -57,6 +58,13 @@ final class SpeakersViewController: AppViewController {
 
         setup()
     }
+    
+    override func viewDidLayoutSubviews() {
+        if !isContentInsetAdjusted {
+            tableView.contentInset.top += searchBar.bounds.height
+            isContentInsetAdjusted = true
+        }
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -66,6 +74,10 @@ final class SpeakersViewController: AppViewController {
     
     private func setup() {
         showSpinner()
+        
+        if let navigationBarHeight = navigationController?.navigationBar.frame.maxY {
+            topConstraint.constant = navigationBarHeight
+        }
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 60.0
@@ -258,13 +270,8 @@ final class SpeakersViewController: AppViewController {
         viewModel.tableViewStateObservable.subscribeNext(startsWithInitialValue: true) { [weak self] state in
             guard let weakSelf = self else { return }
 
-            DispatchQueue.once(token: Constants.offsetToken) {
-                weakSelf.tableView.contentInset.top += weakSelf.searchBar.bounds.height
-            }
-
             switch state {
             case .content:
-                weakSelf.tableView.setContentOffset(CGPoint(x: 0, y: -weakSelf.tableView.contentInset.top), animated: false)
                 weakSelf.tableView.overlayView = nil
             case .error:
                 if !(weakSelf.tableView.overlayView is SadFaceView) {

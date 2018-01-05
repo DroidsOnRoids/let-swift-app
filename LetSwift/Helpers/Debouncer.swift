@@ -21,6 +21,7 @@
 import Foundation
 
 final class Debouncer {
+    
     private var callback: () -> ()
     private var delay: Double
     private weak var timer: Timer?

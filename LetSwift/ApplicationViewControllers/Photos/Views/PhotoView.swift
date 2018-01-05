@@ -45,7 +45,7 @@ final class PhotoView: UIScrollView {
         }
     }
     
-    fileprivate let imageView = UIImageView()
+    private let imageView = UIImageView()
     
     private var oldSize: CGSize?
     
@@ -130,7 +130,7 @@ final class PhotoView: UIScrollView {
         imageView.center = contentCenter(for: bounds.size, contentSize: contentSize)
     }
     
-    fileprivate func contentCenter(for boundingSize: CGSize, contentSize: CGSize) -> CGPoint {
+    private func contentCenter(for boundingSize: CGSize, contentSize: CGSize) -> CGPoint {
         let horizontalOffest = (boundingSize.width > contentSize.width) ? ((boundingSize.width - contentSize.width) * 0.5) : 0.0
         let verticalOffset = (boundingSize.height > contentSize.height) ? ((boundingSize.height - contentSize.height) * 0.5) : 0.0
         

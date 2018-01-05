@@ -43,7 +43,7 @@ class CommonEventViewController: AppViewController {
         return nil
     }
 
-    lazy var bindableCells: BindableArray<EventCellIdentifier> = self.allCells.bindable
+    lazy var bindableCells = self.allCells.bindable
     
     override var nibName: String? {
         return String(describing: CommonEventViewController.self)
@@ -91,10 +91,10 @@ class CommonEventViewController: AppViewController {
         sadFaceView.scrollView?.addPullToRefresh(object: self, action: #selector(pullToRefreshAction))
         
         refreshObservable?.subscribeCompleted { [weak self] in
+            self?.tableView.reloadData()
+            
             self?.tableView.finishPullToRefresh()
             self?.sadFaceView.scrollView?.finishPullToRefresh()
-
-            self?.tableView.reloadData()
         }
         .add(to: disposeBag)
     }
@@ -105,7 +105,7 @@ class CommonEventViewController: AppViewController {
     
     private func reactiveSetup() {
         viewModel.loginScreenObservable.subscribeNext { [weak self] in
-            self?.coordinatorDelegate?.presentLoginViewController(asPopupWindow: true)
+            self?.coordinatorDelegate?.presentLoginViewController()
         }
         .add(to: disposeBag)
         

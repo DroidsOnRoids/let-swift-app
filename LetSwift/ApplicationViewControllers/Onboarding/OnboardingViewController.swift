@@ -35,7 +35,7 @@ final class OnboardingViewController: UIViewController {
     @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var onboardingPageControl: UIPageControl!
 
-    fileprivate var viewModel: OnboardingViewControllerViewModel!
+    private var viewModel: OnboardingViewControllerViewModel!
     
     private let disposeBag = DisposeBag()
     

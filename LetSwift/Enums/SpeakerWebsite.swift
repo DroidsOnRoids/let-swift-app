@@ -77,10 +77,10 @@ enum SpeakerWebsite {
     func open() {
         switch self {
         case .github(let url), .website(let url), .twitter(let url):
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url)
         case .email(let email):
             if let emailUrl = try? "mailto:\(email)".asURL() {
-                UIApplication.shared.openURL(emailUrl)
+                UIApplication.shared.open(emailUrl)
             }
         }
     }

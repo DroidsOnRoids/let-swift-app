@@ -24,10 +24,10 @@ final class SpeakerBioTableViewCell: UITableViewCell, SpeakerLoadable {
 
     static let cellIdentifier = String(describing: SpeakerBioTableViewCell.self)
     
-    @IBOutlet fileprivate weak var aboutLabel: AppLabel!
+    @IBOutlet private weak var aboutLabel: AppLabel!
     @IBOutlet private weak var bioLabel: AppLabel!
     
-    fileprivate var aboutFormat = "%@"
+    private var aboutFormat = "%@"
     
     func load(with speaker: Speaker) {
         aboutLabel.text = speaker.firstName
