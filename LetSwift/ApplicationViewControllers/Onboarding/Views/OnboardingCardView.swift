@@ -26,7 +26,7 @@ final class OnboardingCardView: DesignableView {
     @IBOutlet private weak var descriptionLabel: MultiSizeLabel!
     
     func setupLabels(with model: OnboardingCardModel) {
-        titleLabel.textColor = EventBranding.current.color
+        titleLabel.textColor = .brandingColor
         
         titleLabel.attributedText = model.title.attributed(withSpacing: 1.0)
         descriptionLabel.attributedText = model.description.attributed(withSpacing: 0.9)

@@ -28,7 +28,7 @@ enum ContactFieldState {
     var borderColor: UIColor {
         switch self {
         case .normal: return .lightBlueGrey
-        case .editing: return EventBranding.current.color
+        case .editing: return .brandingColor
         case .error: return .tomato
         }
     }

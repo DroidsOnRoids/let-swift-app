@@ -61,7 +61,7 @@ final class AppCoordinator: AppCoordinatorDelegate, Startable {
     
     init(window: UIWindow? = nil) {
         self.window = window ?? UIWindow()
-        self.window.tintColor = EventBranding.current.color
+        self.window.tintColor = .brandingColor
     }
     
     func start() {

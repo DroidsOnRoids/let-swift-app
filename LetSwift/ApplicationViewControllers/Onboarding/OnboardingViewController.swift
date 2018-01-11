@@ -71,10 +71,13 @@ final class OnboardingViewController: UIViewController {
     private func setupBranding() {
         eventNameLabel.text = EventBranding.current.name
         
-        onboardingPageControl.currentPageIndicatorTintColor = EventBranding.current.color
-        
-        continueButton.setTitleColor(EventBranding.current.color, for: .normal)
-        continueButton.setTitleColor(EventBranding.current.color.withAlphaComponent(0.3), for: .highlighted)
+        onboardingPageControl.currentPageIndicatorTintColor = .brandingColor
+        setupContinueButton(with: .brandingColor)
+    }
+    
+    private func setupContinueButton(with color: UIColor) {
+        continueButton.setTitleColor(color, for: .normal)
+        continueButton.setTitleColor(color.withAlphaComponent(0.3), for: .highlighted)
     }
     
     private func reactiveSetup() {

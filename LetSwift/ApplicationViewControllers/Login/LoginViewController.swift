@@ -69,8 +69,8 @@ final class LoginViewController: UIViewController {
         }
         .add(to: disposeBag)
         
-        viewModel.animateWithRandomTextObservable.subscribeNext { [weak self] randomHello in
-            self?.animateLabel(randomHello: randomHello)
+        viewModel.animateWithRandomTextObservable.subscribeNext { [weak self] randomGreeting in
+            self?.animateLabel(with: randomGreeting)
         }
         .add(to: disposeBag)
     }
@@ -80,10 +80,10 @@ final class LoginViewController: UIViewController {
         loginPurposeDescriptionLabel.attributedText = loginPurposeDescriptionLabel.text?.attributed(withSpacing: 1.0)
     }
     
-    private func animateLabel(randomHello: String) {
-        let attributedHello = EventBranding.current.greetingText(with: randomHello)
+    private func animateLabel(with greeting: String) {
+        let attributedGreeting = EventBranding.current.greetingText(with: greeting)
 
-        labelAnimator = RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello)
+        labelAnimator = RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedGreeting)
         labelAnimator?.animate()
     }
     

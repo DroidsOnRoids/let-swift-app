@@ -50,7 +50,7 @@ final class SpeakerHeaderTableViewCell: UITableViewCell, SpeakerLoadable {
     }
     
     private func setup() {
-        nameLabel.textColor = EventBranding.current.color
+        nameLabel.textColor = .brandingColor
         
         setupAvatarShadow()
     }

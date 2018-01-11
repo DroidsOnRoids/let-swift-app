@@ -52,7 +52,7 @@ final class EventSummaryTableViewCell: AppTableViewCell {
     }
     
     private func setup() {
-        eventTitleLabel.textColor = EventBranding.current.color
+        eventTitleLabel.textColor = .brandingColor
         eventDescriptionLabel.text = EventBranding.current.description
     }
 }

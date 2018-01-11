@@ -71,7 +71,7 @@ enum EventBranding {
             printText = "print"
         }
         
-        return printText.attributed(withColor: EventBranding.current.color) +
+        return printText.attributed(withColor: .brandingColor) +
             "(\"".attributed(withColor: .coolGrey) +
             greeting.attributed() +
             "\")".attributed(withColor: .coolGrey)
