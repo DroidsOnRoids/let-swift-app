@@ -29,4 +29,28 @@ extension UIImage {
         
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
+    func tinted(with color: UIColor) -> UIImage {
+        guard let filter = CIFilter(name: "CIColorMonochrome") else { return self }
+        
+        filter.setValue(CIColor(color: color), forKey: kCIInputColorKey)
+        
+        return filtered(by: filter) ?? self
+    }
+    
+    private func filtered(by filter: CIFilter) -> UIImage? {
+        guard let ciImage = CIImage(image: self) else { return nil }
+        
+        filter.setValue(ciImage, forKey: kCIInputImageKey)
+        
+        guard let ciOutput = filter.value(forKey: kCIOutputImageKey) as? CIImage else { return nil }
+        
+        let output = UIImage(ciImage: ciOutput, scale: scale, orientation: imageOrientation)
+        UIGraphicsBeginImageContextWithOptions(output.size, false, scale)
+        output.draw(in: CGRect(origin: .zero, size: output.size))
+        let finalOutput = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return finalOutput
+    }
 }

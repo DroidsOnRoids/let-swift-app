@@ -21,9 +21,9 @@
 import UIKit
 
 extension UIColor {
-
-    static var swiftOrange: UIColor {
-        return #colorLiteral(red: 1, green: 0.7529411765, blue: 0.2156862745, alpha: 1)
+    
+    static var brandingColor: UIColor {
+        return EventBranding.current.color
     }
     
     static var lightBlueGrey: UIColor {

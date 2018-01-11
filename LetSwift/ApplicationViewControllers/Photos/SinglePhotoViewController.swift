@@ -89,7 +89,7 @@ final class SinglePhotoViewController: UIViewController {
         spinnerView.translatesAutoresizingMaskIntoConstraints = false
         spinnerView.thicknessRatio = 0.25
         spinnerView.trackTintColor = .paleGrey
-        spinnerView.progressTintColor = .swiftOrange
+        spinnerView.progressTintColor = .brandingColor
         
         return spinnerView
     }()

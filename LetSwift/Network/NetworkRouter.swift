@@ -71,7 +71,7 @@ enum NetworkRouter: URLRequestConvertible {
     }
 
     func asURLRequest() throws -> URLRequest {
-        let url = URL.baseServerURL!.appendingPathComponent(Constants.basePath + Constants.version)
+        let url = EventBranding.current.apiURL!.appendingPathComponent(Constants.basePath + Constants.version)
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         urlRequest.httpMethod = method.rawValue
 

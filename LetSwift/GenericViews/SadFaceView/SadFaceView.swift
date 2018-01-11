@@ -67,6 +67,8 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
         scrollView = subviews.first as? UIScrollView
         scrollView?.delegate = self
         
+        pullToRefreshLabel.textColor = .brandingColor
+        
         setupLocalization()
     }
     

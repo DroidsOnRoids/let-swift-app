@@ -34,7 +34,7 @@ final class AttendButtonsRowTableViewCell: UITableViewCell {
     
     var isLeftButtonActive = true {
         didSet {
-            attendButton.backgroundColor = isLeftButtonActive ? .swiftOrange : .paleGrey
+            attendButton.backgroundColor = isLeftButtonActive ? .brandingColor : .paleGrey
             attendButton.isEnabled = isLeftButtonActive
         }
     }
@@ -79,7 +79,7 @@ final class AttendButtonsRowTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        remindButton.layer.borderColor = UIColor.swiftOrange.cgColor
+        remindButton.layer.borderColor = UIColor.brandingColor.cgColor
     }
     
     func addLeftTapTarget(target: Any?, action: Selector) {

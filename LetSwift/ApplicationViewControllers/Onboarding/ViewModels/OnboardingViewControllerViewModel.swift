@@ -24,8 +24,8 @@ import CoreGraphics
 struct OnboardingCardModel {
     
     let imageName: String
-    let titleKey: String
-    let descriptionKey: String
+    let title: String
+    let description: String
 }
 
 final class OnboardingViewControllerViewModel {
@@ -33,12 +33,6 @@ final class OnboardingViewControllerViewModel {
     private enum Constants {
         static let onboardingContinueTitle = localized("ONBOARDING_CONTINUE").uppercased()
         static let onboardingFinishTitle = localized("ONBOARDING_FINISH").uppercased()
-        
-        static let defaultCards = [
-            OnboardingCardModel(imageName: "OnboardingMeetups", titleKey: "ONBOARDING_MEETUPS_TITLE", descriptionKey: "ONBOARDING_MEETUPS_DESCRIPTION"),
-            OnboardingCardModel(imageName: "OnboardingSpeakers", titleKey: "ONBOARDING_SPEAKERS_TITLE", descriptionKey: "ONBOARDING_SPEAKERS_DESCRIPTION"),
-            OnboardingCardModel(imageName: "OnboardingPrice", titleKey: "ONBOARDING_PRICE_TITLE", descriptionKey: "ONBOARDING_PRICE_DESCRIPTION")
-        ]
     }
 
     weak var delegate: OnboardingViewControllerCoordinatorDelegate?
@@ -50,7 +44,7 @@ final class OnboardingViewControllerViewModel {
     let currentIconObservable = Observable<String?>(nil)
     let iconAlphaObservable = Observable<CGFloat>(1.0)
     let continueButtonTitleObservable = Observable<String>(Constants.onboardingContinueTitle)
-    let onboardingCardsObservable = Observable<[OnboardingCardModel]>(Constants.defaultCards)
+    let onboardingCardsObservable = Observable<[OnboardingCardModel]>(EventBranding.current.onboardingCards)
     
     private let disposeBag = DisposeBag()
     

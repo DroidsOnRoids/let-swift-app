@@ -38,7 +38,7 @@ final class OnboardingImageView: MultilayerImageView {
             case .shapes: return #imageLiteral(resourceName: "OnboardingShapes")
             case .outerCircle: return #imageLiteral(resourceName: "OnboardingOuterCircle")
             case .innerCircle: return #imageLiteral(resourceName: "OnboardingInnerCircle")
-            case .yellowCircle: return #imageLiteral(resourceName: "OnboardingCircle")
+            case .yellowCircle: return #imageLiteral(resourceName: "OnboardingCircle").tinted(with: .brandingColor)
             case .icon: return #imageLiteral(resourceName: "OnboardingPrice")
             }
         }

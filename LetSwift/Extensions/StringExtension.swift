@@ -1,9 +1,9 @@
 //
-//  ContactFieldState.swift
+//  StringExtension.swift
 //  LetSwift
 //
-//  Created by Marcin Chojnacki on 01.06.2017.
-//  Copyright © 2017 Droids On Roids. All rights reserved.
+//  Created by Marcin Chojnacki on 01.01.2018.
+//  Copyright © 2018 Droids On Roids. All rights reserved.
 //
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,18 +18,10 @@
 //  limitations under the License.
 //
 
-import UIKit
-
-enum ContactFieldState {
-    case normal
-    case editing
-    case error
-    
-    var borderColor: UIColor {
-        switch self {
-        case .normal: return .lightBlueGrey
-        case .editing: return .brandingColor
-        case .error: return .tomato
+extension String {
+    func replacingPlaceholders(with strings: String...) -> String {
+        return strings.enumerated().reduce(self) { partial, enumaration in
+            return partial.replacingOccurrences(of: "{\(enumaration.offset)}", with: enumaration.element)
         }
     }
 }

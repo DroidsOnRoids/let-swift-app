@@ -30,6 +30,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private weak var animatedGreetingLabel: UILabel!
     @IBOutlet private weak var facebookButton: UIButton!
     @IBOutlet private weak var loginPurposeDescriptionLabel: UILabel!
+    @IBOutlet private weak var loginTitleLabel: UILabel!
     @IBOutlet private weak var loginSubtitleLabel: MultiSizeLabel!
     @IBOutlet private weak var skipLoginButton: UIButton!
     
@@ -68,8 +69,8 @@ final class LoginViewController: UIViewController {
         }
         .add(to: disposeBag)
         
-        viewModel.animateWithRandomTextObservable.subscribeNext { [weak self] randomHello in
-            self?.animateLabel(randomHello: randomHello)
+        viewModel.animateWithRandomTextObservable.subscribeNext { [weak self] randomGreeting in
+            self?.animateLabel(with: randomGreeting)
         }
         .add(to: disposeBag)
     }
@@ -78,18 +79,11 @@ final class LoginViewController: UIViewController {
         animatedGreetingLabel.adjustsFontSizeToFitWidth = true
         loginPurposeDescriptionLabel.attributedText = loginPurposeDescriptionLabel.text?.attributed(withSpacing: 1.0)
     }
+    
+    private func animateLabel(with greeting: String) {
+        let attributedGreeting = EventBranding.current.greetingText(with: greeting)
 
-    private func createPrintAttributedText(_ label: String) -> NSAttributedString {
-        return "print".attributed(withColor: .swiftOrange) +
-            "(\"".attributed(withColor: .coolGrey) +
-            label.attributed() +
-            "\")".attributed(withColor: .coolGrey)
-    }
-
-    private func animateLabel(randomHello: String) {
-        let attributedHello = createPrintAttributedText(randomHello)
-
-        labelAnimator = RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedHello)
+        labelAnimator = RandomLabelAnimator(label: animatedGreetingLabel, finalResult: attributedGreeting)
         labelAnimator?.animate()
     }
     
@@ -103,6 +97,7 @@ extension LoginViewController: Localizable {
         skipLoginButton.setTitle(localized("LOGIN_SKIP_BUTTON_TITLE").uppercased(), for: [])
         facebookButton.setTitle(localized("LOGIN_BUTTON_TITLE").uppercased(), for: [])
         loginPurposeDescriptionLabel.text = localized("LOGIN_PURPOSE_DESCRIPTION")
-        loginSubtitleLabel.text = localized("LOGIN_SUBTITLE")
+        loginTitleLabel.text = EventBranding.current.name
+        loginSubtitleLabel.text = EventBranding.current.description
     }
 }

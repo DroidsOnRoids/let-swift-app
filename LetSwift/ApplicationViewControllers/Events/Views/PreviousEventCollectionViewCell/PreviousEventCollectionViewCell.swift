@@ -66,6 +66,7 @@ final class PreviousEventCollectionViewCell: UICollectionViewCell {
     }
     
     private func setup() {
+        titleLabel.textColor = .brandingColor
         addShadow(opacity: 0.1, offset: CGSize(width: 0.0, height: 5.0), radius: 10.0)
     }
 }

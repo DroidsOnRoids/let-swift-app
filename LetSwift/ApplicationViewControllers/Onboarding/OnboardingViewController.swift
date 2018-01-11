@@ -30,6 +30,7 @@ final class OnboardingViewController: UIViewController {
         static let rotationScaleFactor: CGFloat = 0.005
     }
 
+    @IBOutlet private weak var eventNameLabel: UILabel!
     @IBOutlet private weak var scrollView: AppScrollView!
     @IBOutlet private weak var onboardingImageView: OnboardingImageView!
     @IBOutlet private weak var continueButton: UIButton!
@@ -51,6 +52,7 @@ final class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupBranding()
         reactiveSetup()
     }
     
@@ -66,6 +68,18 @@ final class OnboardingViewController: UIViewController {
         return min(max(page, 0), onboardingPageControl.numberOfPages)
     }
 
+    private func setupBranding() {
+        eventNameLabel.text = EventBranding.current.name
+        
+        onboardingPageControl.currentPageIndicatorTintColor = .brandingColor
+        setupContinueButton(with: .brandingColor)
+    }
+    
+    private func setupContinueButton(with color: UIColor) {
+        continueButton.setTitleColor(color, for: .normal)
+        continueButton.setTitleColor(color.withAlphaComponent(0.3), for: .highlighted)
+    }
+    
     private func reactiveSetup() {
         continueButton.addTarget(viewModel, action: #selector(OnboardingViewControllerViewModel.continueButtonTapped), for: .touchUpInside)
         

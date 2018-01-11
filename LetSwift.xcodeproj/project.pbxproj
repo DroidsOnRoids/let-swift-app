@@ -137,6 +137,7 @@
 		D35839A51EA7332400C05AA6 /* RandomLabelAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */; };
 		D35AE6C61EF4464B00FFAD35 /* PhotoSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35AE6C41EF4464B00FFAD35 /* PhotoSliderViewController.swift */; };
 		D35AE6C71EF4464B00FFAD35 /* PhotoSliderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D35AE6C51EF4464B00FFAD35 /* PhotoSliderViewController.xib */; };
+		D360DC0E1FFAD41400B93B3F /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D360DC0D1FFAD41400B93B3F /* StringExtension.swift */; };
 		D36396221EC0654400158BEF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36396211EC0654400158BEF /* PopoverView.swift */; };
 		D364260E1EF7FA6F002AB02E /* SinglePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */; };
 		D3755BE51F29DDD60087651E /* LetSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3755BE41F29DDD60087651E /* LetSwiftUITests.swift */; };
@@ -167,6 +168,7 @@
 		D39D71141EB651D100F8743C /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71131EB651D100F8743C /* UITableViewExtension.swift */; };
 		D39D71181EB6551C00F8743C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D71171EB6551C00F8743C /* UIViewExtension.swift */; };
 		D3A00FDD1EA732AA00E1E27A /* LoginViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */; };
+		D3A6B9811FFACFEC0085FB52 /* EventBranding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6B9801FFACFEC0085FB52 /* EventBranding.swift */; };
 		D3A6E5061ED33F7800A7414B /* LectureViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */; };
 		D3AE288C1ECD9E0C00F29702 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288B1ECD9E0C00F29702 /* Observable.swift */; };
 		D3AE288E1ECD9E3600F29702 /* Disposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AE288D1ECD9E3600F29702 /* Disposable.swift */; };
@@ -367,6 +369,7 @@
 		D35839A41EA7332400C05AA6 /* RandomLabelAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomLabelAnimator.swift; sourceTree = "<group>"; };
 		D35AE6C41EF4464B00FFAD35 /* PhotoSliderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSliderViewController.swift; sourceTree = "<group>"; };
 		D35AE6C51EF4464B00FFAD35 /* PhotoSliderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoSliderViewController.xib; sourceTree = "<group>"; };
+		D360DC0D1FFAD41400B93B3F /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		D36396211EC0654400158BEF /* PopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverView.swift; sourceTree = "<group>"; };
 		D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SinglePhotoViewController.swift; sourceTree = "<group>"; };
 		D3755BE21F29DDD60087651E /* LetSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -401,6 +404,7 @@
 		D39D71131EB651D100F8743C /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		D39D71171EB6551C00F8743C /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		D3A00FDC1EA732AA00E1E27A /* LoginViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerViewModel.swift; sourceTree = "<group>"; };
+		D3A6B9801FFACFEC0085FB52 /* EventBranding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBranding.swift; sourceTree = "<group>"; };
 		D3A6E5051ED33F7800A7414B /* LectureViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LectureViewControllerViewModel.swift; sourceTree = "<group>"; };
 		D3AE288B1ECD9E0C00F29702 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D3AE288D1ECD9E3600F29702 /* Disposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Disposable.swift; sourceTree = "<group>"; };
@@ -691,6 +695,7 @@
 				D38B14C11E9F9A73009EA346 /* DeviceScreenHeight.swift */,
 				D31D86D91F0545A9007D222C /* SpeakerWebsite.swift */,
 				7EC198B01F162F7D003FF7E2 /* AppCompilationConditions.swift */,
+				D3A6B9801FFACFEC0085FB52 /* EventBranding.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -1259,6 +1264,7 @@
 				D39D71171EB6551C00F8743C /* UIViewExtension.swift */,
 				D3CFAE7E1EE6BFF10009E4EF /* URLExtension.swift */,
 				91B1FEDA1FB5EF8200D6F62D /* DictionaryExtension.swift */,
+				D360DC0D1FFAD41400B93B3F /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1453,7 +1459,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/HockeySDK/HockeySDKResources.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/HockeySDK/HockeySDKResources.bundle,
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -1605,6 +1611,7 @@
 				7EB744061EEFDDC0008092DC /* UITableViewCellExtenion.swift in Sources */,
 				D33920241F0D3FFE0073CECB /* MultilayerImageView.swift in Sources */,
 				7E31D0A61EAE3D970030147C /* Photo.swift in Sources */,
+				D3A6B9811FFACFEC0085FB52 /* EventBranding.swift in Sources */,
 				7E0842B71EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.swift in Sources */,
 				D3840D991ECA0C2900975818 /* SpeakerDetailsViewController.swift in Sources */,
 				7E1C3EE21EC0BF150004A5A7 /* NotificationCenterExtension.swift in Sources */,
@@ -1664,6 +1671,7 @@
 				D3E74F6D1EA925B600B1C8D1 /* DebugMenu.swift in Sources */,
 				D3E1B8551EF7A227008C226F /* SizedScrollView.swift in Sources */,
 				D31B084C1EB1285600C2D229 /* EventSummaryTableViewCell.swift in Sources */,
+				D360DC0E1FFAD41400B93B3F /* StringExtension.swift in Sources */,
 				D378B9A51F0CFC7000C99D5F /* SpeakerLectureFlow.swift in Sources */,
 				7E02FE6F1EBB23EA005DADCB /* ReactiveTableViewDataSource.swift in Sources */,
 				D3498DD21F18EA1600CDE97E /* AnalyticsHelpers.swift in Sources */,
