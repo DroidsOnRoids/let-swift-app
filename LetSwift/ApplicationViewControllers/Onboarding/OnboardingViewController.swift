@@ -35,7 +35,8 @@ final class OnboardingViewController: UIViewController {
     @IBOutlet private weak var onboardingImageView: OnboardingImageView!
     @IBOutlet private weak var continueButton: UIButton!
     @IBOutlet private weak var onboardingPageControl: UIPageControl!
-
+    @IBOutlet private weak var cardTemplateView: UIView!
+    
     private var viewModel: OnboardingViewControllerViewModel!
     
     private let disposeBag = DisposeBag()
@@ -135,12 +136,14 @@ final class OnboardingViewController: UIViewController {
     }
     
     private func setupScrollView(with cards: [OnboardingCardModel]) {
-        let frameSize = scrollView.frame.size
-        
+        let scrollViewSize = scrollView.frame.size
+        let templateFrame = scrollView.convert(cardTemplateView.frame, from: view)
+
         scrollView.subviews.forEach { $0.removeFromSuperview() }
+        cardTemplateView.removeFromSuperview()
 
         cards.enumerated().forEach { index, card in
-            let frame = CGRect(origin: CGPoint(x: frameSize.width * CGFloat(index), y: 0.0), size: frameSize)
+            let frame = templateFrame.offsetBy(dx: scrollViewSize.width * CGFloat(index), dy: 0.0)
             
             let subview = OnboardingCardView(frame: frame)
             subview.setupLabels(with: card)
@@ -148,6 +151,6 @@ final class OnboardingViewController: UIViewController {
             scrollView.addSubview(subview)
         }
 
-        scrollView.contentSize = CGSize(width: frameSize.width * CGFloat(cards.count), height: frameSize.height)
+        scrollView.contentSize = CGSize(width: scrollViewSize.width * CGFloat(cards.count), height: scrollViewSize.height)
     }
 }

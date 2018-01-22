@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -16,6 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnboardingViewController" customModule="LetSwift" customModuleProvider="target">
             <connections>
+                <outlet property="cardTemplateView" destination="nP3-6s-Plc" id="a4x-kj-JSA"/>
                 <outlet property="continueButton" destination="f9A-tk-41g" id="2TZ-fH-zwD"/>
                 <outlet property="eventNameLabel" destination="xd8-lj-byD" id="Ie0-Kz-NOX"/>
                 <outlet property="onboardingImageView" destination="R0f-mr-ihr" id="XXY-R2-hGx"/>
@@ -30,32 +33,30 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="let Swift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd8-lj-byD">
-                    <rect key="frame" x="0.0" y="44" width="375" height="20"/>
+                    <rect key="frame" x="0.0" y="48" width="375" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="8wl-AS-crv"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFj-cd-Xx2" customClass="AppScrollView" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="88" width="375" height="531"/>
+                    <rect key="frame" x="0.0" y="68" width="375" height="551"/>
                 </scrollView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nP3-6s-Plc">
+                    <rect key="frame" x="0.0" y="427" width="375" height="176"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0f-mr-ihr" customClass="OnboardingImageView" customModule="LetSwift" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="88" width="375" height="269"/>
+                    <rect key="frame" x="37.5" y="100" width="300" height="273.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="269" id="JGg-eW-lyH" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                                    <real key="value" value="215"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                                    <real key="value" value="215"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </constraint>
+                        <constraint firstAttribute="width" secondItem="R0f-mr-ihr" secondAttribute="height" multiplier="293:267" priority="999" id="ENP-ar-ZGR"/>
                     </constraints>
                 </view>
                 <pageControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fF2-0z-4jP">
-                    <rect key="frame" x="168" y="374" width="39" height="37"/>
+                    <rect key="frame" x="168" y="389.5" width="39" height="21.5"/>
                     <color key="pageIndicatorTintColor" red="0.81568627449999997" green="0.85490196080000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="currentPageIndicatorTintColor" red="1" green="0.75294117650000003" blue="0.2156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
@@ -82,50 +83,31 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="xd8-lj-byD" secondAttribute="trailing" id="0SU-1c-uKc"/>
-                <constraint firstItem="fF2-0z-4jP" firstAttribute="top" secondItem="R0f-mr-ihr" secondAttribute="bottom" constant="17" id="G4b-U1-jeQ" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="9"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </constraint>
+                <constraint firstItem="nP3-6s-Plc" firstAttribute="top" secondItem="fF2-0z-4jP" secondAttribute="bottom" constant="16" id="C4O-pQ-dVc"/>
                 <constraint firstAttribute="trailing" secondItem="FFj-cd-Xx2" secondAttribute="trailing" id="HAZ-Ic-c6m"/>
-                <constraint firstItem="R0f-mr-ihr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KyB-g0-ASE"/>
                 <constraint firstAttribute="trailing" secondItem="f9A-tk-41g" secondAttribute="trailing" id="Lm5-Zc-nAg"/>
                 <constraint firstItem="fF2-0z-4jP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NdS-e0-KRH"/>
-                <constraint firstItem="xd8-lj-byD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="UGp-Ie-rTa" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
+                <constraint firstItem="nP3-6s-Plc" firstAttribute="trailing" secondItem="FFj-cd-Xx2" secondAttribute="trailing" id="PJz-54-pGX"/>
+                <constraint firstItem="fF2-0z-4jP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.2" id="SMf-qD-OIJ"/>
+                <constraint firstItem="xd8-lj-byD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="48" id="UGp-Ie-rTa" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="36"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="36"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="52"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨8">
+                            <real key="value" value="64"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </constraint>
                 <constraint firstAttribute="bottom" secondItem="f9A-tk-41g" secondAttribute="bottom" id="Xo9-NG-6VJ"/>
-                <constraint firstItem="FFj-cd-Xx2" firstAttribute="top" secondItem="xd8-lj-byD" secondAttribute="bottom" constant="24" id="dju-1C-FYs" customClass="MultiSizeConstraint" customModule="LetSwift" customModuleProvider="target">
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch3¨5">
-                            <real key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch4¨0">
-                            <real key="value" value="16"/>
-                        </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="inch5¨5">
-                            <real key="value" value="32"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                </constraint>
-                <constraint firstItem="FFj-cd-Xx2" firstAttribute="top" secondItem="R0f-mr-ihr" secondAttribute="top" id="erO-pb-4M2"/>
+                <constraint firstItem="R0f-mr-ihr" firstAttribute="width" secondItem="FFj-cd-Xx2" secondAttribute="width" multiplier="0.8" id="Yn7-G7-Vys"/>
+                <constraint firstItem="R0f-mr-ihr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bfU-SE-q3Q"/>
+                <constraint firstItem="FFj-cd-Xx2" firstAttribute="top" secondItem="xd8-lj-byD" secondAttribute="bottom" id="dju-1C-FYs"/>
+                <constraint firstItem="FFj-cd-Xx2" firstAttribute="bottom" secondItem="nP3-6s-Plc" secondAttribute="bottom" constant="16" id="ek7-gl-A58"/>
                 <constraint firstItem="FFj-cd-Xx2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="f2A-Ua-GXf"/>
                 <constraint firstItem="f9A-tk-41g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="flI-Eu-Uv8"/>
                 <constraint firstItem="xd8-lj-byD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gOI-Rf-geg"/>
+                <constraint firstItem="fF2-0z-4jP" firstAttribute="top" secondItem="R0f-mr-ihr" secondAttribute="bottom" constant="16" id="gvk-gt-PmS"/>
+                <constraint firstItem="R0f-mr-ihr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xd8-lj-byD" secondAttribute="bottom" constant="32" id="i6r-Tt-GM1"/>
                 <constraint firstItem="f9A-tk-41g" firstAttribute="top" secondItem="FFj-cd-Xx2" secondAttribute="bottom" id="lIW-RH-SZP"/>
-                <constraint firstAttribute="trailing" secondItem="R0f-mr-ihr" secondAttribute="trailing" id="vw6-kD-jf9"/>
+                <constraint firstItem="nP3-6s-Plc" firstAttribute="leading" secondItem="FFj-cd-Xx2" secondAttribute="leading" id="xls-nl-UdC"/>
             </constraints>
             <point key="canvasLocation" x="34.5" y="54.5"/>
         </view>
