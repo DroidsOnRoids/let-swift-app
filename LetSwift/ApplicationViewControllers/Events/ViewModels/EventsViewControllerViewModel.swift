@@ -269,7 +269,7 @@ final class EventsViewControllerViewModel {
     
     @objc func attendButtonTapped() {
         guard !isEventOutdated else {
-            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value?.photos ?? [], eventId: eventDetailsId)
+            delegate?.presentPhotoGalleryScreen(with: lastEventObservable.value?.photos ?? [], eventId: lastEventObservable.value?.id)
             return
         }
         guard let eventId = lastEventObservable.value?.facebook, attendanceStateObservable.value != .loading else { return }
