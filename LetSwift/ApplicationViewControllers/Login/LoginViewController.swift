@@ -55,7 +55,7 @@ final class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if isBeingPresented || isMovingToParentViewController {
+        if isBeingPresented || isMovingToParent {
             viewModel.viewWillAppearPerformObservable.next()
         }
     }

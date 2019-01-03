@@ -79,7 +79,7 @@ final class SpeakersViewController: AppViewController {
             topConstraint.constant = navigationBarHeight
         }
 
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60.0
         
         let headerView = LatestSpeakersHeaderView()

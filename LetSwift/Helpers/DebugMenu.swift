@@ -78,7 +78,7 @@ private struct DebugMenu {
 }
 
 extension UIWindow {
-    open override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
             DebugMenu().present(on: rootViewController)
         }

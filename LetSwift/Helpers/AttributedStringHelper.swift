@@ -63,7 +63,7 @@ extension String {
         return attributed(withAttributes: [.paragraphStyle: paragraphStyle(with: lineSpacing)])
     }
     
-    func attributed(withAttributes attributes: [NSAttributedStringKey: Any]) -> NSAttributedString {
+    func attributed(withAttributes attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
         return NSAttributedString(string: self, attributes: attributes)
     }
 }
@@ -85,7 +85,7 @@ extension NSAttributedString {
         return with(attributes: [.paragraphStyle: paragraphStyle(with: lineSpacing)])
     }
     
-    func with(attributes: [NSAttributedStringKey: Any]) -> NSAttributedString {
+    func with(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
         let fullRange = NSRange(location: 0, length: string.count)
         let newString = NSMutableAttributedString(attributedString: self)
         newString.addAttributes(attributes, range: fullRange)

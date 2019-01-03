@@ -55,7 +55,7 @@ final class SpeakerDetailsViewController: AppViewController {
     }
     
     private func setup() {
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60.0
         tableView.registerCells(allCells)
         

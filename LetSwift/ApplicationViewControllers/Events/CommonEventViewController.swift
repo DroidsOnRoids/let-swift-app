@@ -74,7 +74,7 @@ class CommonEventViewController: AppViewController {
     
     private func setup() {
         tableView.childAutomaticallyUpdatesContentInset = true
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 60.0
         
         let inset = navigationController?.navigationBar.frame.maxY ?? 0.0

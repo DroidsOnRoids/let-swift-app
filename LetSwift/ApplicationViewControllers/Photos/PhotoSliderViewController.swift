@@ -33,7 +33,7 @@ final class PhotoSliderViewController: UIViewController {
     
     weak var coordinatorDelegate: AppCoordinatorDelegate?
     
-    private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewControllerOptionInterPageSpacingKey: 32])
+    private var pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [.interPageSpacing: 32])
     
     private var isNavbarHidden = false {
         didSet {
@@ -98,7 +98,7 @@ final class PhotoSliderViewController: UIViewController {
         setupPageViewController(initialViewController: initialViewController)
         
         statusBarTopConstraint.constant = UIApplication.shared.statusBarFrame.height
-        view.bringSubview(toFront: navbarView)
+        view.bringSubviewToFront(navbarView)
         
         setupGestureRecognizers()
         reactiveSetup()
@@ -108,13 +108,13 @@ final class PhotoSliderViewController: UIViewController {
         pageViewController.dataSource = self
         pageViewController.delegate = self
         pageViewController.setViewControllers([initialViewController], direction: .forward, animated: false)
-        addChildViewController(pageViewController)
+        addChild(pageViewController)
         
         pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(pageViewController.view)
         
         pageViewController.view.pinToFit(view: view)
-        pageViewController.didMove(toParentViewController: self)
+        pageViewController.didMove(toParent: self)
     }
     
     private func setupGestureRecognizers() {

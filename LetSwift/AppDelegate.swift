@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private lazy var appCoordinator = AppCoordinator(window: self.window)
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupNetworkIndicator()
         setupAppearance()
         analyticsHelper.setupAnalytics()
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return appCoordinator.rotationLocked ? .portrait : .allButUpsideDown
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance()
             .application(app, open: url, options: options)
     }

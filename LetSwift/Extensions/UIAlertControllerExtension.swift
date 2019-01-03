@@ -30,7 +30,7 @@ extension UIAlertController {
         let alertController = UIAlertController(title: localized("EVENTS_NOTIFICATIONS_TITILE"), message: localized("EVENTS_NOTIFICATIONS_MESSAGE"), preferredStyle: .alert)
 
         let settingsAction = UIAlertAction(title: localized("EVENTS_NOTIFICATIONS_SETTINGS"), style: .default) { _ in
-            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else { return }
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else { return }
 
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl)

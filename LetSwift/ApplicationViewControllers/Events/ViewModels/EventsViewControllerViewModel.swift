@@ -18,8 +18,7 @@
 //  limitations under the License.
 //
 
-import Foundation
-import CoreLocation
+import UIKit
 
 final class EventsViewControllerViewModel {
 
@@ -205,7 +204,7 @@ final class EventsViewControllerViewModel {
 
         NotificationCenter
             .default
-            .notification(Notification.Name.UIApplicationWillEnterForeground)
+            .notification(UIApplication.willEnterForegroundNotification)
             .subscribeNext { [weak self] _ in
                 guard let weakSelf = self else { return }
                 if !weakSelf.isReminderAllowed {

@@ -23,7 +23,7 @@ import UIKit
 class MultilayerImageView: UIView {
     
     var layers: [UIImageView] {
-        return subviews.flatMap { $0 as? UIImageView }
+        return subviews.compactMap { $0 as? UIImageView }
     }
     
     func setLayers(_ layers: [UIImage]) {

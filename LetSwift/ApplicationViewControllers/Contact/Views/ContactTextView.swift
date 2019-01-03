@@ -70,8 +70,7 @@ final class ContactTextView: UITextView, ContactFieldProtocol {
     }
     
     private func setupPlaceholderLabel() {
-        let mappedAttributes = typingAttributes.mapKeys(NSAttributedStringKey.init(rawValue:))
-        placeholderLabel.attributedText = placeholder?.attributed(withAttributes: mappedAttributes).with(color: .placeholder)
+        placeholderLabel.attributedText = placeholder?.attributed(withAttributes: typingAttributes).with(color: .placeholder)
         attributedText = nil
         
         placeholderLabel.sizeToFit()

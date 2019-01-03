@@ -42,7 +42,7 @@ private enum FacebookError: Int {
     case missingExtendedPermissions = 299 // HACK: Undocumented status code
     
     static func from(error: Error?) -> FacebookError? {
-        guard let errorCode = (error as NSError?)?.userInfo[FBSDKGraphRequestErrorGraphErrorCode] as? Int else { return nil }
+        guard let errorCode = (error as NSError?)?.userInfo[FBSDKGraphRequestErrorGraphErrorCodeKey] as? Int else { return nil }
 
         return FacebookError(rawValue: errorCode)
     }

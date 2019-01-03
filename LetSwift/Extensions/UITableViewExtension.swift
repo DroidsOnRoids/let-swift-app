@@ -92,7 +92,7 @@ extension UITableView: NibPresentable {
         let footerView = createHeaderFooterView(color, negativeOffset: false)
         tableFooterView = footerView
         
-        sendSubview(toBack: footerView)
+        sendSubviewToBack(footerView)
     }
     
     override open var delaysContentTouches: Bool {

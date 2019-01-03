@@ -91,7 +91,7 @@ class TopicPickerViewController: UIViewController {
 
         NotificationCenter
             .default
-            .notification(Notification.Name.UIKeyboardWillShow)
+            .notification(UIResponder.keyboardWillShowNotification)
             .subscribeNext { [weak self] _ in
                 self?.closePicker()
             }

@@ -105,19 +105,19 @@ final class ContactViewController: AppViewController {
             .default
             .notification(name)
             .subscribeNext { [weak self] notification in
-                guard let keyboardFrame = (notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-                    let animationCurveInt = (notification?.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.uintValue,
-                    let animationDuration = (notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey]as? NSNumber)?.doubleValue
+                guard let keyboardFrame = (notification?.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+                    let animationCurveInt = (notification?.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.uintValue,
+                    let animationDuration = (notification?.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]as? NSNumber)?.doubleValue
                     else { return }
                 
-                self?.keyboardEvent(name: name, frame: keyboardFrame, animationOptions: UIViewAnimationOptions(rawValue: animationCurveInt << 16), animationDuration: animationDuration)
+                self?.keyboardEvent(name: name, frame: keyboardFrame, animationOptions: UIView.AnimationOptions(rawValue: animationCurveInt << 16), animationDuration: animationDuration)
             }
             .add(to: disposeBag)
     }
     
     private func setupKeyboardNotifications() {
-        setupKeyboardNotification(name: .UIKeyboardWillShow)
-        setupKeyboardNotification(name: .UIKeyboardWillHide)
+        setupKeyboardNotification(name: UIResponder.keyboardWillShowNotification)
+        setupKeyboardNotification(name: UIResponder.keyboardWillHideNotification)
     }
     
     private func reactiveSetup() {
@@ -186,7 +186,7 @@ final class ContactViewController: AppViewController {
         .add(to: disposeBag)
     }
     
-    private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIViewAnimationOptions, animationDuration: TimeInterval) {
+    private func keyboardEvent(name: Notification.Name, frame: CGRect, animationOptions: UIView.AnimationOptions, animationDuration: TimeInterval) {
         let keyboardOffset = frame.minY - upperKeyboardLimit
         
         UIView.animate(withDuration: animationDuration, delay: 0.0, options: animationOptions, animations: {
@@ -196,7 +196,7 @@ final class ContactViewController: AppViewController {
             self.messageTextView.transform = .identity
             self.messageTextView.frame.size.height = self.messageErrorTextViewHeight
                 
-            if name == Notification.Name.UIKeyboardWillShow {
+            if name == UIResponder.keyboardWillShowNotification {
                 self.containerView.transform = CGAffineTransform(translationX: 0.0, y: translationY)
                 let targetTranslation = self.messageTextView.frame.origin.y + translationY
                 
