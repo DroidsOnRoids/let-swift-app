@@ -13,24 +13,24 @@ target 'LetSwift' do
   end
 
   # Host utils
-  pod 'SwiftLint', '~> 0.20'
+  pod 'SwiftLint', '~> 0.29'
 
   # Testing
-  pod 'HockeySDK', '~> 4.1', :configurations => ['Debug', 'Release']
-  pod 'Fabric', '~> 1.6'
-  pod 'Crashlytics', '~> 3.8'
+  pod 'HockeySDK', '~> 5.1', :configurations => ['Debug', 'Release']
+  pod 'Fabric', '~> 1.9'
+  pod 'Crashlytics', '~> 3.12'
 
   # Facebook SDK
-  pod 'FBSDKCoreKit', '~> 4.22'
-  pod 'FBSDKLoginKit', '~> 4.22'
+  pod 'FBSDKCoreKit', '~> 4.39'
+  pod 'FBSDKLoginKit', '~> 4.39'
 
   # Networking
-  pod 'Alamofire', '~> 4.4'
-  pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
-  pod 'ModelMapper', '~> 6.0'
+  pod 'Alamofire', '~> 4.8'
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.3'
+  pod 'ModelMapper', '~> 9.0'
 
   # Views
   pod 'ImageEffects', '~> 1.0'
-  pod 'SDWebImage', '~> 4.0'
+  pod 'SDWebImage', '~> 4.4'
   pod 'DACircularProgress', '~> 2.3'
 end
