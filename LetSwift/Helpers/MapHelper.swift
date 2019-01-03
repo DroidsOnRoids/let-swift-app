@@ -26,11 +26,7 @@ final class MapHelper {
     private init() {}
     
     private static var mapLaunchOptions: [String: Any] {
-        if #available(iOS 10.0, *) {
-            return [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
-        } else {
-            return [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
-        }
+        return [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
     }
     
     static func openMaps(withCoordinates coordinates: CLLocationCoordinate2D, name: String?) {

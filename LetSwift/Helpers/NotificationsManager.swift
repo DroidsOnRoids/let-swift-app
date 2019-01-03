@@ -59,30 +59,14 @@ struct NotificationManager {
     }
 
     private func ensurePermissions(completionHandler: @escaping (Bool) -> ()) {
-        if #available(iOS 10.0, *) {
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, _ in
-                if !DefaultsManager.shared.notificationsPromptShowed && granted {
-                    completionHandler(granted)
-                } else if DefaultsManager.shared.notificationsPromptShowed {
-                    completionHandler(granted)
-                }
-
-                DefaultsManager.shared.notificationsPromptShowed = true
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { granted, _ in
+            if !DefaultsManager.shared.notificationsPromptShowed && granted {
+                completionHandler(granted)
+            } else if DefaultsManager.shared.notificationsPromptShowed {
+                completionHandler(granted)
             }
-        } else {
-            if !DefaultsManager.shared.notificationsPromptShowed {
-                _ = NotificationCenter.default.addObserver(forName: .didRegisterNotificationSettings, object: nil, queue: nil) { _ in
-                    DefaultsManager.shared.notificationsPromptShowed = true
-                    NotificationCenter.default.removeObserver(self, name: .didRegisterNotificationSettings, object: nil)
 
-                    if self.permissionsGranted {
-                        completionHandler(self.permissionsGranted)
-                    }
-                }
-                UIApplication.shared.registerUserNotificationSettings(UIUserNotificationSettings(types: .alert, categories: nil))
-            } else {
-                completionHandler(permissionsGranted)
-            }
+            DefaultsManager.shared.notificationsPromptShowed = true
         }
     }
     
