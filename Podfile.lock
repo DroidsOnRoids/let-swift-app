@@ -2,27 +2,25 @@ PODS:
   - Alamofire (4.8.2)
   - AlamofireNetworkActivityIndicator (2.4.0):
     - Alamofire (~> 4.8)
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.13.1):
     - Fabric (~> 1.10.1)
   - DACircularProgress (2.3.1)
   - Fabric (1.10.1)
-  - FBSDKCoreKit (4.44.1):
-    - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.44.1):
-    - FBSDKCoreKit
+  - FBSDKCoreKit (5.0.1):
+    - FBSDKCoreKit/Basics (= 5.0.1)
+    - FBSDKCoreKit/Core (= 5.0.1)
+  - FBSDKCoreKit/Basics (5.0.1)
+  - FBSDKCoreKit/Core (5.0.1):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.0.1):
+    - FBSDKCoreKit (~> 5.0)
   - HockeySDK (5.1.4):
     - HockeySDK/DefaultLib (= 5.1.4)
   - HockeySDK/DefaultLib (5.1.4)
   - ImageEffects (1.0.0)
-  - ModelMapper (9.0.1):
-    - ModelMapper/Core (= 9.0.1)
-  - ModelMapper/Core (9.0.1)
+  - ModelMapper (10.0.0):
+    - ModelMapper/Core (= 10.0.0)
+  - ModelMapper/Core (10.0.0)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
@@ -30,23 +28,22 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.8)
-  - AlamofireNetworkActivityIndicator (~> 2.3)
+  - AlamofireNetworkActivityIndicator (~> 2.4)
   - Crashlytics (~> 3.12)
   - DACircularProgress (~> 2.3)
   - Fabric (~> 1.9)
-  - FBSDKCoreKit (~> 4.39)
-  - FBSDKLoginKit (~> 4.39)
+  - FBSDKCoreKit (~> 5.0)
+  - FBSDKLoginKit (~> 5.0)
   - HockeySDK (~> 5.1)
   - ImageEffects (~> 1.0)
-  - ModelMapper (~> 9.0)
+  - ModelMapper (~> 10.0)
   - SDWebImage (~> 4.4)
-  - SwiftLint (~> 0.29)
+  - SwiftLint (~> 0.32)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireNetworkActivityIndicator
-    - Bolts
     - Crashlytics
     - DACircularProgress
     - Fabric
@@ -61,18 +58,17 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
   Fabric: f6f21452846788bb44595d73e9909d79d328e617
-  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
-  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
+  FBSDKCoreKit: 4a19534474ade7c71bd016d800aa5e7722bcdda1
+  FBSDKLoginKit: 41efa754b909b0ea813fa9a8596dacc8ed196d50
   HockeySDK: 15afe6bc0a5bfe3a531fd73dbf082095f37dac3b
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
-  ModelMapper: 89a61430a75e6265040dc9555ab1feddeb25b986
+  ModelMapper: a8dbf2a2003bf626627b9fe7c9a22b3405a30404
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 5e984f375468a3e196db36f79458a49862739224
+PODFILE CHECKSUM: 7ad07d69370544d09cdaff915cb629e95d2c1e1b
 
 COCOAPODS: 1.7.0

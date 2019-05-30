@@ -21,7 +21,7 @@
 import FBSDKLoginKit
 
 enum FacebookLoginStatus {
-    case success(FBSDKLoginManagerLoginResult)
+    case success(LoginManagerLoginResult)
     case error(Error?)
     case cancelled
 }
@@ -42,7 +42,7 @@ private enum FacebookError: Int {
     case missingExtendedPermissions = 299 // HACK: Undocumented status code
     
     static func from(error: Error?) -> FacebookError? {
-        guard let errorCode = (error as NSError?)?.userInfo[FBSDKGraphRequestErrorGraphErrorCodeKey] as? Int else { return nil }
+        guard let errorCode = (error as NSError?)?.userInfo[GraphRequestErrorGraphErrorCodeKey] as? Int else { return nil }
 
         return FacebookError(rawValue: errorCode)
     }
@@ -51,7 +51,7 @@ private enum FacebookError: Int {
 final class FacebookManager {
     
     static let shared = FacebookManager()
-    private let loginManager = FBSDKLoginManager()
+    private let loginManager = LoginManager()
     
     private let readPermissions = [String]()
     private let publishPermissions = [FacebookPermissions.rsvpEvent]
@@ -60,15 +60,15 @@ final class FacebookManager {
     let facebookLogoutObservable = Observable<Void>()
     
     private init() {
-        FBSDKGraphRequestConnection.setDefaultConnectionTimeout(NetworkProvider.timeout)
+        GraphRequestConnection.defaultConnectionTimeout = NetworkProvider.timeout
     }
     
     var isLoggedIn: Bool {
-        return FBSDKAccessToken.current() != nil
+        return AccessToken.current != nil
     }
     
     func logIn(from viewController: UIViewController?, callback: ((FacebookLoginStatus) -> Void)?) {
-        let handler = { [weak self] (result: FBSDKLoginManagerLoginResult?, error: Error?) in
+        let handler = { [weak self] (result: LoginManagerLoginResult?, error: Error?) in
             if let error = error {
                 callback?(.error(error))
             } else if let result = result {
@@ -84,11 +84,11 @@ final class FacebookManager {
         }
         
         if readPermissions.isEmpty || isLoggedIn {
-            loginManager.logIn(withPublishPermissions: publishPermissions,
+            loginManager.logIn(permissions: publishPermissions,
                                from: viewController,
                                handler: handler)
         } else {
-            loginManager.logIn(withReadPermissions: readPermissions,
+            loginManager.logIn(permissions: readPermissions,
                                from: viewController,
                                handler: handler)
         }
@@ -115,7 +115,7 @@ final class FacebookManager {
         }
     }
     
-    private func sendGraphRequest(_ request: FBSDKGraphRequest, callback: @escaping (Any?) -> Void) {
+    private func sendGraphRequest(_ request: GraphRequest, callback: @escaping (Any?) -> Void) {
         request.start { [weak self] (_, result: Any?, error: Error?) in
             self?.askForMissingPermissions(error: FacebookError.from(error: error)) { recovered in
                 guard recovered else {
@@ -132,10 +132,7 @@ final class FacebookManager {
     
     func changeEvent(attendanceTo attendance: FacebookEventAttendance, forId id: String, callback: ((Bool) -> Void)?) {
         // HACK: Undocumented API call
-        guard let request = FBSDKGraphRequest(graphPath: "\(id)/\(attendance)", parameters: [:], httpMethod: "POST") else {
-            callback?(false)
-            return
-        }
+        let request = GraphRequest(graphPath: "\(id)/\(attendance)", parameters: [:], httpMethod: .post)
         
         sendGraphRequest(request) { result in
             guard let resultDict = (result as? [String: Any]) else {
@@ -148,14 +145,15 @@ final class FacebookManager {
         }
     }
     
-    private func attendanceRequest(forEventId id: String) -> FBSDKGraphRequest? {
+    private func attendanceRequest(forEventId id: String) -> GraphRequest? {
         guard isLoggedIn else { return nil }
-        let parameters: [AnyHashable: Any] = [
-            "user": FBSDKAccessToken.current().userID as Any,
+
+        let parameters: [String: Any] = [
+            "user": AccessToken.current?.userID as Any,
             "fields": "rsvp_status"
         ]
         
-        return FBSDKGraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: parameters, httpMethod: "GET")
+        return GraphRequest(graphPath: "\(id)/\(FacebookEventAttendance.attending)", parameters: parameters, httpMethod: .get)
     }
     
     func isUserAttending(toEventId id: String, callback: @escaping (FacebookEventAttendance) -> Void) {

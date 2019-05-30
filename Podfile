@@ -13,7 +13,7 @@ target 'LetSwift' do
   end
 
   # Host utils
-  pod 'SwiftLint', '~> 0.29'
+  pod 'SwiftLint', '~> 0.32'
 
   # Testing
   pod 'HockeySDK', '~> 5.1', :configurations => ['Debug', 'Release']
@@ -21,13 +21,13 @@ target 'LetSwift' do
   pod 'Crashlytics', '~> 3.12'
 
   # Facebook SDK
-  pod 'FBSDKCoreKit', '~> 4.39'
-  pod 'FBSDKLoginKit', '~> 4.39'
+  pod 'FBSDKCoreKit', '~> 5.0'
+  pod 'FBSDKLoginKit', '~> 5.0'
 
   # Networking
   pod 'Alamofire', '~> 4.8'
-  pod 'AlamofireNetworkActivityIndicator', '~> 2.3'
-  pod 'ModelMapper', '~> 9.0'
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.4'
+  pod 'ModelMapper', '~> 10.0'
 
   # Views
   pod 'ImageEffects', '~> 1.0'
