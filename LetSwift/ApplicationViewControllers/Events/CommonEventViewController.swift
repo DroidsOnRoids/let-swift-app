@@ -143,7 +143,7 @@ class CommonEventViewController: AppViewController {
         viewModel.actionButtonsStateObservable.subscribeNext { [weak self] state in
             switch state {
             case .hidden:
-                guard let index = self?.bindableCells.values.index(of: .attend) else { return }
+                guard let index = self?.bindableCells.values.firstIndex(of: .attend) else { return }
 
                 self?.bindableCells.remove(at: index)
             case .showed:
@@ -151,7 +151,7 @@ class CommonEventViewController: AppViewController {
 
                 self?.bindableCells.insert(.attend, at: 1)
             case .toHide:
-                guard let index = self?.bindableCells.values.index(of: .attend) else { return }
+                guard let index = self?.bindableCells.values.firstIndex(of: .attend) else { return }
 
                 self?.bindableCells.remove(at: index, updated: false)
                 self?.tableView.beginUpdates()

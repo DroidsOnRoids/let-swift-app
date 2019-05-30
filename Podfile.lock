@@ -1,20 +1,20 @@
 PODS:
-  - Alamofire (4.8.0)
-  - AlamofireNetworkActivityIndicator (2.3.0):
-    - Alamofire (~> 4.7)
+  - Alamofire (4.8.2)
+  - AlamofireNetworkActivityIndicator (2.4.0):
+    - Alamofire (~> 4.8)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - Crashlytics (3.12.0):
-    - Fabric (~> 1.9.0)
+  - Crashlytics (3.13.1):
+    - Fabric (~> 1.10.1)
   - DACircularProgress (2.3.1)
-  - Fabric (1.9.0)
-  - FBSDKCoreKit (4.39.0):
+  - Fabric (1.10.1)
+  - FBSDKCoreKit (4.44.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.39.0):
+  - FBSDKLoginKit (4.44.1):
     - FBSDKCoreKit
   - HockeySDK (5.1.4):
     - HockeySDK/DefaultLib (= 5.1.4)
@@ -23,10 +23,10 @@ PODS:
   - ModelMapper (9.0.1):
     - ModelMapper/Core (= 9.0.1)
   - ModelMapper/Core (9.0.1)
-  - SDWebImage (4.4.3):
-    - SDWebImage/Core (= 4.4.3)
-  - SDWebImage/Core (4.4.3)
-  - SwiftLint (0.29.2)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
+  - SwiftLint (0.32.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8)
@@ -59,20 +59,20 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
-  AlamofireNetworkActivityIndicator: 18346ff6d770d9513d0ac6f2d99706f40f93dbaa
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  Crashlytics: 5aa8e90dcbf2f34898b4f5a0037787531246cca0
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  FBSDKCoreKit: 1e3981faefab8c88edfaa9eecd94aab02d99a9bc
-  FBSDKLoginKit: 30ba5039a2c53d65a75103889bc2deebdacd5a1f
+  Fabric: f6f21452846788bb44595d73e9909d79d328e617
+  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
+  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
   HockeySDK: 15afe6bc0a5bfe3a531fd73dbf082095f37dac3b
   ImageEffects: 6f92f55ae12c4010642f84dcc2d7e21246666cf9
   ModelMapper: 89a61430a75e6265040dc9555ab1feddeb25b986
-  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
-  SwiftLint: 47df60bdea6e7e902b193b6596db8683aafd86a3
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
 PODFILE CHECKSUM: 5e984f375468a3e196db36f79458a49862739224
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.7.0

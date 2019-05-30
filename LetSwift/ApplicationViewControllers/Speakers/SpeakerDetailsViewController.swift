@@ -80,7 +80,7 @@ final class SpeakerDetailsViewController: AppViewController {
     }
     
     private func removeCell(of cellType: String) {
-        if let index = bindableCells.values.index(of: cellType) {
+        if let index = bindableCells.values.firstIndex(of: cellType) {
             bindableCells.remove(at: index)
         }
     }

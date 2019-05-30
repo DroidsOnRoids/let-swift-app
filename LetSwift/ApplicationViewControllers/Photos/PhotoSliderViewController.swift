@@ -176,7 +176,7 @@ final class PhotoSliderViewController: UIViewController {
 
 extension PhotoSliderViewController: UIPageViewControllerDataSource {
     private func singleViewController(for viewController: SinglePhotoViewController, withOffset offset: Int) -> SinglePhotoViewController? {
-        guard let index = singlePhotoViewControllers.index(of: viewController) else { return nil }
+        guard let index = singlePhotoViewControllers.firstIndex(of: viewController) else { return nil }
         let modifiedIndex = index + offset
         
         let indexExists = singlePhotoViewControllers.indices.contains(modifiedIndex)
@@ -194,7 +194,7 @@ extension PhotoSliderViewController: UIPageViewControllerDataSource {
 
 extension PhotoSliderViewController: UIPageViewControllerDelegate {
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        if let firstViewController = pageViewController.viewControllers?.first, let index = singlePhotoViewControllers.index(of: firstViewController as! SinglePhotoViewController) {
+        if let firstViewController = pageViewController.viewControllers?.first, let index = singlePhotoViewControllers.firstIndex(of: firstViewController as! SinglePhotoViewController) {
             viewModel.photoSelectedObservable.next(index)
         }
     }

@@ -151,7 +151,7 @@ final class FacebookManager {
     private func attendanceRequest(forEventId id: String) -> FBSDKGraphRequest? {
         guard isLoggedIn else { return nil }
         let parameters: [AnyHashable: Any] = [
-            "user": FBSDKAccessToken.current().userID,
+            "user": FBSDKAccessToken.current().userID as Any,
             "fields": "rsvp_status"
         ]
         
