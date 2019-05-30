@@ -22,7 +22,7 @@ import UIKit
 import ImageEffects
 import SDWebImage
 
-class ReflectionShadowView: UIView {
+class ReflectiveShadowView: UIView {
     
     @IBInspectable var blurRadius: CGFloat = 10.0 {
         didSet {
@@ -91,6 +91,7 @@ class ReflectionShadowView: UIView {
     
     private enum Constants {
         static let heightMultiplier: CGFloat = 0.06
+        static let shadowAlpha: CGFloat = 0.5
     }
     
     init(image: UIImage) {
@@ -131,6 +132,7 @@ class ReflectionShadowView: UIView {
         
         shadowImageView = UIImageView()
         shadowImageView.contentMode = contentMode
+        shadowImageView.alpha = Constants.shadowAlpha
         blurImage()
         
         addSubview(shadowImageView)

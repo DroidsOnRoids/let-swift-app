@@ -22,7 +22,7 @@ import UIKit
 
 final class StaticImageTableViewCell: UITableViewCell {
     
-    @IBOutlet private weak var reflectiveImageView: ReflectionShadowView!
+    @IBOutlet private weak var reflectiveImageView: ReflectiveShadowView!
     
     var imageURL: URL? {
         get {

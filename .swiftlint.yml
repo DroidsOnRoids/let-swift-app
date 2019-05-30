@@ -5,6 +5,7 @@ disabled_rules: # rule identifiers to exclude from running
   - trailing_whitespace
   - void_return
   - unused_optional_binding
+  - unused_setter_value
   - force_cast
 opt_in_rules: # some rules are only opt-in
   - closure_end_indentation
