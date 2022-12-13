@@ -20,7 +20,7 @@
 
 import UIKit
 
-protocol LoginViewControllerDelegate: class {
+protocol LoginViewControllerDelegate: AnyObject {
     func facebookLoginCompleted()
     func loginHasSkipped()
 }

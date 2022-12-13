@@ -20,7 +20,7 @@
 
 import Foundation
 
-protocol SpeakerLectureFlowDelegate: class {
+protocol SpeakerLectureFlowDelegate: AnyObject {
     func presentSpeakerDetailsScreen(with id: Int)
     func presentLectureScreen(with talk: Talk)
 }

@@ -20,7 +20,7 @@
 
 import Foundation
 
-protocol ContactFieldBaseProtocol: class {
+protocol ContactFieldBaseProtocol: AnyObject {
     var fieldState: ContactFieldState { get set }
 }
 

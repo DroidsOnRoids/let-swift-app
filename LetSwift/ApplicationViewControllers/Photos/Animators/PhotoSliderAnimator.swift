@@ -20,7 +20,7 @@
 
 import UIKit
 
-protocol PhotoSliderAnimatorDelegate: class {
+protocol PhotoSliderAnimatorDelegate: AnyObject {
     func prepareForInteractiveAnimation()
     func prepareForDismissing()
     func progressDismissing()

@@ -102,7 +102,7 @@ final class SpeakerDetailsViewController: AppViewController {
         }
         .add(to: disposeBag)
         
-        bindableCells.bind(to: tableView.items() ({ [weak self] tableView, index, element in
+        bindableCells.bind(to: tableView.items()({ [weak self] tableView, index, element in
             let indexPath = IndexPath(row: index, section: 0)
             let cell = tableView.dequeueReusableCell(withIdentifier: element, for: indexPath)
             cell.layoutMargins = UIEdgeInsets.zero

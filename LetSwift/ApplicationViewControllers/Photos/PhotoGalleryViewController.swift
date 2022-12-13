@@ -20,7 +20,7 @@
 
 import UIKit
 
-protocol PhotoGalleryViewControllerDelegate: class {
+protocol PhotoGalleryViewControllerDelegate: AnyObject {
     func presentPhotoSliderScreen(with viewModel: PhotoGalleryViewControllerViewModel)
 }
 
@@ -86,7 +86,7 @@ final class PhotoGalleryViewController: AppViewController {
         viewModel.photosObservable.subscribeNext(startsWithInitialValue: true) { [weak self] photos in
             guard let weakSelf = self else { return }
             
-            photos.bindable.bind(to: weakSelf.collectionView.items() ({ collectionView, index, element in
+            photos.bindable.bind(to: weakSelf.collectionView.items()({ collectionView, index, element in
                 let indexPath = IndexPath(row: index, section: 0)
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SinglePhotoCollectionViewCell.cellIdentifier, for: indexPath) as! SinglePhotoCollectionViewCell

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -51,7 +51,6 @@
 		7EB744091EF130B6008092DC /* SpeakersViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744081EF130B6008092DC /* SpeakersViewControllerViewModel.swift */; };
 		7EB744211EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7441F1EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift */; };
 		7EB744221EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */; };
-		7EB744271EF3E0BD008092DC /* speakers.json in Resources */ = {isa = PBXBuildFile; fileRef = 7EB744261EF3E0BD008092DC /* speakers.json */; };
 		7EB744291EF40B1E008092DC /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */; };
 		7EB7442B1EF82C20008092DC /* NotificationNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */; };
 		7EB7442D1EF8FE67008092DC /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */; };
@@ -100,8 +99,6 @@
 		D32A76CC1E9B9B5C00388222 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32A76CB1E9B9B5C00388222 /* Localization.swift */; };
 		D33521181ECED909000666D4 /* LocationMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521171ECED909000666D4 /* LocationMapperExtension.swift */; };
 		D335211A1ECED98E000666D4 /* DateMapperExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33521191ECED98E000666D4 /* DateMapperExtension.swift */; };
-		D335211D1ECEE762000666D4 /* event_details.json in Resources */ = {isa = PBXBuildFile; fileRef = D335211C1ECEE762000666D4 /* event_details.json */; };
-		D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D335211E1ECEE78A000666D4 /* MockLoader.swift */; };
 		D3381F3F1EBC8DAC00453EB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */; };
 		D338CBB91EA8BA44000E9585 /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D338CBB81EA8BA44000E9585 /* FacebookManager.swift */; };
 		D33920241F0D3FFE0073CECB /* MultilayerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33920231F0D3FFE0073CECB /* MultilayerImageView.swift */; };
@@ -141,8 +138,6 @@
 		D36396221EC0654400158BEF /* PopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36396211EC0654400158BEF /* PopoverView.swift */; };
 		D364260E1EF7FA6F002AB02E /* SinglePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D364260D1EF7FA6F002AB02E /* SinglePhotoViewController.swift */; };
 		D3755BE51F29DDD60087651E /* LetSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3755BE41F29DDD60087651E /* LetSwiftUITests.swift */; };
-		D3755BEE1F29DE2E0087651E /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3755BED1F29DE2E0087651E /* SnapshotHelper.swift */; };
-		D3755BF01F2A05A20087651E /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3755BEF1F2A05A20087651E /* UIApplicationExtension.swift */; };
 		D378B9A51F0CFC7000C99D5F /* SpeakerLectureFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D378B9A41F0CFC7000C99D5F /* SpeakerLectureFlow.swift */; };
 		D37F8A061ECEF10000DD44FE /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F8A051ECEF10000DD44FE /* SpinnerView.swift */; };
 		D38040C01FF82C190031C003 /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38040BF1FF82C190031C003 /* Navigable.swift */; };
@@ -265,10 +260,6 @@
 		7E8D0DE81F0E3E5D0028C156 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7E8D0DEC1F0FC3D30028C156 /* AppCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCollectionView.swift; sourceTree = "<group>"; };
 		7E9E04321EBB7A27000BF84A /* ReactiveTableViewDelegateProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDelegateProxy.swift; sourceTree = "<group>"; };
-		7EA0ED3B1F2721CE00F9758B /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		7EA0ED3C1F27304500F9758B /* Config.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.debug.xcconfig; sourceTree = "<group>"; };
-		7EA0ED3D1F2730DB00F9758B /* Config.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.release.xcconfig; sourceTree = "<group>"; };
-		7EA0ED3E1F2730ED00F9758B /* Config.appstore.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.appstore.xcconfig; sourceTree = "<group>"; };
 		7EA48D441EADC12C00CEC845 /* Startable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Startable.swift; sourceTree = "<group>"; };
 		7EA48D4C1EADD4A300CEC845 /* ReflectiveShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectiveShadowView.swift; sourceTree = "<group>"; };
 		7EA48D4E1EADD4CE00CEC845 /* ShadowMask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShadowMask.png; sourceTree = "<group>"; };
@@ -280,7 +271,6 @@
 		7EB744081EF130B6008092DC /* SpeakersViewControllerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakersViewControllerViewModel.swift; sourceTree = "<group>"; };
 		7EB7441F1EF152DE008092DC /* LatestSpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestSpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
 		7EB744201EF152DE008092DC /* LatestSpeakerCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestSpeakerCollectionViewCell.xib; sourceTree = "<group>"; };
-		7EB744261EF3E0BD008092DC /* speakers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = speakers.json; sourceTree = "<group>"; };
 		7EB744281EF40B1E008092DC /* UIImageViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationNameExtension.swift; sourceTree = "<group>"; };
 		7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
@@ -332,8 +322,6 @@
 		D33521101ECED328000666D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D33521171ECED909000666D4 /* LocationMapperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMapperExtension.swift; sourceTree = "<group>"; };
 		D33521191ECED98E000666D4 /* DateMapperExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateMapperExtension.swift; sourceTree = "<group>"; };
-		D335211C1ECEE762000666D4 /* event_details.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = event_details.json; sourceTree = "<group>"; };
-		D335211E1ECEE78A000666D4 /* MockLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockLoader.swift; sourceTree = "<group>"; };
 		D3381F3E1EBC8DAC00453EB9 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		D338CBB81EA8BA44000E9585 /* FacebookManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookManager.swift; sourceTree = "<group>"; };
 		D33920231F0D3FFE0073CECB /* MultilayerImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilayerImageView.swift; sourceTree = "<group>"; };
@@ -375,8 +363,6 @@
 		D3755BE21F29DDD60087651E /* LetSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3755BE41F29DDD60087651E /* LetSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetSwiftUITests.swift; sourceTree = "<group>"; };
 		D3755BE61F29DDD60087651E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3755BED1F29DE2E0087651E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
-		D3755BEF1F2A05A20087651E /* UIApplicationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIApplicationExtension.swift; sourceTree = "<group>"; };
 		D378B9A41F0CFC7000C99D5F /* SpeakerLectureFlow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakerLectureFlow.swift; sourceTree = "<group>"; };
 		D37F8A051ECEF10000DD44FE /* SpinnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
 		D38040BF1FF82C190031C003 /* Navigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
@@ -769,7 +755,6 @@
 		7EECA5AC1E9B5EEB00B3F724 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D335211B1ECEE720000666D4 /* Mocks */,
 				7EA48D551EADDD5500CEC845 /* Event.swift */,
 				7E0842CE1ECF0F79003F7C96 /* Page.swift */,
 				7E31D0A51EAE3D970030147C /* Photo.swift */,
@@ -917,10 +902,6 @@
 				D32A76C21E9B9A4600388222 /* Localizable.strings */,
 				7E8D0DE81F0E3E5D0028C156 /* Settings.bundle */,
 				D341A18E1EDE91D10066E965 /* SplashImage.png */,
-				7EA0ED3B1F2721CE00F9758B /* Config.xcconfig */,
-				7EA0ED3C1F27304500F9758B /* Config.debug.xcconfig */,
-				7EA0ED3D1F2730DB00F9758B /* Config.release.xcconfig */,
-				7EA0ED3E1F2730ED00F9758B /* Config.appstore.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -952,16 +933,6 @@
 				D33521171ECED909000666D4 /* LocationMapperExtension.swift */,
 			);
 			path = MapperExtensions;
-			sourceTree = "<group>";
-		};
-		D335211B1ECEE720000666D4 /* Mocks */ = {
-			isa = PBXGroup;
-			children = (
-				D335211E1ECEE78A000666D4 /* MockLoader.swift */,
-				D335211C1ECEE762000666D4 /* event_details.json */,
-				7EB744261EF3E0BD008092DC /* speakers.json */,
-			);
-			path = Mocks;
 			sourceTree = "<group>";
 		};
 		D33EFB8B1ED2F875001DA18C /* Observable */ = {
@@ -1067,7 +1038,6 @@
 			isa = PBXGroup;
 			children = (
 				D3755BE41F29DDD60087651E /* LetSwiftUITests.swift */,
-				D3755BED1F29DE2E0087651E /* SnapshotHelper.swift */,
 				D3755BE61F29DDD60087651E /* Info.plist */,
 			);
 			path = LetSwiftUITests;
@@ -1251,7 +1221,6 @@
 				7EB7442A1EF82C20008092DC /* NotificationNameExtension.swift */,
 				7EF34FEA1ED3305200517683 /* ResponseExtension.swift */,
 				7EB7442C1EF8FE67008092DC /* UIAlertControllerExtension.swift */,
-				D3755BEF1F2A05A20087651E /* UIApplicationExtension.swift */,
 				D3006B021EBC845300716C23 /* UIButtonExtension.swift */,
 				7EE141121EBCCC21008378AB /* UICollectionViewExtension.swift */,
 				D3FF3F981E9F5E5B00501F44 /* UIColorExtension.swift */,
@@ -1319,9 +1288,6 @@
 				D39A73451E9776D900F10620 /* Frameworks */,
 				D39A73461E9776D900F10620 /* Resources */,
 				5A3623B87DCCF47186237207 /* [CP] Embed Pods Frameworks */,
-				10876692B5C005622AB3BCC3 /* [CP] Copy Pods Resources */,
-				D34AC3A41F2BC59D00C88C80 /* Remove Localization */,
-				D3498DD01F18DEB500CDE97E /* Run Fabric */,
 			);
 			buildRules = (
 			);
@@ -1339,7 +1305,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = "Droids On Roids";
 				TargetAttributes = {
 					D335210B1ECED328000666D4 = {
@@ -1414,7 +1380,6 @@
 				7E8D0DE91F0E3E5D0028C156 /* Settings.bundle in Resources */,
 				7E0842C41EC9FD9E003F7C96 /* PhotoGalleryViewController.xib in Resources */,
 				D31B08571EB1310500C2D229 /* EventTimeTableViewCell.xib in Resources */,
-				7EB744271EF3E0BD008092DC /* speakers.json in Resources */,
 				D309AFD51F05107800BB679E /* SpeakerLecturesTableViewCell.xib in Resources */,
 				D34B850D1EB3214900DBC72D /* PreviousEventsListTableViewCell.xib in Resources */,
 				D39CC8241ED2B3FB007B0A1C /* SadFaceView.xib in Resources */,
@@ -1432,7 +1397,6 @@
 				7E0842B81EC1BC7E003F7C96 /* CarouselEventPhotosTableViewCell.xib in Resources */,
 				D33F07271EA9E93D00A74B9F /* CommonEventViewController.xib in Resources */,
 				D3C0ACF91EC4E92200CFF98D /* SpeakerCardHeaderTableViewCell.xib in Resources */,
-				D335211D1ECEE762000666D4 /* event_details.json in Resources */,
 				D34CCF591EC5AAF900EFD3E4 /* LectureViewController.xib in Resources */,
 				D35839A31EA7330C00C05AA6 /* LoginViewController.xib in Resources */,
 				7EF34FF11ED7175800517683 /* SpeakersToBeAnnouncedTableViewCell.xib in Resources */,
@@ -1452,24 +1416,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		10876692B5C005622AB3BCC3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LetSwift/Pods-LetSwift-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/HockeySDK/HockeySDKResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HockeySDKResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LetSwift/Pods-LetSwift-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		55C950299D3F1E49CA4A2669 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1498,8 +1444,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/ImageEffects/ImageEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/ModelMapper/Mapper.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -1509,8 +1453,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireNetworkActivityIndicator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DACircularProgress.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -1534,38 +1476,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcrun --sdk macosx swift \"LetSwift/Resources/Scripts/PrivacyParser.swift\" plist $SCRIPT_INPUT_FILE_0 > $SCRIPT_OUTPUT_FILE_0";
-		};
-		D3498DD01F18DEB500CDE97E /* Run Fabric */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Fabric";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7a8e75b541d587d423fed61dc758338860e6337b 70c2eee6ad3d350f6c1bf2baac87e144c111f10ea91c7fd9c1c84b9fccdd6b3d";
-		};
-		D34AC3A41F2BC59D00C88C80 /* Remove Localization */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Remove Localization";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [ \"$CONFIGURATION\" = \"AppStore\" ]\nthen\n    rm -rf \"${CODESIGNING_FOLDER_PATH}/en.lproj\"\nfi";
+			shellScript = "xcrun --sdk macosx swift \"LetSwift/Resources/Scripts/PrivacyParser.swift\" plist $SCRIPT_INPUT_FILE_0 > $SCRIPT_OUTPUT_FILE_0\n";
 		};
 		D3AA9D131F176E5500F48D06 /* Run SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -1576,7 +1491,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1597,7 +1512,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3755BE51F29DDD60087651E /* LetSwiftUITests.swift in Sources */,
-				D3755BEE1F29DE2E0087651E /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1696,7 +1610,6 @@
 				7E0842D11ECF225D003F7C96 /* NetworkResponse.swift in Sources */,
 				D3F172111EB8A66200F9A91C /* MapHelper.swift in Sources */,
 				D30D3D021F03BAC30056F8A7 /* SpeakerDetailsViewControllerViewModel.swift in Sources */,
-				D335211F1ECEE78A000666D4 /* MockLoader.swift in Sources */,
 				D3429D121EE0375100F18D30 /* ContactFieldState.swift in Sources */,
 				7EB744041EEE8466008092DC /* Debouncer.swift in Sources */,
 				D33F07261EA9E93D00A74B9F /* EventsViewController.swift in Sources */,
@@ -1716,7 +1629,6 @@
 				D309AFCE1F04F79D00BB679E /* WebsiteView.swift in Sources */,
 				7EF34FEB1ED3305200517683 /* ResponseExtension.swift in Sources */,
 				7EF34FED1ED3308200517683 /* NetworkPage.swift in Sources */,
-				D3755BF01F2A05A20087651E /* UIApplicationExtension.swift in Sources */,
 				D3AE28901ECD9ECB00F29702 /* DisposeBag.swift in Sources */,
 				D3CFAE7F1EE6BFF10009E4EF /* URLExtension.swift in Sources */,
 				D30D3D0D1F03CE2F0056F8A7 /* SpeakerWebsitesTableViewCell.swift in Sources */,
@@ -1817,6 +1729,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1839,14 +1752,15 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APP_STORE;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AppStore;
 		};
 		7EC198AE1F162B9A003FF7E2 /* AppStore */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EA0ED3E1F2730ED00F9758B /* Config.appstore.xcconfig */;
+			baseConfigurationReference = E437B153D31BD3671A49A418 /* Pods-LetSwift.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Droids on Roids Sp. z o.o. (27FAFL2WP5)";
@@ -1854,7 +1768,10 @@
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9f5b209a-bcec-4dc2-8683-7eb50ab20406";
@@ -1870,7 +1787,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1886,7 +1807,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1902,7 +1827,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1917,7 +1846,11 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = URYNPG7RQE;
 				INFOPLIST_FILE = LetSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1930,7 +1863,11 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = URYNPG7RQE;
 				INFOPLIST_FILE = LetSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1943,7 +1880,11 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = URYNPG7RQE;
 				INFOPLIST_FILE = LetSwiftUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droidsonroids.LetSwiftUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1977,6 +1918,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2036,6 +1978,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2057,14 +2000,15 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		D39A735B1E9776D900F10620 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EA0ED3C1F27304500F9758B /* Config.debug.xcconfig */;
+			baseConfigurationReference = 618FA81529F5BC206C52AC24 /* Pods-LetSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -2072,7 +2016,10 @@
 				DEVELOPMENT_TEAM = 27FAFL2WP5;
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = WILDCARD;
@@ -2082,7 +2029,7 @@
 		};
 		D39A735C1E9776D900F10620 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EA0ED3D1F2730DB00F9758B /* Config.release.xcconfig */;
+			baseConfigurationReference = 5F748390374E55AA573ACE05 /* Pods-LetSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Droids On Roids Sp. z o.o.";
@@ -2090,7 +2037,10 @@
 				DEVELOPMENT_TEAM = URYNPG7RQE;
 				INFOPLIST_FILE = LetSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.droids.letswift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "LetSwiftApp InHouse";

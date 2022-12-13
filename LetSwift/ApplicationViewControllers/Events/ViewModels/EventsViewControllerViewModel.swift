@@ -113,6 +113,7 @@ final class EventsViewControllerViewModel {
         }
     }
 
+    // swiftlint:disable function_body_length
     private func setup() {
         eventsListRefreshObservable.subscribeNext { [weak self] in
             NetworkProvider.shared.eventsList(with: 1) { [weak self] response in

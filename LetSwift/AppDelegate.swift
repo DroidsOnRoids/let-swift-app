@@ -19,7 +19,6 @@
 //
 
 import UIKit
-import FBSDKCoreKit
 import SDWebImage
 import AlamofireNetworkActivityIndicator
 
@@ -42,9 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupNetworkIndicator()
         setupAppearance()
         analyticsHelper.setupAnalytics()
-    
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+
         SDWebImageManager.shared().imageCache?.clearDisk()
         
         appCoordinator.start()
@@ -54,10 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return appCoordinator.rotationLocked ? .portrait : .allButUpsideDown
-    }
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        return ApplicationDelegate.shared.application(app, open: url, options: options)
     }
 
     func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {

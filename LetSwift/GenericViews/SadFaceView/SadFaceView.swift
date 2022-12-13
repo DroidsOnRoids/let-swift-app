@@ -29,20 +29,20 @@ final class SadFaceView: DesignableView, Localizable, UIScrollViewDelegate {
     var scrollView: UIScrollView?
 
     var errorText: String? {
-        set {
-            somethingWentWrongLabel.text = newValue
-        }
         get {
             return somethingWentWrongLabel.text
+        }
+        set {
+            somethingWentWrongLabel.text = newValue
         }
     }
 
     var pullToRefreshText: String? {
-        set {
-            pullToRefreshLabel.text = newValue
-        }
         get {
             return pullToRefreshLabel.text
+        }
+        set {
+            pullToRefreshLabel.text = newValue
         }
     }
 

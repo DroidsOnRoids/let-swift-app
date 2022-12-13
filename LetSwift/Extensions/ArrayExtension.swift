@@ -21,10 +21,6 @@
 import Foundation
 
 extension Array {
-    func randomElement() -> Element {
-        return self[Int(arc4random_uniform(UInt32(self.count)))]
-    }
-
     var bindable: BindableArray<Element> {
         return BindableArray<Element>(self)
     }

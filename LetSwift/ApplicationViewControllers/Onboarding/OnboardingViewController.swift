@@ -20,7 +20,7 @@
 
 import UIKit
 
-protocol OnboardingViewControllerCoordinatorDelegate: class {
+protocol OnboardingViewControllerCoordinatorDelegate: AnyObject {
     func onboardingHasCompleted()
 }
 

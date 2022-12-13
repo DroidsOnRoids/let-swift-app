@@ -20,7 +20,7 @@
 
 import UIKit
 
-protocol SplashViewControllerDelegate: class {
+protocol SplashViewControllerDelegate: AnyObject {
     func initialLoadingHasFinished(events: [Event]?)
 }
 

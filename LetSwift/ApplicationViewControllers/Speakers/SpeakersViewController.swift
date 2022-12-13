@@ -229,7 +229,7 @@ final class SpeakersViewController: AppViewController {
     }
 
     private func reactiveTableViewSetup() {
-        viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self) ({ [weak self] index, speaker, cell in
+        viewModel.speakers.bind(to: tableView.item(with: SpeakersTableViewCell.cellIdentifier, cellType: SpeakersTableViewCell.self)({ [weak self] index, speaker, cell in
             cell.load(with: speaker)
             self?.viewModel.checkIfLastSpeakerObservable.next(index)
         }))

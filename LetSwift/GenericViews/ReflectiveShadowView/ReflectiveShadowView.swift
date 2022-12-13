@@ -52,12 +52,12 @@ class ReflectiveShadowView: UIView {
     }
     
     @IBInspectable var image: UIImage? {
+        get {
+            return imageView.image
+        }
         set {
             imageView.image = newValue
             blurImage()
-        }
-        get {
-            return imageView.image
         }
     }
     

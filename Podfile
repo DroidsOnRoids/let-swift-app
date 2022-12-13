@@ -7,22 +7,19 @@ target 'LetSwift' do
   inhibit_all_warnings!
 
   # Acknowledgements
-  post_install do | installer |
-      require 'fileutils'
-      FileUtils.cp_r('Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-acknowledgements.plist', 'LetSwift/Resources/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+  post_install do |installer|
+    require 'fileutils'
+    FileUtils.cp_r('Pods/Target Support Files/Pods-LetSwift/Pods-LetSwift-acknowledgements.plist', 'LetSwift/Resources/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+      end
+    end
   end
 
   # Host utils
   pod 'SwiftLint', '~> 0.32'
-
-  # Testing
-  pod 'HockeySDK', '~> 5.1', :configurations => ['Debug', 'Release']
-  pod 'Fabric', '~> 1.9'
-  pod 'Crashlytics', '~> 3.12'
-
-  # Facebook SDK
-  pod 'FBSDKCoreKit', '~> 5.0'
-  pod 'FBSDKLoginKit', '~> 5.0'
 
   # Networking
   pod 'Alamofire', '~> 4.8'

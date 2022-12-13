@@ -20,7 +20,7 @@
 
 import UIKit
 
-protocol AppCoordinatorDelegate: class {
+protocol AppCoordinatorDelegate: AnyObject {
     var rotationLocked: Bool { get set }
     
     func presentLoginViewController()
@@ -44,14 +44,10 @@ final class AppCoordinator: AppCoordinatorDelegate, Startable {
     private var childCoordinators = [ChildCoordinator]()
     
     private var shouldShowOnboardingScreen: Bool {
-        guard !UIApplication.isInTestMode else { return true }
-
         return !DefaultsManager.shared.isOnboardingCompleted
     }
     
     private var shouldShowLoginScreen: Bool {
-        guard !UIApplication.isInTestMode else { return true }
-
         return !(FacebookManager.shared.isLoggedIn || DefaultsManager.shared.isLoginSkipped)
     }
     
@@ -125,7 +121,11 @@ extension AppCoordinator: OnboardingViewControllerCoordinatorDelegate {
     func onboardingHasCompleted() {
         DefaultsManager.shared.isOnboardingCompleted = true
 
-        shouldShowLoginScreen ? presentLoginViewController() : presentMainController()
+        if shouldShowLoginScreen {
+            presentLoginViewController()
+        } else {
+            presentMainController()
+        }
     }
 }
 

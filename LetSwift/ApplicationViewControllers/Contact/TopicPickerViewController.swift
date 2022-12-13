@@ -101,7 +101,7 @@ class TopicPickerViewController: UIViewController {
     private func setupTableView() {
         guard let items = items else { return }
         
-        items.bindable.bind(to: tableView.items() ({ tableView, _, element in
+        items.bindable.bind(to: tableView.items()({ tableView, _, element in
             let cellIdentifier = "SimpleCell"
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
             

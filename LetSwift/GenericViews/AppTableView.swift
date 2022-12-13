@@ -25,7 +25,7 @@ final class AppTableView: UITableView {
     var hideOverlayAnimated = true
     var childAutomaticallyUpdatesContentInset = false
     
-    var overlayView: UIView? = nil {
+    var overlayView: UIView? {
         willSet {
             hideOverlayView()
         }

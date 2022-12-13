@@ -48,7 +48,7 @@ final class LoginViewControllerViewModel {
     
     private func setup() {
         viewWillAppearPerformObservable.subscribeNext { [weak self] in
-            self?.animateWithRandomTextObservable.next(Constants.helloWorldVariants.randomElement())
+            self?.animateWithRandomTextObservable.next(Constants.helloWorldVariants.randomElement()!)
         }
         .add(to: disposeBag)
     }

@@ -27,7 +27,7 @@ final class RandomLabelAnimator {
     
     private var randomString: String {
         return (0..<finalResult.length).reduce("") { result, _ in
-            result + "\(Character(UnicodeScalar(UInt8(arc4random_uniform(95) + 32))))"
+            result + "\(Character(UnicodeScalar(UInt8.random(in: 32..<128))))"
         }
     }
     

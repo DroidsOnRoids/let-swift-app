@@ -53,7 +53,7 @@ final class SpeakerLecturesTableViewCell: UITableViewCell, SpeakerLoadable {
     func load(with speaker: Speaker) {
         lectureDetailsObservable = Observable<Int?>(nil)
         
-        speaker.talks.bindable.bind(to: collectionView.item(with: SpeakerCardCollectionViewCell.cellIdentifier, cellType: SpeakerCardCollectionViewCell.self) ({ [weak self] _, element, cell in
+        speaker.talks.bindable.bind(to: collectionView.item(with: SpeakerCardCollectionViewCell.cellIdentifier, cellType: SpeakerCardCollectionViewCell.self)({ [weak self] _, element, cell in
             guard let weakSelf = self else { return }
             
             cell.load(with: speaker, talk: element)

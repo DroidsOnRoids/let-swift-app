@@ -18,73 +18,11 @@
 //  limitations under the License.
 //
 
-#if APP_STORE
-import Fabric
-import Crashlytics
-#else
-import HockeySDK
-#endif
-
 let analyticsHelper: AnalyticsHelperProtocol = {
-#if APP_STORE
-    return FabricAnalyticsHelper()
-#else
-    return HockeyAnalyticsHelper()
-#endif
+    return NoOpAnalyticsHelper()
 }()
 
-#if APP_STORE
-final class FabricAnalyticsHelper: AnalyticsHelperProtocol {
-    
-    private let disposeBag = DisposeBag()
-    
-    func setupAnalytics() {
-        Fabric.with([Crashlytics.self, Answers.self])
-        
-        FacebookManager.shared.facebookLoginObservable.subscribeNext { [weak self] in
-            self?.reportFacebookLogin()
-        }
-        .add(to: disposeBag)
-    }
-    
-    func reportFacebookLogin() {
-        Answers.logLogin(withMethod: "Facebook", success: true, customAttributes: nil)
-    }
-    
-    func reportOpenEventDetails(id: Int, name: String) {
-        Answers.logContentView(withName: name, contentType: "Event details", contentId: "event-\(id)")
-    }
-    
-    func reportOpenSpeakerDetails(id: Int, name: String) {
-        Answers.logContentView(withName: name, contentType: "Speaker details", contentId: "speaker-\(id)")
-    }
-    
-    func reportEmailSending(type: String) {
-        Answers.logCustomEvent(withName: "Email Sending", customAttributes: ["Topic tag": type])
-    }
-    
-    func reportEventAttendance(id: Int) {
-        Answers.logCustomEvent(withName: "Event Attendance", customAttributes: ["Event ID": id])
-    }
-    
-    func reportReminderSet(id: Int) {
-        Answers.logCustomEvent(withName: "Reminder Set", customAttributes: ["Event ID": id])
-    }
+final class NoOpAnalyticsHelper: AnalyticsHelperProtocol {
+
+    func setupAnalytics() {}
 }
-#else
-final class HockeyAnalyticsHelper: AnalyticsHelperProtocol {
-    
-    private let disposeBag = DisposeBag()
-    
-    func setupAnalytics() {
-        guard let hockeyAppId = Bundle.main.infoDictionary?["HockeyAppId"] as? String else { return }
-        
-        BITHockeyManager.shared().configure(withIdentifier: hockeyAppId)
-        BITHockeyManager.shared().start()
-        
-        if appCompilationCondition == .release {
-            BITHockeyManager.shared().authenticator.authenticateInstallation()
-        }
-    }
-}
-#endif

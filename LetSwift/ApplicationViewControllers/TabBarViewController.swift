@@ -50,7 +50,7 @@ final class TabBarViewController: UITabBarController {
         guard let tabControllers = viewControllers else { return }
         
         let tabImages: [TabData] = [
-            (imageInactive: #imageLiteral(resourceName: "EventsInactive"), imageActive:#imageLiteral(resourceName: "EventsActive")),
+            (imageInactive: #imageLiteral(resourceName: "EventsInactive"), imageActive: #imageLiteral(resourceName: "EventsActive")),
             (imageInactive: #imageLiteral(resourceName: "SpeakersInactive"), imageActive: #imageLiteral(resourceName: "SpeakersActive")),
             (imageInactive: #imageLiteral(resourceName: "ContactInactive"), imageActive: #imageLiteral(resourceName: "ContactActive"))
         ]

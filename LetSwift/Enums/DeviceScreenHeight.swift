@@ -31,6 +31,6 @@ enum DeviceScreenHeight: CGFloat {
     static let deviceHeight: DeviceScreenHeight = DeviceScreenHeight(rawValue: UIScreen.main.bounds.maxY) ?? .unknown
 }
 
-func ><T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
+func > <T: RawRepresentable>(a: T, b: T) -> Bool where T.RawValue: Comparable {
     return a.rawValue > b.rawValue
 }
